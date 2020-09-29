@@ -1,0 +1,83 @@
+name: e-mikrofirma
+base: core18
+version: '0.1'
+summary: e-mikrofirma repackage
+description: |
+  This is repackage of e-mikrofirma app.
+  https://www.podatki.gov.pl/jednolity-plik-kontrolny/jpk_vat/aplikacje-do-pobrania/
+  It is not opensource application, but you can run it from jail/snap (althought it will be better to put bureaucrats there)
+
+grade: devel
+confinement: strict 
+
+apps:
+  app:
+    extensions: [gnome-3-28]
+    command: desktop-launch launcher
+    desktop: usr/share/applications/emikrofirma.desktop
+    environment:
+      DISABLE_WAYLAND: 1
+      SKIP_UPDATE: "true"
+      JAVA_HOME: ${SNAP}/usr/lib/jvm/java-8-openjdk-${SNAP_ARCH}
+      PATH: $JAVA_HOME/bin:$PATH
+      JAVA_TOOL_OPTIONS: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xmx256m -Duser.home="$SNAP_USER_COMMON"
+    plugs: [home, removable-media]
+
+layout:
+    $SNAP/opt/emikrofirma/micro/lock.file:
+      bind-file: $SNAP_COMMON/lock.file
+
+parts:
+  emikrofirma:
+    plugin: dump
+    source: source
+    override-build: | 
+      echo '[Desktop Entry]
+      Type=Application
+      Version=0.1
+      Encoding=UTF-8
+      Name=e-Microfirma
+      Icon=${SNAP}/meta/gui/icon.png
+      Exec=emikrofirma
+      Terminal=false
+      StartupNotify=false
+      Categories=Utility;Office
+      ' > emikrofirma.desktop
+      chmod +x emikrofirma.desktop
+      
+      echo '#!/bin/sh
+       java -jar $SNAP/opt/emikrofirma/micro/MicroLauncher.lib -skipUpdate=true
+      ' > launcher
+      chmod +x launcher
+      
+      echo '#!/bin/sh
+      chmod o+rw $SNAP_COMMON/lock.file
+      ' > hook
+      chmod +x hook
+      snapcraftctl build
+    organize:
+      launcher: usr/bin/launcher
+      hook: snap/hooks/install
+      icon.png: meta/gui/icon.png
+      emikrofirma.desktop: usr/share/applications/emikrofirma.desktop
+      emikrofirma: opt/emikrofirma
+    stage-packages:
+      - openjdk-8-jdk
+      - openjfx=8u161-b12-1ubuntu2
+      - libopenjfx-jni=8u161-b12-1ubuntu2
+      - libopenjfx-java=8u161-b12-1ubuntu2
+      - ca-certificates-java
+      - ca-certificates
+      - x11-utils
+      - libglu1-mesa
+    after:
+      - desktop-glib-only
+  desktop-glib-only:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: glib-only
+    plugin: make
+    build-packages:
+      - libglib2.0-dev
+    stage-packages:
+      - libglib2.0-bin
+

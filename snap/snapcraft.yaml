@@ -1,66 +1,76 @@
 name: e-mikrofirma
 base: core18
-version: '0.1'
+version: '1-3-0-10'
 summary: e-mikrofirma repackage
+license: MIT
 description: |
-  This is repackage of e-mikrofirma app.
+  This is redistibution of e-mikrofirma app.
   https://www.podatki.gov.pl/jednolity-plik-kontrolny/jpk_vat/aplikacje-do-pobrania/
   It is not opensource application, but you can run it from jail/snap (althought it will be better to put bureaucrats there)
-
-grade: devel
+grade: stable
 confinement: strict 
 
 apps:
   app:
-    extensions: [gnome-3-28]
+    extensions: [gnome-3-34]
     command: desktop-launch launcher
     desktop: usr/share/applications/emikrofirma.desktop
-    environment:
-      DISABLE_WAYLAND: 1
-      SKIP_UPDATE: "true"
-      JAVA_HOME: ${SNAP}/usr/lib/jvm/java-8-openjdk-${SNAP_ARCH}
-      PATH: $JAVA_HOME/bin:$PATH
-      JAVA_TOOL_OPTIONS: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xmx256m -Duser.home="$SNAP_USER_COMMON"
-    plugs: [home, removable-media]
+    plugs: [home, removable-media, network]
 
 layout:
     $SNAP/opt/emikrofirma/micro/lock.file:
       bind-file: $SNAP_COMMON/lock.file
+    /usr/bin/xprop:
+        bind-file: $SNAP/usr/bin/xprop
 
 parts:
-  emikrofirma:
-    plugin: dump
-    source: source
+  application:
+    plugin: nil
+    override-pull: | 
+      echo 'Downloading app'
+      wget -nv -c https://www.podatki.gov.pl/media/6048/e-mikrofirma_1-3-0-10-tar.gz -O emikrofirma.tar.gz
+      echo 'Verifying'
+      wget -nv -c -O - https://www.podatki.gov.pl/media/6049/e-mikrofirma_1-3-0-10-tar-gz.p7s | openssl pkcs7 -inform der -out emikrofirma.pkcs7
+      openssl pkcs7 -print_certs -in emikrofirma.pkcs7 -out emikrofirma.cert
+      openssl smime -verify -binary -inform PEM -in emikrofirma.pkcs7 -certfile emikrofirma.cert -content emikrofirma.tar.gz -nointern -noverify > /dev/null
     override-build: | 
+      echo 'Unpacking archive'
+      mkdir -p $SNAPCRAFT_PART_INSTALL/opt/emikrofirma
+      tar -xzf emikrofirma.tar.gz -C $SNAPCRAFT_PART_INSTALL/opt/emikrofirma
+      mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/      
+      unzip -p $SNAPCRAFT_PART_INSTALL/opt/emikrofirma/micro/MicroLauncher.lib img/app/e_logo.png > $SNAPCRAFT_PART_INSTALL/meta/gui/icon.png
+      
+      echo 'Creating desktop file'
       echo '[Desktop Entry]
       Type=Application
       Version=0.1
       Encoding=UTF-8
       Name=e-Microfirma
       Icon=${SNAP}/meta/gui/icon.png
-      Exec=emikrofirma
+      Exec=emikrofirma.app
       Terminal=false
       StartupNotify=false
       Categories=Utility;Office
-      ' > emikrofirma.desktop
-      chmod +x emikrofirma.desktop
+      ' > $SNAPCRAFT_PART_INSTALL/usr/share/applications/emikrofirma.desktop
       
+      echo 'Creating launcher'
       echo '#!/bin/sh
-       java -jar $SNAP/opt/emikrofirma/micro/MicroLauncher.lib -skipUpdate=true
-      ' > launcher
-      chmod +x launcher
+      export DISABLE_WAYLAND=1
+      export SKIP_UPDATE=true
+      export JAVA_HOME="${SNAP}/usr/lib/jvm/java-8-openjdk-${SNAP_ARCH}"
+      export PATH="$JAVA_HOME/bin:$PATH"
+      export JAVA_TOOL_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xmx300m -Duser.home=\"$SNAP_USER_COMMON\""
+      java -jar $SNAP/opt/emikrofirma/micro/MicroLauncher.lib -skipUpdate=true
+      ' > $SNAPCRAFT_PART_INSTALL/usr/bin/launcher
+      chmod +x $SNAPCRAFT_PART_INSTALL/usr/bin/launcher
       
+      echo 'Fix app bug'
+      mkdir -p $SNAPCRAFT_PART_INSTALL/snap/hooks
       echo '#!/bin/sh
       chmod o+rw $SNAP_COMMON/lock.file
-      ' > hook
-      chmod +x hook
-      snapcraftctl build
-    organize:
-      launcher: usr/bin/launcher
-      hook: snap/hooks/install
-      icon.png: meta/gui/icon.png
-      emikrofirma.desktop: usr/share/applications/emikrofirma.desktop
-      emikrofirma: opt/emikrofirma
+      ' > $SNAPCRAFT_PART_INSTALL/snap/hooks/install
+      chmod +x $SNAPCRAFT_PART_INSTALL/snap/hooks/install
+    build-packages: [tar, unzip]
     stage-packages:
       - openjdk-8-jdk
       - openjfx=8u161-b12-1ubuntu2
@@ -73,9 +83,9 @@ parts:
     after:
       - desktop-glib-only
   desktop-glib-only:
+    plugin: make
     source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
     source-subdir: glib-only
-    plugin: make
     build-packages:
       - libglib2.0-dev
     stage-packages:

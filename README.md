@@ -2,8 +2,8 @@
 This is redistibution of e-mikrofirma app. https://www.podatki.gov.pl/jednolity-plik-kontrolny/jpk_vat/aplikacje-do-pobrania/
 
 # Bonus Feature
-You can put ~/AKMF/homedir file with path to new homedir, like ```mkdir -p ~/AKMF && echo 'Dropbox/Apps' > ~/AKMF/homedir```
-directory should be in user's home ("~/Dropbox/Apps" in our example), and can't be hidden.
+You can put ```~/AKMF/homedir``` file with path to new homedir, like ```mkdir -p ~/AKMF && echo 'Dropbox/Apps' > ~/AKMF/homedir```
+directory should be in user's home (```~/Dropbox/Apps``` in our example), and can't be hidden.
 
 # Bugs
 - pdf invoice isn't opened automatically. please find it in ~/AKMF/emikrofirma

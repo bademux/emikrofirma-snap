@@ -1,5 +1,6 @@
 # About
 This is redistibution of e-mikrofirma app. https://www.podatki.gov.pl/jednolity-plik-kontrolny/jpk_vat/aplikacje-do-pobrania/
+Snap repo https://github.com/bademux/emikrofirma-snap
 
 # Bonus Feature
 You can put ```~/AKMF/homedir``` file with path to new homedir, like ```mkdir -p ~/AKMF && echo 'Dropbox/Apps' > ~/AKMF/homedir```

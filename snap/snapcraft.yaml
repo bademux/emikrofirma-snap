@@ -21,7 +21,7 @@ architectures:
 apps:
   app:
     extensions: [gnome-3-34]
-    command: desktop-launch launcher
+    command: launcher
     desktop: usr/share/applications/emikrofirma.desktop
     plugs: [home, removable-media, network]
 
@@ -65,15 +65,10 @@ parts:
       
       echo 'Creating launcher'
       echo '#!/bin/sh
-      export DISABLE_WAYLAND=1
-      export GTK_USE_PORTAL=1
-      export SKIP_UPDATE=true
-        
-      export JAVA_HOME="$SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH"
-      export PATH="$JAVA_HOME/bin:$PATH"
+      export DISABLE_WAYLAND=1 GTK_USE_PORTAL=1 SKIP_UPDATE=true JAVA_HOME="$SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH"
       [ -r /home/$USER/AKMF/homedir ] && { homedir=`cat /home/$USER/AKMF/homedir`; mkdir -p "/home/$USER/$homedir"; }
       export JAVA_TOOL_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xmx300m -Dlog4j.configurationFile=$SNAP/opt/emikrofirma/log.properties -Duser.home=/home/$USER/$homedir"
-      java -jar $SNAP/opt/emikrofirma/micro/MicroLauncher.lib -skipUpdate=true
+      $JAVA_HOME/bin/java -showversion -jar $SNAP/opt/emikrofirma/micro/MicroLauncher.lib -skipUpdate=true
       ' > $SNAPCRAFT_PART_INSTALL/usr/bin/launcher
       chmod +x $SNAPCRAFT_PART_INSTALL/usr/bin/launcher
       
@@ -97,15 +92,6 @@ parts:
       - libglu1-mesa
       - xdg-desktop-portal
       - xdg-desktop-portal-gtk
-    after:
-      - setup
-      - desktop-glib-only
-  desktop-glib-only:
-    plugin: make
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: glib-only
-    build-packages:
-      - libglib2.0-dev
-    stage-packages:
-      - libglib2.0-bin
+    after: [ setup ]
+      
 

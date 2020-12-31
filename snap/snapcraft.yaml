@@ -39,9 +39,59 @@ parts:
     plugin: nil
     override-pull: | 
       echo 'Downloading app'
-      wget -nv -c https://www.podatki.gov.pl/media/6048/e-mikrofirma_1-3-0-10-tar.gz -O emikrofirma.tar.gz
+      wget -nv -c --no-check-certificate https://www.podatki.gov.pl/media/6048/e-mikrofirma_1-3-0-10-tar.gz -O emikrofirma.tar.gz
       echo 'Verifying'
-      wget -nv -c -O - https://www.podatki.gov.pl/media/6049/e-mikrofirma_1-3-0-10-tar-gz.p7s | openssl pkcs7 -inform der -out emikrofirma.pkcs7
+      #to embed p7s run: wget -nv -c --no-check-certificate -O - https://www.podatki.gov.pl/media/6049/e-mikrofirma_1-3-0-10-tar-gz.p7s | gzip -9 | base64
+      echo \
+      "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" \
+      | base64 -d | gzip -d | openssl pkcs7 -inform der -out emikrofirma.pkcs7
       openssl pkcs7 -print_certs -in emikrofirma.pkcs7 -out emikrofirma.cert
       openssl smime -verify -binary -inform PEM -in emikrofirma.pkcs7 -certfile emikrofirma.cert -content emikrofirma.tar.gz -nointern -noverify > /dev/null
     override-build: | 

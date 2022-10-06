@@ -1,0 +1,7 @@
+source/*
+*.snap
+*.log
+build/*
+.idea/
+**.iml
+.gradle/

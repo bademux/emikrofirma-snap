@@ -1,0 +1,87 @@
+root {
+    display: block;
+}
+.root {
+	-fx-background-color: rgb(255,255,255);
+	-fx-background: rgb(255,255,255);
+}
+
+.button#fxml_button_check_for_updates {
+    -fx-graphic: url('/img/icons/small/cloud-icon.png');
+	-fx-min-height: 120;
+	-fx-max-height: 120;
+	-fx-min-width: 300;
+	-fx-max-width: 300;
+	-fx-graphic-text-gap: 20;
+	-fx-alignment: center-left;
+	-fx-padding: 20 ;
+}
+.button#fxml_button_update {
+    -fx-graphic: url('/img/icons/small/arrow-down-icon.png');
+	-fx-min-height: 120;
+	-fx-max-height: 120;
+	-fx-min-width: 300;
+	-fx-max-width: 300;
+	-fx-graphic-text-gap: 20;
+	-fx-alignment: center-left;
+	-fx-padding: 20 ;
+}
+.button#fxml_button_coninue {
+    -fx-graphic: url('/img/icons/small/bolt-icon.png');
+	-fx-min-height: 120;
+	-fx-max-height: 120;
+	-fx-min-width: 300;
+	-fx-max-width: 300;
+	-fx-graphic-text-gap: 20;
+	-fx-alignment: center-left;
+	-fx-padding: 20 ;
+}
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * ProgressBar                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+.progress-bar {
+    -fx-indeterminate-bar-length: 60;
+    -fx-indeterminate-bar-escape: true;
+    -fx-indeterminate-bar-flip: true;
+    -fx-indeterminate-bar-animation-time: 2;
+    -fx-effect: none;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-color:rgb(191,191,191);
+    -fx-border-width:0.7;
+}
+.progress-bar .content {
+	-fx-background-color: white;
+
+}
+.progress-bar > .bar {
+    -fx-background-color: rgb(0, 150, 201);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-border-color:none;
+    -fx-border-width:0;
+}
+
+.progress-bar > .track {
+  -fx-text-box-border: none ;
+  -fx-text-border-width:0;
+  -fx-control-inner-background: white;
+}
+
+.progress-bar:indeterminate .bar {
+    -fx-background-color: white;
+}
+
+.progress-bar .track {
+    -fx-background-color: white;
+    -fx-background-insets:  0;
+}
+
+

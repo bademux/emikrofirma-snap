@@ -19,7 +19,6 @@ public class FCZ {
 
     public static FCZ getInstance() {
         if (HBK == null) {
-            Class var0 = FCZ.class;
             synchronized (FCZ.class) {
                 if (HBK == null) {
                     HBK = new FCZ();

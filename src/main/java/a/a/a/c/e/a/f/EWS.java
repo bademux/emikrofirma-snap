@@ -5,7 +5,4 @@ public enum EWS {
     https,
     file,
     jar;
-
-    EWS() {
-    }
 }

@@ -1,5 +1,7 @@
 package a.a.a.c.e;
 
+import a.a.a.b.f.FFK;
+import a.a.a.c.c.b.EMZ;
 import a.a.a.c.e.a.EXO;
 import a.a.a.c.e.a.EXQ;
 import a.a.a.c.e.a.a.EVK;
@@ -42,7 +44,6 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryUsage;
 import java.lang.management.RuntimeMXBean;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.*;
 import java.nio.channels.FileChannel;
@@ -274,20 +275,15 @@ public class EXK extends Application implements EVW {
                         boolean var2 = false;
                         boolean var3 = false;
                         if (EXK.this.GUD != null) {
-                            Method var4 = EXK.this.GUD.getClass().getMethod("QQF");
-                            var2 = (Boolean) var4.invoke(EXK.this.GUD);
-                            var4 = EXK.this.GUD.getClass().getMethod("QQG");
-                            var3 = (Boolean) var4.invoke(EXK.this.GUD);
+                            var2 = ((EMZ)EXK.this.GUD).QQF();
+                            var3 = ((EMZ)EXK.this.GUD).QQG();
                         }
 
                         if (var2) {
                             ButtonData var12 = EXK.this.QOH(EXK.this.GTN.getString("micro.launcher.exit.confirm.title"), null, EXK.this.GTN.getString("micro.launcher.exit.confirm.button.exit"), EXK.this.GTN.getString("micro.launcher.exit.confirm.button.cancel"), 400.0, 140.0, EXK.this.GTN.getString("micro.launcher.exit.confirm.message"), true);
                             if (ButtonData.OK_DONE.equals(var12)) {
                                 if (EXK.this.GUD != null) {
-                                    Method var5 = EXK.this.GUD.getClass().getMethod("QQE");
-                                    boolean var6 = true;
-                                    var6 = (Boolean) var5.invoke(EXK.this.GUD);
-                                    if (!var6) {
+                                    if (!(boolean) (Boolean) ((EMZ)EXK.this.GUD).QQE()) {
                                         var1.consume();
                                     }
                                 }
@@ -305,9 +301,8 @@ public class EXK extends Application implements EVW {
                                 var1.consume();
                             }
                         }
-                    } catch (SecurityException | IllegalAccessException | IllegalArgumentException |
-                             InvocationTargetException | NoSuchMethodException var10) {
-                        EXF.getInstance().ICA(var10);
+                    } catch (SecurityException | IllegalArgumentException|  FFK e) {
+                        EXF.getInstance().ICA(e);
                     } finally {
                         EXF.getInstance().ICP();
                     }
@@ -633,7 +628,6 @@ public class EXK extends Application implements EVW {
                     EXF.getInstance().ICO();
 
                     try {
-                        Method var1x = EXK.this.GUD.getClass().getMethod("HNA", Stage.class, EWX.class);
                         EWX var2 = new EWX() {
                             public void IBI(long var1x, double var3x, long var5, long var7, long var9, long var11) {
                                 EXF.getInstance().ICO();
@@ -647,7 +641,7 @@ public class EXK extends Application implements EVW {
                             }
                         };
                         EXK.this.IDZ(var1, EXK.this.msgStopSuccess, 1.0, 1.0);
-                        var1x.invoke(EXK.this.GUD, EXK.this.GTV, var2);
+                        ((EMZ) EXK.this.GUD).HNA(EXK.this.GTV, var2);
                     } catch (Exception var6) {
                         EXF.getInstance().ICA(var6);
                         throw new RuntimeException(var6);

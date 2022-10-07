@@ -5,8 +5,6 @@ import a.a.a.b.c.FEM;
 import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.EXK;
-import a.a.a.c.e.a.EXO;
-import a.a.a.c.e.a.EXQ;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.EWA;
 import a.a.a.c.e.a.e.EWF;
@@ -1052,18 +1050,6 @@ public class FCR {
                                 var6.append(System.lineSeparator());
                             } catch (Exception var12) {
                                 EXF.getInstance().ICA(var12);
-                            }
-
-                            EXO[] var14 = EXO.values();
-                            int var8 = var14.length;
-
-                            for (int var9 = 0; var9 < var8; ++var9) {
-                                EXO var10 = var14[var9];
-                                String var11 = (String) EXQ.getInstance().IEO(var10.getImplTitle());
-                                var6.append(var10.getSpecTitle());
-                                var6.append(" ");
-                                var6.append(var11);
-                                var6.append(System.lineSeparator());
                             }
 
                             var6.append(System.lineSeparator());

@@ -12,12 +12,9 @@ import a.a.a.c.c.b.a.a.a.EMM;
 import a.a.a.c.c.c.ENG;
 import a.a.a.c.c.c.ENH;
 import a.a.a.c.c.c.QVH;
-import a.a.a.c.e.a.EXO;
-import a.a.a.c.e.a.EXQ;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.*;
 import a.a.a.c.e.a.k.a.EXF;
-import a.a.a.c.f.b.c.a.KG;
 import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.b.LX;
 import a.a.a.c.f.c.b.LY;
@@ -145,18 +142,6 @@ public class EMP extends EMD {
                                     var3.append(System.lineSeparator());
                                 } catch (Exception var13) {
                                     EXF.getInstance().ICA(var13);
-                                }
-
-                                EXO[] var16 = EXO.values();
-                                int var5 = var16.length;
-
-                                for (int var6 = 0; var6 < var5; ++var6) {
-                                    EXO var7 = var16[var6];
-                                    String var8 = (String) EXQ.getInstance().IEO(var7.getImplTitle());
-                                    var3.append(var7.getSpecTitle());
-                                    var3.append(" ");
-                                    var3.append(var8);
-                                    var3.append(System.lineSeparator());
                                 }
 
                                 var3.append(System.lineSeparator());

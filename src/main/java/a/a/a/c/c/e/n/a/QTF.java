@@ -2,8 +2,6 @@ package a.a.a.c.c.e.n.a;
 
 import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.EMD;
-import a.a.a.c.e.a.EXO;
-import a.a.a.c.e.a.EXQ;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.HyperlinkBox;
@@ -56,29 +54,18 @@ public class QTF extends EMD {
             StringBuilder var1 = new StringBuilder();
 
             try {
-                var1.append("System operacyjny: " + System.getProperty("os.name")).append(System.lineSeparator());
-                var1.append("Archtektura: " + System.getProperty("os.arch")).append(System.lineSeparator());
-                var1.append("Wersja oprogramowania Java: " + System.getProperty("java.version")).append(System.lineSeparator());
-                var1.append("Nazwa producenta: " + System.getProperty("java.vendor")).append(System.lineSeparator());
-                var1.append("Środowisko uruchomieniowe Java: " + System.getProperty("java.vm.name")).append(System.lineSeparator());
-                var1.append("Kodowanie plików: " + System.getProperty("file.encoding")).append(System.lineSeparator());
-                var1.append(System.lineSeparator());
+                var1.append("System operacyjny: ").append(System.getProperty("os.name")).append(System.lineSeparator())
+                        .append("Archtektura: ").append(System.getProperty("os.arch")).append(System.lineSeparator())
+                        .append("Wersja oprogramowania Java: ").append(System.getProperty("java.version")).append(System.lineSeparator())
+                        .append("Nazwa producenta: ").append(System.getProperty("java.vendor")).append(System.lineSeparator())
+                        .append("Środowisko uruchomieniowe Java: ").append(System.getProperty("java.vm.name")).append(System.lineSeparator())
+                        .append("Kodowanie plików: ").append(System.getProperty("file.encoding")).append(System.lineSeparator())
+                        .append(System.lineSeparator());
             } catch (Exception var10) {
                 EXF.getInstance().ICA(var10);
             }
 
-            var1.append("Moduł uruchomieniowy: " + this.getClass().getPackage().getImplementationVersion()).append(System.lineSeparator());
-            EXO[] var2 = EXO.values();
-            int var3 = var2.length;
-
-            for (int var4 = 0; var4 < var3; ++var4) {
-                EXO var5 = var2[var4];
-                String var6 = (String) EXQ.getInstance().IEO(var5.getImplTitle());
-                var1.append(var5.getSpecTitle());
-                var1.append(": ");
-                var1.append(var6);
-                var1.append(System.lineSeparator());
-            }
+            var1.append("Moduł uruchomieniowy: ").append(this.getClass().getPackage().getImplementationVersion()).append(System.lineSeparator());
 
             this.fxml_Label_about.setText(var1.toString());
             this.fxml_Label_about.setEditable(false);
@@ -91,12 +78,12 @@ public class QTF extends EMD {
 
     private String RKO() {
         EXF.getInstance().ICO();
-        StringBuffer var1 = new StringBuffer();
+        StringBuilder var1 = new StringBuilder();
 
         try {
             InputStream var2 = QTF.class.getResourceAsStream("/history/versionHistory.txt");
             BufferedReader var3 = new BufferedReader(new InputStreamReader(var2, StandardCharsets.UTF_8));
-            String var4 = null;
+            String var4;
 
             while ((var4 = var3.readLine()) != null) {
                 var1.append(var4).append("\n");

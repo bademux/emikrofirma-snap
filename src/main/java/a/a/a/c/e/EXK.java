@@ -1,25 +1,23 @@
 package a.a.a.c.e;
 
-import a.a.a.c.e.a.*;
+import a.a.a.c.e.a.EXI;
+import a.a.a.c.e.a.EXO;
+import a.a.a.c.e.a.EXQ;
 import a.a.a.c.e.a.a.EVK;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.b.EVP;
 import a.a.a.c.e.a.b.EVU;
-import a.a.a.c.e.a.b.a.EVR;
 import a.a.a.c.e.a.c.EVW;
 import a.a.a.c.e.a.d.EWA;
 import a.a.a.c.e.a.d.EWD;
 import a.a.a.c.e.a.d.EWE;
 import a.a.a.c.e.a.e.EWF;
 import a.a.a.c.e.a.f.*;
-import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
 import a.a.a.c.e.a.i.EXB;
 import a.a.a.c.e.a.j.EXC;
 import a.a.a.c.e.a.j.EXD;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.e.b.EXJ;
-import a.a.a.c.e.c.EXL;
 import a.a.a.c.e.c.EXN;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -54,21 +52,17 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.security.*;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.Security;
 import java.security.spec.InvalidKeySpecException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
 import java.util.concurrent.Semaphore;
 import java.util.jar.JarInputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
 public class EXK extends Application implements EVW {
     public static final EWS GUV = EWS.http;
-    private static final String GTM = "SKIP_UPDATE";
     private final ResourceBundle GTN;
     private final EXB GTO;
     private final String GTP = " | ";
@@ -95,8 +89,8 @@ public class EXK extends Application implements EVW {
             try {
                 EXK.this.QQO = true;
                 Alert var3 = new Alert(AlertType.ERROR);
-               String var4 = var2.getLocalizedMessage() +
-                       System.lineSeparator();
+                String var4 = var2.getLocalizedMessage() +
+                        System.lineSeparator();
                 var3.setContentText(var4);
                 var3.setHeaderText(EXK.this.GTN.getString("micro.unhandled.error"));
                 var3.setTitle(EXK.this.GTN.getString("micro.dialog.message.title"));
@@ -119,9 +113,9 @@ public class EXK extends Application implements EVW {
                                             StringBuilder var4 = new StringBuilder();
                                             var4.append("mailto:").append("jpk.helpdesk@mf.gov.pl");
                                             var4.append("?cc=").append("support@akmf.pl");
-                                           String var5 = EXN.getInstance().getMessageForKey("micro.launcher.error.mail.subject") + " [" +
-                                                   (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")).format(new Date()) +
-                                                   " ]";
+                                            String var5 = EXN.getInstance().getMessageForKey("micro.launcher.error.mail.subject") + " [" +
+                                                    (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")).format(new Date()) +
+                                                    " ]";
                                             var4.append("&subject=").append(URLEncoder.encode(var5, StandardCharsets.UTF_8.name()).replace("+", "%20"));
                                             var4.append("&attachment=").append(var3.toURI().toString().replace("+", "%20"));
                                             StringBuilder var6 = new StringBuilder();
@@ -212,135 +206,12 @@ public class EXK extends Application implements EVW {
         }
     };
     private Application GUD = null;
-    private EXL QWF = null;
     List<EWE<String, String, String, String, String, Integer>> GUE;
     Map<EXO, List<EWE<String, String, String, String, Integer, File>>> GUF;
     Map<String, EWA<RandomAccessFile, RandomAccessFile, Long, File>> GUG;
     final int[][] GUH = new int[][]{{0, 5, 105}, {0, 28, 20}, {0, 12, 41}, {0, 80, 86}, {0, 3, 255}, {0, 28, 66}, {0, 15, 75}, {0, 22, 62}, {8, 0, 39}};
 
-    public static void main(String[] var0) {
-        EVW.EVX var1 = EVW.getOS();
-        String var2 = null;
-        RuntimeMXBean var3 = ManagementFactory.getRuntimeMXBean();
-        String var4 = var3.getName();
-        if (var4 != null) {
-            String[] var5 = var4.split("@");
-            if (var5 != null && var5.length > 0) {
-                var2 = var5[0];
-                EXF.getInstance().ICE("current PID " + var2);
-            }
-        }
-
-        String var21 = null;
-        String var6 = null;
-        String var7 = null;
-        String var8 = null;
-        String[] var9 = var0;
-        int var10 = var0.length;
-
-        for (int var11 = 0; var11 < var10; ++var11) {
-            String var12 = var9[var11];
-            if (var12 != null && var12.startsWith("-oldBootStrapLib=")) {
-                var21 = var12.replaceFirst("-oldBootStrapLib=", "");
-            }
-
-            if (var12 != null && var12.startsWith("-newBootStrapLib=")) {
-                var6 = var12.replaceFirst("-newBootStrapLib=", "");
-            }
-
-            if (var12 != null && var12.startsWith("-parentPID=")) {
-                var7 = var12.replaceFirst("-parentPID=", "");
-            }
-
-            if (var12 != null && var12.startsWith("-skipUpdate=")) {
-                var8 = var12.replaceFirst("-skipUpdate=", "");
-            }
-        }
-
-        boolean var22 = Boolean.parseBoolean(var8);
-        if (var22) {
-            EXQ.getInstance().IEN("SKIP_UPDATE", "true");
-        }
-
-        if (var21 != null) {
-            File var23 = new File(var21);
-
-            try {
-                boolean var24 = true;
-                if (var23.exists()) {
-                    if (var7 != null && var7.length() > 0 && EVW.EVX.Windows == var1) {
-                        try {
-                            EXF.getInstance().ICE("about to kill process " + var7);
-                            Process var25 = Runtime.getRuntime().exec("taskkill /F /PID " + var7);
-                            int var13 = var25.waitFor();
-                            EXF.getInstance().ICE("process " + var7 + " killed " + var13);
-                        } catch (InterruptedException var19) {
-                            EXF.getInstance().ICA(var19);
-                        }
-                    }
-
-                    EXF.getInstance().ICE("about to delete file " + var23);
-                    int var26 = 10;
-                    var24 = false;
-
-                    while (!var24 && var26 > 0) {
-                        try {
-                            EXF.getInstance().ICE("deleting file attemptd counter " + var26);
-                            Files.delete(var23.toPath());
-                            var24 = true;
-                            EXF.getInstance().ICE("file deleted " + var23);
-                        } catch (IOException var18) {
-                            --var26;
-                            EXF.getInstance().ICA(var18);
-
-                            try {
-                                Thread.sleep(2000L);
-                            } catch (InterruptedException var17) {
-                            }
-                        }
-                    }
-
-                    if (!var24) {
-                        EXQ.getInstance().IEN("SKIP_UPDATE", "true");
-                    }
-                }
-
-                if (var6 != null) {
-                    File var27 = new File(var6);
-                    if (var27.exists()) {
-                        File var28 = new File(EXK.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-                        String var14 = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
-                        ArrayList var15 = new ArrayList();
-                        var15.add(var14);
-                        var15.add("-Xbootclasspath/a:" + var23.getAbsolutePath());
-                        var15.add("-jar");
-                        var15.add(var28.getName());
-                        if (!var23.exists()) {
-                            EWF.RHW(var27.getAbsolutePath(), var23.getAbsolutePath());
-                        }
-
-                        var15.add("-oldBootStrapLib=" + var27.getAbsolutePath());
-                        if (var2 != null) {
-                            var15.add("-parentPID=" + var2);
-                        }
-
-                        if (!var24) {
-                            var15.add("-skipUpdate=true");
-                        }
-
-                        ProcessBuilder var16 = new ProcessBuilder(var15);
-                        var16.directory(var28.getParentFile());
-                        EXF.getInstance().ICE("command " + var15);
-                        var16.start();
-                        System.exit(0);
-                    }
-                }
-            } catch (URISyntaxException | IOException var20) {
-                EXF.getInstance().ICA(var20);
-                System.exit(0);
-            }
-        }
-
+    public static void main(String[] args) {
         Security.setProperty("crypto.policy", "unlimited");
         System.setProperty("com.sun.xml.internal.bind.v2.bytecode.ClassTailor.noOptimize", "true");
         launch();
@@ -364,204 +235,128 @@ public class EXK extends Application implements EVW {
 
     }
 
-    public void start(Stage var1) throws Exception {
+    public void start(Stage stage) throws Exception {
         EXF.getInstance().ICO();
 
         try {
-            try {
-                EXF.getInstance().ICE("os.name " + System.getProperty("os.name"));
-                EXF.getInstance().ICE("os.arch " + System.getProperty("os.arch"));
-                EXF.getInstance().ICE("java.version " + System.getProperty("java.version"));
-                EXF.getInstance().ICE("java.vendor " + System.getProperty("java.vendor"));
-                EXF.getInstance().ICE("java.vm.name " + System.getProperty("java.vm.name"));
-                EXF.getInstance().ICE("file.encoding " + System.getProperty("file.encoding"));
-                MemoryUsage var2 = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
-                EXF.getInstance().ICE("memory init " + var2.getInit() / 1024L / 1024L + " MB");
-                EXF.getInstance().ICE("memory max " + var2.getMax() / 1024L / 1024L + " MB");
-                EXF.getInstance().ICE("memory committed " + var2.getCommitted() / 1024L / 1024L + " MB");
-                EXF.getInstance().ICE("memory used " + var2.getUsed() / 1024L / 1024L + " MB");
-            } catch (Exception var28) {
-                EXF.getInstance().ICA(var28);
-            }
+            logSystemInfo();
 
-            boolean var9;
-            label104:
-            {
-                String var31 = System.getProperty("java.version");
-                EXF.getInstance().ICE("javaVersion " + var31);
-                String[] var3 = var31.split("_");
-                String var4 = var3[0];
-                EXF.getInstance().ICE("javaMainVersion " + var4);
-                String[] var5 = var4.split("\\.");
-                int var6 = Integer.parseInt(var5[0]);
-                int var7 = Integer.parseInt(var5[1]);
-                int var8 = Integer.parseInt(var5[2]);
-                var9 = false;
-                this.getClass();
-                if (1 == var6) {
-                    this.getClass();
-                    if (8 == var7) {
-                        this.getClass();
-                        if (0 == var8) {
-                            int var10 = Integer.parseInt(var3[1]);
-                            EXF.getInstance().ICE("javaUpdateVersion " + var10);
-                            this.getClass();
-                            if (151 <= var10) {
-                                var9 = true;
-                            }
-                            break label104;
+            RandomAccessFile var11 = null;
+            FileChannel var12 = null;
+
+            Toolkit var33 = Toolkit.getDefaultToolkit();
+            EXF.getInstance().ICE("ScreenSize Width " + var33.getScreenSize().getWidth());
+            EXF.getInstance().ICE("ScreenSize Height " + var33.getScreenSize().getHeight());
+            EXF.getInstance().ICE("ScreenResolution " + var33.getScreenResolution());
+            Rectangle2D var34 = Screen.getPrimary().getVisualBounds();
+            EXF.getInstance().ICE("Screen Width " + var34.getWidth());
+            EXF.getInstance().ICE("Screen Height " + var34.getHeight());
+            Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+                public void uncaughtException(Thread var1, Throwable var2) {
+                    EXF.getInstance().ICO();
+                    EXF.getInstance().ICA(var2);
+                    EXF.getInstance().ICE("About to start processing unhandled exception (A)");
+
+                    try {
+                        EXK.this.QQO = true;
+                        if (var2 instanceof ThreadDeath) {
+                            EXF.getInstance().ICI("Exception skipped");
+                        } else {
+                            File var3 = new File(EVW.GPW + "/reports");
+                            var3.mkdirs();
+                            File var4 = new File(var3, "report_" + (new SimpleDateFormat("yyyyMMdd'T'HHmmssS")).format(new Date()) + ".zip");
+                            EWF.IAB(false, var4, EXF.getInstance().getDefaultOutputLoggerFile(), EXF.getInstance().getDefaultErrorLoggerFile());
+                            Desktop.getDesktop().open(var3);
                         }
+                    } catch (Throwable var8) {
+                        EXF.getInstance().ICA(var8);
+                    } finally {
+                        EXF.getInstance().ICP();
                     }
+
                 }
+            });
+            Thread.currentThread().setUncaughtExceptionHandler(this.GUC);
+            this.GTV = stage;
+            this.GTV.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent var1) {
+                    EXF.getInstance().ICO();
 
-                this.IDN(this.GTN.getString("micro.launcher.startup.error.system"), this.GTN.getString("micro.launcher.startup.error.java"), this.GTN.getString("micro.launcher.startup.error.java.version").replaceFirst("##VERSION##", "1.8.0"));
-            }
-
-            if (var9) {
-                boolean var32 = true;
-                RandomAccessFile var11 = null;
-                FileChannel var12 = null;
-
-                try {
-                    File var13 = this.IDU();
-                    File var14 = new File(var13, "lock.file");
-                    if (!var14.exists()) {
-                        var14.createNewFile();
-                    }
-
-                    var11 = new RandomAccessFile(var14, "rw");
-                    var12 = var11.getChannel();
-                    FileLock var15 = var12.tryLock();
-                    if (var15 == null) {
-                        var32 = false;
-                    }
-                } catch (Exception var27) {
-                    EXF.getInstance().ICA(var27);
-                    var32 = false;
-                }
-
-                if (var32) {
-                    Toolkit var33 = Toolkit.getDefaultToolkit();
-                    EXF.getInstance().ICE("ScreenSize Width " + var33.getScreenSize().getWidth());
-                    EXF.getInstance().ICE("ScreenSize Height " + var33.getScreenSize().getHeight());
-                    EXF.getInstance().ICE("ScreenResolution " + var33.getScreenResolution());
-                    Rectangle2D var34 = Screen.getPrimary().getVisualBounds();
-                    EXF.getInstance().ICE("Screen Width " + var34.getWidth());
-                    EXF.getInstance().ICE("Screen Height " + var34.getHeight());
-                    Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-                        public void uncaughtException(Thread var1, Throwable var2) {
-                            EXF.getInstance().ICO();
-                            EXF.getInstance().ICA(var2);
-                            EXF.getInstance().ICE("About to start processing unhandled exception (A)");
-
-                            try {
-                                EXK.this.QQO = true;
-                                if (var2 instanceof ThreadDeath) {
-                                    EXF.getInstance().ICI("Exception skipped");
-                                } else {
-                                    File var3 = new File(EVW.GPW + "/reports");
-                                    var3.mkdirs();
-                                    File var4 = new File(var3, "report_" + (new SimpleDateFormat("yyyyMMdd'T'HHmmssS")).format(new Date()) + ".zip");
-                                    EWF.IAB(false, var4, EXF.getInstance().getDefaultOutputLoggerFile(), EXF.getInstance().getDefaultErrorLoggerFile());
-                                    Desktop.getDesktop().open(var3);
-                                }
-                            } catch (Throwable var8) {
-                                EXF.getInstance().ICA(var8);
-                            } finally {
-                                EXF.getInstance().ICP();
-                            }
-
+                    try {
+                        boolean var2 = false;
+                        boolean var3 = false;
+                        if (EXK.this.GUD != null) {
+                            Method var4 = EXK.this.GUD.getClass().getMethod("QQF");
+                            var2 = (Boolean) var4.invoke(EXK.this.GUD);
+                            var4 = EXK.this.GUD.getClass().getMethod("QQG");
+                            var3 = (Boolean) var4.invoke(EXK.this.GUD);
                         }
-                    });
-                    Thread.currentThread().setUncaughtExceptionHandler(this.GUC);
-                    this.GTV = var1;
-                    this.GTV.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                        public void handle(WindowEvent var1) {
-                            EXF.getInstance().ICO();
 
-                            try {
-                                boolean var2 = false;
-                                boolean var3 = false;
+                        if (var2) {
+                            ButtonData var12 = EXK.this.QOH(EXK.this.GTN.getString("micro.launcher.exit.confirm.title"), null, EXK.this.GTN.getString("micro.launcher.exit.confirm.button.exit"), EXK.this.GTN.getString("micro.launcher.exit.confirm.button.cancel"), 400.0, 140.0, EXK.this.GTN.getString("micro.launcher.exit.confirm.message"), true);
+                            if (ButtonData.OK_DONE.equals(var12)) {
                                 if (EXK.this.GUD != null) {
-                                    Method var4 = EXK.this.GUD.getClass().getMethod("QQF");
-                                    var2 = (Boolean) var4.invoke(EXK.this.GUD);
-                                    var4 = EXK.this.GUD.getClass().getMethod("QQG");
-                                    var3 = (Boolean) var4.invoke(EXK.this.GUD);
-                                }
-
-                                if (var2) {
-                                    ButtonBar.ButtonData var12 = EXK.this.QOH(EXK.this.GTN.getString("micro.launcher.exit.confirm.title"), null, EXK.this.GTN.getString("micro.launcher.exit.confirm.button.exit"), EXK.this.GTN.getString("micro.launcher.exit.confirm.button.cancel"), 400.0, 140.0, EXK.this.GTN.getString("micro.launcher.exit.confirm.message"), true);
-                                    if (ButtonData.OK_DONE.equals(var12)) {
-                                        if (EXK.this.GUD != null) {
-                                            Method var5 = EXK.this.GUD.getClass().getMethod("QQE");
-                                            boolean var6 = true;
-                                            var6 = (Boolean) var5.invoke(EXK.this.GUD);
-                                            if (!var6) {
-                                                var1.consume();
-                                            }
-                                        }
-                                    } else {
-                                        var1.consume();
-                                    }
-                                } else {
-                                    EXF.getInstance().ICI("Close atempt before applicatrion started!");
-                                    if (var3) {
-                                        EXF.getInstance().ICI("Close enabled due to application start exception.");
-                                    } else if (EXK.this.QQO) {
-                                        EXF.getInstance().ICI("Close enabled due to launcher start exception.");
-                                    } else {
-                                        EXF.getInstance().ICI("Close disabled.");
+                                    Method var5 = EXK.this.GUD.getClass().getMethod("QQE");
+                                    boolean var6 = true;
+                                    var6 = (Boolean) var5.invoke(EXK.this.GUD);
+                                    if (!var6) {
                                         var1.consume();
                                     }
                                 }
-                            } catch (SecurityException | IllegalAccessException | IllegalArgumentException |
-                                     InvocationTargetException | NoSuchMethodException var10) {
-                                EXF.getInstance().ICA(var10);
-                            } finally {
-                                EXF.getInstance().ICP();
+                            } else {
+                                var1.consume();
                             }
+                        } else {
+                            EXF.getInstance().ICI("Close atempt before applicatrion started!");
+                            if (var3) {
+                                EXF.getInstance().ICI("Close enabled due to application start exception.");
+                            } else if (EXK.this.QQO) {
+                                EXF.getInstance().ICI("Close enabled due to launcher start exception.");
+                            } else {
+                                EXF.getInstance().ICI("Close disabled.");
+                                var1.consume();
+                            }
+                        }
+                    } catch (SecurityException | IllegalAccessException | IllegalArgumentException |
+                             InvocationTargetException | NoSuchMethodException var10) {
+                        EXF.getInstance().ICA(var10);
+                    } finally {
+                        EXF.getInstance().ICP();
+                    }
 
-                        }
-                    });
-                    FXMLLoader var35 = new FXMLLoader(EXK.class.getResource("/fxml/micro_launcher_main.fxml"));
-                    var35.setResources(this.GTN);
-                    Parent var16 = var35.load();
-                    Scene var17 = new Scene(var16);
-                    this.GTW = var35.getController();
-                    this.GTW.IDK();
-                    this.GTW.IDM();
-                    this.GTV.setScene(var17);
-                    Region var18 = (Region) var16;
-                    this.GTV.setMinWidth(var18.getMinWidth());
-                    this.GTV.setMinHeight(var18.getMinHeight());
-                    this.GTV.setMaxWidth(var18.getMaxWidth());
-                    this.GTV.setMaxHeight(var18.getMaxHeight());
-                    this.GTV.setWidth(var18.getWidth());
-                    this.GTV.setHeight(var18.getHeight());
-                    this.GTV.setX(this.GTU.getWidth() / 2.0 - var18.getMaxWidth() / 2.0);
-                    this.GTV.setY(this.GTU.getHeight() / 2.0 - var18.getMaxHeight() / 2.0);
-                    this.GTV.setTitle(this.GTN.getString("micro.launcher.main.title"));
-                    this.GTV.getIcons().add(new Image("/img/app/e_logo.png"));
-                    this.GTV.show();
-                    String var19 = (String) EXQ.getInstance().IEO("SKIP_UPDATE");
-                    final boolean var20 = Boolean.parseBoolean(var19);
-                    EVN var21 = new EVN() {
-                        public void HZI() {
-                            try {
-                                EXK.this.IEC(var20);
-                            } catch (Exception var2) {
-                                EXF.getInstance().ICA(var2);
-                                throw new RuntimeException(var2);
-                            }
-                        }
-                    };
-                    var21.start();
-                } else {
-                    this.IDO(this.GTN.getString("micro.launcher.startup.error.system"), this.GTN.getString("micro.launcher.startup.error.duplicate"), this.GTN.getString("micro.launcher.startup.error.duplicate.det"), 550.0, 200.0, true);
                 }
-            } else {
-                this.IDN(this.GTN.getString("micro.launcher.startup.error.system"), this.GTN.getString("micro.launcher.startup.error.java"), this.GTN.getString("micro.launcher.startup.error.java.version").replaceFirst("##VERSION##", "1.8.0_151"));
-            }
+            });
+            FXMLLoader var35 = new FXMLLoader(EXK.class.getResource("/fxml/micro_launcher_main.fxml"));
+            var35.setResources(this.GTN);
+            Parent var16 = var35.load();
+            Scene var17 = new Scene(var16);
+            this.GTW = var35.getController();
+            this.GTW.IDK();
+            this.GTW.IDM();
+            this.GTV.setScene(var17);
+            Region var18 = (Region) var16;
+            this.GTV.setMinWidth(var18.getMinWidth());
+            this.GTV.setMinHeight(var18.getMinHeight());
+            this.GTV.setMaxWidth(var18.getMaxWidth());
+            this.GTV.setMaxHeight(var18.getMaxHeight());
+            this.GTV.setWidth(var18.getWidth());
+            this.GTV.setHeight(var18.getHeight());
+            this.GTV.setX(this.GTU.getWidth() / 2.0 - var18.getMaxWidth() / 2.0);
+            this.GTV.setY(this.GTU.getHeight() / 2.0 - var18.getMaxHeight() / 2.0);
+            this.GTV.setTitle(this.GTN.getString("micro.launcher.main.title"));
+            this.GTV.getIcons().add(new Image("/img/app/e_logo.png"));
+            this.GTV.show();
+            EVN var21 = new EVN() {
+                public void HZI() {
+                    try {
+                        EXK.this.IEC();
+                    } catch (Exception var2) {
+                        EXF.getInstance().ICA(var2);
+                        throw new RuntimeException(var2);
+                    }
+                }
+            };
+            var21.start();
         } catch (Exception var29) {
             EXF.getInstance().ICA(var29);
             throw var29;
@@ -569,6 +364,24 @@ public class EXK extends Application implements EVW {
             EXF.getInstance().ICP();
         }
 
+    }
+
+    private static void logSystemInfo() {
+        try {
+            EXF.getInstance().ICE("os.name " + System.getProperty("os.name"));
+            EXF.getInstance().ICE("os.arch " + System.getProperty("os.arch"));
+            EXF.getInstance().ICE("java.version " + System.getProperty("java.version"));
+            EXF.getInstance().ICE("java.vendor " + System.getProperty("java.vendor"));
+            EXF.getInstance().ICE("java.vm.name " + System.getProperty("java.vm.name"));
+            EXF.getInstance().ICE("file.encoding " + System.getProperty("file.encoding"));
+            MemoryUsage var2 = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
+            EXF.getInstance().ICE("memory init " + var2.getInit() / 1024L / 1024L + " MB");
+            EXF.getInstance().ICE("memory max " + var2.getMax() / 1024L / 1024L + " MB");
+            EXF.getInstance().ICE("memory committed " + var2.getCommitted() / 1024L / 1024L + " MB");
+            EXF.getInstance().ICE("memory used " + var2.getUsed() / 1024L / 1024L + " MB");
+        } catch (Exception var28) {
+            EXF.getInstance().ICA(var28);
+        }
     }
 
     private void IDN(String var1, String var2, String var3) {
@@ -757,17 +570,6 @@ public class EXK extends Application implements EVW {
             EXF.getInstance().ICE("About to clean all live threads");
             EVK.getInstance().HZH();
             EXF.getInstance().ICE("All live threads cleaned");
-            if (this.QWF != null) {
-                EXF.getInstance().ICE("About to close class loader");
-
-                try {
-                    this.QWF.close();
-                } catch (Exception var6) {
-                    EXF.getInstance().ICA(var6);
-                }
-
-                EXF.getInstance().ICE("Class loader closed");
-            }
 
             super.stop();
             EXF.getInstance().ICE("Application stopped");
@@ -783,49 +585,22 @@ public class EXK extends Application implements EVW {
         EXF.getInstance().ICO();
 
         try {
-            File var1 = this.IDU();
-            File var2 = new File(var1, "msgs");
-            var2.mkdirs();
-            Map var3 = this.IDY(var2);
-            boolean var4 = true;
-            EXO[] var5 = EXO.values();
-            int var6 = var5.length;
-            int var7 = 0;
+            EVN var13 = new EVN() {
+                public void HZI() {
+                    EXF.getInstance().ICO();
 
-            while (true) {
-                if (var7 < var6) {
-                    EXO var8 = var5[var7];
-                    EXI var9 = (EXI) var3.get(var8);
-                    if (var9 != null && !var9.equals(this.GTX)) {
-                        ++var7;
-                        continue;
+                    try {
+                        EXK.this.IDS();
+                    } catch (Exception var5) {
+                        EXF.getInstance().ICA(var5);
+                        throw new RuntimeException(var5);
+                    } finally {
+                        EXF.getInstance().ICP();
                     }
 
-                    var4 = false;
                 }
-
-                if (var4) {
-                    EVN var13 = new EVN() {
-                        public void HZI() {
-                            EXF.getInstance().ICO();
-
-                            try {
-                                EXK.this.IDS();
-                            } catch (Exception var5) {
-                                EXF.getInstance().ICA(var5);
-                                throw new RuntimeException(var5);
-                            } finally {
-                                EXF.getInstance().ICP();
-                            }
-
-                        }
-                    };
-                    var13.start();
-                } else {
-                    this.IDO(this.GTN.getString("micro.launcher.startup.error.system"), this.GTN.getString("micro.launcher.startup.error.library"), this.GTN.getString("micro.launcher.startup.error.library.det"), 550.0, 200.0, true);
-                }
-                break;
-            }
+            };
+            var13.start();
         } finally {
             EXF.getInstance().ICP();
         }
@@ -841,246 +616,23 @@ public class EXK extends Application implements EVW {
         try {
             EXF.getInstance().ICE("About to initialize main application");
             this.IDZ(var1, this.GTQ, 0.0, -1.0);
-            File var4 = this.IDU();
-            File var5 = new File(var4, "msgs");
-            File var6 = this.IDV();
-            File var7 = var6.getParentFile();
-            File var8 = new File(var7, "msgs");
-            var8.mkdirs();
-            String var9 = "MicroExternalResources.jar";
-            String var10 = "MicroExternalLibraries.zip";
-            File var11 = new File(var8, var9);
-            File var12 = new File(var8, var10);
-            EXF.getInstance().ICE("About to verify libraries signatures");
-            CertificateFactory var13 = CertificateFactory.getInstance("X.509");
-            Certificate var14 = var13.generateCertificate(EXK.class.getResourceAsStream("/cert/akmf_apps.cert.pem"));
-
-            int var19;
-            try {
-                EVP.HZS(var14, var6);
-                if (var11 != null && var11.exists()) {
-                    EVP.HZS(var14, var11);
-                }
-
-                if (var12 != null && var12.exists()) {
-                    EVP.HZS(var14, var12);
-                }
-
-                EXO[] var15 = EXO.values();
-                int var16 = var15.length;
-                int var17 = 0;
-
-                while (true) {
-                    if (var17 >= var16) {
-                        EXF.getInstance().ICE("Libraries signatures verification passed successfully");
-                        break;
-                    }
-
-                    EXO var18 = var15[var17];
-
-                    for (var19 = 0; var19 < var18.getLibParts(); ++var19) {
-                        String var20 = String.format("%02d", var19 + 1);
-                        String var21 = this.IDX(var18.getImplTitle(), var20);
-                        EXF.getInstance().ICE("About to verify signatures for [" + var21 + "]");
-                        File var22 = new File(var5, var21);
-                        if (var22.isFile() && var22.exists()) {
-                            byte[] var23 = EWF.IAE(var22);
-                            byte[] var24 = Base64.getDecoder().decode(var23);
-
-                            try {
-                                byte[] var25 = this.GTO.IBS(var24);
-                                byte[] var26 = Base64.getDecoder().decode(var25);
-                                EVP.HZS(var14, var26);
-                            } catch (InvalidKeyException | InvalidAlgorithmParameterException | IOException var93) {
-                                EXF.getInstance().IBZ("!!!", var93);
-                            } finally {
-                            }
-                        }
-                    }
-
-                    ++var17;
-                }
-            } catch (EVR var97) {
-                EXF.getInstance().ICA("Libraries signatures verification failed");
-                EXF.getInstance().ICA(var97);
-                this.IDP(this.GTN.getString("micro.launcher.startup.error.system"), this.GTN.getString("micro.launcher.startup.error.library"), this.GTN.getString("micro.launcher.startup.error.library.signature"), 550.0, 200.0, true, true);
-            }
-
-            EXF.getInstance().ICE("About to load libraries");
-            final ClassLoader var100 = ClassLoader.getSystemClassLoader();
-            final HashMap var101 = new HashMap();
-            this.IDZ(var1, this.GTR, 0.05, -1.0);
-            final ArrayList var102 = new ArrayList();
-            int var27;
-            int var126;
-            if (var12 != null && var12.exists()) {
-                File var103 = new File(var4.getParentFile(), "lib");
-                var103.mkdirs();
-                Set var105 = this.RHX("", var103);
-                FileInputStream var106 = null;
-
-                try {
-                    var106 = new FileInputStream(var12);
-                    ZipInputStream var108 = new ZipInputStream(var106);
-                    ZipEntry var112 = var108.getNextEntry();
-
-                    while (true) {
-                        if (var112 == null) {
-                            var108.closeEntry();
-                            var108.close();
-                            break;
-                        }
-
-                        String var116 = var112.getName();
-                        if (var116.endsWith(".jar")) {
-                            if (!var105.contains(var116)) {
-                                File var121 = new File(var103, var116);
-                                EXF.getInstance().ICE("About to add new library " + var121);
-                                var121.getParentFile().mkdirs();
-                                FileOutputStream var124 = null;
-
-                                try {
-                                    var102.add(var121.toURI().toURL());
-                                    var124 = new FileOutputStream(var121);
-                                    var27 = 1048576;
-                                    byte[] var28 = new byte[var27];
-
-                                    while ((var126 = var108.read(var28)) != -1) {
-                                        var124.write(var28, 0, var126);
-                                        var124.flush();
-                                    }
-                                } finally {
-                                    if (var124 != null) {
-                                        var124.close();
-                                    }
-
-                                }
-
-                                EXF.getInstance().ICE("Library added");
-                            } else {
-                                var105.remove(var116);
-                                var102.add((new File(var103, var116)).toURI().toURL());
-                            }
-                        }
-
-                        var112 = var108.getNextEntry();
-                    }
-                } finally {
-                    if (var106 != null) {
-                        var106.close();
-                    }
-
-                    EXF.getInstance().ICP();
-                }
-
-                Iterator var110 = var105.iterator();
-
-                while (var110.hasNext()) {
-                    String var114 = (String) var110.next();
-
-                    try {
-                        File var117 = new File(var103, var114);
-                        EXF.getInstance().ICE("About to remove obsolete library " + var117);
-                        Files.delete(var117.toPath());
-                        EXF.getInstance().ICE("Obsolete library removed");
-                    } catch (Exception var92) {
-                        EXF.getInstance().ICA(var92);
-                    }
-                }
-            }
-
-            int var104 = 0;
-            var19 = EXO.values().length;
-            EXO[] var107 = EXO.values();
-            int var111 = var107.length;
-
-            for (int var115 = 0; var115 < var111; ++var115) {
-                final EXO var118 = var107[var115];
-                ++var104;
-
-                for (int var122 = 0; var122 < var118.getLibParts(); ++var122) {
-                    String var125 = String.format("%02d", var122 + 1);
-                    String var128 = this.IDX(var118.getImplTitle(), var125);
-                    File var129 = new File(var5, var128);
-                    if (var129.isFile()) {
-                        final double var130 = 0.05 + 0.7 * ((double) var104 / (double) var19);
-                        this.IDZ(var1, var118.getSpecTitle(), var130, -1.0);
-                        byte[] var30 = EWF.IAE(var129);
-                        byte[] var31 = Base64.getDecoder().decode(var30);
-
-                        try {
-                            byte[] var32 = this.GTO.IBS(var31);
-                            byte[] var33 = Base64.getDecoder().decode(var32);
-                            EWX var34 = new EWX() {
-                                public void IBI(long var1x, double var3, long var5, long var7, long var9, long var11) {
-                                    EXF.getInstance().ICO();
-
-                                    try {
-                                        EXK.this.IDZ(var1, var118.getSpecTitle(), var130, var3);
-                                    } finally {
-                                        EXF.getInstance().ICP();
-                                    }
-
-                                }
-                            };
-                            JarInputStream var35 = new JarInputStream(new EWW(new ByteArrayInputStream(var33), var33.length, var34));
-                            String var36 = EVU.getImplementationVersionStringForJarInputStream(var35);
-                            String var37 = EVU.getImplementationTitleForJarInputStream(var35);
-                            EXQ.getInstance().IEN(var118.getImplTitle(), var36);
-                            var101.put(var37, var33);
-                        } catch (InvalidKeyException | InvalidAlgorithmParameterException | IOException var90) {
-                            EXF.getInstance().IBZ("!!!", var90);
-                        } finally {
-                            this.IDZ(var1, var118.getSpecTitle(), var130, 1.0);
-                        }
-                    }
-                }
-            }
 
             this.IDZ(var1, var2, 0.8, -1.0);
-            this.QWF = AccessController.doPrivileged(new PrivilegedAction<EXL>() {
-                public EXL run() {
-                    try {
-                        return new EXL((URL[]) var102.toArray(new URL[0]), var101, var100);
-                    } catch (IOException var2) {
-                        EXF.getInstance().ICA(var2);
-                        throw new RuntimeException(var2);
-                    }
-                }
-            });
             this.IDZ(var1, var2, 0.85, -1.0);
-            URL.setURLStreamHandlerFactory(new URLStreamHandlerFactory() {
-                public URLStreamHandler createURLStreamHandler(String var1) {
-                    return "bytes".equals(var1) ? new URLStreamHandler() {
-                        protected URLConnection openConnection(final URL var1) throws IOException {
-                            return new URLConnection(var1) {
-                                public void connect() throws IOException {
-                                }
 
-                                public InputStream getInputStream() throws IOException {
-                                    return EXK.this.QWF.getResourceAsStream(var1.getFile().split("!")[1].substring(1));
-                                }
-                            };
-                        }
-                    } : null;
-                }
-            });
             EXF.getInstance().ICE("Libraries loaded");
             this.IDZ(var1, var2, 0.9, -1.0);
             EXF.getInstance().ICE("About to initialize main application");
-            Class var109 = Class.forName("a.a.a.c.c.b.EMZ", true, this.QWF);
+            Class var109 = a.a.a.c.c.b.EMZ.class;
             Constructor var113 = var109.getConstructor(EVW.class);
             this.GUD = (Application) var113.newInstance(this);
 
             try {
-                Class var119 = Class.forName("a.a.a.c.e.a.EXQ", true, this.QWF);
+                Class var119 = a.a.a.c.e.a.EXQ.class;
                 Method var120 = var119.getDeclaredMethod("getInstance");
                 EXQ var123 = (EXQ) var120.invoke(var119);
                 EXO[] var127 = EXO.values();
-                var126 = var127.length;
-
-                for (var27 = 0; var27 < var126; ++var27) {
-                    EXO var131 = var127[var27];
+                for (EXO var131 : var127) {
                     String var29 = (String) EXQ.getInstance().IEO(var131.getImplTitle());
                     var123.IEN(var131.getImplTitle(), var29);
                 }
@@ -1093,7 +645,6 @@ public class EXK extends Application implements EVW {
                     EXF.getInstance().ICO();
 
                     try {
-                        Thread.currentThread().setContextClassLoader(EXK.this.QWF);
                         Method var1x = EXK.this.GUD.getClass().getMethod("HNA", Stage.class, EWX.class);
                         EWX var2 = new EWX() {
                             public void IBI(long var1x, double var3x, long var5, long var7, long var9, long var11) {
@@ -1446,7 +997,7 @@ public class EXK extends Application implements EVW {
         return false;
     }
 
-    private void IEC(boolean var1) throws Exception {
+    private void IEC() throws Exception {
         EXF.getInstance().ICO();
         final String var2 = this.GTN.getString("micro.launcher.progress.update.check");
 
@@ -1456,161 +1007,7 @@ public class EXK extends Application implements EVW {
             this.GUG = new HashMap();
             this.GTW.set_text_info(Color.DARKGREEN, null);
             this.IDZ(var2, this.GTQ, 0.1, -1.0);
-            if (var1) {
-                this.IDR();
-            } else {
-                String var3 = "id#" + System.nanoTime();
-                EVW.EVX var4 = EVW.getOS();
-                if (EVW.EVX.Unix == var4) {
-                    var3 = this.getFirstMac();
-                } else if (EVW.EVX.Windows == var4) {
-                    var3 = this.getWinCpuId();
-                }
-
-                CertificateFactory var5 = CertificateFactory.getInstance("X.509");
-                Certificate var6 = var5.generateCertificate(EXK.class.getResourceAsStream("/cert/akmf_apps.cert.pem"));
-                byte[] var7 = EXR.IER(var3.getBytes(StandardCharsets.UTF_8), var6);
-                String var8 = EXR.IEQ(var7);
-                EWJ var9 = new EWJ(EWP.GET, new URL(GUV.name(), "localhost", -1, "/documents/766655/6211156/RELEASE3.txt"), EWQ.NONE, null);
-                var9.getHeaderFields().put("Request-ID", var8);
-                this.IDZ(var2, this.GTR, 0.2, -1.0);
-                EWX var10 = new EWX() {
-                    public void IBI(long var1, double var3, long var5, long var7, long var9, long var11) {
-                        EXF.getInstance().ICO();
-
-                        try {
-                            EXK.this.IDZ(var2, "", 0.3, var3);
-                        } finally {
-                            EXF.getInstance().ICP();
-                        }
-
-                    }
-                };
-                EWK var11 = EWH.IBA(var9, var10, new EWR());
-                this.IDZ(var2, "", 0.5, -1.0);
-                if (var11.getStatus() != 200) {
-                    this.IDZ(var2, this.GTT, 0.0, -1.0);
-                    throw new Exception("Invalid status [" + var11.getStatus() + "]");
-                }
-
-                File var12 = this.IDU();
-                File var13 = new File(var12, "msgs");
-                var13.mkdirs();
-                Map var14 = this.IDW(var13);
-                Map var15 = this.IDY(var13);
-                this.IDZ(var2, "", 0.7, -1.0);
-                BufferedReader var16 = new BufferedReader(new StringReader((String) var11.getContent()));
-
-                while (true) {
-                    while (true) {
-                        String var17;
-                        do {
-                            if ((var17 = var16.readLine()) == null) {
-                                this.IDZ(var2, "", 0.8, -1.0);
-
-                                try {
-                                    String var41 = "";
-                                    boolean var42 = false;
-                                    if (this.GUE != null && this.GUE.size() > 0 || this.GUF != null && this.GUF.size() > 0) {
-                                        File var43 = new File(var12, "test.file");
-
-                                        try {
-                                            var43.createNewFile();
-                                            var43.delete();
-                                            var42 = false;
-                                        } catch (IOException var37) {
-                                            EXF.getInstance().ICA(var37);
-                                            var42 = true;
-                                            if (EVW.EVX.Unix == var4) {
-                                                var41 = this.GTN.getString("micro.launcher.update.result.launcher.root");
-                                            } else {
-                                                if (EVW.EVX.Windows != var4) {
-                                                    throw new Exception("Unknown OS type " + var4);
-                                                }
-
-                                                var41 = this.GTN.getString("micro.launcher.update.result.launcher.admin");
-                                            }
-                                        }
-                                    }
-
-                                    if (this.GUE != null && this.GUE.size() > 0) {
-                                        EXF.getInstance().ICE("Main application is NOT up to date.");
-                                        if (!var42) {
-                                            this.IED();
-                                        } else {
-                                            this.GTW.set_text_info(Color.DARKRED, var41);
-                                        }
-                                    } else {
-                                        EXF.getInstance().ICE("Main application is up to date.");
-                                        if (this.GUF != null && this.GUF.size() > 0) {
-                                            EXF.getInstance().ICE("Libraries are NOT up to date.");
-                                            if (!var42) {
-                                                this.IEE();
-                                            } else {
-                                                this.GTW.set_text_info(Color.DARKRED, var41);
-                                            }
-                                        } else {
-                                            EXF.getInstance().ICE("Libraries are up to date.");
-                                            this.IDR();
-                                        }
-                                    }
-                                } catch (Exception var38) {
-                                    EXF.getInstance().IBZ(var38.getLocalizedMessage(), var38);
-                                    this.IDR();
-                                }
-
-                                this.IDZ(var2, this.GTS, 1.0, 1.0);
-                                return;
-                            }
-                        } while (var17.length() <= 0);
-
-                        String[] var18 = var17.split(" ");
-                        String var19 = var18[0];
-                        String var20 = var18[1];
-                        String var21 = var18[2];
-                        EXI var22 = new EXI(var21);
-                        String var23 = var18[3];
-                        String var24 = var18[4];
-                        String var25 = var18[5];
-                        String var26 = var18[6];
-                        Integer var27 = var26 != null && var26.length() > 0 ? Integer.parseInt(var26) : null;
-                        if (!"MicroLauncher".equals(var19) && !"MicroExternalResources".equals(var19) && !"MicroExternalLibraries".equals(var19)) {
-                            EXO var44 = EXO.getLibraryByImplTitle(var19);
-                            if (var15.containsKey(var44)) {
-                                EXI var29 = (EXI) var15.get(var44);
-                                String var30 = null;
-                                if ("jar".equals(var20)) {
-                                    var30 = "jar";
-                                } else {
-                                    Integer var31 = Integer.parseInt(var20);
-                                    var30 = String.format("%02d", var31);
-                                }
-
-                                List var45;
-                                if (var29.compareTo(var22) < 0) {
-                                    var15.put(var44, var22);
-                                    this.GUF.put(var44, new ArrayList());
-                                    var45 = this.GUF.get(var44);
-                                    var45.add(new EWE(var30, var23, var24, var25, var27, null));
-                                } else if (var29.compareTo(var22) == 0) {
-                                    var45 = this.GUF.get(var44);
-                                    if (var45 != null) {
-                                        var45.add(new EWE(var30, var23, var24, var25, var27, null));
-                                    }
-                                }
-                            } else {
-                                EXF.getInstance().ICI("Invalid library [" + var19 + "]!");
-                            }
-                        } else {
-                            EXI var28 = (EXI) var14.get(var19 + "." + var20);
-                            if (var28.compareTo(var22) < 0) {
-                                var14.put(var19 + "." + var20, var22);
-                                this.GUE.add(new EWE(var19, var20, var23, var24, var25, var27));
-                            }
-                        }
-                    }
-                }
-            }
+            this.IDR();
         } catch (Exception var39) {
             this.IDZ(var2, this.GTT, 0.0, -1.0);
             EXF.getInstance().IBZ(var39.getLocalizedMessage(), var39);
@@ -2105,13 +1502,13 @@ public class EXK extends Application implements EVW {
                 var19.mkdirs();
                 var39 = new File(var19, var18);
                 var38 = this.IEJ(var44, var45, var19);
-               var37 = !var39.exists();
+                var37 = !var39.exists();
 
                 byte[] var20 = EWF.IAE(var38);
                 var21 = EWF.IAJ(var20);
                 String var22 = EWF.IAH(var20);
                 if (var22 != null && var22.equals(var15) && var21 != null && var21.equals(var41)) {
-                   var37 = !var39.exists();
+                    var37 = !var39.exists();
                 } else {
                     try {
                         Files.delete(var38.toPath());

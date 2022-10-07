@@ -2,7 +2,6 @@ package a.a.a.c.d.b;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.e.a.k.a.EXF;
-import a.a.a.c.e.c.EXL;
 import a.a.a.c.f.a.d.AGXA;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -91,60 +90,31 @@ public class EQL {
             XPathExpression var15 = var10.compile("/schema/@targetNamespace");
             String var16 = "xsd/jpk/structure/";
             ClassLoader var17 = Thread.currentThread().getContextClassLoader();
-            Iterator var20;
             String var25;
             String var26;
             String var27;
             String var28;
-            if (var17 instanceof EXL) {
-                EXL var18 = (EXL) var17;
-                Set var19 = var18.getResourcesWithPrefix(var16);
-                var20 = var19.iterator();
+            InputStream var36 = var17.getResourceAsStream(var16);
+            BufferedReader var37 = new BufferedReader(new InputStreamReader(var36));
 
-                while (var20.hasNext()) {
-                    String var21 = (String) var20.next();
-                    EXF.getInstance().ICK("xsdResource " + var21);
-                    URL var22 = var18.getResource(var21);
-                    EXF.getInstance().ICK("jpkURL[JPK] " + var22);
-                    String var23 = var21.replaceFirst(var16, "");
-                    EXF.getInstance().ICK("fileName[JPK] " + var23);
-                    Document var24 = var8.parse(var22.openStream());
-                    var25 = (String) var11.evaluate(var24, XPathConstants.STRING);
-                    var26 = (String) var12.evaluate(var24, XPathConstants.STRING);
-                    var27 = (String) var13.evaluate(var24, XPathConstants.STRING);
-                    var28 = (String) var14.evaluate(var24, XPathConstants.STRING);
-                    String var29 = (String) var15.evaluate(var24, XPathConstants.STRING);
-                    EXF.getInstance().ICK("value_kodSystemowy " + var25);
-                    EXF.getInstance().ICK("value_wersjaSchemy " + var26);
-                    EXF.getInstance().ICK("value_symbolWzoru " + var27);
-                    EXF.getInstance().ICK("value_wariantFormularza " + var28);
-                    EXF.getInstance().ICK("value_targetNamespace " + var29);
-                    this.FWM.put(var23, new AGXA(var29, var27, var25, var26, var28, var22));
-                }
-            } else {
-                InputStream var36 = var17.getResourceAsStream(var16);
-                BufferedReader var37 = new BufferedReader(new InputStreamReader(var36));
-                var20 = null;
-
-                String var38;
-                while ((var38 = var37.readLine()) != null) {
-                    EXF.getInstance().ICK("xsdResource " + var38);
-                    URL var33 = var17.getResource(var16 + var38);
-                    EXF.getInstance().ICK("jpkURL[JPK] " + var33);
-                    EXF.getInstance().ICK("fileName[JPK] " + var38);
-                    Document var34 = var8.parse(var33.openStream());
-                    String var35 = (String) var11.evaluate(var34, XPathConstants.STRING);
-                    var25 = (String) var12.evaluate(var34, XPathConstants.STRING);
-                    var26 = (String) var13.evaluate(var34, XPathConstants.STRING);
-                    var27 = (String) var14.evaluate(var34, XPathConstants.STRING);
-                    var28 = (String) var15.evaluate(var34, XPathConstants.STRING);
-                    EXF.getInstance().ICK("value_kodSystemowy " + var35);
-                    EXF.getInstance().ICK("value_wersjaSchemy " + var25);
-                    EXF.getInstance().ICK("value_symbolWzoru " + var26);
-                    EXF.getInstance().ICK("value_wariantFormularza " + var27);
-                    EXF.getInstance().ICK("value_targetNamespace " + var28);
-                    this.FWM.put(var38, new AGXA(var28, var26, var35, var25, var27, var33));
-                }
+            String var38;
+            while ((var38 = var37.readLine()) != null) {
+                EXF.getInstance().ICK("xsdResource " + var38);
+                URL var33 = var17.getResource(var16 + var38);
+                EXF.getInstance().ICK("jpkURL[JPK] " + var33);
+                EXF.getInstance().ICK("fileName[JPK] " + var38);
+                Document var34 = var8.parse(var33.openStream());
+                String var35 = (String) var11.evaluate(var34, XPathConstants.STRING);
+                var25 = (String) var12.evaluate(var34, XPathConstants.STRING);
+                var26 = (String) var13.evaluate(var34, XPathConstants.STRING);
+                var27 = (String) var14.evaluate(var34, XPathConstants.STRING);
+                var28 = (String) var15.evaluate(var34, XPathConstants.STRING);
+                EXF.getInstance().ICK("value_kodSystemowy " + var35);
+                EXF.getInstance().ICK("value_wersjaSchemy " + var25);
+                EXF.getInstance().ICK("value_symbolWzoru " + var26);
+                EXF.getInstance().ICK("value_wariantFormularza " + var27);
+                EXF.getInstance().ICK("value_targetNamespace " + var28);
+                this.FWM.put(var38, new AGXA(var28, var26, var35, var25, var27, var33));
             }
         } finally {
             EXF.getInstance().ICP();

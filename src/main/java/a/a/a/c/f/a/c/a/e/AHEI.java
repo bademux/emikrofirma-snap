@@ -3,20 +3,8 @@ package a.a.a.c.f.a.c.a.e;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCE;
 import a.a.a.c.f.a.c.a.AHDI;
-import a.a.a.c.f.a.c.a.a.AHCM;
-import a.a.a.c.f.a.c.a.a.AHCN;
-import a.a.a.c.f.a.c.a.a.AHCO;
-import a.a.a.c.f.a.c.a.a.AHCP;
-import a.a.a.c.f.a.c.a.a.AHCQ;
-import a.a.a.c.f.a.c.a.a.AHCR;
-import a.a.a.c.f.a.c.a.a.AHCV;
-import a.a.a.c.f.a.c.a.a.AHCW;
-import a.a.a.c.f.a.c.a.a.AHCX;
-import a.a.a.c.f.a.c.a.a.AHCY;
-import a.a.a.c.f.a.c.a.a.AHCZ;
-import a.a.a.c.f.a.c.a.a.AHDA;
-import a.a.a.c.f.a.c.a.a.AHDE;
-import a.a.a.c.f.a.c.a.a.AHDF;
+import a.a.a.c.f.a.c.a.a.*;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -24,81 +12,81 @@ import javax.xml.bind.annotation.XmlElements;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AHEI extends AHDI {
-   @XmlElements({@XmlElement(
-   name = "conditionOnFieldIsSet",
-   type = AHDF.class
-), @XmlElement(
-   name = "conditionOnFieldIsNotSet",
-   type = AHDE.class
-), @XmlElement(
-   name = "conditionOnFieldAndConstantDate",
-   type = AHCN.class
-), @XmlElement(
-   name = "conditionOnFieldAndConstantDateTime",
-   type = AHCO.class
-), @XmlElement(
-   name = "ConditionOnFieldAndConstantBigDecimal",
-   type = AHCM.class
-), @XmlElement(
-   name = "conditionOnFieldAndConstantRegEx",
-   type = AHCP.class
-), @XmlElement(
-   name = "conditionOnFieldAndConstantString",
-   type = AHCQ.class
-), @XmlElement(
-   name = "conditionOnFieldAndCustomAction",
-   type = AHCR.class
-), @XmlElement(
-   name = "conditionOnFieldAndVariableDate",
-   type = AHCY.class
-), @XmlElement(
-   name = "conditionOnFieldAndVariableDateTime",
-   type = AHCZ.class
-), @XmlElement(
-   name = "ConditionOnFieldAndVariableBigDecimal",
-   type = AHCX.class
-), @XmlElement(
-   name = "conditionOnFieldAndVariableInteger",
-   type = AHDA.class
-), @XmlElement(
-   name = "conditionOnFieldAndVariableOffsetDateLong",
-   type = AHCW.class
-), @XmlElement(
-   name = "conditionOnFieldAndVariableOffsetDateTimeLong",
-   type = AHCV.class
-), @XmlElement(
-   name = "ruleOnField",
-   type = AHEH.class
-)})
-   protected final AHCE AHWT;
+    @XmlElements({@XmlElement(
+            name = "conditionOnFieldIsSet",
+            type = AHDF.class
+    ), @XmlElement(
+            name = "conditionOnFieldIsNotSet",
+            type = AHDE.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndConstantDate",
+            type = AHCN.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndConstantDateTime",
+            type = AHCO.class
+    ), @XmlElement(
+            name = "ConditionOnFieldAndConstantBigDecimal",
+            type = AHCM.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndConstantRegEx",
+            type = AHCP.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndConstantString",
+            type = AHCQ.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndCustomAction",
+            type = AHCR.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndVariableDate",
+            type = AHCY.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndVariableDateTime",
+            type = AHCZ.class
+    ), @XmlElement(
+            name = "ConditionOnFieldAndVariableBigDecimal",
+            type = AHCX.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndVariableInteger",
+            type = AHDA.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndVariableOffsetDateLong",
+            type = AHCW.class
+    ), @XmlElement(
+            name = "conditionOnFieldAndVariableOffsetDateTimeLong",
+            type = AHCV.class
+    ), @XmlElement(
+            name = "ruleOnField",
+            type = AHEH.class
+    )})
+    protected final AHCE AHWT;
 
-   private AHEI() {
-      EXF.getInstance().ICO();
+    private AHEI() {
+        EXF.getInstance().ICO();
 
-      try {
-         this.AHWT = null;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.AHWT = null;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public AHEI(AHCE var1) {
-      EXF.getInstance().ICO();
+    public AHEI(AHCE var1) {
+        EXF.getInstance().ICO();
 
-      try {
-         this.AHWT = var1;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.AHWT = var1;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public AHCE getActionOnField() {
-      return this.AHWT;
-   }
+    public AHCE getActionOnField() {
+        return this.AHWT;
+    }
 
-   public String toString() {
-      return "RuleOnFieldContainer [actionOnField=" + this.AHWT + "]";
-   }
+    public String toString() {
+        return "RuleOnFieldContainer [actionOnField=" + this.AHWT + "]";
+    }
 }

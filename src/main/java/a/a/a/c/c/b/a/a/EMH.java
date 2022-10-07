@@ -4,9 +4,9 @@ import a.a.a.c.c.b.a.EMN;
 import javafx.scene.Scene;
 
 public interface EMH extends EMN {
-   Scene getScene();
+    Scene getScene();
 
-   void setScene(Scene var1);
+    void setScene(Scene var1);
 
-   boolean HHF();
+    boolean HHF();
 }

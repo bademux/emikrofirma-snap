@@ -5,31 +5,31 @@ import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
 public enum IB implements JM {
-   SELL(FCW.getInstance().getMessageForKey("micro.model.type.invoicetype.sell")),
-   PURCHASE(FCW.getInstance().getMessageForKey("micro.model.type.invoicetype.purchase"));
+    SELL(FCW.getInstance().getMessageForKey("micro.model.type.invoicetype.sell")),
+    PURCHASE(FCW.getInstance().getMessageForKey("micro.model.type.invoicetype.purchase"));
 
-   private final String AKZ;
+    private final String AKZ;
 
-   private IB(String var3) {
-      EXF.getInstance().ICO();
+    IB(String var3) {
+        EXF.getInstance().ICO();
 
-      try {
-         this.AKZ = var3;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.AKZ = var3;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public String getDescription() {
-      return this.AKZ;
-   }
+    public String getDescription() {
+        return this.AKZ;
+    }
 
-   public int DAQ(JM var1) {
-      return this.compareTo((IB)var1);
-   }
+    public int DAQ(JM var1) {
+        return this.compareTo((IB) var1);
+    }
 
-   public JM[] getEnumTypeValues() {
-      return values();
-   }
+    public JM[] getEnumTypeValues() {
+        return values();
+    }
 }

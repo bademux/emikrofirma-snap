@@ -34,266 +34,266 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 
 public class EST extends ENN<ESX> {
-   private HR GEM;
-   private BooleanProperty GEN = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
-   private BooleanProperty GEO = new SimpleBooleanProperty(this, "readOnlyPropertyHolder", false);
-   private boolean GEP;
-   @FXML
-   private Button fxml_generalButtonCancel;
-   @FXML
-   private Button fxml_generalButtonSave;
-   @FXML
-   protected ScrollPane fxml_include_container;
-   @FXML
-   protected ESU fxml_include_invoicePurchaseNewLogicController;
-   @FXML
-   protected EMP fxml_include_left_barController;
-   @FXML
-   protected EMR fxml_include_top_menuController;
-   private HR GEQ = null;
-   private EPB GER;
-   private HI GES;
+    private HR GEM;
+    private final BooleanProperty GEN = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
+    private final BooleanProperty GEO = new SimpleBooleanProperty(this, "readOnlyPropertyHolder", false);
+    private boolean GEP;
+    @FXML
+    private Button fxml_generalButtonCancel;
+    @FXML
+    private Button fxml_generalButtonSave;
+    @FXML
+    protected ScrollPane fxml_include_container;
+    @FXML
+    protected ESU fxml_include_invoicePurchaseNewLogicController;
+    @FXML
+    protected EMP fxml_include_left_barController;
+    @FXML
+    protected EMR fxml_include_top_menuController;
+    private HR GEQ = null;
+    private EPB GER;
+    private HI GES;
 
-   public EST(EMC var1, EMT var2, String var3, String var4) {
-      super(var1, var2, var3, var4);
-      this.GER = EPB.NEW;
-   }
+    public EST(EMC var1, EMT var2, String var3, String var4) {
+        super(var1, var2, var3, var4);
+        this.GER = EPB.NEW;
+    }
 
-   public void HHE() throws FFK {
-      EXF.getInstance().ICO();
+    public void HHE() throws FFK {
+        EXF.getInstance().ICO();
 
-      try {
-         super.HHE();
-         this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.Title"));
-         this.GEN.bind(this.fxml_include_invoicePurchaseNewLogicController.RFB);
-         this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_invoicePurchaseNewLogicController.RFC.and(this.fxml_include_invoicePurchaseNewLogicController.RFB.and(this.GEO.not())).not());
-         this.fxml_include_invoicePurchaseNewLogicController.RFA.bind(this.GEO);
-      } catch (FFK var5) {
-         EXF.getInstance().ICA((Throwable)var5);
-         throw new FFI(var5);
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-   }
-
-   public boolean HHB() {
-      EXF.getInstance().ICO();
-
-      boolean var2;
-      try {
-         boolean var1 = true;
-         if (this.GEP) {
-            var1 = true;
-         } else if (this.GEN.get()) {
-            FEN var9 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), (String)null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
-            ESX var3;
-            switch (var9) {
-               case ExitAndSave:
-                  var3 = (ESX)this.getProcess();
-                  var3.HHL();
-                  var1 = true;
-                  break;
-               case ExitWithoutSave:
-                  var3 = (ESX)this.getProcess();
-                  var3.resetAndCleanUpProcess();
-                  var1 = true;
-                  break;
-               case CancelExit:
-               default:
-                  var1 = false;
-            }
-         } else {
-            ESX var10 = (ESX)this.getProcess();
-            var10.resetAndCleanUpProcess();
-            var1 = true;
-         }
-
-         if (var1) {
-            this.HTU();
-            this.fxml_include_invoicePurchaseNewLogicController.HHB();
-            this.fxml_include_left_barController.HHB();
-            this.fxml_include_top_menuController.HHB();
-            var2 = true;
-            return var2;
-         }
-
-         this.fxml_parent.requestFocus();
-         var2 = false;
-         return var2;
-      } catch (Exception var7) {
-         EXF.getInstance().ICA((Throwable)var7);
-         FCT.IGX("", var7);
-         var2 = true;
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-      return var2;
-   }
-
-   public void HHC() {
-      EXF.getInstance().ICO();
-
-      try {
-         this.fxml_include_container.setVvalue(0.0);
-         this.GEP = false;
-         ESX var1 = (ESX)this.HHG();
-         if (this.GER != null && !EPB.NEW.equals(this.GER)) {
-            if (EPB.VIEW.equals(this.GER)) {
-               this.GEO.set(true);
-               this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.View"));
-               this.GER = EPB.NEW;
-               this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Return_AlternateCancel"));
-               var1.setInvoicePurchase(this.GEQ);
-               var1.setActionType(FDO.select);
-               var1.setInvoicePurchaseEditKey((EWC)null);
-            } else {
-               if (!EPB.EDIT.equals(this.GER)) {
-                  throw new FFK("Invalid mode [" + this.GER + "]!");
-               }
-
-               this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.Edit"));
-               this.GEO.set(false);
-               this.GER = EPB.NEW;
-               this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Cancel"));
-               this.fxml_include_invoicePurchaseNewLogicController.fxml_include_invoicingDate_boxController.IFN(var1.getRangesWhereSettled(this.resources.getString("micro.process.invoice_purchase_new.Tooltip.SettledPeriod")));
-               this.GEQ.setPreviousPeriod(this.GEQ.getPeriod().DDN());
-               var1.setInvoicePurchase(this.GEQ);
-               var1.setActionType(FDO.update);
-               JN var2 = this.GEQ.getPeriod() != null ? this.GEQ.getPeriod().DDN() : null;
-               KE var3 = this.GEQ.getRefId() != null ? this.GEQ.getRefId().DEL() : null;
-               KA var4 = this.GEQ.getIssuerNumber() != null ? this.GEQ.getIssuerNumber().DEJ() : null;
-               var1.setInvoicePurchaseEditKey(new EWC(var2, var3, var4));
-            }
-         } else {
+        try {
+            super.HHE();
             this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.Title"));
-            this.GEO.set(false);
-            this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Cancel"));
-            this.fxml_include_invoicePurchaseNewLogicController.fxml_include_invoicingDate_boxController.IFN(var1.getRangesWhereSettled(this.resources.getString("micro.process.invoice_purchase_new.Tooltip.SettledPeriod")));
-            var1.setActionType(FDO.insert);
-            var1.setInvoicePurchaseEditKey((EWC)null);
-         }
+            this.GEN.bind(this.fxml_include_invoicePurchaseNewLogicController.RFB);
+            this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_invoicePurchaseNewLogicController.RFC.and(this.fxml_include_invoicePurchaseNewLogicController.RFB.and(this.GEO.not())).not());
+            this.fxml_include_invoicePurchaseNewLogicController.RFA.bind(this.GEO);
+        } catch (FFK var5) {
+            EXF.getInstance().ICA(var5);
+            throw new FFI(var5);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-         this.GEM = var1.getInvoicePurchase(this.GES);
-         this.GES = null;
-         this.fxml_include_invoicePurchaseNewLogicController.setProcessImplementation(var1);
-         this.fxml_include_invoicePurchaseNewLogicController.HTV(this.GEM);
-         this.fxml_include_invoicePurchaseNewLogicController.HHC();
-         this.fxml_include_left_barController.HHC();
-         this.fxml_include_top_menuController.HHC();
-         this.fxml_parent.requestFocus();
-      } catch (FFO | FFK var8) {
-         EXF.getInstance().ICA((Throwable)var8);
-         throw new FFI(var8);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+    }
 
-   }
+    public boolean HHB() {
+        EXF.getInstance().ICO();
 
-   public void initialize() {
-      EXF.getInstance().ICO();
-      EXF.getInstance().ICP();
-   }
-
-   @FXML
-   protected void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
-      EXF.getInstance().ICO();
-
-      try {
-         EXF.getInstance().ICE("Button [cancel] clicked");
-         this.GEP = true;
-         JN var2 = null;
-         if (this.GEM != null && this.GEM.getPeriod() != null) {
-            var2 = this.GEM.getPeriod();
-         }
-
-         ESX var4 = (ESX)this.getProcess();
-         var4.resetAndCleanUpProcess();
-         JN finalVar = var2;
-         this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
-            public void HNE(ENK<?> var1) {
-               EXF.getInstance().ICO();
-
-               try {
-                  var1.setPeriod(finalVar);
-               } catch (FFK var6) {
-                  EXF.getInstance().ICA((Throwable)var6);
-                  throw new FFI(var6);
-               } finally {
-                  EXF.getInstance().ICP();
-               }
-
+        boolean var2;
+        try {
+            boolean var1 = true;
+            if (this.GEP) {
+                var1 = true;
+            } else if (this.GEN.get()) {
+                FEN var9 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
+                ESX var3;
+                switch (var9) {
+                    case ExitAndSave:
+                        var3 = this.getProcess();
+                        var3.HHL();
+                        var1 = true;
+                        break;
+                    case ExitWithoutSave:
+                        var3 = this.getProcess();
+                        var3.resetAndCleanUpProcess();
+                        var1 = true;
+                        break;
+                    case CancelExit:
+                    default:
+                        var1 = false;
+                }
+            } else {
+                ESX var10 = this.getProcess();
+                var10.resetAndCleanUpProcess();
+                var1 = true;
             }
-         });
-      } finally {
-         EXF.getInstance().ICP();
-      }
 
-   }
-
-   @FXML
-   protected void fxml_handleButton_generalButtonSave(ActionEvent var1) {
-      EXF.getInstance().ICO();
-
-      try {
-         EXF.getInstance().ICE("Button [save] clicked");
-         this.GEP = true;
-         JN var2 = null;
-         if (this.GEM != null && this.GEM.getPeriod() != null) {
-            var2 = this.GEM.getPeriod();
-         }
-
-         ESX var4 = (ESX)this.getProcess();
-         var4.HHL();
-         JN finalVar = var2;
-         this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
-            public void HNE(ENK<?> var1) {
-               EXF.getInstance().ICO();
-
-               try {
-                  var1.setPeriod(finalVar);
-               } catch (FFK var6) {
-                  EXF.getInstance().ICA((Throwable)var6);
-                  throw new FFI(var6);
-               } finally {
-                  EXF.getInstance().ICP();
-               }
-
+            if (var1) {
+                this.HTU();
+                this.fxml_include_invoicePurchaseNewLogicController.HHB();
+                this.fxml_include_left_barController.HHB();
+                this.fxml_include_top_menuController.HHB();
+                var2 = true;
+                return var2;
             }
-         });
-      } catch (Exception var8) {
-         EXF.getInstance().ICA((Throwable)var8);
-         FCT.IGX("", var8);
-      } finally {
-         EXF.getInstance().ICP();
-      }
 
-   }
+            this.fxml_parent.requestFocus();
+            var2 = false;
+            return var2;
+        } catch (Exception var7) {
+            EXF.getInstance().ICA(var7);
+            FCT.IGX("", var7);
+            var2 = true;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   private void HTU() {
-      EXF.getInstance().ICO();
+        return var2;
+    }
 
-      try {
-         this.fxml_include_invoicePurchaseNewLogicController.RJZ(this.GEM);
-         this.GEM = null;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+    public void HHC() {
+        EXF.getInstance().ICO();
 
-   }
+        try {
+            this.fxml_include_container.setVvalue(0.0);
+            this.GEP = false;
+            ESX var1 = this.HHG();
+            if (this.GER != null && !EPB.NEW.equals(this.GER)) {
+                if (EPB.VIEW.equals(this.GER)) {
+                    this.GEO.set(true);
+                    this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.View"));
+                    this.GER = EPB.NEW;
+                    this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Return_AlternateCancel"));
+                    var1.setInvoicePurchase(this.GEQ);
+                    var1.setActionType(FDO.select);
+                    var1.setInvoicePurchaseEditKey(null);
+                } else {
+                    if (!EPB.EDIT.equals(this.GER)) {
+                        throw new FFK("Invalid mode [" + this.GER + "]!");
+                    }
 
-   public void setInvoice(HN<?> var1) throws FFK {
-      this.GEQ = (HR)var1;
-   }
+                    this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.Edit"));
+                    this.GEO.set(false);
+                    this.GER = EPB.NEW;
+                    this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Cancel"));
+                    this.fxml_include_invoicePurchaseNewLogicController.fxml_include_invoicingDate_boxController.IFN(var1.getRangesWhereSettled(this.resources.getString("micro.process.invoice_purchase_new.Tooltip.SettledPeriod")));
+                    this.GEQ.setPreviousPeriod(this.GEQ.getPeriod().DDN());
+                    var1.setInvoicePurchase(this.GEQ);
+                    var1.setActionType(FDO.update);
+                    JN var2 = this.GEQ.getPeriod() != null ? this.GEQ.getPeriod().DDN() : null;
+                    KE var3 = this.GEQ.getRefId() != null ? this.GEQ.getRefId().DEL() : null;
+                    KA var4 = this.GEQ.getIssuerNumber() != null ? this.GEQ.getIssuerNumber().DEJ() : null;
+                    var1.setInvoicePurchaseEditKey(new EWC(var2, var3, var4));
+                }
+            } else {
+                this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.Title"));
+                this.GEO.set(false);
+                this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Cancel"));
+                this.fxml_include_invoicePurchaseNewLogicController.fxml_include_invoicingDate_boxController.IFN(var1.getRangesWhereSettled(this.resources.getString("micro.process.invoice_purchase_new.Tooltip.SettledPeriod")));
+                var1.setActionType(FDO.insert);
+                var1.setInvoicePurchaseEditKey(null);
+            }
 
-   public void setMode(EPB var1) {
-      this.GER = var1;
-   }
+            this.GEM = var1.getInvoicePurchase(this.GES);
+            this.GES = null;
+            this.fxml_include_invoicePurchaseNewLogicController.setProcessImplementation(var1);
+            this.fxml_include_invoicePurchaseNewLogicController.HTV(this.GEM);
+            this.fxml_include_invoicePurchaseNewLogicController.HHC();
+            this.fxml_include_left_barController.HHC();
+            this.fxml_include_top_menuController.HHC();
+            this.fxml_parent.requestFocus();
+        } catch (FFO | FFK var8) {
+            EXF.getInstance().ICA(var8);
+            throw new FFI(var8);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   public void setContractor(HI var1) {
-      this.GER = EPB.NEW;
-      this.GES = var1;
-   }
+    }
+
+    public void initialize() {
+        EXF.getInstance().ICO();
+        EXF.getInstance().ICP();
+    }
+
+    @FXML
+    protected void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
+        EXF.getInstance().ICO();
+
+        try {
+            EXF.getInstance().ICE("Button [cancel] clicked");
+            this.GEP = true;
+            JN var2 = null;
+            if (this.GEM != null && this.GEM.getPeriod() != null) {
+                var2 = this.GEM.getPeriod();
+            }
+
+            ESX var4 = this.getProcess();
+            var4.resetAndCleanUpProcess();
+            JN finalVar = var2;
+            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
+                public void HNE(ENK<?> var1) {
+                    EXF.getInstance().ICO();
+
+                    try {
+                        var1.setPeriod(finalVar);
+                    } catch (FFK var6) {
+                        EXF.getInstance().ICA(var6);
+                        throw new FFI(var6);
+                    } finally {
+                        EXF.getInstance().ICP();
+                    }
+
+                }
+            });
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    @FXML
+    protected void fxml_handleButton_generalButtonSave(ActionEvent var1) {
+        EXF.getInstance().ICO();
+
+        try {
+            EXF.getInstance().ICE("Button [save] clicked");
+            this.GEP = true;
+            JN var2 = null;
+            if (this.GEM != null && this.GEM.getPeriod() != null) {
+                var2 = this.GEM.getPeriod();
+            }
+
+            ESX var4 = this.getProcess();
+            var4.HHL();
+            JN finalVar = var2;
+            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
+                public void HNE(ENK<?> var1) {
+                    EXF.getInstance().ICO();
+
+                    try {
+                        var1.setPeriod(finalVar);
+                    } catch (FFK var6) {
+                        EXF.getInstance().ICA(var6);
+                        throw new FFI(var6);
+                    } finally {
+                        EXF.getInstance().ICP();
+                    }
+
+                }
+            });
+        } catch (Exception var8) {
+            EXF.getInstance().ICA(var8);
+            FCT.IGX("", var8);
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    private void HTU() {
+        EXF.getInstance().ICO();
+
+        try {
+            this.fxml_include_invoicePurchaseNewLogicController.RJZ(this.GEM);
+            this.GEM = null;
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    public void setInvoice(HN<?> var1) throws FFK {
+        this.GEQ = (HR) var1;
+    }
+
+    public void setMode(EPB var1) {
+        this.GER = var1;
+    }
+
+    public void setContractor(HI var1) {
+        this.GER = EPB.NEW;
+        this.GES = var1;
+    }
 }

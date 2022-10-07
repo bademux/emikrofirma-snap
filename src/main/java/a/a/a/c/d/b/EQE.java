@@ -4,17 +4,17 @@ import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
 
 public abstract class EQE {
-   public EQE() {
-   }
+    public EQE() {
+    }
 
-   protected abstract void HPZ();
+    protected abstract void HPZ();
 
-   public void HQA() {
-      FEL.IKS(new FEM<Void>() {
-         public Void IKT() {
-            EQE.this.HPZ();
-            return null;
-         }
-      });
-   }
+    public void HQA() {
+        FEL.IKS(new FEM<Void>() {
+            public Void IKT() {
+                EQE.this.HPZ();
+                return null;
+            }
+        });
+    }
 }

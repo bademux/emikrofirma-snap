@@ -6,20 +6,20 @@ import a.a.a.c.f.a.n.QSJ;
 import javafx.collections.ListChangeListener;
 
 public class QUP implements ListChangeListener<QSJ> {
-   private final QUN REO;
+    private final QUN REO;
 
-   public QUP(QUN var1) {
-      this.REO = var1;
-   }
+    public QUP(QUN var1) {
+        this.REO = var1;
+    }
 
-   public void onChanged(ListChangeListener.Change<? extends QSJ> var1) {
-      EXF.getInstance().ICO();
+    public void onChanged(ListChangeListener.Change<? extends QSJ> var1) {
+        EXF.getInstance().ICO();
 
-      try {
-         this.REO.RNU();
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.REO.RNU();
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 }

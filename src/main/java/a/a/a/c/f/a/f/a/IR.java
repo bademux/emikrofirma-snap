@@ -2,116 +2,117 @@ package a.a.a.c.f.a.f.a;
 
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.JR;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlRootElement(
-   name = "receiptRecordVat"
+        name = "receiptRecordVat"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class IR extends IN {
-   private JR AMT;
-   private JR AMU;
-   private JR AMV;
-   private List<IP> AMW;
-   @XmlTransient
-   private ObjectProperty<ObservableList<IP>> AMX = new IS(this);
+    private JR AMT;
+    private JR AMU;
+    private JR AMV;
+    private List<IP> AMW;
+    @XmlTransient
+    private final ObjectProperty<ObservableList<IP>> AMX = new IS(this);
 
-   public IR() {
-      super(IQ.VAT);
-      EXF.getInstance().ICO();
-      EXF.getInstance().ICP();
-   }
+    public IR() {
+        super(IQ.VAT);
+        EXF.getInstance().ICO();
+        EXF.getInstance().ICP();
+    }
 
-   public JR getNet() {
-      return this.AMT;
-   }
+    public JR getNet() {
+        return this.AMT;
+    }
 
-   public JR DCJ() {
-      if (this.AMT == null) {
-         this.AMT = new JR();
-      }
+    public JR DCJ() {
+        if (this.AMT == null) {
+            this.AMT = new JR();
+        }
 
-      return this.AMT;
-   }
+        return this.AMT;
+    }
 
-   public void setNet(JR var1) {
-      this.AMT = var1;
-   }
+    public void setNet(JR var1) {
+        this.AMT = var1;
+    }
 
-   public JR getVat() {
-      return this.AMU;
-   }
+    public JR getVat() {
+        return this.AMU;
+    }
 
-   public JR DCK() {
-      if (this.AMU == null) {
-         this.AMU = new JR();
-      }
+    public JR DCK() {
+        if (this.AMU == null) {
+            this.AMU = new JR();
+        }
 
-      return this.AMU;
-   }
+        return this.AMU;
+    }
 
-   public void setVat(JR var1) {
-      this.AMU = var1;
-   }
+    public void setVat(JR var1) {
+        this.AMU = var1;
+    }
 
-   public JR getGross() {
-      return this.AMV;
-   }
+    public JR getGross() {
+        return this.AMV;
+    }
 
-   public JR DCL() {
-      if (this.AMV == null) {
-         this.AMV = new JR();
-      }
+    public JR DCL() {
+        if (this.AMV == null) {
+            this.AMV = new JR();
+        }
 
-      return this.AMV;
-   }
+        return this.AMV;
+    }
 
-   public void setGross(JR var1) {
-      this.AMV = var1;
-   }
+    public void setGross(JR var1) {
+        this.AMV = var1;
+    }
 
-   public List<IP> getReceiptRecordElements() {
-      return this.AMW;
-   }
+    public List<IP> getReceiptRecordElements() {
+        return this.AMW;
+    }
 
-   public List<IP> DCM() {
-      if (this.AMW == null) {
-         this.AMW = new ArrayList();
-      }
+    public List<IP> DCM() {
+        if (this.AMW == null) {
+            this.AMW = new ArrayList();
+        }
 
-      return this.AMW;
-   }
+        return this.AMW;
+    }
 
-   public final ObjectProperty<ObservableList<IP>> DCN() {
-      return this.AMX;
-   }
+    public final ObjectProperty<ObservableList<IP>> DCN() {
+        return this.AMX;
+    }
 
-   private class IS extends SimpleObjectProperty<ObservableList<IP>> {
-      private IR AMS;
+    private class IS extends SimpleObjectProperty<ObservableList<IP>> {
+        private final IR AMS;
 
-      public IS(IR var2) {
-         this.AMS = var2;
-      }
+        public IS(IR var2) {
+            this.AMS = var2;
+        }
 
-      public ObservableList<IP> get() {
-         return FXCollections.observableList(this.AMS.DCM());
-      }
+        public ObservableList<IP> get() {
+            return FXCollections.observableList(this.AMS.DCM());
+        }
 
-      public void set(ObservableList<IP> var1) {
-         if (var1 != null) {
-            this.AMS.DCM().clear();
-            this.AMS.DCM().addAll(var1);
-         }
+        public void set(ObservableList<IP> var1) {
+            if (var1 != null) {
+                this.AMS.DCM().clear();
+                this.AMS.DCM().addAll(var1);
+            }
 
-      }
-   }
+        }
+    }
 }

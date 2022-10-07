@@ -7,114 +7,115 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement(
-   name = "invoicePurchase"
+        name = "invoicePurchase"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HR extends HT {
-   private HI AKL;
-   private JV AKM;
-   private JV AKN;
-   @XmlTransient
-   private ObjectProperty<ObservableList<HP>> AKO;
-   private Boolean QWQ;
+    private HI AKL;
+    private JV AKM;
+    private JV AKN;
+    @XmlTransient
+    private final ObjectProperty<ObservableList<HP>> AKO;
+    private Boolean QWQ;
 
-   public HR() {
-      this(IA.INVOICE);
-      EXF.getInstance().ICQ();
-   }
+    public HR() {
+        this(IA.INVOICE);
+        EXF.getInstance().ICQ();
+    }
 
-   public HR(IA var1) {
-      super(var1);
-      this.AKO = new HS(this);
-      EXF.getInstance().ICQ();
-   }
+    public HR(IA var1) {
+        super(var1);
+        this.AKO = new HS(this);
+        EXF.getInstance().ICQ();
+    }
 
-   public HI getContractor() {
-      return this.AKL;
-   }
+    public HI getContractor() {
+        return this.AKL;
+    }
 
-   public HI DBQ() {
-      if (this.AKL == null) {
-         this.AKL = new HI();
-      }
+    public HI DBQ() {
+        if (this.AKL == null) {
+            this.AKL = new HI();
+        }
 
-      return this.AKL;
-   }
+        return this.AKL;
+    }
 
-   public void setContractor(HI var1) {
-      this.AKL = var1;
-   }
+    public void setContractor(HI var1) {
+        this.AKL = var1;
+    }
 
-   public JV getReceiveDate() {
-      return this.AKM;
-   }
+    public JV getReceiveDate() {
+        return this.AKM;
+    }
 
-   public JV DBR() {
-      if (this.AKM == null) {
-         this.AKM = new JV();
-      }
+    public JV DBR() {
+        if (this.AKM == null) {
+            this.AKM = new JV();
+        }
 
-      return this.AKM;
-   }
+        return this.AKM;
+    }
 
-   public void setReceiveDate(JV var1) {
-      this.AKM = var1;
-   }
+    public void setReceiveDate(JV var1) {
+        this.AKM = var1;
+    }
 
-   public JV getInvoicingDate() {
-      return this.AKN;
-   }
+    public JV getInvoicingDate() {
+        return this.AKN;
+    }
 
-   public JV DBS() {
-      if (this.AKN == null) {
-         this.AKN = new JV();
-      }
+    public JV DBS() {
+        if (this.AKN == null) {
+            this.AKN = new JV();
+        }
 
-      return this.AKN;
-   }
+        return this.AKN;
+    }
 
-   public void setInvoicingDate(JV var1) {
-      this.AKN = var1;
-   }
+    public void setInvoicingDate(JV var1) {
+        this.AKN = var1;
+    }
 
-   public final ObjectProperty<ObservableList<HP>> DBT() {
-      return this.AKO;
-   }
+    public final ObjectProperty<ObservableList<HP>> DBT() {
+        return this.AKO;
+    }
 
-   public String toString() {
-      return "InvoicePurchase [contractor=" + this.AKL + ", receiveDate=" + this.AKM + ", invoicingDate=" + this.AKN + "] " + super.toString();
-   }
+    public String toString() {
+        return "InvoicePurchase [contractor=" + this.AKL + ", receiveDate=" + this.AKM + ", invoicingDate=" + this.AKN + "] " + super.toString();
+    }
 
-   public void setIsAggregatePurchase(Boolean var1) {
-      this.QWQ = var1;
-   }
+    public void setIsAggregatePurchase(Boolean var1) {
+        this.QWQ = var1;
+    }
 
-   public Boolean getIsAggregatePurchase() {
-      return this.QWQ;
-   }
+    public Boolean getIsAggregatePurchase() {
+        return this.QWQ;
+    }
 
-   private class HS extends SimpleObjectProperty<ObservableList<HP>> {
-      private HR AKK;
+    private class HS extends SimpleObjectProperty<ObservableList<HP>> {
+        private final HR AKK;
 
-      public HS(HR var2) {
-         this.AKK = var2;
-      }
+        public HS(HR var2) {
+            this.AKK = var2;
+        }
 
-      public ObservableList<HP> get() {
-         return FXCollections.observableList(this.AKK.getInvoiceElements());
-      }
+        public ObservableList<HP> get() {
+            return FXCollections.observableList(this.AKK.getInvoiceElements());
+        }
 
-      public void set(ObservableList<HP> var1) {
-         if (var1 != null) {
-            this.AKK.setInvoiceElements(var1);
-         }
+        public void set(ObservableList<HP> var1) {
+            if (var1 != null) {
+                this.AKK.setInvoiceElements(var1);
+            }
 
-      }
-   }
+        }
+    }
 }

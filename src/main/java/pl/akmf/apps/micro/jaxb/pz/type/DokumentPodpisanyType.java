@@ -7,23 +7,23 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
-   name = "DokumentPodpisanyType",
-   propOrder = {"podpisanaZawartosc"}
+        name = "DokumentPodpisanyType",
+        propOrder = {"podpisanaZawartosc"}
 )
 public class DokumentPodpisanyType extends DokumentWynikType {
-   @XmlElement(
-      required = true
-   )
-   protected byte[] podpisanaZawartosc;
+    @XmlElement(
+            required = true
+    )
+    protected byte[] podpisanaZawartosc;
 
-   public DokumentPodpisanyType() {
-   }
+    public DokumentPodpisanyType() {
+    }
 
-   public byte[] getPodpisanaZawartosc() {
-      return this.podpisanaZawartosc;
-   }
+    public byte[] getPodpisanaZawartosc() {
+        return this.podpisanaZawartosc;
+    }
 
-   public void setPodpisanaZawartosc(byte[] var1) {
-      this.podpisanaZawartosc = var1;
-   }
+    public void setPodpisanaZawartosc(byte[] var1) {
+        this.podpisanaZawartosc = var1;
+    }
 }

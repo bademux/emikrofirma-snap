@@ -1,9 +1,9 @@
 package a.a.a.c.f.b;
 
 public interface JM {
-   String getDescription();
+    String getDescription();
 
-   int DAQ(JM var1);
+    int DAQ(JM var1);
 
-   JM[] getEnumTypeValues();
+    JM[] getEnumTypeValues();
 }

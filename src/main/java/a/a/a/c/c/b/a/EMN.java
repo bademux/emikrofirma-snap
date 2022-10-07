@@ -4,21 +4,21 @@ import a.a.a.b.f.FFK;
 import javafx.scene.Parent;
 
 public interface EMN extends EMG {
-   double getPrefWidth();
+    double getPrefWidth();
 
-   double getMinWidth();
+    double getMinWidth();
 
-   double getMaxWidth();
+    double getMaxWidth();
 
-   double getPrefHeight();
+    double getPrefHeight();
 
-   double getMinHeight();
+    double getMinHeight();
 
-   double getMaxHeight();
+    double getMaxHeight();
 
-   String getTitle() throws FFK;
+    String getTitle() throws FFK;
 
-   void HHE() throws FFK;
+    void HHE() throws FFK;
 
-   Parent getParent();
+    Parent getParent();
 }

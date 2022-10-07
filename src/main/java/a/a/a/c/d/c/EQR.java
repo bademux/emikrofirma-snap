@@ -6,18 +6,18 @@ import a.a.a.c.d.c.a.EQV;
 import a.a.a.c.d.c.a.EQW;
 
 public enum EQR {
-   NIP(new EQW()),
-   PESEL(new EQV()),
-   REGON(new EQT()),
-   AccountNumber(new EQU());
+    NIP(new EQW()),
+    PESEL(new EQV()),
+    REGON(new EQT()),
+    AccountNumber(new EQU());
 
-   private final EQS<?> FXI;
+    private final EQS<?> FXI;
 
-   private EQR(EQS var3) {
-      this.FXI = var3;
-   }
+    EQR(EQS var3) {
+        this.FXI = var3;
+    }
 
-   public EQS<?> getValidator() {
-      return this.FXI;
-   }
+    public EQS<?> getValidator() {
+        return this.FXI;
+    }
 }

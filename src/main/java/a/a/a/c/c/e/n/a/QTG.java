@@ -15,83 +15,83 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 
 public class QTG extends ELU<QTI> {
-   @FXML
-   private ScrollPane fxml_include_container;
-   @FXML
-   public QTF fxml_include_infoProgramLogicController;
-   @FXML
-   private EMP fxml_include_left_barController;
-   @FXML
-   private EMR fxml_include_top_menuController;
+    @FXML
+    private ScrollPane fxml_include_container;
+    @FXML
+    public QTF fxml_include_infoProgramLogicController;
+    @FXML
+    private EMP fxml_include_left_barController;
+    @FXML
+    private EMR fxml_include_top_menuController;
 
-   public QTG(EMC var1, EMT var2, String var3, String var4) {
-      super(var1, var2, var3, var4);
-   }
+    public QTG(EMC var1, EMT var2, String var3, String var4) {
+        super(var1, var2, var3, var4);
+    }
 
-   public void HHE() throws FFK {
-      EXF.getInstance().ICO();
+    public void HHE() throws FFK {
+        EXF.getInstance().ICO();
 
-      try {
-         super.HHE();
-      } catch (FFK var5) {
-         EXF.getInstance().ICA((Throwable)var5);
-         throw new FFI(var5);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            super.HHE();
+        } catch (FFK var5) {
+            EXF.getInstance().ICA(var5);
+            throw new FFI(var5);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public boolean HHB() {
-      boolean var1 = true;
-      if (var1) {
-         this.fxml_include_infoProgramLogicController.HHB();
-         this.fxml_include_left_barController.HHB();
-         this.fxml_include_top_menuController.HHB();
-         return true;
-      } else {
-         return false;
-      }
-   }
+    public boolean HHB() {
+        boolean var1 = true;
+        if (var1) {
+            this.fxml_include_infoProgramLogicController.HHB();
+            this.fxml_include_left_barController.HHB();
+            this.fxml_include_top_menuController.HHB();
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-   public void HHC() {
-      this.fxml_include_container.setVvalue(0.0);
+    public void HHC() {
+        this.fxml_include_container.setVvalue(0.0);
 
-      try {
-         QTI var1 = (QTI)this.HHG();
-         this.fxml_include_infoProgramLogicController.HHC();
-         this.fxml_include_left_barController.HHC();
-         this.fxml_include_top_menuController.HHC();
-         this.fxml_parent.requestFocus();
-      } catch (FFO | FFK var2) {
-         var2.printStackTrace();
-      }
+        try {
+            QTI var1 = this.HHG();
+            this.fxml_include_infoProgramLogicController.HHC();
+            this.fxml_include_left_barController.HHC();
+            this.fxml_include_top_menuController.HHC();
+            this.fxml_parent.requestFocus();
+        } catch (FFO | FFK var2) {
+            var2.printStackTrace();
+        }
 
-   }
+    }
 
-   public void initialize() {
-      EXF.getInstance().ICO();
+    public void initialize() {
+        EXF.getInstance().ICO();
 
-      try {
-         this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.infoProgram.label"));
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.infoProgram.label"));
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   @FXML
-   public void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
-      EXF.getInstance().ICO();
+    @FXML
+    public void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
+        EXF.getInstance().ICO();
 
-      try {
-         EXF.getInstance().ICE("Button [close] clicked");
-         QTI var2 = (QTI)this.getProcess();
-         var2.resetAndCleanUpProcess();
-         this.getApplication().HJD(this.getFxmlName(), "main.fxml");
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            EXF.getInstance().ICE("Button [close] clicked");
+            QTI var2 = this.getProcess();
+            var2.resetAndCleanUpProcess();
+            this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 }

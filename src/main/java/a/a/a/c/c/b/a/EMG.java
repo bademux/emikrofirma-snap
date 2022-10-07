@@ -3,11 +3,11 @@ package a.a.a.c.c.b.a;
 import javafx.stage.Stage;
 
 public interface EMG {
-   boolean HHB();
+    boolean HHB();
 
-   void HHC();
+    void HHC();
 
-   Stage getPrimaryStage();
+    Stage getPrimaryStage();
 
-   void setPrimaryStage(Stage var1);
+    void setPrimaryStage(Stage var1);
 }

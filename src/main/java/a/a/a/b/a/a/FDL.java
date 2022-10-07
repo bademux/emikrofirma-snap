@@ -1,17 +1,17 @@
 package a.a.a.b.a.a;
 
 public enum FDL {
-   NONE(""),
-   ASC("asc"),
-   DESC("desc");
+    NONE(""),
+    ASC("asc"),
+    DESC("desc");
 
-   private final String HDQ;
+    private final String HDQ;
 
-   private FDL(String var3) {
-      this.HDQ = var3;
-   }
+    FDL(String var3) {
+        this.HDQ = var3;
+    }
 
-   public String getKeyWord() {
-      return this.HDQ;
-   }
+    public String getKeyWord() {
+        return this.HDQ;
+    }
 }

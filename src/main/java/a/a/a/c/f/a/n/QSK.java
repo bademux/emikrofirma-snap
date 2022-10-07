@@ -7,99 +7,100 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement(
-   name = "invoiceOtherPurchase"
+        name = "invoiceOtherPurchase"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class QSK extends QSM {
-   private HI QYD;
-   private JV QYE;
-   private JV QYF;
-   @XmlTransient
-   private ObjectProperty<ObservableList<QSI>> QYG = new QSL(this);
+    private HI QYD;
+    private JV QYE;
+    private JV QYF;
+    @XmlTransient
+    private final ObjectProperty<ObservableList<QSI>> QYG = new QSL(this);
 
-   public QSK() {
-      EXF.getInstance().ICO();
-      EXF.getInstance().ICP();
-   }
+    public QSK() {
+        EXF.getInstance().ICO();
+        EXF.getInstance().ICP();
+    }
 
-   public HI getContractor() {
-      return this.QYD;
-   }
+    public HI getContractor() {
+        return this.QYD;
+    }
 
-   public HI RJM() {
-      if (this.QYD == null) {
-         this.QYD = new HI();
-      }
+    public HI RJM() {
+        if (this.QYD == null) {
+            this.QYD = new HI();
+        }
 
-      return this.QYD;
-   }
+        return this.QYD;
+    }
 
-   public void setContractor(HI var1) {
-      this.QYD = var1;
-   }
+    public void setContractor(HI var1) {
+        this.QYD = var1;
+    }
 
-   public JV getReceiveDate() {
-      return this.QYE;
-   }
+    public JV getReceiveDate() {
+        return this.QYE;
+    }
 
-   public JV RJN() {
-      if (this.QYE == null) {
-         this.QYE = new JV();
-      }
+    public JV RJN() {
+        if (this.QYE == null) {
+            this.QYE = new JV();
+        }
 
-      return this.QYE;
-   }
+        return this.QYE;
+    }
 
-   public void setReceiveDate(JV var1) {
-      this.QYE = var1;
-   }
+    public void setReceiveDate(JV var1) {
+        this.QYE = var1;
+    }
 
-   public JV getInvoicingDate() {
-      return this.QYF;
-   }
+    public JV getInvoicingDate() {
+        return this.QYF;
+    }
 
-   public JV RJO() {
-      if (this.QYF == null) {
-         this.QYF = new JV();
-      }
+    public JV RJO() {
+        if (this.QYF == null) {
+            this.QYF = new JV();
+        }
 
-      return this.QYF;
-   }
+        return this.QYF;
+    }
 
-   public void setInvoicingDate(JV var1) {
-      this.QYF = var1;
-   }
+    public void setInvoicingDate(JV var1) {
+        this.QYF = var1;
+    }
 
-   public final ObjectProperty<ObservableList<QSI>> RJP() {
-      return this.QYG;
-   }
+    public final ObjectProperty<ObservableList<QSI>> RJP() {
+        return this.QYG;
+    }
 
-   public String toString() {
-      return "InvoiceOtherPurchase [contractor=" + this.QYD + ", receiveDate=" + this.QYE + ", invoicingDate=" + this.QYF + "] " + super.toString();
-   }
+    public String toString() {
+        return "InvoiceOtherPurchase [contractor=" + this.QYD + ", receiveDate=" + this.QYE + ", invoicingDate=" + this.QYF + "] " + super.toString();
+    }
 
-   private class QSL extends SimpleObjectProperty<ObservableList<QSI>> {
-      private QSK QYC;
+    private class QSL extends SimpleObjectProperty<ObservableList<QSI>> {
+        private final QSK QYC;
 
-      public QSL(QSK var2) {
-         this.QYC = var2;
-      }
+        public QSL(QSK var2) {
+            this.QYC = var2;
+        }
 
-      public ObservableList<QSI> get() {
-         return FXCollections.observableList(this.QYC.getInvoiceOtherElements());
-      }
+        public ObservableList<QSI> get() {
+            return FXCollections.observableList(this.QYC.getInvoiceOtherElements());
+        }
 
-      public void set(ObservableList<QSI> var1) {
-         if (var1 != null) {
-            this.QYC.setInvoiceOtherElements(var1);
-         }
+        public void set(ObservableList<QSI> var1) {
+            if (var1 != null) {
+                this.QYC.setInvoiceOtherElements(var1);
+            }
 
-      }
-   }
+        }
+    }
 }

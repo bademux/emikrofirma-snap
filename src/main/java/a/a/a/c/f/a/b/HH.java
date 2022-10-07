@@ -1,8 +1,8 @@
 package a.a.a.c.f.a.b;
 
 public enum HH {
-   VOID;
+    VOID;
 
-   private HH() {
-   }
+    HH() {
+    }
 }

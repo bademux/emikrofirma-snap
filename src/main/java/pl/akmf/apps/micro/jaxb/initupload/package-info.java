@@ -1,6 +1,6 @@
 @XmlSchema(
-   namespace = "http://e-dokumenty.mf.gov.pl",
-   elementFormDefault = XmlNsForm.QUALIFIED
+        namespace = "http://e-dokumenty.mf.gov.pl",
+        elementFormDefault = XmlNsForm.QUALIFIED
 )
 package pl.akmf.apps.micro.jaxb.initupload;
 

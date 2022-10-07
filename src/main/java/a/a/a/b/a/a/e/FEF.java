@@ -1,7 +1,7 @@
 package a.a.a.b.a.a.e;
 
 public interface FEF {
-   FEG getConstraintType();
+    FEG getConstraintType();
 
-   FEF IJZ();
+    FEF IJZ();
 }

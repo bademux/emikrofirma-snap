@@ -17,9 +17,6 @@ import a.a.a.c.f.a.e.a.IH;
 import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.g.a.FCT;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Set;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -34,277 +31,281 @@ import javafx.scene.text.Text;
 import org.apache.avalon.framework.configuration.ConfigurationException;
 import org.xml.sax.SAXException;
 
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Set;
+
 public class ETJ extends ENJ<ETM> {
-   @FXML
-   private TableView<ID> fxml_vat_invoice_record_sales_table;
-   @FXML
-   private TableView<ID> fxml_vat_invoice_record_purchases_table;
-   @FXML
-   private Button fxml_button_print;
-   @FXML
-   private Button fxml_button_close;
-   @FXML
-   private EYX fxml_include_period_boxController;
-   @FXML
-   private HBox fxml_vat_invoice_record_sales_summary;
-   @FXML
-   private HBox fxml_vat_invoice_record_purchases_summary;
-   @FXML
-   private ScrollPane fxml_vat_invoice_record_sales_summary_scroll;
-   @FXML
-   private ScrollPane fxml_vat_invoice_record_purchases_summary_scroll;
-   @FXML
-   private VBox fxml_vat_invoice_record_key;
-   @FXML
-   private TableView<IC> fxml_vat_invoice_record_sales_summary_table;
-   @FXML
-   private TableView<IC> fxml_vat_invoice_record_purchases_summary_table;
-   @FXML
-   private TabPane fxml_tab_pane;
-   private JN GGZ;
-   private JF GHA;
-   private String GHB;
-   private IC GHC;
-   private IC GHD;
-   private Date GHE;
-   private ETK GHF;
-   private ETF GHG;
-   private ETF GHH;
-   @FXML
-   private EMR fxml_include_top_menuController;
-   @FXML
-   private EMP fxml_include_left_barController;
+    @FXML
+    private TableView<ID> fxml_vat_invoice_record_sales_table;
+    @FXML
+    private TableView<ID> fxml_vat_invoice_record_purchases_table;
+    @FXML
+    private Button fxml_button_print;
+    @FXML
+    private Button fxml_button_close;
+    @FXML
+    private EYX fxml_include_period_boxController;
+    @FXML
+    private HBox fxml_vat_invoice_record_sales_summary;
+    @FXML
+    private HBox fxml_vat_invoice_record_purchases_summary;
+    @FXML
+    private ScrollPane fxml_vat_invoice_record_sales_summary_scroll;
+    @FXML
+    private ScrollPane fxml_vat_invoice_record_purchases_summary_scroll;
+    @FXML
+    private VBox fxml_vat_invoice_record_key;
+    @FXML
+    private TableView<IC> fxml_vat_invoice_record_sales_summary_table;
+    @FXML
+    private TableView<IC> fxml_vat_invoice_record_purchases_summary_table;
+    @FXML
+    private TabPane fxml_tab_pane;
+    private JN GGZ;
+    private JF GHA;
+    private String GHB;
+    private IC GHC;
+    private IC GHD;
+    private Date GHE;
+    private ETK GHF;
+    private ETF GHG;
+    private ETF GHH;
+    @FXML
+    private EMR fxml_include_top_menuController;
+    @FXML
+    private EMP fxml_include_left_barController;
 
-   public ETJ(EMC var1, EMT var2, String var3, String var4) {
-      super(var1, var2, var3, var4);
-      EXF.getInstance().ICQ();
-   }
+    public ETJ(EMC var1, EMT var2, String var3, String var4) {
+        super(var1, var2, var3, var4);
+        EXF.getInstance().ICQ();
+    }
 
-   public void HHE() throws FFK {
-      EXF.getInstance().ICO();
+    public void HHE() throws FFK {
+        EXF.getInstance().ICO();
 
-      try {
-         super.HHE();
-         this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoices_records.title"));
-         this.GHE = new Date();
-         this.GHF = new ETK(this.resources);
-         this.GHG = new ETF(this.fxml_vat_invoice_record_sales_table, false, this.resources, this.fxml_vat_invoice_record_sales_summary_table);
-         this.GHH = new ETF(this.fxml_vat_invoice_record_purchases_table, true, this.resources, this.fxml_vat_invoice_record_purchases_summary_table);
-         this.GHG.initialize();
-         this.GHH.initialize();
-         this.fxml_include_period_boxController.initialize(false);
-         this.setBackIfEmpty();
-         this.HVD();
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            super.HHE();
+            this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoices_records.title"));
+            this.GHE = new Date();
+            this.GHF = new ETK(this.resources);
+            this.GHG = new ETF(this.fxml_vat_invoice_record_sales_table, false, this.resources, this.fxml_vat_invoice_record_sales_summary_table);
+            this.GHH = new ETF(this.fxml_vat_invoice_record_purchases_table, true, this.resources, this.fxml_vat_invoice_record_purchases_summary_table);
+            this.GHG.initialize();
+            this.GHH.initialize();
+            this.fxml_include_period_boxController.initialize(false);
+            this.setBackIfEmpty();
+            this.HVD();
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public boolean HHB() {
-      EXF.getInstance().ICO();
+    public boolean HHB() {
+        EXF.getInstance().ICO();
 
-      boolean var1;
-      try {
-         this.fxml_include_period_boxController.setListener((ChangeListener)null);
-         this.fxml_include_period_boxController.setPeriod((JN)null);
-         this.GGZ = null;
-         this.GHA = null;
-         this.fxml_button_print.disableProperty().unbind();
-         this.fxml_include_top_menuController.HHB();
-         this.fxml_include_left_barController.HHB();
-         var1 = true;
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-      return var1;
-   }
-
-   public void HHC() {
-      EXF.getInstance().ICO();
-
-      try {
-         ETM var1 = (ETM)this.HHG();
-         EXF.getInstance().ICK("implementation " + var1);
-         this.HVE();
-         this.fxml_include_period_boxController.setListener(new ChangeListener<Integer>() {
-            public void changed(ObservableValue<? extends Integer> var1, Integer var2, Integer var3) {
-               ETJ.this.HVG();
-            }
-         });
-         this.HVG();
-         this.setBackIfEmpty();
-         this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoices_records.title"));
-         this.fxml_include_top_menuController.HHC();
-         this.fxml_include_left_barController.HHC();
-         this.fxml_parent.requestFocus();
-      } catch (FFO | FFK var5) {
-         EXF.getInstance().ICA((Throwable)var5);
-         FCT.IGX("", var5);
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-   }
-
-   private void HVD() {
-      EXF.getInstance().ICO();
-      String var1 = "%s - %s";
-      this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatNpColAbbr"), this.resources.getString("micro.process.invoices_records.vatNpCol"))));
-      this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatZwColAbbr"), this.resources.getString("micro.process.invoices_records.vatZwCol"))));
-      this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatOoColAbbr"), this.resources.getString("micro.process.invoices_records.vatOoCol"))));
-      EXF.getInstance().ICP();
-   }
-
-   private void HVE() {
-      EXF.getInstance().ICO();
-      if (this.GGZ == null) {
-         this.GGZ = this.getLastPeriod();
-      }
-
-      this.fxml_include_period_boxController.setPeriod(this.GGZ);
-      EXF.getInstance().ICP();
-   }
-
-   private void setBackIfEmpty() {
-      if (this.GHB == null) {
-         this.GHB = "main.fxml";
-      }
-
-   }
-
-   private void HVF() throws FFK, FFO {
-      EXF.getInstance().ICO();
-      if (this.GHA != null || this.GGZ != null) {
-         Set var1 = null;
-         if (this.GHA != null) {
-            this.GGZ = this.GHA.getPeriod();
-            var1 = ((ETM)this.getProcess()).getInvoiceRecords(this.GHA);
+        boolean var1;
+        try {
+            this.fxml_include_period_boxController.setListener(null);
+            this.fxml_include_period_boxController.setPeriod(null);
+            this.GGZ = null;
             this.GHA = null;
-         } else if (this.GGZ != null) {
-            var1 = ((ETM)this.getProcess()).getInvoiceRecords(this.GGZ);
-         }
+            this.fxml_button_print.disableProperty().unbind();
+            this.fxml_include_top_menuController.HHB();
+            this.fxml_include_left_barController.HHB();
+            var1 = true;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-         if (var1 != null && var1.size() == 2) {
-            Iterator var2 = var1.iterator();
+        return var1;
+    }
 
-            while(var2.hasNext()) {
-               IC var3 = (IC)var2.next();
-               if (IH.SELL.equals(var3.getInvoiceRecordType())) {
-                  this.GHC = var3;
-               } else {
-                  this.GHD = var3;
-               }
+    public void HHC() {
+        EXF.getInstance().ICO();
+
+        try {
+            ETM var1 = this.HHG();
+            EXF.getInstance().ICK("implementation " + var1);
+            this.HVE();
+            this.fxml_include_period_boxController.setListener(new ChangeListener<Integer>() {
+                public void changed(ObservableValue<? extends Integer> var1, Integer var2, Integer var3) {
+                    ETJ.this.HVG();
+                }
+            });
+            this.HVG();
+            this.setBackIfEmpty();
+            this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoices_records.title"));
+            this.fxml_include_top_menuController.HHC();
+            this.fxml_include_left_barController.HHC();
+            this.fxml_parent.requestFocus();
+        } catch (FFO | FFK var5) {
+            EXF.getInstance().ICA(var5);
+            FCT.IGX("", var5);
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    private void HVD() {
+        EXF.getInstance().ICO();
+        String var1 = "%s - %s";
+        this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatNpColAbbr"), this.resources.getString("micro.process.invoices_records.vatNpCol"))));
+        this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatZwColAbbr"), this.resources.getString("micro.process.invoices_records.vatZwCol"))));
+        this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatOoColAbbr"), this.resources.getString("micro.process.invoices_records.vatOoCol"))));
+        EXF.getInstance().ICP();
+    }
+
+    private void HVE() {
+        EXF.getInstance().ICO();
+        if (this.GGZ == null) {
+            this.GGZ = this.getLastPeriod();
+        }
+
+        this.fxml_include_period_boxController.setPeriod(this.GGZ);
+        EXF.getInstance().ICP();
+    }
+
+    private void setBackIfEmpty() {
+        if (this.GHB == null) {
+            this.GHB = "main.fxml";
+        }
+
+    }
+
+    private void HVF() throws FFK, FFO {
+        EXF.getInstance().ICO();
+        if (this.GHA != null || this.GGZ != null) {
+            Set var1 = null;
+            if (this.GHA != null) {
+                this.GGZ = this.GHA.getPeriod();
+                var1 = this.getProcess().getInvoiceRecords(this.GHA);
+                this.GHA = null;
+            } else if (this.GGZ != null) {
+                var1 = this.getProcess().getInvoiceRecords(this.GGZ);
             }
 
-            this.GHF.setSalesRegister(this.GHC, ((ETM)this.getProcess()).getUserData((Integer)this.GHC.getUserDataVersion().getValue()));
-            this.GHF.setPurchasesRegister(this.GHD, ((ETM)this.getProcess()).getUserData((Integer)this.GHD.getUserDataVersion().getValue()));
-            this.fxml_button_print.setDisable(false);
-         } else {
-            this.GHC = null;
-            this.GHD = null;
-            this.fxml_button_print.setDisable(true);
-         }
+            if (var1 != null && var1.size() == 2) {
+                Iterator var2 = var1.iterator();
 
-         boolean var4 = this.GHC != null || this.GHD != null;
-         this.GHG.HUT(this.GHC, var4);
-         this.GHH.HUT(this.GHD, var4);
-      }
+                while (var2.hasNext()) {
+                    IC var3 = (IC) var2.next();
+                    if (IH.SELL.equals(var3.getInvoiceRecordType())) {
+                        this.GHC = var3;
+                    } else {
+                        this.GHD = var3;
+                    }
+                }
 
-      EXF.getInstance().ICP();
-   }
+                this.GHF.setSalesRegister(this.GHC, this.getProcess().getUserData(this.GHC.getUserDataVersion().getValue()));
+                this.GHF.setPurchasesRegister(this.GHD, this.getProcess().getUserData(this.GHD.getUserDataVersion().getValue()));
+                this.fxml_button_print.setDisable(false);
+            } else {
+                this.GHC = null;
+                this.GHD = null;
+                this.fxml_button_print.setDisable(true);
+            }
 
-   private void HVG() {
-      EXF.getInstance().ICO();
-      JN var1;
-      if (this.fxml_include_period_boxController.getPeriod() != null) {
-         var1 = new JN(this.fxml_include_period_boxController.getPeriod());
-      } else {
-         var1 = JN.AOE;
-      }
+            boolean var4 = this.GHC != null || this.GHD != null;
+            this.GHG.HUT(this.GHC, var4);
+            this.GHH.HUT(this.GHD, var4);
+        }
 
-      if (var1 != null) {
-         this.GGZ = var1;
+        EXF.getInstance().ICP();
+    }
 
-         try {
-            this.HVF();
-         } catch (FFO | FFK var3) {
-            EXF.getInstance().ICA((Throwable)var3);
-            throw new FFI(var3);
-         }
-      }
+    private void HVG() {
+        EXF.getInstance().ICO();
+        JN var1;
+        if (this.fxml_include_period_boxController.getPeriod() != null) {
+            var1 = new JN(this.fxml_include_period_boxController.getPeriod());
+        } else {
+            var1 = JN.AOE;
+        }
 
-      EXF.getInstance().ICP();
-   }
+        if (var1 != null) {
+            this.GGZ = var1;
 
-   @FXML
-   protected void fxml_handleButton_close(ActionEvent var1) {
-      EXF.getInstance().ICO();
+            try {
+                this.HVF();
+            } catch (FFO | FFK var3) {
+                EXF.getInstance().ICA(var3);
+                throw new FFI(var3);
+            }
+        }
 
-      try {
-         EXF.getInstance().ICE("Button [close] clicked");
-         this.getApplication().HJD(this.getFxmlName(), this.GHB);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        EXF.getInstance().ICP();
+    }
 
-   }
+    @FXML
+    protected void fxml_handleButton_close(ActionEvent var1) {
+        EXF.getInstance().ICO();
 
-   @FXML
-   protected void fxml_handleButton_print(ActionEvent var1) throws FFK, FFO {
-      EXF.getInstance().ICO();
+        try {
+            EXF.getInstance().ICE("Button [close] clicked");
+            this.getApplication().HJD(this.getFxmlName(), this.GHB);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-      try {
-         if (this.fxml_tab_pane.getSelectionModel().getSelectedIndex() == 0) {
-            EXF.getInstance().ICE("Button [print sales] clicked ");
-            this.GHF.HVH(((ETM)this.getProcess()).getTempFile("pdf"));
-         } else {
-            EXF.getInstance().ICE("Button [print purchases] clicked");
-            this.GHF.HVI(((ETM)this.getProcess()).getTempFile("pdf"));
-         }
-      } catch (SAXException | ConfigurationException var6) {
-         EXF.getInstance().ICA((Throwable)var6);
-         FCT.IGX("", var6);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+    }
 
-   }
+    @FXML
+    protected void fxml_handleButton_print(ActionEvent var1) throws FFK, FFO {
+        EXF.getInstance().ICO();
 
-   public void setPeriod(JN var1) throws FFK {
-      this.setCurrentPeriod(var1);
-   }
+        try {
+            if (this.fxml_tab_pane.getSelectionModel().getSelectedIndex() == 0) {
+                EXF.getInstance().ICE("Button [print sales] clicked ");
+                this.GHF.HVH(this.getProcess().getTempFile("pdf"));
+            } else {
+                EXF.getInstance().ICE("Button [print purchases] clicked");
+                this.GHF.HVI(this.getProcess().getTempFile("pdf"));
+            }
+        } catch (SAXException | ConfigurationException var6) {
+            EXF.getInstance().ICA(var6);
+            FCT.IGX("", var6);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   public void setSettlement(JF var1) throws FFK {
-      this.GHA = var1;
-      if (this.GHA != null) {
-         this.setCurrentPeriod(this.GHA.getPeriod());
-      }
+    }
 
-   }
+    public void setPeriod(JN var1) throws FFK {
+        this.setCurrentPeriod(var1);
+    }
 
-   private void setCurrentPeriod(JN var1) {
-      this.GGZ = var1;
-   }
+    public void setSettlement(JF var1) throws FFK {
+        this.GHA = var1;
+        if (this.GHA != null) {
+            this.setCurrentPeriod(this.GHA.getPeriod());
+        }
 
-   public void setExplicitBack(String var1) {
-      this.GHB = var1;
-   }
+    }
 
-   public JN getLastPeriod() {
-      EXF.getInstance().ICO();
+    private void setCurrentPeriod(JN var1) {
+        this.GGZ = var1;
+    }
 
-      JN var1;
-      try {
-         var1 = new JN(this.GHE);
-      } catch (FFK var5) {
-         EXF.getInstance().ICA((Throwable)var5);
-         throw new FFI(var5);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+    public void setExplicitBack(String var1) {
+        this.GHB = var1;
+    }
 
-      return var1;
-   }
+    public JN getLastPeriod() {
+        EXF.getInstance().ICO();
+
+        JN var1;
+        try {
+            var1 = new JN(this.GHE);
+        } catch (FFK var5) {
+            EXF.getInstance().ICA(var5);
+            throw new FFI(var5);
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+        return var1;
+    }
 }

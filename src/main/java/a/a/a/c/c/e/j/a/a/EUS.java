@@ -7,28 +7,24 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 public class EUS implements ChangeListener<String> {
-   private EUT GLJ;
-   private final String GLK;
+    private final EUT GLJ;
+    private final String GLK;
 
-   public EUS(EUT var1) {
-      this.GLJ = var1;
-      this.GLK = FCW.getInstance().getMessageForKey("micro.process.general.nip.null");
-   }
+    public EUS(EUT var1) {
+        this.GLJ = var1;
+        this.GLK = FCW.getInstance().getMessageForKey("micro.process.general.nip.null");
+    }
 
-   public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-      EXF.getInstance().ICO();
+    public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
+        EXF.getInstance().ICO();
 
-      try {
-         if (var3 != null) {
-            if (var3.equalsIgnoreCase(this.GLK)) {
-               this.GLJ.fxml_sale_contractor_private_person.setSelected(true);
-            } else {
-               this.GLJ.fxml_sale_contractor_private_person.setSelected(false);
+        try {
+            if (var3 != null) {
+                this.GLJ.fxml_sale_contractor_private_person.setSelected(var3.equalsIgnoreCase(this.GLK));
             }
-         }
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 }

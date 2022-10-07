@@ -7,20 +7,20 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 public class EYV extends EXU {
-   @FXML
-   public Label fxml_types_bc_label;
-   @FXML
-   public TextFieldValidated_BigDecimal fxml_types_bd_text;
-   @FXML
-   public Text fxml_types_bc_required;
-   @FXML
-   public Text fxml_types_bc_validation;
+    @FXML
+    public Label fxml_types_bc_label;
+    @FXML
+    public TextFieldValidated_BigDecimal fxml_types_bd_text;
+    @FXML
+    public Text fxml_types_bc_required;
+    @FXML
+    public Text fxml_types_bc_validation;
 
-   public EYV() {
-      this((String)null);
-   }
+    public EYV() {
+        this(null);
+    }
 
-   public EYV(String var1) {
-      super(var1);
-   }
+    public EYV(String var1) {
+        super(var1);
+    }
 }

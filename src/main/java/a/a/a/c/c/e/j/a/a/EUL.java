@@ -8,33 +8,33 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 public class EUL implements ChangeListener<Boolean> {
-   private EUT GKX;
+    private final EUT GKX;
 
-   public EUL(EUT var1) {
-      this.GKX = var1;
-   }
+    public EUL(EUT var1) {
+        this.GKX = var1;
+    }
 
-   public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
-      EXF.getInstance().ICO();
+    public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
+        EXF.getInstance().ICO();
 
-      try {
-         if (var3 != null) {
-            if (var3) {
-               ((TextFieldValidated_Number)this.GKX.fxml_invoice_sale_paymentdatedaysController.fxml_component_main_element).setText("");
-               this.GKX.fxml_invoice_sale_paymentdatedaysController.fxml_component_root_element.setRequired(false);
-               ((DatePickerRequired)this.GKX.fxml_invoice_sale_paymentdateController.fxml_component_main_element).setValue(null);
-               this.GKX.fxml_invoice_sale_paymentdateController.fxml_component_root_element.setRequired(false);
-            } else {
-               this.GKX.fxml_invoice_sale_paymentdatedaysController.fxml_component_root_element.setRequired(true);
-               ((TextFieldValidated_Number)this.GKX.fxml_invoice_sale_paymentdatedaysController.fxml_component_main_element).setText("7");
-               this.GKX.fxml_invoice_sale_paymentdateController.fxml_component_root_element.setRequired(true);
+        try {
+            if (var3 != null) {
+                if (var3) {
+                    this.GKX.fxml_invoice_sale_paymentdatedaysController.fxml_component_main_element.setText("");
+                    this.GKX.fxml_invoice_sale_paymentdatedaysController.fxml_component_root_element.setRequired(false);
+                    this.GKX.fxml_invoice_sale_paymentdateController.fxml_component_main_element.setValue(null);
+                    this.GKX.fxml_invoice_sale_paymentdateController.fxml_component_root_element.setRequired(false);
+                } else {
+                    this.GKX.fxml_invoice_sale_paymentdatedaysController.fxml_component_root_element.setRequired(true);
+                    this.GKX.fxml_invoice_sale_paymentdatedaysController.fxml_component_main_element.setText("7");
+                    this.GKX.fxml_invoice_sale_paymentdateController.fxml_component_root_element.setRequired(true);
+                }
+
+                EXF.getInstance().ICE("Payed checkbox changed to " + var3);
             }
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-            EXF.getInstance().ICE("Payed checkbox changed to " + var3.toString());
-         }
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-   }
+    }
 }

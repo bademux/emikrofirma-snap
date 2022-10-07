@@ -4,22 +4,22 @@ import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.TextAreaChanged;
 
 public class FAR<_T extends TextAreaChanged> extends FAF<String> {
-   protected _T GXW;
+    protected _T GXW;
 
-   public FAR(_T var1) {
-      this.GXW = var1;
-   }
+    public FAR(_T var1) {
+        this.GXW = var1;
+    }
 
-   protected void IFV(String var1, String var2) {
-      EXF.getInstance().ICO();
+    protected void IFV(String var1, String var2) {
+        EXF.getInstance().ICO();
 
-      try {
-         if (var2 != null && !var2.equals(var1) || var1 != null && !var1.equals(var2)) {
-            this.GXW.changedProperty().set(true);
-         }
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            if (var2 != null && !var2.equals(var1) || var1 != null && !var1.equals(var2)) {
+                this.GXW.changedProperty().set(true);
+            }
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 }

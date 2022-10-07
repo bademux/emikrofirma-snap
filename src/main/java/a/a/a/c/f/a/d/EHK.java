@@ -5,33 +5,33 @@ import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
 public enum EHK implements JM {
-   CC(FCW.getInstance().getMessageForKey("micro.model.type.signaturetype.cc")),
-   PZ(FCW.getInstance().getMessageForKey("micro.model.type.signaturetype.pz")),
-   KD(FCW.getInstance().getMessageForKey("micro.model.type.signaturetype.kd")),
-   Unknown(FCW.getInstance().getMessageForKey("micro.model.type.signaturetype.unknown"));
+    CC(FCW.getInstance().getMessageForKey("micro.model.type.signaturetype.cc")),
+    PZ(FCW.getInstance().getMessageForKey("micro.model.type.signaturetype.pz")),
+    KD(FCW.getInstance().getMessageForKey("micro.model.type.signaturetype.kd")),
+    Unknown(FCW.getInstance().getMessageForKey("micro.model.type.signaturetype.unknown"));
 
-   private final String FGA;
+    private final String FGA;
 
-   private EHK(String var3) {
-      EXF.getInstance().ICO();
+    EHK(String var3) {
+        EXF.getInstance().ICO();
 
-      try {
-         this.FGA = var3;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.FGA = var3;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public String getDescription() {
-      return this.FGA;
-   }
+    public String getDescription() {
+        return this.FGA;
+    }
 
-   public int DAQ(JM var1) {
-      return this.compareTo((EHK)var1);
-   }
+    public int DAQ(JM var1) {
+        return this.compareTo((EHK) var1);
+    }
 
-   public JM[] getEnumTypeValues() {
-      return values();
-   }
+    public JM[] getEnumTypeValues() {
+        return values();
+    }
 }

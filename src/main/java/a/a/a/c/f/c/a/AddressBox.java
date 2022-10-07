@@ -7,33 +7,33 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.layout.VBox;
 
 public class AddressBox extends VBox {
-   private BooleanProperty GXA = new SimpleBooleanProperty(this, "required", true);
-   private StringProperty GXB = new SimpleStringProperty(this, "label", "Missing Label");
+    private final BooleanProperty GXA = new SimpleBooleanProperty(this, "required", true);
+    private final StringProperty GXB = new SimpleStringProperty(this, "label", "Missing Label");
 
-   public AddressBox() {
-   }
+    public AddressBox() {
+    }
 
-   public final boolean isRequired() {
-      return this.GXA.getValue();
-   }
+    public final boolean isRequired() {
+        return this.GXA.getValue();
+    }
 
-   public final void setRequired(boolean var1) {
-      this.GXA.setValue(var1);
-   }
+    public final void setRequired(boolean var1) {
+        this.GXA.setValue(var1);
+    }
 
-   public final BooleanProperty requiredProperty() {
-      return this.GXA;
-   }
+    public final BooleanProperty requiredProperty() {
+        return this.GXA;
+    }
 
-   public final void setLabel(String var1) {
-      this.GXB.set(var1);
-   }
+    public final void setLabel(String var1) {
+        this.GXB.set(var1);
+    }
 
-   public final String getLabel() {
-      return this.GXB.getValue();
-   }
+    public final String getLabel() {
+        return this.GXB.getValue();
+    }
 
-   public final StringProperty labelProperty() {
-      return this.GXB;
-   }
+    public final StringProperty labelProperty() {
+        return this.GXB;
+    }
 }

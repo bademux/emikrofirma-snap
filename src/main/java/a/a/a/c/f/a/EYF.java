@@ -4,25 +4,25 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 
 public interface EYF extends EYJ {
-   boolean IET();
+    boolean IET();
 
-   void setValid(boolean var1);
+    void setValid(boolean var1);
 
-   BooleanProperty IEU();
+    BooleanProperty IEU();
 
-   boolean IEV();
+    boolean IEV();
 
-   void setValidExternal(boolean var1);
+    void setValidExternal(boolean var1);
 
-   BooleanProperty IEW();
+    BooleanProperty IEW();
 
-   boolean IEX();
+    boolean IEX();
 
-   void setWarning(boolean var1);
+    void setWarning(boolean var1);
 
-   BooleanProperty IEY();
+    BooleanProperty IEY();
 
-   BooleanBinding IEZ();
+    BooleanBinding IEZ();
 
-   BooleanBinding IFA();
+    BooleanBinding IFA();
 }

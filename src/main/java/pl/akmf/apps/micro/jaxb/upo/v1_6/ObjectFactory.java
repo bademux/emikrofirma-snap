@@ -4,10 +4,10 @@ import javax.xml.bind.annotation.XmlRegistry;
 
 @XmlRegistry
 public class ObjectFactory {
-   public ObjectFactory() {
-   }
+    public ObjectFactory() {
+    }
 
-   public Potwierdzenie createPotwierdzenie() {
-      return new Potwierdzenie();
-   }
+    public Potwierdzenie createPotwierdzenie() {
+        return new Potwierdzenie();
+    }
 }

@@ -4,13 +4,13 @@ import a.a.a.c.f.c.c.ImageViewChanged;
 import javafx.scene.image.Image;
 
 public class FAQ<_T extends ImageViewChanged> extends FAF<Image> {
-   protected _T GXV;
+    protected _T GXV;
 
-   public FAQ(_T var1) {
-      this.GXV = var1;
-   }
+    public FAQ(_T var1) {
+        this.GXV = var1;
+    }
 
-   protected void IFV(Image var1, Image var2) {
-      this.GXV.changedProperty().set(true);
-   }
+    protected void IFV(Image var1, Image var2) {
+        this.GXV.changedProperty().set(true);
+    }
 }

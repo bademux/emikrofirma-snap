@@ -13,25 +13,25 @@ import javafx.scene.input.ClipboardContent;
 import javafx.util.Callback;
 
 public class EUE implements Callback<TableView<AGWN>, TableRow<AGWN>> {
-   private final String GKJ = FCW.getInstance().getMessageForKey("micro.process.jpk_list.copyReferenceId");
+    private final String GKJ = FCW.getInstance().getMessageForKey("micro.process.jpk_list.copyReferenceId");
 
-   public EUE() {
-   }
+    public EUE() {
+    }
 
-   public TableRow<AGWN> call(TableView<AGWN> var1) {
-      final TableRow var2 = new TableRow();
-      ContextMenu var3 = new ContextMenu();
-      MenuItem var4 = new MenuItem(this.GKJ);
-      var4.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent var1) {
-            Clipboard var2x = Clipboard.getSystemClipboard();
-            ClipboardContent var3 = new ClipboardContent();
-            var3.putString(((AGWN)var2.getItem()).getReferenceId());
-            var2x.setContent(var3);
-         }
-      });
-      var3.getItems().add(var4);
-      var2.setContextMenu(var3);
-      return var2;
-   }
+    public TableRow<AGWN> call(TableView<AGWN> var1) {
+        final TableRow var2 = new TableRow();
+        ContextMenu var3 = new ContextMenu();
+        MenuItem var4 = new MenuItem(this.GKJ);
+        var4.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent var1) {
+                Clipboard var2x = Clipboard.getSystemClipboard();
+                ClipboardContent var3 = new ClipboardContent();
+                var3.putString(((AGWN) var2.getItem()).getReferenceId());
+                var2x.setContent(var3);
+            }
+        });
+        var3.getItems().add(var4);
+        var2.setContextMenu(var3);
+        return var2;
+    }
 }

@@ -17,108 +17,108 @@ import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
 public class QTX {
-   @FXML
-   public Button fxml_button_save;
-   @FXML
-   public Button fxml_button_cancel;
-   @FXML
-   public EZI fxml_other_purchase_new_add_other_element_netController;
-   @FXML
-   public EZI fxml_other_purchase_new_add_other_element_taxController;
-   @FXML
-   public EZP<KL> fxml_other_purchase_new_add_other_element_tax_typeController;
-   boolean RCK = false;
-   private Stage RCL;
-   private QSQ RCM;
+    @FXML
+    public Button fxml_button_save;
+    @FXML
+    public Button fxml_button_cancel;
+    @FXML
+    public EZI fxml_other_purchase_new_add_other_element_netController;
+    @FXML
+    public EZI fxml_other_purchase_new_add_other_element_taxController;
+    @FXML
+    public EZP<KL> fxml_other_purchase_new_add_other_element_tax_typeController;
+    boolean RCK = false;
+    private Stage RCL;
+    private QSQ RCM;
 
-   public QTX() {
-   }
+    public QTX() {
+    }
 
-   public void RMM() {
-      EXF.getInstance().ICO();
+    public void RMM() {
+        EXF.getInstance().ICO();
 
-      try {
-         switch (this.RCM) {
-            case PURCHASE_REASON_1:
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setRequired(false);
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setManaged(false);
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setVisible(false);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setRequired(true);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowNegative(true);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowOnlyNegative(true);
-               this.fxml_other_purchase_new_add_other_element_taxController.setNegativeOnlyMessage();
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_validation_element.setText("");
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setRequired(false);
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setManaged(false);
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setVisible(false);
-               break;
-            case PURCHASE_REASON_2:
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setRequired(false);
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setManaged(false);
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setVisible(false);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setRequired(true);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowNegative(false);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowOnlyNegative(false);
-               this.fxml_other_purchase_new_add_other_element_taxController.setPositiveOnlyMessage();
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_validation_element.setText("");
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setRequired(false);
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setManaged(false);
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setVisible(false);
-               break;
-            case PURCHASE_REASON_3:
-            case PURCHASE_REASON_4:
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setRequired(false);
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setManaged(false);
-               this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setVisible(false);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setRequired(true);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowNegative(true);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowOnlyNegative(false);
-               this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_validation_element.setText("");
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setRequired(false);
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setManaged(false);
-               this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setVisible(false);
-               break;
-            default:
-               throw new FFI("Unknown type");
-         }
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            switch (this.RCM) {
+                case PURCHASE_REASON_1:
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setRequired(false);
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setManaged(false);
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setVisible(false);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setRequired(true);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowNegative(true);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowOnlyNegative(true);
+                    this.fxml_other_purchase_new_add_other_element_taxController.setNegativeOnlyMessage();
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_validation_element.setText("");
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setRequired(false);
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setManaged(false);
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setVisible(false);
+                    break;
+                case PURCHASE_REASON_2:
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setRequired(false);
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setManaged(false);
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setVisible(false);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setRequired(true);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowNegative(false);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowOnlyNegative(false);
+                    this.fxml_other_purchase_new_add_other_element_taxController.setPositiveOnlyMessage();
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_validation_element.setText("");
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setRequired(false);
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setManaged(false);
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setVisible(false);
+                    break;
+                case PURCHASE_REASON_3:
+                case PURCHASE_REASON_4:
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setRequired(false);
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setManaged(false);
+                    this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_root_element.setVisible(false);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setRequired(true);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowNegative(true);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_root_element.setAllowOnlyNegative(false);
+                    this.fxml_other_purchase_new_add_other_element_taxController.fxml_component_validation_element.setText("");
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setRequired(false);
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setManaged(false);
+                    this.fxml_other_purchase_new_add_other_element_netController.fxml_component_root_element.setVisible(false);
+                    break;
+                default:
+                    throw new FFI("Unknown type");
+            }
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   @FXML
-   private void initialize() {
-      this.fxml_button_save.disableProperty().bind(this.fxml_other_purchase_new_add_other_element_netController.requiredAndValidProperty().and(this.fxml_other_purchase_new_add_other_element_taxController.requiredAndValidProperty()).and(this.fxml_other_purchase_new_add_other_element_tax_typeController.requiredAndValidProperty()).not());
-      ((ComboBoxRequired)this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_main_element).setCellFactory(new EOQ());
-      ((ComboBoxRequired)this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_main_element).setButtonCell((ListCell)((ComboBoxRequired)this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_main_element).getCellFactory().call(null));
-      this.fxml_other_purchase_new_add_other_element_netController.fxml_component_validation_element.setText("");
-   }
+    @FXML
+    private void initialize() {
+        this.fxml_button_save.disableProperty().bind(this.fxml_other_purchase_new_add_other_element_netController.requiredAndValidProperty().and(this.fxml_other_purchase_new_add_other_element_taxController.requiredAndValidProperty()).and(this.fxml_other_purchase_new_add_other_element_tax_typeController.requiredAndValidProperty()).not());
+        this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_main_element.setCellFactory(new EOQ());
+        this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_main_element).getCellFactory().call(null));
+        this.fxml_other_purchase_new_add_other_element_netController.fxml_component_validation_element.setText("");
+    }
 
-   public void setDialogStage(Stage var1) {
-      this.RCL = var1;
-   }
+    public void setDialogStage(Stage var1) {
+        this.RCL = var1;
+    }
 
-   public Stage getDialogStage() {
-      return this.RCL;
-   }
+    public Stage getDialogStage() {
+        return this.RCL;
+    }
 
-   public void setOtherType(QSQ var1) {
-      this.RCM = var1;
-   }
+    public void setOtherType(QSQ var1) {
+        this.RCM = var1;
+    }
 
-   @FXML
-   public void fxml_handleButton_save(ActionEvent var1) throws FFO, FFK {
-      this.RCK = true;
-      this.RCL.close();
-   }
+    @FXML
+    public void fxml_handleButton_save(ActionEvent var1) throws FFO, FFK {
+        this.RCK = true;
+        this.RCL.close();
+    }
 
-   @FXML
-   public void fxml_handleButton_cancel(ActionEvent var1) {
-      this.RCL.close();
-   }
+    @FXML
+    public void fxml_handleButton_cancel(ActionEvent var1) {
+        this.RCL.close();
+    }
 
-   public boolean RMN() {
-      return this.RCK;
-   }
+    public boolean RMN() {
+        return this.RCK;
+    }
 }

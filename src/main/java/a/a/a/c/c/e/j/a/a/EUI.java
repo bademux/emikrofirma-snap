@@ -6,23 +6,23 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 public class EUI implements ChangeListener<String> {
-   private EUT GKT;
+    private final EUT GKT;
 
-   public EUI(EUT var1) {
-      this.GKT = var1;
-   }
+    public EUI(EUT var1) {
+        this.GKT = var1;
+    }
 
-   public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-      EXF.getInstance().ICO();
+    public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
+        EXF.getInstance().ICO();
 
-      try {
-         if (var3 != null) {
-            this.GKT.HXP();
-            EXF.getInstance().ICE("Payment date days changed to " + var3.toString());
-         }
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            if (var3 != null) {
+                this.GKT.HXP();
+                EXF.getInstance().ICE("Payment date days changed to " + var3);
+            }
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 }

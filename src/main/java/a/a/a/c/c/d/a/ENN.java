@@ -10,13 +10,13 @@ import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.HN;
 
 public abstract class ENN<_PROCESS extends ELV> extends ELU<_PROCESS> {
-   public ENN(EMC var1, EMT var2, String var3, String var4) {
-      super(var1, var2, var3, var4);
-   }
+    public ENN(EMC var1, EMT var2, String var3, String var4) {
+        super(var1, var2, var3, var4);
+    }
 
-   public abstract void setInvoice(HN<?> var1) throws FFK;
+    public abstract void setInvoice(HN<?> var1) throws FFK;
 
-   public abstract void setMode(EPB var1);
+    public abstract void setMode(EPB var1);
 
-   public abstract void setContractor(HI var1);
+    public abstract void setContractor(HI var1);
 }

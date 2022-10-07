@@ -15,102 +15,102 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class EMR extends EMD {
-   @FXML
-   public CustomAnchorPane fxml_top_menu;
-   @FXML
-   public Label fxml_top_menu_process_label_a;
-   @FXML
-   public Label fxml_top_menu_process_label_b;
-   @FXML
-   public Button fxml_top_menu_home_button;
-   private EMS FIC;
-   private EMS FID;
+    @FXML
+    public CustomAnchorPane fxml_top_menu;
+    @FXML
+    public Label fxml_top_menu_process_label_a;
+    @FXML
+    public Label fxml_top_menu_process_label_b;
+    @FXML
+    public Button fxml_top_menu_home_button;
+    private EMS FIC;
+    private EMS FID;
 
-   public EMR(EMC var1, String var2) {
-      super(var1, var2);
-   }
+    public EMR(EMC var1, String var2) {
+        super(var1, var2);
+    }
 
-   public void initialize() {
-      EXF.getInstance().ICO();
+    public void initialize() {
+        EXF.getInstance().ICO();
 
-      try {
-         this.FIC = new EMS(this.fxml_top_menu.labelProperty(), true);
-         this.FID = new EMS(this.fxml_top_menu.labelProperty(), false);
-         this.HJQ();
-      } catch (FFK var5) {
-         EXF.getInstance().ICA((Throwable)var5);
-         throw new FFI(var5);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.FIC = new EMS(this.fxml_top_menu.labelProperty(), true);
+            this.FID = new EMS(this.fxml_top_menu.labelProperty(), false);
+            this.HJQ();
+        } catch (FFK var5) {
+            EXF.getInstance().ICA(var5);
+            throw new FFI(var5);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   private void HJQ() throws FFK {
-      EXF.getInstance().ICO();
-      EXF.getInstance().ICP();
-   }
+    private void HJQ() throws FFK {
+        EXF.getInstance().ICO();
+        EXF.getInstance().ICP();
+    }
 
-   @FXML
-   protected void fxml_handleButton_home_button(ActionEvent var1) {
-      EXF.getInstance().ICO();
+    @FXML
+    protected void fxml_handleButton_home_button(ActionEvent var1) {
+        EXF.getInstance().ICO();
 
-      try {
-         EXF.getInstance().ICE("Button [home] clicked");
-         this.getApplication().HJD(this.getFxmlName(), FCV.MAIN.getFxmlFileName());
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            EXF.getInstance().ICE("Button [home] clicked");
+            this.getApplication().HJD(this.getFxmlName(), FCV.MAIN.getFxmlFileName());
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public boolean HHB() {
-      EXF.getInstance().ICO();
+    public boolean HHB() {
+        EXF.getInstance().ICO();
 
-      boolean var1;
-      try {
-         this.fxml_top_menu_process_label_a.textProperty().unbind();
-         this.fxml_top_menu_process_label_b.textProperty().unbind();
-         var1 = true;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        boolean var1;
+        try {
+            this.fxml_top_menu_process_label_a.textProperty().unbind();
+            this.fxml_top_menu_process_label_b.textProperty().unbind();
+            var1 = true;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-      return var1;
-   }
+        return var1;
+    }
 
-   public void HHC() {
-      EXF.getInstance().ICO();
+    public void HHC() {
+        EXF.getInstance().ICO();
 
-      try {
-         this.fxml_top_menu_process_label_a.textProperty().bind(this.FIC);
-         this.fxml_top_menu_process_label_b.textProperty().bind(this.FID);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.fxml_top_menu_process_label_a.textProperty().bind(this.FIC);
+            this.fxml_top_menu_process_label_b.textProperty().bind(this.FID);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   private class EMS extends SimpleStringProperty {
-      private final StringProperty FIA;
-      private final Boolean FIB;
+    private class EMS extends SimpleStringProperty {
+        private final StringProperty FIA;
+        private final Boolean FIB;
 
-      public EMS(StringProperty var2, Boolean var3) {
-         this.FIA = var2;
-         this.FIB = var3;
-      }
+        public EMS(StringProperty var2, Boolean var3) {
+            this.FIA = var2;
+            this.FIB = var3;
+        }
 
-      public String get() {
-         String var1 = (String)this.FIA.get();
-         if (var1 != null && var1.length() > 0) {
-            return this.FIB ? ((String)this.FIA.get()).substring(0, 1) : ((String)this.FIA.get()).substring(1);
-         } else {
-            return "";
-         }
-      }
+        public String get() {
+            String var1 = this.FIA.get();
+            if (var1 != null && var1.length() > 0) {
+                return this.FIB ? this.FIA.get().substring(0, 1) : this.FIA.get().substring(1);
+            } else {
+                return "";
+            }
+        }
 
-      public void set(String var1) {
-         throw new FFI("Do NOT use!");
-      }
-   }
+        public void set(String var1) {
+            throw new FFI("Do NOT use!");
+        }
+    }
 }

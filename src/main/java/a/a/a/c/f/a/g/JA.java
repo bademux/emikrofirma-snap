@@ -5,48 +5,48 @@ import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.KU;
 
 public abstract class JA<_T extends KU> {
-   private Class<_T> ANE;
-   private FDL ANF;
-   private Integer ANG;
-   private Integer ANH;
+    private final Class<_T> ANE;
+    private final FDL ANF;
+    private final Integer ANG;
+    private final Integer ANH;
 
-   public JA(Class<_T> var1, FDL var2, Integer var3, Integer var4) {
-      EXF.getInstance().ICO();
+    public JA(Class<_T> var1, FDL var2, Integer var3, Integer var4) {
+        EXF.getInstance().ICO();
 
-      try {
-         this.ANE = var1;
-         this.ANF = var2;
-         this.ANG = var3;
-         this.ANH = var4;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.ANE = var1;
+            this.ANF = var2;
+            this.ANG = var3;
+            this.ANH = var4;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public JA(Class<_T> var1, FDL var2) {
-      this(var1, var2, (Integer)null, (Integer)null);
-      EXF.getInstance().ICQ();
-   }
+    public JA(Class<_T> var1, FDL var2) {
+        this(var1, var2, null, null);
+        EXF.getInstance().ICQ();
+    }
 
-   public JA(Class<_T> var1) {
-      this(var1, FDL.ASC);
-      EXF.getInstance().ICQ();
-   }
+    public JA(Class<_T> var1) {
+        this(var1, FDL.ASC);
+        EXF.getInstance().ICQ();
+    }
 
-   public Class<_T> getTypeClass() {
-      return this.ANE;
-   }
+    public Class<_T> getTypeClass() {
+        return this.ANE;
+    }
 
-   public FDL getOrderType() {
-      return this.ANF;
-   }
+    public FDL getOrderType() {
+        return this.ANF;
+    }
 
-   public Integer getPageSize() {
-      return this.ANG;
-   }
+    public Integer getPageSize() {
+        return this.ANG;
+    }
 
-   public Integer getPageOffset() {
-      return this.ANH;
-   }
+    public Integer getPageOffset() {
+        return this.ANH;
+    }
 }

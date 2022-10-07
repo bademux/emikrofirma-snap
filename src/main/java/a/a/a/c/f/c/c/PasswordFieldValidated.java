@@ -4,20 +4,20 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 public class PasswordFieldValidated extends PasswordFieldChanged {
-   private BooleanProperty GZP = new SimpleBooleanProperty(this, "valid", false);
+    private final BooleanProperty GZP = new SimpleBooleanProperty(this, "valid", false);
 
-   public PasswordFieldValidated() {
-   }
+    public PasswordFieldValidated() {
+    }
 
-   public final boolean isValid() {
-      return this.GZP.getValue();
-   }
+    public final boolean isValid() {
+        return this.GZP.getValue();
+    }
 
-   public final void setValid(boolean var1) {
-      this.GZP.setValue(var1);
-   }
+    public final void setValid(boolean var1) {
+        this.GZP.setValue(var1);
+    }
 
-   public final BooleanProperty validProperty() {
-      return this.GZP;
-   }
+    public final BooleanProperty validProperty() {
+        return this.GZP;
+    }
 }

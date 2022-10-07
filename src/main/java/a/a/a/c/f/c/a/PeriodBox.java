@@ -5,20 +5,20 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.layout.GridPane;
 
 public class PeriodBox extends GridPane {
-   private BooleanProperty GWY = new SimpleBooleanProperty(this, "required", false);
+    private final BooleanProperty GWY = new SimpleBooleanProperty(this, "required", false);
 
-   public PeriodBox() {
-   }
+    public PeriodBox() {
+    }
 
-   public final boolean isRequired() {
-      return this.GWY.getValue();
-   }
+    public final boolean isRequired() {
+        return this.GWY.getValue();
+    }
 
-   public final void setRequired(boolean var1) {
-      this.GWY.setValue(var1);
-   }
+    public final void setRequired(boolean var1) {
+        this.GWY.setValue(var1);
+    }
 
-   public final BooleanProperty requiredProperty() {
-      return this.GWY;
-   }
+    public final BooleanProperty requiredProperty() {
+        return this.GWY;
+    }
 }

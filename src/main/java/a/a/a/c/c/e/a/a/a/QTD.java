@@ -6,13 +6,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 public class QTD implements ChangeListener<QSV> {
-   private LS QZZ;
+    private final LS QZZ;
 
-   public QTD(LS var1) {
-      this.QZZ = var1;
-   }
+    public QTD(LS var1) {
+        this.QZZ = var1;
+    }
 
-   public void changed(ObservableValue<? extends QSV> var1, QSV var2, QSV var3) {
-      this.QZZ.DEY().setValue(var3.name());
-   }
+    public void changed(ObservableValue<? extends QSV> var1, QSV var2, QSV var3) {
+        this.QZZ.DEY().setValue(var3.name());
+    }
 }

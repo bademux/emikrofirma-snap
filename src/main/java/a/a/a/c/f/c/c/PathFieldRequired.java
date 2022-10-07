@@ -6,26 +6,26 @@ import a.a.a.c.f.c.c.b.StringConverter_String;
 import javafx.scene.control.TextFormatter;
 
 public class PathFieldRequired extends TextFieldRequired {
-   public PathFieldRequired() {
-      this("");
-   }
+    public PathFieldRequired() {
+        this("");
+    }
 
-   public PathFieldRequired(String var1) {
-      super(var1);
-      this.IFW();
-   }
+    public PathFieldRequired(String var1) {
+        super(var1);
+        this.IFW();
+    }
 
-   private void IFW() {
-      EXF.getInstance().ICO();
+    private void IFW() {
+        EXF.getInstance().ICO();
 
-      try {
-         this.setTextFormatter(new TextFormatter(new StringConverter_String(), "", new UnaryOperator_Required(this)));
-         this.IEU().set(false);
-         this.textProperty().removeListener(this.GYR);
-         this.textProperty().removeListener(this.GYY);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.setTextFormatter(new TextFormatter(new StringConverter_String(), "", new UnaryOperator_Required(this)));
+            this.IEU().set(false);
+            this.textProperty().removeListener(this.GYR);
+            this.textProperty().removeListener(this.GYY);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 }

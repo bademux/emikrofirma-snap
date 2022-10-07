@@ -22,232 +22,224 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class EMK extends EMI {
-   public static final String FHF = "register.fxml";
-   @FXML
-   private TextFieldValidated_NIP fxml_registerTextFieldUserName;
-   @FXML
-   private CheckBox fxml_checkBoxUsePassword;
-   @FXML
-   private PasswordFieldRequired_8 fxml_registerPasswordFieldPassword;
-   @FXML
-   private PasswordFieldRequired_8 fxml_registerPasswordFieldRepeatedPassword;
-   @FXML
-   private Button fxml_registerButtonRegister;
-   @FXML
-   private Text fxml_registerText;
-   @FXML
-   private Text fxml_passwordWarning;
-   private boolean FHG = false;
-   private boolean FHH = false;
-   private boolean FHI = true;
+    public static final String FHF = "register.fxml";
+    @FXML
+    private TextFieldValidated_NIP fxml_registerTextFieldUserName;
+    @FXML
+    private CheckBox fxml_checkBoxUsePassword;
+    @FXML
+    private PasswordFieldRequired_8 fxml_registerPasswordFieldPassword;
+    @FXML
+    private PasswordFieldRequired_8 fxml_registerPasswordFieldRepeatedPassword;
+    @FXML
+    private Button fxml_registerButtonRegister;
+    @FXML
+    private Text fxml_registerText;
+    @FXML
+    private Text fxml_passwordWarning;
+    private boolean FHG = false;
+    private boolean FHH = false;
+    private boolean FHI = true;
 
-   public EMK(EMC var1, String var2) {
-      super(var1, var2);
-   }
+    public EMK(EMC var1, String var2) {
+        super(var1, var2);
+    }
 
-   public String getTitle() {
-      return this.resources.getString("micro.register.title");
-   }
+    public String getTitle() {
+        return this.resources.getString("micro.register.title");
+    }
 
-   public boolean HHF() {
-      return false;
-   }
+    public boolean HHF() {
+        return false;
+    }
 
-   @FXML
-   protected void fxml_handleButton_registerButtonRegister(ActionEvent var1) {
-      EXF.getInstance().ICO();
+    @FXML
+    protected void fxml_handleButton_registerButtonRegister(ActionEvent var1) {
+        EXF.getInstance().ICO();
 
-      try {
-         EXF.getInstance().ICE("Button [register] clicked");
-         this.fxml_registerText.setText("");
-         final String var2 = this.fxml_registerTextFieldUserName.getText().trim();
-         if (EMB.getInstance().HHQ(var2, this.fxml_checkBoxUsePassword.isSelected(), this.fxml_registerPasswordFieldPassword.getText(), this.fxml_registerPasswordFieldRepeatedPassword.getText())) {
-            this.getApplication().HJE(this.getFxmlName(), "login.fxml", new ENB<EMM>() {
-               public void HNE(EMM var1) {
-                  if (var1 != null) {
-                     var1.setLastLogin(var2);
-                  }
-
-               }
-            });
-         }
-      } catch (FFO | FFK var6) {
-         EXF.getInstance().ICA((Throwable)var6);
-         this.fxml_registerText.setText(var6.getLocalizedMessage());
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-   }
-
-   public void HHE() throws FFK {
-      EXF.getInstance().ICO();
-
-      try {
-         super.HHE();
-         this.fxml_registerTextFieldUserName.textProperty().addListener(new ChangeListener<String>() {
-            public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-               if (var3 != null && var3.length() > 0 && !EMK.this.fxml_registerTextFieldUserName.IEU().get()) {
-                  EMK.this.FHG = true;
-               } else {
-                  EMK.this.FHG = false;
-               }
-
-               String var4 = "";
-               if (EMK.this.FHG) {
-                  var4 = FCW.getInstance().getMessageForKey("micro.types.nip.invalid");
-               }
-
-               if (EMK.this.fxml_checkBoxUsePassword.isSelected() && (EMK.this.FHH || EMK.this.FHI)) {
-                  if (EMK.this.FHG) {
-                     var4 = var4 + " | ";
-                  }
-
-                  if (EMK.this.FHI) {
-                     var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.empty");
-                  } else if (EMK.this.FHH) {
-                     var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.invalid").replaceFirst("##MIN_PASSWORD_LENGTH##", String.valueOf(8));
-                  }
-               }
-
-               EMK.this.fxml_registerText.setText(var4);
-            }
-         });
-         this.fxml_registerPasswordFieldPassword.textProperty().addListener(new ChangeListener<String>() {
-            public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-               if (EMK.this.fxml_checkBoxUsePassword.isSelected()) {
-                  if (var3 != null && var3.length() > 0) {
-                     EMK.this.FHI = false;
-                     if (!EMK.this.fxml_registerPasswordFieldPassword.validProperty().get()) {
-                        EMK.this.FHH = true;
-                     } else {
-                        EMK.this.FHH = false;
-                     }
-                  } else {
-                     EMK.this.FHI = true;
-                     EMK.this.FHH = false;
-                  }
-
-                  String var4 = "";
-                  if (EMK.this.FHG) {
-                     var4 = FCW.getInstance().getMessageForKey("micro.types.nip.invalid");
-                  }
-
-                  if (!EMK.this.FHH && !EMK.this.FHI) {
-                     if (!EMK.this.fxml_registerPasswordFieldRepeatedPassword.textProperty().isEmpty().get() && !var3.equals(EMK.this.fxml_registerPasswordFieldRepeatedPassword.getText())) {
-                        if (EMK.this.FHG) {
-                           var4 = var4 + " | ";
+        try {
+            EXF.getInstance().ICE("Button [register] clicked");
+            this.fxml_registerText.setText("");
+            final String var2 = this.fxml_registerTextFieldUserName.getText().trim();
+            if (EMB.getInstance().HHQ(var2, this.fxml_checkBoxUsePassword.isSelected(), this.fxml_registerPasswordFieldPassword.getText(), this.fxml_registerPasswordFieldRepeatedPassword.getText())) {
+                this.getApplication().HJE(this.getFxmlName(), "login.fxml", new ENB<EMM>() {
+                    public void HNE(EMM var1) {
+                        if (var1 != null) {
+                            var1.setLastLogin(var2);
                         }
 
-                        var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.differ");
-                     }
-                  } else {
-                     if (EMK.this.FHG) {
-                        var4 = var4 + " | ";
-                     }
-
-                     if (EMK.this.FHI) {
-                        var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.empty");
-                     } else if (EMK.this.FHH) {
-                        var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.invalid").replaceFirst("##MIN_PASSWORD_LENGTH##", String.valueOf(8));
-                     }
-                  }
-
-                  EMK.this.fxml_registerText.setText(var4);
-               }
-
+                    }
+                });
             }
-         });
-         this.fxml_registerPasswordFieldRepeatedPassword.textProperty().addListener(new ChangeListener<String>() {
-            public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-               if (EMK.this.fxml_checkBoxUsePassword.isSelected() && EMK.this.fxml_registerPasswordFieldPassword.validProperty().get()) {
-                  String var4 = "";
-                  if (EMK.this.FHG) {
-                     var4 = FCW.getInstance().getMessageForKey("micro.types.nip.invalid");
-                  }
+        } catch (FFO | FFK var6) {
+            EXF.getInstance().ICA(var6);
+            this.fxml_registerText.setText(var6.getLocalizedMessage());
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-                  if (!EMK.this.fxml_registerPasswordFieldPassword.getText().equals(var3)) {
-                     if (EMK.this.FHG) {
-                        var4 = var4 + " | ";
-                     }
+    }
 
-                     var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.differ");
-                  }
+    public void HHE() throws FFK {
+        EXF.getInstance().ICO();
 
-                  EMK.this.fxml_registerText.setText(var4);
-               }
+        try {
+            super.HHE();
+            this.fxml_registerTextFieldUserName.textProperty().addListener(new ChangeListener<String>() {
+                public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
+                    EMK.this.FHG = var3 != null && var3.length() > 0 && !EMK.this.fxml_registerTextFieldUserName.IEU().get();
 
-            }
-         });
-         this.fxml_checkBoxUsePassword.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
-               String var4 = "";
-               if (EMK.this.FHG) {
-                  var4 = FCW.getInstance().getMessageForKey("micro.types.nip.invalid");
-               }
+                    String var4 = "";
+                    if (EMK.this.FHG) {
+                        var4 = FCW.getInstance().getMessageForKey("micro.types.nip.invalid");
+                    }
 
-               if (var3 && (EMK.this.FHH || EMK.this.FHI)) {
-                  if (EMK.this.FHG) {
-                     var4 = var4 + " | ";
-                  }
+                    if (EMK.this.fxml_checkBoxUsePassword.isSelected() && (EMK.this.FHH || EMK.this.FHI)) {
+                        if (EMK.this.FHG) {
+                            var4 = var4 + " | ";
+                        }
 
-                  if (EMK.this.FHI) {
-                     var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.empty");
-                  } else if (EMK.this.FHH) {
-                     var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.invalid").replaceFirst("##MIN_PASSWORD_LENGTH##", String.valueOf(8));
-                  }
-               }
+                        if (EMK.this.FHI) {
+                            var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.empty");
+                        } else if (EMK.this.FHH) {
+                            var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.invalid").replaceFirst("##MIN_PASSWORD_LENGTH##", String.valueOf(8));
+                        }
+                    }
 
-               EMK.this.fxml_registerText.setText(var4);
-            }
-         });
-         this.fxml_registerPasswordFieldPassword.disableProperty().bind(this.fxml_checkBoxUsePassword.selectedProperty().not());
-         this.fxml_registerPasswordFieldRepeatedPassword.disableProperty().bind(this.fxml_registerPasswordFieldPassword.disableProperty());
-         this.fxml_registerButtonRegister.disableProperty().bind(this.fxml_registerTextFieldUserName.IEU().and(this.fxml_checkBoxUsePassword.selectedProperty().and(this.fxml_registerPasswordFieldPassword.validProperty().and(this.fxml_registerPasswordFieldRepeatedPassword.validProperty())).or(this.fxml_checkBoxUsePassword.selectedProperty().not())).not());
-         this.fxml_registerPasswordFieldRepeatedPassword.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent var1) {
-               if (KeyCode.ENTER.equals(var1.getCode())) {
-                  EMK.this.fxml_handleButton_registerButtonRegister((ActionEvent)null);
-               }
+                    EMK.this.fxml_registerText.setText(var4);
+                }
+            });
+            this.fxml_registerPasswordFieldPassword.textProperty().addListener(new ChangeListener<String>() {
+                public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
+                    if (EMK.this.fxml_checkBoxUsePassword.isSelected()) {
+                        if (var3 != null && var3.length() > 0) {
+                            EMK.this.FHI = false;
+                            EMK.this.FHH = !EMK.this.fxml_registerPasswordFieldPassword.validProperty().get();
+                        } else {
+                            EMK.this.FHI = true;
+                            EMK.this.FHH = false;
+                        }
 
-            }
-         });
-         this.fxml_passwordWarning.visibleProperty().bind(this.fxml_checkBoxUsePassword.selectedProperty());
-      } finally {
-         EXF.getInstance().ICP();
-      }
+                        String var4 = "";
+                        if (EMK.this.FHG) {
+                            var4 = FCW.getInstance().getMessageForKey("micro.types.nip.invalid");
+                        }
 
-   }
+                        if (!EMK.this.FHH && !EMK.this.FHI) {
+                            if (!EMK.this.fxml_registerPasswordFieldRepeatedPassword.textProperty().isEmpty().get() && !var3.equals(EMK.this.fxml_registerPasswordFieldRepeatedPassword.getText())) {
+                                if (EMK.this.FHG) {
+                                    var4 = var4 + " | ";
+                                }
 
-   public boolean HHB() {
-      EXF.getInstance().ICO();
+                                var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.differ");
+                            }
+                        } else {
+                            if (EMK.this.FHG) {
+                                var4 = var4 + " | ";
+                            }
 
-      boolean var1;
-      try {
-         this.fxml_registerTextFieldUserName.clear();
-         this.fxml_registerPasswordFieldPassword.clear();
-         this.fxml_registerPasswordFieldRepeatedPassword.clear();
-         this.fxml_registerText.setText("");
-         this.fxml_registerTextFieldUserName.requestFocus();
-         var1 = true;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+                            if (EMK.this.FHI) {
+                                var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.empty");
+                            } else if (EMK.this.FHH) {
+                                var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.invalid").replaceFirst("##MIN_PASSWORD_LENGTH##", String.valueOf(8));
+                            }
+                        }
 
-      return var1;
-   }
+                        EMK.this.fxml_registerText.setText(var4);
+                    }
 
-   public void HHC() {
-      EXF.getInstance().ICO();
+                }
+            });
+            this.fxml_registerPasswordFieldRepeatedPassword.textProperty().addListener(new ChangeListener<String>() {
+                public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
+                    if (EMK.this.fxml_checkBoxUsePassword.isSelected() && EMK.this.fxml_registerPasswordFieldPassword.validProperty().get()) {
+                        String var4 = "";
+                        if (EMK.this.FHG) {
+                            var4 = FCW.getInstance().getMessageForKey("micro.types.nip.invalid");
+                        }
 
-      try {
-         this.fxml_registerTextFieldUserName.clear();
-         this.fxml_registerPasswordFieldPassword.clear();
-         this.fxml_registerPasswordFieldRepeatedPassword.clear();
-         this.fxml_registerText.setText("");
-      } finally {
-         EXF.getInstance().ICP();
-      }
+                        if (!EMK.this.fxml_registerPasswordFieldPassword.getText().equals(var3)) {
+                            if (EMK.this.FHG) {
+                                var4 = var4 + " | ";
+                            }
 
-   }
+                            var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.differ");
+                        }
+
+                        EMK.this.fxml_registerText.setText(var4);
+                    }
+
+                }
+            });
+            this.fxml_checkBoxUsePassword.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
+                    String var4 = "";
+                    if (EMK.this.FHG) {
+                        var4 = FCW.getInstance().getMessageForKey("micro.types.nip.invalid");
+                    }
+
+                    if (var3 && (EMK.this.FHH || EMK.this.FHI)) {
+                        if (EMK.this.FHG) {
+                            var4 = var4 + " | ";
+                        }
+
+                        if (EMK.this.FHI) {
+                            var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.empty");
+                        } else if (EMK.this.FHH) {
+                            var4 = var4 + FCW.getInstance().getMessageForKey("micro.types.password.invalid").replaceFirst("##MIN_PASSWORD_LENGTH##", String.valueOf(8));
+                        }
+                    }
+
+                    EMK.this.fxml_registerText.setText(var4);
+                }
+            });
+            this.fxml_registerPasswordFieldPassword.disableProperty().bind(this.fxml_checkBoxUsePassword.selectedProperty().not());
+            this.fxml_registerPasswordFieldRepeatedPassword.disableProperty().bind(this.fxml_registerPasswordFieldPassword.disableProperty());
+            this.fxml_registerButtonRegister.disableProperty().bind(this.fxml_registerTextFieldUserName.IEU().and(this.fxml_checkBoxUsePassword.selectedProperty().and(this.fxml_registerPasswordFieldPassword.validProperty().and(this.fxml_registerPasswordFieldRepeatedPassword.validProperty())).or(this.fxml_checkBoxUsePassword.selectedProperty().not())).not());
+            this.fxml_registerPasswordFieldRepeatedPassword.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                public void handle(KeyEvent var1) {
+                    if (KeyCode.ENTER.equals(var1.getCode())) {
+                        EMK.this.fxml_handleButton_registerButtonRegister(null);
+                    }
+
+                }
+            });
+            this.fxml_passwordWarning.visibleProperty().bind(this.fxml_checkBoxUsePassword.selectedProperty());
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    public boolean HHB() {
+        EXF.getInstance().ICO();
+
+        boolean var1;
+        try {
+            this.fxml_registerTextFieldUserName.clear();
+            this.fxml_registerPasswordFieldPassword.clear();
+            this.fxml_registerPasswordFieldRepeatedPassword.clear();
+            this.fxml_registerText.setText("");
+            this.fxml_registerTextFieldUserName.requestFocus();
+            var1 = true;
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+        return var1;
+    }
+
+    public void HHC() {
+        EXF.getInstance().ICO();
+
+        try {
+            this.fxml_registerTextFieldUserName.clear();
+            this.fxml_registerPasswordFieldPassword.clear();
+            this.fxml_registerPasswordFieldRepeatedPassword.clear();
+            this.fxml_registerText.setText("");
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
 }

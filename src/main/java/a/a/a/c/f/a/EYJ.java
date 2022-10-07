@@ -3,15 +3,15 @@ package a.a.a.c.f.a;
 import javafx.beans.property.BooleanProperty;
 
 public interface EYJ {
-   boolean isChanged();
+    boolean isChanged();
 
-   void setChanged(boolean var1);
+    void setChanged(boolean var1);
 
-   BooleanProperty changedProperty();
+    BooleanProperty changedProperty();
 
-   boolean isDisable();
+    boolean isDisable();
 
-   void setDisable(boolean var1);
+    void setDisable(boolean var1);
 
-   BooleanProperty disableProperty();
+    BooleanProperty disableProperty();
 }

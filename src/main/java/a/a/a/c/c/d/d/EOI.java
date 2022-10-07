@@ -8,27 +8,27 @@ import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 
 public class EOI<_T> implements Callback<TableColumn<_T, JN>, TableCell<_T, JN>> {
-   public EOI() {
-   }
+    public EOI() {
+    }
 
-   public TableCell<_T, JN> call(TableColumn<_T, JN> var1) {
-      TableCell var2 = new TableCell<_T, JN>() {
-         protected void updateItem(JN var1, boolean var2) {
-            EXF.getInstance().ICO();
-            super.updateItem(var1, var2);
-            if (var1 != null) {
-               if (JN.AOE.equals(var1)) {
-                  this.setText(FCW.getInstance().getMessageForKey("micro.process.jpk_list.sourceOutside"));
-               } else {
-                  this.setText(FCW.getInstance().getMessageForKey("micro.process.jpk_list.sourceSettlement"));
-               }
-            } else {
-               this.setText("");
+    public TableCell<_T, JN> call(TableColumn<_T, JN> var1) {
+        TableCell var2 = new TableCell<_T, JN>() {
+            protected void updateItem(JN var1, boolean var2) {
+                EXF.getInstance().ICO();
+                super.updateItem(var1, var2);
+                if (var1 != null) {
+                    if (JN.AOE.equals(var1)) {
+                        this.setText(FCW.getInstance().getMessageForKey("micro.process.jpk_list.sourceOutside"));
+                    } else {
+                        this.setText(FCW.getInstance().getMessageForKey("micro.process.jpk_list.sourceSettlement"));
+                    }
+                } else {
+                    this.setText("");
+                }
+
+                EXF.getInstance().ICP();
             }
-
-            EXF.getInstance().ICP();
-         }
-      };
-      return var2;
-   }
+        };
+        return var2;
+    }
 }

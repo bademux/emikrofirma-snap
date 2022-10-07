@@ -5,27 +5,27 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 
 public interface EXV extends EYA {
-   StringProperty promptTextProperty();
+    StringProperty promptTextProperty();
 
-   String getPromptText();
+    String getPromptText();
 
-   void setPromptText(String var1);
+    void setPromptText(String var1);
 
-   String getText();
+    String getText();
 
-   void setText(String var1);
+    void setText(String var1);
 
-   StringProperty textProperty();
+    StringProperty textProperty();
 
-   void setMaxLength(Integer var1);
+    void setMaxLength(Integer var1);
 
-   Integer getMaxLength();
+    Integer getMaxLength();
 
-   IntegerProperty IFF();
+    IntegerProperty IFF();
 
-   boolean RHR();
+    boolean RHR();
 
-   void setDoTrim(boolean var1);
+    void setDoTrim(boolean var1);
 
-   BooleanProperty RHS();
+    BooleanProperty RHS();
 }

@@ -4,14 +4,14 @@ import javax.xml.bind.annotation.XmlRegistry;
 
 @XmlRegistry
 public class ObjectFactory {
-   public ObjectFactory() {
-   }
+    public ObjectFactory() {
+    }
 
-   public JPKMicro createJPKMicro() {
-      return new JPKMicro();
-   }
+    public JPKMicro createJPKMicro() {
+        return new JPKMicro();
+    }
 
-   public DaneAutoryzujace createDaneAutoryzujace() {
-      return new DaneAutoryzujace();
-   }
+    public DaneAutoryzujace createDaneAutoryzujace() {
+        return new DaneAutoryzujace();
+    }
 }

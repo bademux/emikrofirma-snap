@@ -20,15 +20,7 @@ import a.a.a.c.f.b.c.KE;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.b.c.a.QSV;
-import a.a.a.c.f.c.c.ComboBoxRequired;
-import a.a.a.c.f.c.c.ComboBoxValidated_ContractorName;
-import a.a.a.c.f.c.c.ComboBoxValidated_NIP;
-import a.a.a.c.f.c.c.DatePickerRequired;
-import a.a.a.c.f.c.c.TextFieldValidated_Number;
-import a.a.a.c.f.c.c.TextFieldValidated_PostalCode;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
-import java.io.IOException;
-import java.util.Iterator;
+import a.a.a.c.f.c.c.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -47,409 +39,412 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
+import java.util.Iterator;
+
 public class ESU extends QUW {
-   private ChangeListener<Toggle> RAK;
-   @FXML
-   public TableColumn<HP, Object> fxml_registry_itemName_tableColumn;
-   @FXML
-   public TableColumn<HP, Object> fxml_registry_quantity_tableColumn;
-   @FXML
-   public TableColumn<HP, Object> fxml_registry_measurementUnit_tableColumn;
-   @FXML
-   public TableColumn<HP, Object> fxml_registry_unitValue_tableColumn;
-   @FXML
-   public TableColumn<HP, Object> fxml_registry_vatRate_tableColumn;
-   @FXML
-   public ToggleGroup calculation_method_radio_group;
-   @FXML
-   public HBox fxml_invoice_purchase_hbox_radio;
-   @FXML
-   public RadioButton fxml_radio_button_net;
-   @FXML
-   public RadioButton fxml_radio_button_gross;
-   private ESX GFB;
+    private ChangeListener<Toggle> RAK;
+    @FXML
+    public TableColumn<HP, Object> fxml_registry_itemName_tableColumn;
+    @FXML
+    public TableColumn<HP, Object> fxml_registry_quantity_tableColumn;
+    @FXML
+    public TableColumn<HP, Object> fxml_registry_measurementUnit_tableColumn;
+    @FXML
+    public TableColumn<HP, Object> fxml_registry_unitValue_tableColumn;
+    @FXML
+    public TableColumn<HP, Object> fxml_registry_vatRate_tableColumn;
+    @FXML
+    public ToggleGroup calculation_method_radio_group;
+    @FXML
+    public HBox fxml_invoice_purchase_hbox_radio;
+    @FXML
+    public RadioButton fxml_radio_button_net;
+    @FXML
+    public RadioButton fxml_radio_button_gross;
+    private ESX GFB;
 
-   public ESU(EMC var1, String var2) {
-      super(var1, var2);
-   }
+    public ESU(EMC var1, String var2) {
+        super(var1, var2);
+    }
 
-   public void initialize() {
-      EXF.getInstance().ICO();
+    public void initialize() {
+        EXF.getInstance().ICO();
 
-      try {
-         super.initialize();
-         this.fxml_registry_itemName_tableColumn.setCellValueFactory(new PropertyValueFactory("name"));
-         this.fxml_registry_quantity_tableColumn.setCellValueFactory(new PropertyValueFactory("quantity"));
-         this.fxml_registry_measurementUnit_tableColumn.setCellValueFactory(new PropertyValueFactory("unit"));
-         this.fxml_registry_netTotalValue_tableColumn.setCellValueFactory(new PropertyValueFactory("netPriceForAll"));
-         this.fxml_registry_vatRate_tableColumn.setCellValueFactory(new PropertyValueFactory("taxRate"));
-         this.fxml_registry_vatValue_tableColumn.setCellValueFactory(new PropertyValueFactory("taxValueForAll"));
-         this.fxml_registry_deductHalf_tableColumn.setCellValueFactory(new PropertyValueFactory("taxDeduction50P"));
-         this.fxml_registry_grossValue_tableColumn.setCellValueFactory(new PropertyValueFactory("grossValueForAll"));
-         this.fxml_registry_taxReason_tableColumn.setCellValueFactory(new PropertyValueFactory("taxReason"));
-         this.fxml_registry_itemName_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_quantity_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_measurementUnit_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_unitValue_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_netTotalValue_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_vatRate_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_vatValue_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_deductHalf_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_grossValue_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_registry_taxReason_tableColumn.setCellFactory(new EOT(this, true));
-         this.fxml_summary_totalNetValue_tableColumn.setCellValueFactory(new PropertyValueFactory("amountSummaryWithoutTax"));
-         this.fxml_summary_totalVatValue_tableColumn.setCellValueFactory(new PropertyValueFactory("amountTax"));
-         this.fxml_summary_totalGrossValue_tableColumn.setCellValueFactory(new PropertyValueFactory("amountSummaryWithTax"));
-         this.fxml_summary_totalNetValue_tableColumn.setCellFactory(new EOT(this, false));
-         this.fxml_summary_totalVatValue_tableColumn.setCellFactory(new EOT(this, false));
-         this.fxml_summary_totalGrossValue_tableColumn.setCellFactory(new EOT(this, false));
-         this.calculation_method_radio_group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            public void changed(ObservableValue<? extends Toggle> var1, Toggle var2, Toggle var3) {
-               if (ESU.this.calculation_method_radio_group.getSelectedToggle() != null) {
-                  String var4 = ESU.this.calculation_method_radio_group.getSelectedToggle().getUserData().toString();
-                  ESU.this.REZ.RIE().setValue(QSV.valueOf(var4));
-                  ESU.this.RKR(var4);
-               }
+        try {
+            super.initialize();
+            this.fxml_registry_itemName_tableColumn.setCellValueFactory(new PropertyValueFactory("name"));
+            this.fxml_registry_quantity_tableColumn.setCellValueFactory(new PropertyValueFactory("quantity"));
+            this.fxml_registry_measurementUnit_tableColumn.setCellValueFactory(new PropertyValueFactory("unit"));
+            this.fxml_registry_netTotalValue_tableColumn.setCellValueFactory(new PropertyValueFactory("netPriceForAll"));
+            this.fxml_registry_vatRate_tableColumn.setCellValueFactory(new PropertyValueFactory("taxRate"));
+            this.fxml_registry_vatValue_tableColumn.setCellValueFactory(new PropertyValueFactory("taxValueForAll"));
+            this.fxml_registry_deductHalf_tableColumn.setCellValueFactory(new PropertyValueFactory("taxDeduction50P"));
+            this.fxml_registry_grossValue_tableColumn.setCellValueFactory(new PropertyValueFactory("grossValueForAll"));
+            this.fxml_registry_taxReason_tableColumn.setCellValueFactory(new PropertyValueFactory("taxReason"));
+            this.fxml_registry_itemName_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_quantity_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_measurementUnit_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_unitValue_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_netTotalValue_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_vatRate_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_vatValue_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_deductHalf_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_grossValue_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_registry_taxReason_tableColumn.setCellFactory(new EOT(this, true));
+            this.fxml_summary_totalNetValue_tableColumn.setCellValueFactory(new PropertyValueFactory("amountSummaryWithoutTax"));
+            this.fxml_summary_totalVatValue_tableColumn.setCellValueFactory(new PropertyValueFactory("amountTax"));
+            this.fxml_summary_totalGrossValue_tableColumn.setCellValueFactory(new PropertyValueFactory("amountSummaryWithTax"));
+            this.fxml_summary_totalNetValue_tableColumn.setCellFactory(new EOT(this, false));
+            this.fxml_summary_totalVatValue_tableColumn.setCellFactory(new EOT(this, false));
+            this.fxml_summary_totalGrossValue_tableColumn.setCellFactory(new EOT(this, false));
+            this.calculation_method_radio_group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+                public void changed(ObservableValue<? extends Toggle> var1, Toggle var2, Toggle var3) {
+                    if (ESU.this.calculation_method_radio_group.getSelectedToggle() != null) {
+                        String var4 = ESU.this.calculation_method_radio_group.getSelectedToggle().getUserData().toString();
+                        ESU.this.REZ.RIE().setValue(QSV.valueOf(var4));
+                        ESU.this.RKR(var4);
+                    }
 
+                }
+            });
+            this.fxml_invoice_purchase_hbox_radio.disableProperty().bind(this.RFA);
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    public void HTV(HR var1) {
+        EXF.getInstance().ICO();
+
+        try {
+            this.REZ = var1;
+            if (var1 != null) {
+                this.fxml_include_invoiceRefNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAS().DDG());
+                this.fxml_include_eventDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DAU().DEC());
+                this.fxml_include_issueDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DAT().DEC());
+                this.fxml_include_receiptDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DBR().DEC());
+                this.fxml_include_invoicingDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DAF().DDL());
+                this.fxml_include_invoicingDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DBS().DEC());
+                HI var2 = var1.DBQ();
+                this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAI().DDG());
+                this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAR().DDG());
+                this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAJ().DDG());
+                JJ var3 = var2.DAM();
+                this.fxml_include_Street_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDA().DDG());
+                this.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDB().DDG());
+                this.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDC().DDG());
+                this.fxml_include_PostalCode_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDD().DDG());
+                this.fxml_include_City_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DCZ().DDG());
+                this.fxml_summary_values_tableView.getItems().add(var1);
+                this.fxml_registry_invoicePositionTable_tableView.itemsProperty().bindBidirectional(var1.DBT());
+                this.RFG = new QUW.QUX();
+                this.fxml_registry_invoicePositionTable_tableView.getItems().addListener(this.RFG);
+                this.RFD.bind(this.fxml_registry_invoicePositionTable_tableView.itemsProperty());
+                if (var1.RIE().getValue() == null) {
+                    var1.RIE().setValue(QSV.NET);
+                }
+
+                String var4 = var1.RIE().getValue().toString();
+                if (this.fxml_registry_unitValue_tableColumn != null) {
+                    if (var4.equals("NET")) {
+                        this.fxml_registry_unitValue_tableColumn.setCellValueFactory(new PropertyValueFactory("netPriceForUnit"));
+                    } else if (var4.equals("GROSS")) {
+                        this.fxml_registry_unitValue_tableColumn.setCellValueFactory(new PropertyValueFactory("grossPriceForUnit"));
+                    }
+
+                    this.fxml_registry_unitValue_tableColumn.setText(this.resources.getString("micro.process.invoice_purchase_new.RegistryTable_unitValue_" + var4));
+                    this.RKQ(this.calculation_method_radio_group, var4);
+                }
+
+                this.RAK = new QTJ(this);
+                this.calculation_method_radio_group.selectedToggleProperty().addListener(this.RAK);
+                this.fxml_summary_values_tableView.refresh();
+                this.fxml_registry_invoicePositionTable_tableView.refresh();
             }
-         });
-         this.fxml_invoice_purchase_hbox_radio.disableProperty().bind(this.RFA);
-      } finally {
-         EXF.getInstance().ICP();
-      }
 
-   }
+            this.RKA();
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   public void HTV(HR var1) {
-      EXF.getInstance().ICO();
+    }
 
-      try {
-         this.REZ = var1;
-         if (var1 != null) {
-            ((TextFieldValidated_Text)this.fxml_include_invoiceRefNumber_boxController.fxml_component_main_element).textProperty().bindBidirectional(var1.DAS().DDG());
-            ((DatePickerRequired)this.fxml_include_eventDate_boxController.fxml_component_main_element).valueProperty().bindBidirectional(var1.DAU().DEC());
-            ((DatePickerRequired)this.fxml_include_issueDate_boxController.fxml_component_main_element).valueProperty().bindBidirectional(var1.DAT().DEC());
-            ((DatePickerRequired)this.fxml_include_receiptDate_boxController.fxml_component_main_element).valueProperty().bindBidirectional(var1.DBR().DEC());
-            ((DatePickerRequired)this.fxml_include_invoicingDate_boxController.fxml_component_main_element).valueProperty().bindBidirectional(var1.DAF().DDL());
-            ((DatePickerRequired)this.fxml_include_invoicingDate_boxController.fxml_component_main_element).valueProperty().bindBidirectional(var1.DBS().DEC());
-            HI var2 = var1.DBQ();
-            ((ComboBoxValidated_ContractorName)this.fxml_include_ContractorName_boxController.fxml_component_main_element).getEditor().textProperty().bindBidirectional(var2.DAI().DDG());
-            ((ComboBoxValidated_NIP)this.fxml_include_nip_boxController.fxml_component_main_element).getEditor().textProperty().bindBidirectional(var1.DAR().DDG());
-            ((ComboBoxValidated_NIP)this.fxml_include_nip_boxController.fxml_component_main_element).getEditor().textProperty().bindBidirectional(var2.DAJ().DDG());
-            JJ var3 = var2.DAM();
-            ((TextFieldValidated_Text)this.fxml_include_Street_boxController.fxml_component_main_element).textProperty().bindBidirectional(var3.DDA().DDG());
-            ((TextFieldValidated_Text)this.fxml_include_HouseNumber_boxController.fxml_component_main_element).textProperty().bindBidirectional(var3.DDB().DDG());
-            ((TextFieldValidated_Text)this.fxml_include_ApartmentNumber_boxController.fxml_component_main_element).textProperty().bindBidirectional(var3.DDC().DDG());
-            ((TextFieldValidated_PostalCode)this.fxml_include_PostalCode_boxController.fxml_component_main_element).textProperty().bindBidirectional(var3.DDD().DDG());
-            ((TextFieldValidated_Text)this.fxml_include_City_boxController.fxml_component_main_element).textProperty().bindBidirectional(var3.DCZ().DDG());
-            this.fxml_summary_values_tableView.getItems().add(var1);
-            this.fxml_registry_invoicePositionTable_tableView.itemsProperty().bindBidirectional(var1.DBT());
-            this.RFG = new QUW.QUX();
-            this.fxml_registry_invoicePositionTable_tableView.getItems().addListener(this.RFG);
-            this.RFD.bind(this.fxml_registry_invoicePositionTable_tableView.itemsProperty());
-            if (var1.RIE().getValue() == null) {
-               var1.RIE().setValue(QSV.NET);
+    public void RKP() {
+        EXF.getInstance().ICO();
+
+        try {
+            this.calculation_method_radio_group.selectedToggleProperty().removeListener(this.RAK);
+            this.RAK = null;
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    private void RKQ(ToggleGroup var1, String var2) {
+        Iterator var3 = var1.getToggles().iterator();
+
+        while (var3.hasNext()) {
+            Toggle var4 = (Toggle) var3.next();
+            if (((RadioButton) var4).getUserData().toString().equals(var2)) {
+                var4.setSelected(true);
+            }
+        }
+
+    }
+
+    public void RKR(String var1) {
+        if (var1.equals("NET")) {
+            this.fxml_registry_unitValue_tableColumn.setCellValueFactory(null);
+            this.fxml_registry_unitValue_tableColumn.setCellValueFactory(new PropertyValueFactory("netPriceForUnit"));
+        } else if (var1.equals("GROSS")) {
+            this.fxml_registry_unitValue_tableColumn.setCellValueFactory(null);
+            this.fxml_registry_unitValue_tableColumn.setCellValueFactory(new PropertyValueFactory("grossPriceForUnit"));
+        }
+
+        this.fxml_registry_unitValue_tableColumn.setText(this.resources.getString("micro.process.invoice_sale_new.InvoiceElementPrice_" + var1));
+        this.fxml_summary_values_tableView.refresh();
+        this.fxml_registry_invoicePositionTable_tableView.refresh();
+    }
+
+    public void RKS(String var1) {
+        HP var3;
+        for (Iterator var2 = this.REZ.getInvoiceElements().iterator(); var2.hasNext(); this.RJV(null, var3, null)) {
+            var3 = (HP) var2.next();
+            if (var1.equals("NET")) {
+                var3.DBI().setValue(var3.RIF().getValue());
+            } else if (var1.equals("GROSS")) {
+                var3.RIF().setValue(var3.DBI().getValue());
+            }
+        }
+
+        this.HJJ();
+    }
+
+    @FXML
+    protected void fxml_handleButton_registry_addNewInvoicePosition(ActionEvent var1) {
+        EXF.getInstance().ICO();
+
+        try {
+            if (this.REZ != null) {
+                FXMLLoader var2 = new FXMLLoader();
+                var2.setLocation(ESU.class.getResource("/fxml/invoicePurchaseNewLogic_addNewPosition.fxml"));
+                var2.setResources(this.resources);
+                AnchorPane var3 = var2.load();
+                Stage var4 = new Stage();
+                var4.setTitle(this.resources.getString("micro.process.invoice_purchase_addNewPosition.Header"));
+                var4.initModality(Modality.WINDOW_MODAL);
+                var4.initOwner(this.FGW);
+                var4.setResizable(false);
+                var4.getIcons().add(new Image("/img/app/e_logo.png"));
+                Scene var5 = new Scene(var3);
+                var4.setScene(var5);
+                ESM var6 = var2.getController();
+                var6.setDialogStage(var4);
+                var6.setCalculationMethod(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
+                var6.setupDefaults(this.resources);
+                var6.setProductAutocomplete(this.GFB);
+                var4.showAndWait();
+                if (var6.getResult()) {
+                    HP var7 = new HP();
+                    var7.DBE().setValue((String) ((ComboBoxRequired) var6.fxml_include_itemNameRequiredTextBox_boxController.fxml_component_main_element).getValue());
+                    var7.DBE().setMaxLength(var6.fxml_include_itemNameRequiredTextBox_boxController.fxml_component_root_element.getMaxLength());
+                    var7.DBG().setValue(var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element.getNumber());
+                    var7.DBG().setAllowNegative(var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element.IFG());
+                    var7.DBG().setScale(var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element.getMaxLength());
+                    var7.DBG().setPresicion(var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element.getMaximumFractionDigits());
+                    var7.DBH().setValue(var6.fxml_include_measurementUnitRequiredTextBox_boxController.fxml_component_main_element.getText());
+                    var7.DBH().setMaxLength(var6.fxml_include_measurementUnitRequiredTextBox_boxController.fxml_component_root_element.getMaxLength());
+                    var7.DBN().setValue((KL) ((ComboBoxRequired) var6.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getValue());
+                    var7.DBI().setValue(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getNumber());
+                    var7.DBI().setAllowNegative(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.IFG());
+                    var7.DBI().setScale(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getMaxLength());
+                    var7.DBI().setPresicion(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getMaximumFractionDigits());
+                    var7.RIF().setValue(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getNumber());
+                    var7.RIF().setAllowNegative(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.IFG());
+                    var7.RIF().setScale(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getMaxLength());
+                    var7.RIF().setPresicion(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getMaximumFractionDigits());
+                    var7.DBO().setValue(var6.fxml_include_deductHalfLabeledCheckBox_boxController.fxml_component_main_element.isSelected());
+                    var7.DBP().setValue((KM) ((ComboBoxRequired) var6.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getValue());
+                    this.RJV(null, var7, null);
+                    this.fxml_registry_invoicePositionTable_tableView.getItems().add(var7);
+                    this.fxml_registry_invoicePositionTable_tableView.refresh();
+                    EXF.getInstance().ICE("Added new invoice element, current number of elements: " + this.fxml_registry_invoicePositionTable_tableView.getItems().size());
+                }
+            }
+        } catch (IOException var11) {
+            EXF.getInstance().ICA(var11);
+            throw new FFI(var11);
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    public void HHC() {
+        EXF.getInstance().ICO();
+
+        try {
+            this.fxml_include_nip_boxController.setContractorGetter(this.GFB);
+            this.fxml_include_nip_boxController.setContractorSetter(this);
+            this.fxml_include_ContractorName_boxController.setContractorGetter(this.GFB);
+            this.fxml_include_ContractorName_boxController.setContractorSetter(this);
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    public boolean HHB() {
+        EXF.getInstance().ICO();
+
+        boolean var1;
+        try {
+            this.fxml_include_invoicingDate_boxController.IFP();
+            this.fxml_include_nip_boxController.fxml_component_main_element.getItems().clear();
+            this.fxml_include_nip_boxController.fxml_component_main_element.setValue(null);
+            this.fxml_include_ContractorName_boxController.fxml_component_main_element.getItems().clear();
+            this.fxml_include_ContractorName_boxController.fxml_component_main_element.setValue(null);
+            this.fxml_include_ContractorName_boxController.HAS = false;
+            this.fxml_include_nip_boxController.HAS = false;
+            this.RKP();
+            var1 = true;
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+        return var1;
+    }
+
+    public void setProcessImplementation(ESX var1) {
+        EXF.getInstance().ICO();
+
+        try {
+            this.GFB = var1;
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+    }
+
+    public boolean RJW(JN var1, KE var2, KA var3) {
+        EXF.getInstance().ICO();
+
+        boolean var4;
+        try {
+            if (this.GFB == null) {
+                var4 = false;
+                return var4;
             }
 
-            String var4 = ((QSV)var1.RIE().getValue()).toString();
-            if (this.fxml_registry_unitValue_tableColumn != null) {
-               if (var4.equals("NET")) {
-                  this.fxml_registry_unitValue_tableColumn.setCellValueFactory(new PropertyValueFactory("netPriceForUnit"));
-               } else if (var4.equals("GROSS")) {
-                  this.fxml_registry_unitValue_tableColumn.setCellValueFactory(new PropertyValueFactory("grossPriceForUnit"));
-               }
+            var4 = this.GFB.HUC(var1, var2, var3);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-               this.fxml_registry_unitValue_tableColumn.setText(this.resources.getString("micro.process.invoice_purchase_new.RegistryTable_unitValue_" + var4));
-               this.RKQ(this.calculation_method_radio_group, var4);
+        return var4;
+    }
+
+    public boolean RJX(JN var1) {
+        EXF.getInstance().ICO();
+
+        boolean var2;
+        try {
+            if (this.GFB == null) {
+                var2 = false;
+                return var2;
             }
 
-            this.RAK = new QTJ(this);
-            this.calculation_method_radio_group.selectedToggleProperty().addListener(this.RAK);
+            var2 = this.GFB.HUD(var1);
+        } finally {
+            EXF.getInstance().ICP();
+        }
+
+        return var2;
+    }
+
+    public void RJV(HO var1, HO var2, QSV var3) {
+        EXF.getInstance().ICO();
+
+        try {
+            var3 = QSV.valueOf(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
+            QRX var4 = QRY.getInvoiceCalculationMethod(var3, false);
+            var4.RIB(var1, var2);
+            this.RFE.set(true);
             this.fxml_summary_values_tableView.refresh();
             this.fxml_registry_invoicePositionTable_tableView.refresh();
-         }
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-         this.RKA();
-      } finally {
-         EXF.getInstance().ICP();
-      }
+    }
 
-   }
+    protected void RJY() {
+        EXF.getInstance().ICO();
 
-   public void RKP() {
-      EXF.getInstance().ICO();
+        try {
+            this.RFF.set(false);
+            boolean var1 = true;
+            if (this.REZ.getInvoiceElements() != null) {
+                Iterator var2 = this.REZ.getInvoiceElements().iterator();
 
-      try {
-         this.calculation_method_radio_group.selectedToggleProperty().removeListener(this.RAK);
-         this.RAK = null;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+                while (var2.hasNext()) {
+                    HO var3 = (HO) var2.next();
+                    HP var4 = (HP) var3;
+                    if (var4.DBE().getValue() != null && var4.DBE().getValue().trim().length() != 0) {
+                        if (var4.DBH().getValue() != null && var4.DBH().getValue().trim().length() != 0) {
+                            if (var4.DBG().getValue() == null) {
+                                var1 = false;
+                                break;
+                            }
 
-   }
+                            if (var4.DBN().getValue() == null) {
+                                var1 = false;
+                                break;
+                            }
 
-   private void RKQ(ToggleGroup var1, String var2) {
-      Iterator var3 = var1.getToggles().iterator();
+                            if (var4.DBI().getValue() == null) {
+                                var1 = false;
+                                break;
+                            }
 
-      while(var3.hasNext()) {
-         Toggle var4 = (Toggle)var3.next();
-         if (((RadioButton)var4).getUserData().toString().equals(var2)) {
-            var4.setSelected(true);
-         }
-      }
+                            if (var4.DBK().getValue() == null) {
+                                var1 = false;
+                                break;
+                            }
 
-   }
+                            if (var4.DBM().getValue() == null) {
+                                var1 = false;
+                                break;
+                            }
 
-   public void RKR(String var1) {
-      if (var1.equals("NET")) {
-         this.fxml_registry_unitValue_tableColumn.setCellValueFactory((Callback)null);
-         this.fxml_registry_unitValue_tableColumn.setCellValueFactory(new PropertyValueFactory("netPriceForUnit"));
-      } else if (var1.equals("GROSS")) {
-         this.fxml_registry_unitValue_tableColumn.setCellValueFactory((Callback)null);
-         this.fxml_registry_unitValue_tableColumn.setCellValueFactory(new PropertyValueFactory("grossPriceForUnit"));
-      }
+                            if (var4.DBL().getValue() == null) {
+                                var1 = false;
+                                break;
+                            }
 
-      this.fxml_registry_unitValue_tableColumn.setText(this.resources.getString("micro.process.invoice_sale_new.InvoiceElementPrice_" + var1));
-      this.fxml_summary_values_tableView.refresh();
-      this.fxml_registry_invoicePositionTable_tableView.refresh();
-   }
+                            if (var4.DBP().getValue() == null) {
+                                var1 = false;
+                                break;
+                            }
+                            continue;
+                        }
 
-   public void RKS(String var1) {
-      HP var3;
-      for(Iterator var2 = this.REZ.getInvoiceElements().iterator(); var2.hasNext(); this.RJV((HO)null, (HO)var3, (QSV)null)) {
-         var3 = (HP)var2.next();
-         if (var1.equals("NET")) {
-            var3.DBI().setValue(var3.RIF().getValue());
-         } else if (var1.equals("GROSS")) {
-            var3.RIF().setValue(var3.DBI().getValue());
-         }
-      }
+                        var1 = false;
+                        break;
+                    }
 
-      this.HJJ();
-   }
+                    var1 = false;
+                    break;
+                }
 
-   @FXML
-   protected void fxml_handleButton_registry_addNewInvoicePosition(ActionEvent var1) {
-      EXF.getInstance().ICO();
-
-      try {
-         if (this.REZ != null) {
-            FXMLLoader var2 = new FXMLLoader();
-            var2.setLocation(ESU.class.getResource("/fxml/invoicePurchaseNewLogic_addNewPosition.fxml"));
-            var2.setResources(this.resources);
-            AnchorPane var3 = (AnchorPane)var2.load();
-            Stage var4 = new Stage();
-            var4.setTitle(this.resources.getString("micro.process.invoice_purchase_addNewPosition.Header"));
-            var4.initModality(Modality.WINDOW_MODAL);
-            var4.initOwner(this.FGW);
-            var4.setResizable(false);
-            var4.getIcons().add(new Image("/img/app/e_logo.png"));
-            Scene var5 = new Scene(var3);
-            var4.setScene(var5);
-            ESM var6 = (ESM)var2.getController();
-            var6.setDialogStage(var4);
-            var6.setCalculationMethod(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
-            var6.setupDefaults(this.resources);
-            var6.setProductAutocomplete(this.GFB);
-            var4.showAndWait();
-            if (var6.getResult()) {
-               HP var7 = new HP();
-               var7.DBE().setValue((String) ((ComboBoxRequired)var6.fxml_include_itemNameRequiredTextBox_boxController.fxml_component_main_element).getValue());
-               var7.DBE().setMaxLength(var6.fxml_include_itemNameRequiredTextBox_boxController.fxml_component_root_element.getMaxLength());
-               var7.DBG().setValue(((TextFieldValidated_Number)var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element).getNumber());
-               var7.DBG().setAllowNegative(((TextFieldValidated_Number)var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element).IFG());
-               var7.DBG().setScale(((TextFieldValidated_Number)var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element).getMaxLength());
-               var7.DBG().setPresicion(((TextFieldValidated_Number)var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element).getMaximumFractionDigits());
-               var7.DBH().setValue(((TextFieldValidated_Text)var6.fxml_include_measurementUnitRequiredTextBox_boxController.fxml_component_main_element).getText());
-               var7.DBH().setMaxLength(var6.fxml_include_measurementUnitRequiredTextBox_boxController.fxml_component_root_element.getMaxLength());
-               var7.DBN().setValue((KL) ((ComboBoxRequired)var6.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getValue());
-               var7.DBI().setValue(((TextFieldValidated_Number)var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element).getNumber());
-               var7.DBI().setAllowNegative(((TextFieldValidated_Number)var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element).IFG());
-               var7.DBI().setScale(((TextFieldValidated_Number)var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element).getMaxLength());
-               var7.DBI().setPresicion(((TextFieldValidated_Number)var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element).getMaximumFractionDigits());
-               var7.RIF().setValue(((TextFieldValidated_Number)var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element).getNumber());
-               var7.RIF().setAllowNegative(((TextFieldValidated_Number)var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element).IFG());
-               var7.RIF().setScale(((TextFieldValidated_Number)var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element).getMaxLength());
-               var7.RIF().setPresicion(((TextFieldValidated_Number)var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element).getMaximumFractionDigits());
-               var7.DBO().setValue(var6.fxml_include_deductHalfLabeledCheckBox_boxController.fxml_component_main_element.isSelected());
-               var7.DBP().setValue((KM) ((ComboBoxRequired)var6.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getValue());
-               this.RJV((HO)null, (HO)var7, (QSV)null);
-               this.fxml_registry_invoicePositionTable_tableView.getItems().add(var7);
-               this.fxml_registry_invoicePositionTable_tableView.refresh();
-               EXF.getInstance().ICE("Added new invoice element, current number of elements: " + this.fxml_registry_invoicePositionTable_tableView.getItems().size());
+                this.RFF.set(var1);
             }
-         }
-      } catch (IOException var11) {
-         EXF.getInstance().ICA((Throwable)var11);
-         throw new FFI(var11);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
-
-   public void HHC() {
-      EXF.getInstance().ICO();
-
-      try {
-         this.fxml_include_nip_boxController.setContractorGetter(this.GFB);
-         this.fxml_include_nip_boxController.setContractorSetter(this);
-         this.fxml_include_ContractorName_boxController.setContractorGetter(this.GFB);
-         this.fxml_include_ContractorName_boxController.setContractorSetter(this);
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-   }
-
-   public boolean HHB() {
-      EXF.getInstance().ICO();
-
-      boolean var1;
-      try {
-         this.fxml_include_invoicingDate_boxController.IFP();
-         ((ComboBoxValidated_NIP)this.fxml_include_nip_boxController.fxml_component_main_element).getItems().clear();
-         ((ComboBoxValidated_NIP)this.fxml_include_nip_boxController.fxml_component_main_element).setValue(null);
-         ((ComboBoxValidated_ContractorName)this.fxml_include_ContractorName_boxController.fxml_component_main_element).getItems().clear();
-         ((ComboBoxValidated_ContractorName)this.fxml_include_ContractorName_boxController.fxml_component_main_element).setValue(null);
-         this.fxml_include_ContractorName_boxController.HAS = false;
-         this.fxml_include_nip_boxController.HAS = false;
-         this.RKP();
-         var1 = true;
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-      return var1;
-   }
-
-   public void setProcessImplementation(ESX var1) {
-      EXF.getInstance().ICO();
-
-      try {
-         this.GFB = var1;
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-   }
-
-   public boolean RJW(JN var1, KE var2, KA var3) {
-      EXF.getInstance().ICO();
-
-      boolean var4;
-      try {
-         if (this.GFB == null) {
-            var4 = false;
-            return var4;
-         }
-
-         var4 = this.GFB.HUC(var1, var2, var3);
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-      return var4;
-   }
-
-   public boolean RJX(JN var1) {
-      EXF.getInstance().ICO();
-
-      boolean var2;
-      try {
-         if (this.GFB == null) {
-            var2 = false;
-            return var2;
-         }
-
-         var2 = this.GFB.HUD(var1);
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-      return var2;
-   }
-
-   public void RJV(HO var1, HO var2, QSV var3) {
-      EXF.getInstance().ICO();
-
-      try {
-         var3 = QSV.valueOf(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
-         QRX var4 = QRY.getInvoiceCalculationMethod(var3, false);
-         var4.RIB(var1, var2);
-         this.RFE.set(true);
-         this.fxml_summary_values_tableView.refresh();
-         this.fxml_registry_invoicePositionTable_tableView.refresh();
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-   }
-
-   protected void RJY() {
-      EXF.getInstance().ICO();
-
-      try {
-         this.RFF.set(false);
-         boolean var1 = true;
-         if (this.REZ.getInvoiceElements() != null) {
-            Iterator var2 = this.REZ.getInvoiceElements().iterator();
-
-            while(var2.hasNext()) {
-               HO var3 = (HO)var2.next();
-               HP var4 = (HP)var3;
-               if (var4.DBE().getValue() != null && ((String)var4.DBE().getValue()).trim().length() != 0) {
-                  if (var4.DBH().getValue() != null && ((String)var4.DBH().getValue()).trim().length() != 0) {
-                     if (var4.DBG().getValue() == null) {
-                        var1 = false;
-                        break;
-                     }
-
-                     if (var4.DBN().getValue() == null) {
-                        var1 = false;
-                        break;
-                     }
-
-                     if (var4.DBI().getValue() == null) {
-                        var1 = false;
-                        break;
-                     }
-
-                     if (var4.DBK().getValue() == null) {
-                        var1 = false;
-                        break;
-                     }
-
-                     if (var4.DBM().getValue() == null) {
-                        var1 = false;
-                        break;
-                     }
-
-                     if (var4.DBL().getValue() == null) {
-                        var1 = false;
-                        break;
-                     }
-
-                     if (var4.DBP().getValue() == null) {
-                        var1 = false;
-                        break;
-                     }
-                     continue;
-                  }
-
-                  var1 = false;
-                  break;
-               }
-
-               var1 = false;
-               break;
-            }
-
-            this.RFF.set(var1);
-         }
-      } finally {
-         EXF.getInstance().ICP();
-      }
-
-   }
+    }
 }

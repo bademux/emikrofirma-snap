@@ -5,39 +5,39 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 
 public interface EYE extends EXV {
-   boolean IFG();
+    boolean IFG();
 
-   void setAllowNegative(boolean var1);
+    void setAllowNegative(boolean var1);
 
-   BooleanProperty IFH();
+    BooleanProperty IFH();
 
-   boolean RHT();
+    boolean RHT();
 
-   void setAllowOnlyNegative(boolean var1);
+    void setAllowOnlyNegative(boolean var1);
 
-   BooleanProperty RHU();
+    BooleanProperty RHU();
 
-   int getMinimumFractionDigits();
+    int getMinimumFractionDigits();
 
-   void setMinimumFractionDigits(int var1);
+    void setMinimumFractionDigits(int var1);
 
-   IntegerProperty IFI();
+    IntegerProperty IFI();
 
-   int getMaximumFractionDigits();
+    int getMaximumFractionDigits();
 
-   void setMaximumFractionDigits(int var1);
+    void setMaximumFractionDigits(int var1);
 
-   IntegerProperty IFJ();
+    IntegerProperty IFJ();
 
-   double getMinimumValue();
+    double getMinimumValue();
 
-   void setMinimumValue(double var1);
+    void setMinimumValue(double var1);
 
-   DoubleProperty IFK();
+    DoubleProperty IFK();
 
-   double getMaximumValue();
+    double getMaximumValue();
 
-   void setMaximumValue(double var1);
+    void setMaximumValue(double var1);
 
-   DoubleProperty IFL();
+    DoubleProperty IFL();
 }

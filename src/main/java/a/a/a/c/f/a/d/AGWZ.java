@@ -5,9 +5,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public enum AGWZ {
-   JPK,
-   JPKAH;
+    JPK,
+    JPKAH;
 
-   private AGWZ() {
-   }
+    AGWZ() {
+    }
 }

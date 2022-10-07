@@ -5,20 +5,20 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.control.Hyperlink;
 
 public class HyperlinkBox extends Hyperlink {
-   private StringProperty QVY = new SimpleStringProperty(this, "href");
+    private final StringProperty QVY = new SimpleStringProperty(this, "href");
 
-   public HyperlinkBox() {
-   }
+    public HyperlinkBox() {
+    }
 
-   public final String getHref() {
-      return this.QVY.getValue();
-   }
+    public final String getHref() {
+        return this.QVY.getValue();
+    }
 
-   public final void setHref(String var1) {
-      this.QVY.setValue(var1);
-   }
+    public final void setHref(String var1) {
+        this.QVY.setValue(var1);
+    }
 
-   public final StringProperty hrefProperty() {
-      return this.QVY;
-   }
+    public final StringProperty hrefProperty() {
+        return this.QVY;
+    }
 }

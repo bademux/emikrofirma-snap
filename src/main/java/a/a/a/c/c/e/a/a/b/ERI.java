@@ -7,16 +7,16 @@ import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
 
 public class ERI implements EventHandler<DragEvent> {
-   private final ERR FZO;
+    private final ERR FZO;
 
-   public ERI(ERR var1) {
-      this.FZO = var1;
-   }
+    public ERI(ERR var1) {
+        this.FZO = var1;
+    }
 
-   public void handle(DragEvent var1) {
-      this.FZO.setNode((Node)null);
-      this.FZO.setImage((Image)null);
-      this.FZO.setDropped(false);
-      var1.consume();
-   }
+    public void handle(DragEvent var1) {
+        this.FZO.setNode(null);
+        this.FZO.setImage(null);
+        this.FZO.setDropped(false);
+        var1.consume();
+    }
 }

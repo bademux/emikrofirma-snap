@@ -7,17 +7,17 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 public class QUQ implements ChangeListener<QSQ> {
-   private QUN REP;
+    private final QUN REP;
 
-   public QUQ(QUN var1) {
-      this.REP = var1;
-   }
+    public QUQ(QUN var1) {
+        this.REP = var1;
+    }
 
-   public void changed(ObservableValue<? extends QSQ> var1, QSQ var2, QSQ var3) {
-      if (var3 != null) {
-         this.REP.RNT();
-         EXF.getInstance().ICE("Elements type changed");
-      }
+    public void changed(ObservableValue<? extends QSQ> var1, QSQ var2, QSQ var3) {
+        if (var3 != null) {
+            this.REP.RNT();
+            EXF.getInstance().ICE("Elements type changed");
+        }
 
-   }
+    }
 }

@@ -4,15 +4,15 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
 
 public interface EXW<_T> extends EYA {
-   StringProperty promptTextProperty();
+    StringProperty promptTextProperty();
 
-   String getPromptText();
+    String getPromptText();
 
-   void setPromptText(String var1);
+    void setPromptText(String var1);
 
-   _T getValue();
+    _T getValue();
 
-   void setValue(_T var1);
+    void setValue(_T var1);
 
-   ObjectProperty<_T> valueProperty();
+    ObjectProperty<_T> valueProperty();
 }

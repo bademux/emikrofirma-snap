@@ -5,11 +5,11 @@ import a.a.a.c.f.c.a.RequiredGridPane;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 
 public class EZE<_T> extends EYD<_T, RequiredGridPane, ComboBoxRequired<_T>> {
-   public EZE() {
-      this((String)null);
-   }
+    public EZE() {
+        this(null);
+    }
 
-   public EZE(String var1) {
-      super(var1);
-   }
+    public EZE(String var1) {
+        super(var1);
+    }
 }

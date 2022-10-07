@@ -9,82 +9,82 @@ import a.a.a.c.f.a.g.JB;
 import a.a.a.c.f.c.a.LP;
 
 public class ERU extends ELV {
-   private LP GBI;
-   private boolean GBJ;
+    private LP GBI;
+    private boolean GBJ;
 
-   public ERU() {
-      super(ERT.GBH.getProcessName());
-      EXF.getInstance().ICO();
+    public ERU() {
+        super(ERT.GBH.getProcessName());
+        EXF.getInstance().ICO();
 
-      try {
-         this.GBI = null;
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.GBI = null;
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   protected void HHI() {
-      EXF.getInstance().ICO();
+    protected void HHI() {
+        EXF.getInstance().ICO();
 
-      try {
-         if (this.GBI == null) {
-            JB var1 = new JB(LP.class);
-            this.GBI = (LP)this.getModelManager().HJT(this.getParentDefinition(), var1);
-            if (this.GBI != null) {
-               this.GBJ = false;
-            } else {
-               this.GBI = new LP();
-               this.GBJ = true;
+        try {
+            if (this.GBI == null) {
+                JB var1 = new JB(LP.class);
+                this.GBI = (LP) this.getModelManager().HJT(this.getParentDefinition(), var1);
+                if (this.GBI != null) {
+                    this.GBJ = false;
+                } else {
+                    this.GBI = new LP();
+                    this.GBJ = true;
+                }
             }
-         }
-      } catch (FFK var5) {
-         EXF.getInstance().ICA((Throwable)var5);
-         throw new FFI(var5);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        } catch (FFK var5) {
+            EXF.getInstance().ICA(var5);
+            throw new FFI(var5);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   protected void HHJ() {
-      EXF.getInstance().ICO();
+    protected void HHJ() {
+        EXF.getInstance().ICO();
 
-      try {
-         if (this.GBJ) {
-            this.getModelManager().HJU(this.getParentDefinition(), this.GBI);
-            this.GBJ = false;
-         } else {
-            this.getModelManager().HJV(this.getParentDefinition(), this.GBI);
-         }
+        try {
+            if (this.GBJ) {
+                this.getModelManager().HJU(this.getParentDefinition(), this.GBI);
+                this.GBJ = false;
+            } else {
+                this.getModelManager().HJV(this.getParentDefinition(), this.GBI);
+            }
 
-         this.getModelManager().HKL(this.getParentDefinition());
-         this.GBI = null;
-      } catch (FFK var5) {
-         EXF.getInstance().ICA((Throwable)var5);
-         throw new FFI(var5);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+            this.getModelManager().HKL(this.getParentDefinition());
+            this.GBI = null;
+        } catch (FFK var5) {
+            EXF.getInstance().ICA(var5);
+            throw new FFI(var5);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   protected void resetAndCleanUpProcessImpl() {
-      EXF.getInstance().ICO();
+    protected void resetAndCleanUpProcessImpl() {
+        EXF.getInstance().ICO();
 
-      try {
-         this.getModelManager().resetData(this.getParentDefinition());
-         this.GBI = null;
-      } catch (FFK var5) {
-         EXF.getInstance().ICA((Throwable)var5);
-         throw new FFI(var5);
-      } finally {
-         EXF.getInstance().ICP();
-      }
+        try {
+            this.getModelManager().resetData(this.getParentDefinition());
+            this.GBI = null;
+        } catch (FFK var5) {
+            EXF.getInstance().ICA(var5);
+            throw new FFI(var5);
+        } finally {
+            EXF.getInstance().ICP();
+        }
 
-   }
+    }
 
-   public LP getConfigurationProperties() {
-      return this.GBI;
-   }
+    public LP getConfigurationProperties() {
+        return this.GBI;
+    }
 }

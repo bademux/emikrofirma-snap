@@ -7,70 +7,70 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
-   name = "FileSignatureType",
-   propOrder = {"ordinalNumber", "fileName", "contentLength", "hashValue"}
+        name = "FileSignatureType",
+        propOrder = {"ordinalNumber", "fileName", "contentLength", "hashValue"}
 )
 public class FileSignatureType {
-   @XmlElement(
-      name = "OrdinalNumber"
-   )
-   protected int ordinalNumber;
-   @XmlElement(
-      name = "FileName",
-      required = true
-   )
-   protected String fileName;
-   @XmlElement(
-      name = "ContentLength"
-   )
-   protected int contentLength;
-   @XmlElement(
-      name = "HashValue",
-      required = true
-   )
-   protected HashValue hashValue;
+    @XmlElement(
+            name = "OrdinalNumber"
+    )
+    protected int ordinalNumber;
+    @XmlElement(
+            name = "FileName",
+            required = true
+    )
+    protected String fileName;
+    @XmlElement(
+            name = "ContentLength"
+    )
+    protected int contentLength;
+    @XmlElement(
+            name = "HashValue",
+            required = true
+    )
+    protected HashValue hashValue;
 
-   public FileSignatureType() {
-   }
+    public FileSignatureType() {
+    }
 
-   public int getOrdinalNumber() {
-      return this.ordinalNumber;
-   }
+    public int getOrdinalNumber() {
+        return this.ordinalNumber;
+    }
 
-   public void setOrdinalNumber(int var1) {
-      this.ordinalNumber = var1;
-   }
+    public void setOrdinalNumber(int var1) {
+        this.ordinalNumber = var1;
+    }
 
-   public String getFileName() {
-      return this.fileName;
-   }
+    public String getFileName() {
+        return this.fileName;
+    }
 
-   public void setFileName(String var1) {
-      this.fileName = var1;
-   }
+    public void setFileName(String var1) {
+        this.fileName = var1;
+    }
 
-   public int getContentLength() {
-      return this.contentLength;
-   }
+    public int getContentLength() {
+        return this.contentLength;
+    }
 
-   public void setContentLength(int var1) {
-      this.contentLength = var1;
-   }
+    public void setContentLength(int var1) {
+        this.contentLength = var1;
+    }
 
-   public HashValue getHashValue() {
-      return this.hashValue;
-   }
+    public HashValue getHashValue() {
+        return this.hashValue;
+    }
 
-   public void setHashValue(HashValue var1) {
-      this.hashValue = var1;
-   }
+    public void setHashValue(HashValue var1) {
+        this.hashValue = var1;
+    }
 
-   @XmlAccessorType(XmlAccessType.FIELD)
-   @XmlType(
-      name = ""
-   )
-   public static class HashValue extends HashValueMD5Type {
-      public HashValue() {
-      }
-   }
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(
+            name = ""
+    )
+    public static class HashValue extends HashValueMD5Type {
+        public HashValue() {
+        }
+    }
 }

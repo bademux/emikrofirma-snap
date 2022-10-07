@@ -7,16 +7,16 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class QKO implements ChangeListener<Boolean> {
-   private final ComboBox<KK> QNP;
+    private final ComboBox<KK> QNP;
 
-   public QKO(ComboBox<KK> var1) {
-      this.QNP = var1;
-   }
+    public QKO(ComboBox<KK> var1) {
+        this.QNP = var1;
+    }
 
-   public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
-      if (!var3) {
-         QKM.setupComboBoxValues(this.QNP, (TextField)null, false);
-      }
+    public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
+        if (!var3) {
+            QKM.setupComboBoxValues(this.QNP, null, false);
+        }
 
-   }
+    }
 }

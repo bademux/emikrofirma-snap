@@ -1,11 +1,9 @@
 package a.a.a.c.e;
 
-import a.a.a.c.e.a.EXI;
 import a.a.a.c.e.a.EXO;
 import a.a.a.c.e.a.EXQ;
 import a.a.a.c.e.a.a.EVK;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.b.EVU;
 import a.a.a.c.e.a.c.EVW;
 import a.a.a.c.e.a.d.EWA;
 import a.a.a.c.e.a.d.EWD;
@@ -13,7 +11,6 @@ import a.a.a.c.e.a.d.EWE;
 import a.a.a.c.e.a.e.EWF;
 import a.a.a.c.e.a.f.*;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.i.EXB;
 import a.a.a.c.e.a.j.EXC;
 import a.a.a.c.e.a.j.EXD;
 import a.a.a.c.e.a.k.a.EXF;
@@ -59,25 +56,17 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
 import java.util.concurrent.Semaphore;
-import java.util.jar.JarInputStream;
 
 public class EXK extends Application implements EVW {
     public static final EWS GUV = EWS.http;
     private final ResourceBundle GTN;
-    private final EXB GTO;
-    private final String GTP = " | ";
-    private final String GTQ;
-    private final String GTR;
-    private final String GTS;
-    private final String GTT;
+    private final String msgInit;
+    private final String msgStart;
+    private final String msgStopSuccess;
+    private final String msgStopFailure;
     private final Rectangle2D GTU = Screen.getPrimary().getVisualBounds();
     private Stage GTV;
     private EXJ GTW;
-    private final EXI GTX = new EXI(0, 0, 0, 0);
-    private final int QHN = 1;
-    private final int QHO = 8;
-    private final int QHP = 0;
-    private final int QHQ = 151;
     private static final Image QLA = new Image("/img/app/e_logo.png");
     private boolean QQO = false;
     private final Thread.UncaughtExceptionHandler GUC = new Thread.UncaughtExceptionHandler() {
@@ -224,11 +213,10 @@ public class EXK extends Application implements EVW {
             File var1 = new File(GPW);
             var1.mkdirs();
             this.GTN = ResourceBundle.getBundle("messages/launcher_messages", EXC.getInstance().getCurrentLocaleOrDefault(), new EXD());
-            this.GTO = new EXB("qr0w0t0tqwqg0eweq7qhqw0r0eqyqh0u".toCharArray(), "abcdabcd12341234".getBytes(), "abcdabcd12341234abcdabcd12341234".getBytes());
-            this.GTQ = this.GTN.getString("micro.launcher.progress.step.init");
-            this.GTR = this.GTN.getString("micro.launcher.progress.step.start");
-            this.GTS = this.GTN.getString("micro.launcher.progress.step.stop.success");
-            this.GTT = this.GTN.getString("micro.launcher.progress.step.stop.failure");
+            this.msgInit = this.GTN.getString("micro.launcher.progress.step.init");
+            this.msgStart = this.GTN.getString("micro.launcher.progress.step.start");
+            this.msgStopSuccess = this.GTN.getString("micro.launcher.progress.step.stop.success");
+            this.msgStopFailure = this.GTN.getString("micro.launcher.progress.step.stop.failure");
         } finally {
             EXF.getInstance().ICP();
         }
@@ -615,7 +603,7 @@ public class EXK extends Application implements EVW {
 
         try {
             EXF.getInstance().ICE("About to initialize main application");
-            this.IDZ(var1, this.GTQ, 0.0, -1.0);
+            this.IDZ(var1, this.msgInit, 0.0, -1.0);
 
             this.IDZ(var1, var2, 0.8, -1.0);
             this.IDZ(var1, var2, 0.85, -1.0);
@@ -658,7 +646,7 @@ public class EXK extends Application implements EVW {
 
                             }
                         };
-                        EXK.this.IDZ(var1, EXK.this.GTS, 1.0, 1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgStopSuccess, 1.0, 1.0);
                         var1x.invoke(EXK.this.GUD, EXK.this.GTV, var2);
                     } catch (Exception var6) {
                         EXF.getInstance().ICA(var6);
@@ -755,72 +743,6 @@ public class EXK extends Application implements EVW {
         return var2;
     }
 
-    private Map<String, EXI> IDW(File var1) throws IOException {
-        EXF.getInstance().ICO();
-
-        HashMap var18;
-        try {
-            HashMap var2 = new HashMap();
-            String[] var4 = EVU.getImplementationVersion(EXK.class);
-            EXI var3;
-            if (var4 != null) {
-                var3 = new EXI(var4);
-            } else {
-                var3 = new EXI(this.GTX);
-            }
-
-            var2.put("MicroLauncher." + EVW.EVX.Unix.getSuffix(), var3);
-            var2.put("MicroLauncher." + EVW.EVX.Windows.getSuffix(), var3);
-            boolean var16 = false;
-            String var17 = "MicroExternalResources.jar";
-            File var5 = new File(var1, var17);
-            byte[] var6;
-            JarInputStream var7;
-            String[] var8;
-            if (var5.isFile()) {
-                var6 = EWF.IAE(var5);
-
-                try {
-                    var7 = new JarInputStream(new ByteArrayInputStream(var6));
-                    var8 = EVU.getImplementationVersionForJarInputStream(var7);
-                    var2.put("MicroExternalResources.jar", new EXI(var8));
-                    var16 = true;
-                } catch (IOException var14) {
-                    EXF.getInstance().IBZ("!!", var14);
-                }
-            }
-
-            if (!var16) {
-                var2.put("MicroExternalResources.jar", new EXI(this.GTX));
-            }
-
-            var16 = false;
-            var17 = "MicroExternalLibraries.zip";
-            var5 = new File(var1, var17);
-            if (var5.isFile()) {
-                var6 = EWF.IAE(var5);
-
-                try {
-                    var7 = new JarInputStream(new ByteArrayInputStream(var6));
-                    var8 = EVU.getImplementationVersionForJarInputStream(var7);
-                    var2.put("MicroExternalLibraries.zip", new EXI(var8));
-                    var16 = true;
-                } catch (IOException var13) {
-                    EXF.getInstance().IBZ("!!", var13);
-                }
-            }
-
-            if (!var16) {
-                var2.put("MicroExternalLibraries.zip", new EXI(this.GTX));
-            }
-
-            var18 = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
-
-        return var18;
-    }
 
     private String IDX(String var1, String var2) {
         EXF.getInstance().ICO();
@@ -837,68 +759,6 @@ public class EXK extends Application implements EVW {
         return var5;
     }
 
-    private Map<EXO, EXI> IDY(File var1) throws Exception {
-        EXF.getInstance().ICO();
-
-        HashMap var28;
-        try {
-            HashMap var2 = new HashMap();
-            EXO[] var3 = EXO.values();
-            int var4 = var3.length;
-
-            int var5;
-            for (var5 = 0; var5 < var4; ++var5) {
-                EXO var6 = var3[var5];
-
-                for (int var7 = 0; var7 < var6.getLibParts(); ++var7) {
-                    String var8 = String.format("%02d", var7 + 1);
-                    String var9 = this.IDX(var6.getImplTitle(), var8);
-                    File var10 = new File(var1, var9);
-                    if (var10.isFile()) {
-                        try {
-                            byte[] var11 = EWF.IAE(var10);
-                            byte[] var12 = Base64.getDecoder().decode(var11);
-                            byte[] var13 = this.GTO.IBS(var12);
-                            byte[] var14 = Base64.getDecoder().decode(var13);
-                            JarInputStream var15 = new JarInputStream(new ByteArrayInputStream(var14));
-                            if (var15 != null) {
-                                String[] var16 = EVU.getImplementationVersionForJarInputStream(var15);
-                                String var17 = EVU.getImplementationTitleForJarInputStream(var15);
-                                EXO var18 = EXO.getLibraryByImplTitle(var17);
-                                if (var16 != null && var2.put(var18, new EXI(var16)) != null) {
-                                }
-                            }
-                        } catch (RuntimeException var23) {
-                            EXF.getInstance().IBZ("!!", var23);
-                        } catch (Exception var24) {
-                            EXF.getInstance().IBZ("!!", var24);
-                        }
-                    }
-                }
-            }
-
-            HashMap var26 = new HashMap();
-            EXO[] var27 = EXO.values();
-            var5 = var27.length;
-
-            for (int var29 = 0; var29 < var5; ++var29) {
-                EXO var30 = var27[var29];
-                EXI var31 = (EXI) var2.get(var30);
-                if (var31 == null) {
-                    var31 = new EXI(this.GTX);
-                }
-
-                var26.put(var30, var31);
-            }
-
-            var28 = var26;
-        } finally {
-            EXF.getInstance().ICP();
-        }
-
-        return var28;
-    }
-
     private void IDZ(String var1, String var2, Double var3, Double var4) {
         EXF.getInstance().ICO();
 
@@ -906,7 +766,6 @@ public class EXK extends Application implements EVW {
             String var5 = var1;
             if (var2 != null && var2.length() > 0) {
                 StringBuilder var10000 = (new StringBuilder()).append(var1);
-                this.getClass();
                 var5 = var10000.append(" | ").append(var2).toString();
             }
 
@@ -1006,10 +865,10 @@ public class EXK extends Application implements EVW {
             this.GUF = new HashMap();
             this.GUG = new HashMap();
             this.GTW.set_text_info(Color.DARKGREEN, null);
-            this.IDZ(var2, this.GTQ, 0.1, -1.0);
+            this.IDZ(var2, this.msgInit, 0.1, -1.0);
             this.IDR();
         } catch (Exception var39) {
-            this.IDZ(var2, this.GTT, 0.0, -1.0);
+            this.IDZ(var2, this.msgStopFailure, 0.0, -1.0);
             EXF.getInstance().IBZ(var39.getLocalizedMessage(), var39);
             this.IDR();
         } finally {
@@ -1028,12 +887,12 @@ public class EXK extends Application implements EVW {
                     EXF.getInstance().ICO();
 
                     try {
-                        EXK.this.IDZ(var1, EXK.this.GTQ, 0.0, -1.0);
-                        EXK.this.IDZ(var1, EXK.this.GTR, 0.05, -1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgInit, 0.0, -1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgStart, 0.05, -1.0);
                         EXK.this.IEG();
-                        EXK.this.IDZ(var1, EXK.this.GTS, 1.0, 1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgStopSuccess, 1.0, 1.0);
                     } catch (Exception var5) {
-                        EXK.this.IDZ(var1, EXK.this.GTT, 0.0, -1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgStopFailure, 0.0, -1.0);
                         EXF.getInstance().ICA(var5);
                         throw new RuntimeException(var5);
                     } finally {
@@ -1059,12 +918,12 @@ public class EXK extends Application implements EVW {
                     EXF.getInstance().ICO();
 
                     try {
-                        EXK.this.IDZ(var1, EXK.this.GTQ, 0.0, -1.0);
-                        EXK.this.IDZ(var1, EXK.this.GTR, 0.05, -1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgInit, 0.0, -1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgStart, 0.05, -1.0);
                         EXK.this.IEF();
-                        EXK.this.IDZ(var1, EXK.this.GTS, 1.0, 1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgStopSuccess, 1.0, 1.0);
                     } catch (Exception var5) {
-                        EXK.this.IDZ(var1, EXK.this.GTT, 0.0, -1.0);
+                        EXK.this.IDZ(var1, EXK.this.msgStopFailure, 0.0, -1.0);
                         EXF.getInstance().ICA(var5);
                         throw new RuntimeException(var5);
                     } finally {
@@ -1089,12 +948,12 @@ public class EXK extends Application implements EVW {
         try {
             var50 = true;
             if (this.GUF != null) {
-                this.IDZ(var1, this.GTQ, 0.05, -1.0);
+                this.IDZ(var1, this.msgInit, 0.05, -1.0);
                 File var3 = this.IDU();
                 File var4 = new File(var3, "msgs");
                 var2 = new File(var4, "tmp");
                 var2.mkdirs();
-                this.IDZ(var1, this.GTR, 0.1, -1.0);
+                this.IDZ(var1, this.msgStart, 0.1, -1.0);
                 boolean var5 = true;
                 int var6 = this.GUF.size();
                 int var7 = 0;
@@ -1265,10 +1124,10 @@ public class EXK extends Application implements EVW {
 
                 if (var5) {
                     EXF.getInstance().ICE("Libraries update finished with success.");
-                    this.IDZ(var1, this.GTS, 1.0, -1.0);
+                    this.IDZ(var1, this.msgStopSuccess, 1.0, -1.0);
                 } else {
                     EXF.getInstance().ICE("Libraries update finished with error.");
-                    this.IDZ(var1, this.GTT, 1.0, -1.0);
+                    this.IDZ(var1, this.msgStopFailure, 1.0, -1.0);
                     Thread.sleep(3000L);
                 }
             }

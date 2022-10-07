@@ -1470,7 +1470,7 @@ public class EXK extends Application implements EVW, EXP {
                 Certificate var6 = var5.generateCertificate(EXK.class.getResourceAsStream("/cert/akmf_apps.cert.pem"));
                 byte[] var7 = EXR.IER(var3.getBytes(StandardCharsets.UTF_8), var6);
                 String var8 = EXR.IEQ(var7);
-                EWJ var9 = new EWJ(EWP.GET, new URL(GUV.name(), "www.finanse.mf.gov.pl", -1, "/documents/766655/6211156/RELEASE3.txt"), EWQ.NONE, null);
+                EWJ var9 = new EWJ(EWP.GET, new URL(GUV.name(), "localhost", -1, "/documents/766655/6211156/RELEASE3.txt"), EWQ.NONE, null);
                 var9.getHeaderFields().put("Request-ID", var8);
                 this.IDZ(var2, this.GTR, 0.2, -1.0);
                 EWX var10 = new EWX() {
@@ -2299,7 +2299,7 @@ public class EXK extends Application implements EVW, EXP {
         File var9;
         try {
             Long var4 = var2 != null ? var2.longValue() : null;
-            EWJ var5 = new EWJ(EWP.GET, new URL(GUV.name(), "www.finanse.mf.gov.pl", -1, "/documents/766655/6211156/" + var1), EWQ.NONE, null);
+            EWJ var5 = new EWJ(EWP.GET, new URL(GUV.name(), "localhost", -1, "/documents/766655/6211156/" + var1), EWQ.NONE, null);
             EWX var6 = new EWX() {
                 public void IBI(long var1, double var3, long var5, long var7, long var9, long var11) {
                     EXF.getInstance().ICO();

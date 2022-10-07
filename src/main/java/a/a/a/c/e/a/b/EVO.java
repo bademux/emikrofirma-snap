@@ -129,26 +129,24 @@ public class EVO {
    public boolean HZR() {
       EXF.getInstance().ICO();
 
-      boolean var3;
+      boolean var7;
       try {
          Iterator var1 = this.GPM.iterator();
 
-         EVV var2;
-         do {
-            if (!var1.hasNext()) {
-               boolean var7 = true;
-               return var7;
+         while(var1.hasNext()) {
+            EVV var2 = (EVV)var1.next();
+            if (var2.HZT() && !var2.HZU()) {
+               boolean var3 = false;
+               return var3;
             }
+         }
 
-            var2 = (EVV)var1.next();
-         } while(!var2.HZT() || var2.HZU());
-
-         var3 = false;
+         var7 = true;
       } finally {
          EXF.getInstance().ICP();
       }
 
-      return var3;
+      return var7;
    }
 
    public EVV getArgument(String var1) {
@@ -161,8 +159,7 @@ public class EVO {
          EVV var3;
          do {
             if (!var2.hasNext()) {
-               var2 = null;
-               return var2;
+               return null;
             }
 
             var3 = (EVV)var2.next();

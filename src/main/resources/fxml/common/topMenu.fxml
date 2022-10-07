@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import a.a.a.c.f.c.a.CustomAnchorPane?>
+
+<CustomAnchorPane fx:id="fxml_top_menu" maxHeight="85.0" minHeight="85.0" prefHeight="85.0" styleClass="background" stylesheets="@/css/common/topMenu.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.c.b.a.b.a.EMR">
+   <children>
+      <BorderPane maxHeight="85.0" minHeight="85.0" prefHeight="85.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <HBox alignment="BOTTOM_LEFT" BorderPane.alignment="CENTER_LEFT">
+               <children>
+					<Label fx:id="fxml_top_menu_process_label_a" alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" styleClass="title-page-a" text="missing label">
+	                     <HBox.margin>
+	                        <Insets />
+	                     </HBox.margin>
+	                 </Label>
+					<Label fx:id="fxml_top_menu_process_label_b" alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" styleClass="title-page-b" text="missing label">
+	                     <HBox.margin>
+	                        <Insets />
+	                     </HBox.margin>
+	                </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </center>
+         <left>
+            <AnchorPane>
+               <BorderPane.margin>
+                  <Insets right="12.0" />
+               </BorderPane.margin></AnchorPane>
+         </left>
+         <right>
+         </right>
+         <right>
+            <Button fx:id="fxml_top_menu_home_button" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#fxml_handleButton_home_button" styleClass="btn-back" BorderPane.alignment="CENTER_RIGHT">
+               <graphic>
+                  <HBox alignment="BOTTOM_RIGHT">
+                     <children>
+                        <Label alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" styleClass="label-title1" text="%micro.application.title.part1" />
+                        <Label alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" styleClass="label-title2" text="%micro.application.title.part2" />
+                     </children>
+                  </HBox>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <BorderPane.margin>
+                  <Insets right="7.0" />
+               </BorderPane.margin>
+            </Button>
+         </right>
+      </BorderPane>
+   </children>
+</CustomAnchorPane>

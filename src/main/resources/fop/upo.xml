@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<upo>
+	<document>
+		<header>
+			<logo>
+				<icon>/img/app/e_logo.png</icon>
+				<width>40</width>
+				<height>40</height>
+			</logo>
+			<title>
+				<line1>URZĘDOWE POŚWIADCZENIE ODBIORU</line1>
+				<line2>DOKUMENTU ELEKTRONICZNEGO</line2>
+			</title>
+		</header>
+		<body>
+			<table1>
+				<row1>
+					<value>A. NAZWA PEŁNA PODMIOTU, KTÓREMU DORĘCZONO DOKUMENT ELEKTRONICZNY</value>
+				</row1>
+				<row2>
+					<value>Ministerstwo Finansów</value>
+				</row2>
+			</table1>
+			<table2>
+				<row1>
+					<value>B. INFORMACJA O DOKUMENCIE</value>
+				</row1>
+				<row2>
+					<value>Dokument został zarejestrowany w systemie teleinformatycznym Ministerstwa Finansów</value>
+				</row2>
+				<row3>
+					<column1>
+						<value>Identyfikator dokumentu:</value>
+					</column1>
+					<column2>
+						<value>Dnia (data, czas):</value>
+					</column2>
+				</row3>
+				<row4>
+					<value>Skrót złożonego dokumentu - identyczny z wartością użytą do podpisu dokumentu:</value>
+				</row4>
+				<row5>
+					<value>Skrót dokumentu w postaci otrzymanej przez system (łącznie z podpisem elektronicznym):</value>
+				</row5>
+				<row6>
+					<value>Dokument zweryfikowany pod względem zgodności ze strukturą logiczną:</value>
+				</row6>
+				<row7>
+					<column1>
+						<value>Identyfikator podatkowy podmiotu występującego jako pierwszy na dokumencie:</value>
+					</column1>
+					<column2>
+						<value>Identyfikator podatkowy podmiotu występującego jako drugi na dokumencie:</value>
+					</column2>
+				</row7>
+				<row8>
+					<value>Urząd skarbowy, do którego został złożony dokument:</value>
+				</row8>
+				<row9>
+					<value>Stempel czasu:</value>
+				</row9>
+				<row10>
+					<value>Dokument wystawiony automatycznie przez system teleinformatyczny Ministerstwa Finansów</value>
+					<column1>
+						<value>Data i czas wystawienia dokumentu:</value>
+					</column1>
+				</row10>
+			</table2>
+			<table3>
+				<row1>
+					<value>UPO</value>
+				</row1>
+			</table3>
+		</body>
+		<footer>
+		</footer>
+	</document>
+</upo>

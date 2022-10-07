@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="450.0" maxWidth="430.0" minHeight="450.0" minWidth="430.0" prefHeight="450.0" prefWidth="430.0" stylesheets="@/css/invoice_sale_new.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.c.e.j.a.EUG">
+   <children>
+      <BorderPane maxHeight="370.0" maxWidth="370.0" minHeight="370.0" minWidth="370.0" prefHeight="370.0" prefWidth="370.0" styleClass="background-field" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <top>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label styleClass="h2" text="%micro.process.invoice_sale_new.DialogAddNewInvoiceElement.DialogName"/>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </HBox>
+         </top>
+         <center>
+            <VBox>
+               <children>
+                  <GridPane alignment="CENTER" hgap="10.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="ALWAYS" />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                      	<RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                      	<RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                      	<RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
+                    </rowConstraints>
+                     <children>
+                     <!--	<fx:include fx:id="fxml_invoice_sale_new_add_invoice_element_name" label="%micro.process.invoice_sale_new.DialogAddNewInvoiceElement.Name" maxLength="200" required="true" source="/fxml/textBox.fxml" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+										<columnConstraints>
+											<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" prefWidth="170.0" />
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+											<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>-->
+						 <fx:include fx:id="fxml_invoice_sale_new_add_invoice_element_name" id="fxml_invoice_sale_new_add_invoice_element_name" label="%micro.process.invoice_sale_new.DialogAddNewInvoiceElement.Name" maxLength="256" required="true" source="/fxml/productComboBox.fxml" GridPane.columnSpan="2" GridPane.rowIndex="0">
+							 <columnConstraints>
+								 <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" />
+								 <ColumnConstraints hgrow="ALWAYS" />
+							 </columnConstraints>
+							 <rowConstraints>
+								 <RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+								 <RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+							 </rowConstraints>
+						 </fx:include>
+
+						<GridPane hgap="7.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+							<children>
+								<Label text="%micro.process.invoice_sale_new.DialogAddNewInvoiceElement.Description" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                                 <padding>
+                                    <Insets top="-16.0" />
+                                 </padding></Label>
+								<fx:include fx:id="fxml_invoice_sale_new_add_invoice_element_description" id="fxml_invoice_sale_new_add_invoice_element_description" label="" maxLength="200" required="false" source="/fxml/requiredTextAreaBox_NoLabel.fxml" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+										<columnConstraints>
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+										<RowConstraints minHeight="50.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>
+							</children>
+										<columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" maxWidth="170.0" minWidth="52.0" prefWidth="170.0" />
+                              <ColumnConstraints hgrow="ALWAYS" maxWidth="346.0" minWidth="210.0" prefWidth="225.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                           </rowConstraints>
+						</GridPane>
+						<fx:include fx:id="fxml_invoice_sale_new_add_invoice_element_netprice" id="fxml_invoice_sale_new_add_invoice_element_netprice" allowNegative="true" maxLength="15" maximumFractionDigits="2" minimumFractionDigits="2" required="true" source="/fxml/numberBox.fxml" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+										<columnConstraints>
+											<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" prefWidth="170.0" />
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+											<RowConstraints maxHeight="0.0" minHeight="0.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>
+						<fx:include fx:id="fxml_invoice_sale_new_add_invoice_element_amount" id="fxml_invoice_sale_new_add_invoice_element_amount" allowNegative="false" label="%micro.process.invoice_sale_new.DialogAddNewInvoiceElement.Amount" maxLength="15" maximumFractionDigits="2" minimumFractionDigits="2" required="true" source="/fxml/numberBox.fxml" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3">
+										<columnConstraints>
+											<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" prefWidth="170.0" />
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+											<RowConstraints maxHeight="0.0" minHeight="0.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>
+						<fx:include fx:id="fxml_invoice_sale_new_add_invoice_element_unit" label="%micro.process.invoice_sale_new.DialogAddNewInvoiceElement.Unit" maxLength="100" required="true" source="/fxml/textBox.fxml" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+										<columnConstraints>
+											<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" prefWidth="170.0" />
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+											<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>
+						<fx:include fx:id="fxml_invoice_sale_new_add_invoice_element_tax_type" id="fxml_invoice_sale_new_add_invoice_element_tax_type" label="%micro.process.invoice_sale_new.DialogAddNewInvoiceElement.TaxType" required="true" source="/fxml/requiredComboBox.fxml" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5">
+										<columnConstraints>
+											<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" />
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+											<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>
+                           </children>
+                  </GridPane>
+					<HBox spacing="2.0">
+	                           		<VBox.margin>
+	                              		<Insets left="12.0" />
+	                           		</VBox.margin>
+	                           		<children>
+	                              		<Label styleClass="star" text="%micro.user.requiredField.star" />
+										<Label styleClass="h4" text="%micro.user.requiredField" />
+	                           		</children>
+	                        	</HBox>
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <HBox alignment="TOP_RIGHT" prefHeight="30.0" spacing="10.0" BorderPane.alignment="CENTER_RIGHT">
+               <children>
+                  <Button fx:id="fxml_button_save" id="fxml_button_save" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#fxml_handleButton_save" text="%micro.process.button.Save">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-primary" />
+                     </styleClass></Button>
+                  <Button fx:id="fxml_button_cancel" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fxml_handleButton_cancel" text="%micro.process.button.Cancel">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-danger" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </bottom>
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+      </BorderPane>
+   </children>
+</AnchorPane>

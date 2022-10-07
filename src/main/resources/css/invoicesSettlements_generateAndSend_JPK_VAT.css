@@ -1,0 +1,209 @@
+/*------------SPLITPANE------------ */
+
+.split-pane {
+    -fx-padding: 1.0 0.0 0.0 0.0;
+    -fx-background-color: rgb(243.0,243.0,243.0);
+    -fx-border-width: 0.0;
+}
+
+.split-pane:vertical > .split-pane-divider {
+   -fx-background-color: rgb(191.0,191.0,191.0);
+   -fx-padding: 0.0 0.0 0.0 1.0;
+   -fx-border-width: 1.0;
+}
+
+/*-------------SCROLL-BAR-----------*/
+.scroll-bar > .thumb{
+    -fx-background-color: rgb(191.0,191.0,191.0);
+    -fx-background-insets: 0.0;
+    -fx-background-radius: 0.0;
+}
+
+.scroll-bar > .thumb:hover {
+    -fx-background-color: #dadada;
+}
+
+.scroll-bar > .thumb:pressed {
+    -fx-background-color: rgb(191.0,191.0,191.0);
+}
+
+.scroll-bar > .track {
+    -fx-background-color: rgb(243.0,243.0,243.0);
+    -fx-background-insets: 0.0;
+    -fx-background-radius: 0.0;
+}
+.scroll-bar > .track-background {
+    -fx-background-color: rgb(243.0,243.0,243.0);
+    -fx-background-insets: 0.0;
+}
+
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: rgb(243.0,243.0,243.0);
+    -fx-background-insets: 0.0;
+    -fx-background-radius: 0.0;
+
+    -fx-padding: 0.25em; /* 3 */
+}
+
+.scroll-bar > .increment-button:hover,
+.scroll-bar > .decrement-button:hover  {
+    -fx-background-color: #dadada;
+}
+
+
+.scroll-bar > .decrement-button > .decrement-arrow,
+.scroll-bar > .increment-button > .increment-arrow{
+    -fx-background-insets: 1.0 0.0 -1.0 0.0, 0.0;
+    -fx-background-color: transparent, #606060;
+    -fx-effect: null;
+}
+
+.scroll-bar > .decrement-button:pressed > .decrement-arrow,
+.scroll-bar > .increment-button:pressed > .increment-arrow {
+    -fx-background-color: transparent, white;
+    -fx-effect: null;
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow,
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+}
+
+.scroll-bar:horizontal > .increment-button > .increment-arrow,
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+}
+
+/* ARROW SHAPES */
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+    -fx-shape: "M11,17H8.111l-3.86-4.124l3.86-4.125H11l-3.375,4.125L11,17z";
+}
+
+.scroll-bar:horizontal > .increment-button > .increment-arrow {
+    -fx-shape: "M7.626,12.876L4.251,8.751H7.14L11,12.876L7.14,17H4.251L7.626,12.876z";
+}
+
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-shape: "M4,17v-2.889l4.124-3.86l4.125,3.86V17l-4.125-3.375L4,17z";
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+    -fx-shape: "M8.124,13.625l4.125-3.375v2.889l-4.125,3.86L4,13.139V10.25L8.124,13.625z";
+}
+
+.scroll-pane {
+    -fx-background-color: transparent, transparent;
+}
+
+.input{
+	-fx-font-size: 12.0px;
+	width: 100.0%;
+    margin: 8.0px 0.0;
+	box-sizing: border-box;
+	-fx-border-color:  rgb(191.0,191.0,191.0);
+	-fx-background-color: rgb(255.0,255.0,255.0);
+	-fx-text-box-border: rgb(255.0,255.0,255.0);
+	-fx-control-inner-background : rgb(255.0,255.0,255.0);
+	-fx-background-insets: 1.0;
+	-fx-background-radius: 0.0;
+}
+
+.input:focused {
+	-fx-effect: dropshadow( three-pass-box  , rgb(0.0, 150.0, 201.0) , 2.0, 0.0 , 1.0 , 1.0 );
+}
+
+.input-required{
+  	-fx-effect: dropshadow( gaussian , rgba(255.0,0.0,0.0,0.5) , 10.0,0.0,1.0,2.0 );
+}
+
+.input > .arrow-button {
+	-fx-background-color: white;
+}
+
+.input > .list-view {
+    -fx-effect: none;
+}
+
+.text-area .content {
+	-fx-background-color: rgb(255.0,255.0,255.0);
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ProgressBar                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+ .progress-bar {
+    -fx-indeterminate-bar-length: 60;
+    -fx-indeterminate-bar-escape: true;
+    -fx-indeterminate-bar-flip: true;
+    -fx-indeterminate-bar-animation-time: 2;
+
+    -fx-effect: none;
+    -fx-background-color: white;
+    -fx-background-insets: 0.0;
+    -fx-border-color: rgb(191,191,191);
+    -fx-border-width:0.7;
+}
+.progress-bar .content {
+	-fx-background-color: white;
+
+}
+.progress-bar > .bar {
+    -fx-background-color: rgb(0.0, 150.0, 201.0);
+    -fx-background-insets: 0.0;
+    -fx-background-radius: 0.0;
+    -fx-padding: 0.0;
+    -fx-border-color:none;
+    -fx-border-width:0;
+    -fx-pref-height:15;
+}
+
+.progress-bar > .track {
+  -fx-text-box-border: none ;
+  -fx-text-border-width:0.0;
+  -fx-control-inner-background: white;
+}
+
+.progress-bar:indeterminate .bar {
+    -fx-background-color: white;
+}
+
+.progress-bar .track {
+    -fx-background-color: white;
+    -fx-background-insets:  0.0;
+}
+
+.button {
+	-fx-font-size: 15px ;
+	-fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+
+.btn{
+	-fx-min-height: 35;
+	-fx-pref-height: 35;
+    -fx-max-height: 35;
+    -fx-font-family: Calibri ;
+	-fx-min-width: 90;
+}
+.btn-danger, .btn-danger:focused{
+	-fx-background-color: white;
+	-fx-text-fill: rgb(145,145,149);
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color:  rgb(145,145,149);
+  	-fx-border-style: solid;
+  	-fx-border-width: 1.5pt;
+}
+
+.btn-danger:hover{
+	-fx-background-color: rgb(145,145,149);
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+}
+
+
+
+

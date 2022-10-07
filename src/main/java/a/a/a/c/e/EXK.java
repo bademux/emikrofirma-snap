@@ -726,12 +726,10 @@ public class EXK extends Application implements EVW, EXP {
          return var18;
       } catch (InterruptedException var16) {
          EXF.getInstance().ICA((Throwable)var16);
-         var12 = null;
+         return null;
       } finally {
          EXF.getInstance().ICP();
       }
-
-      return var12;
    }
 
    private ButtonBar.ButtonData getCloseDialogInner(String var1, String var2, String var3, String var4, double var5, double var7, String var9) {
@@ -1212,9 +1210,9 @@ public class EXK extends Application implements EVW, EXP {
    private File IDU() {
       EXF.getInstance().ICO();
 
-      File var2;
       try {
          File var1;
+         File var2;
          try {
             var2 = this.IDV();
             if (var2 == null) {
@@ -1229,11 +1227,10 @@ public class EXK extends Application implements EVW, EXP {
          }
 
          var2 = var1;
+         return var2;
       } finally {
          EXF.getInstance().ICP();
       }
-
-      return var2;
    }
 
    private File IDV() {
@@ -1521,7 +1518,7 @@ public class EXK extends Application implements EVW, EXP {
             Certificate var6 = var5.generateCertificate(EXK.class.getResourceAsStream("/cert/akmf_apps.cert.pem"));
             byte[] var7 = EXR.IER(var3.getBytes(StandardCharsets.UTF_8), var6);
             String var8 = EXR.IEQ(var7);
-            EWJ var9 = new EWJ(EWP.GET, new URL(GUV.name(), "www.finanse.mf.gov.pl", -1, "/documents/766655/6211156/RELEASE3.txt"), EWQ.NONE, (Object)null);
+            EWJ var9 = new EWJ(EWP.GET, new URL(GUV.name(), "www.finanse.mf.gov.pl", -1, "/documents/766655/6211156/RELEASE3.txt"), EWQ.NONE, null);
             var9.getHeaderFields().put("Request-ID", var8);
             this.IDZ(var2, this.GTR, 0.2, -1.0);
             EWX var10 = new EWX() {
@@ -1641,11 +1638,11 @@ public class EXK extends Application implements EVW, EXP {
                            var15.put(var44, var22);
                            this.GUF.put(var44, new ArrayList());
                            var45 = (List)this.GUF.get(var44);
-                           var45.add(new EWE(var30, var23, var24, var25, var27, (Object)null));
+                           var45.add(new EWE(var30, var23, var24, var25, var27, null));
                         } else if (var29.compareTo(var22) == 0) {
                            var45 = (List)this.GUF.get(var44);
                            if (var45 != null) {
-                              var45.add(new EWE(var30, var23, var24, var25, var27, (Object)null));
+                              var45.add(new EWE(var30, var23, var24, var25, var27, null));
                            }
                         }
                      } else {
@@ -1820,7 +1817,7 @@ public class EXK extends Application implements EVW, EXP {
                      break label798;
                   }
 
-                  this.GUG.put(var22.getAbsolutePath(), new EWA(var28, (Object)null, (Object)null, (Object)null));
+                  this.GUG.put(var22.getAbsolutePath(), new EWA(var28, null, null, null));
                }
             }
 
@@ -2358,7 +2355,7 @@ public class EXK extends Application implements EVW, EXP {
       File var9;
       try {
          Long var4 = var2 != null ? var2.longValue() : null;
-         EWJ var5 = new EWJ(EWP.GET, new URL(GUV.name(), "www.finanse.mf.gov.pl", -1, "/documents/766655/6211156/" + var1), EWQ.NONE, (Object)null);
+         EWJ var5 = new EWJ(EWP.GET, new URL(GUV.name(), "www.finanse.mf.gov.pl", -1, "/documents/766655/6211156/" + var1), EWQ.NONE, null);
          EWX var6 = new EWX() {
             public void IBI(long var1, double var3, long var5, long var7, long var9, long var11) {
                EXF.getInstance().ICO();

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import a.a.a.c.f.c.a.RequiredGridPane?>
+<?import a.a.a.c.f.c.c.TextFieldValidated_Text?>
+
+<RequiredGridPane fx:id="fxml_component_root_element" stylesheets="@/css/custom.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.f.a.a.EZG">
+	<children>
+		<TextFieldValidated_Text fx:id="fxml_component_main_element" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" styleClass="input" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+
+     	<HBox alignment="TOP_LEFT" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+			<children>
+	    		<Text fx:id="fxml_component_validation_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" />
+	    		<Text fx:id="fxml_component_validation_element_external" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" />
+				<Text fx:id="fxml_component_required_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" text="%micro.types.field.required" />
+			</children>
+	         <padding>
+	            <Insets top="1.0" />
+	         </padding>
+		</HBox>
+	</children>
+</RequiredGridPane>

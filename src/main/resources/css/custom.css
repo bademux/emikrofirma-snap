@@ -1,0 +1,271 @@
+/*-------------LABELS-----------------*/
+.border-grey {
+	-fx-border-color: rgb(191,191,191);
+}
+
+.img {
+	-fx-height: auto;
+	-fx-width: auto;
+	-fx-max-height:150px;
+	-fx-max-width:100px;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(96,93,92);
+    -fx-font-weight: bold;
+  /* -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 ); */
+  	-fx-text-alignment: right;
+}
+
+.label1 {
+	 -fx-font-size: 14px;
+    -fx-text-fill: rgb(96,93,92);
+    -fx-font-weight: bold;
+  	-fx-text-alignment: left !important;
+}
+
+.h2{
+	-fx-font-size: 16;
+	-fx-font-weight: bold !important;
+}
+
+.label-error{
+	-fx-font-size: 9pt;
+	-fx-fill: rgb(181,18,27) ;
+	-fx-font-weight: none;
+}
+
+.label-star {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(181,18,27) !important;
+    -fx-font-weight: bold;
+  /* -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 ); */
+}
+
+/*-------------TEXT FIELD-----------*/
+.text-field:empty {
+    -fx-alignment: center ;
+}
+
+.text-field:empty:focused {
+    -fx-alignment: center-left ;
+}
+
+.input {
+	-fx-font-size: 12px;
+	width: 100%;
+    margin: 8px 0;
+	box-sizing: border-box;
+	-fx-border-color:  rgb(191,191,191);
+	-fx-background-color: rgb(255,255,255);
+	-fx-background-insets: 1;
+	-fx-background-radius: 0;
+	-fx-text-box-border: rgb(255,255,255);
+	-fx-control-inner-background : rgb(255,255,255);
+	-fx-alignment: center-left;
+}
+
+.input:focused {
+	-fx-effect: dropshadow( three-pass-box  , rgb(0, 150, 201) , 2, 0.0 , 1 , 1 );
+	-fx-alignment: center-left ;
+}
+
+
+.input:readonly {
+	-fx-opacity: 0.7;
+	-fx-cursor:default ;
+	-fx-effect: none;
+}
+
+.input:readonly .cell{
+	-fx-opacity: 1;
+	-fx-effect: none;
+}
+
+.input:empty {
+    -fx-alignment: center ;
+}
+
+.input:empty:focused {
+    -fx-alignment: center-left ;
+}
+
+.input:readonly:focused {
+	-fx-effect: none;
+	-fx-cursor:default ;
+}
+
+.input > .text-field {
+	-fx-background-color: white;
+	-fx-border-color: white;
+}
+
+.input > .arrow-button {
+	-fx-background-color: white;
+}
+
+.input > .list-view {
+    -fx-effect: none;
+}
+
+.input:disabled {
+     -fx-opacity: 0.7;
+}
+
+.input.input-dir:readonly {
+     -fx-opacity: 1 ;
+}
+
+.combo-box:readonly {
+	-fx-opacity: 0.7;
+	-fx-cursor:default ;
+	-fx-effect: none;
+
+}
+
+.combo-box:readonly .cell{
+	-fx-opacity: 1;
+	-fx-cursor:default ;
+	-fx-effect: none;
+
+}
+
+/*-------------BUTTONS----------------*/
+
+.button {
+	-fx-font-size: 15px ;
+	-fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+
+.button:focused {
+	-fx-text-fill: white;
+}
+.button:hover {
+	-fx-text-fill: blue;
+}
+
+.btn-info, .btn-info:focused{
+	-fx-background-color: white;
+	-fx-text-fill: rgb(0, 150, 201);
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color: rgb(0, 150, 201);
+  	-fx-border-style: solid;
+  	-fx-border-width: 1.5pt;
+
+}
+.btn-info:hover{
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+	-fx-background-color: rgb(0, 150, 201);
+}
+
+.btn-information {
+	-fx-background-color: transparent;
+	-fx-min-height: 20;
+	-fx-pref-height: 20;
+    -fx-max-height: 20;
+	-fx-min-width: 20;
+}
+
+.btn{
+	-fx-min-height: 35;
+	-fx-pref-height: 35;
+    -fx-max-height: 35;
+    -fx-font-family: Calibri;
+	-fx-min-width: 90;
+}
+
+.btn-danger, .btn-danger:focused{
+	-fx-background-color: white;
+	-fx-text-fill: rgb(145,145,149);
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color:  rgb(145,145,149);
+  	-fx-border-style: solid;
+  	-fx-border-width: 1.5pt;
+}
+
+.btn-danger:hover{
+	-fx-background-color: rgb(145,145,149);
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+}
+
+/*-------------CHECK-BOX-----------*/
+.check-box {
+	-fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(96,93,92);
+}
+
+.check-box:disabled {
+     -fx-opacity: 0.7;
+}
+
+
+.check-box > .box {
+    /* background color of unselected checkbox */
+    -fx-background-color: white;
+    -fx-border-color: rgb(191,191,191);
+    -fx-padding: 1;
+}
+
+.check-box .mark {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding:7px;
+    -fx-shape: "M1,10L3,8L7,12L14,5L16,7L7,16Z"
+}
+
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+    /* modify mark color */
+    -fx-background-color: rgb(96,93,92);
+}
+
+/*-------------DATE-PICKER-----------*/
+.date-picker > .text-field {
+    -fx-background-color: rgb(255,255,255);
+    -fx-alignment: center;
+}
+
+.date-picker:focused > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color:  rgb(255,255,255) ;
+}
+
+.date-picker > .button {
+    -fx-base:  rgb(255,255,255) ;
+}
+
+.date-picker:disabled {
+     -fx-opacity: 0.7;
+}
+
+/* For date-picker textfield */
+.date-picker > .date-picker-display-node:disabled {
+    -fx-opacity: 0.7;
+}
+
+/*------------------PRODUCT-COMBOBOX--------------------*/
+.combo-box.no-arrow .arrow, .combo-box.no-arrow .arrow-button{
+     -fx-background-color: transparent;
+ }
+.combo-box .btn-delete{
+	-fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+}
+
+/*-------------TOOLTIP-----------*/
+.tooltip {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+    -fx-font-family: Calibri, sans-serif;
+    -fx-font-weight: none;
+    -fx-text-fill: rgb(96,93,92);
+    -fx-wrap-text: ture;
+}

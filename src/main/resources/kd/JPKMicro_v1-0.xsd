@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://jpk.mf.gov.pl/wzor/2018/01/23/jpkmicro"
+	elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://jpk.mf.gov.pl/wzor/2018/01/23/jpkmicro"
+	xmlns:podp="http://e-deklaracje.mf.gov.pl/Repozytorium/Definicje/Podpis/">
+	<xsd:import schemaLocation="SIG-2008_v2-0.xsd"
+		namespace="http://e-deklaracje.mf.gov.pl/Repozytorium/Definicje/Podpis/">
+	</xsd:import>
+
+	<xsd:element name="JPKMicro">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="podp:DaneAutoryzujace"></xsd:element>
+				<xsd:element name="Email" type="tns:TAdresEmail"
+					maxOccurs="1" minOccurs="0">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:simpleType name="TAdresEmail">
+		<xsd:annotation>
+			<xsd:documentation>Adres e-mail</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:minLength value="5" />
+			<xsd:maxLength value="50" />
+			<xsd:pattern
+				value="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

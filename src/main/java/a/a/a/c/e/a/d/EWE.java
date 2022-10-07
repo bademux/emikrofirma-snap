@@ -4,7 +4,7 @@ public class EWE<_FIRST, _SECOND, _THIRD, _FOURTH, _FIFTH, _SIXTH> extends EWB<_
    protected _SIXTH GQH;
 
    public EWE() {
-      this((Object)null, (Object)null, (Object)null, (Object)null, (Object)null, (Object)null);
+      this(null, null, null, null, null, null);
    }
 
    public EWE(_FIRST var1, _SECOND var2, _THIRD var3, _FOURTH var4, _FIFTH var5, _SIXTH var6) {

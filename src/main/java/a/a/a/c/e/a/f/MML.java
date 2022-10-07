@@ -18,50 +18,50 @@ public class MML implements EWG<JSONObject> {
    public JSONObject IAP(InputStream var1, EWX var2, Long var3) throws IOException {
       EXF.getInstance().ICO();
 
-      ByteArrayOutputStream var4;
+      JSONObject var10;
       try {
-         if (var1 != null) {
-            var4 = new ByteArrayOutputStream();
-            boolean var19 = false;
-            int var7 = 1048576;
-            byte[] var8 = new byte[var7];
+         ByteArrayOutputStream var4;
+         if (var1 == null) {
+            return null;
+         }
 
-            int var6;
-            while((var6 = var1.read(var8)) != -1) {
-               var4.write(var8, 0, var6);
-               var4.flush();
-               if (var6 > 1) {
-                  if (var8[var6 - 2] == 13 && var8[var6 - 1] == 10) {
-                     if (var19) {
-                        break;
-                     }
+         var4 = new ByteArrayOutputStream();
+         boolean var19 = false;
+         int var7 = 1048576;
+         byte[] var8 = new byte[var7];
 
-                     var19 = true;
-                  } else {
-                     var19 = false;
-                  }
-               }
-            }
-
+         int var6;
+         while((var6 = var1.read(var8)) != -1) {
+            var4.write(var8, 0, var6);
             var4.flush();
-            var1.close();
-            byte[] var9 = var4.toByteArray();
-            if (var19 && var9.length >= 11) {
-               var9 = Arrays.copyOfRange(var9, 4, var9.length - 7);
-            }
+            if (var6 > 1) {
+               if (var8[var6 - 2] == 13 && var8[var6 - 1] == 10) {
+                  if (var19) {
+                     break;
+                  }
 
-            try {
-               JSONObject var10 = (JSONObject)(new JSONParser()).parse(new String(var9, StandardCharsets.UTF_8));
-               return var10;
-            } catch (ParseException var16) {
-               EXF.getInstance().ICA((Object)("resultString " + new String(var9, StandardCharsets.UTF_8)));
-               EXF.getInstance().ICA((Throwable)var16);
-               Object var11 = null;
-               return (JSONObject)var11;
+                  var19 = true;
+               } else {
+                  var19 = false;
+               }
             }
          }
 
-         var4 = null;
+         var4.flush();
+         var1.close();
+         byte[] var9 = var4.toByteArray();
+         if (var19 && var9.length >= 11) {
+            var9 = Arrays.copyOfRange(var9, 4, var9.length - 7);
+         }
+
+         try {
+            var10 = (JSONObject)(new JSONParser()).parse(new String(var9, StandardCharsets.UTF_8));
+         } catch (ParseException var16) {
+            EXF.getInstance().ICA((Object)("resultString " + new String(var9, StandardCharsets.UTF_8)));
+            EXF.getInstance().ICA((Throwable)var16);
+            Object var11 = null;
+            return (JSONObject)var11;
+         }
       } catch (Exception var17) {
          EXF.getInstance().ICA((Throwable)var17);
          Object var5 = null;
@@ -70,7 +70,7 @@ public class MML implements EWG<JSONObject> {
          EXF.getInstance().ICP();
       }
 
-      return var4;
+      return var10;
    }
 
    public JSONObject IAO(InputStream var1) throws IOException {

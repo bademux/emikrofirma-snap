@@ -106,8 +106,7 @@ public class EWF {
 
                ZipEntry var11 = new ZipEntry(var10);
                var4.putNextEntry(var11);
-               char var13 = '耀';
-               byte[] var14 = new byte[var13];
+               byte[] var14 = new byte[8096];
 
                int var12;
                while((var12 = var9.read(var14)) != -1) {

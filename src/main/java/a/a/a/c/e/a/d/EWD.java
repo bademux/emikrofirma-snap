@@ -4,7 +4,7 @@ public class EWD<_FIRST> {
    protected _FIRST GQG;
 
    public EWD() {
-      this((Object)null);
+      this(null);
    }
 
    public EWD(_FIRST var1) {

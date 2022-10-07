@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.c.e.e.a.ESZ">
+	<children>
+		<HBox alignment="BOTTOM_RIGHT" fillHeight="false" spacing="10.0" VBox.vgrow="ALWAYS">
+      		<children>
+         		<Button fx:id="fxml_newContractor" id="fxml_newContractor" alignment="CENTER" mnemonicParsing="false" onAction="#fxml_handleButton_newContractor" text="%micro.process.contacts_list.NewContractor" HBox.hgrow="ALWAYS">
+                  <styleClass>
+                     <String fx:value="btn" />
+                     <String fx:value="btn-new" />
+                  </styleClass></Button>
+               <VBox spacing="10.0" styleClass="background-field" HBox.hgrow="ALWAYS">
+                  <children>
+                     <Label text="%micro.process.contacts_list.Filtr" />
+               		<TextField fx:id="fxml_contractor_search" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" promptText="%micro.process.contacts_list.Search" styleClass="input" />
+                  </children>
+                  <padding>
+                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                  </padding>
+               </VBox>
+      		</children>
+		</HBox>
+        <VBox spacing="10.0" styleClass="background-field" VBox.vgrow="ALWAYS">
+			<children>
+				<SplitPane dividerPositions="0.27" VBox.vgrow="ALWAYS">
+					<items>
+						<AnchorPane>
+							<children>
+								<TableView fx:id="fxml_contractorsTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                	<columns>
+                                    	<TableColumn fx:id="fxml_contact_name" minWidth="20.0" prefWidth="90.0" styleClass="column-text" text="%micro.process.contacts_list.NameContractor" />
+										<TableColumn fx:id="fxml_contact_nip" minWidth="20.0" prefWidth="90.0" styleClass="column-notype" text="%micro.process.contacts_list.NipContractor" />
+                                    </columns>
+									<placeholder>
+										<Label text="%micro.process.contacts_list.Empty" />
+									</placeholder>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+								</TableView>
+							</children>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+						</AnchorPane>
+						<AnchorPane>
+							<children>
+								<VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+									<children>
+										<GridPane hgap="7.0" vgap="5.0">
+											<columnConstraints>
+												<ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" prefWidth="120.0" />
+				                                <ColumnConstraints hgrow="ALWAYS" />
+											</columnConstraints>
+											<rowConstraints>
+												<RowConstraints maxHeight="51.0" minHeight="-Infinity" prefHeight="26.0" vgrow="SOMETIMES" />
+											</rowConstraints>
+     											<children>
+     												<Label styleClass="h2" text="%micro.process.contacts_new.Contact" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+     												<CheckBox fx:id="fxml_contractor_private_person" styleClass="h2" text="%micro.process.invoice_sale_new.PrivatePerson" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+     											</children>
+ 										</GridPane>
+                                        <fx:include fx:id="fxml_include_ContractorName_box" id="fxml_include_ContractorName_box" label="%micro.user.companyName" maxLength="200" required="false" source="/fxml/textBox.fxml">
+                                        	<columnConstraints>
+												<ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="220.0" />
+												<ColumnConstraints hgrow="ALWAYS" />
+											</columnConstraints>
+											<rowConstraints>
+												<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+												<RowConstraints maxHeight="16.0" minHeight="0.0" vgrow="ALWAYS" />
+											</rowConstraints>
+										</fx:include>
+										<fx:include fx:id="fxml_include_nip_box" id="fxml_include_nip_box" label="%micro.types.nip.label" required="false" source="/fxml/nipBox.fxml">
+											<columnConstraints>
+												<ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="220.0" />
+												<ColumnConstraints hgrow="ALWAYS" />
+											</columnConstraints>
+											<rowConstraints>
+												<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+												<RowConstraints maxHeight="16.0" minHeight="0.0" vgrow="ALWAYS" />
+											</rowConstraints>
+										</fx:include>
+										<fx:include fx:id="fxml_include_regon_box" label="%micro.types.regon.label" required="false" source="/fxml/regonBox.fxml">
+											<columnConstraints>
+												<ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="220.0" />
+												<ColumnConstraints hgrow="ALWAYS" />
+											</columnConstraints>
+											<rowConstraints>
+												<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+												<RowConstraints maxHeight="16.0" minHeight="0.0" vgrow="ALWAYS" />
+											</rowConstraints>
+										</fx:include>
+										<fx:include fx:id="fxml_include_AccountNumber_box" label="%micro.user.accountNumber" required="false" source="/fxml/accountBox.fxml">
+											<columnConstraints>
+												<ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="220.0" />
+												<ColumnConstraints hgrow="ALWAYS" />
+											</columnConstraints>
+											<rowConstraints>
+												<RowConstraints maxHeight="40.0" minHeight="35.0" vgrow="ALWAYS" />
+												<RowConstraints maxHeight="16.0" minHeight="0.0" vgrow="ALWAYS" />
+											</rowConstraints>
+										</fx:include>
+										<fx:include fx:id="fxml_include_address_box" label="%micro.process.contacts_new.Address" source="/fxml/addressBox_contact.fxml" />
+	                                    <Label text="%micro.process.contacts_new.RemarksContractor" />
+	                                    <fx:include fx:id="fxml_include_remarks_box" label="" maxLength="250" required="false" source="/fxml/requiredTextAreaBox_NoLabel.fxml">
+											<columnConstraints>
+												<ColumnConstraints hgrow="ALWAYS" />
+											</columnConstraints>
+											<rowConstraints>
+												<RowConstraints maxHeight="80.0" minHeight="80.0" vgrow="ALWAYS" />
+												<RowConstraints maxHeight="16.0" minHeight="0.0" vgrow="ALWAYS" />
+											</rowConstraints>
+										</fx:include>
+									</children>
+									<padding>
+										<Insets bottom="10.0" top="5.0" />
+									</padding>
+								</VBox>
+							</children>
+							<padding>
+                            	<Insets left="10.0" top="5.0" />
+                            </padding>
+						</AnchorPane>
+					</items>
+				</SplitPane>
+            <HBox alignment="TOP_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="fxml_newInvoiceSell" mnemonicParsing="false" onAction="#fxml_handleButton_newInvoiceSell" text="%micro.process.contacts_list.NewSellInvoice">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-new" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="fxml_newInvoivePurchase" mnemonicParsing="false" onAction="#fxml_handleButton_newInvoicePurchase" text="%micro.process.contacts_list.NewPurchaseInvoice">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-new" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+			</children>
+            <padding>
+               <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+            </padding>
+        </VBox>
+	</children>
+   	<padding>
+		<Insets right="2.0" />
+   	</padding>
+</VBox>

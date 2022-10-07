@@ -25,7 +25,7 @@ public class EWK<_RESULT_TYPE> implements Serializable {
 
    public int getStatus() {
       try {
-         List var1 = (List)this.GQQ.get((Object)null);
+         List var1 = (List)this.GQQ.get(null);
          if (var1 != null) {
             String var2 = (String)var1.get(0);
             if (var2 != null) {

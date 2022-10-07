@@ -4,7 +4,7 @@ public class EWB<_FIRST, _SECOND, _THIRD, _FOURTH, _FIFTH> extends EWA<_FIRST, _
    protected _FIFTH GQE;
 
    public EWB() {
-      this((Object)null, (Object)null, (Object)null, (Object)null, (Object)null);
+      this(null, null, null, null, null);
    }
 
    public EWB(_FIRST var1, _SECOND var2, _THIRD var3, _FOURTH var4, _FIFTH var5) {

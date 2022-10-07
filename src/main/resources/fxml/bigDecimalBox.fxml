@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import a.a.a.c.f.c.c.*?>
+
+<HBox alignment="CENTER_LEFT"
+	fx:id="fxml_field_box_bd"
+	stylesheets="@/css/custom.css"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="a.a.a.c.f.a.a.EYV"
+	>
+	<children>
+		<HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+			<Label fx:id="fxml_component_label_element" text="missing label" />
+			<Label fx:id="fxml_component_label_required_flag" text="%micro.user.requiredField.star" styleClass="label-star" />
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+		</HBox>
+		<TextFieldValidated_BigDecimal fx:id="fxml_types_bd_text" HBox.hgrow="ALWAYS" minWidth="150.0" maxWidth="150.0">
+       		<HBox.margin>
+          		<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+       		</HBox.margin>
+       	</TextFieldValidated_BigDecimal>
+		<Text fx:id="fxml_types_bc_required" strokeType="OUTSIDE" strokeWidth="10.0" text="%micro.types.field.required">
+       		<HBox.margin>
+          		<Insets bottom="5.0" right="5.0" top="1.0" />
+       		</HBox.margin>
+		</Text>
+    	<Text fx:id="fxml_types_bc_validation" strokeType="OUTSIDE" strokeWidth="0.0" text="%micro.types.bigdecimal.invalid" managed="${ ! fxml_types_bd_text.valid }" visible="${ ! fxml_types_bd_text.valid }" HBox.hgrow="ALWAYS">
+       		<HBox.margin>
+          		<Insets bottom="5.0" right="5.0" top="1.0" />
+       		</HBox.margin>
+    	</Text>
+	</children>
+</HBox>

@@ -1,0 +1,58 @@
+e-mikrofirma 1.3.0.7
+	- dodanie znacznika Mechanizm Podzielonej Płatności dla faktury sprzedaży
+	
+e-mikrofirma 1.3.0.6
+	- zmiana certyfikatu szyfrującego pliki JPK
+	- poprawa "literówek"
+	
+e-mikrofirma 1.3.0.5
+	- obsługa JPK_FA(2)
+	
+e-mikrofirma 1.3.0.2
+	- zwiększenie pamięci podręcznej używanej przez aplikację przy uruchamianiu
+	- rozszerzenie informacji odkładanych w rejestrze zdarzeń
+	- aktualizacja raportowania dla faktury zakupów z pozycją odwrotne obciążenie
+
+e-mikrofirma 1.3.0.0
+	- anulowanie faktur
+	- tworzenie kopii zapasowej i odtwarzanie danych z kopii zapasowej
+	- nowy ekran „O programie”
+	- zbiorczy wpis faktury zakupu
+	- nowe wpisy do ewidencji VAT
+	- zablokowanie edycji daty wystawienia i numeru faktury po jej wystawieniu
+	- wybór sposobu wprowadzania wartości po kwocie netto/brutto
+
+e-mikrofirma 1.2.2.0
+	- obsługa więcej niż jednego profilu
+	- nowy typ płatności na fakturze sprzedaży "wg umowy"
+	- możliwość wprowadzania kwot ujemnych
+	- nowa stawka VAT - 4%
+	- możliwość usunięcia faktury zakupu z listy faktur zakupu
+	- możliwość usunięcia dodanego raportu fiskalnego z listy
+	- dodanie serii w numerowaniu faktur – licznik miesięczny, kwartalny, półroczny, roczny
+	- wydanie wersji portatywnej bez instalatora
+	- możliwość generowania i wysyłki plików JPK_FA
+	- możliwość przełączania się pomiędzy użytkownikami
+	- zabezpieczenie przez pomyłkowym zamknięciem aplikacji
+	- zmiana sposobu prezentacji faktur korygujących w ewidencji sprzedaży
+	- wprowadzenie grupowania faktur wystawionych na rzecz osób prywatnych w JPK_VAT
+	- poprawa wydajności wyszukiwania kontrahentów
+
+e-mikrofirma 1.2.1.2
+	- obsługa danych nietypowych
+	- poprawki graficzne interfejsu
+	- umożliwienie sprawdzenia statusu wysyłki plików JPK po numerach referencyjnych wygenerowanych poza aplikacją
+	- usuwanie wpisów z Listy JPK
+	- poprawa komunikatów
+
+e-mikrofirma 1.2.1.0
+	- możliwość ręcznego wprowadzania wartości netto, vat, brutto
+	- modyfikacja wprowadzania nowego raportu fiskalnego
+	- możliwość usunięcia kontrahenta z bazy
+
+e-mikrofirma 1.0.0.0. do 1.2.1.0
+	- wprowadzenie faktury krajowej/rejestracja zakupu krajowego
+	- rejestracja raportów kasowych
+	- automatyczne wygenerowanie ewidencji VAT
+	- automatyczne wygenerowanie pliku JPK_VAT i przesłanie go do systemu Ministerstwa Finansów
+

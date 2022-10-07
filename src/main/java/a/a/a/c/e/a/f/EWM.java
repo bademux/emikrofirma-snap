@@ -168,7 +168,7 @@ public abstract class EWM {
          for(int var3 = 0; var3 < var1.size(); ++var3) {
             String var4 = (String)var1.get(var3);
             if (var3 == 0) {
-               var2.put((Object)null, Collections.singletonList(var4));
+               var2.put(null, Collections.singletonList(var4));
             } else if (var4 != null && var4.trim().length() > 0) {
                String[] var5 = var4.split(":");
                String var6 = var5[0].trim();

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="fxml_inner_parent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.c.e.a.a.ERS">
+    <padding>
+        <Insets right="2.0" />
+    </padding>
+    <children>
+    <HBox>
+		<children>
+				<Button fx:id="fxml_config_change_password" mnemonicParsing="false" onAction="#fxml_handleButton_change_password" text="%micro.config.controll.changePassword">
+					<styleClass>
+						<String fx:value="btn" />
+						<String fx:value="btn-new" />
+					</styleClass>
+               <HBox.margin>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+				</Button>
+				<Button fx:id="fxml_config_create_backup" mnemonicParsing="false" onAction="#fxml_handleButton_create_backup" text="%micro.config.controll.createBackup">
+					<styleClass>
+						<String fx:value="btn" />
+						<String fx:value="btn-new" />
+					</styleClass>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+				</Button>
+				<Button fx:id="fxml_config_load_backup" mnemonicParsing="false" onAction="#fxml_handleButton_load_backup" text="%micro.config.controll.loadBackup">
+					<styleClass>
+						<String fx:value="btn" />
+						<String fx:value="btn-new" />
+					</styleClass>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+				</Button>
+
+			</children>
+        </HBox>
+        <VBox styleClass="background-field">
+            <children>
+                <fx:include fx:id="fxml_include_propertyWorkingDir_box" label="%micro.config.property.workingDir" required="true" source="/fxml/requiredDirBox.fxml" VBox.vgrow="NEVER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="160.0" minWidth="160.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="350.0" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="35.0" minHeight="35.0" />
+                        <RowConstraints maxHeight="16.0" minHeight="18.0" />
+                    </rowConstraints>
+                    <padding>
+                        <Insets bottom="0.0" left="12.0" right="12.0" top="12.0" />
+                    </padding>
+                </fx:include>
+                <Label styleClass="h4" text="%micro.config.directory.info">
+                    <padding>
+                        <Insets bottom="12.0" left="184.0" right="12.0" top="0.0" />
+                    </padding>
+                </Label>
+            </children>
+        </VBox>
+      <VBox spacing="10.0" styleClass="background-field">
+         <children>
+            <Label text="%micro.config.invoice.patternTitle" />
+
+              <GridPane hgap="10" vgap="10">
+                  <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="160.0" prefWidth="160.0" />
+                      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="303.0" prefWidth="303.0" />
+                  </columnConstraints>
+                  <children>
+                      <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                          <Label text="%micro.config.invoice.sell.preview" />
+                      </HBox>
+                      <TextField fx:id="fxml_config_f_preview" editable="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                      <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                          <Label text="%micro.config.invoice.pattern" />
+                          <Label styleClass="star1" text="%micro.user.requiredField.star" />
+                      </HBox>
+                      <ScrollPane fx:id="fxml_config_f_scroll_pane" fitToHeight="true" fitToWidth="true" maxHeight="70.0" minHeight="70.0" prefHeight="70.0" styleClass="droppable" vbarPolicy="NEVER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                          <content>
+                              <AnchorPane>
+                                  <children>
+                                      <HBox fx:id="fxml_config_f_container" alignment="CENTER_LEFT" spacing="5" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+
+                                </HBox>
+                                  </children>
+                              </AnchorPane>
+                          </content>
+                      </ScrollPane>
+                      <Button fx:id="fxml_config_f_cleanup" mnemonicParsing="false" onAction="#fxml_handleButton_f_cleanup" text="%micro.config.controll.clear" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                          <styleClass>
+                              <String fx:value="btn-danger" />
+                              <String fx:value="btn" />
+                          </styleClass>
+                      </Button>
+                      <Label styleClass="h2" text="%micro.config.invoice.default" GridPane.columnIndex="2" />
+                      <VBox alignment="CENTER_RIGHT" spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
+                          <children>
+                              <Button id="fxml_config_f_default0" fx:id="fxml_config_f_default0" mnemonicParsing="false" onAction="#fxml_handleButton_f_default0" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                              <Button fx:id="fxml_config_f_default1" mnemonicParsing="false" onAction="#fxml_handleButton_f_default1" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                              <Button fx:id="fxml_config_f_default2" mnemonicParsing="false" onAction="#fxml_handleButton_f_default2" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                              <Button fx:id="fxml_config_f_default3" mnemonicParsing="false" onAction="#fxml_handleButton_f_default3" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                              <Button fx:id="fxml_config_f_default4" mnemonicParsing="false" onAction="#fxml_handleButton_f_default4" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                          </children>
+                      </VBox>
+                  </children>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints prefHeight="35.0" />
+               </rowConstraints>
+              </GridPane>
+              <GridPane hgap="10" vgap="10">
+                  <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="160.0" prefWidth="160.0" />
+                      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="303.0" prefWidth="303.0" />
+                  </columnConstraints>
+                  <children>
+                      <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                          <Label text="%micro.config.invoice.correction.preview" />
+                      </HBox>
+                      <TextField fx:id="fxml_config_c_preview" editable="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                      <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                          <Label text="%micro.config.invoice.pattern" />
+                          <Label styleClass="star1" text="%micro.user.requiredField.star" />
+                      </HBox>
+                      <ScrollPane fx:id="fxml_config_c_scroll_pane" fitToHeight="true" fitToWidth="true" maxHeight="70.0" minHeight="70.0" prefHeight="70.0" styleClass="droppable" vbarPolicy="NEVER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                          <content>
+                              <AnchorPane>
+                                  <children>
+                                      <HBox fx:id="fxml_config_c_container" alignment="CENTER_LEFT" spacing="5" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                </HBox>
+                                  </children>
+                              </AnchorPane>
+                          </content>
+                      </ScrollPane>
+                      <Button fx:id="fxml_config_c_cleanup" mnemonicParsing="false" onAction="#fxml_handleButton_c_cleanup" text="%micro.config.controll.clear" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                          <styleClass>
+                              <String fx:value="btn-danger" />
+                              <String fx:value="btn" />
+                          </styleClass>
+                      </Button>
+                      <Label styleClass="h2" text="%micro.config.invoice.default" GridPane.columnIndex="2" />
+                      <VBox alignment="CENTER_RIGHT" spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
+                          <children>
+                              <Button id="fxml_config_c_default0" fx:id="fxml_config_c_default0" mnemonicParsing="false" onAction="#fxml_handleButton_c_default0" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                              <Button fx:id="fxml_config_c_default1" mnemonicParsing="false" onAction="#fxml_handleButton_c_default1" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                              <Button fx:id="fxml_config_c_default2" mnemonicParsing="false" onAction="#fxml_handleButton_c_default2">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                              <Button fx:id="fxml_config_c_default3" mnemonicParsing="false" onAction="#fxml_handleButton_c_default3" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                              <Button fx:id="fxml_config_c_default4" mnemonicParsing="false" onAction="#fxml_handleButton_c_default4" VBox.vgrow="ALWAYS">
+                                  <styleClass>
+                                      <String fx:value="btn-info-filled" />
+                                      <String fx:value="btn" />
+                                  </styleClass>
+                              </Button>
+                          </children>
+                      </VBox>
+                  </children>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints prefHeight="35.0" />
+               </rowConstraints>
+              </GridPane>
+
+              <VBox spacing="12">
+                  <children>
+                      <Label styleClass="h2" text="%micro.config.invoice.custom" />
+                      <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="draggable" VBox.vgrow="ALWAYS">
+                          <children>
+                              <TextField fx:id="fxml_config_base_text" editable="false" promptText="%micro.config.controll.element.type.text" styleClass="text" />
+                              <Label fx:id="fxml_config_base_const_F" alignment="CENTER" text="F" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_const_FVAT" alignment="CENTER" text="FVAT" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_const_F_VAT" alignment="CENTER" text="F_VAT" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_const_FV" alignment="CENTER" text="FV" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_const_FA" alignment="CENTER" text="FA" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_const_FK" alignment="CENTER" text="FK" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_const_KOR" alignment="CENTER" text="KOR" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_separator_slash" alignment="CENTER" text="/" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_separator_backslash" alignment="CENTER" text="\\" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_separator_underscore" alignment="CENTER" text="_" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_separator_minus" alignment="CENTER" text="-" HBox.hgrow="ALWAYS" />
+                          </children>
+                      </HBox>
+                      <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="draggable" VBox.vgrow="ALWAYS">
+                          <children>
+                              <Label fx:id="fxml_config_base_year" alignment="CENTER" text="%micro.config.controll.element.type.year" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_month" alignment="CENTER" text="%micro.config.controll.element.type.month" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_day" alignment="CENTER" text="%micro.config.controll.element.type.day" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_sequence_month_1" alignment="CENTER" text="%micro.config.controll.element.type.sequence.month.1" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_sequence_month_2" alignment="CENTER" text="%micro.config.controll.element.type.sequence.month.2" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_sequence_month_3" alignment="CENTER" text="%micro.config.controll.element.type.sequence.month.3" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+
+                              <Label fx:id="fxml_config_base_sequence_quarter_1" alignment="CENTER" text="%micro.config.controll.element.type.sequence.quarter.1" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_sequence_quarter_2" alignment="CENTER" text="%micro.config.controll.element.type.sequence.quarter.2" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_sequence_halfyear_1" alignment="CENTER" text="%micro.config.controll.element.type.sequence.halfyear.1" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_sequence_halfyear_2" alignment="CENTER" text="%micro.config.controll.element.type.sequence.halfyear.2" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_sequence_year_1" alignment="CENTER" text="%micro.config.controll.element.type.sequence.year.1" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="fxml_config_base_sequence_year_2" alignment="CENTER" text="%micro.config.controll.element.type.sequence.year.2" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                          </children>
+                      </HBox>
+                  </children>
+              </VBox>
+         </children>
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+      </VBox>
+         <VBox spacing="10.0" styleClass="background-field">
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+         <children>
+            <Label text="%micro.config.sequence.title" />
+            <GridPane hgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" prefHeight="200.0" />
+              </rowConstraints>
+               <children>
+                  <Label text="%micro.config.sequence.names.list" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <ListView fx:id="fxml_listview_sequence_names_list" GridPane.columnIndex="0" GridPane.rowIndex="1">
+      				<placeholder>
+      					<Label text="%micro.config.sequence.list.empty.placeholder" />
+      				</placeholder>
+      			</ListView>
+                  <Label text="%micro.config.sequence.periods.list" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  <ListView fx:id="fxml_listview_sequence_periods_list" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="%micro.config.sequence.counter" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                  <VBox spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+     				<fx:include fx:id="fxml_include_sequence_value" allowNegative="false" label="%micro.config.sequence.value.label" maxLength="15" maximumFractionDigits="0" minimumFractionDigits="0" required="false" source="/fxml/counterBox.fxml" >
+	      				 <columnConstraints>
+	                        <ColumnConstraints maxWidth="150.0" prefWidth="150.0" />
+	                        <ColumnConstraints hgrow="ALWAYS" />
+	                    </columnConstraints>
+	                    <rowConstraints>
+	                        <RowConstraints maxHeight="35.0" minHeight="35.0" />
+	                    </rowConstraints>
+                    </fx:include>
+      				<Button fx:id="fxml_sequence_update" mnemonicParsing="false" onAction="#fxml_handleButton_sequence_update" text="%micro.config.sequence.update.button">
+                        <styleClass>
+                           <String fx:value="btn" />
+                           <String fx:value="btn-info" />
+                        </styleClass></Button>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+        </VBox>
+
+        <VBox styleClass="background-field">
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+            </padding>
+            <children>
+                <Label styleClass="h2" text="%micro.config.property.cryptographicSettings" />
+                <fx:include fx:id="fxml_include_propertyPkcs11LibraryFile_box" label="%micro.config.property.pkcs11LibraryFile" required="false" source="/fxml/requiredPKCS11FileBox.fxml" VBox.vgrow="NEVER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="160.0" minWidth="160.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="350.0" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="35.0" minHeight="35.0" />
+                        <RowConstraints maxHeight="16.0" minHeight="18.0" />
+                    </rowConstraints>
+                    <padding>
+                        <Insets bottom="0.0" left="12.0" right="12.0" top="12.0" />
+                    </padding>
+                </fx:include>
+                <Label styleClass="h4" text="%micro.config.pkcs11LibraryFile.info">
+                    <padding>
+                        <Insets bottom="12.0" left="184.0" right="12.0" top="0.0" />
+                    </padding>
+                </Label>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER_LEFT" fillWidth="false" styleClass="background-field">
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+            </padding>
+            <children>
+                <fx:include fx:id="fxml_include_performVerificationLabeledCheckBox_box" label="%micro.config.property.verification.JPK_VAT" source="/fxml/labeledCheckBox.fxml">
+                    <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </fx:include>
+            </children>
+        </VBox>
+    </children>
+</VBox>

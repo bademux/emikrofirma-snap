@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import a.a.a.c.f.c.a.RequiredGridPane?>
+<?import a.a.a.c.f.c.c.DatePickerRequired?>
+
+<RequiredGridPane fx:id="fxml_component_root_element" stylesheets="@/css/custom.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.f.a.a.EZD">
+	<children>
+		<HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+			<Label fx:id="fxml_component_label_element" text="missing label" />
+			<Label fx:id="fxml_component_label_required_flag" styleClass="label-star" text="%micro.user.requiredField.star" />
+		</HBox>
+		<DatePickerRequired fx:id="fxml_component_main_element" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" styleClass="input" stylesheets="@/css/DataPicker.css" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets left="7.0" />
+         </GridPane.margin>
+       	</DatePickerRequired>
+
+     	<HBox alignment="TOP_LEFT" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+			<children>
+	    		<Text fx:id="fxml_component_validation_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" />
+	    		<Text fx:id="fxml_component_warning_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" />
+	    		<Text fx:id="fxml_component_validation_element_external" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" />
+				<Text fx:id="fxml_component_required_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" text="%micro.types.field.required" />
+			</children>
+			<padding>
+            	<Insets left="7.0" top="1.0" />
+         	</padding>
+		</HBox>
+	</children>
+</RequiredGridPane>

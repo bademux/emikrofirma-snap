@@ -1,0 +1,253 @@
+root {
+    display: block;
+}
+
+/*-------------BACKGROUND-------------*/
+.background{
+	-fx-background-color: rgb(255,255,255);
+	-fx-background: rgb(255,255,255);
+	/* -fx-background-color: rgb(183,185,188); */
+}
+
+.h1{
+	-fx-font-size: 2em !important;
+	-fx-font-weight: bold !important;
+	-fx-text-fill: rgb(96,93,92);
+
+}
+/*
+#fxml_anchor_pane_processes .button{
+	-fx-min-height: 75px;
+	-fx-max-height: 100px;
+	-fx-padding: 20px;
+	-fx-min-width: 150px;
+	-fx-border-style: solid;
+  	-fx-border-width: 0.5pt;
+
+}
+
+#fxml_anchor_pane_processes .button:hover{
+  	-fx-effect: dropshadow( gaussian , rgba(96,93,92,1) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover{
+	-fx-cursor: hand;
+	-fx-text-fill: rgb(255,255,255);
+}
+ */
+.btn-main{
+	-fx-background-color: rgb(181,18,27);
+	-fx-border-color:  rgb(181,18,27);
+    -fx-font-size: 21.5px;
+   	-fx-text-fill: rgb(255,255,255);
+	-fx-text-alignment: center;
+	-fx-background-radius:0;
+	-fx-border-radius:0;
+	-fx-cursor:hand;
+	-fx-margin:10;
+	-fx-line-spacing: -2px;
+	-fx-cursor: hand;
+}
+
+.btn-main-list {
+	-fx-background-color: rgb(145,145,149);
+	-fx-text-fill: rgb(255,255,255);
+	-fx-text-alignment: center;
+	-fx-border-color:  rgb(145,145,149);
+	-fx-font-size:  21.5px;
+	-fx-background-radius:0;
+	-fx-border-radius:0;
+	-fx-line-spacing: -2px;
+	-fx-cursor: hand;
+}
+
+/*--------------CONTEXT_MENU-------------- */
+.context-menu {
+	-fx-background-color: rgb(243,243,243);
+	-fx-min-height:50;
+	-fx-min-width:300;
+	-fx-padding:0;
+	-fx-backround-insets: 0;
+	-fx-background-radius:0;
+	-fx-border-radius:0;
+	-fx-border-color: rgb(191,191,191);
+	-fx-text-alignment: center;
+	-fx-font-size: 19px;
+}
+
+
+.btn-menuitem {
+	-fx-background-color:rgb(243,243,243);
+	-fx-text-fill: rgb(96,93,92);
+	-fx-cursor: hand;
+}
+
+.btn-menuitem .label {
+	-fx-alignment: center;
+}
+
+.btn-menuitem .label .text {
+	-fx-text-alignment:center;
+}
+
+.btn-menuitem-list {
+	-fx-background-color:rgb(243,243,243);
+	-fx-text-fill: rgb(96,93,92);
+	-fx-cursor: hand;
+	-fx-text-alignment: center;
+
+}
+
+.btn-menuitem:focused {
+	-fx-background-color: rgb(181,18,27);
+}
+
+.btn-menuitem-list:focused {
+	-fx-background-color:  rgb(145,145,149);
+}
+
+.btn-menuitem:hover .label,
+.btn-menuitem:focused .label,
+.btn-menuitem-list:hover .label,
+.btn-menuitem-list:focused .label{
+	-fx-text-fill: white;
+}
+
+
+.message {
+	-fx-font-size: 15pt;
+	-fx-text-fill: rgb(181,18,27) ;
+}
+
+.btn-login, .btn-login:focused {
+	-fx-background-color: rgb(227,24,55);
+	-fx-text-fill: white;
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color:  rgb(227,24,55);
+  	-fx-border-style: solid;
+  	-fx-border-width: 0;
+}
+
+.btn-login:hover{
+	-fx-background-color: rgb(181,18,27);
+	 -fx-border-color:  rgb(181,18,27);
+	-fx-cursor: hand;
+}
+
+
+
+.btn{
+	-fx-min-height: 35;
+	-fx-pref-height: 35;
+    -fx-max-height: 35;
+    -fx-font-family: Calibri ;
+	-fx-font-weight: bold;
+	-fx-min-width: 90;
+	-fx-font-size: 14px ;
+	-fx-font-weight: bold;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.btn-new, .btn-new:focused{
+	-fx-background-color: white;
+	-fx-text-fill: rgb(181,18,27);
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color: rgb(181,18,27);
+  	-fx-border-style: solid;
+  	-fx-border-width: 1.5pt;
+  	-fx-min-width: 140;
+}
+
+.btn-new:hover{
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+	-fx-background-color: rgb(181,18,27);
+}
+
+
+
+/*-------------SCROLL-BAR-----------*/
+.scroll-bar > .thumb{
+    -fx-background-color: rgb(191,191,191);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar > .thumb:hover {
+    -fx-background-color: #dadada;
+}
+
+.scroll-bar > .thumb:pressed {
+    -fx-background-color: rgb(191,191,191);
+}
+
+.scroll-bar > .track {
+    -fx-background-color: rgb(243,243,243);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.scroll-bar > .track-background {
+    -fx-background-color: rgb(243,243,243);
+    -fx-background-insets: 0;
+}
+
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: rgb(243,243,243);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+
+    -fx-padding: 0.25em; /* 3 */
+}
+
+.scroll-bar > .increment-button:hover,
+.scroll-bar > .decrement-button:hover  {
+    -fx-background-color: #dadada;
+}
+
+
+.scroll-bar > .decrement-button > .decrement-arrow,
+.scroll-bar > .increment-button > .increment-arrow{
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-background-color: transparent, #606060;
+    -fx-effect: null;
+}
+
+.scroll-bar > .decrement-button:pressed > .decrement-arrow,
+.scroll-bar > .increment-button:pressed > .increment-arrow {
+    -fx-background-color: transparent, white;
+    -fx-effect: null;
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow,
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+}
+
+.scroll-bar:horizontal > .increment-button > .increment-arrow,
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+}
+
+/* ARROW SHAPES */
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+    -fx-shape: "M11,17H8.111l-3.86-4.124l3.86-4.125H11l-3.375,4.125L11,17z";
+}
+
+.scroll-bar:horizontal > .increment-button > .increment-arrow {
+    -fx-shape: "M7.626,12.876L4.251,8.751H7.14L11,12.876L7.14,17H4.251L7.626,12.876z";
+}
+
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-shape: "M4,17v-2.889l4.124-3.86l4.125,3.86V17l-4.125-3.375L4,17z";
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+    -fx-shape: "M8.124,13.625l4.125-3.375v2.889l-4.125,3.86L4,13.139V10.25L8.124,13.625z";
+}
+
+.scroll-pane {
+    -fx-background-color: transparent, transparent;
+}

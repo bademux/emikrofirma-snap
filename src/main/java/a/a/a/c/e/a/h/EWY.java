@@ -21,7 +21,7 @@ public class EWY {
          var2 = (Object[])((Object[])Array.newInstance(var0, 0));
       }
 
-      return var2;
+      return (_X[]) var2;
    }
 
    public static <_X> _X[] IBN(_X[] var0) {

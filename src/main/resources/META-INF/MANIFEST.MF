@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+Implementation-Title: USER
+Build-Date: 20200428T110319
+Implementation-Version: 1.3.0.10
+Specification-Date: 2017-10-09
+Sealed: true
+Specification-Vendor: Aplikacje Krytyczne Sp. z o.o. (akmf.pl)
+Specification-Title: Aplikacja e-mikrofirma, Dane firmy 
+Implementation-Date: 2020-04-28
+Implementation-Vendor: Aplikacje Krytyczne Sp. z o.o. (akmf.pl)
+Ant-Version: Apache Ant 1.10.5
+Created-By: 1.8.0_181-b13 (Oracle Corporation)
+Specification-Version: 1.0.1.1
+
+Name: fxml/userLogic.fxml
+SHA-256-Digest: MnjXhxMnTYyyPTS7qisWRSCnAEKSa8e7FMZ2y1nnq30=
+
+Name: a/a/a/c/c/e/b/b/ESB.class
+SHA-256-Digest: YKaKKUc1K+51jsC/gyaAUqikL1dOWrpsQRVJJLXIvrM=
+
+Name: a/a/a/c/c/e/b/b/ESB$1.class
+SHA-256-Digest: n6tWEb9E21YpkT6cAd+3zUW+rJbLXA2ARcU3gcA5pBc=
+
+Name: css/user.css
+SHA-256-Digest: rPpmRAvH++nm/+6I6x9tPC/hvL3u1b31VRaUfx4uZ3g=
+
+Name: a/a/a/c/c/e/b/c/ESC$1.class
+SHA-256-Digest: vGkvHKJtQcT0ioI52s0XWELtpQgswdvJVDY1x48QWmY=
+
+Name: a/a/a/c/c/e/b/a/ERV.class
+SHA-256-Digest: +7hDD203o+Xag8+TacUDnY4LPzSRATOtH/SkBZV7wUU=
+
+Name: a/a/a/c/c/e/b/a/ERY$1.class
+SHA-256-Digest: yfXv07olrfs5fkeI23+xRto7Sze7b87xSYR+SYdF8AQ=
+
+Name: a/a/a/c/c/e/b/a/ERY.class
+SHA-256-Digest: DM+ZLbtgj22sH4h4C+JUxDq8J1UdQMD51UvWsJruk40=
+
+Name: a/a/a/c/c/e/b/c/ESC.class
+SHA-256-Digest: e4hoj8nH+GgQhxjjXCRTUZ0jy+S+Gm6x77SjHhehMgc=
+
+Name: fxml/user.fxml
+SHA-256-Digest: pHaq/kX5PZTSXg37kAk5c0jA5DlsVJ0rvVxzGd9u/w8=
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import a.a.a.c.f.c.a.RequiredGridPane?>
+<?import a.a.a.c.f.c.c.CheckBoxChanged?>
+
+<RequiredGridPane fx:id="fxml_component_root_element" hgap="7.0" stylesheets="@/css/custom.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.f.a.a.EZQ">
+	<children>
+		<Label fx:id="fxml_component_label_element" styleClass="label1" text="missing label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+		<CheckBoxChanged fx:id="fxml_component_main_element" alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+	</children>
+</RequiredGridPane>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" xml:lang="PL">
+	<xsd:element name="Potwierdzenie">
+		<xsd:annotation>
+			<xsd:documentation>Element główny potwierdzenia</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="NazwaPodmiotuPrzyjmujacego" fixed="Ministerstwo Finansów">
+					<xsd:annotation>
+						<xsd:documentation>Nazwa podmiotu przyjmującego dokument
+							elektroniczny</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="240" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="NumerReferencyjny">
+					<xsd:annotation>
+						<xsd:documentation>Identyfikator złożonego dokumentu nadany przez
+							CRD</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="240" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="SkrotDokumentu">
+					<xsd:annotation>
+						<xsd:documentation>Wartość funkcji skrótu złożonego dokumentu -
+							identyczna z wartością użytą do podpisu składanego dokumentu
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="240" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="SkrotZlozonejStruktury">
+					<xsd:annotation>
+						<xsd:documentation>Wartość funkcji skrótu dokumentu w postaci
+							otrzymanej przez system (łącznie z podpisem elektronicznym)
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="240" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="NazwaStrukturyLogicznej">
+					<xsd:annotation>
+						<xsd:documentation>Nazwa pliku XSD struktury logicznej dotycząca
+							złożonego dokumentu</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="240" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="DataWplyniecia">
+					<xsd:annotation>
+						<xsd:documentation>Data wpłynięcia dokumentu do systemu
+							informatycznego administracji podatkowej (data ze stempla czasu)
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:dateTime">
+							<xsd:whiteSpace value="collapse" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="StempelCzasu">
+					<xsd:annotation>
+						<xsd:documentation>Treść stempla czasu w postaci zakodowanej
+							algorytmem Base64</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="240" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:choice>
+					<xsd:element name="NIP1">
+						<xsd:annotation>
+							<xsd:documentation>Identyfikator podatkowy NIP podmiotu,
+								występującego jako pierwszy na dokumencie elektronicznym
+							</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:pattern value="[1-9]((\d[1-9])|([1-9]\d))\d{7}" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="PESEL1">
+						<xsd:annotation>
+							<xsd:documentation>Identyfikator podatkowy numer PESEL podmiotu,
+								występującego jako pierwszy na dokumencie elektronicznym
+							</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:whiteSpace value="collapse" />
+								<xsd:pattern value="\d{11}" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="NumerIdentyfikacyjny">
+						<xsd:annotation>
+							<xsd:documentation>Numer identyfikacyjny (VAP, VAT) na potrzeby procedur unijnych</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:whiteSpace value="collapse" />
+								<xsd:pattern value="([A-Za-z0-9\+\*]{1,15}|\d{0})" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:choice>
+				<xsd:choice minOccurs="0">
+					<xsd:element name="NIP2">
+						<xsd:annotation>
+							<xsd:documentation>Identyfikator podatkowy NIP podmiotu,
+								występującego jako drugi na dokumencie elektronicznym
+							</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:pattern value="[1-9]((\d[1-9])|([1-9]\d))\d{7}" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="PESEL2">
+						<xsd:annotation>
+							<xsd:documentation>Identyfikator podatkowy numer PESEL podmiotu,
+								występującego jako drugi na dokumencie elektronicznym
+							</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:whiteSpace value="collapse" />
+								<xsd:pattern value="\d{11}" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:choice>
+				<xsd:element name="KodUrzedu">
+					<xsd:annotation>
+						<xsd:documentation>Kod jednostki administracji podatkowej do
+							której kierowano dokument elektroniczny
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:pattern value="\d{4}" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="KodFormularza">
+					<xsd:annotation>
+						<xsd:documentation>Kod formularza przedłożonego dokumentu
+							elektronicznego</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="240" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="Przyjeto">
+					<xsd:simpleType>
+						<xsd:annotation>
+							<xsd:documentation>Typ logiczny</xsd:documentation>
+						</xsd:annotation>
+						<xsd:restriction base="xsd:boolean">
+							<xsd:whiteSpace value="collapse" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="Blad" minOccurs="0" maxOccurs="unbounded">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="240" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="wersjaSchemy" type="xsd:string"
+				use="optional">
+				<xsd:annotation>
+					<xsd:documentation>Wersja schemy 6.0</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

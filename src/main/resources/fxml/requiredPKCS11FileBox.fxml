@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+<?import a.a.a.c.f.c.a.RequiredGridPane?>
+<?import a.a.a.c.f.c.c.PathFieldRequired?>
+
+<RequiredGridPane
+        fx:id="fxml_component_root_element"
+        stylesheets="@/css/custom.css"
+        xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="a.a.a.c.f.a.a.EZR"
+        vgap="2" hgap="12"
+>
+    <children>
+        <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS"
+              GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Label fx:id="fxml_component_label_element" text="missing label"/>
+            <Label fx:id="fxml_component_label_required_flag" text="%micro.user.requiredField.star"
+                   styleClass="label-star"/>
+        </HBox>
+        <PathFieldRequired fx:id="fxml_component_main_element" maxHeight="35.0" minHeight="35.0" prefHeight="35.0"
+                           styleClass="input" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                           GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <styleClass>
+                <String fx:value="input"/>
+                <String fx:value="input-dir"/>
+            </styleClass>
+        </PathFieldRequired>
+
+        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="2" GridPane.halignment="LEFT"
+              GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <children>
+                <Button fx:id="fxml_field_box_required_button_open" onAction="#fxml_handleButton_open_button"
+                        text="%micro.process.button.SelectFile">
+                    <styleClass>
+                        <String fx:value="btn"/>
+                        <String fx:value="btn-info"/>
+                    </styleClass>
+                </Button>
+                <Button fx:id="fxml_field_box_required_button_clear" onAction="#fxml_handleButton_clear_button"
+                        text="%micro.process.button.Clear">
+                    <styleClass>
+                        <String fx:value="btn"/>
+                        <String fx:value="btn-danger"/>
+                    </styleClass>
+                </Button>
+            </children>
+        </HBox>
+
+        <Text fx:id="fxml_component_required_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error"
+              text="%micro.types.field.required" textOrigin="TOP" GridPane.columnIndex="1" GridPane.halignment="LEFT"
+              GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+    </children>
+</RequiredGridPane>

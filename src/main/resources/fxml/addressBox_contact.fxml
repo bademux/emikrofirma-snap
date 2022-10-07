@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import a.a.a.c.f.c.a.*?>
+
+<AddressBox alignment="TOP_LEFT"
+	fx:id="fxml_field_box_address"
+	stylesheets="@/css/custom.css"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="a.a.a.c.f.a.a.EYN"
+	>
+	<children>
+		<GridPane alignment="TOP_LEFT" vgap="10.0" hgap="7.0">
+       		<columnConstraints>
+				<ColumnConstraints hgrow="ALWAYS"  />
+                <ColumnConstraints hgrow="ALWAYS"  />
+                <ColumnConstraints hgrow="ALWAYS"  />
+			</columnConstraints>
+			<rowConstraints>
+                 <RowConstraints prefHeight="30.0" maxHeight="30.0" />
+                 <RowConstraints prefHeight="51.0"  />
+                 <RowConstraints prefHeight="51.0"  />
+                 <RowConstraints prefHeight="51.0"  />
+                 <RowConstraints prefHeight="51.0"  />
+             </rowConstraints>
+			<children>
+				<Label fx:id="fxml_address_box_label" text="%micro.user.address" styleClass="h2" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+				<fx:include fx:id="fxml_include_Street_box" id="fxml_include_Street_box" source="textBox.fxml" label="%micro.user.address.street" required="false" maxLength="92" GridPane.columnIndex="0" GridPane.rowIndex="1" >
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="120.0" maxWidth="150.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_HouseNumber_box" source="textBox.fxml" label="%micro.user.address.housenumber" required="false" maxLength="15" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="110.0" maxWidth="120.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_ApartmentNumber_box" source="textBox.fxml" label="%micro.user.address.apartmentnumber" required="false" maxLength="15" GridPane.columnIndex="2" GridPane.rowIndex="1">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="110.0" maxWidth="120.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="50.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_PostalCode_box" source="postalCodeBox.fxml" label="%micro.user.address.postalcode" required="false" maxLength="6" GridPane.columnIndex="0" GridPane.rowIndex="2">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="120.0" maxWidth="150.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_City_box" source="textBox.fxml" label="%micro.user.address.city" required="false" maxLength="40" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="110.0" maxWidth="120.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_PostOffice_box" source="textBox.fxml" label="%micro.user.address.postoffice" required="false" maxLength="40" GridPane.columnIndex="2" GridPane.rowIndex="2">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="110.0" maxWidth="120.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_Voivodeship_box" source="requiredComboBox.fxml" label="%micro.user.address.voivodeship" required="false" GridPane.columnIndex="0" GridPane.rowIndex="3">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="120.0" maxWidth="150.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_District_box" source="textBox.fxml" label="%micro.user.address.district" required="false" maxLength="23" GridPane.columnIndex="1" GridPane.rowIndex="3">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="110.0" maxWidth="120.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_Community_box" source="textBox.fxml" label="%micro.user.address.community" required="false" maxLength="23" GridPane.columnIndex="2" GridPane.rowIndex="3">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="110.0" maxWidth="120.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+       			<fx:include fx:id="fxml_include_CountryCode_box" source="textBox.fxml" label="%micro.user.address.countrycode" required="false" maxLength="3" GridPane.columnIndex="0" GridPane.rowIndex="4">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="120.0" maxWidth="150.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_telephone_box" source="/fxml/phoneBox.fxml" label="%micro.types.phone.label" required="false" maxLength="20" GridPane.columnIndex="1" GridPane.rowIndex="4" >
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="110.0" maxWidth="120.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+				<fx:include fx:id="fxml_include_email_box" source="/fxml/emailBox.fxml" label="%micro.types.email.label" required="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" prefWidth="110.0" maxWidth="120.0"/>
+						<ColumnConstraints minWidth="120.0" prefWidth="120.0" maxWidth="1.7976931348623157E308"/>
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints prefHeight="35.0" maxHeight="45.0" vgrow="ALWAYS" />
+						<RowConstraints minHeight="0.0" maxHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+			</children>
+		</GridPane>
+	</children>
+</AddressBox>

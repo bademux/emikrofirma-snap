@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import a.a.a.c.f.c.a.*?>
+<?import a.a.a.c.f.c.c.*?>
+<?import javafx.geometry.Insets?>
+
+<RequiredGridPane
+	fx:id="fxml_component_root_element"
+	stylesheets="@/css/custom.css"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="a.a.a.c.f.a.a.EYP"
+	>
+	<children>
+		<HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+			<Label fx:id="fxml_component_label_element" text="missing label" />
+			<Label fx:id="fxml_component_label_required_flag" text="%micro.user.requiredField.star" styleClass="label-star" />
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+		</HBox>
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+       	</Label>
+		<TextFieldValidated_RefIdPattern fx:id="fxml_component_main_element" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" styleClass="input">
+			<GridPane.margin>
+            	<Insets right="5.0"/>
+         	</GridPane.margin>
+		</TextFieldValidated_RefIdPattern>
+		<Label fx:id="fxml_types_refidpattern_view_label" text="missing label" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" >
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+       	</Label>
+       	<TextField fx:id="fxml_demo_property_RefIdPattern" editable="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" styleClass="input">
+      		<GridPane.margin>
+            	<Insets right="5.0"/>
+         	</GridPane.margin>
+       	</TextField>
+       	<HBox GridPane.columnIndex="4" spacing="10.0"  alignment="CENTER_LEFT" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+       		<children>
+       			<Button fx:id="fxml_field_box_required_button_check" alignment="CENTER" onAction="#fxml_handleButton_check_button" text="%micro.process.button.Check" mnemonicParsing="false">
+	  				<styleClass>
+                  		<String fx:value="btn" />
+                  		<String fx:value="btn-info" />
+               		</styleClass>
+             	</Button>
+				<Button fx:id="fxml_field_box_required_button_default" alignment="CENTER" onAction="#fxml_handleButton_default_button" text="%micro.process.button.DefaultValue" mnemonicParsing="false">
+					<styleClass>
+                  		<String fx:value="btn" />
+                  		<String fx:value="btn-danger" />
+               		</styleClass>
+             	</Button>
+       		</children>
+			<GridPane.margin>
+            	<Insets top="5.0"/>
+			</GridPane.margin>
+       	</HBox>
+
+      <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" >
+         <children>
+			<Text fx:id="fxml_component_required_element" strokeType="OUTSIDE" strokeWidth="10.0" text="%micro.types.field.required" HBox.hgrow="ALWAYS" styleClass="label-error"/>
+	    	<Text fx:id="fxml_component_validation_element" strokeType="OUTSIDE" strokeWidth="0.0" text="%micro.types.refidpattern.invalid" HBox.hgrow="ALWAYS" styleClass="label-error"/>
+         </children>
+		<padding>
+			<Insets top="2.0"/>
+		</padding>
+      </HBox>
+	</children>
+</RequiredGridPane>

@@ -48,48 +48,48 @@ public class EXD extends ResourceBundle.Control {
    private EXE IBU(String var1, Locale var2, String var3, ClassLoader var4, boolean var5) throws IllegalAccessException, InstantiationException, IOException {
       EXF.getInstance().ICO();
 
-      EXE var6;
+      EXE var20;
       try {
-         if (!var3.equals("java.class")) {
-            if (var3.equals("java.properties")) {
-               String var21 = this.toBundleName(var1, var2);
-               PropertyResourceBundle var7 = null;
-               String var8 = this.toResourceName(var21, "properties");
-               InputStream var9 = null;
-               if (var5) {
-                  URL var10 = var4.getResource(var8);
-                  if (var10 != null) {
-                     URLConnection var11 = var10.openConnection();
-                     if (var11 != null) {
-                        var11.setUseCaches(false);
-                        var9 = var11.getInputStream();
-                     }
-                  }
-               } else {
-                  var9 = var4.getResourceAsStream(var8);
-               }
+         if (var3.equals("java.class")) {
+            EXE var21 = new EXE(super.newBundle(var1, var2, var3, var4, var5), var2);
+            return var21;
+         }
 
-               if (var9 != null) {
-                  try {
-                     var7 = new PropertyResourceBundle(new InputStreamReader(var9, StandardCharsets.UTF_8));
-                  } finally {
-                     var9.close();
-                  }
-               }
-
-               EXE var20 = new EXE(var7, var2);
-               return var20;
-            }
-
+         if (!var3.equals("java.properties")) {
             throw new IllegalArgumentException("unknown format: " + var3);
          }
 
-         var6 = new EXE(super.newBundle(var1, var2, var3, var4, var5), var2);
+         String var6 = this.toBundleName(var1, var2);
+         PropertyResourceBundle var7 = null;
+         String var8 = this.toResourceName(var6, "properties");
+         InputStream var9 = null;
+         if (var5) {
+            URL var10 = var4.getResource(var8);
+            if (var10 != null) {
+               URLConnection var11 = var10.openConnection();
+               if (var11 != null) {
+                  var11.setUseCaches(false);
+                  var9 = var11.getInputStream();
+               }
+            }
+         } else {
+            var9 = var4.getResourceAsStream(var8);
+         }
+
+         if (var9 != null) {
+            try {
+               var7 = new PropertyResourceBundle(new InputStreamReader(var9, StandardCharsets.UTF_8));
+            } finally {
+               var9.close();
+            }
+         }
+
+         var20 = new EXE(var7, var2);
       } finally {
          EXF.getInstance().ICP();
       }
 
-      return var6;
+      return var20;
    }
 
    public Locale getFallbackLocale(String var1, Locale var2) {

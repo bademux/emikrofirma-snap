@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="fxml_inner_parent" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.c.e.j.a.EUT">
+	<padding>
+		<Insets bottom="5.0" right="2.0" />
+	</padding>
+	<children>
+		<HBox spacing="10.0">
+			<children>
+				<VBox spacing="5.0" styleClass="background-field">
+					<children>
+						<GridPane hgap="7.0" vgap="5.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints maxHeight="51.0" minHeight="-Infinity" prefHeight="51.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="61.0" minHeight="-Infinity" prefHeight="61.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
+							</rowConstraints>
+							<children>
+                        <AnchorPane GridPane.columnSpan="2">
+                           <children>
+                            	<CheckBox fx:id="fxml_invoice_sale_is_mpp" alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="h2" text="%micro.process.invoice_sale_new.mpp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="fxml_invoice_sale_invoice_fields_group_name" styleClass="h2" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+								<fx:include id="fxml_invoice_sale_ref_id" fx:id="fxml_invoice_sale_ref_id" label="%micro.process.invoice_sale_new.RefId" maxLength="100" required="true" source="/fxml/textBox.fxml" GridPane.columnIndex="0" GridPane.rowIndex="1">
+ 									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="160.0" />
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="154.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="SOMETIMES" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+								</fx:include>
+
+								<fx:include id="fxml_invoice_sale_creation_date" fx:id="fxml_invoice_sale_creation_date" label="%micro.process.invoice_sale_new.CreationDate" required="true" source="/fxml/requiredDatePicker.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1">
+									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="67.0" prefWidth="140.0" />
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="154.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="SOMETIMES" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+								</fx:include>
+								<fx:include id="fxml_invoice_sale_invoicing_date" fx:id="fxml_invoice_sale_invoicing_date" label="%micro.process.invoice_sale_new.InvoicingDate" required="false" source="/fxml/requiredDatePicker.fxml" GridPane.columnIndex="0" GridPane.rowIndex="2">
+									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="160.0" />
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="154.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="40.0" minHeight="35.0" vgrow="SOMETIMES" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+								</fx:include>
+							</children>
+						</GridPane>
+
+						<GridPane fx:id="fxml_invoice_sale_grid_pane_invoice_data_only_for_correction" hgap="7.0" vgap="5.0">
+							<columnConstraints>
+                            	<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                         	</columnConstraints>
+                         	<rowConstraints>
+                            	<RowConstraints maxHeight="30.0" prefHeight="30.0" />
+                             	<RowConstraints maxHeight="51.0" minHeight="-Infinity" prefHeight="51.0" vgrow="SOMETIMES" />
+                         	</rowConstraints>
+							<children>
+
+
+								<Label styleClass="h3" text="%micro.process.invoice_sale_new.OldInvoiceFieldsGroupName" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+									<GridPane.margin>
+										<Insets bottom="5.0" top="7.0" />
+									</GridPane.margin>
+								</Label>
+
+								<fx:include fx:id="fxml_invoice_sale_correct_ref_id" label="%micro.process.invoice_sale_new.RefId" maxLength="100" required="true" source="/fxml/textBox.fxml" GridPane.columnIndex="0" GridPane.rowIndex="1">
+									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="160.0" />
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="154.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="SOMETIMES" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+								</fx:include>
+
+								<fx:include fx:id="fxml_invoice_sale_correct_creation_date" label="%micro.process.invoice_sale_new.CreationDate" required="true" source="/fxml/requiredDatePicker.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1">
+									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="67.0" prefWidth="140.0" />
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="154.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="SOMETIMES" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+								</fx:include>
+							</children>
+						</GridPane>
+
+		                <GridPane hgap="7.0" vgap="5.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints prefHeight="51.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+
+							<children>
+								<fx:include id="fxml_invoice_sale_creation_place" fx:id="fxml_invoice_sale_creation_place" label="%micro.process.invoice_sale_new.CreationPlace" maxLength="40" required="false" source="/fxml/textBox.fxml" GridPane.columnIndex="0" GridPane.rowIndex="0">
+									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="160.0" />
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="154.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="SOMETIMES" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+								</fx:include>
+
+								<fx:include id="fxml_invoice_sale_transaction_date" fx:id="fxml_invoice_sale_transaction_date" label="%micro.process.invoice_sale_new.TransactionDate" required="true" source="/fxml/requiredDatePicker.fxml" GridPane.columnIndex="1" GridPane.rowIndex="0">
+									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="67.0" prefWidth="140.0" />
+										<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="154.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="40.0" minHeight="40.0" vgrow="SOMETIMES" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+								</fx:include>
+							</children>
+						</GridPane>
+					</children>
+					<padding>
+						<Insets bottom="12.0" left="12.0" right="12.0" top="7.0" />
+					</padding>
+				</VBox>
+
+				<VBox spacing="5.0" styleClass="background-field" HBox.hgrow="ALWAYS">
+					<children>
+						<GridPane hgap="7.0" vgap="5.0">
+								<columnConstraints>
+									<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+									<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								</columnConstraints>
+								<rowConstraints>
+									<RowConstraints maxHeight="51.0" minHeight="-Infinity" prefHeight="26.0" vgrow="SOMETIMES" />
+								</rowConstraints>
+								<children>
+								<Label styleClass="h2" text="%micro.process.invoice_sale_new.Contractor" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="0" />
+								<CheckBox fx:id="fxml_sale_contractor_private_person" styleClass="h2" text="%micro.process.invoice_sale_new.PrivatePerson" GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="0" />
+								</children>
+							</GridPane>
+						<GridPane hgap="7.0" vgap="5.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25" prefWidth="25.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25" prefWidth="25.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25" prefWidth="25.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25" prefWidth="25.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints maxHeight="51.0" minHeight="-Infinity" prefHeight="51.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="51.0" minHeight="-Infinity" prefHeight="51.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="51.0" minHeight="-Infinity" prefHeight="51.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<fx:include id="fxml_sale_contractor_name" fx:id="fxml_sale_contractor_name" label="%micro.process.invoice_sale_new.ContractorName" maxLength="200" required="true" source="/fxml/contractorNameComboBox.fxml" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+									<columnConstraints>
+										<ColumnConstraints hgrow="ALWAYS" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+									</rowConstraints>
+								</fx:include>
+
+		  						<fx:include id="fxml_sale_contractor_nip" fx:id="fxml_sale_contractor_nip" label="%micro.process.invoice_sale_new.ContractorNIP" required="true" source="/fxml/nipComboBox.fxml" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="0">
+									<columnConstraints>
+										<ColumnConstraints hgrow="ALWAYS" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+									</rowConstraints>
+								</fx:include>
+
+								<fx:include id="fxml_sale_contractor_street" fx:id="fxml_sale_contractor_street" label="%micro.process.invoice_sale_new.ContractorStreet" maxLength="92" required="true" source="/fxml/textBox_noLabel.fxml" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+									<columnConstraints>
+										<ColumnConstraints hgrow="ALWAYS" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+									</rowConstraints>
+								</fx:include>
+
+								<fx:include id="fxml_sale_contractor_house_number" fx:id="fxml_sale_contractor_house_number" label="%micro.process.invoice_sale_new.ContractorHouseNumber" maxLength="15" required="true" source="/fxml/textBox_noLabel.fxml" GridPane.columnIndex="2" GridPane.rowIndex="1">
+									<columnConstraints>
+										<ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="120.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+									</rowConstraints>
+								</fx:include>
+
+								<fx:include id="fxml_sale_contractor_apartment_number" fx:id="fxml_sale_contractor_apartment_number" label="%micro.process.invoice_sale_new.ContractorApartmentNumber" maxLength="15" required="false" source="/fxml/textBox_noLabel.fxml" GridPane.columnIndex="3" GridPane.rowIndex="1">
+									<columnConstraints>
+										<ColumnConstraints hgrow="ALWAYS" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+									</rowConstraints>
+								</fx:include>
+
+								<fx:include id="fxml_sale_contractor_postal_code" fx:id="fxml_sale_contractor_postal_code" label="%micro.process.invoice_sale_new.ContractorPostalCode" maxLength="6" required="true" source="/fxml/postalCodeBox_noLabel.fxml" GridPane.columnIndex="0" GridPane.rowIndex="2">
+									<columnConstraints>
+										<ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="120.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+									</rowConstraints>
+								</fx:include>
+
+								<fx:include id="fxml_sale_contractor_city" fx:id="fxml_sale_contractor_city" label="%micro.process.invoice_sale_new.ContractorCity" maxLength="40" required="true" source="/fxml/textBox_noLabel.fxml" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+									<columnConstraints>
+										<ColumnConstraints hgrow="ALWAYS" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints maxHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+										<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+									</rowConstraints>
+								</fx:include>
+							</children>
+						</GridPane>
+					</children>
+					<padding>
+						<Insets bottom="12.0" left="12.0" right="12.0" top="7.0" />
+					</padding>
+				</VBox>
+			</children>
+		</HBox>
+		<VBox spacing="5.0" styleClass="background-field" VBox.vgrow="SOMETIMES">
+			<padding>
+				<Insets bottom="12.0" left="12.0" right="12.0" top="7.0" />
+			</padding>
+			<children>
+						<Label fx:id="fxml_invoice_sale_label_before_correct" managed="false" styleClass="h3" text="%micro.process.invoice_sale_new.InvoiceElementsBeforeCorrect" visible="true" />
+						<HBox fx:id="fxml_invoice_sale_hbox_radio_correct" alignment="CENTER_LEFT" spacing="10.0">
+							<children>
+                  <Label text="%micro.process.invoice_sale_new.NettoOrBrutto" />
+								<RadioButton fx:id="fxml_radio_button_net_correct" mnemonicParsing="false" selected="true" text="%micro.process.invoice_sale_new.RadioButton_NET" userData="NET">
+									<toggleGroup>
+										<ToggleGroup fx:id="calculation_method_correction_radio_group" />
+									</toggleGroup>
+								</RadioButton>
+								<RadioButton fx:id="fxml_radio_button_gross_correct" mnemonicParsing="false" text="%micro.process.invoice_sale_new.RadioButton_GROSS" toggleGroup="$calculation_method_correction_radio_group" userData="GROSS" />
+							</children>
+						</HBox>
+				<TableView fx:id="fxml_invoice_sale_elements_table_before_correct" disable="true" maxHeight="1.7976931348623157E308" prefWidth="200.0" VBox.vgrow="ALWAYS">
+					<columns>
+	    	    		<TableColumn fx:id="fxml_invoice_sale_elements_table_column_name_before_correct" minWidth="80.0" prefWidth="-1.0" styleClass="column-text" text="%micro.process.invoice_sale_new.InvoiceElementName" />
+	    	            <TableColumn fx:id="fxml_invoice_sale_elements_table_column_description_before_correct" minWidth="80.0" prefWidth="-1.0" styleClass="column-text" text="%micro.process.invoice_sale_new.InvoiceElementDescription" />
+	    	            <TableColumn fx:id="fxml_invoice_sale_elements_table_column_price_before_correct" maxWidth="4000.0" minWidth="30.0" prefWidth="-1.0" styleClass="column-numeric" text="" />
+	    	           	<TableColumn fx:id="fxml_invoice_sale_elements_table_column_amount_before_correct" maxWidth="4000.0" minWidth="20.0" prefWidth="-1.0" styleClass="column-notype" text="%micro.process.invoice_sale_new.InvoiceElementAmount" />
+	    	            <TableColumn fx:id="fxml_invoice_sale_elements_table_column_unit_before_correct" maxWidth="2000.0" minWidth="20.0" prefWidth="-1.0" styleClass="column-notype" text="%micro.process.invoice_sale_new.InvoiceElementUnit" />
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_tax_type_before_correct" minWidth="50.0" prefWidth="-1.0" styleClass="column-notype" text="%micro.process.invoice_sale_new.InvoiceElementTaxType" />
+                		<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_net_price_before_correct" minWidth="20.0" prefWidth="-1.0" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumNet" />
+                		<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_tax_before_correct" minWidth="20.0" prefWidth="-1.0" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumTax" />
+                		<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_brut_price_before_correct" minWidth="20.0" prefWidth="-1.0" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumBrut" />
+                	</columns>
+	    	        <columnResizePolicy>
+	    	        	<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+					</columnResizePolicy>
+				</TableView>
+				<TableView fx:id="fxml_invoice_sale_elements_table_before_correct_summary" disable="true" maxHeight="30.0" minHeight="28.0" prefHeight="30.0" prefWidth="200.0" styleClass="noheader-disabled">
+					<columns>
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_name_before_correct_summary" editable="false" minWidth="80.0" prefWidth="-1.0" text="C1" />
+                        <TableColumn minWidth="80.0" prefWidth="-1.0" text="C2" />
+                        <TableColumn maxWidth="4000.0" minWidth="30.0" prefWidth="-1.0" text="C2" />
+                        <TableColumn maxWidth="4000.0" minWidth="20.0" prefWidth="-1.0" text="C2" />
+                        <TableColumn maxWidth="2000.0" minWidth="20.0" prefWidth="-1.0" text="C2" />
+						<TableColumn minWidth="50.0" prefWidth="-1.0" text="C2" />
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_net_price_before_correct_summary" minWidth="20.0" prefWidth="-1.0" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumNet" />
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_tax_before_correct_summary" minWidth="20.0" prefWidth="-1.0" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumTax" />
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_brut_price_before_correct_summary" editable="false" minWidth="20.0" prefWidth="-1.0" sortable="false" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumBrut" />
+					</columns>
+                    <columnResizePolicy>
+						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                    <VBox.margin>
+                    	<Insets top="-5.0" />
+                    </VBox.margin>
+				</TableView>
+						<Label fx:id="fxml_invoice_sale_invoice_elements_name" styleClass="h2" text="%micro.process.invoice_sale_new.InvoiceElements" />
+						<HBox fx:id="fxml_invoice_sale_hbox_radio" spacing="10.0">
+							<children>
+                  <Label text="%micro.process.invoice_sale_new.NettoOrBrutto" />
+								<RadioButton fx:id="fxml_radio_button_net" mnemonicParsing="false" selected="true" text="%micro.process.invoice_sale_new.RadioButton_NET" userData="NET">
+									<toggleGroup>
+										<ToggleGroup fx:id="calculation_method_radio_group" />
+									</toggleGroup>
+								</RadioButton>
+								<RadioButton fx:id="fxml_radio_button_gross" mnemonicParsing="false" text="%micro.process.invoice_sale_new.RadioButton_GROSS" toggleGroup="$calculation_method_radio_group" userData="GROSS" />
+							</children>
+						</HBox>
+				<TableView fx:id="fxml_invoice_sale_elements_table" editable="true" maxHeight="1.7976931348623157E308" pickOnBounds="false" VBox.vgrow="ALWAYS">
+					<placeholder>
+						<Label text="%micro.process.invoice_sale_new.empty" />
+					</placeholder>
+					<columns>
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_name" minWidth="80.0" prefWidth="-1.0" styleClass="column-text" text="%micro.process.invoice_sale_new.InvoiceElementName" />
+            			<TableColumn fx:id="fxml_invoice_sale_elements_table_column_description" minWidth="80.0" prefWidth="-1.0" styleClass="column-text" text="%micro.process.invoice_sale_new.InvoiceElementDescription" />
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_price" maxWidth="4000.0" minWidth="30.0" prefWidth="-1.0" styleClass="column-numeric" text="" />
+        				<TableColumn fx:id="fxml_invoice_sale_elements_table_column_amount" maxWidth="4000.0" minWidth="20.0" prefWidth="-1.0" styleClass="column-notype" text="%micro.process.invoice_sale_new.InvoiceElementAmount" />
+        				<TableColumn fx:id="fxml_invoice_sale_elements_table_column_unit" maxWidth="2000.0" minWidth="20.0" prefWidth="-1.0" sortable="false" styleClass="column-notype" text="%micro.process.invoice_sale_new.InvoiceElementUnit" />
+        				<TableColumn fx:id="fxml_invoice_sale_elements_table_column_tax_type" minWidth="50.0" prefWidth="-1.0" styleClass="column-notype" text="%micro.process.invoice_sale_new.InvoiceElementTaxType" />
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_net_price" minWidth="20.0" prefWidth="-1.0" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumNet" />
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_tax" minWidth="20.0" prefWidth="-1.0" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumTax" />
+						<TableColumn fx:id="fxml_invoice_sale_elements_table_column_sum_brut_price" minWidth="20.0" prefWidth="-1.0" styleClass="column-numeric" text="%micro.process.invoice_sale_new.InvoiceElementSumBrut" />
+					</columns>
+                    <columnResizePolicy>
+						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+					</columnResizePolicy>
+            	</TableView>
+
+			    <TableView fx:id="fxml_invoice_sale_summary_summary_table" disable="true" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="1163.0" styleClass="noheader">
+					<placeholder>
+						<Label text="" />
+	                </placeholder>
+					<columns>
+						<TableColumn fx:id="fxml_invoice_sale_new_summary_summary_table_column_name" editable="false" minWidth="80.0" prefWidth="-1.0" text="%micro.process.invoice_sale_new.SummaryTaxAll" />
+						<TableColumn minWidth="80.0" prefWidth="-1.0" text="%micro.process.invoice_sale_new.SummaryTaxAll" />
+                        <TableColumn maxWidth="4000.0" minWidth="30.0" prefWidth="-1.0" text="%micro.process.invoice_sale_new.SummaryTaxAll" />
+                        <TableColumn maxWidth="4000.0" minWidth="20.0" prefWidth="-1.0" text="%micro.process.invoice_sale_new.SummaryTaxAll" />
+						<TableColumn maxWidth="2000.0" minWidth="20.0" prefWidth="-1.0" text="%micro.process.invoice_sale_new.SummaryTaxAll" />
+						<TableColumn minWidth="50.0" prefWidth="-1.0" text="%micro.process.invoice_sale_new.SummaryTaxAll" />
+						<TableColumn fx:id="fxml_invoice_sale_summary_summary_table_column_sum_netto" editable="false" minWidth="20.0" prefWidth="-1.0" sortable="false" styleClass="column-numeric" text="%micro.process.invoice_sale_new.SummaryNetSum" />
+						<TableColumn fx:id="fxml_invoice_sale_summary_summary_table_column_sum_tax" editable="false" minWidth="20.0" prefWidth="-1.0" sortable="false" styleClass="column-numeric" text="%micro.process.invoice_sale_new.SummaryTaxSum" />
+						<TableColumn fx:id="fxml_invoice_sale_summary_summary_table_column_sum_brut" editable="false" minWidth="20.0" prefWidth="-1.0" sortable="false" styleClass="column-numeric" text="%micro.process.invoice_sale_new.SummaryBrutSum" />
+					</columns>
+			        <columnResizePolicy>
+						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+					</columnResizePolicy>
+					<VBox.margin>
+                    	<Insets top="-5.0" />
+                    </VBox.margin>
+				</TableView>
+
+			    <HBox spacing="5.0">
+					<children>
+						<Button fx:id="fxml_invoice_sale_button_add_new_invoice_position" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#fxml_handleButton_invoice_sale_new_add_new_element" text="%micro.process.button.Add" HBox.hgrow="ALWAYS">
+							<styleClass>
+								<String fx:value="btn" />
+								<String fx:value="btn-info" />
+								<String fx:value="btn-add-row" />
+							</styleClass>
+						</Button>
+						<Button fx:id="fxml_invoice_sale_button_add_delete_invoice_position" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#fxml_handleButton_invoice_sale_new_delete_element" text="%micro.process.button.Delete" HBox.hgrow="ALWAYS">
+							<styleClass>
+								<String fx:value="btn" />
+								<String fx:value="btn-danger" />
+								<String fx:value="btn-delete-row" />
+							</styleClass>
+						</Button>
+						<Label fx:id="fxml_invoice_sale_invoice_elements_table_error_label" styleClass="label-error" text="%micro.process.invoice_sale_new.Error.ErrorLabelStartText">
+							<HBox.margin>
+								<Insets left="20.0" top="1.0" />
+							</HBox.margin>
+						</Label>
+					</children>
+				</HBox>
+
+				<GridPane fx:id="fxml_invoice_sale_grid_pane_correction_reason_and_summary" vgap="5.0" VBox.vgrow="ALWAYS">
+					<columnConstraints>
+         				<ColumnConstraints hgrow="ALWAYS" maxWidth="492.0" minWidth="100.0" prefWidth="474.0" />
+         				<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="200.0" />
+           				<ColumnConstraints hgrow="SOMETIMES" maxWidth="502.0" minWidth="353.0" prefWidth="402.0" />
+       				</columnConstraints>
+       				<rowConstraints>
+         				<RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+           				<RowConstraints maxHeight="1.7976931348623157E308" prefHeight="80.0" vgrow="SOMETIMES" />
+       				</rowConstraints>
+       				<VBox.margin>
+       					<Insets top="7.0" />
+       				</VBox.margin>
+					<children>
+						<HBox alignment="CENTER_LEFT">
+							<children>
+								<Label alignment="TOP_LEFT" text="%micro.process.invoice_sale_new.CorrectReason" />
+								<Label alignment="TOP_LEFT" styleClass="star1" text="*" />
+							</children>
+						</HBox>
+
+						<fx:include fx:id="fxml_invoice_sale_correct_reason" label="" maxLength="100" source="/fxml/requiredTextAreaBox_NoLabel.fxml" GridPane.columnIndex="0" GridPane.rowIndex="1">
+							<columnConstraints>
+								<ColumnConstraints hgrow="ALWAYS" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints maxHeight="80.0" minHeight="80.0" vgrow="ALWAYS" />
+								<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+							</rowConstraints>
+						</fx:include>
+						<Label maxHeight="50.0" styleClass="group_name" text="%micro.process.invoice_sale_new.Summary" GridPane.columnIndex="2" />
+
+						<TableView fx:id="fxml_invoice_sale_table_correct_difference_summary" fixedCellSize="23.0" focusTraversable="false" maxHeight="52.0" minHeight="52.0" prefHeight="52.0" prefWidth="342.0" styleClass="table-summary" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+							<columns>
+                            	<TableColumn fx:id="fxml_invoice_sale_table_correct_difference_summary_diff_net" editable="false" minWidth="50.0" prefWidth="100.0" sortable="false" text="%micro.process.invoice_sale_new.SummaryNetSum" />
+                            	<TableColumn fx:id="fxml_invoice_sale_table_correct_difference_summary_diff_tax" editable="false" minWidth="50.0" prefWidth="100.0" sortable="false" text="%micro.process.invoice_sale_new.SummaryTaxSum" />
+								<TableColumn fx:id="fxml_invoice_sale_table_correct_difference_summary_diff_brut" editable="false" minWidth="50.0" prefWidth="100.0" sortable="false" text="%micro.process.invoice_sale_new.SummaryBrutSum" />
+                          	</columns>
+							<columnResizePolicy>
+								<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+							</columnResizePolicy>
+						</TableView>
+					</children>
+				</GridPane>
+
+			    <GridPane VBox.vgrow="ALWAYS">
+	              <columnConstraints>
+	                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+	                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+	              </columnConstraints>
+	              <rowConstraints>
+         				<RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+           				<RowConstraints maxHeight="1.7976931348623157E308" prefHeight="80.0" vgrow="SOMETIMES" />
+	              </rowConstraints>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+			    	<children>
+                        <Label fx:id="fxml_invoice_sale_exempt_reason_label" text="%micro.process.invoice_sale_new.exemptReason" />
+                        <Label fx:id="fxml_invoice_sale_exempt_reason_label_star" styleClass="star1" text="*" />
+                     </children>
+                  </HBox>
+				<fx:include fx:id="fxml_invoice_sale_exempt_reason" label="" maxLength="500" required="true" source="/fxml/requiredTextAreaBox_NoLabel.fxml" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+					<columnConstraints>
+						<ColumnConstraints hgrow="ALWAYS" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="80.0" minHeight="80.0" vgrow="ALWAYS" />
+						<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+
+            	  	<HBox alignment="TOP_RIGHT" GridPane.columnIndex="1">
+      			    	<children>
+			        	<Label fx:id="fxml_invoice_sale_to_pay_name_label" alignment="TOP_LEFT" contentDisplay="RIGHT" styleClass="text-summary" text="%micro.process.invoice_sale_new.ToPay" />
+			            <Label fx:id="fxml_invoice_sale_to_pay" alignment="TOP_LEFT" maxHeight="-Infinity" minHeight="-Infinity" text="">
+			            	<padding>
+			            		<Insets left="10.0" />
+			            	</padding>
+							<styleClass>
+								<String fx:value="text-summary" />
+								<String fx:value="text-summaryBold" />
+							</styleClass>
+			            </Label>
+			            <Label alignment="TOP_LEFT" styleClass="text-summary" text="%micro.process.invoice_sale_new.ToPayCurrency" />
+					</children>
+				</HBox>
+			</children>
+            </GridPane>
+			</children>
+		</VBox>
+
+		<GridPane hgap="7.0" styleClass="background-field" vgap="5.0" HBox.hgrow="ALWAYS">
+			<padding>
+				<Insets bottom="12.0" left="12.0" right="12.0" top="7.0" />
+			</padding>
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" />
+                <ColumnConstraints maxWidth="250.0" />
+				<ColumnConstraints maxWidth="350.0" />
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="200.0" />
+            <ColumnConstraints />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="51.0" minHeight="-Infinity" prefHeight="51.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="35.0" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="1.7976931348623157E308" prefHeight="80.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+			</rowConstraints>
+			<children>
+				<Label styleClass="h2" text="%micro.process.invoice_sale_new.Payment" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+				<fx:include id="fxml_invoice_sale_payment_type" fx:id="fxml_invoice_sale_payment_type" label="%micro.process.invoice_sale_new.PaymentType" required="true" source="/fxml/requiredComboBox.fxml" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="160.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+				</fx:include>
+
+				<fx:include id="fxml_invoice_sale_paymentdatebydeal" fx:id="fxml_invoice_sale_paymentdatebydeal" label="%micro.process.invoice_sale_new.PaymentDateByDeal" source="/fxml/labeledCheckBox.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1">
+					<columnConstraints>
+						<ColumnConstraints maxWidth="30.0" minWidth="10.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="40.0" minHeight="35.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+
+				<fx:include id="fxml_invoice_sale_paymentdatedays" fx:id="fxml_invoice_sale_paymentdatedays" allowNegative="false" label="%micro.process.invoice_sale_new.PaymentDateDays" maxLength="3" maximumFractionDigits="0" minimumFractionDigits="0" required="true" source="/fxml/numberBox.fxml" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="100.0" />
+						<ColumnConstraints maxWidth="50.0" minWidth="50.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="16.0" minHeight="0.0" vgrow="ALWAYS" />
+						<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+						<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+
+				<fx:include fx:id="fxml_invoice_sale_paymentdate" label="%micro.process.invoice_sale_new.PaymentDate" required="true" source="/fxml/requiredDatePicker.fxml" GridPane.columnIndex="3" GridPane.rowIndex="1">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="130.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="160.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+				</fx:include>
+
+				<fx:include fx:id="fxml_invoice_sale_payed" label="%micro.process.invoice_sale_new.Payed" source="/fxml/labeledCheckBox.fxml" GridPane.columnIndex="0" GridPane.rowIndex="2">
+					<columnConstraints>
+						<ColumnConstraints maxWidth="30.0" minWidth="10.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="70.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+
+				<Label text="%micro.process.invoice_sale_new.Remarks" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+				<fx:include fx:id="fxml_invoice_sale_remarks" label="" maxLength="500" required="false" source="/fxml/requiredTextAreaBox_NoLabel.fxml" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+					<columnConstraints>
+						<ColumnConstraints hgrow="ALWAYS" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="80.0" minHeight="80.0" vgrow="ALWAYS" />
+						<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</fx:include>
+			</children>
+		</GridPane>
+	</children>
+</VBox>

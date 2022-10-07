@@ -1,0 +1,67 @@
+root {
+    display: block;
+}
+
+/*-------------BACKGROUND-------------*/
+.background{
+	-fx-background-color: rgb(255,255,255);
+	-fx-background: rgb(255,255,255);
+	/* -fx-background-color: rgb(183,185,188); */
+}
+
+
+.accordion .titled-pane > *.content{
+/*     -fx-background-color: transparent ; */
+	-fx-background-color: rgba(255, 255, 255, 0.5) ;
+}
+
+/*-------------LABELS-----------------*/
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(96,93,92);
+    -fx-font-weight: bold;
+}
+
+
+.label-title1 {
+	-fx-font-size: 50px;
+	-fx-text-fill: rgb(177,14,16);
+}
+.label-title2 {
+	-fx-font-size: 50px;
+	-fx-text-fill: rgb(128,128,128);
+}
+
+.h1{
+	-fx-font-size: 2em !important;
+	-fx-font-weight: bold !important;
+}
+.title-page .labelfirst-letter{
+	-fx-font-size: 100px ;
+}
+
+
+.title-page-a{
+ -fx-font-weight: bold;
+ -fx-font-smoothing-type: lcd;
+ -fx-font-size: 28pt;
+ -fx-text-fill: rgb(96,93,92);
+
+}
+
+.title-page-b{
+ -fx-font-weight: bold;
+ -fx-font-smoothing-type: lcd;
+ -fx-font-size: 28pt;
+ -fx-text-fill: rgb(96,93,92);
+
+}
+
+.btn-back{
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 5 5;
+    -fx-background-color: rgb(255,255,255);
+}
+
+
+

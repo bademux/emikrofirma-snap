@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import a.a.a.c.f.c.a.RequiredGridPane?>
+<?import a.a.a.c.f.c.c.ComboBoxValidated_NIP?>
+
+<RequiredGridPane fx:id="fxml_component_root_element" stylesheets="@/css/custom.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.f.a.a.EZO">
+	<children>
+		<ComboBoxValidated_NIP fx:id="fxml_component_main_element" maxWidth="1.7976931348623157E308" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+			<styleClass>
+				<String fx:value="input" />
+				<String fx:value="no-arrow" />
+			</styleClass>
+       	</ComboBoxValidated_NIP>
+     	<HBox alignment="TOP_LEFT" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+			<children>
+	    		<Text fx:id="fxml_component_validation_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" text="%micro.types.nip.invalid" />
+	    		<Text fx:id="fxml_component_validation_element_external" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" />
+				<Text fx:id="fxml_component_required_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" text="%micro.types.field.required" />
+			</children>
+			<padding>
+            	<Insets top="1.0" />
+         	</padding>
+		</HBox>
+	</children>
+</RequiredGridPane>

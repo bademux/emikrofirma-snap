@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.GridPane?>
+
+<AnchorPane maxHeight="125.0" maxWidth="400.0" minHeight="100.0" minWidth="400.0" prefHeight="125.0" prefWidth="400.0"
+            stylesheets="@/css/invoices_settlements.css" xmlns="http://javafx.com/javafx/8.0.141"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="a.a.a.c.c.e.c.a.ESF">
+    <children>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                    styleClass="background-field" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+            <center>
+                <GridPane alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints/>
+                    </rowConstraints>
+                    <children>
+                        <fx:include fx:id="fxml_invoice_settlements_year"
+                                    label="%micro.process.invoices_settlements.dialogEmpty.Year" required="true"
+                                    source="/fxml/requiredComboBox.fxml" GridPane.rowIndex="0" GridPane.columnIndex="0" >
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" prefWidth="50.0" />
+                                <ColumnConstraints hgrow="ALWAYS" minWidth="75.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS"/>
+                                <RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS"/>
+                            </rowConstraints>
+                        </fx:include>
+                        <fx:include fx:id="fxml_invoice_settlements_month"
+                                    label="%micro.process.invoices_settlements.dialogEmpty.Month" required="true"
+                                    source="/fxml/requiredComboBox.fxml" GridPane.rowIndex="0" GridPane.columnIndex="1" >
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" prefWidth="75.0" />
+                                <ColumnConstraints hgrow="ALWAYS" minWidth="75.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS"/>
+                                <RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS"/>
+                            </rowConstraints>
+                        </fx:include>
+                    </children>
+                </GridPane>
+            </center>
+            <bottom>
+                <HBox alignment="TOP_RIGHT" fillHeight="false" spacing="10.0" BorderPane.alignment="CENTER_RIGHT">
+                    <children>
+                        <Button fx:id="fxml_button_save" alignment="CENTER" contentDisplay="CENTER" disable="true"
+                                mnemonicParsing="false" onAction="#fxml_handleButton_save"
+                                text="%micro.process.button.Save">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                            <styleClass>
+                                <String fx:value="btn"/>
+                                <String fx:value="btn-primary"/>
+                                <String fx:value="short"/>
+                            </styleClass>
+                        </Button>
+                        <Button fx:id="fxml_button_cancel" alignment="CENTER" contentDisplay="CENTER"
+                                mnemonicParsing="false" onAction="#fxml_handleButton_cancel"
+                                text="%micro.process.button.Cancel">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                            <styleClass>
+                                <String fx:value="btn"/>
+                                <String fx:value="btn-danger"/>
+                                <String fx:value="short"/>
+                            </styleClass>
+                        </Button>
+                    </children>
+             <!--       <BorderPane.margin>
+                        <Insets top="10.0"/>
+                    </BorderPane.margin>-->
+                </HBox>
+            </bottom>
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+            </padding>
+        </BorderPane>
+    </children>
+</AnchorPane>

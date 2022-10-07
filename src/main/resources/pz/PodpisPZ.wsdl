@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy"
+	xmlns:ns0="http://www.mf.gov.pl/uslugiBiznesowe/AP/PodpisPZ/2017/01/27"
+	targetNamespace="http://www.mf.gov.pl/uslugiBiznesowe/AP/PodpisPZ/2017/01/27">
+	<wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		<xsd:schema>
+			<xsd:import schemaLocation="PodpisPZ.xsd1.xsd" namespace="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27" />
+			<xsd:import schemaLocation="PodpisPZ.xsd2.xsd" namespace="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="pobierzDokumentyRequest">
+		<wsdl:part name="parameters" element="xsns:pobierzDokumenty"
+			xmlns:xsns="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27" />
+	</wsdl:message>
+	<wsdl:message name="pobierzDokumentyResponse">
+		<wsdl:part name="parameters" element="xsns:pobierzDokumentyOdpowiedz"
+			xmlns:xsns="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27" />
+	</wsdl:message>
+	<wsdl:message name="zadaniePodpisuRequest">
+		<wsdl:part name="parameters" element="xsns:zadaniePodpisu"
+			xmlns:xsns="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27" />
+	</wsdl:message>
+	<wsdl:message name="zadaniePodpisuResponse">
+		<wsdl:part name="parameters" element="xsns:zadaniePodpisuOdpowiedz"
+			xmlns:xsns="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27" />
+	</wsdl:message>
+	<wsdl:portType name="PodpisPZ">
+		<wsdl:operation name="pobierzDokumenty">
+			<wsdl:input name="pobierzDokumentyRequest" message="ns0:pobierzDokumentyRequest" />
+			<wsdl:output name="pobierzDokumentyResponse" message="ns0:pobierzDokumentyResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="zadaniePodpisu">
+			<wsdl:input name="zadaniePodpisuRequest" message="ns0:zadaniePodpisuRequest" />
+			<wsdl:output name="zadaniePodpisuResponse" message="ns0:zadaniePodpisuResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PodpisPZSOAP" type="ns0:PodpisPZ">
+		<soap11:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<wsdl:operation name="pobierzDokumenty">
+			<soap11:operation
+				soapAction="http://www.mf.gov.pl/uslugiBiznesowe/AP/PodpisPZ/2017/01/27/pobierzDokumenty"
+				style="document" />
+			<wsdl:input name="pobierzDokumentyRequest">
+				<soap11:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="pobierzDokumentyResponse">
+				<soap11:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zadaniePodpisu">
+			<soap11:operation
+				soapAction="http://www.mf.gov.pl/uslugiBiznesowe/AP/PodpisPZ/2017/01/27/zadaniePodpisu"
+				style="document" />
+			<wsdl:input name="zadaniePodpisuRequest">
+				<soap11:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="zadaniePodpisuResponse">
+				<soap11:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PodpisPZ">
+		<wsdl:port name="PodpisPZSOAP" binding="ns0:PodpisPZSOAP">
+			<soap11:address
+				location="https://145.237.192.10:5056/uslugiBiznesowe/AP/PodpisPZ" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

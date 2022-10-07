@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxWidth="400.0" minWidth="400.0" prefWidth="400.0" stylesheets="@/css/other_sale_new.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.c.e.r.a.QUO">
+   <children>
+      <BorderPane maxWidth="370.0" minWidth="370.0" prefWidth="370.0" styleClass="background-field" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <top>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label styleClass="h2" text="%micro.process.other_sale_new.DialogAddNewOtherElement.DialogName" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </HBox>
+         </top>
+         <center>
+            <VBox spacing="5.0">
+               <children>
+						<fx:include fx:id="fxml_other_sale_new_add_other_element_net" allowNegative="true" label="%micro.process.other_sale_new.DialogAddNewOtherElement.Net" maxLength="15" maximumFractionDigits="2" minimumFractionDigits="2" required="true" source="/fxml/numberBox.fxml">
+										<columnConstraints>
+											<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" prefWidth="170.0" />
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+											<RowConstraints maxHeight="16.0" minHeight="0.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>
+						<fx:include fx:id="fxml_other_sale_new_add_other_element_tax" allowNegative="true" label="%micro.process.other_sale_new.DialogAddNewOtherElement.Tax" maxLength="15" maximumFractionDigits="2" minimumFractionDigits="2" required="true" source="/fxml/numberBox.fxml">
+										<columnConstraints>
+											<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" prefWidth="170.0" />
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+											<RowConstraints maxHeight="16.0" minHeight="0.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>
+						<fx:include fx:id="fxml_other_sale_new_add_other_element_tax_type" label="%micro.process.other_sale_new.DialogAddNewOtherElement.TaxType" required="true" source="/fxml/requiredComboBox.fxml">
+										<columnConstraints>
+											<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" />
+											<ColumnConstraints hgrow="ALWAYS" />
+										</columnConstraints>
+										<rowConstraints>
+											<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="ALWAYS" />
+											<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="ALWAYS" />
+										</rowConstraints>
+						</fx:include>
+						<HBox spacing="2.0">
+	                           		<VBox.margin>
+	                              		<Insets left="12.0" />
+	                           		</VBox.margin>
+	                           		<children>
+	                              		<Label styleClass="star" text="%micro.user.requiredField.star" />
+										<Label styleClass="h4" text="%micro.user.requiredField" />
+	                           		</children>
+	                        	</HBox>
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <HBox alignment="TOP_RIGHT" prefHeight="30.0" spacing="10.0" BorderPane.alignment="CENTER_RIGHT">
+               <children>
+                  <Button fx:id="fxml_button_save" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#fxml_handleButton_save" text="%micro.process.button.Save">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-primary" />
+                     </styleClass></Button>
+                  <Button fx:id="fxml_button_cancel" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fxml_handleButton_cancel" text="%micro.process.button.Cancel">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-danger" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </bottom>
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+      </BorderPane>
+   </children>
+</AnchorPane>

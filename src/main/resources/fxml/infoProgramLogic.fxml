@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import a.a.a.c.f.c.c.HyperlinkBox?>
+
+<VBox minHeight="768.0" minWidth="1360.0" prefHeight="1200.0" prefWidth="1100.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.c.e.n.a.QTF">
+	<padding>
+		<Insets bottom="5.0" right="2.0" />
+	</padding>
+	<children>
+						<TabPane tabClosingPolicy="UNAVAILABLE">
+							<tabs>
+								<Tab closable="false" text="%micro.infoProgram.tab.aboutProgram">
+									<content>
+										<AnchorPane minHeight="0.0" minWidth="0.0">
+											<opaqueInsets>
+												<Insets />
+											</opaqueInsets>
+											<children>
+												<VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+													<children>
+														<VBox styleClass="background-field">
+															<children>
+																<TextArea fx:id="fxml_Label_about" editable="false" maxHeight="1.7976931348623157E308" prefHeight="400.0" styleClass="input" text="textArea" wrapText="true" />
+															</children>
+															<opaqueInsets>
+																<Insets />
+															</opaqueInsets>
+                                 <padding>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </padding>
+														</VBox>
+                              <VBox spacing="10.0" styleClass="background-field">
+                                 <padding>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </padding>
+                                 <children>
+                                    <Label styleClass="h2" text="%micro.infoProgram.tab.aboutProgram.links" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="%micro.infoProgram.tab.aboutProgram.links.films" />
+                                          <HyperlinkBox fx:id="fxml_youtube_start_instruction" alignment="TOP_LEFT" href="%micro.infoProgram.tab.aboutProgram.links.films.StartPage" onAction="#fxml_handleHyperlink" text="%micro.infoProgram.tab.aboutProgram.links.films.Start" />
+                                          <HyperlinkBox fx:id="fxml_youtube_createInvoice_instruction" href="%micro.infoProgram.tab.aboutProgram.links.films.CreateSellInvoicePage" onAction="#fxml_handleHyperlink" text="%micro.infoProgram.tab.aboutProgram.links.films.CreateSellInvoice" />
+                                          <HyperlinkBox fx:id="fxml_youtube_editInvoice_instruction" href="%micro.infoProgram.tab.aboutProgram.links.films.EditInvoicePage" onAction="#fxml_handleHyperlink" text="%micro.infoProgram.tab.aboutProgram.links.films.EditInvoice" />
+                                          <HyperlinkBox fx:id="fxml_youtube_purchaseInvoice_instruction" href="%micro.infoProgram.tab.aboutProgram.links.films.CreatePurchaseInvoicePage" onAction="#fxml_handleHyperlink" text="%micro.infoProgram.tab.aboutProgram.links.films.CreatePurchaseInvoice" />
+                                          <HyperlinkBox fx:id="fxml_youtube_setllementAndInvoiceRecord_instruction" href="%micro.infoProgram.tab.aboutProgram.links.films.SettlementsAndInvoiceRecordsPage" onAction="#fxml_handleHyperlink" text="%micro.infoProgram.tab.aboutProgram.links.films.SettlementsAndInvoiceRecords" />
+                                          <HyperlinkBox fx:id="fxml_youtube_generateAndSendJPK_instruction" href="%micro.infoProgram.tab.aboutProgram.links.films.GenerateAndSendJPKPage" onAction="#fxml_handleHyperlink" text="%micro.infoProgram.tab.aboutProgram.links.films.GenerateAndSendJPK" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="%micro.infoProgram.tab.aboutProgram.links.manual" />
+                                          <Hyperlink fx:id="fxml_manual_instruction" onAction="#fxml_handleHyperlink" text="%micro.infoProgram.tab.aboutProgram.links.manualPage" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="%micro.infoProgram.tab.aboutProgram.links.QA" />
+                                          <Hyperlink fx:id="fxml_QA_instruction" onAction="#fxml_handleHyperlink" text="%micro.infoProgram.tab.aboutProgram.links.QAPage" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+													</children>
+												</VBox>
+											</children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+										</AnchorPane>
+									</content>
+								</Tab>
+								<Tab closable="false" text="%micro.infoProgram.tab.history">
+									<content>
+										<AnchorPane minHeight="0.0" minWidth="0.0">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                     <children>
+                        <VBox styleClass="background-field" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TextArea fx:id="fxml_history" styleClass="input" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </VBox.margin>
+                              </TextArea>
+                           </children>
+                        </VBox>
+                     </children>
+										</AnchorPane>
+									</content>
+								</Tab>
+							</tabs>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+						</TabPane>
+	</children>
+</VBox>

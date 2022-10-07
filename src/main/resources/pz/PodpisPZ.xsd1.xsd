@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:pz="http://www.mf.gov.pl/uslugiBiznesowe/AP/PodpisPZ/2017/01/27"
+	xmlns:pzd="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27">
+	<xsd:include schemaLocation="PodpisPZ.xsd2.xsd" />
+</xsd:schema>

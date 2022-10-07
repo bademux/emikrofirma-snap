@@ -4,7 +4,7 @@ public class MME<_FIRST, _SECOND, _THIRD, _FOURTH, _FIFTH, _SIXTH, _SEVENTH> ext
    protected _SEVENTH MWP;
 
    public MME() {
-      this((Object)null, (Object)null, (Object)null, (Object)null, (Object)null, (Object)null, (Object)null);
+      this(null, null, null, null, null, null, null);
    }
 
    public MME(_FIRST var1, _SECOND var2, _THIRD var3, _FOURTH var4, _FIFTH var5, _SIXTH var6, _SEVENTH var7) {

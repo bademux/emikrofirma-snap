@@ -155,7 +155,7 @@ public class EWH extends EWM {
                   }
 
                   Map var51 = IAV(var48);
-                  String var53 = (String)((List)var51.get((Object)null)).get(0);
+                  String var53 = (String)((List)var51.get(null)).get(0);
                   var26 = var53.split(" ")[1];
                   if (!"200".equals(var26)) {
                      throw new EWN(var53);
@@ -198,7 +198,7 @@ public class EWH extends EWM {
                   }
 
                   Map var28 = IAV(var27);
-                  String var29 = (String)((List)var28.get((Object)null)).get(0);
+                  String var29 = (String)((List)var28.get(null)).get(0);
                   String var30 = var29.split(" ")[1];
                   if (!"200".equals(var30)) {
                      throw new EWN(var29);
@@ -356,7 +356,7 @@ public class EWH extends EWM {
                   }
 
                   Map var56 = IAV(var52);
-                  String var59 = (String)((List)var56.get((Object)null)).get(0);
+                  String var59 = (String)((List)var56.get(null)).get(0);
                   var27 = var59.split(" ")[1];
                   if (!"200".equals(var27)) {
                      throw new EWN(var59);
@@ -405,7 +405,7 @@ public class EWH extends EWM {
                   }
 
                   Map var29 = IAV(var28);
-                  String var30 = (String)((List)var29.get((Object)null)).get(0);
+                  String var30 = (String)((List)var29.get(null)).get(0);
                   String var31 = var30.split(" ")[1];
                   if (!"200".equals(var31)) {
                      throw new EWN(var30);

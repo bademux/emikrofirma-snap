@@ -182,29 +182,27 @@ public class EVU {
    private static String getManifestAttribute(JarFile var0, String var1) {
       EXF.getInstance().ICO();
 
-      String var4;
+      String var3;
       try {
-         String var3;
-         try {
-            Manifest var2 = var0.getManifest();
-            var0.close();
-            var3 = getManifestAttribute(var2, var1);
-            if (var3 == null) {
-               var4 = null;
-               return var4;
-            }
-
-            var4 = var3.trim();
-         } catch (Exception var8) {
-            EXF.getInstance().IBZ("Manifest read failed", var8);
-            var3 = null;
-            return var3;
+         Manifest var2 = var0.getManifest();
+         var0.close();
+         var3 = getManifestAttribute(var2, var1);
+         String var4;
+         if (var3 == null) {
+            var4 = null;
+            return var4;
          }
+
+         var4 = var3.trim();
+         return var4;
+      } catch (Exception var8) {
+         EXF.getInstance().IBZ("Manifest read failed", var8);
+         var3 = null;
       } finally {
          EXF.getInstance().ICP();
       }
 
-      return var4;
+      return var3;
    }
 
    private static String getManifestAttribute(JarInputStream var0, String var1) {
@@ -246,16 +244,14 @@ public class EVU {
                return var3;
             }
 
-            var2 = null;
+            return null;
          } catch (Exception var7) {
             EXF.getInstance().IBZ("Manifest read failed", var7);
-            var3 = null;
-            return var3;
+            return null;
          }
       } finally {
          EXF.getInstance().ICP();
       }
 
-      return var2;
    }
 }

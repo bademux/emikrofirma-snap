@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import a.a.a.c.f.c.a.*?>
+<?import a.a.a.c.f.c.c.*?>
+<?import javafx.geometry.Insets?>
+
+<RequiredGridPane
+	fx:id="fxml_component_root_element"
+	stylesheets="@/css/custom.css"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="a.a.a.c.f.a.a.EYM"
+	>
+	<children>
+		<HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+			<Label fx:id="fxml_component_label_element" text="missing label" />
+			<Label fx:id="fxml_component_label_required_flag" text="%micro.user.requiredField.star" styleClass="label-star" />
+		</HBox>
+		<TextFieldValidated_AccountNumber fx:id="fxml_component_main_element" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" minWidth="230.0" prefWidth="230.0" styleClass="input" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" >
+         <GridPane.margin>
+            <Insets left="7.0"/>
+         </GridPane.margin>
+       	</TextFieldValidated_AccountNumber>
+
+      <HBox alignment="TOP_LEFT" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" >
+         <children>
+			<Text fx:id="fxml_component_required_element" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="label-error" text="%micro.types.field.required" HBox.hgrow="ALWAYS" />
+	    	<Text fx:id="fxml_component_validation_element" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-error" text="%micro.types.accountNumber.invalid" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+         	<Insets top="1.0" left="7.0"/>
+         </padding>
+      </HBox>
+      <Button fx:id="fxml_component_button_info" prefHeight="20.0" prefWidth="20.0" styleClass="btn-information" GridPane.columnIndex="2" > 
+         <padding>
+         	<Insets left="7.5" />
+         </padding>
+      </Button>
+	</children>
+</RequiredGridPane>

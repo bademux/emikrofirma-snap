@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions"
+	xmlns:pz="http://www.mf.gov.pl/uslugiBiznesowe/AP/PodpisPZ/2017/01/27"
+	xmlns:pzd="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	targetNamespace="http://www.mf.gov.pl/schematy/AP/PodpisPZ/2017/01/27">
+	<xsd:element ibmSchExtn:docRoot="true" name="zadaniePodpisu">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="opisZadania">
+					<xsd:annotation>
+						<xsd:documentation>Informacje dodatkowe w postaci tekstu
+							prezentowanego użytkownikowi na stronie do podpisywania, nie
+							dłuższe niż 1024 znaki
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:maxLength value="1024" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="listaDokumentow" type="pzd:ListaDokumentowType">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element ibmSchExtn:docRoot="true" name="zadaniePodpisuOdpowiedz">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="wynik" type="xsd:string" />
+				<xsd:element maxOccurs="1" minOccurs="0" name="adresZadania"
+					type="xsd:string">
+				</xsd:element>
+				<xsd:element name="listaDokumentow" type="pzd:ListaDokWynikType">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element ibmSchExtn:docRoot="true" name="pobierzDokumenty">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="adresZadania" type="xsd:string">
+				</xsd:element>
+				<xsd:element name="listaDokumentow" type="pzd:ListaDokDoPobraniaType">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element ibmSchExtn:docRoot="true" name="pobierzDokumentyOdpowiedz">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="wynik" type="xsd:string">
+				</xsd:element>
+				<xsd:element name="listaDokumentow" type="pzd:ListaDokPodpisaneType">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ListaDokumentowType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="100" name="dokument"
+				type="pzd:DokumentZadanieType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DokumentType">
+		<xsd:sequence>
+			<xsd:element name="idDokumentu" type="xsd:long" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListaDokWynikType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="100" name="dokument" type="pzd:DokumentWynikType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListaDokDoPobraniaType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="100" name="dokument" type="pzd:DokumentType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DokumentZadanieType">
+		<xsd:complexContent>
+			<xsd:extension base="pzd:DokumentType">
+				<xsd:sequence>
+					<xsd:element name="opis">
+						<xsd:annotation>
+							<xsd:documentation>
+								Informacje dodatkowe przypisane
+								do dokumentu
+								w
+								postaci tekstu
+								prezentowanego użytkownikowi na
+								stronie do
+								podpisywania, nie
+								dłuższe niż 250 znaków
+							</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:maxLength value="250" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="zawartosc" type="xsd:base64Binary">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DokumentWynikType">
+		<xsd:complexContent>
+			<xsd:extension base="pzd:DokumentType">
+				<xsd:sequence>
+					<xsd:element name="wynik" type="xsd:string">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListaDokPodpisaneType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="100" name="dokument"
+				type="pzd:DokumentPodpisanyType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DokumentPodpisanyType">
+		<xsd:complexContent>
+			<xsd:extension base="pzd:DokumentWynikType">
+				<xsd:sequence>
+					<xsd:element name="podpisanaZawartosc" type="xsd:base64Binary">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.String?>
+
+
+<AnchorPane stylesheets="@/css/waitingDialog.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+   <children>
+      <ProgressIndicator />
+   </children>
+   <styleClass>
+		<String fx:value="progress" />
+	</styleClass>
+</AnchorPane>

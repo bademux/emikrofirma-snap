@@ -1,0 +1,93 @@
+root {
+    display: block;
+}
+
+.background{
+	-fx-background-color: rgb(255,255,255);
+	-fx-background: rgb(255,255,255);
+	/* -fx-background-color: rgb(183,185,188); */
+}
+
+.background-field{
+	-fx-background: white;
+	-fx-background-color: white;
+	-fx-border-width: 0.5px;
+	-fx-border-color: rgb(191,191,191)
+}
+
+.btn{
+	-fx-min-height: 35;
+	-fx-pref-height: 35;
+    -fx-max-height: 35;
+    -fx-font-family: Calibri ;
+	-fx-font-weight: bold;
+	-fx-min-width: 90;
+	-fx-font-size: 14px ;
+	-fx-font-weight: bold;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.btn-login, .btn-login:focused {
+	-fx-background-color: rgb(227,24,55);
+	-fx-text-fill: white;
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color:  rgb(227,24,55);
+  	-fx-border-style: solid;
+  	-fx-border-width: 0;
+}
+
+.btn-login:hover{
+	-fx-background-color: rgb(181,18,27);
+	 -fx-border-color:  rgb(181,18,27);
+	-fx-cursor: hand;
+}
+
+.btn-register, .btn-register:focused {
+	-fx-background-color: rgb(227,24,55);
+	-fx-text-fill: white;
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color:  rgb(227,24,55);
+  	-fx-border-style: solid;
+  	-fx-border-width: 0;
+}
+
+.btn-register:hover{
+	-fx-background-color: rgb(181,18,27);
+	-fx-border-color:  rgb(181,18,27);
+	-fx-cursor: hand;
+}
+
+.input{
+	-fx-font-size: 12px;
+	width: 100%;
+    margin: 8px 0;
+	box-sizing: border-box;
+	-fx-border-color:  rgb(191,191,191);
+	-fx-background-color: rgb(255,255,255);
+	-fx-background-insets: 1;
+	-fx-background-radius: 0;
+	-fx-text-box-border: rgb(255,255,255);
+	-fx-control-inner-background : rgb(255,255,255);
+}
+
+.input:focused {
+	-fx-effect: dropshadow( three-pass-box  , rgb(0, 150, 201) , 2, 0.0 , 1 , 1 );
+	-fx-alignment: center-left ;
+}
+
+.input:empty {
+    -fx-alignment: center ;
+}
+
+.input:empty:focused {
+    -fx-alignment: center-left ;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(96,93,92);
+    -fx-font-weight: bold;
+}
+

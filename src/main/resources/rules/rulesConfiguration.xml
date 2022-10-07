@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mainConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<packages>
+		<variableDateTime id="variable#date#dataWytworzenia" />
+		<variableDate id="variable#date#dataOd" />
+		<variableDate id="variable#date#dataDo" />
+		<variableBigDecimal id="variable#double#podatekNalezny">
+			<value xsi:type="xs:decimal">0</value>
+		</variableBigDecimal>
+		<variableBigDecimal id="variable#double#podatekNaliczony">
+			<value xsi:type="xs:decimal">0</value>
+		</variableBigDecimal>
+		<constantBigDecimal id="constant#double#stawkaPodatku5%">
+			<value xsi:type="xs:decimal">5.0</value>
+		</constantBigDecimal>
+		<constantBigDecimal id="constant#double#stawkaPodatku8%">
+			<value xsi:type="xs:decimal">8.0</value>
+		</constantBigDecimal>
+		<constantBigDecimal id="constant#double#stawkaPodatku23%">
+			<value xsi:type="xs:decimal">23.0</value>
+		</constantBigDecimal>
+		<selectedFields fieldType="JPK_Naglowek_DataWytworzeniaJPK">
+			<operationOnFieldAndVariableDateTime variableRef="variable#date#dataWytworzenia" operationType="SET" />
+			<conditionOnFieldAndConstantDateTime conditionType="GREATER_OR_EQUAL">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.01</messageOnError>
+				<value xsi:type="xs:dateTime">2017-04-01T00:00:00</value>
+			</conditionOnFieldAndConstantDateTime>
+		</selectedFields>
+		<selectedFields fieldType="JPK_Naglowek_DataOd">
+			<operationOnFieldAndVariableDate variableRef="variable#date#dataOd" operationType="SET" />
+			<conditionOnFieldAndVariableDateTime variableRef="variable#date#dataWytworzenia" conditionType="LESSER_OR_EQUAL">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.02</messageOnError>
+			</conditionOnFieldAndVariableDateTime>
+			<conditionOnFieldAndConstantDate conditionType="GREATER_OR_EQUAL">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.03</messageOnError>
+				<value xsi:type="xs:dateTime">2016-07-01</value>
+			</conditionOnFieldAndConstantDate>
+		</selectedFields>
+		<selectedFields fieldType="JPK_Naglowek_DataDo">
+			<operationOnFieldAndVariableDate variableRef="variable#date#dataDo" operationType="SET" />
+			<conditionOnFieldAndVariableDateTime variableRef="variable#date#dataWytworzenia" conditionType="LESSER_OR_EQUAL">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.04</messageOnError>
+			</conditionOnFieldAndVariableDateTime>
+			<conditionOnFieldAndVariableDate variableRef="variable#date#dataOd" conditionType="GREATER_OR_EQUAL">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.05</messageOnError>
+			</conditionOnFieldAndVariableDate>
+		</selectedFields>
+		<selectedFields fieldType="JPK_Podmiot1_IdentyfikatorPodmiotu_NIP">
+			<conditionOnFieldAndCustomAction customActionClass="a.a.a.c.d.a.b.EPU" conditionType="MATCHES">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.07</messageOnError>
+			</conditionOnFieldAndCustomAction>
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_NrKontrahenta">
+			<conditionOnFieldAndCustomAction customActionClass="a.a.a.c.d.a.b.EPQ" conditionType="MATCHES">
+				<actionType>WARNING</actionType>
+				<messageOnError>%micro.rules.messages.message.new.11</messageOnError>
+			</conditionOnFieldAndCustomAction>
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_16">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_18">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_20">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_24">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_26">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_28">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_30">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_33">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_35">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_36">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_37">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_38">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="SUBTRACT" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazWiersz_K_39">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" operationType="SUBTRACT" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_SprzedazCtrl_PodatekNalezny">
+			<ConditionOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNalezny" conditionType="EQUALS">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.16</messageOnError>
+			</ConditionOnFieldAndVariableBigDecimal>
+		</selectedFields>
+		<selectedFields fieldType="JPK_ZakupWiersz_NrDostawcy">
+			<conditionOnFieldAndCustomAction customActionClass="a.a.a.c.d.a.b.EPQ" conditionType="MATCHES">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.18</messageOnError>
+			</conditionOnFieldAndCustomAction>
+		</selectedFields>
+		<selectedFields fieldType="JPK_ZakupWiersz_K_44">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNaliczony" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_ZakupWiersz_K_46">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNaliczony" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_ZakupWiersz_K_47">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNaliczony" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_ZakupWiersz_K_48">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNaliczony" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_ZakupWiersz_K_49">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNaliczony" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_ZakupWiersz_K_50">
+			<OperationOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNaliczony" operationType="ADD" />
+		</selectedFields>
+		<selectedFields fieldType="JPK_ZakupCtrl_PodatekNaliczony">
+			<ConditionOnFieldAndVariableBigDecimal variableRef="variable#double#podatekNaliczony" conditionType="EQUALS">
+				<actionType>ERROR</actionType>
+				<messageOnError>%micro.rules.messages.message.new.23</messageOnError>
+			</ConditionOnFieldAndVariableBigDecimal>
+		</selectedFields>
+	</packages>
+</mainConfiguration>

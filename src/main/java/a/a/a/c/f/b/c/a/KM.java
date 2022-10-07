@@ -1,0 +1,38 @@
+package a.a.a.c.f.b.c.a;
+
+import a.a.a.c.e.a.k.a.EXF;
+import a.a.a.c.f.b.JM;
+import a.a.a.c.g.b.FCW;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+public enum KM implements JM {
+   acquisition_of_general_goods(FCW.getInstance().getMessageForKey("micro.model.type.taxreason.acquisition_of_general_goods")),
+   acquisition_of_fixed_assets(FCW.getInstance().getMessageForKey("micro.model.type.taxreason.acquisition_of_fixed_assets"));
+
+   private final String AOZ;
+
+   private KM(String var3) {
+      EXF.getInstance().ICO();
+
+      try {
+         this.AOZ = var3;
+      } finally {
+         EXF.getInstance().ICP();
+      }
+
+   }
+
+   public String getDescription() {
+      return this.AOZ;
+   }
+
+   public int DAQ(JM var1) {
+      return this.compareTo((KM)var1);
+   }
+
+   public JM[] getEnumTypeValues() {
+      return values();
+   }
+}

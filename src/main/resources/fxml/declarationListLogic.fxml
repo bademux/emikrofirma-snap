@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10.0" styleClass="background-field" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a.a.a.c.c.e.i.a.ETZ">
+	<children>
+		<TableView fx:id="fxml_declaration_list_declaration_table" VBox.vgrow="ALWAYS">
+		    <placeholder>
+				<Label text="%micro.process.jpk_list.empty" />
+			</placeholder>
+			<columns>
+				<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_docname" minWidth="120.0" prefWidth="175.0" styleClass="column-notype" text="%micro.process.jpk_list.docname" />
+		       	<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_filename" minWidth="58.0" styleClass="column-notype" text="%micro.process.jpk_list.filename" />
+		       	<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_period" minWidth="83.99996948242188" prefWidth="89.0" styleClass="column-notype" text="%micro.process.jpk_list.period" />
+		     	<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_send_date" minWidth="100.0" styleClass="column-notype" text="%micro.process.jpk_list.send_date" />
+		       	<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_subtype" minWidth="85.0" styleClass="column-notype" text="%micro.process.jpk_list.subtype" />
+		       	<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_purpose" maxWidth="50.0" minWidth="45.0" styleClass="column-notype" text="%micro.process.jpk_list.purpose" />
+		      	<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_source" minWidth="100.0" styleClass="column-notype" text="%micro.process.jpk_list.source" />
+		      	<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_status" minWidth="150.0" prefWidth="200.0" styleClass="column-notype" text="%micro.process.jpk_list.status" />
+		   		<TableColumn fx:id="fxml_declaration_list_declaration_table_declaration_sign_type" minWidth="150.0" prefWidth="200.0" styleClass="column-notype" text="%micro.process.jpk_list.sign_type" />
+		   	</columns>
+			<columnResizePolicy>
+            	<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+		   	</columnResizePolicy>
+		   	<styleClass>
+		      	<String fx:value="tree-table-row-cell" />
+		      	<String fx:value="table-view" />
+		   	</styleClass>
+	     </TableView>
+	     <Pagination fx:id="fxml_declaration_list_pagination" VBox.vgrow="ALWAYS" />
+	     <Label></Label>
+	     <Label text="%micro.process.jpk_list.trackReferenceIdButton" styleClass="h2" />
+	     <HBox spacing="10.0">
+	     	<children>
+				 <fx:include fx:id="fxml_declaration_list_jpk_ref_id" label="%micro.process.jpk_list.trackReferenceIdField" maxLength="100" required="false" source="/fxml/textBox.fxml">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="160.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="300.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="35.0" minHeight="35.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="16.0" minHeight="16.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+				 </fx:include>
+				 <Button fx:id="fxml_declaration_list_track_jpk_status_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fxml_handleButton_declaration_list_track_jpk_status" prefHeight="35.0" text="%micro.process.jpk_list.button.check" HBox.hgrow="ALWAYS">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-primary" />
+               </styleClass>
+				 </Button>
+				</children>
+		  </HBox>
+	</children>
+   <padding>
+      <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+   </padding>
+</VBox>

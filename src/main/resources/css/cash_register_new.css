@@ -1,0 +1,551 @@
+root {
+    display: block;
+}
+
+
+/*-------------BACKGROUND-------------*/
+.background{
+	-fx-background-color: rgb(255,255,255);
+	-fx-background: rgb(255,255,255);
+	/* -fx-background-color: rgb(183,185,188); */
+}
+
+.background-field{
+	-fx-background: rgb(243,243,243);
+	-fx-background-color: rgb(243,243,243);
+	-fx-border-width: 0.5px;
+	-fx-border-color: rgb(191,191,191)
+}
+
+.accordion .titled-pane > *.content{
+/*     -fx-background-color: transparent ; */
+	-fx-background-color: rgba(255, 255, 255, 0.5) ;
+}
+
+.border-white{
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color:  rgb(255,255,255);
+  	-fx-border-style: solid;
+  	-fx-border-width: none;
+}
+/*-------------LABELS-----------------*/
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(96,93,92);
+    -fx-font-weight: bold ;
+  /* -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 ); */
+}
+
+
+.label-error{
+	-fx-font-size: 9pt !important;
+	-fx-text-fill: rgb(181,18,27) !important;
+	-fx-font-weight: none !important;
+}
+
+
+.h2{
+	-fx-font-size: 16;
+	-fx-font-weight: bold !important;
+}
+
+.h3{
+	-fx-font-size: 1.2em ;
+	-fx-font-style: italic ;
+	-fx-font-weight: bold;
+}
+
+.h4{
+	-fx-font-size: 1em !important;
+	-fx-font-weight: none !important;
+}
+
+.star{
+	-fx-font-size: 1em !important;
+	-fx-text-fill: rgb(181,18,27) !important;
+	-fx-font-weight: none !important;
+}
+
+.star1{
+	-fx-font-size: 14px;
+	-fx-text-fill: rgb(181,18,27) !important;
+	-fx-font-weight: bold !important;
+}
+/*-------------BUTTONS----------------*/
+
+.button {
+	-fx-font-size: 15px ;
+	-fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+
+.button#fxml_generalButtonMax {
+    -fx-graphic: url('/img/ctrl_max.png');
+	-fx-min-height: 20;
+	-fx-min-width: 20;
+	-fx-alignment: center;
+	-fx-padding: 0 ;
+}
+
+.button#fxml_generalButtonMin {
+    -fx-graphic: url('/img/ctrl_min.png');
+	-fx-min-height: 20;
+	-fx-min-width: 20;
+	-fx-alignment: center;
+	-fx-padding: 0 ;
+}
+
+.button#fxml_generalButtonClose {
+    -fx-graphic: url('/img/ctrl_close.png');
+	-fx-min-height: 20;
+	-fx-min-width: 20;
+	-fx-alignment: center;
+	-fx-padding: 0 ;
+}
+
+.button#fxml_generalButtonResize {
+	-fx-background-image: null;
+/* 	-fx-background-color:transparent; */
+    -fx-graphic: url('/img/ctrl_resize.png');
+	-fx-min-height: 20;
+	-fx-min-width: 20;
+	-fx-alignment: center;
+	-fx-padding: 0 ;
+}
+
+.btn{
+	-fx-min-height: 35;
+	-fx-pref-height: 35;
+    -fx-max-height: 35;
+    -fx-font-family: Calibri ;
+	-fx-min-width: 90;
+}
+
+.btn-primary, .btn-primary:focused {
+	-fx-background-color: white;
+	-fx-text-fill: rgb(112,173,71);
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color:  rgb(112,173,71);
+  	-fx-border-style: solid;
+  	-fx-border-width: 1.5pt;
+}
+
+.btn-primary:hover{
+	-fx-background-color: rgb(112,173,71);
+	-fx-text-fill: white;
+	-fx-cursor: hand;
+}
+
+.btn-info, .btn-info:focused{
+	-fx-background-color: white;
+	-fx-text-fill: rgb(0, 150, 201);
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color: rgb(0, 150, 201);
+  	-fx-border-style: solid;
+  	-fx-border-width: 1.5pt;
+}
+.btn-info:hover{
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+	-fx-background-color: rgb(0, 150, 201);
+}
+
+.btn-danger, .btn-danger:focused{
+	-fx-background-color: white;
+	-fx-text-fill: rgb(145,145,149);
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color:  rgb(145,145,149);
+  	-fx-border-style: solid;
+  	-fx-border-width: 1.5pt;
+}
+
+.btn-danger:hover{
+	-fx-background-color: rgb(145,145,149);
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+}
+
+.btn-new, .btn-new:focused{
+	-fx-background-color: white;
+	-fx-text-fill: rgb(181,18,27);
+	-fx-border-insets: 0 0 0 0;
+  	-fx-border-color: rgb(181,18,27);
+  	-fx-border-style: solid;
+  	-fx-border-width: 1.5pt;
+  	-fx-min-width: 140;
+}
+
+.btn-new:hover{
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+	-fx-background-color: rgb(181,18,27);
+}
+
+.btn-correct{
+    -fx-min-width: 90;
+}
+
+.btn-add-row{
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-min-width:50;
+}
+
+.btn-delete-row{
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-min-width:50;
+}
+
+/*-------------TABLES----------------*/
+.table-view {
+	-fx-background-color: transparent ;
+	-fx-table-cell-border-color: transparent;
+	-fx-border-color: rgb(191,191,191) rgb(191,191,191) rgb(191,191,191) rgb(191,191,191);
+    -fx-border-width: 0.5 0.5 2 0.5;
+    -fx-font-size: 12px ;
+    -fx-effect: none;
+}
+
+.table-view:disabled {
+     -fx-opacity: 1.0;
+}
+
+.table-view:readonly {
+     -fx-opacity: 0.4;
+}
+
+.table-view .scroll-bar:verical {
+    -fx-opacity: 0;
+    -fx-padding: -7;
+    visibility: hidden;
+}
+
+.table-view:focused{
+    -fx-background-color: rgb(243,243,243) ;
+}
+
+.table-view .column-header, .table-view .filler{
+/* 	-fx-background-color: rgb(243,243,243)  ;*/
+	-fx-background-color: white  ;
+    -fx-border-color: transparent transparent  rgb(191,191,191) transparent ;
+    -fx-border-width: 0 0 0.7 0;
+    /*-fx-font-family: "Arial Narrow" ;*/
+    -fx-font-weight: bold;
+    -fx-alignment: center ;
+    -fx-font-size: 12px !important;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: white;
+}
+
+.table-row-cell-bold {
+	-fx-font-weight: bold;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+.table-row-cell:disabled {
+     -fx-opacity: 1.0;
+}
+
+.table-row-cell:readonly {
+     -fx-opacity: 0.4;
+}
+
+.table-view-center *{
+	-fx-alignment: CENTER;
+}
+
+.table-row-cell {
+   -fx-font-size: 12px !important;
+}
+
+.table-row-cell:empty:odd {
+    -fx-background-color: white;
+}
+
+.table-row-cell:selected .text-field, .table-row-cell:selected .combo-box{
+   	-fx-border-color:  rgb(191,191,191);
+	-fx-background-color: rgb(255,255,255);
+	-fx-background-insets: 1;
+	-fx-background-radius: 0;
+	-fx-text-box-border: rgb(255,255,255);
+	-fx-control-inner-background : rgb(255,255,255);
+}
+
+
+.column-notype{
+	-fx-alignment: center;
+}
+.column-text{
+ 	-fx-alignment: center-left;
+}
+.column-numeric{
+	-fx-alignment: center-right;
+}
+
+.table-summary *{
+	-fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px !important;
+
+}
+
+.table-summary:disabled {
+	-fx-opacity: 0.7;
+	-fx-background-color: white  ;
+}
+
+.table-summary:readonly {
+	-fx-opacity: 0.7;
+	-fx-background-color: white  ;
+}
+
+.noheader {
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER ;
+    -fx-font-size: 12px !important;
+    -fx-text-fill: black;
+}
+.noheader .column-header-background{
+    -fx-max-height: 0;
+    -fx-pref-height: 0;
+    -fx-min-height: 0;
+}
+.noheader:disabled {
+	-fx-opacity: 1.0;
+	-fx-background-color: white;
+	-fx-border-color: transparent;
+    -fx-border-width: 0 0 0 0;
+    -fx-alignment: CENTER ;
+}
+
+.noheader-disabled{
+	-fx-font-weight: bold;
+	-fx-border-color: transparent;
+    -fx-border-width: 0 0 0 0;
+    -fx-alignment: CENTER ;
+}
+
+.noheader-disabled .table-row-cell  {
+    	-fx-border-insets: 0 0 0 0 !important;
+      	-fx-border-color:  white !important;
+}
+
+.noheader-disabled .column-header-background{
+    -fx-max-height: 0;
+    -fx-pref-height: 0;
+    -fx-min-height: 0;
+}
+
+/*-------------TEXT FIELD-----------*/
+/*.input{
+	-fx-font-size: 12px;
+	width: 100%;
+    margin: 8px 0;
+	box-sizing: border-box;
+	-fx-border-color:  rgb(191,191,191);
+	-fx-background-color: rgb(255,255,255);
+	-fx-background-insets: 1;
+	-fx-background-radius: 0;
+	-fx-text-box-border: rgb(255,255,255);
+	-fx-control-inner-background : rgb(255,255,255);
+	-fx-alignment: center-left ;
+}
+
+.input:focused {
+	-fx-effect: dropshadow( three-pass-box  , rgb(0, 150, 201) , 2, 0.0 , 1 , 1 );
+	-fx-alignment: center-left ;
+}
+
+.input:readonly:focused {
+	-fx-effect: none;
+	-fx-cursor:default ;
+	-fx-opacity: 0.7;
+}
+
+.input:empty {
+    -fx-alignment: center ;
+}
+
+
+.input:empty:focused {
+    -fx-alignment: center-left ;
+}
+
+.input > .arrow-button {
+	-fx-background-color: white;
+}
+
+.input > .list-view {
+    -fx-effect: none;
+}
+*/
+
+.text-area .content {
+	-fx-background-color: rgb(255,255,255);
+}
+
+.text-area:disabled {
+	-fx-opacity: 0.7;
+}
+
+.text-summary {
+	-fx-font-family: Calibri;
+	-fx-font-size: 27 !important;
+	-fx-background-color: transparent ;
+	-fx-font-weight: none;
+	-fx-text-fill: black;
+}
+
+.text-summaryBold {
+	-fx-font-weight: bold;
+}
+
+/*-------------CHECK-BOX-----------*/
+.check-box {
+	-fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(96,93,92);
+}
+
+
+.check-box > .box {
+    /* background color of unselected checkbox */
+    -fx-background-color: white;
+    -fx-border-color: rgb(191,191,191);
+    -fx-padding: 1;
+}
+
+.check-box .mark {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding:7px;
+    -fx-shape: "M1,10L3,8L7,12L14,5L16,7L7,16Z"
+}
+
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+    /* modify mark color */
+    -fx-background-color: rgb(96,93,92);
+}
+
+
+/*-------------SCROLL-BAR-----------*/
+.scroll-bar > .thumb{
+    -fx-background-color: rgb(191,191,191);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar > .thumb:hover {
+    -fx-background-color: #dadada;
+}
+
+.scroll-bar > .thumb:pressed {
+    -fx-background-color: rgb(191,191,191);
+}
+
+.scroll-bar > .track {
+    -fx-background-color: rgb(243,243,243);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.scroll-bar > .track-background {
+    -fx-background-color: rgb(243,243,243);
+    -fx-background-insets: 0;
+}
+
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: rgb(243,243,243);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+
+    -fx-padding: 0.25em; /* 3 */
+}
+
+.scroll-bar > .increment-button:hover,
+.scroll-bar > .decrement-button:hover  {
+    -fx-background-color: #dadada;
+}
+
+
+.scroll-bar > .decrement-button > .decrement-arrow,
+.scroll-bar > .increment-button > .increment-arrow{
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-background-color: transparent, #606060;
+    -fx-effect: null;
+}
+
+.scroll-bar > .decrement-button:pressed > .decrement-arrow,
+.scroll-bar > .increment-button:pressed > .increment-arrow {
+    -fx-background-color: transparent, white;
+    -fx-effect: null;
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow,
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+}
+
+.scroll-bar:horizontal > .increment-button > .increment-arrow,
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+}
+
+/* ARROW SHAPES */
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+    -fx-shape: "M11,17H8.111l-3.86-4.124l3.86-4.125H11l-3.375,4.125L11,17z";
+}
+
+.scroll-bar:horizontal > .increment-button > .increment-arrow {
+    -fx-shape: "M7.626,12.876L4.251,8.751H7.14L11,12.876L7.14,17H4.251L7.626,12.876z";
+}
+
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-shape: "M4,17v-2.889l4.124-3.86l4.125,3.86V17l-4.125-3.375L4,17z";
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+    -fx-shape: "M8.124,13.625l4.125-3.375v2.889l-4.125,3.86L4,13.139V10.25L8.124,13.625z";
+}
+
+.scroll-pane {
+    -fx-background-color: transparent, transparent;
+}
+
+
+/*-------------DATE-PICKER-----------*/
+.date-picker > .text-field {
+    -fx-background-color: rgb(255,255,255);
+    -fx-alignment: center;
+}
+
+.date-picker:focused > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color:  rgb(255,255,255) ;
+}
+
+.date-picker > .button {
+    -fx-base:  rgb(255,255,255) ;
+
+}
+
+.date-picker:disabled {
+     -fx-opacity: 0.7;
+}
+
+/* For date-picker textfield */
+.date-picker > .date-picker-display-node:disabled {
+    -fx-opacity: 0.7;
+}
+
+
+.label.information{
+-fx-font-weight: none;
+}

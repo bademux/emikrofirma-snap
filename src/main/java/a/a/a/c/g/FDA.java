@@ -1,0 +1,44 @@
+package a.a.a.c.g;
+
+public interface FDA {
+   String HBM = "technical_id";
+   String HBN = "technical_parentid";
+   String HBO = "technical_settlementid";
+   String HBP = "technical_version";
+   String HBQ = "business_version";
+   String HBR = "audit_ts_created";
+   String HBS = "technical_username";
+   String HBT = "technical_salt";
+   String HBU = "technical_password";
+   String HBV = "technical_password_change";
+   String HBW = "technical_type";
+   String HBX = "technical_subType";
+   String HBY = "technical_typeclass";
+   String HBZ = "technical_encrypted";
+   String HCA = "technical_iv";
+   String HCB = "technical_body";
+   String QVJ = "business_state";
+   String HCC = "business_issuer_number";
+   String HCD = "business_refid";
+   String HCE = "business_periodYear";
+   String HCF = "business_periodMonth";
+   String HCG = "business_documentIndex";
+   String HCH = "business_numericValue";
+   String HCI = "business_name";
+   String HCJ = "business_dictionaryName";
+   String HCK = "business_dictionaryEntry";
+   String HCL = "business_invoicingDate";
+   String HCM = "business_creationDate";
+   String QKV = "business_transactionDate";
+   String HCN = "business_contractorName";
+   String HCO = "business_contractorNIP";
+   String HCP = "business_netValue";
+   String HCQ = "business_grossValue";
+   String HCR = "business_taxValue";
+   String QKW = "business_hash";
+   String HCS = "viewQueryId";
+   String HCT = "viewRefType";
+   String HCU = "viewRefLevel";
+   String HCV = "viewMaxRefLevel";
+   String HCW = "viewRefId";
+}

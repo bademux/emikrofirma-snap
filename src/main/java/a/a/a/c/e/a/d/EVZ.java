@@ -4,7 +4,7 @@ public class EVZ<_FIRST, _SECOND> extends EWD<_FIRST> {
    protected _SECOND GQC;
 
    public EVZ() {
-      this((Object)null, (Object)null);
+      this(null, null);
    }
 
    public EVZ(_FIRST var1, _SECOND var2) {

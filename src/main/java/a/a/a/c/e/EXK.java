@@ -66,7 +66,8 @@ import java.util.jar.JarInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class EXK extends Application implements EVW, EXP {
+public class EXK extends Application implements EVW {
+    public static final EWS GUV = EWS.http;
     private static final String GTM = "SKIP_UPDATE";
     private final ResourceBundle GTN;
     private final EXB GTO;

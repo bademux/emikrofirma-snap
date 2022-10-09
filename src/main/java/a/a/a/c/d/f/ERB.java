@@ -5,7 +5,7 @@ import a.a.a.c.e.a.d.EWC;
 import a.a.a.c.f.a.e.HO;
 import a.a.a.c.f.a.e.HP;
 import a.a.a.c.f.b.c.a.KL;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 import java.math.BigDecimal;
 
@@ -119,7 +119,7 @@ public class ERB {
                 this.setVatOo8Tax((BigDecimal) var7.getSecondValue());
                 break;
             default:
-                throw new NotImplementedException();
+                throw new UnsupportedOperationException();
         }
 
         this.setNetPrice(this.HRS(this.getVat23Amount(), this.getVat8Amount(), this.getVat5Amount(), this.getVat4Amount(), this.getVat0Amount(), this.getVatNpAmount(), this.getVatZwAmount(), this.getVatOo23Amount(), this.getVatOo8Amount()));

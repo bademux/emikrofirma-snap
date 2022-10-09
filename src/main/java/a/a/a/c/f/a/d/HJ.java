@@ -5,7 +5,7 @@ import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EXM;
 import a.a.a.c.f.b.c.JY;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

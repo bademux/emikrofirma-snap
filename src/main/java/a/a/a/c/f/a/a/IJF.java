@@ -3,9 +3,9 @@ package a.a.a.c.f.a.a;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.KQ;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(
         name = "dictionaryEntry"

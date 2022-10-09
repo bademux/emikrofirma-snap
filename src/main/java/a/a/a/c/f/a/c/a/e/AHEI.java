@@ -5,10 +5,10 @@ import a.a.a.c.f.a.c.a.AHCE;
 import a.a.a.c.f.a.c.a.AHDI;
 import a.a.a.c.f.a.c.a.a.*;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElements;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AHEI extends AHDI {

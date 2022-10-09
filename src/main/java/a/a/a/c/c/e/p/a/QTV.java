@@ -33,7 +33,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -362,7 +362,7 @@ public class QTV extends QUV<QUD> {
     }
 
     public void setContractor(HI var1) {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     public void setMode(EPB var1) {

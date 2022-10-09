@@ -2,8 +2,8 @@ package a.a.a.c.f;
 
 import a.a.a.c.e.a.k.a.EXF;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 
 @XmlTransient

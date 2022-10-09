@@ -6,7 +6,7 @@ import a.a.a.c.g.b.FCW;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 public enum JG implements JM {
     NEW(FCW.getInstance().getMessageForKey("micro.model.type.settlementstatus.new")),

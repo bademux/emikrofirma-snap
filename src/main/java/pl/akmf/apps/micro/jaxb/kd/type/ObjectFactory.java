@@ -1,6 +1,6 @@
 package pl.akmf.apps.micro.jaxb.kd.type;
 
-import javax.xml.bind.annotation.XmlRegistry;
+import jakarta.xml.bind.annotation.XmlRegistry;
 
 @XmlRegistry
 public class ObjectFactory {

@@ -1,6 +1,6 @@
 package pl.akmf.apps.micro.jaxb.pz.type;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(

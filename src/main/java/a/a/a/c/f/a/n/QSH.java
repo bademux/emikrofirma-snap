@@ -7,7 +7,7 @@ import a.a.a.c.f.b.c.JY;
 import a.a.a.c.f.b.c.KQ;
 import a.a.a.c.f.b.c.QSU;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class QSH extends IJ implements Cloneable {

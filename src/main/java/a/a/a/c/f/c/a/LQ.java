@@ -4,7 +4,7 @@ import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.KX;
 import a.a.a.c.f.b.c.KO;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class LQ<_A extends KX<_B>, _B> extends LT {

@@ -3,8 +3,8 @@ package a.a.a.c.f.b.c;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.KY;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)

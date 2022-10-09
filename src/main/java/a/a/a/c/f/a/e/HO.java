@@ -5,7 +5,7 @@ import a.a.a.c.f.a.IJ;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.b.c.a.KL;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 
 @XmlTransient

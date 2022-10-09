@@ -4,7 +4,7 @@ import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.LW;
 import a.a.a.c.g.FCQ;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

@@ -11,7 +11,7 @@ import a.a.a.c.f.a.c.a.a.AHDC;
 import a.a.a.c.f.a.c.a.d.AHEE;
 import a.a.a.c.f.a.c.a.e.AHEJ;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;

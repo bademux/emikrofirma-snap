@@ -3,9 +3,9 @@ package a.a.a.c.f.a.c.a.b;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHDH;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 @XmlSeeAlso({AHDM.class, AHDL.class, AHDN.class})

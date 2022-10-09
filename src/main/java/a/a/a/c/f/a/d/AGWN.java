@@ -15,8 +15,8 @@ import org.json.simple.JSONObject;
 import org.w3c.dom.Node;
 import pl.akmf.apps.micro.jaxb.upo.v1_6.Potwierdzenie;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;

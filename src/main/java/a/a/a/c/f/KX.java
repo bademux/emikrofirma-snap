@@ -3,7 +3,7 @@ package a.a.a.c.f;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.k.a.EXF;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class KX<_T> extends KU implements Comparable<KX<_T>> {

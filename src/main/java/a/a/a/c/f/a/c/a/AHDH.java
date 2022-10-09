@@ -3,8 +3,8 @@ package a.a.a.c.f.a.c.a;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.AHCC;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlID;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlID;
 
 public abstract class AHDH extends AHCC {
     @XmlID

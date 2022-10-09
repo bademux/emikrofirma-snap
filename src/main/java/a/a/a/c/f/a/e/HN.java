@@ -6,9 +6,9 @@ import a.a.a.c.f.a.IK;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.b.c.a.KL;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElements;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;

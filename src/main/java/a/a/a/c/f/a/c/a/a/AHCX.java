@@ -8,8 +8,8 @@ import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
 import a.a.a.c.f.a.c.a.f.AHEM;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)

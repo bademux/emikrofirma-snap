@@ -2,10 +2,6 @@ package a.a.a.b.e.c;
 
 import a.a.a.b.e.c.a.FFD;
 import a.a.a.c.e.a.k.a.EXF;
-import sun.security.pkcs11.wrapper.CK_MECHANISM;
-import sun.security.pkcs11.wrapper.PKCS11Exception;
-import sun.security.rsa.RSASignature;
-import sun.security.x509.AlgorithmId;
 
 import java.io.IOException;
 import java.security.*;
@@ -31,23 +27,7 @@ public class FFB extends Signature {
     }
 
     protected void engineInitSign(PrivateKey var1) throws InvalidKeyException {
-        EXF.getInstance().ICO();
-
-        try {
-            this.HFQ.reset();
-            this.HFR = (FFC) var1;
-            CK_MECHANISM var2 = new CK_MECHANISM(1L);
-
-            try {
-                this.HFR.getPkcs11().C_SignInit(this.HFR.getSessionId(), var2, this.HFR.getObjectId());
-            } catch (PKCS11Exception var7) {
-                EXF.getInstance().ICA(var7);
-                throw new FFD(var7.getErrorCode(), var7);
-            }
-        } finally {
-            EXF.getInstance().ICP();
-        }
-
+        throw new UnsupportedOperationException("reimplement without sun.security");
     }
 
     protected void engineUpdate(byte var1) throws SignatureException {
@@ -73,27 +53,7 @@ public class FFB extends Signature {
     }
 
     protected byte[] engineSign() throws SignatureException {
-        EXF.getInstance().ICO();
-
-        byte[] var3;
-        try {
-            byte[] var1 = this.HFQ.digest();
-
-            try {
-                byte[] var2 = RSASignature.encodeSignature(AlgorithmId.SHA256_oid, var1);
-                var3 = this.HFR.getPkcs11().C_Sign(this.HFR.getSessionId(), var2);
-            } catch (PKCS11Exception var8) {
-                EXF.getInstance().ICA(var8);
-                throw new FFD(var8.getErrorCode(), var8);
-            } catch (IOException var9) {
-                EXF.getInstance().ICA(var9);
-                throw new FFD(0L, var9);
-            }
-        } finally {
-            EXF.getInstance().ICP();
-        }
-
-        return var3;
+        throw new UnsupportedOperationException("reimplement without sun.security");
     }
 
     protected boolean engineVerify(byte[] var1) throws SignatureException {

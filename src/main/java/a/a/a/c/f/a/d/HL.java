@@ -4,8 +4,8 @@ import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public enum HL implements JM {

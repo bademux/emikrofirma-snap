@@ -6,8 +6,8 @@ import a.a.a.c.f.b.c.KO;
 import a.a.a.c.f.b.c.KT;
 import a.a.a.c.g.b.FCW;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.util.Optional;
 
 @XmlAccessorType(XmlAccessType.FIELD)

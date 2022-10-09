@@ -25,7 +25,7 @@ import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.c.b.LY;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -80,7 +80,7 @@ public class EQQ {
 
     private static ID HQX(IN var0) {
         if (!(var0 instanceof IR)) {
-            throw new NotImplementedException();
+            throw new UnsupportedOperationException();
         } else {
             IR var1 = (IR) var0;
             ID var2 = new ID();

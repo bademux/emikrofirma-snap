@@ -40,7 +40,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 import java.util.Iterator;
 import java.util.List;
@@ -176,7 +176,7 @@ public class ETT extends ELU<ETV> {
                 }
 
                 public Integer fromString(String var1) {
-                    throw new NotImplementedException();
+                    throw new UnsupportedOperationException();
                 }
             });
             this.fxml_cash_register_list_pagination.setPageFactory(new Callback<Integer, Node>() {

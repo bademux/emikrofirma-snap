@@ -11,9 +11,9 @@ import a.a.a.c.f.a.c.a.c.AHDS;
 import a.a.a.c.f.a.c.a.c.AHDT;
 import a.a.a.c.g.b.FCW;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
 import java.util.Map;
 import java.util.regex.Matcher;
 

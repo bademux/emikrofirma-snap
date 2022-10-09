@@ -4,7 +4,6 @@ import a.a.a.b.b.FEJ;
 import a.a.a.b.e.a.a.FET;
 import a.a.a.b.e.a.a.FEU;
 import a.a.a.c.e.a.k.a.EXF;
-import org.jcp.xml.dsig.internal.dom.XMLDSigRI;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -47,45 +46,7 @@ public class FEQ extends FES {
     }
 
     public static void IKY(byte[] var0) throws FEU {
-        EXF.getInstance().ICO();
-
-        try {
-            XMLSignatureFactory var1 = XMLSignatureFactory.getInstance("DOM", new XMLDSigRI());
-            DocumentBuilderFactory var2 = DocumentBuilderFactory.newInstance();
-            var2.setNamespaceAware(true);
-            InputStreamReader var3 = new InputStreamReader(new ByteArrayInputStream(var0), StandardCharsets.UTF_8);
-            Document var4 = var2.newDocumentBuilder().parse(new InputSource(var3));
-            setAllIds(var4, "Id");
-            setAllIds(var4, "ID");
-            NodeList var5 = var4.getElementsByTagNameNS("http://www.w3.org/2000/09/xmldsig#", "Signature");
-            if (var5.getLength() == 0) {
-                throw new Exception("Cannot find Signature element");
-            }
-
-            DOMValidateContext var6 = new DOMValidateContext(new FER(), var5.item(0));
-            var6.putNamespacePrefix("http://www.w3.org/2000/09/xmldsig#", "ds");
-            XMLSignature var7 = var1.unmarshalXMLSignature(var6);
-            boolean var8 = var7.validate(var6);
-            if (!var8) {
-                EXF.getInstance().ICA("Signature failed core validation");
-                boolean var9 = var7.getSignatureValue().validate(var6);
-                if (!var9) {
-                    Iterator var10 = var7.getSignedInfo().getReferences().iterator();
-
-                    while (var10.hasNext()) {
-                        Reference var11 = (Reference) var10.next();
-                        boolean var12 = var11.validate(var6);
-                        EXF.getInstance().ICK("Reference [" + var11 + "] validity status: " + var12);
-                    }
-                }
-            }
-        } catch (Exception var16) {
-            EXF.getInstance().ICA(var16);
-            throw new FEU(var16);
-        } finally {
-            EXF.getInstance().ICP();
-        }
-
+        throw new UnsupportedOperationException("reimplement without org.jcp.xml.dsig.internal.dom");
     }
 
     public static Node getObject(byte[] var0, String var1) throws FET {

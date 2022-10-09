@@ -22,7 +22,7 @@ import pl.akmf.apps.micro.jaxb.kd.type.DaneAutoryzujace;
 import pl.akmf.apps.micro.jaxb.kd.type.JPKMicro;
 import pl.akmf.apps.micro.jaxb.kd.type.ObjectFactory;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;

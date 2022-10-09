@@ -3,9 +3,9 @@ package a.a.a.c.f.a.n;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(
         name = "invoiceSell"

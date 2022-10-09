@@ -4,7 +4,7 @@ import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IL;
 import a.a.a.c.f.b.c.KO;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class IJE extends IL {

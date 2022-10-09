@@ -3,8 +3,8 @@ package a.a.a.c.f.a.c.a.d;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.c.AHDO;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.util.Set;
 
 @XmlAccessorType(XmlAccessType.FIELD)

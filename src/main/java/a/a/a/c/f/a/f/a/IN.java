@@ -6,7 +6,7 @@ import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.KE;
 import a.a.a.c.f.b.c.a.KL;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class IN extends IK {

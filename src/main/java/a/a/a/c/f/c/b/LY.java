@@ -5,9 +5,9 @@ import a.a.a.c.f.b.a.JJ;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.c.LW;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(
         name = "userData"

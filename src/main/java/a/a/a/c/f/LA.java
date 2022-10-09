@@ -4,7 +4,7 @@ import a.a.a.c.e.a.k.a.EXF;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class LA extends KX<Boolean> {

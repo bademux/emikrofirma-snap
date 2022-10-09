@@ -3,12 +3,12 @@ package a.a.a.c.d.d;
 import a.a.a.c.e.a.k.a.EXF;
 
 import javax.xml.namespace.QName;
-import javax.xml.soap.SOAPElement;
-import javax.xml.soap.SOAPEnvelope;
-import javax.xml.soap.SOAPHeader;
-import javax.xml.ws.handler.MessageContext;
-import javax.xml.ws.handler.soap.SOAPHandler;
-import javax.xml.ws.handler.soap.SOAPMessageContext;
+import jakarta.xml.soap.SOAPElement;
+import jakarta.xml.soap.SOAPEnvelope;
+import jakarta.xml.soap.SOAPHeader;
+import jakarta.xml.ws.handler.MessageContext;
+import jakarta.xml.ws.handler.soap.SOAPHandler;
+import jakarta.xml.ws.handler.soap.SOAPMessageContext;
 import java.util.Set;
 
 public class EQX implements SOAPHandler<SOAPMessageContext> {
@@ -39,7 +39,7 @@ public class EQX implements SOAPHandler<SOAPMessageContext> {
 
         boolean var14;
         try {
-            Boolean var2 = (Boolean) var1.get("javax.xml.ws.handler.message.outbound");
+            Boolean var2 = (Boolean) var1.get("jakarta.xml.ws.handler.message.outbound");
             if (var2) {
                 try {
                     SOAPEnvelope var3 = var1.getMessage().getSOAPPart().getEnvelope();

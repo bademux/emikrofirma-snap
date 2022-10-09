@@ -6,7 +6,7 @@ import a.a.a.c.f.a.c.a.AHDI;
 import a.a.a.c.f.a.c.a.a.*;
 import a.a.a.c.f.a.c.a.c.AHDS;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AHEK extends AHDI {

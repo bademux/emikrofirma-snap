@@ -4,7 +4,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.LF;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

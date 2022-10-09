@@ -11,10 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
-import sun.security.pkcs11.wrapper.CK_C_INITIALIZE_ARGS;
-import sun.security.pkcs11.wrapper.CK_INFO;
-import sun.security.pkcs11.wrapper.PKCS11;
-import sun.security.pkcs11.wrapper.PKCS11Exception;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,55 +36,7 @@ public class EZR extends EYK<RequiredGridPane, PathFieldRequired> {
 
     @FXML
     protected void fxml_handleButton_open_button(ActionEvent var1) {
-        EXF.getInstance().ICO();
-
-        try {
-            EXF.getInstance().ICE("Button [select pkcs11 library] clicked");
-            FileChooser var2 = new FileChooser();
-            var2.setTitle(this.resources.getString("micro.config.pkcs11LibraryFile.dialog.pkcs11fileselect.fileselect"));
-            FileChooser.ExtensionFilter var3 = new FileChooser.ExtensionFilter(this.resources.getString("micro.config.pkcs11LibraryFile.dialog.pkcs11fileselect.filetype") + " (*.dll, *.so)", "*.dll", "*.so");
-            FileChooser.ExtensionFilter var4 = new FileChooser.ExtensionFilter(this.resources.getString("micro.dialog.filetypeselect.all"), "*.*");
-            var2.getExtensionFilters().add(var3);
-            var2.getExtensionFilters().add(var4);
-            File var5 = null;
-            if (EVW.getOS() == EVW.EVX.Unix) {
-                var5 = new File("/usr/lib/");
-            } else if (EVW.getOS() == EVW.EVX.Windows) {
-                if (EVW.getARCH() == EVW.EVY.x86) {
-                    var5 = new File("C:/Program Files (x86)/");
-                } else if (EVW.getARCH() == EVW.EVY.x64) {
-                    var5 = new File("C:/Program Files/");
-                }
-            }
-
-            if (var5 != null && var5.exists() && var5.isDirectory()) {
-                var2.setInitialDirectory(var5);
-            }
-
-            File var6 = var2.showOpenDialog(this.getStageToHandle());
-            if (var6 != null) {
-                String var7 = var6.getAbsolutePath();
-
-                try {
-                    PKCS11 var8 = PKCS11.getInstance(var7, "C_GetFunctionList", null, false);
-                    EXF.getInstance().ICK("pkcs11 " + var8);
-                    CK_INFO var9 = var8.C_GetInfo();
-                    EXF.getInstance().ICK("ck_info " + var9);
-                    FCR.IGF(this.resources.getString("micro.dialog.message.title"), this.resources.getString("micro.config.property.pkcs11LibraryFile"), var9.toString(), false, 300.0, 150.0);
-                } catch (PKCS11Exception | NullPointerException | IOException var14) {
-                    EXF.getInstance().ICA(var14);
-                    throw FCZ.getInstance().IHU();
-                }
-
-                this.fxml_component_main_element.setText(var6.getAbsolutePath());
-            }
-        } catch (Exception var15) {
-            EXF.getInstance().ICA(var15);
-            FCR.IGO("", var15, false);
-        } finally {
-            EXF.getInstance().ICP();
-        }
-
+        throw new UnsupportedOperationException("reimplement without sun.security");
     }
 
     @FXML

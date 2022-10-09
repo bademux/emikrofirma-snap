@@ -1,5 +1,6 @@
 plugins {
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 version '0.1'
@@ -8,6 +9,10 @@ repositories {
     mavenCentral()
 }
 
+javafx {
+    version = openfxVersion
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.swing' ]
+}
 
 dependencies {
 
@@ -20,16 +25,15 @@ dependencies {
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: sqliteVersion
     implementation group: 'xml-apis', name: 'xml-apis-ext', version: xmlapisVersion
     implementation group: 'org.apache.xmlgraphics', name: 'fop', version: fopVersion
-
-//    implementation fileTree(dir: 'lib', include: '*.jar')
-
+    implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: jakartaXmlBindVersion
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxXmlBindVersion
+    implementation group: 'jakarta.xml.ws', name: 'jakarta.xml.ws-api', version: jakartaXmlVersion
+    implementation group: 'com.sun.xml.ws', name: 'jaxws-rt', version: sunXmlWsVersion
 }
 
+
 compileJava {
-    //fixes error: package com.sun.xml.internal.bind.marshaller does not exist
-    options.fork = true
-    options.forkOptions.executable = 'javac'
-    options.compilerArgs << '-XDignore.symbol.file=true'
+    options.encoding = 'UTF-8'
 }
 
 application {
@@ -37,8 +41,8 @@ application {
 }
 
 compileJava {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 run {

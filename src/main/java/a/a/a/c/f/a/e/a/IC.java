@@ -7,9 +7,9 @@ import a.a.a.c.f.a.EXM;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JY;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElements;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.util.Set;
 import java.util.TreeSet;

@@ -5,13 +5,13 @@ import pl.akmf.apps.micro.jaxb.pz.type.ListaDokPodpisaneType;
 import pl.akmf.apps.micro.jaxb.pz.type.ListaDokWynikType;
 import pl.akmf.apps.micro.jaxb.pz.type.ListaDokumentowType;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebParam.Mode;
-import javax.jws.WebService;
-import javax.xml.ws.Holder;
-import javax.xml.ws.RequestWrapper;
-import javax.xml.ws.ResponseWrapper;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebParam.Mode;
+import jakarta.jws.WebService;
+import jakarta.xml.ws.Holder;
+import jakarta.xml.ws.RequestWrapper;
+import jakarta.xml.ws.ResponseWrapper;
 
 @WebService(
         targetNamespace = "http://www.mf.gov.pl/uslugiBiznesowe/AP/PodpisPZ/2017/01/27",

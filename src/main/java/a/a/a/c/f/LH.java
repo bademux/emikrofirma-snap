@@ -6,7 +6,7 @@ import a.a.a.c.f.b.JM;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class LH<_T extends JM> extends KX<_T> {

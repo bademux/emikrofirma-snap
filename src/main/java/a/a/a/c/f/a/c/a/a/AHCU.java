@@ -6,7 +6,7 @@ import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
 import a.a.a.c.f.a.c.a.f.AHEL;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.util.regex.Matcher;
 
 @XmlAccessorType(XmlAccessType.FIELD)

@@ -8,8 +8,8 @@ import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
 import a.a.a.c.f.a.c.a.f.AHEO;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.text.ParseException;

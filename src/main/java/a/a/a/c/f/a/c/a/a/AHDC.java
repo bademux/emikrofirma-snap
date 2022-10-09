@@ -10,8 +10,8 @@ import a.a.a.c.f.a.c.a.AHDH;
 import a.a.a.c.f.a.c.a.c.AHDS;
 import a.a.a.c.f.a.c.a.c.AHDT;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.io.IOException;
 import java.util.Map;
 

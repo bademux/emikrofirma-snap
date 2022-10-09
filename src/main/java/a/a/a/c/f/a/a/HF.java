@@ -7,8 +7,8 @@ import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.KE;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;

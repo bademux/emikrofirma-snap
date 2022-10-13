@@ -332,7 +332,7 @@ public class EXK extends Application implements EVW {
         final Semaphore var12;
         try {
             final EWD var11 = new EWD();
-            if (var10 && com.sun.javafx.tk.Toolkit.getToolkit().isFxUserThread()) {
+            if (var10 && Platform.isFxApplicationThread()) {
                 var11.setFirstValue(this.getCloseDialogInner(var1, var2, var3, var4, var5, var7, var9));
             } else {
                 var12 = new Semaphore(1);

@@ -2,7 +2,6 @@ package a.a.a.b.c;
 
 import a.a.a.c.e.a.d.EWD;
 import a.a.a.c.e.a.k.a.EXF;
-import com.sun.javafx.tk.Toolkit;
 import javafx.application.Platform;
 
 import java.util.concurrent.Semaphore;
@@ -16,7 +15,7 @@ public class FEL {
 
         final Semaphore var2;
         try {
-            if (Toolkit.getToolkit().isFxUserThread()) {
+            if (Platform.isFxApplicationThread()) {
                 Object var9 = var0.IKT();
                 return (_A) var9;
             }

@@ -7,7 +7,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import java.text.SimpleDateFormat;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHEO extends AHEL<XMLGregorianCalendar> {
+public class AHEO extends Variable<XMLGregorianCalendar> {
     private final transient SimpleDateFormat AHXC;
 
     private AHEO() {

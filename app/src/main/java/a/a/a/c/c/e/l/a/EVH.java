@@ -5,7 +5,7 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.l.c.EVJ;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.e.HV;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -60,7 +60,7 @@ public class EVH {
                     boolean var5 = true;
 
                     try {
-                        var5 = EVH.this.implemantation.RKZ(new JN(var3), EVH.this.GPB.DAS().getValue());
+                        var5 = EVH.this.implemantation.RKZ(new Period(var3), EVH.this.GPB.DAS().getValue());
                     } catch (FFO | FFK var11) {
                         org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var11);
                     }

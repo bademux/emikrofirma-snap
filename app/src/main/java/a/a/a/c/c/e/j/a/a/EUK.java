@@ -4,18 +4,18 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.j.a.EUT;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
-public class EUK implements ChangeListener<JN> {
+public class EUK implements ChangeListener<Period> {
     private final EUT GKW;
 
     public EUK(EUT var1) {
         this.GKW = var1;
     }
 
-    public void changed(ObservableValue<? extends JN> var1, JN var2, JN var3) {
+    public void changed(ObservableValue<? extends Period> var1, Period var2, Period var3) {
         if (var3 != null) {
             this.GKW.GLW.set(true);
             if (this.GKW.GLM.getFieldsEditable()) {

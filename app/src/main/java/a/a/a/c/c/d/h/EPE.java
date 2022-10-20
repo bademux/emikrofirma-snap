@@ -1,13 +1,13 @@
 package a.a.a.c.c.d.h;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.e.HQ;
 import a.a.a.c.f.a.e.HU;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.b.c.a.QSW;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.c.FCZ;
 import com.github.bademux.emk.utils.FopUtils;
 import org.apache.fop.configuration.ConfigurationException;
@@ -37,9 +37,9 @@ import java.util.ResourceBundle;
 public class EPE extends EPL {
 
     private final HU FPN;
-    private final LY FPO;
+    private final UserData FPO;
 
-    public EPE(ResourceBundle var1, HU var2, LY var3, File var4) {
+    public EPE(ResourceBundle var1, HU var2, UserData var3, File var4) {
         super(var1, var4);
         this.FPN = var2;
         this.FPO = var3;
@@ -193,9 +193,9 @@ public class EPE extends EPL {
         Iterator var6 = this.FPN.getSumOfGrossAmountsDividedByTaxRate().iterator();
 
         while (var4.hasNext()) {
-            TwoValueBox var7 = (TwoValueBox) var4.next();
-            TwoValueBox var8 = (TwoValueBox) var10.next();
-            TwoValueBox var9 = (TwoValueBox) var6.next();
+            ValueContainer2 var7 = (ValueContainer2) var4.next();
+            ValueContainer2 var8 = (ValueContainer2) var10.next();
+            ValueContainer2 var9 = (ValueContainer2) var6.next();
             var2 = var1.getDocument().createElement("summaryTable");
             var1.HOR("taxRate", ((KL) var7.getFirstValue()).getDescription(), var2);
             var1.HOR("netSum", this.HOI((BigDecimal) var7.getSecondValue()), var2);

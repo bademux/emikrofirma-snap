@@ -7,13 +7,13 @@ import a.a.a.c.c.e.i.d.EUF;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZM;
 import a.a.a.c.f.a.a.EZP;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.d.QJX;
 import a.a.a.c.f.a.d.QJY;
 import a.a.a.c.f.b.EZT;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.a.KK;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -115,7 +115,7 @@ public class QKA {
     }
 
     public void QOW() {
-        LY var1 = this.QMF.getUserData();
+        UserData var1 = this.QMF.getUserData();
         KK var2 = var1.DFQ().getValue();
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.setValue(var2);
     }
@@ -176,7 +176,7 @@ public class QKA {
 
         public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
             if (QKA.this.fxml_jpk_dialog_fa_settings_text_field_nipController.isRequiredAndValid()) {
-                HI var4 = QKA.this.QMF.getContractorByNip(var3);
+                Contractor var4 = QKA.this.QMF.getContractorByNip(var3);
                 if (var4 != null) {
                     QKA.this.fxml_jpk_dialog_fa_settings_label_contractor_name.setText(var4.DAI().getValue());
                 } else {

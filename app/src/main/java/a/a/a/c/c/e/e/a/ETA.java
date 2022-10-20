@@ -8,7 +8,7 @@ import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.e.c.ETE;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.b.c.a.KN;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.a.FCR;
@@ -97,7 +97,7 @@ public class ETA extends BaseProgressFxController<ETE> {
             var4.getIcons().add(new Image("/img/app/e_logo.png"));
             ETB var6 = var2.getController();
             var6.setDialogStage(var4);
-            HI var7 = this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedItem();
+            Contractor var7 = this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedItem();
             var6.setContractor(var7);
             var6.setImplementation(this.getImplementation());
             var6.setProcessController_ContactsList(this);

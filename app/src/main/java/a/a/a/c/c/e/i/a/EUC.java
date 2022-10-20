@@ -10,12 +10,12 @@ import a.a.a.c.c.e.i.d.EUF;
 import a.a.a.c.d.b.EPW;
 import a.a.a.c.d.b.EQM;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.d.*;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JT;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
 import com.github.bademux.emk.app.FXApp;
@@ -97,8 +97,8 @@ public class EUC {
             if (var3 != null) {
                 EQM var4 = new EQM();
                 if (var4.HQL(var3)) {
-                    TwoValueBox var5 = var4.HQO(var3);
-                    AGXA var6 = (AGXA) var5.getFirstValue();
+                    ValueContainer2 var5 = var4.HQO(var3);
+                    JPKSchemaType var6 = (JPKSchemaType) var5.getFirstValue();
                     Integer var7 = 0;
 
                     try {
@@ -110,7 +110,7 @@ public class EUC {
                     String[] var8 = var6.getKodFormularza().split("_");
                     HM var9 = HM.valueOf(var8[0]);
                     AGWW var10 = AGWW.valueOf(var8[1]);
-                    JN var11 = JN.AOE;
+                    Period var11 = Period.AOE;
                     Integer var12 = this.GKE.HXA(var11, var9, var10);
                     File var13 = this.GKE.getWorkingDir(this.GKD);
                     var1.getProgressBarContainer().setFirstValue(var1.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.md5.checksum")));
@@ -145,14 +145,14 @@ public class EUC {
 
                         if (var15 != null) {
                             byte[] var16 = EPW.HOX(var1.getProgressReporter(), var3);
-                            ((AGWN) var15).setDeclarationFileCheckSumMD5(new JT(var16));
+                            ((DeclarationJPK) var15).setDeclarationFileCheckSumMD5(new JT(var16));
                             File var17 = new File(var13, "tmp_" + System.nanoTime());
                             var17.mkdirs();
-                            ((AGWN) var15).setContextDir(var17);
-                            ((AGWN) var15).FJI().setValue(var12);
-                            ((AGWN) var15).setDeclarationStatus(HL.NEW);
-                            ((AGWN) var15).setPeriod(var11);
-                            AGWN var18 = var1.HQF((AGWN) var15);
+                            ((DeclarationJPK) var15).setContextDir(var17);
+                            ((DeclarationJPK) var15).FJI().setValue(var12);
+                            ((DeclarationJPK) var15).setDeclarationStatus(HL.NEW);
+                            ((DeclarationJPK) var15).setPeriod(var11);
+                            DeclarationJPK var18 = var1.HQF((DeclarationJPK) var15);
                             if (var18 != null) {
                                 var18.setDeclarationStatus(HL.SENT);
                                 this.GKE.HXB(var18);
@@ -236,7 +236,7 @@ public class EUC {
                 List var4 = this.GKE.getInvoicesByDateAndNip(this.QMC.getPossibleDateTypeForSearch(), this.QMC.getDateFrom(), this.QMC.getDateTo(), this.QMC.getNip());
                 if (var4 != null && var4.size() > 0) {
                     File var5 = this.GKE.getWorkingDir(this.GKD);
-                    LY var6 = this.GKE.getUserData();
+                    UserData var6 = this.GKE.getUserData();
                     var1.getProgressBarContainer().setFirstValue(var1.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.generate.init_JPK_FA")));
                     byte[] var7 = EPW.QOL(var1.getProgressReporter(), var3, this.QMC.getDateFrom(), this.QMC.getDateTo(), var6, var4);
                     String var8 = HM.JPK.name() + "_" + AGWW.FA.name();
@@ -245,18 +245,18 @@ public class EUC {
                         throw new FFK("Invalid number of schema types for [" + var8 + "]");
                     }
 
-                    AGXA var10 = (AGXA) var9.get(0);
+                    JPKSchemaType var10 = (JPKSchemaType) var9.get(0);
                     AGWP var11 = new AGWP(1, var3, var10);
                     var11.setDeclarationFileCheckSumMD5(new JT(var7));
                     File var12 = new File(var5, "tmp_" + System.nanoTime());
                     var12.mkdirs();
                     var11.setContextDir(var12);
-                    JN var13 = JN.AOE;
+                    Period var13 = Period.AOE;
                     Integer var14 = this.GKE.HXA(var13, HM.JPK, AGWW.FA);
                     var11.setPeriod(var13);
                     var11.FJI().setValue(var14);
                     var11.setDeclarationStatus(HL.NEW);
-                    AGWN var15 = var1.HQF(var11);
+                    DeclarationJPK var15 = var1.HQF(var11);
                     if (var15 != null) {
                         var15.setDeclarationStatus(HL.SENT);
                         this.GKE.HXB(var15);

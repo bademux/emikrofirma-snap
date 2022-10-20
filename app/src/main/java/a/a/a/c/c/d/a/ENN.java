@@ -5,8 +5,8 @@ import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.g.EPB;
-import a.a.a.c.f.a.c.HI;
-import a.a.a.c.f.a.e.HN;
+import a.a.a.c.f.a.c.Contractor;
+import a.a.a.c.f.a.e.Invoice;
 import com.github.bademux.emk.app.FXApp;
 
 public abstract class ENN<_PROCESS extends ELV> extends BaseProgressFxController<_PROCESS> {
@@ -14,9 +14,9 @@ public abstract class ENN<_PROCESS extends ELV> extends BaseProgressFxController
         super(var1, var2, var3, var4);
     }
 
-    public abstract void setInvoice(HN<?> var1) throws FFK;
+    public abstract void setInvoice(Invoice<?> var1) throws FFK;
 
     public abstract void setMode(EPB var1);
 
-    public abstract void setContractor(HI var1);
+    public abstract void setContractor(Contractor var1);
 }

@@ -9,7 +9,7 @@ import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.b.c.ESC;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import com.github.bademux.emk.app.FXApp;
@@ -21,7 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 
 public class ERY extends BaseProgressFxController<ESC> {
-    private LY GBN;
+    private UserData GBN;
     private final BooleanProperty GBO = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
     private boolean GBP;
     @FXML

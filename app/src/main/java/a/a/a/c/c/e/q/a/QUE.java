@@ -22,9 +22,9 @@ import a.a.a.c.c.d.n.QVB;
 import a.a.a.c.c.e.q.c.QUL;
 import a.a.a.c.f.a.a.EZG;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.n.QSN;
+import a.a.a.c.f.a.n.InvoiceOtherSell;
 import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.KH;
 import a.a.a.c.f.b.c.a.QSW;
 import a.a.a.c.g.MSX;
@@ -65,19 +65,19 @@ public class QUE extends ENO<QUL> {
     @FXML
     private ComboBox<String> fxml_other_sale_list_year_search;
     @FXML
-    private TableView<QVB<QSN>> fxml_other_sale_list_table;
+    private TableView<QVB<InvoiceOtherSell>> fxml_other_sale_list_table;
     @FXML
-    private TableColumn<QVB<QSN>, Date> fxml_other_sale_list_table_column_invoicing_date;
+    private TableColumn<QVB<InvoiceOtherSell>, Date> fxml_other_sale_list_table_column_invoicing_date;
     @FXML
-    private TableColumn<QVB<QSN>, String> fxml_other_sale_list_table_column_ref_id;
+    private TableColumn<QVB<InvoiceOtherSell>, String> fxml_other_sale_list_table_column_ref_id;
     @FXML
-    private TableColumn<QVB<QSN>, QSQ> fxml_other_sale_list_table_column_other_type;
+    private TableColumn<QVB<InvoiceOtherSell>, QSQ> fxml_other_sale_list_table_column_other_type;
     @FXML
-    private TableColumn<QVB<QSN>, BigDecimal> fxml_other_sale_list_table_column_sum_net;
+    private TableColumn<QVB<InvoiceOtherSell>, BigDecimal> fxml_other_sale_list_table_column_sum_net;
     @FXML
-    private TableColumn<QVB<QSN>, BigDecimal> fxml_other_sale_list_table_column_sum_tax;
+    private TableColumn<QVB<InvoiceOtherSell>, BigDecimal> fxml_other_sale_list_table_column_sum_tax;
     @FXML
-    private TableColumn<QVB<QSN>, BigDecimal> fxml_other_sale_list_table_column_sum_brut;
+    private TableColumn<QVB<InvoiceOtherSell>, BigDecimal> fxml_other_sale_list_table_column_sum_brut;
     @FXML
     private TableView<EOX<String>> fxml_other_sale_list_summary_table;
     @FXML
@@ -99,13 +99,13 @@ public class QUE extends ENO<QUL> {
     @FXML
     private Label fxml_other_sale_list_button_error_label;
     private SortedMap<String, SortedSet<KH>> RDA = null;
-    private JN RDB = null;
+    private Period RDB = null;
     private String RDC;
     private KH RDD;
     private String RDE;
     private static final int RDF = 50;
     private int RDG = 0;
-    private List<QVB<QSN>> RDH;
+    private List<QVB<InvoiceOtherSell>> RDH;
     private boolean RDI = true;
     protected final ListProperty<EOX<String>> RDJ = new SimpleListProperty(FXCollections.observableArrayList());
     private final QUF RDK = new QUF();
@@ -122,8 +122,8 @@ public class QUE extends ENO<QUL> {
 
         this.RDE = this.resources.getString("micro.process.other_sale_list.SearchAll");
         this.fxml_other_sale_list_searchController.fxml_component_main_element.setPromptText(this.resources.getString("micro.process.other_sale_list.Find"));
-        this.fxml_other_sale_list_table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<QVB<QSN>>() {
-            public void changed(ObservableValue<? extends QVB<QSN>> var1, QVB<QSN> var2, QVB<QSN> var3) {
+        this.fxml_other_sale_list_table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<QVB<InvoiceOtherSell>>() {
+            public void changed(ObservableValue<? extends QVB<InvoiceOtherSell>> var1, QVB<InvoiceOtherSell> var2, QVB<InvoiceOtherSell> var3) {
                 if (var3 != null) {
                     QUE.this.RMZ();
                 } else {
@@ -243,7 +243,7 @@ public class QUE extends ENO<QUL> {
     public void setOnlyEmptyPeriod() {
     }
 
-    public void setPeriod(JN var1) throws FFK {
+    public void setPeriod(Period var1) throws FFK {
 
         this.RDB = var1;
 
@@ -254,7 +254,7 @@ public class QUE extends ENO<QUL> {
 
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [view] clicked");
-            final QSN var1 = (QSN) ((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getRealInvoice();
+            final InvoiceOtherSell var1 = (InvoiceOtherSell) ((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getRealInvoice();
             this.getApplication().initController(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
                 public void accept(QUV<?> var1x) {
 
@@ -280,7 +280,7 @@ public class QUE extends ENO<QUL> {
 
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
-            final QSN var1 = (QSN) ((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getRealInvoice();
+            final InvoiceOtherSell var1 = (InvoiceOtherSell) ((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getRealInvoice();
             this.getApplication().initController(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
                 public void accept(QUV<?> var1x) {
 
@@ -635,7 +635,7 @@ public class QUE extends ENO<QUL> {
 
     }
 
-    private QUI RNA(QVB<QSN> var1) {
+    private QUI RNA(QVB<InvoiceOtherSell> var1) {
 
         QUI var3;
         if (var1.getState().equals(QSW.CANCELED)) {
@@ -664,7 +664,7 @@ public class QUE extends ENO<QUL> {
         return var3;
     }
 
-    private QUI RNB(QVB<QSN> var1) {
+    private QUI RNB(QVB<InvoiceOtherSell> var1) {
 
         QUI var2;
         var2 = new QUI(true, null);
@@ -672,7 +672,7 @@ public class QUE extends ENO<QUL> {
         return var2;
     }
 
-    private QUI RNC(QVB<QSN> var1) {
+    private QUI RNC(QVB<InvoiceOtherSell> var1) {
 
         QUI var3;
         boolean var2 = false;
@@ -704,7 +704,7 @@ public class QUE extends ENO<QUL> {
 
     }
 
-    public boolean RND(QVB<QSN> var1) throws FFK, FFO {
+    public boolean RND(QVB<InvoiceOtherSell> var1) throws FFK, FFO {
 
         boolean var3;
         boolean var2 = this.RNE(var1.getPeriod());
@@ -713,7 +713,7 @@ public class QUE extends ENO<QUL> {
         return var3;
     }
 
-    public boolean RNE(JN var1) throws FFK, FFO {
+    public boolean RNE(Period var1) throws FFK, FFO {
 
         boolean var4;
         QUL var2 = this.getProcess();

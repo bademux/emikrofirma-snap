@@ -1,10 +1,10 @@
 package a.a.a.c.d.f;
 
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.e.HN;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.HU;
-import a.a.a.c.f.a.n.QSG;
-import a.a.a.c.f.a.n.QSN;
+import a.a.a.c.f.a.n.InvoiceOther;
+import a.a.a.c.f.a.n.InvoiceOtherSell;
 import a.a.a.c.f.b.c.a.KL;
 
 import java.math.BigDecimal;
@@ -12,14 +12,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class ERA extends ERC {
-    public ERA(HN<?> var1) {
+    public ERA(Invoice<?> var1) {
         super(true);
         HU var2 = (HU) var1;
         HashMap var3 = new HashMap();
         Iterator var4 = var2.getSumOfAmountsDividedByTaxRate().iterator();
 
         while (var4.hasNext()) {
-            TwoValueBox var5 = (TwoValueBox) var4.next();
+            ValueContainer2 var5 = (ValueContainer2) var4.next();
             var3.put(var5.getFirstValue(), var5.getSecondValue());
         }
 
@@ -39,7 +39,7 @@ public class ERA extends ERC {
         Iterator var7 = var2.getAmountOfTaxDividedByTaxRate().iterator();
 
         while (var7.hasNext()) {
-            TwoValueBox var6 = (TwoValueBox) var7.next();
+            ValueContainer2 var6 = (ValueContainer2) var7.next();
             var8.put(var6.getFirstValue(), var6.getSecondValue());
         }
 
@@ -54,14 +54,14 @@ public class ERA extends ERC {
         this.getForAll().setVatOo8Tax((BigDecimal) var8.get(KL.OO_8));
     }
 
-    public ERA(QSG<?> var1) {
+    public ERA(InvoiceOther<?> var1) {
         super(true);
-        QSN var2 = (QSN) var1;
+        InvoiceOtherSell var2 = (InvoiceOtherSell) var1;
         HashMap var3 = new HashMap();
         Iterator var4 = var2.getSumOfAmountsDividedByTaxRate().iterator();
 
         while (var4.hasNext()) {
-            TwoValueBox var5 = (TwoValueBox) var4.next();
+            ValueContainer2 var5 = (ValueContainer2) var4.next();
             var3.put(var5.getFirstValue(), var5.getSecondValue());
         }
 
@@ -81,7 +81,7 @@ public class ERA extends ERC {
         Iterator var7 = var2.getAmountOfTaxDividedByTaxRate().iterator();
 
         while (var7.hasNext()) {
-            TwoValueBox var6 = (TwoValueBox) var7.next();
+            ValueContainer2 var6 = (ValueContainer2) var7.next();
             var8.put(var6.getFirstValue(), var6.getSecondValue());
         }
 

@@ -1,8 +1,8 @@
 package a.a.a.c.f.a.g;
 
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 
-public class AGYN<_T extends HI> extends IW<_T> {
+public class AGYN<_T extends Contractor> extends IW<_T> {
     private final String AJHJ;
     private final Integer QLV;
 

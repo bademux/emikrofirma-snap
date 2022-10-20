@@ -1,7 +1,7 @@
 package a.a.a.c.c.e.k.b;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.c.a.ELZ;
+import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.c.ENH;
@@ -14,7 +14,7 @@ import a.a.a.c.g.b.FCW;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EVB extends ELZ {
+public class EVB extends ProcessDefinitionBase {
     public static final EOS GNN;
     public static final String GNO = "cash_register_new_item.fxml";
 

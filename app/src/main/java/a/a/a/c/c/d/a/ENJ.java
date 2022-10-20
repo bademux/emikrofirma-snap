@@ -3,7 +3,7 @@ package a.a.a.c.c.d.a;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.b.a.EMW;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import com.github.bademux.emk.app.FXApp;
 
 public abstract class ENJ<_PROCESS extends ELV> extends ENK<_PROCESS> {
@@ -11,5 +11,5 @@ public abstract class ENJ<_PROCESS extends ELV> extends ENK<_PROCESS> {
         super(var1, var2, var3, var4);
     }
 
-    public abstract void setSettlement(JF var1) throws FFK;
+    public abstract void setSettlement(Settlement var1) throws FFK;
 }

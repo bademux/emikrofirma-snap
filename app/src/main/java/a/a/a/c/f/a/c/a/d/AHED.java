@@ -1,13 +1,13 @@
 package a.a.a.c.f.a.c.a.d;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.a.c.a.c.AHDV;
+import a.a.a.c.f.a.c.a.c.SelectedField;
 import a.a.a.c.f.a.c.a.f.AHEP;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHED extends AHDZ<Integer> {
+public class AHED extends OperationOnFieldAndVariableAbstract<Integer> {
     public AHED() {
 
     }
@@ -17,7 +17,7 @@ public class AHED extends AHDZ<Integer> {
 
     }
 
-    public void AIDR(AHDV var1) {
+    public void AIDR(SelectedField var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("selectedField " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("operationType " + this.AHWI);

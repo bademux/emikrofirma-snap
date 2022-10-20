@@ -2,11 +2,11 @@ package a.a.a.c.d.a.b;
 
 import a.a.a.c.f.a.b.AHCB;
 import a.a.a.c.f.a.c.a.c.AHDS;
-import a.a.a.c.f.a.c.a.c.AHDT;
+import a.a.a.c.f.a.c.a.c.Field;
 
 import java.util.Map;
 
-public class EPS implements AHCB<Map<AHDS, AHDT>> {
+public class EPS implements AHCB<Map<AHDS, Field>> {
     private final AHDS FTX;
     private final AHDS FTY;
     private final AHDS FTZ;
@@ -29,7 +29,7 @@ public class EPS implements AHCB<Map<AHDS, AHDT>> {
 
     }
 
-    public boolean AIBY(Map<AHDS, AHDT> var1) {
+    public boolean AIBY(Map<AHDS, Field> var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("fields " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalFieldName_KodKraju " + this.FTX);
@@ -42,14 +42,14 @@ public class EPS implements AHCB<Map<AHDS, AHDT>> {
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalFieldName_Poczta " + this.FUE);
 
         boolean var10;
-        AHDT var2 = var1.get(this.FTX);
-        AHDT var3 = var1.get(this.FTY);
-        AHDT var4 = var1.get(this.FTZ);
-        AHDT var5 = var1.get(this.FUA);
-        AHDT var6 = var1.get(this.FUB);
-        AHDT var7 = var1.get(this.FUC);
-        AHDT var8 = var1.get(this.FUD);
-        AHDT var9 = var1.get(this.FUE);
+        Field var2 = var1.get(this.FTX);
+        Field var3 = var1.get(this.FTY);
+        Field var4 = var1.get(this.FTZ);
+        Field var5 = var1.get(this.FUA);
+        Field var6 = var1.get(this.FUB);
+        Field var7 = var1.get(this.FUC);
+        Field var8 = var1.get(this.FUD);
+        Field var9 = var1.get(this.FUE);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_KodKraju " + var2);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_Wojewodztwo " + var3);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_Powiat " + var4);
@@ -63,7 +63,7 @@ public class EPS implements AHCB<Map<AHDS, AHDT>> {
         return var10;
     }
 
-    public String getContextString(Map<AHDS, AHDT> var1) {
+    public String getContextString(Map<AHDS, Field> var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("fields " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalFieldName_KodKraju " + this.FTX);
@@ -76,14 +76,14 @@ public class EPS implements AHCB<Map<AHDS, AHDT>> {
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalFieldName_Poczta " + this.FUE);
 
         String var11;
-        AHDT var2 = var1.get(this.FTX);
-        AHDT var3 = var1.get(this.FTY);
-        AHDT var4 = var1.get(this.FTZ);
-        AHDT var5 = var1.get(this.FUA);
-        AHDT var6 = var1.get(this.FUB);
-        AHDT var7 = var1.get(this.FUC);
-        AHDT var8 = var1.get(this.FUD);
-        AHDT var9 = var1.get(this.FUE);
+        Field var2 = var1.get(this.FTX);
+        Field var3 = var1.get(this.FTY);
+        Field var4 = var1.get(this.FTZ);
+        Field var5 = var1.get(this.FUA);
+        Field var6 = var1.get(this.FUB);
+        Field var7 = var1.get(this.FUC);
+        Field var8 = var1.get(this.FUD);
+        Field var9 = var1.get(this.FUE);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_KodKraju " + var2);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_Wojewodztwo " + var3);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_Powiat " + var4);

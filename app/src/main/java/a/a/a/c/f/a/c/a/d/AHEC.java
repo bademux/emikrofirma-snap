@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.d;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.a.c.a.c.AHDV;
+import a.a.a.c.f.a.c.a.c.SelectedField;
 import a.a.a.c.f.a.c.a.f.AHEO;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -15,7 +15,7 @@ import java.util.Date;
 
 @Slf4j
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHEC extends AHDZ<XMLGregorianCalendar> {
+public class AHEC extends OperationOnFieldAndVariableAbstract<XMLGregorianCalendar> {
     private final transient SimpleDateFormat AHWK;
     private final transient SimpleDateFormat AHWL;
     private final transient SimpleDateFormat AHWM;
@@ -43,7 +43,7 @@ public class AHEC extends AHDZ<XMLGregorianCalendar> {
 
     }
 
-    public void AIDR(AHDV var1) {
+    public void AIDR(SelectedField var1) {
 
         try {
             log.debug("selectedField " + var1);

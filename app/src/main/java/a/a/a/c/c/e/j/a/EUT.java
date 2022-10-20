@@ -15,13 +15,13 @@ import a.a.a.c.d.e.QRX;
 import a.a.a.c.d.e.QRY;
 import a.a.a.c.d.g.ERF;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
 import a.a.a.c.f.a.e.*;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.b.EZT;
 import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.KI;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
@@ -55,7 +55,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Iterator;
 
-public class EUT extends BaseFxController implements EMO<HO>, EYR {
+public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
     public EUY GLL;
     public EPB GLM;
     public HY GLN;
@@ -69,7 +69,7 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
     public BooleanProperty GLU = new SimpleBooleanProperty(false);
     public BooleanProperty GLV = new SimpleBooleanProperty(false);
     public BooleanProperty GLW = new SimpleBooleanProperty(false);
-    public ObjectProperty<JN> GLX = new SimpleObjectProperty();
+    public ObjectProperty<Period> GLX = new SimpleObjectProperty();
     @FXML
     Node fxml_inner_parent;
     @FXML
@@ -226,10 +226,10 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
     public static final String GME = "7";
     public EZT GMF;
     public String GMG;
-    public JN QGI;
+    public Period QGI;
     public LocalDate GMH;
     private String GMI;
-    private HI GMJ;
+    private Contractor GMJ;
 
     public EUT(FXApp var1, String var2) {
         super(var1, var2);
@@ -629,7 +629,7 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
 
     private void HXF() {
 
-        HI var1 = null;
+        Contractor var1 = null;
         if (!this.GLR.get()) {
             HU var2 = (HU) this.GLN;
             var1 = var2.DBV();
@@ -651,7 +651,7 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
 
     private void HXG() {
 
-        HI var1 = null;
+        Contractor var1 = null;
         if (!this.GLR.get()) {
             HU var2 = (HU) this.GLN;
             var1 = var2.DBV();
@@ -980,7 +980,7 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
 
     }
 
-    public void RJV(HO var1, HO var2, QSV var3) {
+    public void RJV(InvoiceElement var1, InvoiceElement var2, QSV var3) {
 
         var3 = QSV.valueOf(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
         QRX var4 = QRY.getInvoiceCalculationMethod(var3, true);
@@ -1031,7 +1031,7 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
             Iterator var2 = this.GLN.getInvoiceElements().iterator();
 
             while (var2.hasNext()) {
-                HO var3 = (HO) var2.next();
+                InvoiceElement var3 = (InvoiceElement) var2.next();
                 HQ var4 = (HQ) var3;
                 if (var4.DBE().getValue() != null && var4.DBE().getValue().trim().length() != 0) {
                     if (var4.DBH().getValue() != null && var4.DBH().getValue().trim().length() != 0) {
@@ -1208,9 +1208,9 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
 
         try {
             if (this.fxml_invoice_sale_invoicing_dateController.fxml_component_main_element.getValue() != null && this.fxml_invoice_sale_invoicing_dateController.requiredAndValidProperty().get()) {
-                this.GLX.set(new JN(Date.from(this.fxml_invoice_sale_invoicing_dateController.fxml_component_main_element.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+                this.GLX.set(new Period(Date.from(this.fxml_invoice_sale_invoicing_dateController.fxml_component_main_element.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
             } else if (this.GLM.getCorrectFields()) {
-                this.GLX.set(JN.AOE);
+                this.GLX.set(Period.AOE);
             }
         } catch (FFK var5) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
@@ -1275,14 +1275,14 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
 
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
         this.GMJ = var1;
     }
 
     public void setContractorFromAutocomplete(QJW var1) {
 
         if (var1 != null) {
-            HI var2 = var1.getContractor().AICD();
+            Contractor var2 = var1.getContractor().AICD();
             this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().setText(var2.getNip().getValue());
             this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().getText().length());
             this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().setText(var2.getName().getValue());

@@ -4,7 +4,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHDO extends AHDT {
+public class AHDO extends Field {
     public AHDO() {
 
     }

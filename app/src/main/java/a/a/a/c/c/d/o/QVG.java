@@ -5,9 +5,9 @@ import a.a.a.c.c.d.a.QUW;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZO;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -30,17 +30,17 @@ public class QVG implements ChangeListener<String> {
     public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
         this.RGN.fxml_component_main_element.IEW().set(true);
         if (var3 != null && var3.length() > 0) {
-            JN var4 = JN.AOE;
+            Period var4 = Period.AOE;
             if (this.RGO.fxml_component_main_element.getValue() != null) {
                 try {
-                    var4 = new JN(this.RGO.fxml_component_main_element.getValue());
+                    var4 = new Period(this.RGO.fxml_component_main_element.getValue());
                 } catch (FFK var6) {
                 }
             }
 
             if (this.RGM.not().get() && this.RGP.fxml_component_main_element.IET()) {
                 KA var5 = new KA(this.RGP.fxml_component_main_element.getEditor().getText());
-                if (!this.RGL.RJW(var4, new KE(var3), var5)) {
+                if (!this.RGL.RJW(var4, new RefId(var3), var5)) {
                     this.RGN.fxml_component_main_element.IEW().set(false);
                 }
             }

@@ -1,7 +1,7 @@
 package a.a.a.c.c.e.p.b;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.c.a.ELZ;
+import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.c.ENH;
@@ -14,7 +14,7 @@ import a.a.a.c.g.b.FCW;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QUC extends ELZ {
+public class QUC extends ProcessDefinitionBase {
     public static final EOS RCR;
     public static final String RCS = "invoice_other_purchase_new_add_element.fxml";
 

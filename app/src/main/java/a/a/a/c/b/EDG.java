@@ -1,11 +1,11 @@
 package a.a.a.c.b;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.f.a.IK;
+import a.a.a.c.f.a.ModelBusinessPeriodElement;
 
 import java.util.Map;
 
-public class EDG<_A extends IK> extends IK {
+public class EDG<_A extends ModelBusinessPeriodElement> extends ModelBusinessPeriodElement {
     private _A FFV;
     private final EDE<_A> FFW;
     private final Map<String, Object> FFX;
@@ -21,7 +21,7 @@ public class EDG<_A extends IK> extends IK {
 
     public _A getModelBaseElementWithIdObject() throws FFK {
 
-        IK var1;
+        ModelBusinessPeriodElement var1;
         if (this.FFV == null) {
             this.FFV = this.FFW.HGW();
         }

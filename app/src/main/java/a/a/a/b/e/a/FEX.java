@@ -1,7 +1,7 @@
 package a.a.a.b.e.a;
 
 import a.a.a.b.e.a.a.FEV;
-import a.a.a.b.e.c.FFC;
+import a.a.a.b.e.c.NewPrivateKey;
 import a.a.a.b.e.c.FFE;
 import a.a.a.b.e.c.a.FFD;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +38,7 @@ public class FEX extends FES {
     public FEX() {
     }
 
-    public static synchronized byte[] IKZ(FFC var0, X509Certificate var1, byte[] var2, byte[] var3, String var4, String var5, String var6, String var7) throws FEV {
+    public static synchronized byte[] IKZ(NewPrivateKey var0, X509Certificate var1, byte[] var2, byte[] var3, String var4, String var5, String var6, String var7) throws FEV {
         byte[] var29;
         try {
             DocumentBuilderFactory var8 = DocumentBuilderFactory.newInstance();

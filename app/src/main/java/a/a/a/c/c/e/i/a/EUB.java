@@ -10,7 +10,7 @@ import a.a.a.c.d.b.EQE;
 import a.a.a.c.d.b.EQM;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.f.a.d.AGXA;
+import a.a.a.c.f.a.d.JPKSchemaType;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
@@ -147,13 +147,13 @@ public class EUB {
     private void HWS() {
 
         try {
-            AGXA var1 = AGXA.AHSV;
+            JPKSchemaType var1 = JPKSchemaType.AHSV;
             String var2 = var1.getKodFormularza() + " (" + var1.getWariantFormularza() + ") " + var1.getWersjaSchemy();
             this.fxml_text.setText(FCW.getInstance().getMessageForKey("micro.process.declaration_list.selectandconvert.desc").replaceFirst("##SCHEMA##", var2));
             File var3 = this.HWU();
             if (var3 != null) {
                 try {
-                    AGXA var4 = (new EQM()).HQN(var3);
+                    JPKSchemaType var4 = (new EQM()).HQN(var3);
                     if (!var1.getKodFormularza().equals(var4.getKodFormularza()) || !var1.getKodSystemowy().equals(var4.getKodSystemowy()) || !var1.getWersjaSchemy().equals(var4.getWersjaSchemy()) || !var1.getWariantFormularza().equals(var4.getWariantFormularza())) {
                         throw FCZ.getInstance().IHX(var4.toString());
                     }
@@ -224,7 +224,7 @@ public class EUB {
         return var1;
     }
 
-    private File HWV(final AGXA var1) {
+    private File HWV(final JPKSchemaType var1) {
 
         File var2;
         var2 = FEL.IKS(new FEM<File>() {

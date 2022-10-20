@@ -1,15 +1,15 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
-import a.a.a.c.f.a.c.a.c.AHDT;
+import a.a.a.c.f.a.c.a.c.Field;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHDE extends AHCK {
+public class AHDE extends ConditionOnFieldAbstract {
     public AHDE() {
 
     }
@@ -19,14 +19,14 @@ public class AHDE extends AHCK {
 
     }
 
-    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
+    public ValueContainer2<AHCI, String> AICX(Field var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
         boolean var2 = false;
         if (this.AHUF == AHDG.ISNOTSET) {
             var2 = !var1.AIDH();
-            TwoValueBox var3;
+            ValueContainer2 var3;
             if (!var2) {
                 var3 = null;
                 AHCI var8;
@@ -41,11 +41,11 @@ public class AHDE extends AHCK {
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");
                 }
 
-                TwoValueBox var4 = new TwoValueBox(var8, this.AIDB("", var1));
+                ValueContainer2 var4 = new ValueContainer2(var8, this.AIDB("", var1));
                 return var4;
             }
 
-            var3 = new TwoValueBox(AHCI.SUCCESS, null);
+            var3 = new ValueContainer2(AHCI.SUCCESS, null);
             return var3;
         }
         throw new FFI("Invalid conditionType [" + this.AHUF + "]!");

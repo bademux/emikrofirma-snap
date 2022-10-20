@@ -15,16 +15,16 @@ import a.a.a.c.c.e.r.c.QUU;
 import a.a.a.c.d.e.b.QSC;
 import a.a.a.c.d.g.ERF;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
 import a.a.a.c.f.a.n.QSJ;
-import a.a.a.c.f.a.n.QSN;
+import a.a.a.c.f.a.n.InvoiceOtherSell;
 import a.a.a.c.f.a.n.QSQ;
 import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
-import a.a.a.c.f.c.a.LP;
+import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.QJZ;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.FCQ;
@@ -56,7 +56,7 @@ import java.util.LinkedHashSet;
 public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
     public QUU RDU;
     ERF RDV = new ERF(false, 2, 2);
-    private QSN RDW;
+    private InvoiceOtherSell RDW;
     @FXML
     private EYQ fxml_other_sale_ref_idController;
     @FXML
@@ -90,15 +90,15 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
     @FXML
     public TableColumn<QSJ, Object> fxml_other_sale_elements_table_column_sum_brut_price;
     @FXML
-    TableView<QSN> fxml_other_sale_summary_summary_table;
+    TableView<InvoiceOtherSell> fxml_other_sale_summary_summary_table;
     @FXML
-    TableColumn<QSN, Object> fxml_other_sale_summary_summary_table_column_name;
+    TableColumn<InvoiceOtherSell, Object> fxml_other_sale_summary_summary_table_column_name;
     @FXML
-    TableColumn<QSN, Object> fxml_other_sale_summary_summary_table_column_sum_netto;
+    TableColumn<InvoiceOtherSell, Object> fxml_other_sale_summary_summary_table_column_sum_netto;
     @FXML
-    TableColumn<QSN, Object> fxml_other_sale_summary_summary_table_column_sum_tax;
+    TableColumn<InvoiceOtherSell, Object> fxml_other_sale_summary_summary_table_column_sum_tax;
     @FXML
-    TableColumn<QSN, Object> fxml_other_sale_summary_summary_table_column_sum_brut;
+    TableColumn<InvoiceOtherSell, Object> fxml_other_sale_summary_summary_table_column_sum_brut;
     @FXML
     private Button fxml_other_sale_button_add_new_other_position;
     @FXML
@@ -109,7 +109,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
     Node fxml_inner_parent;
     public BooleanProperty RDX = new SimpleBooleanProperty(false);
     private final BooleanProperty RDY = new SimpleBooleanProperty(false);
-    public ObjectProperty<JN> RDZ = new SimpleObjectProperty();
+    public ObjectProperty<Period> RDZ = new SimpleObjectProperty();
     public BooleanProperty REA = new SimpleBooleanProperty(false);
     public BooleanProperty REB = new SimpleBooleanProperty(false);
     private final BooleanProperty REC = new SimpleBooleanProperty(false);
@@ -228,7 +228,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
 
     private void RNN() {
 
-        HI var1 = this.RDW.RJS();
+        Contractor var1 = this.RDW.RJS();
         this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAI().DDG());
         this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAJ().DDG());
         JJ var2 = var1.DAM();
@@ -242,7 +242,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
 
     private void RNO() {
 
-        HI var1 = this.RDW.RJS();
+        Contractor var1 = this.RDW.RJS();
         this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAI().DDG());
         this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAJ().DDG());
         JJ var2 = var1.DAM();
@@ -322,7 +322,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
 
     }
 
-    public void setInvoiceOther(QSN var1) {
+    public void setInvoiceOther(InvoiceOtherSell var1) {
         this.RDW = var1;
     }
 
@@ -358,7 +358,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
             String var3 = null;
 
             try {
-                LP var4 = EMB.getInstance().HHU();
+                ConfigurationProperties var4 = EMB.getInstance().HHU();
                 var3 = (String) var4.getConfigurationPropertyOrDefault(FCQ.CalculationMethod).DEY().getValue();
             } catch (FFK var5) {
                 var3 = (String) QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod).DEY().getValue();
@@ -447,7 +447,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
     public void setContractorFromAutocomplete(QJW var1) {
 
         if (var1 != null) {
-            HI var2 = var1.getContractor().AICD();
+            Contractor var2 = var1.getContractor().AICD();
             this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().setText(var2.getNip().getValue());
             this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().getText().length());
             this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().setText(var2.getName().getValue());

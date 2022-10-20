@@ -5,15 +5,15 @@ import a.a.a.c.c.d.a.QUW;
 import a.a.a.c.c.d.e.EOT;
 import a.a.a.c.c.e.m.c.QTB;
 import a.a.a.c.d.e.b.QRZ;
-import a.a.a.c.f.a.c.HI;
-import a.a.a.c.f.a.e.HO;
-import a.a.a.c.f.a.e.HP;
-import a.a.a.c.f.a.e.HR;
+import a.a.a.c.f.a.c.Contractor;
+import a.a.a.c.f.a.e.InvoiceElement;
+import a.a.a.c.f.a.e.InvoiceElementPurchase;
+import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.c.ComboBoxRequired;
@@ -59,7 +59,7 @@ public class QSX extends QUW {
 
     }
 
-    public void RKB(HR var1) {
+    public void RKB(InvoicePurchase var1) {
 
         this.REZ = var1;
         if (var1 != null) {
@@ -69,7 +69,7 @@ public class QSX extends QUW {
             this.fxml_include_receiptDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DBR().DEC());
             this.fxml_include_invoicingDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DAF().DDL());
             this.fxml_include_invoicingDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DBS().DEC());
-            HI var2 = var1.DBQ();
+            Contractor var2 = var1.DBQ();
             this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAI().DDG());
             this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAR().DDG());
             this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAJ().DDG());
@@ -114,7 +114,7 @@ public class QSX extends QUW {
                 var6.setupDefaults(this.resources);
                 var4.showAndWait();
                 if (var6.getResult()) {
-                    HP var7 = new HP();
+                    InvoiceElementPurchase var7 = new InvoiceElementPurchase();
                     var7.setNetPriceForAll(new JR(var6.fxml_include_netValueNumberBox_boxController.fxml_component_main_element.getNumber()));
                     var7.setTaxValueForAll(new JR(var6.fxml_include_taxValueNumberBox_boxController.fxml_component_main_element.getNumber()));
                     var7.setGrossValueForAll(new JR(var6.fxml_include_netValueNumberBox_boxController.fxml_component_main_element.getNumber().add(var6.fxml_include_taxValueNumberBox_boxController.fxml_component_main_element.getNumber())));
@@ -147,7 +147,7 @@ public class QSX extends QUW {
 
     }
 
-    public boolean RJW(JN var1, KE var2, KA var3) {
+    public boolean RJW(Period var1, RefId var2, KA var3) {
 
         boolean var4;
         if (this.QZB == null) {
@@ -160,7 +160,7 @@ public class QSX extends QUW {
         return var4;
     }
 
-    public boolean RJX(JN var1) {
+    public boolean RJX(Period var1) {
 
         boolean var2;
         if (this.QZB != null) {
@@ -173,7 +173,7 @@ public class QSX extends QUW {
         return var2;
     }
 
-    public void RJV(HO var1, HO var2, QSV var3) {
+    public void RJV(InvoiceElement var1, InvoiceElement var2, QSV var3) {
 
         QRZ var4 = new QRZ();
         var4.RIB(var1, var2);
@@ -189,8 +189,8 @@ public class QSX extends QUW {
             Iterator var2 = this.REZ.getInvoiceElements().iterator();
 
             while (var2.hasNext()) {
-                HO var3 = (HO) var2.next();
-                HP var4 = (HP) var3;
+                InvoiceElement var3 = (InvoiceElement) var2.next();
+                InvoiceElementPurchase var4 = (InvoiceElementPurchase) var3;
                 if (var4.DBK().getValue() == null) {
                     var1 = false;
                     break;

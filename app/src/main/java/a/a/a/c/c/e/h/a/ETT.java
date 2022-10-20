@@ -14,11 +14,11 @@ import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.d.d.ENZ;
 import a.a.a.c.c.d.d.b.EOB;
 import a.a.a.c.c.e.h.c.ETV;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.f.a.IR;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.b.c.a.KH;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
@@ -51,9 +51,9 @@ public class ETT extends BaseProgressFxController<ETV> {
     @FXML
     TableView<IR> fxml_cash_register_list;
     @FXML
-    TableColumn<IR, JN> fxml_cash_register_list_period;
+    TableColumn<IR, Period> fxml_cash_register_list_period;
     @FXML
-    TableColumn<IR, KE> fxml_cash_register_list_ref_id;
+    TableColumn<IR, RefId> fxml_cash_register_list_ref_id;
     @FXML
     TableColumn<IR, JR> fxml_cash_register_list_net;
     @FXML
@@ -83,7 +83,7 @@ public class ETT extends BaseProgressFxController<ETV> {
     ObservableList<IR> GJB;
     private int GJC = 0;
     private SortedMap<String, SortedSet<KH>> GJD;
-    private JN GJF;
+    private Period GJF;
     private final ChangeListener<String> GJG = new ChangeListener<String>() {
         public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
             ETT.this.setPossibleMonths(var3);
@@ -136,10 +136,10 @@ public class ETT extends BaseProgressFxController<ETV> {
         this.fxml_cash_register_list_period.setCellValueFactory(new PropertyValueFactory("period"));
         this.fxml_cash_register_list_period.setCellFactory(new ENZ());
         this.fxml_cash_register_list_ref_id.setCellValueFactory(new PropertyValueFactory("refId"));
-        this.fxml_cash_register_list_ref_id.setCellFactory(new Callback<TableColumn<IR, KE>, TableCell<IR, KE>>() {
-            public TableCell<IR, KE> call(TableColumn<IR, KE> var1) {
-                return new TableCell<IR, KE>() {
-                    protected void updateItem(KE var1, boolean var2) {
+        this.fxml_cash_register_list_ref_id.setCellFactory(new Callback<TableColumn<IR, RefId>, TableCell<IR, RefId>>() {
+            public TableCell<IR, RefId> call(TableColumn<IR, RefId> var1) {
+                return new TableCell<IR, RefId>() {
+                    protected void updateItem(RefId var1, boolean var2) {
                         super.updateItem(var1, var2);
                         if (!var2 && var1 != null) {
                             this.setText(var1.getValue());
@@ -224,7 +224,7 @@ public class ETT extends BaseProgressFxController<ETV> {
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("currentPage " + this.GJC);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("pageOffset " + var2);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("RECORDS_PER_PAGE 12");
-            TwoValueBox var3 = this.getProcess().getReceiptRecords(12, var2, this.GJF);
+            ValueContainer2 var3 = this.getProcess().getReceiptRecords(12, var2, this.GJF);
             if (var3 != null) {
                 Iterator var4 = ((List) var3.getSecondValue()).iterator();
 
@@ -376,7 +376,7 @@ public class ETT extends BaseProgressFxController<ETV> {
             }
         }
 
-        this.GJF = new JN(var2, var3);
+        this.GJF = new Period(var2, var3);
     }
 
     private void setPossibleMonths(String var1) {

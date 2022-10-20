@@ -1,7 +1,7 @@
 package a.a.a.c.d.b;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.f.a.d.AGXA;
+import a.a.a.c.f.a.d.JPKSchemaType;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class EQL {
     private static volatile EQL FWL;
-    private final Map<String, AGXA> FWM;
+    private final Map<String, JPKSchemaType> FWM;
     private final URL FWN;
     public static final String FWO = "kodSystemowy";
     public static final String FWP = "wersjaSchemy";
@@ -63,7 +63,7 @@ public class EQL {
 
     }
 
-    public Map<String, AGXA> getJpkSchemaFilesMap() {
+    public Map<String, JPKSchemaType> getJpkSchemaFilesMap() {
         return this.FWM;
     }
 
@@ -110,7 +110,7 @@ public class EQL {
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("value_symbolWzoru " + var26);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("value_wariantFormularza " + var27);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("value_targetNamespace " + var28);
-            this.FWM.put(var38, new AGXA(var28, var26, var35, var25, var27, var33));
+            this.FWM.put(var38, new JPKSchemaType(var28, var26, var35, var25, var27, var33));
         }
 
     }

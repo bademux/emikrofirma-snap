@@ -1,9 +1,9 @@
 package a.a.a.c.f.a.g;
 
 import a.a.a.b.a.a.OrderType;
-import a.a.a.c.f.KU;
+import a.a.a.c.f.ModelBase;
 
-public abstract class JA<_T extends KU> {
+public abstract class JA<_T extends ModelBase> {
     private final Class<_T> ANE;
     private final OrderType ANF;
     private final Integer ANG;

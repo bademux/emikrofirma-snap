@@ -10,7 +10,7 @@ import java.io.File;
         name = "declarationJPK_VAT"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class HK extends AGWN {
+public class HK extends DeclarationJPK {
     private transient boolean AHSS;
 
     public HK() {
@@ -18,12 +18,12 @@ public class HK extends AGWN {
 
     }
 
-    public HK(Integer var1, File var2, AGXA var3) {
+    public HK(Integer var1, File var2, JPKSchemaType var3) {
         this(var1, var2, var3, true);
 
     }
 
-    public HK(Integer var1, File var2, AGXA var3, boolean var4) {
+    public HK(Integer var1, File var2, JPKSchemaType var3, boolean var4) {
         super(AGWW.VAT, var1, var2, var3);
 
         this.AHSS = var4;

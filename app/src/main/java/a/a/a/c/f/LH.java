@@ -7,7 +7,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 @XmlTransient
-public abstract class LH<_T extends JM> extends KX<_T> {
+public abstract class LH<_T extends JM> extends ModelBaseTypeElement<_T> {
     @XmlTransient
     private final ObjectProperty<_T> APV;
 
@@ -22,7 +22,7 @@ public abstract class LH<_T extends JM> extends KX<_T> {
 
     }
 
-    public int compareTo(KX<_T> var1) {
+    public int compareTo(ModelBaseTypeElement<_T> var1) {
         return var1 != null && var1.getValue() != null ? var1.getValue().DAQ(this.getValue()) : -1;
     }
 

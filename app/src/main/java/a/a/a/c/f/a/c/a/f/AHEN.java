@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHEN extends AHEL<Date> {
+public class AHEN extends Variable<Date> {
     private final transient SimpleDateFormat AHXB;
 
     private AHEN() {

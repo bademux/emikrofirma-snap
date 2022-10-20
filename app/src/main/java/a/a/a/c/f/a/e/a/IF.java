@@ -8,7 +8,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
         name = "invoiceRecordPurchase"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class IF extends IC {
+public class IF extends InvoiceRecord {
     public IF() {
         super(IH.PURCHASE);
 

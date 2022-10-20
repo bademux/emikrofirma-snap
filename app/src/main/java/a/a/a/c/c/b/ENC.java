@@ -4,8 +4,8 @@ import a.a.a.b.a.a.d.CellTyped;
 import a.a.a.b.a.a.d.CellValue;
 import a.a.a.b.a.a.d.CellType;
 import a.a.a.b.a.a.d.CellNamed;
-import a.a.a.c.e.a.d.OneValueBox;
-import a.a.a.c.f.KU;
+import a.a.a.c.e.a.d.ValueContainer1;
+import a.a.a.c.f.ModelBase;
 
 import java.util.List;
 import java.util.Map;
@@ -97,11 +97,11 @@ public interface ENC {
     CellNamed FML = ENC.END.cell_viewRefLevel.getDefinition();
     CellNamed FMM = ENC.END.cell_viewRefId.getDefinition();
 
-    interface ENF<_A extends OneValueBox<_B>, _B extends KU> {
+    interface ENF<_A extends ValueContainer1<_B>, _B extends ModelBase> {
         _A HNG(List<END> var1, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3) throws Exception;
     }
 
-    interface ENE<_A extends OneValueBox<_B>, _B extends KU> {
+    interface ENE<_A extends ValueContainer1<_B>, _B extends ModelBase> {
         _A HNF(List<CellValue<?>> var1) throws Exception;
     }
 

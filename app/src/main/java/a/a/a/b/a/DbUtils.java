@@ -2,15 +2,15 @@ package a.a.a.b.a;
 
 import a.a.a.b.a.a.Condition;
 import a.a.a.b.a.a.a.*;
-import a.a.a.b.a.a.b.FDJ;
-import a.a.a.b.a.a.c.FDN;
+import a.a.a.b.a.a.b.Expression;
+import a.a.a.b.a.a.c.ViewDef;
 import a.a.a.b.a.a.d.*;
-import a.a.a.b.a.a.e.FED;
-import a.a.a.b.a.a.e.FEE;
+import a.a.a.b.a.a.e.ConstraintFOREIGNDef;
+import a.a.a.b.a.a.e.ConstraintPRIMARYDef;
 import a.a.a.b.a.a.e.FEF;
-import a.a.a.b.a.a.e.FEH;
+import a.a.a.b.a.a.e.ConstraintBase;
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -96,7 +96,7 @@ public class DbUtils {
                         case UNIQUE:
                         case PRIMARY:
                             var7 = true;
-                            FEH var17 = (FEH) var16;
+                            ConstraintBase var17 = (ConstraintBase) var16;
                             var9 = new StringBuilder();
                             var9.append(var16.getConstraintType().getKeyWord());
                             var9.append(" (");
@@ -122,7 +122,7 @@ public class DbUtils {
                             break;
                         case FOREIGN:
                             var7 = true;
-                            FED var8 = (FED) var16;
+                            ConstraintFOREIGNDef var8 = (ConstraintFOREIGNDef) var16;
                             var9 = new StringBuilder();
                             var9.append(var16.getConstraintType().getKeyWord());
                             var9.append(" (");
@@ -321,7 +321,7 @@ public class DbUtils {
 
                 while (var74.hasNext()) {
                     Map.Entry var76 = (Map.Entry) var74.next();
-                    if (!(Boolean) ((TwoValueBox) var76.getValue()).getFirstValue()) {
+                    if (!(Boolean) ((ValueContainer2) var76.getValue()).getFirstValue()) {
                         hasColumns = false;
                         break;
                     }
@@ -356,7 +356,7 @@ public class DbUtils {
 
                 while (var17.hasNext()) {
                     Map.Entry var18 = (Map.Entry) var17.next();
-                    if ((Boolean) ((TwoValueBox) var18.getValue()).getFirstValue()) {
+                    if ((Boolean) ((ValueContainer2) var18.getValue()).getFirstValue()) {
                         if (var16) {
                             var16 = false;
                         } else {
@@ -368,7 +368,7 @@ public class DbUtils {
                         var14.append(((CellTyped) var18.getKey()).getName());
                         var15.append(((CellTyped) var18.getKey()).getName());
                     } else {
-                        CellDef var19 = (CellDef) ((TwoValueBox) var18.getValue()).getSecondValue();
+                        CellDef var19 = (CellDef) ((ValueContainer2) var18.getValue()).getSecondValue();
                         if (var19 instanceof InitScriptCell var20) {
                             if (var20.getInitScript() != null && var20.getInitScript().length() > 0) {
                                 if (var16) {
@@ -414,8 +414,8 @@ public class DbUtils {
                     label1587:
                     while (var21.hasNext()) {
                         FEF var22 = (FEF) var21.next();
-                        if (FEE.class.isAssignableFrom(var22.getClass())) {
-                            FEE var23 = (FEE) var22;
+                        if (ConstraintPRIMARYDef.class.isAssignableFrom(var22.getClass())) {
+                            ConstraintPRIMARYDef var23 = (ConstraintPRIMARYDef) var22;
                             var24 = var23.getColumns().iterator();
 
                             while (true) {
@@ -581,7 +581,7 @@ public class DbUtils {
 
         while (var16.hasNext()) {
             Map.Entry var17 = (Map.Entry) var16.next();
-            if ((Boolean) ((TwoValueBox) var17.getValue()).getFirstValue()) {
+            if ((Boolean) ((ValueContainer2) var17.getValue()).getFirstValue()) {
                 if (var15) {
                     var15 = false;
                 } else {
@@ -620,15 +620,15 @@ public class DbUtils {
 
     }
 
-    private static HashMap<CellTyped, TwoValueBox<Boolean, CellDef>> prepareCellTypes(TableDef tableDef) {
-        var result = new HashMap<CellTyped, TwoValueBox<Boolean, CellDef>>();
+    private static HashMap<CellTyped, ValueContainer2<Boolean, CellDef>> prepareCellTypes(TableDef tableDef) {
+        var result = new HashMap<CellTyped, ValueContainer2<Boolean, CellDef>>();
         for (CellDef column : tableDef.getColumns()) {
-            result.put(new CellTyped(column), new TwoValueBox(false, column));
+            result.put(new CellTyped(column), new ValueContainer2(false, column));
         }
         return result;
     }
 
-    private static HashSet<CellTyped> parseColumns(HashMap<CellTyped, TwoValueBox<Boolean, CellDef>> result, ResultSet metaDataResult) throws SQLException {
+    private static HashSet<CellTyped> parseColumns(HashMap<CellTyped, ValueContainer2<Boolean, CellDef>> result, ResultSet metaDataResult) throws SQLException {
         var columns = new HashSet<CellTyped>();
         try (metaDataResult) {
             while (metaDataResult.next()) {
@@ -745,7 +745,7 @@ public class DbUtils {
 
     }
 
-    public static void IIK(Connection var0, FDN var1) throws SQLException {
+    public static void IIK(Connection var0, ViewDef var1) throws SQLException {
 
         PreparedStatement var2 = null;
 
@@ -1169,14 +1169,14 @@ public class DbUtils {
             var8 = var5.getExpressions().iterator();
 
             while (true) {
-                FDJ var18;
+                Expression var18;
                 do {
                     do {
                         if (!var8.hasNext()) {
                             continue label186;
                         }
 
-                        var18 = (FDJ) var8.next();
+                        var18 = (Expression) var8.next();
                     } while (var18.getKeys() == null);
                 } while (var18.getKeys().size() <= 0);
 
@@ -1403,7 +1403,7 @@ public class DbUtils {
                 var8 = var7.getExpressions().iterator();
 
                 while (true) {
-                    FDJ var18;
+                    Expression var18;
                     do {
                         do {
                             if (!var8.hasNext()) {
@@ -1411,7 +1411,7 @@ public class DbUtils {
                                 continue label139;
                             }
 
-                            var18 = (FDJ) var8.next();
+                            var18 = (Expression) var8.next();
                         } while (var18.getKeys() == null);
                     } while (var18.getKeys().size() <= 0);
 

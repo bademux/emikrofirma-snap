@@ -10,9 +10,9 @@ import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.EMU;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.a.c.ERU;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.AILX;
-import a.a.a.c.f.c.a.LP;
+import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.LS;
 import a.a.a.c.f.c.c.TextFieldValidated_RefIdPattern;
 import a.a.a.c.g.FCQ;
@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.Map;
 
 public class ERN extends BaseProgressFxController<ERU> {
-    private LP GAD;
+    private ConfigurationProperties GAD;
     private LS GAE;
     private LS GAF;
     private AILX GAG;
@@ -195,7 +195,7 @@ public class ERN extends BaseProgressFxController<ERU> {
             final Map var2 = var1.getModelManager().getSequences();
             this.fxml_include_configurationLogicController.setSequences(var2);
             this.fxml_include_configurationLogicController.setSequenceUpdater(new ERS.QTC() {
-                public void RKK(String var1x, JN var2x, Integer var3, Integer var4) {
+                public void RKK(String var1x, Period var2x, Integer var3, Integer var4) {
                     try {
                         if (var1x != null && var1x.length() > 0 && var2x != null && var2x.DDJ().getValue() != null && var2x.DDK().getValue() != null && var3 != null && var4 != null) {
                             Map var5 = (Map) var2.get(var1x);

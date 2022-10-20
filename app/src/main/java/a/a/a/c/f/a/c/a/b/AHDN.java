@@ -4,7 +4,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHDN extends AHDK<Integer> {
+public class AHDN extends Constant<Integer> {
     public AHDN() {
 
     }

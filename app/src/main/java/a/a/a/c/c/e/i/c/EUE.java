@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.i.c;
 
-import a.a.a.c.f.a.d.AGWN;
+import a.a.a.c.f.a.d.DeclarationJPK;
 import a.a.a.c.g.b.FCW;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,13 +12,13 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.util.Callback;
 
-public class EUE implements Callback<TableView<AGWN>, TableRow<AGWN>> {
+public class EUE implements Callback<TableView<DeclarationJPK>, TableRow<DeclarationJPK>> {
     private final String GKJ = FCW.getInstance().getMessageForKey("micro.process.jpk_list.copyReferenceId");
 
     public EUE() {
     }
 
-    public TableRow<AGWN> call(TableView<AGWN> var1) {
+    public TableRow<DeclarationJPK> call(TableView<DeclarationJPK> var1) {
         final TableRow var2 = new TableRow();
         ContextMenu var3 = new ContextMenu();
         MenuItem var4 = new MenuItem(this.GKJ);
@@ -26,7 +26,7 @@ public class EUE implements Callback<TableView<AGWN>, TableRow<AGWN>> {
             public void handle(ActionEvent var1) {
                 Clipboard var2x = Clipboard.getSystemClipboard();
                 ClipboardContent var3 = new ClipboardContent();
-                var3.putString(((AGWN) var2.getItem()).getReferenceId());
+                var3.putString(((DeclarationJPK) var2.getItem()).getReferenceId());
                 var2x.setContent(var3);
             }
         });

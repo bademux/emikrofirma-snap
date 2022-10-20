@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 @XmlTransient
-public abstract class QSO extends QSG<QSJ> {
+public abstract class QSO extends InvoiceOther<QSJ> {
     protected JV QYJ;
     @XmlTransient
     private final ObjectProperty<ObservableList<QSJ>> QYK = new QSP(this);

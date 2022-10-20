@@ -12,11 +12,11 @@ import a.a.a.c.d.b.EPW;
 import a.a.a.c.d.b.EQM;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.f.a.d.*;
-import a.a.a.c.f.a.h.JF;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.a.h.Settlement;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JT;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
 import com.github.bademux.emk.app.FXApp;
@@ -41,7 +41,7 @@ public class QKI {
     private ResourceBundle resources;
     private Stage QMV;
     private ESJ QMW;
-    private JF QMX;
+    private Settlement QMX;
     private FXApp QMY;
     private String QMZ;
     @FXML
@@ -80,7 +80,7 @@ public class QKI {
 
     }
 
-    public void setSettlement(JF var1) {
+    public void setSettlement(Settlement var1) {
 
         this.QMX = var1;
 
@@ -101,7 +101,7 @@ public class QKI {
         try {
             String var2 = this.QMW.getPkcs11LibraryFilePath();
             var1 = new MDP(this.resources, this.fxml_textArea_log, this.fxml_vBox_progress, var2);
-            JN var3 = this.QMX.getPeriod();
+            Period var3 = this.QMX.getPeriod();
             Integer var4 = this.QMW.HTQ(var3, HM.JPK, AGWW.VAT);
             if (var4 == null) {
                 var4 = 0;
@@ -112,7 +112,7 @@ public class QKI {
                 List var6 = this.QMW.HTO(var3);
                 if (var6 != null) {
                     File var7 = this.QMW.getWorkingDir(this.QMV);
-                    LY var8 = this.QMW.getUserData();
+                    UserData var8 = this.QMW.getUserData();
                     var1.getProgressBarContainer().setFirstValue(var1.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.generate.init_JPK_VAT")));
                     byte[] var9 = EPW.HOW(var1.getProgressReporter(), var5, var3, var4, var8, var6);
                     String var10 = HM.JPK.name() + "_" + AGWW.VAT.name();
@@ -121,7 +121,7 @@ public class QKI {
                         throw new FFK("Invalid number of schema types for [" + var10 + "]");
                     }
 
-                    AGXA var12 = (AGXA) var11.get(0);
+                    JPKSchemaType var12 = (JPKSchemaType) var11.get(0);
                     HK var13 = new HK(var4, var5, var12);
                     var13.setDeclarationFileCheckSumMD5(new JT(var9));
                     File var14 = new File(var7, "tmp_" + System.nanoTime());
@@ -130,7 +130,7 @@ public class QKI {
                     var13.FJI().setValue(var4);
                     var13.setDeclarationStatus(HL.NEW);
                     var13.setPeriod(var3);
-                    AGWN var15 = var1.HQF(var13);
+                    DeclarationJPK var15 = var1.HQF(var13);
                     if (var15 != null) {
                         var15.setDeclarationStatus(HL.SENT);
                         this.QMW.HTR(var15, this.QMX);
@@ -181,7 +181,7 @@ public class QKI {
 
     }
 
-    private File QPD(final JN var1, final int var2, final String var3) {
+    private File QPD(final Period var1, final int var2, final String var3) {
 
         File var4;
         var4 = FEL.IKS(new FEM<File>() {

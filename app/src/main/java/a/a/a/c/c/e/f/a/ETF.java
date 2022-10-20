@@ -3,9 +3,9 @@ package a.a.a.c.c.e.f.a;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.d.d.b.EOB;
 import a.a.a.c.c.d.d.b.EOC;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.c.HI;
-import a.a.a.c.f.a.e.a.IC;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.c.Contractor;
+import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.ID;
 import a.a.a.c.f.a.e.a.IE;
 import a.a.a.c.f.b.a.JJ;
@@ -34,27 +34,27 @@ class ETF {
     private TableColumn<ID, String> GGD;
     private TableColumn<ID, String> GGE;
     private TableColumn<ID, String> GGF;
-    private TableColumn<ID, HI> GGG;
-    private TableColumn<ID, HI> GGH;
+    private TableColumn<ID, Contractor> GGG;
+    private TableColumn<ID, Contractor> GGH;
     private TableColumn<ID, ?> GGI;
     private TableColumn<ID, ?> GGJ;
     private TableColumn<ID, ?> GGK;
-    private TableColumn<ID, TwoValueBox<JR, JR>> GGL;
-    private TableColumn<ID, TwoValueBox<JR, JR>> GGM;
-    private TableColumn<ID, TwoValueBox<JR, JR>> GGN;
-    private TableColumn<ID, TwoValueBox<JR, JR>> QMR;
-    private TableColumn<ID, TwoValueBox<JR, JR>> GGO;
-    private TableColumn<ID, TwoValueBox<JR, JR>> GGP;
-    private TableColumn<ID, TwoValueBox<JR, JR>> GGQ;
-    private TableColumn<ID, TwoValueBox<JR, JR>> GGR;
-    private TableColumn<ID, TwoValueBox<JR, JR>> GGS;
+    private TableColumn<ID, ValueContainer2<JR, JR>> GGL;
+    private TableColumn<ID, ValueContainer2<JR, JR>> GGM;
+    private TableColumn<ID, ValueContainer2<JR, JR>> GGN;
+    private TableColumn<ID, ValueContainer2<JR, JR>> QMR;
+    private TableColumn<ID, ValueContainer2<JR, JR>> GGO;
+    private TableColumn<ID, ValueContainer2<JR, JR>> GGP;
+    private TableColumn<ID, ValueContainer2<JR, JR>> GGQ;
+    private TableColumn<ID, ValueContainer2<JR, JR>> GGR;
+    private TableColumn<ID, ValueContainer2<JR, JR>> GGS;
     private TableColumn<ID, JR> GGT;
     private TableColumn<ID, JR> GGU;
     private TableColumn<ID, JR> GGV;
     private final Boolean GGW;
-    private final TableView<IC> GGX;
+    private final TableView<InvoiceRecord> GGX;
 
-    ETF(TableView<ID> var1, Boolean var2, ResourceBundle var3, TableView<IC> var4) {
+    ETF(TableView<ID> var1, Boolean var2, ResourceBundle var3, TableView<InvoiceRecord> var4) {
         this.GGA = var1;
         this.GGW = var2;
         this.GGB = var3;
@@ -96,7 +96,7 @@ class ETF {
         this.GGS.minWidthProperty().bind(this.GGA.widthProperty().multiply(var1));
     }
 
-    void HUT(IC var1, boolean var2) {
+    void HUT(InvoiceRecord var1, boolean var2) {
         this.GGA.getItems().clear();
         Label var3 = new Label();
         if (!var2) {
@@ -115,8 +115,8 @@ class ETF {
     private void HUU() {
         this.GGX.getColumns().clear();
         TableColumn var1 = new TableColumn();
-        var1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IC, String>, ObservableValue<String>>() {
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<IC, String> var1) {
+        var1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<InvoiceRecord, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<InvoiceRecord, String> var1) {
                 return new ReadOnlyObjectWrapper(ETF.this.GGB.getString("micro.process.invoices_records.summary"));
             }
         });
@@ -245,20 +245,20 @@ class ETF {
         this.GGI = new TableColumn(this.GGB.getString("micro.process.invoices_records.contractor"));
         this.GGG = new TableColumn(String.format(var2, this.GGB.getString("micro.process.invoices_records.contractorName"), this.GGB.getString("micro.process.invoices_records.contractorNip")));
         this.GGG.setCellValueFactory(new PropertyValueFactory("contractor"));
-        this.GGG.setCellFactory(new ETG<ID, HI>() {
-            String getFirstValue(HI var1) {
+        this.GGG.setCellFactory(new ETG<ID, Contractor>() {
+            String getFirstValue(Contractor var1) {
                 return var1.getName().getValue();
             }
 
-            String getSecondValue(HI var1) {
+            String getSecondValue(Contractor var1) {
                 return var1.getNip().getValue();
             }
         });
         this.GGI.getColumns().add(this.GGG);
         this.GGH = new TableColumn(this.GGB.getString("micro.process.invoices_records.contractorAddress"));
         this.GGH.setCellValueFactory(new PropertyValueFactory("contractor"));
-        this.GGH.setCellFactory(new ETG<ID, HI>() {
-            String getFirstValue(HI var1) {
+        this.GGH.setCellFactory(new ETG<ID, Contractor>() {
+            String getFirstValue(Contractor var1) {
                 StringBuilder var2 = new StringBuilder();
                 JJ var3 = var1.getAddress();
                 if (var3 != null) {
@@ -277,7 +277,7 @@ class ETF {
                 return var2.toString();
             }
 
-            String getSecondValue(HI var1) {
+            String getSecondValue(Contractor var1) {
                 StringBuilder var2 = new StringBuilder();
                 JJ var3 = var1.getAddress();
                 if (var3 != null) {
@@ -393,12 +393,12 @@ class ETF {
         var1.setGraphic(var3);
     }
 
-    private class ETH<_T> extends ETG<_T, TwoValueBox<JR, JR>> {
+    private class ETH<_T> extends ETG<_T, ValueContainer2<JR, JR>> {
         private ETH() {
             super();
         }
 
-        String getFirstValue(TwoValueBox<JR, JR> var1) {
+        String getFirstValue(ValueContainer2<JR, JR> var1) {
             String var2 = "";
             if (var1 != null && var1.getFirstValue() != null && var1.getFirstValue().getValue() != null) {
                 var2 = EOC.HNN(var1.getFirstValue().getValue());
@@ -407,7 +407,7 @@ class ETF {
             return var2;
         }
 
-        String getSecondValue(TwoValueBox<JR, JR> var1) {
+        String getSecondValue(ValueContainer2<JR, JR> var1) {
             String var2 = "";
             if (var1 != null && var1.getSecondValue() != null && var1.getSecondValue().getValue() != null) {
                 var2 = EOC.HNN(var1.getSecondValue().getValue());

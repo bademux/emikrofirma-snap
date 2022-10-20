@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.a;
 
 import a.a.a.c.f.a.BaseBoxController;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.PeriodBox;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -33,7 +33,7 @@ public class EYX extends BaseBoxController {
     private static final String GVY = "%02d";
     private final BooleanProperty GVZ = new SimpleBooleanProperty(this, "valid", true);
     private final BooleanProperty GWA = new SimpleBooleanProperty(this, "disable", false);
-    private final ObjectProperty<JN> GWB = new SimpleObjectProperty();
+    private final ObjectProperty<Period> GWB = new SimpleObjectProperty();
     private ChangeListener<? super Integer> GWC;
 
     public EYX(String var1) {
@@ -88,11 +88,11 @@ public class EYX extends BaseBoxController {
         return this.fxml_period_month.getValue();
     }
 
-    public JN getPeriod() {
-        return this.fxml_period_year.getValue() != null && this.fxml_period_month.getValue() != null ? new JN(this.fxml_period_year.getValue(), this.fxml_period_month.getValue()) : null;
+    public Period getPeriod() {
+        return this.fxml_period_year.getValue() != null && this.fxml_period_month.getValue() != null ? new Period(this.fxml_period_year.getValue(), this.fxml_period_month.getValue()) : null;
     }
 
-    public void setPeriod(JN var1) {
+    public void setPeriod(Period var1) {
         if (var1 != null) {
             this.setPeriod(var1.getYear().getValue(), var1.getMonth().getValue());
         } else {
@@ -107,7 +107,7 @@ public class EYX extends BaseBoxController {
         this.fxml_period_month.setValue(var2);
     }
 
-    public ObjectProperty<JN> getPeriodProperty() {
+    public ObjectProperty<Period> getPeriodProperty() {
         return this.GWB;
     }
 

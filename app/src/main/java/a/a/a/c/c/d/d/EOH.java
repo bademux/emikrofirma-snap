@@ -1,6 +1,6 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
@@ -10,13 +10,13 @@ import java.time.format.TextStyle;
 
 import static com.github.bademux.emk.utils.LocaleUtils.LOCALE;
 
-public class EOH<_T> implements Callback<TreeTableColumn<_T, JN>, TreeTableCell<_T, JN>> {
+public class EOH<_T> implements Callback<TreeTableColumn<_T, Period>, TreeTableCell<_T, Period>> {
     public EOH() {
     }
 
-    public TreeTableCell<_T, JN> call(TreeTableColumn<_T, JN> var1) {
-        TreeTableCell var2 = new TreeTableCell<_T, JN>() {
-            protected void updateItem(JN var1, boolean var2) {
+    public TreeTableCell<_T, Period> call(TreeTableColumn<_T, Period> var1) {
+        TreeTableCell var2 = new TreeTableCell<_T, Period>() {
+            protected void updateItem(Period var1, boolean var2) {
 
                 super.updateItem(var1, var2);
                 if (var1 != null && var1.getMonth().getValue() > 0 && var1.getMonth().getValue() < 13) {

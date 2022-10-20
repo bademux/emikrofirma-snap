@@ -1,10 +1,10 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
-import a.a.a.c.f.a.c.a.c.AHDT;
+import a.a.a.c.f.a.c.a.c.Field;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHCN extends AHCL<XMLGregorianCalendar> {
+public class AHCN extends ConditionOnFieldAndConstantAbstract<XMLGregorianCalendar> {
     private final transient SimpleDateFormat AHUH;
 
     private AHCN() {
@@ -31,9 +31,9 @@ public class AHCN extends AHCL<XMLGregorianCalendar> {
 
     }
 
-    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
+    public ValueContainer2<AHCI, String> AICX(Field var1) {
 
-        TwoValueBox var8;
+        ValueContainer2 var8;
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
@@ -66,7 +66,7 @@ public class AHCN extends AHCL<XMLGregorianCalendar> {
             }
 
             if (var6) {
-                TwoValueBox var14 = new TwoValueBox(AHCI.SUCCESS, null);
+                ValueContainer2 var14 = new ValueContainer2(AHCI.SUCCESS, null);
                 return var14;
             }
 
@@ -82,7 +82,7 @@ public class AHCN extends AHCL<XMLGregorianCalendar> {
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");
             }
 
-            var8 = new TwoValueBox(var7, this.AIDB("", var1));
+            var8 = new ValueContainer2(var7, this.AIDB("", var1));
         } catch (DatatypeConfigurationException | ParseException var12) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
             throw new FFI(var12);

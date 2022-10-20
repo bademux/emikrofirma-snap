@@ -9,7 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 @XmlTransient
-public abstract class HY extends HN<HQ> {
+public abstract class HY extends Invoice<HQ> {
     protected JV IVO;
     private JS IVP;
     private JS ROZ;

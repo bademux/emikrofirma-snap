@@ -16,12 +16,12 @@ import a.a.a.c.c.e.a.a.c.ERP;
 import a.a.a.c.c.e.a.a.c.ERQ;
 import a.a.a.c.c.e.a.a.c.ERR;
 import com.github.bademux.emk.Application;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.a.EZQ;
 import a.a.a.c.f.a.a.EZR;
 import a.a.a.c.f.a.a.EZS;
 import a.a.a.c.f.a.a.QRU;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.AILX;
 import a.a.a.c.f.c.a.LS;
 import a.a.a.c.f.c.c.TextFieldValidated_RefIdPattern;
@@ -69,17 +69,17 @@ public class ERS extends BaseFxController {
     public EZR fxml_include_propertyPkcs11LibraryFile_boxController;
     @FXML
     public EZQ fxml_include_performVerificationLabeledCheckBox_boxController;
-    private Map<String, Map<JN, Integer>> QZS = null;
+    private Map<String, Map<Period, Integer>> QZS = null;
     private String QZT = null;
-    private Map<JN, Integer> QZU = null;
-    private JN QZV = null;
+    private Map<Period, Integer> QZU = null;
+    private Period QZV = null;
     private Integer QZW = null;
     private Integer QZX = null;
     private QTC QZY;
     @FXML
     private ListView<ERP> fxml_listview_sequence_names_list;
     @FXML
-    private ListView<JN> fxml_listview_sequence_periods_list;
+    private ListView<Period> fxml_listview_sequence_periods_list;
     @FXML
     private QRU fxml_include_sequence_valueController;
     @FXML
@@ -246,10 +246,10 @@ public class ERS extends BaseFxController {
                 };
             }
         });
-        this.fxml_listview_sequence_periods_list.setCellFactory(new Callback<ListView<JN>, ListCell<JN>>() {
-            public ListCell<JN> call(ListView<JN> var1) {
-                return new ListCell<JN>() {
-                    protected void updateItem(JN var1, boolean var2) {
+        this.fxml_listview_sequence_periods_list.setCellFactory(new Callback<ListView<Period>, ListCell<Period>>() {
+            public ListCell<Period> call(ListView<Period> var1) {
+                return new ListCell<Period>() {
+                    protected void updateItem(Period var1, boolean var2) {
                         super.updateItem(var1, var2);
                         if (var1 != null) {
                             Integer var3 = var1.DDJ().getValue();
@@ -284,8 +284,8 @@ public class ERS extends BaseFxController {
                     ERS.this.fxml_listview_sequence_periods_list.getItems().addAll(ERS.this.QZU.keySet());
                 }
 
-                ERS.this.fxml_listview_sequence_periods_list.getItems().sort(new Comparator<JN>() {
-                    public int compare(JN var1, JN var2) {
+                ERS.this.fxml_listview_sequence_periods_list.getItems().sort(new Comparator<Period>() {
+                    public int compare(Period var1, Period var2) {
                         if (var1 != null && var2 != null) {
                             return var1.compareTo(var2);
                         } else if (var1 != null && var2 == null) {
@@ -297,8 +297,8 @@ public class ERS extends BaseFxController {
                 });
             }
         });
-        this.fxml_listview_sequence_periods_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<JN>() {
-            public void changed(ObservableValue<? extends JN> var1, JN var2, JN var3) {
+        this.fxml_listview_sequence_periods_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Period>() {
+            public void changed(ObservableValue<? extends Period> var1, Period var2, Period var3) {
                 ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setEditable(false);
                 ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setText("");
                 ERS.this.fxml_sequence_update.setDisable(true);
@@ -356,32 +356,32 @@ public class ERS extends BaseFxController {
                     var12 = var4.indexOf(var9, var8);
                     if (var8 < var12) {
                         var13 = var4.substring(var8, var12);
-                        var5.add(new TwoValueBox("A", var13));
+                        var5.add(new ValueContainer2("A", var13));
                     }
 
                     var8 = var12 + var9.length();
-                    var5.add(new TwoValueBox("B", var9));
+                    var5.add(new ValueContainer2("B", var9));
                 } else if (var10 != null) {
                     String var11 = "#%" + var10 + "%#";
                     var12 = var4.indexOf(var11, var8);
                     if (var8 < var12) {
                         var13 = var4.substring(var8, var12);
-                        var5.add(new TwoValueBox("A", var13));
+                        var5.add(new ValueContainer2("A", var13));
                     }
 
                     var8 = var12 + var11.length();
-                    var5.add(new TwoValueBox("C", var10));
+                    var5.add(new ValueContainer2("C", var10));
                 }
             }
 
             if (var8 < var4.length()) {
-                var5.add(new TwoValueBox("A", var4.substring(var8)));
+                var5.add(new ValueContainer2("A", var4.substring(var8)));
             }
 
             Iterator var16 = var5.iterator();
 
             while (var16.hasNext()) {
-                TwoValueBox var17 = (TwoValueBox) var16.next();
+                ValueContainer2 var17 = (ValueContainer2) var16.next();
                 ERP var18 = null;
                 if ("A".equals(var17.getFirstValue())) {
                     var18 = ERP.text;
@@ -485,7 +485,7 @@ public class ERS extends BaseFxController {
         this.GAW.changedProperty().set(false);
     }
 
-    public void setSequences(Map<String, Map<JN, Integer>> var1) {
+    public void setSequences(Map<String, Map<Period, Integer>> var1) {
         this.QZS = var1;
     }
 
@@ -812,6 +812,6 @@ public class ERS extends BaseFxController {
     }
 
     public interface QTC {
-        void RKK(String var1, JN var2, Integer var3, Integer var4);
+        void RKK(String var1, Period var2, Integer var3, Integer var4);
     }
 }

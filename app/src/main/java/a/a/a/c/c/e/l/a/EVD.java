@@ -25,17 +25,17 @@ import a.a.a.c.c.d.h.EPE;
 import a.a.a.c.c.d.h.EPI;
 import a.a.a.c.c.e.l.c.EVJ;
 import a.a.a.c.f.a.a.EZG;
-import a.a.a.c.f.a.e.HN;
+import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.HU;
 import a.a.a.c.f.a.e.HV;
 import a.a.a.c.f.a.e.HY;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.a.KH;
 import a.a.a.c.f.b.c.a.QSW;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
@@ -178,7 +178,7 @@ public class EVD extends ENO<EVJ> {
             EVD.this.setTableHeight();
         }
     };
-    private JN GOI = null;
+    private Period GOI = null;
 
     public EVD(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
@@ -716,7 +716,7 @@ public class EVD extends ENO<EVJ> {
 
         try {
             log.info("Button [invoice_edit] clicked");
-            final HN var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
+            final Invoice var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
             this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
                 public void accept(ENN<?> var1) {
 
@@ -773,7 +773,7 @@ public class EVD extends ENO<EVJ> {
 
         try {
             log.info("Button [invoice_view] clicked");
-            final HN var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
+            final Invoice var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
             this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
                 public void accept(ENN<?> var1) {
 
@@ -837,7 +837,7 @@ public class EVD extends ENO<EVJ> {
             if (var6.HZD() && var6.fxml_invoicing_date_dateController.fxml_component_main_element.getValue() != null) {
                 Date var8 = Date.from(var6.fxml_invoicing_date_dateController.fxml_component_main_element.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 var7.setInvoicingDate(new JV(var8));
-                JN var9 = new JN(var8);
+                Period var9 = new Period(var8);
                 var7.setPeriod(var9);
                 var7.setUsingInvoicingDate(new JS(true));
                 EVJ var10 = this.getProcess();
@@ -866,7 +866,7 @@ public class EVD extends ENO<EVJ> {
 
         try {
             log.info("Button [print] clicked");
-            HN var2 = null;
+            Invoice var2 = null;
 
             try {
                 var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
@@ -878,7 +878,7 @@ public class EVD extends ENO<EVJ> {
             if (var2 != null) {
                 EVJ var3;
                 File var4;
-                LY var5;
+                UserData var5;
                 if (EOZ.HOD(var2)) {
                     var3 = this.getProcess();
                     var4 = var3.getTempFile("pdf");
@@ -1166,7 +1166,7 @@ public class EVD extends ENO<EVJ> {
             return var2;
         }
 
-        if (!var1.getPeriod().equals(JN.AOE)) {
+        if (!var1.getPeriod().equals(Period.AOE)) {
             var2 = new EVE(false, null);
             return var2;
         }
@@ -1193,7 +1193,7 @@ public class EVD extends ENO<EVJ> {
         return var3;
     }
 
-    public boolean HYZ(JN var1) throws FFK, FFO {
+    public boolean HYZ(Period var1) throws FFK, FFO {
 
         boolean var4;
         EVJ var2 = this.getProcess();
@@ -1243,7 +1243,7 @@ public class EVD extends ENO<EVJ> {
         this.setTableHeight();
     }
 
-    public void setPeriod(JN var1) throws FFK {
+    public void setPeriod(Period var1) throws FFK {
 
         this.GOI = var1;
 

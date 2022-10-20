@@ -7,7 +7,7 @@ import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.e.c.c.ESJ;
 import a.a.a.c.f.a.a.EZP;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.KH;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import javafx.beans.value.ChangeListener;
@@ -105,7 +105,7 @@ public class ESF {
 
             for (int var4 = 0; var4 < var3; ++var4) {
                 KH var5 = var2[var4];
-                JN var6 = new JN(var1, var5.getNumber());
+                Period var6 = new Period(var1, var5.getNumber());
                 JG var7 = this.GBW.getSettlementStatus(var6);
                 if (var7 == null) {
                     ((ComboBoxRequired) this.fxml_invoice_settlements_monthController.fxml_component_main_element).getItems().add(var5);

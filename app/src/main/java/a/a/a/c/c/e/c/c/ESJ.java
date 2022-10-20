@@ -8,24 +8,24 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELW;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.c.b.ESI;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.HV;
 import a.a.a.c.f.a.e.HY;
 import a.a.a.c.f.a.e.IA;
 import a.a.a.c.f.a.e.IB;
-import a.a.a.c.f.a.e.a.IC;
+import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.g.*;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.QSW;
 import a.a.a.c.f.c.a.AILX;
-import a.a.a.c.f.c.a.LP;
-import a.a.a.c.f.c.a.LQ;
+import a.a.a.c.f.c.a.ConfigurationProperties;
+import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.LS;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
@@ -37,11 +37,11 @@ import java.util.List;
 
 @Slf4j
 public class ESJ extends ELW {
-    private LP GCU;
+    private ConfigurationProperties GCU;
     private LS GCV;
     private LS GCW;
     private AILX GCX;
-    private LY GCY;
+    private UserData GCY;
 
     public ESJ() {
         super(ESI.GCR.getProcessName());
@@ -52,12 +52,12 @@ public class ESJ extends ELW {
 
         try {
             if (this.GCU == null) {
-                JB var1 = new JB(LP.class);
-                this.GCU = (LP) this.getModelManager().HJT(this.getParentDefinition(), var1);
+                JB var1 = new JB(ConfigurationProperties.class);
+                this.GCU = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.GCU.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    LQ var3 = (LQ) var2.next();
+                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GCV = (LS) var3;
                     } else if (FCQ.Pkcs11LibraryFile.getPropertyName().equals(var3.DEX().getValue())) {
@@ -107,7 +107,7 @@ public class ESJ extends ELW {
 
         while (var3.hasNext()) {
             EDF var4 = (EDF) var3.next();
-            if (!JN.AOE.equals(var4.getPeriod())) {
+            if (!Period.AOE.equals(var4.getPeriod())) {
                 EDF var5 = var4;
                 ArrayList var6 = new ArrayList();
 
@@ -127,12 +127,12 @@ public class ESJ extends ELW {
         return var11;
     }
 
-    public HK getDeclarationJPK_VAT(JF var1) {
+    public HK getDeclarationJPK_VAT(Settlement var1) {
 
         HK var4;
         try {
             EYD var2 = new EYD(HK.class, var1, null, HM.JPK, AGWW.VAT);
-            TwoValueBox var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
+            ValueContainer2 var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() <= 0) {
                 var4 = null;
                 return var4;
@@ -147,12 +147,12 @@ public class ESJ extends ELW {
         return var4;
     }
 
-    public AGWP getDeclarationJPK_FA(JF var1) {
+    public AGWP getDeclarationJPK_FA(Settlement var1) {
 
         AGWP var4;
         try {
             EYD var2 = new EYD(AGWP.class, var1, null, HM.JPK, AGWW.FA);
-            TwoValueBox var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
+            ValueContainer2 var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() <= 0) {
                 var4 = null;
                 return var4;
@@ -167,12 +167,12 @@ public class ESJ extends ELW {
         return var4;
     }
 
-    public List<EDF<JF>> getSettlements() {
+    public List<EDF<Settlement>> getSettlements() {
 
         List var3;
         try {
-            IY var1 = new IY(JF.class, null, JH.VAT, null, OrderType.DESC);
-            TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+            IY var1 = new IY(Settlement.class, null, JH.VAT, null, OrderType.DESC);
+            ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             var3 = (List) var2.getSecondValue();
         } catch (FFO | FFK var7) {
             log.error("Something bad happened", var7);
@@ -186,8 +186,8 @@ public class ESJ extends ELW {
 
         boolean var3;
         try {
-            IU var1 = new IU(HV.class, QSW.ACTIVE, JN.AOE, IB.SELL, IA.CORRECTION, null, null, OrderType.DESC);
-            TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+            IU var1 = new IU(HV.class, QSW.ACTIVE, Period.AOE, IB.SELL, IA.CORRECTION, null, null, OrderType.DESC);
+            ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             if (((List) var2.getSecondValue()).size() <= 0) {
                 var3 = false;
                 return var3;
@@ -202,7 +202,7 @@ public class ESJ extends ELW {
         return var3;
     }
 
-    public void HTK(JF var1) {
+    public void HTK(Settlement var1) {
 
         try {
             this.getModelManager().HJZ(this.getParentDefinition(), var1);
@@ -214,7 +214,7 @@ public class ESJ extends ELW {
 
     }
 
-    public void HTL(HJ var1) {
+    public void HTL(Declaration var1) {
 
         try {
             this.getModelManager().HKC(this.getParentDefinition(), var1);
@@ -238,7 +238,7 @@ public class ESJ extends ELW {
         return this.GCX != null && this.GCX.getValue() != null ? this.GCX.getValue().getValue() : true;
     }
 
-    public LY getUserData() throws FFK {
+    public UserData getUserData() throws FFK {
         if (this.GCY == null) {
             this.GCY = EMB.getInstance().HHV();
         }
@@ -256,7 +256,7 @@ public class ESJ extends ELW {
         return var5;
     }
 
-    public void HTN(JF var1) {
+    public void HTN(Settlement var1) {
 
         try {
             this.getModelManager().HKB(this.getParentDefinition(), var1);
@@ -268,11 +268,11 @@ public class ESJ extends ELW {
 
     }
 
-    public JG getSettlementStatus(JN var1) throws FFK, FFO {
+    public JG getSettlementStatus(Period var1) throws FFK, FFO {
 
         JG var6;
-        IY var2 = new IY(JF.class, var1, JH.VAT, null);
-        TwoValueBox var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+        IY var2 = new IY(Settlement.class, var1, JH.VAT, null);
+        ValueContainer2 var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -283,18 +283,18 @@ public class ESJ extends ELW {
         }
 
         EDF var5 = (EDF) var4.next();
-        var6 = ((JF) var5.getModelBaseElementWithIdObject()).getSettlementStatus();
+        var6 = ((Settlement) var5.getModelBaseElementWithIdObject()).getSettlementStatus();
 
 
         return var6;
     }
 
-    public List<EDF<IC>> HTO(JN var1) {
+    public List<EDF<InvoiceRecord>> HTO(Period var1) {
 
         IV var2;
         try {
             if (var1 != null && var1.getMonth() != null && var1.getMonth().getValue() != null && var1.getYear() != null && var1.getYear().getValue() != null) {
-                var2 = new IV(IC.class, var1, null);
+                var2 = new IV(InvoiceRecord.class, var1, null);
                 return (List) this.getModelManager().HJY(this.getParentDefinition(), var2).getSecondValue();
             }
 
@@ -305,7 +305,7 @@ public class ESJ extends ELW {
         }
     }
 
-    public List<EDF<HY>> QPE(JN var1) {
+    public List<EDF<HY>> QPE(Period var1) {
         try {
             IU var2;
             if (var1 != null && var1.getMonth() != null && var1.getMonth().getValue() != null && var1.getYear() != null && var1.getYear().getValue() != null) {
@@ -321,11 +321,11 @@ public class ESJ extends ELW {
         return null;
     }
 
-    public Integer HTQ(JN var1, HM var2, AGWW var3) {
+    public Integer HTQ(Period var1, HM var2, AGWW var3) {
 
         Object var5;
         try {
-            Integer var4 = this.getModelManager().getMaxDocumentIndex(this.getParentDefinition(), HJ.class, var1, var2, var3);
+            Integer var4 = this.getModelManager().getMaxDocumentIndex(this.getParentDefinition(), Declaration.class, var1, var2, var3);
             return var4;
         } catch (FFO | FFK var9) {
             log.error("Something bad happened", var9);
@@ -335,7 +335,7 @@ public class ESJ extends ELW {
         return (Integer) var5;
     }
 
-    public void HTR(HJ var1, JF var2) {
+    public void HTR(Declaration var1, Settlement var2) {
 
         try {
             if (var1 != null) {

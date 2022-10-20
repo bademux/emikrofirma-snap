@@ -9,7 +9,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class QSJ extends QSH {
+public class QSJ extends InvoiceOtherElement {
     public QSJ() {
 
     }

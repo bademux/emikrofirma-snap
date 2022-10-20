@@ -1,38 +1,34 @@
 package a.a.a.c.f.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.*;
-import a.a.a.c.f.a.e.a.IC;
 import a.a.a.c.f.a.e.a.IF;
 import a.a.a.c.f.a.e.a.IG;
-import a.a.a.c.f.a.f.a.IN;
 import a.a.a.c.f.a.f.a.IR;
-import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.a.h.JI;
 import a.a.a.c.f.a.n.*;
 
 public enum II {
-    Invoice(HN.class),
+    Invoice(a.a.a.c.f.a.e.Invoice.class),
     InvoiceSellType(HY.class),
     InvoiceSell(HU.class),
     InvoiceSellCorrectionType(HW.class),
     InvoiceSellCorrection(HV.class),
     InvoicePurchaseInvoiceType(HT.class),
-    InvoicePurchase(HR.class),
+    InvoicePurchase(a.a.a.c.f.a.e.InvoicePurchase.class),
     AggregatePurchase(QSF.class),
-    InvoiceOther(QSG.class),
+    InvoiceOther(a.a.a.c.f.a.n.InvoiceOther.class),
     InvoiceOtherPurchaseInvoiceType(QSM.class),
-    InvoiceOtherPurchase(QSK.class),
+    InvoiceOtherPurchase(a.a.a.c.f.a.n.InvoiceOtherPurchase.class),
     InvoiceOtherSellInvoiceType(QSO.class),
-    InvoiceOtherSell(QSN.class),
-    ReceiptRecord(IN.class),
+    InvoiceOtherSell(a.a.a.c.f.a.n.InvoiceOtherSell.class),
+    ReceiptRecord(a.a.a.c.f.a.f.a.ReceiptRecord.class),
     ReceiptRecordVat(IR.class),
-    Settlement(JF.class),
+    Settlement(a.a.a.c.f.a.h.Settlement.class),
     SettlementVat(JI.class),
-    Declaration(HJ.class),
-    DeclarationJPK(AGWN.class),
+    Declaration(a.a.a.c.f.a.d.Declaration.class),
+    DeclarationJPK(a.a.a.c.f.a.d.DeclarationJPK.class),
     DeclarationJPK_EWP(AGWO.class),
     DeclarationJPK_FA(AGWP.class),
     DeclarationJPK_KR(AGWQ.class),
@@ -41,18 +37,18 @@ public enum II {
     DeclarationJPK_VAT(HK.class),
     DeclarationJPK_WB(AGWU.class),
     DeclarationJPK_STATUSTRACKER(QGX.class),
-    InvoiceRecord(IC.class),
+    InvoiceRecord(a.a.a.c.f.a.e.a.InvoiceRecord.class),
     InvoiceRecordSell(IG.class),
     InvoiceRecordPurchase(IF.class),
-    Contractor(HI.class);
+    Contractor(a.a.a.c.f.a.c.Contractor.class);
 
-    private final Class<? extends IL> AMG;
+    private final Class<? extends ModelBusinessTopElement> AMG;
 
     II(Class var3) {
         this.AMG = var3;
     }
 
-    public static II getByType(Class<? extends IL> var0) {
+    public static II getByType(Class<? extends ModelBusinessTopElement> var0) {
         II[] var1 = values();
         int var2 = var1.length;
 
@@ -66,7 +62,7 @@ public enum II {
         throw new FFI("Type [" + var0 + "] not found!");
     }
 
-    public Class<? extends IL> getType() {
+    public Class<? extends ModelBusinessTopElement> getType() {
         return this.AMG;
     }
 }

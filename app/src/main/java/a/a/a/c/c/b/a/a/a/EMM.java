@@ -5,7 +5,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.a.a.BaseSceneFxController;
-import a.a.a.c.f.c.b.LX;
+import a.a.a.c.f.c.b.SimpleUserData;
 import a.a.a.c.f.c.c.PasswordFieldRequired_8;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCZ;
@@ -93,7 +93,7 @@ public class EMM extends BaseSceneFxController {
                 return;
             }
 
-            LX var3 = EMB.getInstance().getSimpleUserDataForUserName(var2);
+            SimpleUserData var3 = EMB.getInstance().getSimpleUserDataForUserName(var2);
             this.FHV.set(var3.DFB().getValue());
         } catch (FFK var7) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);

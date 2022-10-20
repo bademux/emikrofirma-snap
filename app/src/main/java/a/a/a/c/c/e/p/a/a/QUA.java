@@ -5,7 +5,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.p.a.QTW;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,7 +23,7 @@ public class QUA implements ChangeListener<LocalDate> {
 
         try {
             if (var3 != null) {
-                this.RCP.RBX.set(new JN(var3));
+                this.RCP.RBX.set(new Period(var3));
                 this.RCP.fxml_include_invoicingDate_boxController.fxml_component_main_element.IEY().set(false);
                 this.RCP.fxml_include_invoicingDate_boxController.fxml_component_main_element.setValidExternal(true);
                 if (this.RCP.RBY.get()) {

@@ -13,7 +13,7 @@ import java.security.*;
 @Slf4j
 public class FFB extends Signature {
     private final MessageDigest HFQ;
-    private FFC HFR;
+    private NewPrivateKey HFR;
 
     public FFB() throws NoSuchAlgorithmException {
         super("SHA256withRSA");
@@ -29,7 +29,7 @@ public class FFB extends Signature {
     protected void engineInitSign(PrivateKey var1) throws InvalidKeyException {
 
         this.HFQ.reset();
-        this.HFR = (FFC) var1;
+        this.HFR = (NewPrivateKey) var1;
         CK_MECHANISM var2 = new CK_MECHANISM(1L);
 
         try {

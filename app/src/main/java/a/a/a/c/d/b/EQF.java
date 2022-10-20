@@ -4,22 +4,22 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.e.a.d.ThreeValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.e.a.d.ValueContainer3;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.f.a.c.HI;
-import a.a.a.c.f.a.d.AGXA;
+import a.a.a.c.f.a.c.Contractor;
+import a.a.a.c.f.a.d.JPKSchemaType;
 import a.a.a.c.f.a.e.*;
 import a.a.a.c.f.a.e.a.ID;
 import a.a.a.c.f.a.e.a.IE;
 import a.a.a.c.f.a.e.a.IF;
 import a.a.a.c.f.a.e.a.IG;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCZ;
 import lombok.extern.slf4j.Slf4j;
@@ -60,7 +60,7 @@ public class EQF {
     public EQF() {
     }
 
-    public static byte[] RPC(EWX var0, String var1, File var2, LocalDate var3, LocalDate var4, LY var5, List<HY> var6) throws FFO {
+    public static byte[] RPC(EWX var0, String var1, File var2, LocalDate var3, LocalDate var4, UserData var5, List<HY> var6) throws FFO {
         byte var7 = 0;
         FileOutputStream var8 = null;
 
@@ -79,8 +79,8 @@ public class EQF {
             var12.writeNamespace("tns", "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/");
             var12.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
             var12.writeStartElement("http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "Naglowek");
-            HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "KodFormularza", AGXA.QLP.getKodFormularza(), new EQG("kodSystemowy", AGXA.QLP.getKodSystemowy()), new EQG("wersjaSchemy", AGXA.QLP.getWersjaSchemy()));
-            HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "WariantFormularza", AGXA.QLP.getWariantFormularza());
+            HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "KodFormularza", JPKSchemaType.QLP.getKodFormularza(), new EQG("kodSystemowy", JPKSchemaType.QLP.getKodSystemowy()), new EQG("wersjaSchemy", JPKSchemaType.QLP.getWersjaSchemy()));
+            HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "WariantFormularza", JPKSchemaType.QLP.getWariantFormularza());
             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "CelZlozenia", "1");
             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "DataWytworzeniaJPK", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")).format(new Date()));
             String var13 = var3.toString();
@@ -137,69 +137,69 @@ public class EQF {
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_6", var18.DDZ());
                 }
 
-                TwoValueBox var19;
-                TwoValueBox var20;
-                TwoValueBox var21;
-                TwoValueBox var22;
-                TwoValueBox var23;
-                TwoValueBox var24;
-                TwoValueBox var25;
-                TwoValueBox var26;
-                TwoValueBox var27;
+                ValueContainer2 var19;
+                ValueContainer2 var20;
+                ValueContainer2 var21;
+                ValueContainer2 var22;
+                ValueContainer2 var23;
+                ValueContainer2 var24;
+                ValueContainer2 var25;
+                ValueContainer2 var26;
+                ValueContainer2 var27;
                 if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
                     Map var28 = getTaxRateSummaryDiffForCorrection((HV) var17);
                     if (var28.get(KL.RATE_23) != null) {
-                        var19 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_23)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_23)).getSecondValue());
+                        var19 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_23)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_23)).getSecondValue());
                     } else {
-                        var19 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var19 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.RATE_8) != null) {
-                        var20 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_8)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_8)).getSecondValue());
+                        var20 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_8)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_8)).getSecondValue());
                     } else {
-                        var20 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var20 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.RATE_5) != null) {
-                        var21 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_5)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_5)).getSecondValue());
+                        var21 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_5)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_5)).getSecondValue());
                     } else {
-                        var21 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var21 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.RATE_4) != null) {
-                        var22 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_4)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_4)).getSecondValue());
+                        var22 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_4)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_4)).getSecondValue());
                     } else {
-                        var22 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var22 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.RATE_0) != null) {
-                        var23 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_0)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_0)).getSecondValue());
+                        var23 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_0)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_0)).getSecondValue());
                     } else {
-                        var23 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var23 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.ZW) != null) {
-                        var24 = new TwoValueBox(((ThreeValueBox) var28.get(KL.ZW)).getFirstValue(), ((ThreeValueBox) var28.get(KL.ZW)).getSecondValue());
+                        var24 = new ValueContainer2(((ValueContainer3) var28.get(KL.ZW)).getFirstValue(), ((ValueContainer3) var28.get(KL.ZW)).getSecondValue());
                     } else {
-                        var24 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var24 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.OO_23) != null) {
-                        var25 = new TwoValueBox(((ThreeValueBox) var28.get(KL.OO_23)).getFirstValue(), ((ThreeValueBox) var28.get(KL.OO_23)).getSecondValue());
+                        var25 = new ValueContainer2(((ValueContainer3) var28.get(KL.OO_23)).getFirstValue(), ((ValueContainer3) var28.get(KL.OO_23)).getSecondValue());
                     } else {
-                        var25 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var25 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.OO_8) != null) {
-                        var26 = new TwoValueBox(((ThreeValueBox) var28.get(KL.OO_8)).getFirstValue(), ((ThreeValueBox) var28.get(KL.OO_8)).getSecondValue());
+                        var26 = new ValueContainer2(((ValueContainer3) var28.get(KL.OO_8)).getFirstValue(), ((ValueContainer3) var28.get(KL.OO_8)).getSecondValue());
                     } else {
-                        var26 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var26 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.NP) != null) {
-                        var27 = new TwoValueBox(((ThreeValueBox) var28.get(KL.NP)).getFirstValue(), ((ThreeValueBox) var28.get(KL.NP)).getSecondValue());
+                        var27 = new ValueContainer2(((ValueContainer3) var28.get(KL.NP)).getFirstValue(), ((ValueContainer3) var28.get(KL.NP)).getSecondValue());
                     } else {
-                        var27 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var27 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
                 } else {
                     var19 = var17.getNetAndTaxForTaxRate(KL.RATE_23);
@@ -298,7 +298,7 @@ public class EQF {
             while (var45.hasNext()) {
                 HY var47 = (HY) var45.next();
                 if (var47.getInvoiceSubType().equals(IA.CORRECTION)) {
-                    HN var48 = var47.getParentInvoiceOnlyActive();
+                    Invoice var48 = var47.getParentInvoiceOnlyActive();
 
                     for (Iterator var50 = ((HY) var48).getInvoiceElements().iterator(); var50.hasNext(); var12.writeEndElement()) {
                         HQ var52 = (HQ) var50.next();
@@ -378,22 +378,22 @@ public class EQF {
         }
     }
 
-    public static Map<KL, ThreeValueBox<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(HV var0) {
+    public static Map<KL, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(HV var0) {
 
-        HN var1 = var0.getParentInvoiceOnlyActive();
+        Invoice var1 = var0.getParentInvoiceOnlyActive();
         HashMap var2 = new HashMap();
         Iterator var3 = var0.getSumOfAmountsDividedByTaxRate().iterator();
         Iterator var4 = var0.getAmountOfTaxDividedByTaxRate().iterator();
         Iterator var5 = var0.getSumOfGrossAmountsDividedByTaxRate().iterator();
 
-        TwoValueBox var6;
-        TwoValueBox var7;
-        TwoValueBox var8;
+        ValueContainer2 var6;
+        ValueContainer2 var7;
+        ValueContainer2 var8;
         while (var3.hasNext()) {
-            var6 = (TwoValueBox) var3.next();
-            var7 = (TwoValueBox) var4.next();
-            var8 = (TwoValueBox) var5.next();
-            var2.put(var6.getFirstValue(), new ThreeValueBox(var6.getSecondValue(), var7.getSecondValue(), var8.getSecondValue()));
+            var6 = (ValueContainer2) var3.next();
+            var7 = (ValueContainer2) var4.next();
+            var8 = (ValueContainer2) var5.next();
+            var2.put(var6.getFirstValue(), new ValueContainer3(var6.getSecondValue(), var7.getSecondValue(), var8.getSecondValue()));
         }
 
         var3 = var1.getSumOfAmountsDividedByTaxRate().iterator();
@@ -401,15 +401,15 @@ public class EQF {
         var5 = var1.getSumOfGrossAmountsDividedByTaxRate().iterator();
 
         while (var3.hasNext()) {
-            var6 = (TwoValueBox) var3.next();
-            var7 = (TwoValueBox) var4.next();
-            var8 = (TwoValueBox) var5.next();
+            var6 = (ValueContainer2) var3.next();
+            var7 = (ValueContainer2) var4.next();
+            var8 = (ValueContainer2) var5.next();
             if (var2.get(var6.getFirstValue()) == null) {
-                var2.put(var6.getFirstValue(), new ThreeValueBox(EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var6.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var7.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var8.getSecondValue())));
+                var2.put(var6.getFirstValue(), new ValueContainer3(EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var6.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var7.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var8.getSecondValue())));
             } else {
-                ((ThreeValueBox) var2.get(var6.getFirstValue())).setFirstValue(EQY.HRJ((BigDecimal) ((ThreeValueBox) var2.get(var6.getFirstValue())).getFirstValue(), (BigDecimal) var6.getSecondValue()));
-                ((ThreeValueBox) var2.get(var6.getFirstValue())).setSecondValue(EQY.HRJ((BigDecimal) ((ThreeValueBox) var2.get(var6.getFirstValue())).getSecondValue(), (BigDecimal) var7.getSecondValue()));
-                ((ThreeValueBox) var2.get(var6.getFirstValue())).setThirdValue(EQY.HRJ((BigDecimal) ((ThreeValueBox) var2.get(var6.getFirstValue())).getThirdValue(), (BigDecimal) var8.getSecondValue()));
+                ((ValueContainer3) var2.get(var6.getFirstValue())).setFirstValue(EQY.HRJ((BigDecimal) ((ValueContainer3) var2.get(var6.getFirstValue())).getFirstValue(), (BigDecimal) var6.getSecondValue()));
+                ((ValueContainer3) var2.get(var6.getFirstValue())).setSecondValue(EQY.HRJ((BigDecimal) ((ValueContainer3) var2.get(var6.getFirstValue())).getSecondValue(), (BigDecimal) var7.getSecondValue()));
+                ((ValueContainer3) var2.get(var6.getFirstValue())).setThirdValue(EQY.HRJ((BigDecimal) ((ValueContainer3) var2.get(var6.getFirstValue())).getThirdValue(), (BigDecimal) var8.getSecondValue()));
             }
         }
 
@@ -417,9 +417,9 @@ public class EQF {
         return var12;
     }
 
-    public static HI getContractorFromInvoiceSellType(HY var0) {
+    public static Contractor getContractorFromInvoiceSellType(HY var0) {
 
-        HI var1;
+        Contractor var1;
         switch (var0.getInvoiceSubType()) {
             case INVOICE:
             case AGGREGATE:
@@ -436,14 +436,14 @@ public class EQF {
     public static HU getOriginalInvoice(HV var0) {
 
         Object var1;
-        for (var1 = var0; ((HN) var1).getParentInvoiceOnlyActive() != null; var1 = ((HN) var1).getParentInvoiceOnlyActive()) {
+        for (var1 = var0; ((Invoice) var1).getParentInvoiceOnlyActive() != null; var1 = ((Invoice) var1).getParentInvoiceOnlyActive()) {
         }
 
         HU var2 = (HU) var1;
         return var2;
     }
 
-    public static byte[] HQD(EWX var0, String var1, File var2, String var3, JN var4, LY var5, IG var6, IF var7) throws FFO {
+    public static byte[] HQD(EWX var0, String var1, File var2, String var3, Period var4, UserData var5, IG var6, IF var7) throws FFO {
 
         byte var8 = 0;
         FileOutputStream var9 = null;
@@ -463,8 +463,8 @@ public class EQF {
             var13.writeNamespace("tns", "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/");
             var13.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
             var13.writeStartElement("http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "Naglowek");
-            HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "KodFormularza", AGXA.AHSV.getKodFormularza(), new EQG("kodSystemowy", AGXA.AHSV.getKodSystemowy()), new EQG("wersjaSchemy", AGXA.AHSV.getWersjaSchemy()));
-            HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "WariantFormularza", AGXA.AHSV.getWariantFormularza());
+            HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "KodFormularza", JPKSchemaType.AHSV.getKodFormularza(), new EQG("kodSystemowy", JPKSchemaType.AHSV.getKodSystemowy()), new EQG("wersjaSchemy", JPKSchemaType.AHSV.getWersjaSchemy()));
+            HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "WariantFormularza", JPKSchemaType.AHSV.getWariantFormularza());
             HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "CelZlozenia", var3);
             HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "DataWytworzeniaJPK", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")).format(new Date()));
             String var14 = var4.DDJ().getValueAsString() + "-" + String.format("%02d", var4.DDK().getValue()) + "-";

@@ -5,8 +5,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.b.f.a.FFM;
 import a.a.a.b.g.FFP;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.d.AGXA;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.d.JPKSchemaType;
 import a.a.a.c.g.c.FCX;
 import a.a.a.c.g.c.FCZ;
 import lombok.extern.slf4j.Slf4j;
@@ -55,7 +55,7 @@ public class EQM {
         return var2;
     }
 
-    public AGXA HQN(File var1) throws FFO, FFK {
+    public JPKSchemaType HQN(File var1) throws FFO, FFK {
 
         int var2 = 0;
         InputStream var3 = null;
@@ -105,16 +105,16 @@ public class EQM {
 
                             Iterator var9 = EQL.getInstance().getJpkSchemaFilesMap().values().iterator();
 
-                            AGXA var10;
+                            JPKSchemaType var10;
                             do {
                                 if (!var9.hasNext()) {
                                     break label219;
                                 }
 
-                                var10 = (AGXA) var9.next();
+                                var10 = (JPKSchemaType) var9.next();
                             } while (!var10.getKodFormularza().equals(var8.get(0)) || !var10.getKodSystemowy().equals(var8.get(1)) || !var10.getWersjaSchemy().equals(var8.get(2)) || !var10.getWariantFormularza().equals(var8.get(3)));
 
-                            AGXA var11 = var10;
+                            JPKSchemaType var11 = var10;
                             return var11;
                         }
                     }
@@ -151,7 +151,7 @@ public class EQM {
         }
     }
 
-    public TwoValueBox<AGXA, String> HQO(File var1) throws FFO, FFK {
+    public ValueContainer2<JPKSchemaType, String> HQO(File var1) throws FFO, FFK {
 
         FileInputStream var2 = null;
 
@@ -204,16 +204,16 @@ public class EQM {
                 log.debug("xmlValue_celZlozenia " + var6.getXmlValue_celZlozenia());
                 Iterator var9 = EQL.getInstance().getJpkSchemaFilesMap().values().iterator();
 
-                AGXA var10;
+                JPKSchemaType var10;
                 do {
                     if (!var9.hasNext()) {
                         throw FCZ.getInstance().IIA(var6.getXmlValue_tnsJPK() + " " + var6.getXmlValue_KodFormularza() + " " + var6.getXmlValue_kodSystemowy() + " " + var6.getXmlValue_wersjaSchemy());
                     }
 
-                    var10 = (AGXA) var9.next();
+                    var10 = (JPKSchemaType) var9.next();
                 } while (!var10.getTns().equals(var6.getXmlValue_tnsJPK()) || !var10.getKodFormularza().equals(var6.getXmlValue_KodFormularza()) || !var10.getKodSystemowy().equals(var6.getXmlValue_kodSystemowy()) || !var10.getWersjaSchemy().equals(var6.getXmlValue_wersjaSchemy()) || !var10.getWariantFormularza().equals(var6.getXmlValue_wariantFormularza()));
 
-                TwoValueBox var11 = new TwoValueBox(var10, var6.getXmlValue_celZlozenia());
+                ValueContainer2 var11 = new ValueContainer2(var10, var6.getXmlValue_celZlozenia());
                 return var11;
             }
         } catch (IOException | ParserConfigurationException | SAXException var22) {
@@ -231,13 +231,13 @@ public class EQM {
         }
     }
 
-    public List<AGXA> HQP(String var1) throws FFK {
+    public List<JPKSchemaType> HQP(String var1) throws FFK {
 
         ArrayList var2 = new ArrayList();
         Iterator var3 = EQL.getInstance().getJpkSchemaFilesMap().values().iterator();
 
         while (var3.hasNext()) {
-            AGXA var4 = (AGXA) var3.next();
+            JPKSchemaType var4 = (JPKSchemaType) var3.next();
             if (var4.getKodFormularza().equals(var1)) {
                 var2.add(var4);
             }
@@ -300,7 +300,7 @@ public class EQM {
                             Iterator var6 = EQL.getInstance().getJpkSchemaFilesMap().values().iterator();
 
                             while (var6.hasNext()) {
-                                AGXA var7 = (AGXA) var6.next();
+                                JPKSchemaType var7 = (JPKSchemaType) var6.next();
                                 if (var7.getTns().equals(var4.getValue(var5))) {
                                     this.FWR = var4.getValue(var5);
                                     log.debug("attributes.QName " + var4.getQName(var5));

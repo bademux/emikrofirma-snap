@@ -9,7 +9,7 @@ import a.a.a.c.c.e.i.c.EUE;
 import a.a.a.c.c.e.i.d.EUF;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.d.*;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JY;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
@@ -40,25 +40,25 @@ import java.util.List;
 public class ETZ extends BaseFxController {
     private static final int GJQ = 50;
     @FXML
-    private TableView<AGWN> fxml_declaration_list_declaration_table;
+    private TableView<DeclarationJPK> fxml_declaration_list_declaration_table;
     @FXML
-    private TableColumn<AGWN, String> fxml_declaration_list_declaration_table_declaration_docname;
+    private TableColumn<DeclarationJPK, String> fxml_declaration_list_declaration_table_declaration_docname;
     @FXML
-    private TableColumn<AGWN, String> fxml_declaration_list_declaration_table_declaration_filename;
+    private TableColumn<DeclarationJPK, String> fxml_declaration_list_declaration_table_declaration_filename;
     @FXML
-    private TableColumn<AGWN, JN> fxml_declaration_list_declaration_table_declaration_period;
+    private TableColumn<DeclarationJPK, Period> fxml_declaration_list_declaration_table_declaration_period;
     @FXML
-    private TableColumn<AGWN, Date> fxml_declaration_list_declaration_table_declaration_send_date;
+    private TableColumn<DeclarationJPK, Date> fxml_declaration_list_declaration_table_declaration_send_date;
     @FXML
-    private TableColumn<AGWN, AGWW> fxml_declaration_list_declaration_table_declaration_subtype;
+    private TableColumn<DeclarationJPK, AGWW> fxml_declaration_list_declaration_table_declaration_subtype;
     @FXML
-    private TableColumn<AGWN, JY> fxml_declaration_list_declaration_table_declaration_purpose;
+    private TableColumn<DeclarationJPK, JY> fxml_declaration_list_declaration_table_declaration_purpose;
     @FXML
-    private TableColumn<AGWN, JN> fxml_declaration_list_declaration_table_declaration_source;
+    private TableColumn<DeclarationJPK, Period> fxml_declaration_list_declaration_table_declaration_source;
     @FXML
-    private TableColumn<AGWN, HL> fxml_declaration_list_declaration_table_declaration_status;
+    private TableColumn<DeclarationJPK, HL> fxml_declaration_list_declaration_table_declaration_status;
     @FXML
-    private TableColumn<AGWN, EHK> fxml_declaration_list_declaration_table_declaration_sign_type;
+    private TableColumn<DeclarationJPK, EHK> fxml_declaration_list_declaration_table_declaration_sign_type;
     @FXML
     private EYQ fxml_declaration_list_jpk_ref_idController;
     @FXML
@@ -66,7 +66,7 @@ public class ETZ extends BaseFxController {
     @FXML
     Pagination fxml_declaration_list_pagination;
     private int GJR = 1;
-    private List<AGWN> GJS;
+    private List<DeclarationJPK> GJS;
     public BooleanProperty GJT = new SimpleBooleanProperty(false);
     public BooleanProperty GJU = new SimpleBooleanProperty(false);
     public BooleanProperty GJV = new SimpleBooleanProperty(false);
@@ -162,15 +162,15 @@ public class ETZ extends BaseFxController {
 
     }
 
-    public List<AGWN> getDeclarations() {
+    public List<DeclarationJPK> getDeclarations() {
         return this.GJS;
     }
 
-    public HJ getSelectedDeclaration() {
+    public Declaration getSelectedDeclaration() {
         return this.fxml_declaration_list_declaration_table.getSelectionModel().getSelectedItem();
     }
 
-    public void setDeclarations(List<AGWN> var1) {
+    public void setDeclarations(List<DeclarationJPK> var1) {
         this.GJS = var1;
     }
 
@@ -197,7 +197,7 @@ public class ETZ extends BaseFxController {
 
         try {
             final QGX var2 = new QGX(this.fxml_declaration_list_jpk_ref_idController.fxml_component_main_element.getText());
-            Integer var3 = this.QHT.HXA(JN.AOE, HM.JPK, AGWW.STATUS_TRACKER);
+            Integer var3 = this.QHT.HXA(Period.AOE, HM.JPK, AGWW.STATUS_TRACKER);
             var2.FJI().setValue(var3);
             final MTI var4 = new MTI(null);
             final MTI var5 = new MTI(Boolean.FALSE);
@@ -221,7 +221,7 @@ public class ETZ extends BaseFxController {
                     try {
                         if (var4.getObject() == null) {
                             if ((Boolean) var5.getObject()) {
-                                AGXB var1 = var2.getStatusResponseJSON();
+                                JSONString var1 = var2.getStatusResponseJSON();
                                 JSONObject var2x = var1.getValueAsJSONObject();
                                 Long var3 = (Long) var2x.get("Code");
                                 String var4x = (String) var2x.get("Description");

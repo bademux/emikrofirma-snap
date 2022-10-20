@@ -2,15 +2,15 @@ package a.a.a.c.c.d.n;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
-import a.a.a.c.f.a.n.QSG;
+import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.QSW;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class QVB<_T extends QSG<?>> {
+public class QVB<_T extends InvoiceOther<?>> {
     private final EDF<_T> RFJ;
     private _T RFK;
     private final int RFL;
@@ -114,7 +114,7 @@ public class QVB<_T extends QSG<?>> {
         return this.RFV;
     }
 
-    public JN getPeriod() {
+    public Period getPeriod() {
         return this.RFJ.getPeriod();
     }
 

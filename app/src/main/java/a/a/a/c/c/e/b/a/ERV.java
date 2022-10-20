@@ -8,7 +8,7 @@ import a.a.a.c.c.d.m.QKO;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.b.c.a.KK;
 import a.a.a.c.f.b.c.a.KN;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.BooleanProperty;
@@ -61,7 +61,7 @@ public class ERV extends BaseFxController {
 
     }
 
-    public void HSO(LY var1) {
+    public void HSO(UserData var1) {
 
         if (var1 != null) {
             this.fxml_include_nip_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DFF().DDG());
@@ -91,7 +91,7 @@ public class ERV extends BaseFxController {
 
     }
 
-    public void HSP(LY var1) {
+    public void HSP(UserData var1) {
 
         if (var1 != null) {
             this.fxml_include_nip_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DFF().DDG());

@@ -4,7 +4,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHEP extends AHEL<Integer> {
+public class AHEP extends Variable<Integer> {
     public AHEP() {
 
     }

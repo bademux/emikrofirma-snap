@@ -4,7 +4,7 @@ import a.a.a.b.a.a.d.CellJoin;
 import a.a.a.b.a.a.d.CellValue;
 import a.a.a.b.a.a.d.CellQuery;
 import a.a.a.b.a.a.d.CellOrder;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -14,7 +14,7 @@ import java.util.*;
 @ToString
 public class TableValuesSelect extends TableValuesQuery {
 
-    private TwoValueBox<String, Set<CellJoin>> joins;
+    private ValueContainer2<String, Set<CellJoin>> joins;
     private final List<CellQuery> parameters;
     private final List<CellOrder> order;
     private final List<Map<String, CellValue<?>>> results;
@@ -75,7 +75,7 @@ public class TableValuesSelect extends TableValuesQuery {
             throw new RuntimeException("Join definition cannot be empty!");
         }
         HashSet var3 = new HashSet(Arrays.asList(var2));
-        this.joins = new TwoValueBox(var1, var3);
+        this.joins = new ValueContainer2(var1, var3);
     }
 
 }

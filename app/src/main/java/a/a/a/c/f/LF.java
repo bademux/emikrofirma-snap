@@ -17,7 +17,7 @@ import java.util.GregorianCalendar;
 
 @Slf4j
 @XmlTransient
-public abstract class LF extends KX<XMLGregorianCalendar> {
+public abstract class LF extends ModelBaseTypeElement<XMLGregorianCalendar> {
     @XmlTransient
     private final ObjectProperty<LocalDate> APT;
 
@@ -104,7 +104,7 @@ public abstract class LF extends KX<XMLGregorianCalendar> {
         return null;
     }
 
-    public int compareTo(KX<XMLGregorianCalendar> var1) {
+    public int compareTo(ModelBaseTypeElement<XMLGregorianCalendar> var1) {
         return var1 != null && var1.getValue() != null ? var1.getValue().compare(this.getValue()) : -1;
     }
 

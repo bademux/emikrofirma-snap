@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AILX extends LQ<JS, Boolean> {
+public class AILX extends ConfigurationProperty<JS, Boolean> {
     public AILX(KO var1, JS var2) {
         super(var1, var2);
 

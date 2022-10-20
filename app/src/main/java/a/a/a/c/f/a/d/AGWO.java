@@ -10,13 +10,13 @@ import java.io.File;
         name = "declarationJPK_EWP"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AGWO extends AGWN {
+public class AGWO extends DeclarationJPK {
     public AGWO() {
         super(AGWW.EWP, 0);
 
     }
 
-    public AGWO(Integer var1, File var2, AGXA var3) {
+    public AGWO(Integer var1, File var2, JPKSchemaType var3) {
         super(AGWW.EWP, var1, var2, var3);
 
     }

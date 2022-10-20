@@ -4,15 +4,15 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.g.EOZ;
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.ThreeValueBox;
-import a.a.a.c.f.a.e.HN;
+import a.a.a.c.e.a.d.ValueContainer3;
+import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.HQ;
 import a.a.a.c.f.a.e.HU;
 import a.a.a.c.f.a.e.HV;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.b.c.a.QSW;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.c.FCZ;
 import com.github.bademux.emk.utils.FopUtils;
 import org.apache.fop.configuration.ConfigurationException;
@@ -43,15 +43,15 @@ import java.util.ResourceBundle;
 public class EPI extends EPL {
     private final HV FQF;
     private final HU FQG;
-    private final HN<HQ> FQH;
-    private final LY FQI;
+    private final Invoice<HQ> FQH;
+    private final UserData FQI;
 
-    public EPI(ResourceBundle var1, HV var2, LY var3, File var4) throws FFO {
+    public EPI(ResourceBundle var1, HV var2, UserData var3, File var4) throws FFO {
         super(var1, var4);
         this.FQF = var2;
         this.FQI = var3;
         this.FQG = EOZ.getOriginalInvoice(var2);
-        this.FQH = (HN<HQ>) var2.getParentInvoiceOnlyActive();
+        this.FQH = (Invoice<HQ>) var2.getParentInvoiceOnlyActive();
     }
 
     public void HOF() throws FFK {
@@ -248,9 +248,9 @@ public class EPI extends EPL {
             Map.Entry var6 = (Map.Entry) var8.next();
             var2 = var1.getDocument().createElement("summaryTable");
             var1.HOR("taxRate", ((KL) var6.getKey()).getDescription(), var2);
-            var1.HOR("netSum", this.HOI((BigDecimal) ((ThreeValueBox) var6.getValue()).getFirstValue()), var2);
-            var1.HOR("taxSum", this.HOI((BigDecimal) ((ThreeValueBox) var6.getValue()).getSecondValue()), var2);
-            var1.HOR("brutSum", this.HOI((BigDecimal) ((ThreeValueBox) var6.getValue()).getThirdValue()), var2);
+            var1.HOR("netSum", this.HOI((BigDecimal) ((ValueContainer3) var6.getValue()).getFirstValue()), var2);
+            var1.HOR("taxSum", this.HOI((BigDecimal) ((ValueContainer3) var6.getValue()).getSecondValue()), var2);
+            var1.HOR("brutSum", this.HOI((BigDecimal) ((ValueContainer3) var6.getValue()).getThirdValue()), var2);
             var1.getRoot().appendChild(var2);
         }
 

@@ -5,9 +5,9 @@ import a.a.a.c.c.d.a.QUW;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZO;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -32,10 +32,10 @@ public class QVE implements ChangeListener<Boolean> {
         this.RGD.fxml_component_main_element.IEW().set(true);
         if (var3 != null && var3) {
             KA var4 = new KA(this.RGF.fxml_component_main_element.getValue().getTitle(2));
-            JN var5 = JN.AOE;
+            Period var5 = Period.AOE;
             if (this.RGE.fxml_component_main_element.getValue() != null) {
                 try {
-                    var5 = new JN(this.RGE.fxml_component_main_element.getValue());
+                    var5 = new Period(this.RGE.fxml_component_main_element.getValue());
                 } catch (FFK var8) {
                 }
             }
@@ -46,7 +46,7 @@ public class QVE implements ChangeListener<Boolean> {
             }
 
             if (this.RGC.not().get() && this.RGD.fxml_component_main_element.getText() != null && this.RGD.fxml_component_main_element.getText().length() > 0) {
-                KE var7 = new KE(this.RGD.fxml_component_main_element.getText());
+                RefId var7 = new RefId(this.RGD.fxml_component_main_element.getText());
                 if (this.RGF.fxml_component_main_element.getValue() != null && !this.RGB.RJW(var5, var7, var4)) {
                     this.RGD.fxml_component_main_element.IEW().set(false);
                 }

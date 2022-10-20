@@ -2,7 +2,7 @@ package a.a.a.c.c.b.b.a;
 
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.a.ELZ;
+import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.EMA;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.b.EMU;
@@ -34,7 +34,7 @@ public class EMW {
                     var3.HHK();
                 } else {
                     Map var4 = ENG.getInstance().getProcessDefinition(var1);
-                    ELZ var5 = (ELZ) var4.get("definition");
+                    ProcessDefinitionBase var5 = (ProcessDefinitionBase) var4.get("definition");
                     Class var6 = var5.getProcessImplementationClass();
                     var3 = (ELV) var6.newInstance();
                     var3.setParentDefinition(var5);

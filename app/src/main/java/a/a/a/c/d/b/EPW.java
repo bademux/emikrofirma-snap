@@ -7,7 +7,7 @@ import a.a.a.b.e.a.FEQ;
 import a.a.a.b.e.a.FEX;
 import a.a.a.b.e.a.a.FEU;
 import a.a.a.b.e.a.a.FEV;
-import a.a.a.b.e.c.FFC;
+import a.a.a.b.e.c.NewPrivateKey;
 import a.a.a.b.e.c.a.FFD;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
@@ -19,21 +19,21 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.d.a.EPV;
 import a.a.a.c.d.a.a.EPP;
 import a.a.a.c.d.d.EQX;
-import a.a.a.c.e.a.d.OneValueBox;
+import a.a.a.c.e.a.d.ValueContainer1;
 import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
 import a.a.a.c.f.a.c.a.AHCI;
-import a.a.a.c.f.a.c.a.AHDJ;
-import a.a.a.c.f.a.c.a.AHDW;
+import a.a.a.c.f.a.c.a.ConfigurationPackage;
+import a.a.a.c.f.a.c.a.MainConfiguration;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.HY;
-import a.a.a.c.f.a.e.a.IC;
+import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.IF;
 import a.a.a.c.f.a.e.a.IG;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JT;
 import a.a.a.c.f.b.c.KO;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCX;
@@ -102,7 +102,7 @@ public class EPW {
     public EPW() {
     }
 
-    public static byte[] HOW(EWX var0, File var1, JN var2, Integer var3, LY var4, List<EDF<IC>> var5) throws FFK {
+    public static byte[] HOW(EWX var0, File var1, Period var2, Integer var3, UserData var4, List<EDF<InvoiceRecord>> var5) throws FFK {
 
         try {
             log.info("About to generate [JPK_VAT] declaration for " + var2 + ", reason [" + var3 + "] into file [" + var1 + "]");
@@ -116,7 +116,7 @@ public class EPW {
                 while (var8.hasNext()) {
                     Object var9 = var8.next();
                     EDF var10 = (EDF) var9;
-                    IC var11 = (IC) var10.getModelBaseElementWithIdObject();
+                    InvoiceRecord var11 = (InvoiceRecord) var10.getModelBaseElementWithIdObject();
                     Class var12 = var11.getClass();
                     if (IG.class.isAssignableFrom(var12)) {
                         var6 = (IG) var11;
@@ -141,7 +141,7 @@ public class EPW {
         }
     }
 
-    public static byte[] QOL(EWX var0, File var1, LocalDate var2, LocalDate var3, LY var4, List<HY> var5) throws FFK {
+    public static byte[] QOL(EWX var0, File var1, LocalDate var2, LocalDate var3, UserData var4, List<HY> var5) throws FFK {
 
         byte[] var7;
         try {
@@ -232,17 +232,17 @@ public class EPW {
         return var4;
     }
 
-    public static boolean HOZ(EWX var0, AGWN var1) throws FFK {
+    public static boolean HOZ(EWX var0, DeclarationJPK var1) throws FFK {
 
         FileInputStream var2 = null;
 
         boolean var22;
         try {
-            String var3 = AHDJ.AIDF(",", true);
+            String var3 = ConfigurationPackage.AIDF(",", true);
             File var4 = var1.getDeclarationFile();
             log.debug("declarationInputFile " + var4);
             log.info("About to validate the declaration input file [" + var4.getAbsolutePath() + "]");
-            AGXA var5 = var1.getDeclarationFileSchema();
+            JPKSchemaType var5 = var1.getDeclarationFileSchema();
             log.debug("jpkSchemaType " + var5);
             URL var6 = var5.getUrl();
             log.debug("schemaFileURL " + var6);
@@ -250,7 +250,7 @@ public class EPW {
             final FileOutputStream var8 = new FileOutputStream(var7);
             var8.write(var3.getBytes(StandardCharsets.UTF_8));
             var8.flush();
-            final OneValueBox var9 = new OneValueBox(0);
+            final ValueContainer1 var9 = new ValueContainer1(0);
 
             try {
                 MessageDigest var55 = MessageDigest.getInstance("MD5");
@@ -357,19 +357,19 @@ public class EPW {
         return var22;
     }
 
-    public static boolean HPA(EWX var0, AGWN var1) throws FFK {
+    public static boolean HPA(EWX var0, DeclarationJPK var1) throws FFK {
 
         Object var2 = null;
 
         try {
-            String var3 = AHDJ.AIDG(",", true);
+            String var3 = ConfigurationPackage.AIDG(",", true);
             File var4 = var1.getDeclarationFile();
             log.info("About to validate the declaration input file [" + var4.getAbsolutePath() + "]");
-            AGXA var5 = var1.getDeclarationFileSchema();
+            JPKSchemaType var5 = var1.getDeclarationFileSchema();
             log.debug("jpkSchemaType " + var5);
             URL var6 = var5.getUrl();
             log.debug("schemaFileURL " + var6);
-            if (AGXA.AHSV.getKodFormularza().equals(var5.getKodFormularza()) && AGXA.AHSV.getKodSystemowy().equals(var5.getKodSystemowy()) && AGXA.AHSV.getWersjaSchemy().equals(var5.getWersjaSchemy()) && AGXA.AHSV.getWariantFormularza().equals(var5.getWariantFormularza())) {
+            if (JPKSchemaType.AHSV.getKodFormularza().equals(var5.getKodFormularza()) && JPKSchemaType.AHSV.getKodSystemowy().equals(var5.getKodSystemowy()) && JPKSchemaType.AHSV.getWersjaSchemy().equals(var5.getWersjaSchemy()) && JPKSchemaType.AHSV.getWariantFormularza().equals(var5.getWariantFormularza())) {
                 HK var54 = (HK) var1;
                 if (var54.AICF()) {
                     log.info("About to verify the input file [" + var4.getAbsolutePath() + "]");
@@ -378,7 +378,7 @@ public class EPW {
                     final FileOutputStream var10 = new FileOutputStream(var9);
                     var10.write(var3.getBytes(StandardCharsets.UTF_8));
                     var10.flush();
-                    final OneValueBox var11 = new OneValueBox(0);
+                    final ValueContainer1 var11 = new ValueContainer1(0);
 
                     try {
                         MessageDigest var56 = MessageDigest.getInstance("MD5");
@@ -386,8 +386,8 @@ public class EPW {
                         DigestInputStream var57 = new DigestInputStream(var55, var56);
                         EWW var58 = new EWW(var57, var4.length(), var0);
                         InputStream var15 = EPW.class.getResourceAsStream("/rules/rulesConfiguration.xml");
-                        FEP var16 = new FEP(AHDW.class);
-                        AHDW var17 = var16.IKV(var15, AHDW.class);
+                        FEP var16 = new FEP(MainConfiguration.class);
+                        MainConfiguration var17 = var16.IKV(var15, MainConfiguration.class);
                         SAXParserFactory var18 = SAXParserFactory.newInstance();
                         SAXParser var19 = var18.newSAXParser();
                         XMLReader var20 = var19.getXMLReader();
@@ -424,7 +424,7 @@ public class EPW {
                         Iterator var23 = var17.getRulesPackages().iterator();
 
                         while (var23.hasNext()) {
-                            AHDJ var24 = (AHDJ) var23.next();
+                            ConfigurationPackage var24 = (ConfigurationPackage) var23.next();
                             var24.AIDD(var10, var11, ",");
                         }
 
@@ -525,7 +525,7 @@ public class EPW {
         }
     }
 
-    public static boolean HPB(EWX var0, AGWN var1) throws FFK, FFO {
+    public static boolean HPB(EWX var0, DeclarationJPK var1) throws FFK, FFO {
 
         FileInputStream var2 = null;
 
@@ -574,7 +574,7 @@ public class EPW {
         return var14;
     }
 
-    public static void HPC(AGWN var0) throws FFK {
+    public static void HPC(DeclarationJPK var0) throws FFK {
 
         try {
             log.info("About to compress input file [" + var0.getDeclarationFile() + "]");
@@ -591,7 +591,7 @@ public class EPW {
 
     }
 
-    public static void HPD(AGWN var0) throws FFK {
+    public static void HPD(DeclarationJPK var0) throws FFK {
 
         try {
             log.info("About to split compressed input file [" + var0.getZipFile().getAbsolutePath() + "]");
@@ -601,7 +601,7 @@ public class EPW {
 
             while (var3.hasNext()) {
                 File var4 = (File) var3.next();
-                AGXD var5 = new AGXD(var4, null, null, null);
+                ZipFileEntry var5 = new ZipFileEntry(var4, null, null, null);
                 var0.getZipFileList().add(var5);
             }
 
@@ -611,7 +611,7 @@ public class EPW {
         }
     }
 
-    public static void HPE(AGXC var0, AGWN var1) throws FFK, FFN {
+    public static void HPE(AGXC var0, DeclarationJPK var1) throws FFK, FFN {
 
         ArrayList var2 = new ArrayList();
         var2.add(var1);
@@ -619,7 +619,7 @@ public class EPW {
 
     }
 
-    public static void HPE(AGXC var0, List<AGWN> var1) throws FFK, FFN {
+    public static void HPE(AGXC var0, List<DeclarationJPK> var1) throws FFK, FFN {
 
         try {
             IvParameterSpec var2 = new IvParameterSpec(var0.getInitialisationVector().getValue());
@@ -628,7 +628,7 @@ public class EPW {
             Iterator var4 = var1.iterator();
 
             while (var4.hasNext()) {
-                AGWN var5 = (AGWN) var4.next();
+                DeclarationJPK var5 = (DeclarationJPK) var4.next();
                 HPF(var3, var5);
             }
         } catch (NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException |
@@ -638,14 +638,14 @@ public class EPW {
 
     }
 
-    private static void HPF(Cipher var0, AGWN var1) throws FFK {
+    private static void HPF(Cipher var0, DeclarationJPK var1) throws FFK {
 
         try {
             log.info("About to encrypt all parts of splitted compressed file [" + var1.getZipFile().getAbsolutePath() + "]");
             Iterator var2 = var1.getZipFileList().iterator();
 
             while (var2.hasNext()) {
-                AGXD var3 = (AGXD) var2.next();
+                ZipFileEntry var3 = (ZipFileEntry) var2.next();
                 FileInputStream var4 = null;
                 FileOutputStream var5 = null;
 
@@ -691,7 +691,7 @@ public class EPW {
         }
     }
 
-    public static void HPG(AGXC var0, AGWN var1, Certificate var2) throws FFN, FFK {
+    public static void HPG(AGXC var0, DeclarationJPK var1, Certificate var2) throws FFN, FFK {
 
         ArrayList var3 = new ArrayList();
         var3.add(var1);
@@ -699,25 +699,25 @@ public class EPW {
 
     }
 
-    public static void HPG(AGXC var0, List<AGWN> var1, Certificate var2) throws FFN, FFK {
+    public static void HPG(AGXC var0, List<DeclarationJPK> var1, Certificate var2) throws FFN, FFK {
 
         String var3 = EQP.HQU(var0.getSecretKeyBytes().getValue(), var2);
         Iterator var4 = var1.iterator();
 
         while (var4.hasNext()) {
-            AGWN var5 = (AGWN) var4.next();
+            DeclarationJPK var5 = (DeclarationJPK) var4.next();
             HPH(var3, var0.getInitialisationVector(), var5);
         }
 
     }
 
-    private static void HPH(String var0, JT var1, AGWN var2) throws FFK {
+    private static void HPH(String var0, JT var1, DeclarationJPK var2) throws FFK {
 
         try {
             log.info("About to create InitUpload file for input file [" + var2.getDeclarationFile() + "]");
             ObjectFactory var3 = new ObjectFactory();
             File var4 = var2.getDeclarationFile();
-            AGXA var5 = var2.getDeclarationFileSchema();
+            JPKSchemaType var5 = var2.getDeclarationFileSchema();
             List var6 = var2.getZipFileList();
             JT var7 = new JT();
             InitUploadType var8 = var3.createInitUploadType();
@@ -769,7 +769,7 @@ public class EPW {
             Iterator var21 = var6.iterator();
 
             while (var21.hasNext()) {
-                AGXD var22 = (AGXD) var21.next();
+                ZipFileEntry var22 = (ZipFileEntry) var21.next();
                 File var23 = var22.getSplitFileEncrypted();
                 ++var20;
                 byte[] var24 = FEJ.IKM(var23);
@@ -799,7 +799,7 @@ public class EPW {
         }
     }
 
-    public static boolean HPI(EWX var0, AGWN var1) throws FFK {
+    public static boolean HPI(EWX var0, DeclarationJPK var1) throws FFK {
 
         boolean var24;
         try {
@@ -917,7 +917,7 @@ public class EPW {
         return var28;
     }
 
-    public static void HPK(AGWN var0, FFC var1, X509Certificate var2) throws Exception {
+    public static void HPK(DeclarationJPK var0, NewPrivateKey var1, X509Certificate var2) throws Exception {
 
         ArrayList var3 = new ArrayList();
         var3.add(var0);
@@ -925,7 +925,7 @@ public class EPW {
 
     }
 
-    public static void HPK(List<AGWN> var0, FFC var1, X509Certificate var2) throws FFN {
+    public static void HPK(List<DeclarationJPK> var0, NewPrivateKey var1, X509Certificate var2) throws FFN {
 
         FFM var3 = new FFM();
 
@@ -986,7 +986,7 @@ public class EPW {
             Iterator var48 = var0.iterator();
 
             while (var48.hasNext()) {
-                AGWN var11 = (AGWN) var48.next();
+                DeclarationJPK var11 = (DeclarationJPK) var48.next();
 
                 try {
                     var11.setSignatureType(EHK.CC);
@@ -1039,7 +1039,7 @@ public class EPW {
         }
     }
 
-    public static boolean HPL(AGWN var0) throws FFN, FFO {
+    public static boolean HPL(DeclarationJPK var0) throws FFN, FFO {
 
         boolean var2;
         ArrayList var1 = new ArrayList();
@@ -1049,7 +1049,7 @@ public class EPW {
         return var2;
     }
 
-    public static boolean HPL(List<AGWN> var0) throws FFN, FFO {
+    public static boolean HPL(List<DeclarationJPK> var0) throws FFN, FFO {
 
         FFM var1 = new FFM();
 
@@ -1058,7 +1058,7 @@ public class EPW {
         Iterator var5 = var0.iterator();
 
         while (var5.hasNext()) {
-            AGWN var6 = (AGWN) var5.next();
+            DeclarationJPK var6 = (DeclarationJPK) var5.next();
             JT var7 = var6.getInitUploadSignedFile();
             var3 += var7.getValue().length;
             if ((long) var7.getValue().length > 5248000L) {
@@ -1094,7 +1094,7 @@ public class EPW {
                 Object var19;
                 Object var20;
                 for (int var16 = 0; var16 < var0.size(); ++var16) {
-                    AGWN var17 = var0.get(var16);
+                    DeclarationJPK var17 = var0.get(var16);
                     var17.setSignatureType(EHK.PZ);
                     JT var18 = var17.getInitUploadSignedFile();
                     var19 = var17.getDeclarationFileName();
@@ -1191,7 +1191,7 @@ public class EPW {
                                 if ("200: OK".equalsIgnoreCase(var64.getWynik())) {
                                     for (var26 = 0; var26 < var0.size(); ++var26) {
                                         if ((long) var26 == var64.getIdDokumentu()) {
-                                            AGWN var27 = var0.get(var26);
+                                            DeclarationJPK var27 = var0.get(var26);
                                             var27.setInitUploadSignedEnvelopedFile(new JT(var64.getPodpisanaZawartosc()));
                                             break;
                                         }
@@ -1292,7 +1292,7 @@ public class EPW {
         return var4;
     }
 
-    public static void HPM(AGWN var0, FFC var1, X509Certificate var2) throws FFK {
+    public static void HPM(DeclarationJPK var0, NewPrivateKey var1, X509Certificate var2) throws FFK {
 
         try {
             log.info("About to sign InitUpload file for input file [" + var0.getDeclarationFile() + "]");
@@ -1312,7 +1312,7 @@ public class EPW {
 
     }
 
-    public static void HPN(AGWN var0) throws FFO {
+    public static void HPN(DeclarationJPK var0) throws FFO {
 
         try {
             log.info("About to validate signature of the InitUpload file of the input file [" + var0.getDeclarationFile() + "]");
@@ -1331,7 +1331,7 @@ public class EPW {
 
     }
 
-    public static void step_10_setSignedEnvelopedFile(AGWN var0, File var1) throws FFK {
+    public static void step_10_setSignedEnvelopedFile(DeclarationJPK var0, File var1) throws FFK {
 
         try {
             log.info("About to load externally signed file as signed InitUpload file for input file [" + var0.getDeclarationFile() + "]");
@@ -1344,7 +1344,7 @@ public class EPW {
 
     }
 
-    public static EQB.EQC HPO(EWX var0, AGWN var1) {
+    public static EQB.EQC HPO(EWX var0, DeclarationJPK var1) {
 
         EQB.EQC var3;
         try {
@@ -1359,7 +1359,7 @@ public class EPW {
         return var3;
     }
 
-    public static EQB.EQC MWZ(EWX var0, AGWN var1) {
+    public static EQB.EQC MWZ(EWX var0, DeclarationJPK var1) {
 
         EQB.EQC var3;
         try {

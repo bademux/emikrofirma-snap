@@ -5,7 +5,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 @XmlTransient
-public abstract class LJ extends KX<Integer> {
+public abstract class LJ extends ModelBaseTypeElement<Integer> {
     @XmlTransient
     private final IntegerProperty APX;
 
@@ -20,7 +20,7 @@ public abstract class LJ extends KX<Integer> {
 
     }
 
-    public int compareTo(KX<Integer> var1) {
+    public int compareTo(ModelBaseTypeElement<Integer> var1) {
         return var1 != null && var1.getValue() != null ? var1.getValue().compareTo(this.getValue()) : -1;
     }
 

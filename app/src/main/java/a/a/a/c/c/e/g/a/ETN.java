@@ -21,10 +21,10 @@ import a.a.a.c.c.d.g.EPA;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.g.c.ETS;
 import a.a.a.c.f.a.a.EZG;
-import a.a.a.c.f.a.e.HR;
+import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.a.e.IA;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.KH;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
@@ -122,11 +122,11 @@ public class ETN extends ENO<ETS> {
     private String GIA;
     private KH GIB;
     protected final ListProperty<EOX<String>> GIC = new SimpleListProperty(FXCollections.observableArrayList());
-    private List<EPA<HR>> GID;
+    private List<EPA<InvoicePurchase>> GID;
     private final QGY GIE = new QGY();
     private final QGZ GIF = new QGZ();
     private final QHA QIF = new QHA();
-    private JN GIH = null;
+    private Period GIH = null;
     @FXML
     private EMP fxml_include_left_barController;
     @FXML
@@ -604,7 +604,7 @@ public class ETN extends ENO<ETS> {
             public void accept(ENN<?> var1) {
 
                 try {
-                    HR var2 = ETN.this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject();
+                    InvoicePurchase var2 = ETN.this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject();
                     var1.setInvoice(var2);
                     var1.setMode(EPB.VIEW);
                 } catch (FFK var6) {
@@ -761,7 +761,7 @@ public class ETN extends ENO<ETS> {
         this.setDeleteDisable(true, null);
     }
 
-    private ETO HVW(EDF<HR> var1) {
+    private ETO HVW(EDF<InvoicePurchase> var1) {
 
         ETO var3;
         boolean var2 = false;
@@ -785,7 +785,7 @@ public class ETN extends ENO<ETS> {
         return var3;
     }
 
-    private ETO QPG(EDF<HR> var1) {
+    private ETO QPG(EDF<InvoicePurchase> var1) {
 
         ETO var2;
         var2 = this.HVW(var1);
@@ -793,7 +793,7 @@ public class ETN extends ENO<ETS> {
         return var2;
     }
 
-    private ETO HVX(EDF<HR> var1) {
+    private ETO HVX(EDF<InvoicePurchase> var1) {
 
         ETO var2;
         var2 = new ETO(true, null);
@@ -801,7 +801,7 @@ public class ETN extends ENO<ETS> {
         return var2;
     }
 
-    public boolean HVY(EDF<HR> var1) throws FFK, FFO {
+    public boolean HVY(EDF<InvoicePurchase> var1) throws FFK, FFO {
 
         boolean var3;
         boolean var2 = this.HVZ(var1.getPeriod());
@@ -810,7 +810,7 @@ public class ETN extends ENO<ETS> {
         return var3;
     }
 
-    public boolean HVZ(JN var1) throws FFK, FFO {
+    public boolean HVZ(Period var1) throws FFK, FFO {
 
         boolean var4;
         ETS var2 = this.getProcess();
@@ -854,7 +854,7 @@ public class ETN extends ENO<ETS> {
 
     }
 
-    public void setPeriod(JN var1) throws FFK {
+    public void setPeriod(Period var1) throws FFK {
 
         this.GIH = var1;
 

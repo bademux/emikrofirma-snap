@@ -8,12 +8,12 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.n.QVB;
 import a.a.a.c.c.e.q.b.QUK;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.IL;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.ModelBusinessTopElement;
 import a.a.a.c.f.a.g.QSS;
-import a.a.a.c.f.a.n.QSN;
+import a.a.a.c.f.a.n.InvoiceOtherSell;
 import a.a.a.c.f.a.n.QSR;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.QSW;
 import a.a.a.c.g.c.FCZ;
 
@@ -46,20 +46,20 @@ public class QUL extends QVI {
 
     }
 
-    public List<QVB<QSN>> getInvoicesOtherSell(Integer var1, Integer var2, String var3, QSW var4) throws FFK, FFO {
+    public List<QVB<InvoiceOtherSell>> getInvoicesOtherSell(Integer var1, Integer var2, String var3, QSW var4) throws FFK, FFO {
 
         ArrayList var15;
-        JN var5 = null;
+        Period var5 = null;
         if (var1 != null && var2 != null) {
-            var5 = new JN(var1, var2);
+            var5 = new Period(var1, var2);
         }
 
         if (var3 != null && var1 != null) {
-            var5 = new JN(var1, null);
+            var5 = new Period(var1, null);
         }
 
-        QSS var6 = new QSS(QSN.class, var4, var5, QSR.SELL, null, null, var3, OrderType.DESC);
-        TwoValueBox var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
+        QSS var6 = new QSS(InvoiceOtherSell.class, var4, var5, QSR.SELL, null, null, var3, OrderType.DESC);
+        ValueContainer2 var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         ArrayList var8 = new ArrayList();
         if (var7 != null) {
             int var9 = 0;
@@ -77,13 +77,13 @@ public class QUL extends QVI {
         return var15;
     }
 
-    public void RNF(EDF<QSN> var1) throws FFK, FFO {
+    public void RNF(EDF<InvoiceOtherSell> var1) throws FFK, FFO {
 
         if (this.RKI(var1.getPeriod())) {
             throw FCZ.getInstance().createMicroBusinessException_cant_delete_settled_invoice();
         }
 
-        this.getModelManager().HKC(this.getParentDefinition(), (IL) var1.getModelBaseElementWithIdObject());
+        this.getModelManager().HKC(this.getParentDefinition(), (ModelBusinessTopElement) var1.getModelBaseElementWithIdObject());
         this.getModelManager().HKL(this.getParentDefinition());
 
     }

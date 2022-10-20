@@ -11,9 +11,9 @@ import a.a.a.c.c.d.h.EPD;
 import a.a.a.c.c.e.i.a.a.ETX;
 import a.a.a.c.c.e.i.a.a.ETY;
 import a.a.a.c.c.e.i.d.EUF;
-import a.a.a.c.f.a.d.AGWN;
-import a.a.a.c.f.a.d.AGXB;
-import a.a.a.c.f.a.d.HJ;
+import a.a.a.c.f.a.d.DeclarationJPK;
+import a.a.a.c.f.a.d.JSONString;
+import a.a.a.c.f.a.d.Declaration;
 import a.a.a.c.f.a.d.HM;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
@@ -119,7 +119,7 @@ public class EUA extends BaseProgressFxController<EUF> {
 
         log.info("Button [checkState] clicked");
         if (this.fxml_include_declarationListLogicController.GJU.get()) {
-            this.HWL((AGWN) this.fxml_include_declarationListLogicController.getSelectedDeclaration());
+            this.HWL((DeclarationJPK) this.fxml_include_declarationListLogicController.getSelectedDeclaration());
         } else {
             if (!this.fxml_include_declarationListLogicController.GJT.get()) {
                 throw new FFI("Wrong state - button should be disabled");
@@ -134,7 +134,7 @@ public class EUA extends BaseProgressFxController<EUF> {
 
     }
 
-    private void HWL(final AGWN var1) {
+    private void HWL(final DeclarationJPK var1) {
 
         try {
             final MTI var2 = new MTI(null);
@@ -162,7 +162,7 @@ public class EUA extends BaseProgressFxController<EUF> {
                                 FCR.IGE(EUA.this.resources.getString("micro.process.common.jpk.newState.title"), EUA.this.resources.getString("micro.process.common.jpk.newState.header"), EUA.this.resources.getString("micro.process.common.jpk.newState.content"), false);
                             }
 
-                            AGXB var1x = var1.getStatusResponseJSON();
+                            JSONString var1x = var1.getStatusResponseJSON();
                             JSONObject var2x = var1x.getValueAsJSONObject();
                             Long var3x = (Long) var2x.get("Code");
                             String var4 = (String) var2x.get("Description");
@@ -192,12 +192,12 @@ public class EUA extends BaseProgressFxController<EUF> {
 
     }
 
-    public void HWM(HJ var1) {
+    public void HWM(Declaration var1) {
 
         try {
             EPD var2 = null;
             if (var1.getDeclarationType() == HM.JPK) {
-                AGWN var3 = (AGWN) var1;
+                DeclarationJPK var3 = (DeclarationJPK) var1;
                 if (var3.getUpo() != null) {
                     var2 = new EPD(this.resources, this.getProcess().getDeclarationTmpFile(this.getStageToHandle(), var3.getDeclarationType(), var3.getDeclarationSubType(), ".pdf"), var3);
                 } else {

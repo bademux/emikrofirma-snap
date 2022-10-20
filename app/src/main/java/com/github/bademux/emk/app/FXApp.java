@@ -2,7 +2,7 @@ package com.github.bademux.emk.app;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.c.a.ELZ;
+import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.EMY;
 import a.a.a.c.c.b.a.ControllerFactory;
@@ -224,7 +224,7 @@ public class FXApp extends Application {
 
     private static Map.Entry<String, String> getDefinition(String defName) {
         var def = ENG.getInstance().getProcessDefinition(defName);
-        String fxmlName = ((ELZ) def.get("definition")).getFXML();
+        String fxmlName = ((ProcessDefinitionBase) def.get("definition")).getFXML();
         return Map.entry(fxmlName, defName);
     }
 

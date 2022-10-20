@@ -9,7 +9,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
         name = "dictionaryEntry"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class IJF extends IJE {
+public class IJF extends Dictionary {
     public static final String IVM = "commodity";
     private KQ IVN;
 

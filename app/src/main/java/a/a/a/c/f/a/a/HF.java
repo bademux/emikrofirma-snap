@@ -1,10 +1,10 @@
 package a.a.a.c.f.a.a;
 
 import a.a.a.c.f.a.IJ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -14,9 +14,9 @@ import java.util.Set;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HF extends IJ {
-    private JN AII;
+    private Period AII;
     private JV AIJ;
-    private KE AIK;
+    private RefId AIK;
     private JR AIL;
     private JR AIM;
     private JR AIN;
@@ -49,11 +49,11 @@ public class HF extends IJ {
         return this.AIO;
     }
 
-    public JN getPeriod() {
+    public Period getPeriod() {
         return this.AII;
     }
 
-    public void setPeriod(JN var1) {
+    public void setPeriod(Period var1) {
         this.AII = var1;
     }
 
@@ -65,11 +65,11 @@ public class HF extends IJ {
         this.AIJ = var1;
     }
 
-    public KE getRefId() {
+    public RefId getRefId() {
         return this.AIK;
     }
 
-    public void setRefId(KE var1) {
+    public void setRefId(RefId var1) {
         this.AIK = var1;
     }
 

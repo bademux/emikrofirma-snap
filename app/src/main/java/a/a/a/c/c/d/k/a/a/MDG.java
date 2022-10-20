@@ -4,7 +4,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.b.FCW;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -73,7 +73,7 @@ public class MDG {
     public void setupDefaults() {
 
         try {
-            LY var1 = EMB.getInstance().HHV();
+            UserData var1 = EMB.getInstance().HHV();
             this.fxml_include_nipController.fxml_component_main_element.setText(var1.DFF().getValue());
             this.fxml_include_firstNameController.fxml_component_main_element.setText(var1.DFI().getValue());
             this.fxml_include_lastNameController.fxml_component_main_element.setText(var1.DFJ().getValue());

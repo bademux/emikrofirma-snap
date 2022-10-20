@@ -6,8 +6,8 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.f.b.QST;
 
 public class QJW implements QST {
-    private final EDF<HI> QLG;
-    private HI QLH;
+    private final EDF<Contractor> QLG;
+    private Contractor QLH;
     public static final int QWI = 1;
     public static final int QWJ = 2;
     private String QWK;
@@ -21,13 +21,13 @@ public class QJW implements QST {
         this.QWM = true;
     }
 
-    public QJW(EDF<HI> var1) {
+    public QJW(EDF<Contractor> var1) {
         this.QLG = var1;
     }
 
-    public HI getContractor() {
+    public Contractor getContractor() {
 
-        HI var1;
+        Contractor var1;
         try {
             if (this.QLH == null) {
                 this.QLH = this.QLG.getModelBaseElementWithIdObject();

@@ -10,13 +10,13 @@ import java.io.File;
         name = "declarationJPK_KR"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AGWQ extends AGWN {
+public class AGWQ extends DeclarationJPK {
     public AGWQ() {
         super(AGWW.KR, 0);
 
     }
 
-    public AGWQ(Integer var1, File var2, AGXA var3) {
+    public AGWQ(Integer var1, File var2, JPKSchemaType var3) {
         super(AGWW.KR, var1, var2, var3);
 
     }

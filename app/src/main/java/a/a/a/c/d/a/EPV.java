@@ -1,10 +1,10 @@
 package a.a.a.c.d.a;
 
 import a.a.a.c.d.a.a.EPP;
-import a.a.a.c.e.a.d.OneValueBox;
+import a.a.a.c.e.a.d.ValueContainer1;
 import a.a.a.c.f.a.c.AHEQ;
-import a.a.a.c.f.a.c.a.AHDJ;
-import a.a.a.c.f.a.c.a.AHDW;
+import a.a.a.c.f.a.c.a.ConfigurationPackage;
+import a.a.a.c.f.a.c.a.MainConfiguration;
 import a.a.a.c.f.a.c.a.c.*;
 import lombok.extern.slf4j.Slf4j;
 import org.xml.sax.Attributes;
@@ -17,15 +17,15 @@ import java.util.*;
 @Slf4j
 public class EPV extends DefaultHandler {
     private final OutputStream FUM;
-    final OneValueBox<Integer> FUN;
+    final ValueContainer1<Integer> FUN;
     private final String FUO;
-    private final AHDW FUP;
+    private final MainConfiguration FUP;
     private final Stack<Map<String, AHEQ>> FUQ;
-    private final Stack<AHDR> FUR;
-    private final Stack<AHDU> FUS;
-    private AHDR FUT = null;
+    private final Stack<DeclaredFieldElementNS> FUR;
+    private final Stack<ParentField> FUS;
+    private DeclaredFieldElementNS FUT = null;
 
-    public EPV(OutputStream var1, OneValueBox<Integer> var2, String var3, AHDW var4) {
+    public EPV(OutputStream var1, ValueContainer1<Integer> var2, String var3, MainConfiguration var4) {
 
         log.debug("outputStream " + var1);
         log.debug("counter " + var2);
@@ -89,16 +89,16 @@ public class EPV extends DefaultHandler {
             }
         }
 
-        this.FUT = new AHDR(var9, var7, var10);
+        this.FUT = new DeclaredFieldElementNS(var9, var7, var10);
         Object var20 = this.FUR.push(this.FUT);
         Iterator var21 = this.FUP.getRulesPackages().iterator();
 
         while (var21.hasNext()) {
-            AHDJ var22 = (AHDJ) var21.next();
+            ConfigurationPackage var22 = (ConfigurationPackage) var21.next();
             Iterator var23 = var22.getParentFields().iterator();
 
             while (var23.hasNext()) {
-                AHDU var24 = (AHDU) var23.next();
+                ParentField var24 = (ParentField) var23.next();
                 boolean var16 = this.HOU(var24.getFieldType());
                 if (var16) {
                     var24.executeReset();
@@ -122,7 +122,7 @@ public class EPV extends DefaultHandler {
             while (true) {
                 do {
                     if (!var5.hasNext()) {
-                        AHDR var15 = this.FUR.pop();
+                        DeclaredFieldElementNS var15 = this.FUR.pop();
                         if (!var15.equals(this.FUT)) {
                             throw new EPP("Popped element was NOT the current element!");
                         }
@@ -136,11 +136,11 @@ public class EPV extends DefaultHandler {
                         return;
                     }
 
-                    AHDJ var6 = (AHDJ) var5.next();
+                    ConfigurationPackage var6 = (ConfigurationPackage) var5.next();
                     Iterator var7 = var6.getSelectedFields().iterator();
 
                     while (var7.hasNext()) {
-                        AHDV var8 = (AHDV) var7.next();
+                        SelectedField var8 = (SelectedField) var7.next();
                         boolean var9 = this.HOU(var8.getFieldType());
                         if (var9) {
                             var8.setValue(this.FUT.getValue());
@@ -150,10 +150,10 @@ public class EPV extends DefaultHandler {
                     }
                 } while (this.FUS.empty());
 
-                AHDU var16 = this.FUS.peek();
+                ParentField var16 = this.FUS.peek();
                 boolean var17 = this.HOU(var16.getFieldType());
                 if (var17) {
-                    AHDU var19 = this.FUS.pop();
+                    ParentField var19 = this.FUS.pop();
                     var19.AIDJ();
                     var19.AIDK();
                     var19.AIDL(this.FUM, this.FUN, this.FUO);
@@ -194,13 +194,13 @@ public class EPV extends DefaultHandler {
 
         boolean var12;
         Iterator var2 = this.FUR.iterator();
-        AHDQ[] var3 = var1.getElementChain();
+        DeclaredFieldBaseNS[] var3 = var1.getElementChain();
         boolean var4 = true;
         int var5 = -1;
 
         while (var2.hasNext()) {
             ++var5;
-            AHDR var6 = (AHDR) var2.next();
+            DeclaredFieldElementNS var6 = (DeclaredFieldElementNS) var2.next();
             if (var3.length < var5 + 1) {
                 var4 = false;
                 break;

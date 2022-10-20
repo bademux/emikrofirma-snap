@@ -7,9 +7,9 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import com.github.bademux.emk.Application;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.e.a.d.ThreeValueBox;
-import a.a.a.c.e.a.d.SevenValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.e.a.d.ValueContainer3;
+import a.a.a.c.e.a.d.ValueContainer7;
 import a.a.a.c.e.a.f.*;
 import a.a.a.c.e.a.g.EWX;
 import a.a.a.c.f.a.d.*;
@@ -46,12 +46,12 @@ import java.util.Iterator;
 @Slf4j
 public class EQB {
     private final EWX FVP;
-    private final AGWN FVQ;
+    private final DeclarationJPK FVQ;
     private EQC FVR;
     private EQD FVS;
     String MWL = "";
 
-    public EQB(EWX var1, AGWN var2) {
+    public EQB(EWX var1, DeclarationJPK var2) {
 
         this.FVP = var1;
         this.FVQ = var2;
@@ -106,12 +106,12 @@ public class EQB {
                             JT var37 = this.FVQ.getInitUploadSignedEnvelopedFile();
                             log.info("Processing signed file " + var37);
                             this.HPU(EQB.EQD.INIT_START, 0.03);
-                            EWJ var40 = new EWJ(EWP.POST, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/InitUploadSigned", EWQ.XML, var37.getValue());
+                            HttpSenderRequest var40 = new HttpSenderRequest(EWP.POST, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/InitUploadSigned", EWQ.XML, var37.getValue());
                             this.HPU(EQB.EQD.INIT_START, 0.06);
                             var40.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
                             log.info("HttpSenderRequest InitUploadSigned " + var40);
                             this.HPU(EQB.EQD.INIT_START, 0.09);
-                            EWK var47 = EWH.IBA(var40, null, new EWI());
+                            HttpSenderResult var47 = EWH.IBA(var40, null, new EWI());
                             log.info("HttpSenderResult InitUploadSigned " + var47);
                             if (var47.getStatus() == 200) {
                                 this.HPU(EQB.EQD.INIT_SUCCESS, 0.12);
@@ -182,7 +182,7 @@ public class EQB {
                             Iterator var10 = this.FVQ.getZipFileList().iterator();
 
                             while (var10.hasNext()) {
-                                AGXD var11 = (AGXD) var10.next();
+                                ZipFileEntry var11 = (ZipFileEntry) var10.next();
                                 if (var9.put(var11.getSplitFileEncryptedName(), var11) != null) {
                                     throw new FFI("Duplicate SplitFileEncryptedName [" + var11.getSplitFileEncryptedName() + "] for zipFileEntry!");
                                 }
@@ -196,13 +196,13 @@ public class EQB {
                                 for (int var13 = 0; var13 < var38.size(); ++var13) {
                                     JSONObject var15 = (JSONObject) var38.get(var13);
                                     String var16 = (String) var15.get("FileName");
-                                    AGXD var17 = (AGXD) var9.get(var16);
+                                    ZipFileEntry var17 = (ZipFileEntry) var9.get(var16);
                                     if (var17 == null) {
                                         throw new FFI("Missing zipFileEntry for file [" + var16 + "]!");
                                     }
 
                                     int finalVar1 = var13;
-                                    TwoValueBox var18 = this.HPY(var15, var17, new EWX() {
+                                    ValueContainer2 var18 = this.HPY(var15, var17, new EWX() {
                                         public void IBI(long var1, double var3, long var5, long var7, long var9, long var11) {
                                             double var13x = var45 + var57 / (double) var38.size() * (double) finalVar1 + var57 / (double) var38.size() * var3;
                                             EWX.IBJ(EQB.this.FVP, var13x, 0L, 0L);
@@ -276,11 +276,11 @@ public class EQB {
                             var53.put("ReferenceNumber", this.FVQ.getReferenceId());
                             var53.put("AzureBlobNameList", var44);
                             this.HPU(EQB.EQD.FINISH_START, 0.87);
-                            EWJ var51 = new EWJ(EWP.POST, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/FinishUpload", EWQ.JSON, var53.toJSONString().getBytes(StandardCharsets.UTF_8));
+                            HttpSenderRequest var51 = new HttpSenderRequest(EWP.POST, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/FinishUpload", EWQ.JSON, var53.toJSONString().getBytes(StandardCharsets.UTF_8));
                             var51.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
                             log.info("HttpSenderRequest FinishUpload " + var51);
                             this.HPU(EQB.EQD.FINISH_START, 0.88);
-                            EWK var6 = EWH.IBA(var51, null, new EWI());
+                            HttpSenderResult var6 = EWH.IBA(var51, null, new EWI());
                             log.info("HttpSenderResult FinishUpload " + var6);
                             this.FVQ.setFinishUploadResponseStatus(new AGWY(var6.getStatus()));
                             if (var6.getStatus() == 200) {
@@ -327,11 +327,11 @@ public class EQB {
                     case STATUS_FAILED:
                         try {
                             this.HPU(EQB.EQD.STATUS_START, 0.9);
-                            EWJ var1 = new EWJ(EWP.GET, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + this.FVQ.getReferenceId(), EWQ.JSON, null);
+                            HttpSenderRequest var1 = new HttpSenderRequest(EWP.GET, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + this.FVQ.getReferenceId(), EWQ.JSON, null);
                             var1.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
                             log.info("HttpSenderRequest Status " + var1);
                             this.HPU(EQB.EQD.STATUS_START, 0.91);
-                            EWK var2 = EWH.IBA(var1, null, new EWI());
+                            HttpSenderResult var2 = EWH.IBA(var1, null, new EWI());
                             log.info("HttpSenderResult Status " + var2);
                             this.HPU(EQB.EQD.STATUS_START, 0.92);
                             JSONObject var3;
@@ -428,7 +428,7 @@ public class EQB {
         return var43;
     }
 
-    public static boolean QIU(AGWN var0) throws FFK, FFO {
+    public static boolean QIU(DeclarationJPK var0) throws FFK, FFO {
 
         if (var0 == null || var0.getReferenceId() == null) {
             throw new FFK("Missing declaration or referenceId");
@@ -493,18 +493,18 @@ public class EQB {
         }
     }
 
-    private static EQC QIV(AGWN var0) throws FFK, FFO {
+    private static EQC QIV(DeclarationJPK var0) throws FFK, FFO {
 
         EQC var19;
         try {
             EQC var1 = EQB.EQC.INIT;
-            EWJ var2 = new EWJ(EWP.GET, FEK.MWU, "esb2.mf.gov.pl", 5064, "/jpkmicro/Status/" + var0.getReferenceId(), EWQ.JSON, null);
+            HttpSenderRequest var2 = new HttpSenderRequest(EWP.GET, FEK.MWU, "esb2.mf.gov.pl", 5064, "/jpkmicro/Status/" + var0.getReferenceId(), EWQ.JSON, null);
             var2.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
             log.info("HttpSenderRequest Status " + var2);
             CertificateFactory var3 = CertificateFactory.getInstance("X.509");
             InputStream var4 = EQK.class.getResourceAsStream("/cert/mf_kd.cer");
             X509Certificate var5 = (X509Certificate) var3.generateCertificate(var4);
-            EWK var6 = EWH.MXF(var2, null, new EWI(), var5);
+            HttpSenderResult var6 = EWH.MXF(var2, null, new EWI(), var5);
             log.info("HttpSenderResult Status " + var6);
             JSONObject var7;
             if (var6.getStatus() == 200) {
@@ -579,15 +579,15 @@ public class EQB {
         return var19;
     }
 
-    private static EQC QIW(AGWN var0) throws FFK, FFO {
+    private static EQC QIW(DeclarationJPK var0) throws FFK, FFO {
 
         EQC var16;
         try {
             EQC var1 = EQB.EQC.INIT;
-            EWJ var2 = new EWJ(EWP.GET, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + var0.getReferenceId(), EWQ.JSON, null);
+            HttpSenderRequest var2 = new HttpSenderRequest(EWP.GET, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + var0.getReferenceId(), EWQ.JSON, null);
             var2.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
             log.info("HttpSenderRequest Status " + var2);
-            EWK var3 = EWH.IBA(var2, null, new EWI());
+            HttpSenderResult var3 = EWH.IBA(var2, null, new EWI());
             log.info("HttpSenderResult Status " + var3);
             JSONObject var4;
             if (var3.getStatus() == 200) {
@@ -662,7 +662,7 @@ public class EQB {
         return var16;
     }
 
-    public static EQC HPX(AGWN var0) throws FFK {
+    public static EQC HPX(DeclarationJPK var0) throws FFK {
 
         EQC var2;
         try {
@@ -688,9 +688,9 @@ public class EQB {
         return var2;
     }
 
-    private TwoValueBox<EQC, String> HPY(JSONObject var1, AGXD var2, EWX var3) throws FFK {
+    private ValueContainer2<EQC, String> HPY(JSONObject var1, ZipFileEntry var2, EWX var3) throws FFK {
 
-        TwoValueBox var8;
+        ValueContainer2 var8;
         try {
             log.info("RequestToUploadFile.BlobName " + var1.get("BlobName"));
             log.info("RequestToUploadFile.FileName " + var1.get("FileName"));
@@ -706,20 +706,20 @@ public class EQB {
                 var4.put(var7.get("Key"), var7.get("Value"));
             }
 
-            EWJ var15 = new EWJ(EWP.valueOf((String) var1.get("Method")), new URL((String) var1.get("Url")), EWQ.OCTETSTREAM, var2.getSplitFileEncrypted(), var4);
+            HttpSenderRequest var15 = new HttpSenderRequest(EWP.valueOf((String) var1.get("Method")), new URL((String) var1.get("Url")), EWQ.OCTETSTREAM, var2.getSplitFileEncrypted(), var4);
             log.info("HttpSenderRequest BlobUpload " + var15);
-            EWK var16 = EWH.IAX(var15, var3, null, new EWU());
+            HttpSenderResult var16 = EWH.IAX(var15, var3, null, new EWU());
             log.info("HttpSenderResult BlobUpload " + var16);
             var2.setFileUploadResponseStatus(new AGWY(var16.getStatus()));
             if (var16.getStatus() < 200 || var16.getStatus() >= 400) {
-                var8 = new TwoValueBox(EQB.EQC.FAIL, "Stauts " + var16.getStatus());
+                var8 = new ValueContainer2(EQB.EQC.FAIL, "Stauts " + var16.getStatus());
                 return var8;
             }
 
-            var8 = new TwoValueBox(EQB.EQC.SUCCESS, null);
+            var8 = new ValueContainer2(EQB.EQC.SUCCESS, null);
         } catch (Exception var12) {
             log.error("Something bad happened", var12);
-            TwoValueBox var5 = new TwoValueBox(EQB.EQC.CAN_BE_RESTARTED, var12.getLocalizedMessage());
+            ValueContainer2 var5 = new ValueContainer2(EQB.EQC.CAN_BE_RESTARTED, var12.getLocalizedMessage());
             return var5;
         }
 
@@ -740,7 +740,7 @@ public class EQB {
             File var3;
             try {
                 this.HPU(EQB.EQD.KD_SEND_START, 0.0);
-                SevenValueBox var2 = this.FVQ.getKdSignatureData();
+                ValueContainer7 var2 = this.FVQ.getKdSignatureData();
                 var3 = this.FVQ.getDeclarationFile();
                 String var4 = this.FVQ.getDeclarationFileName();
                 log.info("Processing file " + var4);
@@ -755,12 +755,12 @@ public class EQB {
                 this.HPU(EQB.EQD.KD_SEND_START, 0.06);
                 FileInputStream var11 = new FileInputStream(var3);
                 this.HPU(EQB.EQD.KD_SEND_START, 0.09);
-                var8.add(new ThreeValueBox("<JPKMicro>", var10, Long.valueOf(var9.length)));
-                var8.add(new ThreeValueBox("<DokumentJPK>", var11, var3.length()));
+                var8.add(new ValueContainer3("<JPKMicro>", var10, Long.valueOf(var9.length)));
+                var8.add(new ValueContainer3("<DokumentJPK>", var11, var3.length()));
                 double var12 = 0.2;
                 double var14 = 0.81;
                 this.HPU(EQB.EQD.KD_SEND_START, var12);
-                EWK var16 = EWH.MXE(EWP.POST, FEK.MWU, "esb2.mf.gov.pl", 5064, "/jpkmicro/UploadJPK", "jpkmicro", var8, null, null, new MML(), var7);
+                HttpSenderResult var16 = EWH.MXE(EWP.POST, FEK.MWU, "esb2.mf.gov.pl", 5064, "/jpkmicro/UploadJPK", "jpkmicro", var8, null, null, new MML(), var7);
                 log.info("HttpSenderResult " + var16);
                 if (var16.getStatus() == 200) {
                     this.HPU(EQB.EQD.KD_SEND_SUCCESS, var14);
@@ -825,7 +825,7 @@ public class EQB {
         return var30;
     }
 
-    private byte[] MXB(SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> var1) throws FFO, FFK {
+    private byte[] MXB(ValueContainer7<Boolean, String, String, String, LocalDate, BigDecimal, String> var1) throws FFO, FFK {
 
         byte[] var7;
         try {

@@ -1,12 +1,10 @@
 package a.a.a.c.f.c;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.c.a.LP;
-import a.a.a.c.f.c.b.LY;
 
 public enum LU {
-    UserData(LY.class),
-    ConfigurationProperties(LP.class);
+    UserData(a.a.a.c.f.c.b.UserData.class),
+    ConfigurationProperties(a.a.a.c.f.c.a.ConfigurationProperties.class);
 
     private final Class<? extends LW> AQI;
 

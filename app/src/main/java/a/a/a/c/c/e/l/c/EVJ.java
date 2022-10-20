@@ -9,26 +9,26 @@ import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.b.ENP;
 import a.a.a.c.c.d.g.EPA;
 import a.a.a.c.c.e.l.b.EVI;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.e.HN;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.HV;
 import a.a.a.c.f.a.e.HY;
 import a.a.a.c.f.a.e.IB;
 import a.a.a.c.f.a.g.IU;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JB;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
 import a.a.a.c.f.b.EZT;
-import a.a.a.c.f.b.b.JN;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.b.Period;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.b.c.a.QSW;
-import a.a.a.c.f.c.a.LP;
-import a.a.a.c.f.c.a.LQ;
+import a.a.a.c.f.c.a.ConfigurationProperties;
+import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.LS;
 import a.a.a.c.f.c.a.QJZ;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 import a.a.a.c.g.c.FCZ;
 
@@ -39,7 +39,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EVJ extends QVI {
-    private LP GPG;
+    private ConfigurationProperties GPG;
     private LS GPH;
 
     public EVJ() {
@@ -54,12 +54,12 @@ public class EVJ extends QVI {
 
         try {
             if (this.GPG == null) {
-                JB var1 = new JB(LP.class);
-                this.GPG = (LP) this.getModelManager().HJT(this.getParentDefinition(), var1);
+                JB var1 = new JB(ConfigurationProperties.class);
+                this.GPG = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.GPG.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    LQ var3 = (LQ) var2.next();
+                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GPH = (LS) var3;
                     }
@@ -95,20 +95,20 @@ public class EVJ extends QVI {
         IU var6;
         switch (var1) {
             case ONLY_EMPTY:
-                var6 = new IU(HY.class, QSW.ACTIVE, JN.AOE, IB.SELL, null, null, null, OrderType.DESC);
+                var6 = new IU(HY.class, QSW.ACTIVE, Period.AOE, IB.SELL, null, null, null, OrderType.DESC);
                 break;
             case ONLY_CANCELED:
                 var6 = new IU(HY.class, QSW.CANCELED, null, IB.SELL, null, null, null, OrderType.DESC);
                 break;
             case WITHOUT_EMPTY:
-                var6 = new IU(HY.class, QSW.ACTIVE, new JN(var2, var3), IB.SELL, null, null, var4, OrderType.DESC);
+                var6 = new IU(HY.class, QSW.ACTIVE, new Period(var2, var3), IB.SELL, null, null, var4, OrderType.DESC);
                 break;
             case ALL:
             default:
                 var6 = new IU(HY.class, null, null, IB.SELL, null, null, var4, OrderType.DESC);
         }
 
-        TwoValueBox var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
+        ValueContainer2 var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         ArrayList var8 = new ArrayList();
         if (var7 != null) {
             int var9 = 0;
@@ -153,11 +153,11 @@ public class EVJ extends QVI {
 
     }
 
-    public LY getUserDataForInvoice(HN<?> var1) throws FFK {
+    public UserData getUserDataForInvoice(Invoice<?> var1) throws FFK {
 
-        LY var4;
-        JB var2 = new JB(LY.class, var1.DBC().getValue());
-        LY var3 = (LY) this.getModelManager().HJT(this.getParentDefinition(), var2);
+        UserData var4;
+        JB var2 = new JB(UserData.class, var1.DBC().getValue());
+        UserData var3 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var2);
         var4 = var3;
 
         return var4;
@@ -194,13 +194,13 @@ public class EVJ extends QVI {
 
         ArrayList var4;
         try {
-            IY var3 = new IY(JF.class, null, JH.VAT, null);
-            TwoValueBox var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            IY var3 = new IY(Settlement.class, null, JH.VAT, null);
+            ValueContainer2 var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
                 EDF var6 = (EDF) var5.next();
-                JF var7 = (JF) var6.getModelBaseElementWithIdObject();
+                Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
                 if (var7.getSettlementStatus().equals(JG.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
                     LocalDate var9 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), var8.lengthOfMonth());
@@ -223,11 +223,11 @@ public class EVJ extends QVI {
         return var4;
     }
 
-    public boolean RKZ(JN var1, String var2) throws FFK, FFO {
+    public boolean RKZ(Period var1, String var2) throws FFK, FFO {
 
         boolean var5;
-        IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new KE(var2), null);
-        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new RefId(var2), null);
+        ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() <= 0) {
             var5 = true;
             return var5;

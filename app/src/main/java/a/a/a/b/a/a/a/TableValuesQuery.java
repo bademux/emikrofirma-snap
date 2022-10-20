@@ -1,6 +1,6 @@
 package a.a.a.b.a.a.a;
 
-import a.a.a.b.a.a.b.FDJ;
+import a.a.a.b.a.a.b.Expression;
 import a.a.a.b.a.a.d.CellConditioned;
 import lombok.Getter;
 import lombok.ToString;
@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 public abstract class TableValuesQuery extends BaseTable {
     protected final List<CellConditioned> keys = new ArrayList();
-    protected final List<FDJ> expressions = new ArrayList();
+    protected final List<Expression> expressions = new ArrayList();
 
     public TableValuesQuery(String scheme, String alias, String name) {
         super(scheme, alias, name);
@@ -27,7 +27,7 @@ public abstract class TableValuesQuery extends BaseTable {
         this.keys.add(var1);
     }
 
-    public <_T extends FDJ> void IJB(_T var1) {
+    public <_T extends Expression> void IJB(_T var1) {
         if (var1 == null) {
             throw new RuntimeException("Expression definition cannot be null!");
         }
@@ -50,14 +50,14 @@ public abstract class TableValuesQuery extends BaseTable {
         }
     }
 
-    public <_T extends FDJ> void IJD(List<_T> var1) {
+    public <_T extends Expression> void IJD(List<_T> var1) {
         if (var1 == null) {
             throw new RuntimeException("Expression definitions cannot be null!");
         }
         Iterator var2 = var1.iterator();
 
         while (var2.hasNext()) {
-            FDJ var3 = (FDJ) var2.next();
+            Expression var3 = (Expression) var2.next();
             this.IJB(var3);
         }
     }

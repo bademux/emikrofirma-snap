@@ -1,14 +1,14 @@
 package a.a.a.c.f.a.e.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.IJ;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.n.QSQ;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -21,21 +21,21 @@ public class ID extends IJ implements Comparable<ID> {
     private JV AHTO;
     private JV AHTP;
     private JV ALP;
-    private KE ALQ;
-    private HI ALR;
+    private RefId ALQ;
+    private Contractor ALR;
     private JR ALS;
     private JR ALT;
     private JR ALU;
-    private TwoValueBox<JR, JR> ALV;
-    private TwoValueBox<JR, JR> ALW;
-    private TwoValueBox<JR, JR> ALX;
-    private TwoValueBox<JR, JR> QLU;
-    private TwoValueBox<JR, JR> ALY;
-    private TwoValueBox<JR, JR> ALZ;
-    private TwoValueBox<JR, JR> AMA;
-    private TwoValueBox<JR, JR> AMB;
-    private TwoValueBox<JR, JR> AMC;
-    private TwoValueBox<JR, JR> AMD;
+    private ValueContainer2<JR, JR> ALV;
+    private ValueContainer2<JR, JR> ALW;
+    private ValueContainer2<JR, JR> ALX;
+    private ValueContainer2<JR, JR> QLU;
+    private ValueContainer2<JR, JR> ALY;
+    private ValueContainer2<JR, JR> ALZ;
+    private ValueContainer2<JR, JR> AMA;
+    private ValueContainer2<JR, JR> AMB;
+    private ValueContainer2<JR, JR> AMC;
+    private ValueContainer2<JR, JR> AMD;
     private JS FGB;
     private JS QWR;
     private JS QWS;
@@ -116,195 +116,195 @@ public class ID extends IJ implements Comparable<ID> {
         this.ALU = var1;
     }
 
-    public TwoValueBox<JR, JR> getVat23() {
+    public ValueContainer2<JR, JR> getVat23() {
         return this.ALV;
     }
 
-    public TwoValueBox<JR, JR> QRJ() {
+    public ValueContainer2<JR, JR> QRJ() {
         if (this.ALV == null) {
-            this.ALV = new TwoValueBox(new JR(), new JR());
+            this.ALV = new ValueContainer2(new JR(), new JR());
         }
 
         return this.ALV;
     }
 
-    public void setVat23(TwoValueBox<JR, JR> var1) {
+    public void setVat23(ValueContainer2<JR, JR> var1) {
         this.ALV = var1;
     }
 
-    public TwoValueBox<JR, JR> getVat8() {
+    public ValueContainer2<JR, JR> getVat8() {
         return this.ALW;
     }
 
-    public TwoValueBox<JR, JR> QRK() {
+    public ValueContainer2<JR, JR> QRK() {
         if (this.ALW == null) {
-            this.ALW = new TwoValueBox(new JR(), new JR());
+            this.ALW = new ValueContainer2(new JR(), new JR());
         }
 
         return this.ALW;
     }
 
-    public void setVat8(TwoValueBox<JR, JR> var1) {
+    public void setVat8(ValueContainer2<JR, JR> var1) {
         this.ALW = var1;
     }
 
-    public TwoValueBox<JR, JR> getVat5() {
+    public ValueContainer2<JR, JR> getVat5() {
         return this.ALX;
     }
 
-    public TwoValueBox<JR, JR> QRL() {
+    public ValueContainer2<JR, JR> QRL() {
         if (this.ALX == null) {
-            this.ALX = new TwoValueBox(new JR(), new JR());
+            this.ALX = new ValueContainer2(new JR(), new JR());
         }
 
         return this.ALX;
     }
 
-    public void setVat5(TwoValueBox<JR, JR> var1) {
+    public void setVat5(ValueContainer2<JR, JR> var1) {
         this.ALX = var1;
     }
 
-    public TwoValueBox<JR, JR> getVat4() {
+    public ValueContainer2<JR, JR> getVat4() {
         return this.QLU;
     }
 
-    public TwoValueBox<JR, JR> QRM() {
+    public ValueContainer2<JR, JR> QRM() {
         if (this.QLU == null) {
-            this.QLU = new TwoValueBox(new JR(), new JR());
+            this.QLU = new ValueContainer2(new JR(), new JR());
         }
 
         return this.QLU;
     }
 
-    public void setVat4(TwoValueBox<JR, JR> var1) {
+    public void setVat4(ValueContainer2<JR, JR> var1) {
         this.QLU = var1;
     }
 
-    public TwoValueBox<JR, JR> getVat0() {
+    public ValueContainer2<JR, JR> getVat0() {
         return this.ALY;
     }
 
-    public TwoValueBox<JR, JR> QRN() {
+    public ValueContainer2<JR, JR> QRN() {
         if (this.ALY == null) {
-            this.ALY = new TwoValueBox(new JR(), new JR());
+            this.ALY = new ValueContainer2(new JR(), new JR());
         }
 
         return this.ALY;
     }
 
-    public void setVat0(TwoValueBox<JR, JR> var1) {
+    public void setVat0(ValueContainer2<JR, JR> var1) {
         this.ALY = var1;
     }
 
-    public TwoValueBox<JR, JR> getVatZw() {
+    public ValueContainer2<JR, JR> getVatZw() {
         return this.ALZ;
     }
 
-    public TwoValueBox<JR, JR> QRO() {
+    public ValueContainer2<JR, JR> QRO() {
         if (this.ALZ == null) {
-            this.ALZ = new TwoValueBox(new JR(), new JR());
+            this.ALZ = new ValueContainer2(new JR(), new JR());
         }
 
         return this.ALZ;
     }
 
-    public void setVatZw(TwoValueBox<JR, JR> var1) {
+    public void setVatZw(ValueContainer2<JR, JR> var1) {
         this.ALZ = var1;
     }
 
-    public TwoValueBox<JR, JR> getVatNp() {
+    public ValueContainer2<JR, JR> getVatNp() {
         return this.AMA;
     }
 
-    public TwoValueBox<JR, JR> QRP() {
+    public ValueContainer2<JR, JR> QRP() {
         if (this.AMA == null) {
-            this.AMA = new TwoValueBox(new JR(), new JR());
+            this.AMA = new ValueContainer2(new JR(), new JR());
         }
 
         return this.AMA;
     }
 
-    public void setVatNp(TwoValueBox<JR, JR> var1) {
+    public void setVatNp(ValueContainer2<JR, JR> var1) {
         this.AMA = var1;
     }
 
-    public TwoValueBox<JR, JR> getVatOo23() {
+    public ValueContainer2<JR, JR> getVatOo23() {
         return this.AMB;
     }
 
-    public TwoValueBox<JR, JR> QRQ() {
+    public ValueContainer2<JR, JR> QRQ() {
         if (this.AMB == null) {
-            this.AMB = new TwoValueBox(new JR(), new JR());
+            this.AMB = new ValueContainer2(new JR(), new JR());
         }
 
         return this.AMB;
     }
 
-    public void setVatOo23(TwoValueBox<JR, JR> var1) {
+    public void setVatOo23(ValueContainer2<JR, JR> var1) {
         this.AMB = var1;
     }
 
-    public TwoValueBox<JR, JR> getVatOo8() {
+    public ValueContainer2<JR, JR> getVatOo8() {
         return this.AMC;
     }
 
-    public TwoValueBox<JR, JR> QRR() {
+    public ValueContainer2<JR, JR> QRR() {
         if (this.AMC == null) {
-            this.AMC = new TwoValueBox(new JR(), new JR());
+            this.AMC = new ValueContainer2(new JR(), new JR());
         }
 
         return this.AMC;
     }
 
-    public void setVatOo8(TwoValueBox<JR, JR> var1) {
+    public void setVatOo8(ValueContainer2<JR, JR> var1) {
         this.AMC = var1;
     }
 
-    public TwoValueBox<JR, JR> getVatOo5() {
+    public ValueContainer2<JR, JR> getVatOo5() {
         return this.AMD;
     }
 
-    public TwoValueBox<JR, JR> QRS() {
+    public ValueContainer2<JR, JR> QRS() {
         if (this.AMD == null) {
-            this.AMD = new TwoValueBox(new JR(), new JR());
+            this.AMD = new ValueContainer2(new JR(), new JR());
         }
 
         return this.AMD;
     }
 
-    public void setVatOo5(TwoValueBox<JR, JR> var1) {
+    public void setVatOo5(ValueContainer2<JR, JR> var1) {
         this.AMD = var1;
     }
 
-    public KE getRefId() {
+    public RefId getRefId() {
         return this.ALQ;
     }
 
-    public KE HGX() {
+    public RefId HGX() {
         if (this.ALQ == null) {
-            this.ALQ = new KE();
+            this.ALQ = new RefId();
         }
 
         return this.ALQ;
     }
 
-    public void setRefId(KE var1) {
+    public void setRefId(RefId var1) {
         this.ALQ = var1;
     }
 
-    public HI getContractor() {
+    public Contractor getContractor() {
         return this.ALR;
     }
 
-    public HI HGY() {
+    public Contractor HGY() {
         if (this.ALR == null) {
-            this.ALR = new HI();
+            this.ALR = new Contractor();
         }
 
         return this.ALR;
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
         this.ALR = var1;
     }
 
@@ -384,7 +384,7 @@ public class ID extends IJ implements Comparable<ID> {
         return this.FGB;
     }
 
-    public TwoValueBox<JR, JR> getVat4and8() {
+    public ValueContainer2<JR, JR> getVat4and8() {
         BigDecimal var1 = BigDecimal.ZERO;
         BigDecimal var2 = BigDecimal.ZERO;
         if (this.QLU != null && this.QLU.getFirstValue() != null && this.QLU.getFirstValue().getValue() != null) {
@@ -403,14 +403,14 @@ public class ID extends IJ implements Comparable<ID> {
             var2 = var2.add(this.ALW.getSecondValue().getValue());
         }
 
-        return new TwoValueBox(new JR(var1), new JR(var2));
+        return new ValueContainer2(new JR(var1), new JR(var2));
     }
 
-    public TwoValueBox<JR, JR> QRT() {
+    public ValueContainer2<JR, JR> QRT() {
         return this.getVat4and8();
     }
 
-    public void setVat4and8(TwoValueBox<JR, JR> var1) {
+    public void setVat4and8(ValueContainer2<JR, JR> var1) {
         throw new FFI("This method should not be used");
     }
 

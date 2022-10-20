@@ -2,16 +2,16 @@ package a.a.a.c.d.e.b;
 
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.d.e.QRX;
-import a.a.a.c.f.a.n.QSH;
+import a.a.a.c.f.a.n.InvoiceOtherElement;
 import a.a.a.c.f.b.c.a.QSV;
 
 import java.math.BigDecimal;
 
-public class QSC implements QRX<QSH> {
+public class QSC implements QRX<InvoiceOtherElement> {
     public QSC() {
     }
 
-    public QSH RIB(QSH var1, QSH var2) {
+    public InvoiceOtherElement RIB(InvoiceOtherElement var1, InvoiceOtherElement var2) {
         boolean var3 = false;
         boolean var4 = false;
         boolean var5 = false;

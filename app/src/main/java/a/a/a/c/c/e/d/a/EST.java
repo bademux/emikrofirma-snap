@@ -14,13 +14,13 @@ import a.a.a.c.c.d.a.ENK;
 import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.d.c.ESX;
-import a.a.a.c.e.a.d.ThreeValueBox;
-import a.a.a.c.f.a.c.HI;
-import a.a.a.c.f.a.e.HN;
-import a.a.a.c.f.a.e.HR;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.e.a.d.ValueContainer3;
+import a.a.a.c.f.a.c.Contractor;
+import a.a.a.c.f.a.e.Invoice;
+import a.a.a.c.f.a.e.InvoicePurchase;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
@@ -33,7 +33,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 
 public class EST extends ENN<ESX> {
-    private HR GEM;
+    private InvoicePurchase GEM;
     private final BooleanProperty GEN = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
     private final BooleanProperty GEO = new SimpleBooleanProperty(this, "readOnlyPropertyHolder", false);
     private boolean GEP;
@@ -49,9 +49,9 @@ public class EST extends ENN<ESX> {
     protected EMP fxml_include_left_barController;
     @FXML
     protected EMR fxml_include_top_menuController;
-    private HR GEQ = null;
+    private InvoicePurchase GEQ = null;
     private EPB GER;
-    private HI GES;
+    private Contractor GES;
 
     public EST(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
@@ -153,10 +153,10 @@ public class EST extends ENN<ESX> {
                     this.GEQ.setPreviousPeriod(this.GEQ.getPeriod().DDN());
                     var1.setInvoicePurchase(this.GEQ);
                     var1.setActionType(FDO.update);
-                    JN var2 = this.GEQ.getPeriod() != null ? this.GEQ.getPeriod().DDN() : null;
-                    KE var3 = this.GEQ.getRefId() != null ? this.GEQ.getRefId().DEL() : null;
+                    Period var2 = this.GEQ.getPeriod() != null ? this.GEQ.getPeriod().DDN() : null;
+                    RefId var3 = this.GEQ.getRefId() != null ? this.GEQ.getRefId().DEL() : null;
                     KA var4 = this.GEQ.getIssuerNumber() != null ? this.GEQ.getIssuerNumber().DEJ() : null;
-                    var1.setInvoicePurchaseEditKey(new ThreeValueBox(var2, var3, var4));
+                    var1.setInvoicePurchaseEditKey(new ValueContainer3(var2, var3, var4));
                 }
             } else {
                 this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.Title"));
@@ -191,14 +191,14 @@ public class EST extends ENN<ESX> {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
         this.GEP = true;
-        JN var2 = null;
+        Period var2 = null;
         if (this.GEM != null && this.GEM.getPeriod() != null) {
             var2 = this.GEM.getPeriod();
         }
 
         ESX var4 = this.getProcess();
         var4.resetAndCleanUpProcess();
-        JN finalVar = var2;
+        Period finalVar = var2;
         this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
             public void accept(ENK<?> var1) {
 
@@ -220,14 +220,14 @@ public class EST extends ENN<ESX> {
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.GEP = true;
-            JN var2 = null;
+            Period var2 = null;
             if (this.GEM != null && this.GEM.getPeriod() != null) {
                 var2 = this.GEM.getPeriod();
             }
 
             ESX var4 = this.getProcess();
             var4.HHL();
-            JN finalVar = var2;
+            Period finalVar = var2;
             this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
                 public void accept(ENK<?> var1) {
 
@@ -254,15 +254,15 @@ public class EST extends ENN<ESX> {
 
     }
 
-    public void setInvoice(HN<?> var1) throws FFK {
-        this.GEQ = (HR) var1;
+    public void setInvoice(Invoice<?> var1) throws FFK {
+        this.GEQ = (InvoicePurchase) var1;
     }
 
     public void setMode(EPB var1) {
         this.GER = var1;
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
         this.GER = EPB.NEW;
         this.GES = var1;
     }

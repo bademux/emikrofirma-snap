@@ -2,14 +2,14 @@ package a.a.a.c.c.d.g;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
-import a.a.a.c.f.a.e.HN;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.a.e.Invoice;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.QSW;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class EPA<_T extends HN<?>> {
+public class EPA<_T extends Invoice<?>> {
     private final EDF<_T> FOV;
     private _T FOW;
     private final int FOX;
@@ -105,7 +105,7 @@ public class EPA<_T extends HN<?>> {
         return this.RFH;
     }
 
-    public JN getPeriod() {
+    public Period getPeriod() {
         return this.FOV.getPeriod();
     }
 

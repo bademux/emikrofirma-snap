@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHEM extends AHEL<BigDecimal> {
+public class AHEM extends Variable<BigDecimal> {
     public AHEM() {
 
     }

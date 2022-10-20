@@ -8,12 +8,12 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.b.EDH;
 import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.e.d.b.ESW;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.e.a.d.ThreeValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.e.a.d.ValueContainer3;
 import a.a.a.c.f.a.a.EYL;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
-import a.a.a.c.f.a.e.HR;
+import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.a.e.IB;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.g.IU;
@@ -21,9 +21,9 @@ import a.a.a.c.f.a.g.JE;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
 import a.a.a.c.f.a.h.JI;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -31,9 +31,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ESX extends ELX implements EYL {
-    private HR GFE;
+    private InvoicePurchase GFE;
     private FDO GFF;
-    private ThreeValueBox<JN, KE, KA> GFG;
+    private ValueContainer3<Period, RefId, KA> GFG;
 
     public ESX() {
         super(ESW.GFC.getProcessName());
@@ -46,7 +46,7 @@ public class ESX extends ELX implements EYL {
 
         try {
             if (this.GFE == null) {
-                this.GFE = this.getModelManager().HJX(this.getParentDefinition(), HR.class);
+                this.GFE = this.getModelManager().HJX(this.getParentDefinition(), InvoicePurchase.class);
                 this.GFE.DAW().setValue(BigDecimal.ZERO);
                 this.GFE.DAV().setValue(BigDecimal.ZERO);
                 this.GFE.DAX().setValue(BigDecimal.ZERO);
@@ -85,17 +85,17 @@ public class ESX extends ELX implements EYL {
 
     }
 
-    private void HUB(HI var1) {
-        AGYN var2 = new AGYN(HI.class, var1.getNip().getValue());
+    private void HUB(Contractor var1) {
+        AGYN var2 = new AGYN(Contractor.class, var1.getNip().getValue());
 
         try {
             List var3 = (List) this.getModelManager().HJY(this.getParentDefinition(), var2).getSecondValue();
-            HI var4;
+            Contractor var4;
             if (var3.size() == 0) {
                 var4 = var1.AICD();
                 this.getModelManager().HJZ(this.getParentDefinition(), var4);
             } else {
-                var4 = (HI) ((EDF) var3.get(0)).getModelBaseElementWithIdObject();
+                var4 = (Contractor) ((EDF) var3.get(0)).getModelBaseElementWithIdObject();
                 var4.setName(var1.DAI());
                 var4.setNip(var1.DAJ());
                 var4.setAccountNumber(var1.DAL());
@@ -124,7 +124,7 @@ public class ESX extends ELX implements EYL {
 
     }
 
-    public HR getInvoicePurchase(HI var1) {
+    public InvoicePurchase getInvoicePurchase(Contractor var1) {
         if (var1 != null) {
             this.GFE.setContractor(var1.AICD());
         }
@@ -132,7 +132,7 @@ public class ESX extends ELX implements EYL {
         return this.GFE;
     }
 
-    public void setInvoicePurchase(HR var1) {
+    public void setInvoicePurchase(InvoicePurchase var1) {
         this.GFE = var1;
     }
 
@@ -140,25 +140,25 @@ public class ESX extends ELX implements EYL {
         this.GFF = var1;
     }
 
-    public void setInvoicePurchaseEditKey(ThreeValueBox<JN, KE, KA> var1) {
+    public void setInvoicePurchaseEditKey(ValueContainer3<Period, RefId, KA> var1) {
         this.GFG = var1;
     }
 
-    public boolean HUC(JN var1, KE var2, KA var3) {
+    public boolean HUC(Period var1, RefId var2, KA var3) {
 
         boolean var19;
         try {
             boolean var4 = false;
             if (var1 != null && var1.getYear() != null && var1.getMonth() != null && var2 != null && var2.getValue() != null) {
-                IU var5 = new IU(HR.class, null, var1, IB.PURCHASE, null, new KE(var2), var3, null);
-                TwoValueBox var6 = this.getModelManager().HJY(this.getParentDefinition(), var5);
+                IU var5 = new IU(InvoicePurchase.class, null, var1, IB.PURCHASE, null, new RefId(var2), var3, null);
+                ValueContainer2 var6 = this.getModelManager().HJY(this.getParentDefinition(), var5);
                 if (((List) var6.getSecondValue()).isEmpty()) {
                     var4 = true;
                 } else {
                     boolean var7 = false;
                     if (this.GFG != null) {
-                        JN var8 = this.GFG.getFirstValue();
-                        KE var9 = this.GFG.getSecondValue();
+                        Period var8 = this.GFG.getFirstValue();
+                        RefId var9 = this.GFG.getSecondValue();
                         KA var10 = this.GFG.getThirdValue();
                         if (var8 != null && var8.getYear() != null && var8.getMonth() != null && var9 != null && var9.getValue() != null && var10 != null && var10.getValue() != null) {
                             Iterator var11 = ((List) var6.getSecondValue()).iterator();
@@ -189,14 +189,14 @@ public class ESX extends ELX implements EYL {
         return var19;
     }
 
-    public boolean HUD(JN var1) {
+    public boolean HUD(Period var1) {
 
         boolean var12;
         try {
             boolean var2 = false;
             if (var1 != null && var1.getYear() != null && var1.getMonth() != null) {
                 JE var3 = new JE(JI.class, var1, JH.VAT);
-                TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+                ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
                 if (((List) var4.getSecondValue()).isEmpty()) {
                     var2 = true;
                 } else {
@@ -225,8 +225,8 @@ public class ESX extends ELX implements EYL {
 
         ArrayList var4;
         try {
-            AGYN var3 = new AGYN(HI.class, var1);
-            TwoValueBox var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            AGYN var3 = new AGYN(Contractor.class, var1);
+            ValueContainer2 var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
 

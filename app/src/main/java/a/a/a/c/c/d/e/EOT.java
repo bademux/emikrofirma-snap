@@ -6,12 +6,12 @@ import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.d.g.ERF;
 import a.a.a.c.f.*;
-import a.a.a.c.f.a.e.HO;
+import a.a.a.c.f.a.e.InvoiceElement;
 import a.a.a.c.f.a.f.a.IP;
-import a.a.a.c.f.a.n.QSH;
+import a.a.a.c.f.a.n.InvoiceOtherElement;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.f.b.c.a.QSV;
-import a.a.a.c.f.c.a.LP;
+import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.QJZ;
 import a.a.a.c.f.c.c.TextFieldRequired;
 import a.a.a.c.f.c.c.TextFieldValidated_Number;
@@ -51,12 +51,12 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
                     super.startEdit();
                     Object var1 = this.getItem();
                     TableRow var2 = this.getTableRow();
-                    if (var2.getItem() instanceof HO) {
-                        EOT.this.QGF = (_T) ((HO) var2.getItem()).RIH();
+                    if (var2.getItem() instanceof InvoiceElement) {
+                        EOT.this.QGF = (_T) ((InvoiceElement) var2.getItem()).RIH();
                     } else if (var2.getItem() instanceof IP) {
                         EOT.this.QGF = (_T) ((IP) var2.getItem()).RJT();
-                    } else if (var2.getItem() instanceof QSH) {
-                        EOT.this.QGF = (_T) ((QSH) var2.getItem()).RJJ();
+                    } else if (var2.getItem() instanceof InvoiceOtherElement) {
+                        EOT.this.QGF = (_T) ((InvoiceOtherElement) var2.getItem()).RJJ();
                     }
 
                     if (var1 instanceof final LH var3) {
@@ -174,7 +174,7 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
                         });
                         this.setText(null);
                         this.setGraphic(var13);
-                    } else if (var1 instanceof final KX var14) {
+                    } else if (var1 instanceof final ModelBaseTypeElement var14) {
                         String var10 = null;
                         if (var14.getValue() != null) {
                             var10 = var14.getValueAsString();
@@ -220,7 +220,7 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
                     ERF var6 = new ERF(var4.DDQ(), var4.getScale(), var4.getPresicion());
                     this.setText(var6.HRW(var4.getValue()));
                     this.setGraphic(null);
-                } else if (var1 instanceof KX var7) {
+                } else if (var1 instanceof ModelBaseTypeElement var7) {
                     String var5 = null;
                     if (var7.getValue() != null) {
                         var5 = var7.getValueAsString();
@@ -240,7 +240,7 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
 
                 String var7;
                 try {
-                    LP var5 = EMB.getInstance().HHU();
+                    ConfigurationProperties var5 = EMB.getInstance().HHU();
                     var7 = (String) var5.getConfigurationPropertyOrDefault(FCQ.CalculationMethod).DEY().getValue();
                 } catch (FFK var6) {
                     var7 = (String) QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod).DEY().getValue();
@@ -263,7 +263,7 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
                     } else if (var1 instanceof KY var5) {
                         ERF var7 = new ERF(var5.DDQ(), var5.getScale(), var5.getPresicion());
                         this.setText(var7.HRW(var5.getValue()));
-                    } else if (var1 instanceof KX var6) {
+                    } else if (var1 instanceof ModelBaseTypeElement var6) {
                         this.setText(var6.getValueAsString());
                     }
                 }

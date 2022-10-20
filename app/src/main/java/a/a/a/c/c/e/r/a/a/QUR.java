@@ -5,7 +5,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.r.a.QUN;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,7 +23,7 @@ public class QUR implements ChangeListener<LocalDate> {
 
         try {
             if (var3 != null) {
-                this.REQ.RDZ.set(new JN(var3));
+                this.REQ.RDZ.set(new Period(var3));
                 this.REQ.fxml_other_sale_invoicing_dateController.fxml_component_main_element.IEY().set(false);
                 this.REQ.fxml_other_sale_invoicing_dateController.fxml_component_main_element.setValidExternal(true);
                 if (this.REQ.REA.get()) {

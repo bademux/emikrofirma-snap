@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import java.math.BigDecimal;
 
 @XmlTransient
-public abstract class KY extends KX<BigDecimal> {
+public abstract class KY extends ModelBaseTypeElement<BigDecimal> {
     @XmlAttribute
     private boolean API;
     @XmlAttribute
@@ -67,7 +67,7 @@ public abstract class KY extends KX<BigDecimal> {
         this.APK = var1;
     }
 
-    public int compareTo(KX<BigDecimal> var1) {
+    public int compareTo(ModelBaseTypeElement<BigDecimal> var1) {
         return var1 != null && var1.getValue() != null ? var1.getValue().compareTo(this.getValue()) : -1;
     }
 

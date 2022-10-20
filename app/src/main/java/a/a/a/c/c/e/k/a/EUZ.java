@@ -18,13 +18,13 @@ import a.a.a.c.f.a.a.EYO;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EYV;
 import a.a.a.c.f.a.a.EYX;
-import a.a.a.c.f.a.f.a.IN;
+import a.a.a.c.f.a.f.a.ReceiptRecord;
 import a.a.a.c.f.a.f.a.IP;
 import a.a.a.c.f.a.f.a.IR;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
@@ -65,7 +65,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
     @FXML
     private TableView<IP> fxml_cash_register_items;
     @FXML
-    private TableView<IN> fxml_cash_register_summary;
+    private TableView<ReceiptRecord> fxml_cash_register_summary;
     @FXML
     private TableColumn<IP, Object> fxml_cash_register_items_net;
     @FXML
@@ -73,13 +73,13 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
     @FXML
     private TableColumn<IP, Object> fxml_cash_register_items_gross;
     @FXML
-    public TableColumn<IN, String> fxml_cash_register_summary_summary;
+    public TableColumn<ReceiptRecord, String> fxml_cash_register_summary_summary;
     @FXML
-    private TableColumn<IN, JR> fxml_cash_register_summary_net;
+    private TableColumn<ReceiptRecord, JR> fxml_cash_register_summary_net;
     @FXML
-    private TableColumn<IN, JR> fxml_cash_register_summary_vat_amount;
+    private TableColumn<ReceiptRecord, JR> fxml_cash_register_summary_vat_amount;
     @FXML
-    private TableColumn<IN, JR> fxml_cash_register_summary_gross;
+    private TableColumn<ReceiptRecord, JR> fxml_cash_register_summary_gross;
     @FXML
     private TableColumn<IP, Object> fxml_cash_register_items_vat_rate;
     @FXML
@@ -100,7 +100,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
     private EMP fxml_include_left_barController;
     @FXML
     private EMR fxml_include_top_menuController;
-    private ObservableList<IN> GNC;
+    private ObservableList<ReceiptRecord> GNC;
     private ObservableList<IP> GND;
     private boolean GNE;
     private final BooleanProperty GNF;
@@ -345,7 +345,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
         IR var1 = this.GNJ.getReceiptRecord();
         var1.setPeriod(this.fxml_include_period_boxController.getPeriod());
         var1.setCreationDate(new JV(this.fxml_include_date_boxController.fxml_component_main_element.getValue()));
-        var1.setRefId(new KE(this.fxml_data_refIdController.fxml_component_main_element.getText()));
+        var1.setRefId(new RefId(this.fxml_data_refIdController.fxml_component_main_element.getText()));
         this.GNJ.setMode(this.GNA);
     }
 
@@ -408,7 +408,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
             }
 
             try {
-                JN var7 = this.fxml_include_period_boxController.getPeriod();
+                Period var7 = this.fxml_include_period_boxController.getPeriod();
                 if (var7 != null) {
                     boolean var8 = this.getProcess().HYK(var7);
                     IR var5 = this.getProcess().getReceiptRecord(var7);

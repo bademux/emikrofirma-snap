@@ -5,7 +5,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class LS extends LQ<KO, String> {
+public class LS extends ConfigurationProperty<KO, String> {
     public LS(KO var1, KO var2) {
         super(var1, var2);
 

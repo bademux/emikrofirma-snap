@@ -7,18 +7,18 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.e.k.b.EVB;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.f.a.IP;
 import a.a.a.c.f.a.f.a.IQ;
 import a.a.a.c.f.a.f.a.IR;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JD;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.g.b.FCW;
 
 import java.math.BigDecimal;
@@ -38,12 +38,12 @@ public class EVC extends ELV {
     protected void HHI() {
 
         this.GNP = new IR();
-        this.GNP.setRefId(new KE(FCW.getInstance().getMessageForKey("micro.process.cash_register_new.RefId_value")));
+        this.GNP.setRefId(new RefId(FCW.getInstance().getMessageForKey("micro.process.cash_register_new.RefId_value")));
         this.GNP.setNet(new JR(BigDecimal.ZERO));
         this.GNP.setGross(new JR(BigDecimal.ZERO));
         this.GNP.setVat(new JR(BigDecimal.ZERO));
         LocalDate var1 = LocalDate.now().minusMonths(1L);
-        this.GNP.setPeriod(new JN(var1.getYear(), var1.getMonthValue()));
+        this.GNP.setPeriod(new Period(var1.getYear(), var1.getMonthValue()));
 
     }
 
@@ -88,10 +88,10 @@ public class EVC extends ELV {
 
     }
 
-    public IR getReceiptRecord(JN var1) {
+    public IR getReceiptRecord(Period var1) {
         try {
             JD var2 = new JD(IR.class, var1, IQ.VAT, null, null, null);
-            TwoValueBox var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+            ValueContainer2 var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
             if (((List) var3.getSecondValue()).size() > 1) {
                 throw new FFO("More than one ReceiptRecord per one period!");
             } else {
@@ -103,11 +103,11 @@ public class EVC extends ELV {
         }
     }
 
-    public boolean HYK(JN var1) throws FFK, FFO {
+    public boolean HYK(Period var1) throws FFK, FFO {
 
         boolean var10;
-        IY var2 = new IY(JF.class, var1, JH.VAT, null);
-        TwoValueBox var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+        IY var2 = new IY(Settlement.class, var1, JH.VAT, null);
+        ValueContainer2 var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -115,7 +115,7 @@ public class EVC extends ELV {
         Iterator var4 = ((List) var3.getSecondValue()).iterator();
         if (var4.hasNext()) {
             EDF var5 = (EDF) var4.next();
-            boolean var6 = JG.SETTLED.equals(((JF) var5.getModelBaseElementWithIdObject()).getSettlementStatus());
+            boolean var6 = JG.SETTLED.equals(((Settlement) var5.getModelBaseElementWithIdObject()).getSettlementStatus());
             return var6;
         }
 

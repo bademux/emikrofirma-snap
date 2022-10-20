@@ -1,7 +1,7 @@
 package a.a.a.c.c.d.h;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.f.a.d.AGWN;
+import a.a.a.c.f.a.d.DeclarationJPK;
 import a.a.a.c.f.b.c.a.KK;
 import a.a.a.c.g.c.FCZ;
 import com.github.bademux.emk.utils.FopUtils;
@@ -21,9 +21,9 @@ import java.util.ResourceBundle;
 
 public class EPD extends EPJ {
     private final Potwierdzenie FPL;
-    private final AGWN FPM;
+    private final DeclarationJPK FPM;
 
-    public EPD(ResourceBundle var1, File var2, AGWN var3) {
+    public EPD(ResourceBundle var1, File var2, DeclarationJPK var3) {
         super(var1, var2);
 
         this.FPL = var3.getUpo();

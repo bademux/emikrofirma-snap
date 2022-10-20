@@ -5,9 +5,9 @@ import a.a.a.c.c.d.a.QUW;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZO;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -34,8 +34,8 @@ public class QVF implements ChangeListener<LocalDate> {
         this.RGJ.fxml_component_main_element.IEY().set(false);
         if (var3 != null) {
             try {
-                new JN(var3);
-                JN var4 = new JN(this.RGJ.fxml_component_main_element.getValue());
+                new Period(var3);
+                Period var4 = new Period(this.RGJ.fxml_component_main_element.getValue());
                 if (this.RGG.RJX(var4)) {
                     LocalDate var5 = LocalDate.now();
                     if (var3.compareTo(var5) > 0) {
@@ -49,7 +49,7 @@ public class QVF implements ChangeListener<LocalDate> {
                 }
 
                 if (this.RGH.not().get() && this.RGI.fxml_component_main_element.getText() != null && this.RGI.fxml_component_main_element.getText().length() > 0) {
-                    KE var8 = new KE(this.RGI.fxml_component_main_element.getText());
+                    RefId var8 = new RefId(this.RGI.fxml_component_main_element.getText());
                     if (this.RGK.fxml_component_main_element.IET()) {
                         KA var6 = new KA(this.RGK.fxml_component_main_element.getEditor().getText());
                         if (!this.RGG.RJW(var4, var8, var6)) {

@@ -5,10 +5,10 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.a.b.ERT;
 import a.a.a.c.f.a.g.JB;
-import a.a.a.c.f.c.a.LP;
+import a.a.a.c.f.c.a.ConfigurationProperties;
 
 public class ERU extends ELV {
-    private LP GBI;
+    private ConfigurationProperties GBI;
     private boolean GBJ;
 
     public ERU() {
@@ -22,12 +22,12 @@ public class ERU extends ELV {
 
         try {
             if (this.GBI == null) {
-                JB var1 = new JB(LP.class);
-                this.GBI = (LP) this.getModelManager().HJT(this.getParentDefinition(), var1);
+                JB var1 = new JB(ConfigurationProperties.class);
+                this.GBI = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 if (this.GBI != null) {
                     this.GBJ = false;
                 } else {
-                    this.GBI = new LP();
+                    this.GBI = new ConfigurationProperties();
                     this.GBJ = true;
                 }
             }
@@ -69,7 +69,7 @@ public class ERU extends ELV {
 
     }
 
-    public LP getConfigurationProperties() {
+    public ConfigurationProperties getConfigurationProperties() {
         return this.GBI;
     }
 }

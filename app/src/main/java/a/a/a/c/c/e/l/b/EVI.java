@@ -1,7 +1,7 @@
 package a.a.a.c.c.e.l.b;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.c.a.ELZ;
+import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.c.ENH;
@@ -14,7 +14,7 @@ import a.a.a.c.g.b.FCW;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EVI extends ELZ {
+public class EVI extends ProcessDefinitionBase {
     public static final EOS GPE;
     public static final String GPF = "invoice_sale_list_set_receive_date.fxml";
 

@@ -1,13 +1,13 @@
 package a.a.a.c.c.d.e;
 
-import a.a.a.c.f.KX;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.ModelBaseTypeElement;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.g.b.FCW;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 
-public class EOU<_T extends HI, _S> implements Callback<TableColumn<_T, _S>, TableCell<_T, _S>> {
+public class EOU<_T extends Contractor, _S> implements Callback<TableColumn<_T, _S>, TableCell<_T, _S>> {
     public EOU() {
     }
 
@@ -16,8 +16,8 @@ public class EOU<_T extends HI, _S> implements Callback<TableColumn<_T, _S>, Tab
             protected void updateItem(_S var1, boolean var2) {
                 super.updateItem(var1, var2);
                 if (var1 != null) {
-                    if (((KX) var1).getValue() != null) {
-                        this.setText((String) ((KX) var1).getValue());
+                    if (((ModelBaseTypeElement) var1).getValue() != null) {
+                        this.setText((String) ((ModelBaseTypeElement) var1).getValue());
                     } else {
                         FCW.getInstance().getMessageForKey("micro.process.general.nip.null");
                     }

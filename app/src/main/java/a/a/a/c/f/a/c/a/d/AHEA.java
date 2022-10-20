@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.d;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.a.c.a.c.AHDV;
+import a.a.a.c.f.a.c.a.c.SelectedField;
 import a.a.a.c.f.a.c.a.f.AHEM;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -9,7 +9,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHEA extends AHDZ<BigDecimal> {
+public class AHEA extends OperationOnFieldAndVariableAbstract<BigDecimal> {
     public AHEA() {
 
     }
@@ -19,7 +19,7 @@ public class AHEA extends AHDZ<BigDecimal> {
 
     }
 
-    public void AIDR(AHDV var1) {
+    public void AIDR(SelectedField var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("selectedField " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("operationType " + this.AHWI);

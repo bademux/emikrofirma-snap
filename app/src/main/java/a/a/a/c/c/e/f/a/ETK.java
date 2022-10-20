@@ -3,14 +3,14 @@ package a.a.a.c.c.e.f.a;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.d.d.b.EOC;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.c.HI;
-import a.a.a.c.f.a.e.a.IC;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.c.Contractor;
+import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.ID;
 import a.a.a.c.f.a.e.a.IE;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.b.FCW;
 import com.github.bademux.emk.utils.FopUtils;
 import org.apache.fop.configuration.ConfigurationException;
@@ -38,10 +38,10 @@ import java.util.*;
 import static com.github.bademux.emk.utils.LocaleUtils.LOCALE;
 
 public class ETK {
-    private LY GHI;
-    private LY GHJ;
-    private IC GHK;
-    private IC GHL;
+    private UserData GHI;
+    private UserData GHJ;
+    private InvoiceRecord GHK;
+    private InvoiceRecord GHL;
     private final ResourceBundle GHM;
 
     public ETK(ResourceBundle var1) {
@@ -60,7 +60,7 @@ public class ETK {
 
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [print sales] clicked");
-            IC var4 = this.GHK;
+            InvoiceRecord var4 = this.GHK;
             if (var1) {
                 var4 = this.GHL;
             }
@@ -96,7 +96,7 @@ public class ETK {
     }
 
     private void HVK(Transformer var1, boolean var2) {
-        LY var3;
+        UserData var3;
         if (var2) {
             var3 = this.GHJ;
         } else {
@@ -114,7 +114,7 @@ public class ETK {
         var1.setParameter("contractorCity", Optional.ofNullable(var3.getAddress().getCity().getValue()).orElse(""));
     }
 
-    private Document HVL(IC var1, boolean var2) throws FFK, ParserConfigurationException {
+    private Document HVL(InvoiceRecord var1, boolean var2) throws FFK, ParserConfigurationException {
         DocumentBuilderFactory var3 = DocumentBuilderFactory.newInstance();
         DocumentBuilder var4 = var3.newDocumentBuilder();
         Document var5 = var4.newDocument();
@@ -248,7 +248,7 @@ public class ETK {
         }
     }
 
-    private void HVP(Document var1, String var2, HI var3, Element var4, int var5, int var6) {
+    private void HVP(Document var1, String var2, Contractor var3, Element var4, int var5, int var6) {
         Element var7 = var1.createElement(var2);
         var4.appendChild(var7);
         if (var3 != null) {
@@ -265,7 +265,7 @@ public class ETK {
 
     }
 
-    private String getValue(TwoValueBox<JR, JR> var1, boolean var2) {
+    private String getValue(ValueContainer2<JR, JR> var1, boolean var2) {
         if (var1 != null) {
             if (var2 && var1.getFirstValue() != null && var1.getFirstValue().getValue() != null) {
                 return EOC.HNN(var1.getFirstValue().getValue());
@@ -279,12 +279,12 @@ public class ETK {
         return "";
     }
 
-    public void setSalesRegister(IC var1, LY var2) {
+    public void setSalesRegister(InvoiceRecord var1, UserData var2) {
         this.GHK = var1;
         this.GHI = var2;
     }
 
-    public void setPurchasesRegister(IC var1, LY var2) {
+    public void setPurchasesRegister(InvoiceRecord var1, UserData var2) {
         this.GHL = var1;
         this.GHJ = var2;
     }

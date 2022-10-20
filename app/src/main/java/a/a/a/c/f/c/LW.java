@@ -1,11 +1,11 @@
 package a.a.a.c.f.c;
 
-import a.a.a.c.f.KW;
+import a.a.a.c.f.ModelBaseElementWithIdAndAuditTimestamp;
 import a.a.a.c.f.b.c.JY;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
-public abstract class LW extends KW {
+public abstract class LW extends ModelBaseElementWithIdAndAuditTimestamp {
     protected JY AQJ;
 
     public LW() {

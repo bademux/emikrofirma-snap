@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHDL extends AHDK<BigDecimal> {
+public class AHDL extends Constant<BigDecimal> {
     public AHDL() {
 
     }

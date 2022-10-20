@@ -5,7 +5,7 @@ import a.a.a.b.c.FEM;
 import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.d.FourValueBox;
+import a.a.a.c.e.a.d.ValueContainer4;
 import a.a.a.c.g.b.FCW;
 import com.github.bademux.emk.Application;
 import javafx.beans.value.ChangeListener;
@@ -48,9 +48,9 @@ public class FCR {
     public FCR() {
     }
 
-    public static <_FIRST, _SECOND, _THIRD, _FOURTH, _T extends FourValueBox<_FIRST, _SECOND, _THIRD, _FOURTH>> _T IGD(final String var0, final String var1, final List<_T> var2, final String var3, final String var4, final String var5, final String var6, final double var7, final double var9) {
+    public static <_FIRST, _SECOND, _THIRD, _FOURTH, _T extends ValueContainer4<_FIRST, _SECOND, _THIRD, _FOURTH>> _T IGD(final String var0, final String var1, final List<_T> var2, final String var3, final String var4, final String var5, final String var6, final double var7, final double var9) {
 
-        FourValueBox var11;
+        ValueContainer4 var11;
         var11 = FEL.IKS(new FEM<_T>() {
             public _T IKT() {
                 final Dialog var1x = new Dialog();

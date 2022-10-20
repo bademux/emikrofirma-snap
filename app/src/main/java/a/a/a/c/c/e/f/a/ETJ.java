@@ -9,11 +9,11 @@ import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.a.ENJ;
 import a.a.a.c.c.e.f.c.ETM;
 import a.a.a.c.f.a.a.EYX;
-import a.a.a.c.f.a.e.a.IC;
+import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.ID;
 import a.a.a.c.f.a.e.a.IH;
-import a.a.a.c.f.a.h.JF;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.a.h.Settlement;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.g.a.FCT;
 import com.github.bademux.emk.app.FXApp;
 import javafx.beans.value.ChangeListener;
@@ -55,16 +55,16 @@ public class ETJ extends ENJ<ETM> {
     @FXML
     private VBox fxml_vat_invoice_record_key;
     @FXML
-    private TableView<IC> fxml_vat_invoice_record_sales_summary_table;
+    private TableView<InvoiceRecord> fxml_vat_invoice_record_sales_summary_table;
     @FXML
-    private TableView<IC> fxml_vat_invoice_record_purchases_summary_table;
+    private TableView<InvoiceRecord> fxml_vat_invoice_record_purchases_summary_table;
     @FXML
     private TabPane fxml_tab_pane;
-    private JN GGZ;
-    private JF GHA;
+    private Period GGZ;
+    private Settlement GHA;
     private String GHB;
-    private IC GHC;
-    private IC GHD;
+    private InvoiceRecord GHC;
+    private InvoiceRecord GHD;
     private Date GHE;
     private ETK GHF;
     private ETF GHG;
@@ -176,7 +176,7 @@ public class ETJ extends ENJ<ETM> {
                 Iterator var2 = var1.iterator();
 
                 while (var2.hasNext()) {
-                    IC var3 = (IC) var2.next();
+                    InvoiceRecord var3 = (InvoiceRecord) var2.next();
                     if (IH.SELL.equals(var3.getInvoiceRecordType())) {
                         this.GHC = var3;
                     } else {
@@ -202,11 +202,11 @@ public class ETJ extends ENJ<ETM> {
 
     private void HVG() {
 
-        JN var1;
+        Period var1;
         if (this.fxml_include_period_boxController.getPeriod() != null) {
-            var1 = new JN(this.fxml_include_period_boxController.getPeriod());
+            var1 = new Period(this.fxml_include_period_boxController.getPeriod());
         } else {
-            var1 = JN.AOE;
+            var1 = Period.AOE;
         }
 
         if (var1 != null) {
@@ -248,11 +248,11 @@ public class ETJ extends ENJ<ETM> {
 
     }
 
-    public void setPeriod(JN var1) throws FFK {
+    public void setPeriod(Period var1) throws FFK {
         this.setCurrentPeriod(var1);
     }
 
-    public void setSettlement(JF var1) throws FFK {
+    public void setSettlement(Settlement var1) throws FFK {
         this.GHA = var1;
         if (this.GHA != null) {
             this.setCurrentPeriod(this.GHA.getPeriod());
@@ -260,7 +260,7 @@ public class ETJ extends ENJ<ETM> {
 
     }
 
-    private void setCurrentPeriod(JN var1) {
+    private void setCurrentPeriod(Period var1) {
         this.GGZ = var1;
     }
 
@@ -268,11 +268,11 @@ public class ETJ extends ENJ<ETM> {
         this.GHB = var1;
     }
 
-    public JN getLastPeriod() {
+    public Period getLastPeriod() {
 
-        JN var1;
+        Period var1;
         try {
-            var1 = new JN(this.GHE);
+            var1 = new Period(this.GHE);
         } catch (FFK var5) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);

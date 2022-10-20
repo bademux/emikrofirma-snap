@@ -10,7 +10,7 @@ import java.io.File;
         name = "declarationJPK_FA"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AGWP extends AGWN {
+public class AGWP extends DeclarationJPK {
     private QJX QLI;
 
     public AGWP() {
@@ -18,7 +18,7 @@ public class AGWP extends AGWN {
 
     }
 
-    public AGWP(Integer var1, File var2, AGXA var3) {
+    public AGWP(Integer var1, File var2, JPKSchemaType var3) {
         super(AGWW.FA, var1, var2, var3);
 
     }

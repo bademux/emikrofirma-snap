@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 @XmlTransient
-public abstract class LL extends KX<String> {
+public abstract class LL extends ModelBaseTypeElement<String> {
     @XmlAttribute
     private Integer APZ;
     @XmlTransient
@@ -33,7 +33,7 @@ public abstract class LL extends KX<String> {
         this.APZ = var1;
     }
 
-    public int compareTo(KX<String> var1) {
+    public int compareTo(ModelBaseTypeElement<String> var1) {
         return var1 != null && var1.getValue() != null ? var1.getValue().compareTo(this.getValue()) : -1;
     }
 

@@ -8,7 +8,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
         name = "settlementVat"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class JI extends JF {
+public class JI extends Settlement {
     public JI() {
         super(JH.VAT);
 

@@ -1,9 +1,9 @@
 package a.a.a.c.c.c;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.c.a.ELZ;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.e.a.d.OneValueBox;
+import a.a.a.c.c.a.ProcessDefinitionBase;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.e.a.d.ValueContainer1;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,7 +35,7 @@ public class ENG {
     public static final String RHB = "display.type";
     public static final String RHC = "lock.config";
     private Map<String, Map<String, Object>> FNB;
-    private Map<ENH, Map<OneValueBox<?>, Map<String, Object>>> RHD;
+    private Map<ENH, Map<ValueContainer1<?>, Map<String, Object>>> RHD;
 
     public ENG() {
 
@@ -59,7 +59,7 @@ public class ENG {
             String var4;
             String var6;
             Integer var7;
-            OneValueBox var8;
+            ValueContainer1 var8;
             String var28;
             Iterator var1 = props.keySet().iterator();
             while (var1.hasNext()) {
@@ -87,7 +87,7 @@ public class ENG {
                             var28 = var3.replaceFirst("micro.global.anchor\\[" + var4 + "\\" + ']' + ".definition" + "\\" + '[' + var6 + "\\" + ']' + "\\" + '[', "");
                             var28 = var28.substring(0, var28.indexOf(93));
                             Integer var9 = Integer.parseInt(var28);
-                            TwoValueBox var10 = new TwoValueBox(var7, var9);
+                            ValueContainer2 var10 = new ValueContainer2(var7, var9);
                             if (!this.RHD.get(var5).containsKey(var10)) {
                                 ((Map) this.RHD.get(var5)).put(var10, new HashMap());
                             }
@@ -96,7 +96,7 @@ public class ENG {
                             var6 = var3.replaceFirst("micro.global.anchor\\[" + var4 + "\\" + ']' + ".definition" + "\\" + '[', "");
                             var6 = var6.substring(0, var6.indexOf(93));
                             var7 = Integer.parseInt(var6);
-                            var8 = new OneValueBox(var7);
+                            var8 = new ValueContainer1(var7);
                             if (!this.RHD.get(var5).containsKey(var8)) {
                                 ((Map) this.RHD.get(var5)).put(var8, new HashMap());
                             }
@@ -175,7 +175,7 @@ public class ENG {
 
                 var6 = (String) props.get(var23 + ".definition");
                 Class var29 = Class.forName(var6);
-                ELZ var33 = (ELZ) var29.newInstance();
+                ProcessDefinitionBase var33 = (ProcessDefinitionBase) var29.newInstance();
                 var21.put("definition", var33);
                 var34 = (String) props.get(var23 + ".lock.config");
                 var37 = false;
@@ -196,11 +196,11 @@ public class ENG {
                     var7 = null;
                     switch (var20) {
                         case MAIN:
-                            TwoValueBox var36 = (TwoValueBox) var30.getKey();
+                            ValueContainer2 var36 = (ValueContainer2) var30.getKey();
                             var25 = var4 + ".definition" + '[' + var36.getFirstValue() + ']' + '[' + var36.getSecondValue() + ']';
                             break;
                         case LEFT_BAR:
-                            var8 = (OneValueBox) var30.getKey();
+                            var8 = (ValueContainer1) var30.getKey();
                             var25 = var4 + ".definition" + '[' + var8.getFirstValue() + ']';
                             break;
                         default:
@@ -235,7 +235,7 @@ public class ENG {
         return new HashMap<>(this.FNB.get(name));
     }
 
-    public Map<OneValueBox<?>, Map<String, Object>> getGlobalAnchorDefinition(ENH name) {
+    public Map<ValueContainer1<?>, Map<String, Object>> getGlobalAnchorDefinition(ENH name) {
 
         return new HashMap<>(this.RHD.get(name));
     }

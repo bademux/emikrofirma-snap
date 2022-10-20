@@ -7,8 +7,8 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.d.b.EQB;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.d.AGWN;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.d.DeclarationJPK;
 import a.a.a.c.f.a.d.HL;
 import a.a.a.c.f.a.d.QJY;
 import a.a.a.c.f.a.e.HY;
@@ -16,7 +16,7 @@ import a.a.a.c.f.a.e.IB;
 import a.a.a.c.f.a.g.IU;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.a.QSW;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.c.FCZ;
 
 import java.time.LocalDate;
@@ -35,7 +35,7 @@ public abstract class ELW extends ELV {
         super(var1);
     }
 
-    public boolean HHM(AGWN var1) throws FFK, FFO {
+    public boolean HHM(DeclarationJPK var1) throws FFK, FFO {
 
         boolean var5;
         boolean var2 = false;
@@ -62,16 +62,16 @@ public abstract class ELW extends ELV {
         IU var6;
         switch (var1) {
             case CREATION_DATE:
-                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, new TwoValueBox(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, null, OrderType.ASC, null, null);
+                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, new ValueContainer2(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, null, OrderType.ASC, null, null);
                 break;
             case TRANSACTION_DATE:
-                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, null, new TwoValueBox(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, OrderType.ASC, null, null);
+                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, null, new ValueContainer2(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, OrderType.ASC, null, null);
                 break;
             default:
                 throw new FFI("not known date search type");
         }
 
-        TwoValueBox var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
+        ValueContainer2 var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         Iterator var8 = ((List) var7.getSecondValue()).iterator();
 
         while (var8.hasNext()) {
@@ -87,7 +87,7 @@ public abstract class ELW extends ELV {
 
         KA var2;
         try {
-            LY var1 = EMB.getInstance().HHV();
+            UserData var1 = EMB.getInstance().HHV();
             if (var1 == null || var1.getNip() == null) {
                 var2 = null;
                 return var2;

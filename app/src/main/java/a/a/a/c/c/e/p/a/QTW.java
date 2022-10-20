@@ -13,13 +13,13 @@ import a.a.a.c.c.e.p.c.QUD;
 import a.a.a.c.d.e.b.QSC;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
-import a.a.a.c.f.a.n.QSI;
-import a.a.a.c.f.a.n.QSK;
+import a.a.a.c.f.a.n.InvoiceOtherElementPurchase;
+import a.a.a.c.f.a.n.InvoiceOtherPurchase;
 import a.a.a.c.f.a.n.QSQ;
 import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.c.ComboBoxRequired;
@@ -49,9 +49,9 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-public class QTW extends BaseFxController implements EMO<QSI>, EYR {
+public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurchase>, EYR {
     public QUD RBV;
-    private QSK RBW;
+    private InvoiceOtherPurchase RBW;
     @FXML
     private EYQ fxml_include_invoiceRefNumber_boxController;
     @FXML
@@ -79,25 +79,25 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
     @FXML
     private Label fxml_other_purchase_other_elements_name;
     @FXML
-    private TableView<QSI> fxml_other_purchase_elements_table;
+    private TableView<InvoiceOtherElementPurchase> fxml_other_purchase_elements_table;
     @FXML
-    private TableColumn<QSI, Object> fxml_other_purchase_elements_table_column_tax_type;
+    private TableColumn<InvoiceOtherElementPurchase, Object> fxml_other_purchase_elements_table_column_tax_type;
     @FXML
-    private TableColumn<QSI, Object> fxml_other_purchase_elements_table_column_sum_net_price;
+    private TableColumn<InvoiceOtherElementPurchase, Object> fxml_other_purchase_elements_table_column_sum_net_price;
     @FXML
-    private TableColumn<QSI, Object> fxml_other_purchase_elements_table_column_sum_tax;
+    private TableColumn<InvoiceOtherElementPurchase, Object> fxml_other_purchase_elements_table_column_sum_tax;
     @FXML
-    private TableColumn<QSI, Object> fxml_other_purchase_elements_table_column_sum_brut_price;
+    private TableColumn<InvoiceOtherElementPurchase, Object> fxml_other_purchase_elements_table_column_sum_brut_price;
     @FXML
-    private TableView<QSK> fxml_other_purchase_summary_summary_table;
+    private TableView<InvoiceOtherPurchase> fxml_other_purchase_summary_summary_table;
     @FXML
-    private TableColumn<QSK, Object> fxml_other_purchase_summary_summary_table_column_name;
+    private TableColumn<InvoiceOtherPurchase, Object> fxml_other_purchase_summary_summary_table_column_name;
     @FXML
-    private TableColumn<QSK, Object> fxml_other_purchase_summary_summary_table_column_sum_netto;
+    private TableColumn<InvoiceOtherPurchase, Object> fxml_other_purchase_summary_summary_table_column_sum_netto;
     @FXML
-    private TableColumn<QSK, Object> fxml_other_purchase_summary_summary_table_column_sum_tax;
+    private TableColumn<InvoiceOtherPurchase, Object> fxml_other_purchase_summary_summary_table_column_sum_tax;
     @FXML
-    private TableColumn<QSK, Object> fxml_other_purchase_summary_summary_table_column_sum_brut;
+    private TableColumn<InvoiceOtherPurchase, Object> fxml_other_purchase_summary_summary_table_column_sum_brut;
     @FXML
     private Button fxml_other_purchase_button_add_new_other_position;
     @FXML
@@ -106,7 +106,7 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
     private EZK fxml_other_purchase_remarksController;
     @FXML
     private Node fxml_inner_parent;
-    public ObjectProperty<JN> RBX = new SimpleObjectProperty();
+    public ObjectProperty<Period> RBX = new SimpleObjectProperty();
     public BooleanProperty RBY = new SimpleBooleanProperty(false);
     public BooleanProperty RBZ = new SimpleBooleanProperty(false);
     public BooleanProperty RCA = new SimpleBooleanProperty(false);
@@ -115,7 +115,7 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
     private final BooleanProperty RCD = new SimpleBooleanProperty(false);
     private final BooleanProperty RCE = new SimpleBooleanProperty(false);
     private final BooleanProperty RCF = new SimpleBooleanProperty(false);
-    private final ListProperty<QSI> RCG = new SimpleListProperty();
+    private final ListProperty<InvoiceOtherElementPurchase> RCG = new SimpleListProperty();
     private final BooleanProperty RCH = new SimpleBooleanProperty(false);
     private final BooleanProperty RCI = new SimpleBooleanProperty(false);
     private QTY RCJ;
@@ -227,7 +227,7 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
 
     private void RMD() {
 
-        HI var1 = this.RBW.RJM();
+        Contractor var1 = this.RBW.RJM();
         this.fxml_purchase_contractor_nameController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAI().DDG());
         this.fxml_purchase_contractor_nipController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAJ().DDG());
         JJ var2 = var1.DAM();
@@ -241,7 +241,7 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
 
     private void RME() {
 
-        HI var1 = this.RBW.RJM();
+        Contractor var1 = this.RBW.RJM();
         this.fxml_purchase_contractor_nameController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAI().DDG());
         this.fxml_purchase_contractor_nipController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAJ().DDG());
         JJ var2 = var1.DAM();
@@ -322,14 +322,14 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
 
     }
 
-    public void setInvoiceOther(QSK var1) {
+    public void setInvoiceOther(InvoiceOtherPurchase var1) {
         this.RBW = var1;
     }
 
     public void setContractorFromAutocomplete(QJW var1) {
 
         if (var1 != null) {
-            HI var2 = var1.getContractor().AICD();
+            Contractor var2 = var1.getContractor().AICD();
             String var3 = this.resources.getString("micro.process.general.nip.null");
             if (!var3.equalsIgnoreCase(var2.DAJ().getValue())) {
                 this.fxml_purchase_contractor_nipController.fxml_component_main_element.getEditor().setText(var2.getNip().getValue());
@@ -368,7 +368,7 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
 
     }
 
-    public void RJV(QSI var1, QSI var2, QSV var3) {
+    public void RJV(InvoiceOtherElementPurchase var1, InvoiceOtherElementPurchase var2, QSV var3) {
         if (var2.getNetPriceForAll().getValue() != null && var2.getTaxRate().getValue() != null) {
             QSC var4 = new QSC();
             var4.RIB(var1, var2);
@@ -387,7 +387,7 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
         Iterator var4 = this.RBW.getInvoiceOtherElements().iterator();
 
         while (var4.hasNext()) {
-            QSI var5 = (QSI) var4.next();
+            InvoiceOtherElementPurchase var5 = (InvoiceOtherElementPurchase) var4.next();
             if (var5.RJE().getValue() != null) {
                 var1 = var1.add(var5.RJE().getValue());
             }
@@ -478,7 +478,7 @@ public class QTW extends BaseFxController implements EMO<QSI>, EYR {
 
     public void RMJ(QTX var1) {
         if (var1.RMN()) {
-            QSI var2 = new QSI();
+            InvoiceOtherElementPurchase var2 = new InvoiceOtherElementPurchase();
             var2.RJE().setValue(var1.fxml_other_purchase_new_add_other_element_netController.fxml_component_main_element.getNumber());
             var2.RJE().setAllowNegative(var1.fxml_other_purchase_new_add_other_element_netController.fxml_component_main_element.IFG());
             var2.RJE().setAllowOnlyNegative(var1.fxml_other_purchase_new_add_other_element_netController.fxml_component_main_element.RHT());

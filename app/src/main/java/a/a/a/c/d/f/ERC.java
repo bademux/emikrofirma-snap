@@ -1,6 +1,6 @@
 package a.a.a.c.d.f;
 
-import a.a.a.c.f.a.e.HO;
+import a.a.a.c.f.a.e.InvoiceElement;
 
 public abstract class ERC {
     private final boolean FZC;
@@ -11,7 +11,7 @@ public abstract class ERC {
         this.FZD = new ERB(var1);
     }
 
-    public void HRK(HO var1) {
+    public void HRK(InvoiceElement var1) {
         this.FZD.HRQ(var1);
     }
 
@@ -27,7 +27,7 @@ public abstract class ERC {
         return this.FZC;
     }
 
-    public void RID(HO var1) {
+    public void RID(InvoiceElement var1) {
         this.FZD.RIC(var1);
     }
 }

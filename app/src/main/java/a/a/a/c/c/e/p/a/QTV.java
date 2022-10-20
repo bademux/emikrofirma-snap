@@ -15,14 +15,14 @@ import a.a.a.c.c.d.a.QUV;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.p.c.QUD;
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.e.a.d.ThreeValueBox;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.e.a.d.ValueContainer3;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.g.AGYN;
-import a.a.a.c.f.a.n.QSG;
-import a.a.a.c.f.a.n.QSI;
-import a.a.a.c.f.a.n.QSK;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.a.n.InvoiceOther;
+import a.a.a.c.f.a.n.InvoiceOtherElementPurchase;
+import a.a.a.c.f.a.n.InvoiceOtherPurchase;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
@@ -40,7 +40,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QTV extends QUV<QUD> {
-    private QSK RBS;
+    private InvoiceOtherPurchase RBS;
     private EPB RBT;
     @FXML
     private ScrollPane fxml_include_container;
@@ -192,18 +192,18 @@ public class QTV extends QUV<QUD> {
 
     }
 
-    private void RLX(HI var1) {
+    private void RLX(Contractor var1) {
         try {
             new ArrayList();
             QUD var3 = this.HHG();
             if (var1.DAI().getValue() != null && var1.DAI().getValue().length() != 0 && var1.DAJ().getValue() != null && var1.DAJ().getValue().length() != 0) {
                 List var2 = this.RLY(var1);
-                HI var4;
+                Contractor var4;
                 if (var2.size() == 0) {
                     var4 = var1.AICD();
                     var3.getModelManager().HJZ(var3.getParentDefinition(), var4);
                 } else {
-                    var4 = (HI) ((EDF) var2.get(0)).getModelBaseElementWithIdObject();
+                    var4 = (Contractor) ((EDF) var2.get(0)).getModelBaseElementWithIdObject();
                     var4.setPrivtePerson(var1.AICE());
                     var4.setName(var1.DAI());
                     var4.setNip(var1.DAJ());
@@ -234,7 +234,7 @@ public class QTV extends QUV<QUD> {
 
     }
 
-    private List<EDF<HI>> RLY(HI var1) throws FFK, FFO {
+    private List<EDF<Contractor>> RLY(Contractor var1) throws FFK, FFO {
 
         Object var8;
         Object var2 = new ArrayList();
@@ -243,11 +243,11 @@ public class QTV extends QUV<QUD> {
             AGYN var4;
             if (!var1.AICE()) {
                 if (var1.getNip() != null && var1.getNip().getValue() != null) {
-                    var4 = new AGYN(HI.class, var1.getNip().getValue());
+                    var4 = new AGYN(Contractor.class, var1.getNip().getValue());
                     var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
                 }
             } else if (var1.getName() != null && var1.getName().getValue() != null) {
-                var4 = new AGYN(HI.class, var1.QON(), null);
+                var4 = new AGYN(Contractor.class, var1.QON(), null);
                 var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
             }
         }
@@ -259,12 +259,12 @@ public class QTV extends QUV<QUD> {
 
     private void RLZ() {
 
-        JN var1 = null;
+        Period var1 = null;
         if (this.RBS != null && this.RBS.getPeriod() != null) {
             var1 = this.RBS.getPeriod();
         }
 
-        JN finalVar = var1;
+        Period finalVar = var1;
         this.getApplication().initController(this.getFxmlName(), EOS.OTHER_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
             public void accept(ENK<?> var1x) {
 
@@ -287,14 +287,14 @@ public class QTV extends QUV<QUD> {
         Iterator var3 = var2.iterator();
 
         while (var3.hasNext()) {
-            QSI var4 = (QSI) var3.next();
+            InvoiceOtherElementPurchase var4 = (InvoiceOtherElementPurchase) var3.next();
             if (var1.get(var4.getTaxRate().getValue()) == null) {
-                var1.put(var4.getTaxRate().getValue(), new ThreeValueBox(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
+                var1.put(var4.getTaxRate().getValue(), new ValueContainer3(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
             }
 
-            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
-            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
-            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
+            ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
+            ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
+            ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
         }
 
         this.RBS.getSumOfAmountsDividedByTaxRate().clear();
@@ -304,18 +304,18 @@ public class QTV extends QUV<QUD> {
 
         while (var3.hasNext()) {
             KL var8 = (KL) var3.next();
-            this.RBS.getSumOfAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getFirstValue()));
-            this.RBS.getAmountOfTaxDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getSecondValue()));
-            this.RBS.getSumOfGrossAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getThirdValue()));
+            this.RBS.getSumOfAmountsDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getFirstValue()));
+            this.RBS.getAmountOfTaxDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getSecondValue()));
+            this.RBS.getSumOfGrossAmountsDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getThirdValue()));
         }
 
     }
 
-    public void setInvoice(QSG<?> var1) throws FFK {
-        this.RBS = (QSK) var1;
+    public void setInvoice(InvoiceOther<?> var1) throws FFK {
+        this.RBS = (InvoiceOtherPurchase) var1;
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
         throw new UnsupportedOperationException();
     }
 

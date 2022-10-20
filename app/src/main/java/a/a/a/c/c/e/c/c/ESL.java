@@ -3,9 +3,9 @@ package a.a.a.c.c.e.c.c;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.d.d.ENW;
 import a.a.a.c.f.a.d.HL;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JX;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ESL extends ESK implements ENW, Comparable<ESL> {
-    private final ObjectProperty<JN> GDE;
+    private final ObjectProperty<Period> GDE;
     private final ObjectProperty<JX> GDF;
     private final ObjectProperty<JG> GDG;
     private final ObjectProperty<Date> QNC;
@@ -26,7 +26,7 @@ public class ESL extends ESK implements ENW, Comparable<ESL> {
     private final BooleanProperty GDL;
     private final BooleanProperty GDM;
 
-    public ESL(EDF<JF> var1, ESJ var2, List<ESL> var3, boolean var4, boolean var5, boolean var6) {
+    public ESL(EDF<Settlement> var1, ESJ var2, List<ESL> var3, boolean var4, boolean var5, boolean var6) {
         super(var2, var1);
         this.GDJ = var3;
         this.GDK = var4;
@@ -39,7 +39,7 @@ public class ESL extends ESK implements ENW, Comparable<ESL> {
         this.QND = new SimpleObjectProperty(null);
     }
 
-    public ESL(ESJ var1, List<ESL> var2, boolean var3, boolean var4, boolean var5, JF var6) {
+    public ESL(ESJ var1, List<ESL> var2, boolean var3, boolean var4, boolean var5, Settlement var6) {
         super(var1, var6);
         this.GDJ = var2;
         this.GDK = var3;
@@ -52,7 +52,7 @@ public class ESL extends ESK implements ENW, Comparable<ESL> {
         this.QND = new SimpleObjectProperty(null);
     }
 
-    public ObjectProperty<JN> getPeriod() {
+    public ObjectProperty<Period> getPeriod() {
         if (this.getSettlement() != null) {
             this.GDE.set(this.getSettlement().getPeriod());
         } else {

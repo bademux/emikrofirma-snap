@@ -22,9 +22,9 @@ import a.a.a.c.c.d.n.QVB;
 import a.a.a.c.c.e.o.c.QTU;
 import a.a.a.c.f.a.a.EZG;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.n.QSK;
+import a.a.a.c.f.a.n.InvoiceOtherPurchase;
 import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.KH;
 import a.a.a.c.f.b.c.a.QSW;
 import a.a.a.c.g.MSX;
@@ -69,19 +69,19 @@ public class QTN extends ENO<QTU> {
     @FXML
     private Label fxml_other_purchase_list_button_error_label;
     @FXML
-    private TableView<QVB<QSK>> fxml_other_purchase_list_table;
+    private TableView<QVB<InvoiceOtherPurchase>> fxml_other_purchase_list_table;
     @FXML
-    private TableColumn<QVB<QSK>, Date> fxml_other_purchase_list_table_column_invoicing_date;
+    private TableColumn<QVB<InvoiceOtherPurchase>, Date> fxml_other_purchase_list_table_column_invoicing_date;
     @FXML
-    private TableColumn<QVB<QSK>, String> fxml_other_purchase_list_table_column_ref_id;
+    private TableColumn<QVB<InvoiceOtherPurchase>, String> fxml_other_purchase_list_table_column_ref_id;
     @FXML
-    private TableColumn<QVB<QSK>, QSQ> fxml_other_purchase_list_table_column_other_type;
+    private TableColumn<QVB<InvoiceOtherPurchase>, QSQ> fxml_other_purchase_list_table_column_other_type;
     @FXML
-    private TableColumn<QVB<QSK>, BigDecimal> fxml_other_purchase_list_table_column_sum_net;
+    private TableColumn<QVB<InvoiceOtherPurchase>, BigDecimal> fxml_other_purchase_list_table_column_sum_net;
     @FXML
-    private TableColumn<QVB<QSK>, BigDecimal> fxml_other_purchase_list_table_column_sum_tax;
+    private TableColumn<QVB<InvoiceOtherPurchase>, BigDecimal> fxml_other_purchase_list_table_column_sum_tax;
     @FXML
-    private TableColumn<QVB<QSK>, BigDecimal> fxml_other_purchase_list_table_column_sum_brut;
+    private TableColumn<QVB<InvoiceOtherPurchase>, BigDecimal> fxml_other_purchase_list_table_column_sum_brut;
     @FXML
     private TableView<EOX<String>> fxml_other_purchase_list_summary_table;
     @FXML
@@ -101,13 +101,13 @@ public class QTN extends ENO<QTU> {
     @FXML
     private Button fxml_other_purchase_list_button_delete;
     private SortedMap<String, SortedSet<KH>> RBB = null;
-    private JN RBC = null;
+    private Period RBC = null;
     private String RBD;
     private KH RBE;
     private String RBF;
     private static final int RBG = 50;
     private int RBH = 0;
-    private List<QVB<QSK>> RBI;
+    private List<QVB<InvoiceOtherPurchase>> RBI;
     private boolean RBJ = true;
     protected final ListProperty<EOX<String>> RBK = new SimpleListProperty(FXCollections.observableArrayList());
     private final QTO RBL = new QTO();
@@ -123,8 +123,8 @@ public class QTN extends ENO<QTU> {
     public void initialize() {
 
         this.RBF = this.resources.getString("micro.process.other_purchase_list.SearchAll");
-        this.fxml_other_purchase_list_table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<QVB<QSK>>() {
-            public void changed(ObservableValue<? extends QVB<QSK>> var1, QVB<QSK> var2, QVB<QSK> var3) {
+        this.fxml_other_purchase_list_table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<QVB<InvoiceOtherPurchase>>() {
+            public void changed(ObservableValue<? extends QVB<InvoiceOtherPurchase>> var1, QVB<InvoiceOtherPurchase> var2, QVB<InvoiceOtherPurchase> var3) {
                 if (var3 != null) {
                     QTN.this.RLN();
                 } else {
@@ -243,7 +243,7 @@ public class QTN extends ENO<QTU> {
     public void setOnlyEmptyPeriod() {
     }
 
-    public void setPeriod(JN var1) throws FFK {
+    public void setPeriod(Period var1) throws FFK {
 
         this.RBC = var1;
 
@@ -529,7 +529,7 @@ public class QTN extends ENO<QTU> {
 
     }
 
-    private QTR RLO(QVB<QSK> var1) {
+    private QTR RLO(QVB<InvoiceOtherPurchase> var1) {
 
         if (var1.getState().equals(QSW.CANCELED)) {
             QTR var10 = new QTR(false, null);
@@ -557,7 +557,7 @@ public class QTN extends ENO<QTU> {
         }
     }
 
-    private QTR RLP(QVB<QSK> var1) {
+    private QTR RLP(QVB<InvoiceOtherPurchase> var1) {
 
         QTR var2;
         var2 = new QTR(true, null);
@@ -565,7 +565,7 @@ public class QTN extends ENO<QTU> {
         return var2;
     }
 
-    private QTR RLQ(QVB<QSK> var1) {
+    private QTR RLQ(QVB<InvoiceOtherPurchase> var1) {
 
         QTR var3;
         boolean var2 = false;
@@ -594,7 +594,7 @@ public class QTN extends ENO<QTU> {
         return var3;
     }
 
-    public boolean RLR(QVB<QSK> var1) throws FFK, FFO {
+    public boolean RLR(QVB<InvoiceOtherPurchase> var1) throws FFK, FFO {
 
         boolean var3;
         boolean var2 = this.RLS(var1.getPeriod());
@@ -603,7 +603,7 @@ public class QTN extends ENO<QTU> {
         return var3;
     }
 
-    public boolean RLS(JN var1) throws FFK, FFO {
+    public boolean RLS(Period var1) throws FFK, FFO {
 
         boolean var4;
         QTU var2 = this.getProcess();
@@ -692,7 +692,7 @@ public class QTN extends ENO<QTU> {
             FEN var1 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.invoice_purchase_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.other_purchase_list.Dialog.deleteAreYouSure.header"));
             switch (var1) {
                 case Confirm:
-                    this.getProcess().RLU((QSK) ((QVB) this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem()).getRealInvoice());
+                    this.getProcess().RLU((InvoiceOtherPurchase) ((QVB) this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem()).getRealInvoice());
                     if (this.RBJ) {
                         this.getInvoicesBySearch();
                     } else {

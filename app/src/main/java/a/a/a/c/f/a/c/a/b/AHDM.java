@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHDM extends AHDK<Date> {
+public class AHDM extends Constant<Date> {
     private AHDM() {
 
     }

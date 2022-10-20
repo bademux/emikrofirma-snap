@@ -6,13 +6,13 @@ import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.a.ELZ;
+import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.EMA;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.b.EMU;
 import com.github.bademux.emk.Application;
-import a.a.a.c.f.c.a.LP;
-import a.a.a.c.f.c.a.LQ;
+import a.a.a.c.f.c.a.ConfigurationProperties;
+import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.LS;
 import a.a.a.c.g.FCQ;
 import a.a.a.c.g.b.FCW;
@@ -27,7 +27,7 @@ public abstract class ELV {
     private final String FGG;
     private EMA FGH;
     private EMU FGI;
-    private ELZ FGJ;
+    private ProcessDefinitionBase FGJ;
 
     public ELV() {
         throw new FFI("Must be overridden!");
@@ -46,11 +46,11 @@ public abstract class ELV {
         return this.FGH;
     }
 
-    public ELZ getParentDefinition() {
+    public ProcessDefinitionBase getParentDefinition() {
         return this.FGJ;
     }
 
-    public void setParentDefinition(ELZ var1) {
+    public void setParentDefinition(ProcessDefinitionBase var1) {
         this.FGJ = var1;
     }
 
@@ -130,12 +130,12 @@ public abstract class ELV {
             throw new FFK("stageToHandle cannto be null!");
         }
 
-        LP var2 = EMB.getInstance().HHU();
+        ConfigurationProperties var2 = EMB.getInstance().HHU();
         LS var3 = null;
         Iterator var4 = var2.getConfigurationProperties().iterator();
 
         while (var4.hasNext()) {
-            LQ var5 = (LQ) var4.next();
+            ConfigurationProperty var5 = (ConfigurationProperty) var4.next();
             if (FCQ.WorkingDir.getPropertyName().equals(var5.DEX().getValue())) {
                 var3 = (LS) var5;
             }

@@ -4,7 +4,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.b.a.EMW;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import com.github.bademux.emk.app.FXApp;
 
 public abstract class ENK<_PROCESS extends ELV> extends BaseProgressFxController<_PROCESS> {
@@ -12,5 +12,5 @@ public abstract class ENK<_PROCESS extends ELV> extends BaseProgressFxController
         super(var1, var2, var3, var4);
     }
 
-    public abstract void setPeriod(JN var1) throws FFK;
+    public abstract void setPeriod(Period var1) throws FFK;
 }

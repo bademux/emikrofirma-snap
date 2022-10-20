@@ -1,10 +1,10 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
-import a.a.a.c.f.a.c.a.c.AHDT;
+import a.a.a.c.f.a.c.a.c.Field;
 import a.a.a.c.f.a.c.a.f.AHEM;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -12,7 +12,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHCX extends AHCT<BigDecimal> {
+public class AHCX extends ConditionOnFieldAndVariableAbstract<BigDecimal> {
     private AHCX() {
 
     }
@@ -22,9 +22,9 @@ public class AHCX extends AHCT<BigDecimal> {
 
     }
 
-    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
+    public ValueContainer2<AHCI, String> AICX(Field var1) {
 
-        TwoValueBox var7;
+        ValueContainer2 var7;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("variable " + this.AHUP);
@@ -69,11 +69,11 @@ public class AHCX extends AHCT<BigDecimal> {
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");
             }
 
-            TwoValueBox var8 = new TwoValueBox(var12, this.AIDB("", var1));
+            ValueContainer2 var8 = new ValueContainer2(var12, this.AIDB("", var1));
             return var8;
         }
 
-        var7 = new TwoValueBox(AHCI.SUCCESS, null);
+        var7 = new ValueContainer2(AHCI.SUCCESS, null);
 
         return var7;
     }

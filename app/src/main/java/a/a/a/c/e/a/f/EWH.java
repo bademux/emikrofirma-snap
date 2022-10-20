@@ -1,6 +1,6 @@
 package a.a.a.c.e.a.f;
 
-import a.a.a.c.e.a.d.ThreeValueBox;
+import a.a.a.c.e.a.d.ValueContainer3;
 import a.a.a.c.e.a.f.a.EWN;
 import a.a.a.c.e.a.g.EWV;
 import a.a.a.c.e.a.g.EWX;
@@ -44,17 +44,17 @@ public class EWH extends EWM {
         System.setProperty("jsse.enableSNIExtension", "false");
     }
 
-    public static <_PAYLOAD_TYPE, _RESULT_TYPE> EWK<_RESULT_TYPE> IAW(EWJ<_PAYLOAD_TYPE> var0, EWX var1, EWG<_RESULT_TYPE> var2) throws Exception {
+    public static <_PAYLOAD_TYPE, _RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAW(HttpSenderRequest<_PAYLOAD_TYPE> var0, EWX var1, EWG<_RESULT_TYPE> var2) throws Exception {
 
-        EWK var3;
+        HttpSenderResult var3;
         var3 = IAX(var0, var1, var1, var2);
 
         return var3;
     }
 
-    public static <_PAYLOAD_TYPE, _RESULT_TYPE> EWK<_RESULT_TYPE> IAX(EWJ<_PAYLOAD_TYPE> var0, EWX var1, EWX var2, EWG<_RESULT_TYPE> var3) throws Exception {
+    public static <_PAYLOAD_TYPE, _RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAX(HttpSenderRequest<_PAYLOAD_TYPE> var0, EWX var1, EWX var2, EWG<_RESULT_TYPE> var3) throws Exception {
 
-        EWK var14;
+        HttpSenderResult var14;
         EWP var4 = var0.getMethod();
         EWS var5 = var0.getProtocol();
         String var6 = var0.getHost();
@@ -70,17 +70,17 @@ public class EWH extends EWM {
         return var14;
     }
 
-    public static <_RESULT_TYPE> EWK<_RESULT_TYPE> IAY(EWP var0, EWS var1, String var2, int var3, String var4, Map<String, String> var5, EWQ var6, InputStream var7, long var8, EWX var10, EWG<_RESULT_TYPE> var11) throws Exception {
+    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAY(EWP var0, EWS var1, String var2, int var3, String var4, Map<String, String> var5, EWQ var6, InputStream var7, long var8, EWX var10, EWG<_RESULT_TYPE> var11) throws Exception {
 
-        EWK var12;
+        HttpSenderResult var12;
         var12 = IAZ(var0, var1, var2, var3, var4, var5, var6, var7, var8, var10, var10, var11);
 
         return var12;
     }
 
-    public static <_RESULT_TYPE> EWK<_RESULT_TYPE> IAZ(EWP var0, EWS var1, String var2, int var3, String var4, Map<String, String> var5, EWQ var6, InputStream var7, long var8, EWX var10, EWX var11, EWG<_RESULT_TYPE> var12) throws Exception {
+    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAZ(EWP var0, EWS var1, String var2, int var3, String var4, Map<String, String> var5, EWQ var6, InputStream var7, long var8, EWX var10, EWX var11, EWG<_RESULT_TYPE> var12) throws Exception {
 
-        EWK var52;
+        HttpSenderResult var52;
         LinkedHashMap var13 = new LinkedHashMap();
         var13.putAll(var5);
         var13.put("Proxy-Connection", "keep-alive");
@@ -247,12 +247,12 @@ public class EWH extends EWM {
         var21 = var45 != null && var45.size() > 0 ? (String) var45.get(0) : null;
         Long var49 = var21 != null ? Long.parseLong(var21) : null;
         Object var50 = var12.IAP(var37, var11, var49);
-        var52 = new EWK(var50, null, var43);
+        var52 = new HttpSenderResult(var50, null, var43);
 
         return var52;
     }
 
-    public static <_RESULT_TYPE> EWK<_RESULT_TYPE> MXE(EWP var0, EWS var1, String var2, int var3, String var4, String var5, List<ThreeValueBox<String, InputStream, Long>> var6, EWX var7, EWX var8, EWG<_RESULT_TYPE> var9, X509Certificate var10) throws Exception {
+    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> MXE(EWP var0, EWS var1, String var2, int var3, String var4, String var5, List<ValueContainer3<String, InputStream, Long>> var6, EWX var7, EWX var8, EWG<_RESULT_TYPE> var9, X509Certificate var10) throws Exception {
 
         LinkedHashMap var11 = new LinkedHashMap();
         var11.put("Content-Type", EWQ.MULTIPART_RELATED.getMimeType() + "; boundary=" + var5);
@@ -261,10 +261,10 @@ public class EWH extends EWM {
         Long var13 = 0L;
         Iterator var14 = var6.iterator();
 
-        ThreeValueBox var15;
+        ValueContainer3 var15;
         String var16;
         while (var14.hasNext()) {
-            var15 = (ThreeValueBox) var14.next();
+            var15 = (ValueContainer3) var14.next();
             var16 = (String) var15.getFirstValue();
             Long var17 = (Long) var15.getThirdValue();
             var13 = var13 + var17;
@@ -418,7 +418,7 @@ public class EWH extends EWM {
                 Iterator var49 = var6.iterator();
 
                 for (; var49.hasNext(); var37.write("\r\n".getBytes(StandardCharsets.UTF_8))) {
-                    ThreeValueBox var46 = (ThreeValueBox) var49.next();
+                    ValueContainer3 var46 = (ValueContainer3) var49.next();
                     var22 = (String) var46.getFirstValue();
                     var51 = (InputStream) var46.getSecondValue();
                     Long var53 = (Long) var46.getThirdValue();
@@ -453,32 +453,32 @@ public class EWH extends EWM {
                 var22 = var47 != null && var47.size() > 0 ? (String) var47.get(0) : null;
                 Long var54 = var22 != null ? Long.parseLong(var22) : null;
                 Object var55 = var9.IAP(var41, var8, var54);
-                EWK var58 = new EWK(var55, null, var50);
+                HttpSenderResult var58 = new HttpSenderResult(var55, null, var50);
                 return var58;
             default:
                 throw new RuntimeException("Unsupported method [" + var0 + "]!");
         }
     }
 
-    public static <_PAYLOAD_TYPE, _RESULT_TYPE> EWK<_RESULT_TYPE> IBA(EWJ<_PAYLOAD_TYPE> var0, EWX var1, EWG<_RESULT_TYPE> var2) throws Exception {
+    public static <_PAYLOAD_TYPE, _RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IBA(HttpSenderRequest<_PAYLOAD_TYPE> var0, EWX var1, EWG<_RESULT_TYPE> var2) throws Exception {
 
-        EWK var3;
+        HttpSenderResult var3;
         var3 = MXG(var0, var1, var1, var2, null);
 
         return var3;
     }
 
-    public static <_PAYLOAD_TYPE, _RESULT_TYPE> EWK<_RESULT_TYPE> MXF(EWJ<_PAYLOAD_TYPE> var0, EWX var1, EWG<_RESULT_TYPE> var2, X509Certificate var3) throws Exception {
+    public static <_PAYLOAD_TYPE, _RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> MXF(HttpSenderRequest<_PAYLOAD_TYPE> var0, EWX var1, EWG<_RESULT_TYPE> var2, X509Certificate var3) throws Exception {
 
-        EWK var4;
+        HttpSenderResult var4;
         var4 = MXG(var0, var1, var1, var2, var3);
 
         return var4;
     }
 
-    public static <_PAYLOAD_TYPE, _RESULT_TYPE> EWK<_RESULT_TYPE> MXG(EWJ<_PAYLOAD_TYPE> var0, EWX var1, EWX var2, EWG<_RESULT_TYPE> var3, X509Certificate var4) throws Exception {
+    public static <_PAYLOAD_TYPE, _RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> MXG(HttpSenderRequest<_PAYLOAD_TYPE> var0, EWX var1, EWX var2, EWG<_RESULT_TYPE> var3, X509Certificate var4) throws Exception {
 
-        EWK var30;
+        HttpSenderResult var30;
         URL var5 = var0.getURL();
         URLConnection var6 = var5.openConnection();
         HttpURLConnection var7 = (HttpURLConnection) var6;
@@ -556,7 +556,7 @@ public class EWH extends EWM {
         }
 
         Object var29 = var3.IAP(var28, var2, null);
-        var30 = new EWK(var29, var26, var6.getHeaderFields());
+        var30 = new HttpSenderResult(var29, var26, var6.getHeaderFields());
 
         return var30;
     }

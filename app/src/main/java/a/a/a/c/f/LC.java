@@ -15,7 +15,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 @XmlTransient
-public abstract class LC extends KX<byte[]> {
+public abstract class LC extends ModelBaseTypeElement<byte[]> {
     @XmlTransient
     private final ObjectProperty<byte[]> APQ;
     @XmlTransient
@@ -65,7 +65,7 @@ public abstract class LC extends KX<byte[]> {
         return var11;
     }
 
-    public int compareTo(KX<byte[]> var1) {
+    public int compareTo(ModelBaseTypeElement<byte[]> var1) {
         throw new FFI("Do NOT use!");
     }
 

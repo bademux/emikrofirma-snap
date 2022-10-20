@@ -6,7 +6,7 @@ import a.a.a.b.f.FFO;
 import a.a.a.b.g.FFP;
 import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.f.a.d.AGXA;
+import a.a.a.c.f.a.d.JPKSchemaType;
 import a.a.a.c.g.c.FCZ;
 import lombok.extern.slf4j.Slf4j;
 
@@ -71,13 +71,13 @@ public class EPX {
                             throw FCZ.getInstance().IHV("KodFormularza, kodSystemowy, wersjaSchemy", var13.get(0) + ", " + var13.get(1) + ", " + var13.get(2));
                         }
 
-                        if (!AGXA.AHSV.getKodSystemowy().equals(var17.get(1)) || !AGXA.AHSV.getWersjaSchemy().equals(var17.get(2))) {
-                            throw FCZ.getInstance().IHV(AGXA.AHSV.getKodSystemowy() + "," + AGXA.AHSV.getWersjaSchemy(), var17.get(1) + ", " + var17.get(2));
+                        if (!JPKSchemaType.AHSV.getKodSystemowy().equals(var17.get(1)) || !JPKSchemaType.AHSV.getWersjaSchemy().equals(var17.get(2))) {
+                            throw FCZ.getInstance().IHV(JPKSchemaType.AHSV.getKodSystemowy() + "," + JPKSchemaType.AHSV.getWersjaSchemy(), var17.get(1) + ", " + var17.get(2));
                         }
 
                         HPT(var10, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "KodFormularza", (String) var17.get(0), new EPY("kodSystemowy", (String) var17.get(1)), new EPY("wersjaSchemy", (String) var17.get(2)));
                         if ("WariantFormularza".equals(var13.get(3))) {
-                            if (!AGXA.AHSV.getWariantFormularza().equals(var17.get(3))) {
+                            if (!JPKSchemaType.AHSV.getWariantFormularza().equals(var17.get(3))) {
                                 throw FCZ.getInstance().IHV("WariantFormularza", (String) var13.get(3));
                             }
 

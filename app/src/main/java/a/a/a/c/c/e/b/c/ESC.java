@@ -8,11 +8,11 @@ import a.a.a.c.c.e.b.b.ESB;
 import a.a.a.c.f.a.g.JB;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.a.KG;
-import a.a.a.c.f.c.b.LX;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.SimpleUserData;
+import a.a.a.c.f.c.b.UserData;
 
 public class ESC extends ELV {
-    private LY GBS;
+    private UserData GBS;
 
     public ESC() {
         super(ESB.GBR.getProcessName());
@@ -25,17 +25,17 @@ public class ESC extends ELV {
 
         try {
             if (this.GBS == null) {
-                JB var1 = new JB(LY.class);
-                this.GBS = (LY) this.getModelManager().HJT(this.getParentDefinition(), var1);
+                JB var1 = new JB(UserData.class);
+                this.GBS = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 if (this.GBS == null) {
                     String var2 = EMB.getInstance().getCurrentUser().getUsername().getValue();
                     if (var2 == null) {
                         throw new FFK("Not supposed to happen, userName is null!");
                     }
 
-                    LX var3 = EMB.getInstance().getSimpleUserDataForUserName(var2);
+                    SimpleUserData var3 = EMB.getInstance().getSimpleUserDataForUserName(var2);
                     if (var3.DFA().getValue() == KG.NIP) {
-                        this.GBS = new LY();
+                        this.GBS = new UserData();
                         this.GBS.DEW().setValue(1);
                         this.GBS.setNip(new KA(var3.getUsername().getValue()));
                     } else {
@@ -77,7 +77,7 @@ public class ESC extends ELV {
 
     }
 
-    public LY getUserData() {
+    public UserData getUserData() {
         return this.GBS;
     }
 }

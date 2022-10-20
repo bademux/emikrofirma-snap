@@ -5,15 +5,15 @@ import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.d.o.*;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
-import a.a.a.c.f.a.e.HO;
-import a.a.a.c.f.a.e.HP;
-import a.a.a.c.f.a.e.HR;
+import a.a.a.c.f.a.e.InvoiceElement;
+import a.a.a.c.f.a.e.InvoiceElementPurchase;
+import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
@@ -37,7 +37,7 @@ import java.net.URISyntaxException;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
-public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
+public abstract class QUW extends BaseFxController implements EMO<InvoiceElement>, EYR {
     @FXML
     public EYQ fxml_include_invoiceRefNumber_boxController;
     @FXML
@@ -63,36 +63,36 @@ public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
     @FXML
     public EZD fxml_include_invoicingDate_boxController;
     @FXML
-    public TableView<HP> fxml_registry_invoicePositionTable_tableView;
+    public TableView<InvoiceElementPurchase> fxml_registry_invoicePositionTable_tableView;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_netTotalValue_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_netTotalValue_tableColumn;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_vatValue_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_vatValue_tableColumn;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_deductHalf_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_deductHalf_tableColumn;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_grossValue_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_grossValue_tableColumn;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_taxReason_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_taxReason_tableColumn;
     @FXML
-    protected TableView<HR> fxml_summary_values_tableView;
+    protected TableView<InvoicePurchase> fxml_summary_values_tableView;
     @FXML
-    protected TableColumn<HR, Object> fxml_summary_totalNetValue_tableColumn;
+    protected TableColumn<InvoicePurchase, Object> fxml_summary_totalNetValue_tableColumn;
     @FXML
-    protected TableColumn<HR, Object> fxml_summary_totalVatValue_tableColumn;
+    protected TableColumn<InvoicePurchase, Object> fxml_summary_totalVatValue_tableColumn;
     @FXML
-    protected TableColumn<HR, Object> fxml_summary_totalGrossValue_tableColumn;
+    protected TableColumn<InvoicePurchase, Object> fxml_summary_totalGrossValue_tableColumn;
     @FXML
     public Button fxml_registry_addRowButton;
     @FXML
     public Button fxml_registry_deleteRowButton;
-    protected HR REZ;
+    protected InvoicePurchase REZ;
     @FXML
     public Node fxml_inner_parent;
     public BooleanProperty RFA = new SimpleBooleanProperty(this, "readOnlyPropertyHolder", false);
     public BooleanProperty RFB = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
     public BooleanProperty RFC = new SimpleBooleanProperty(this, "requiredAndValidPropertyHolder", false);
-    protected ListProperty<HP> RFD = new SimpleListProperty();
+    protected ListProperty<InvoiceElementPurchase> RFD = new SimpleListProperty();
     public BooleanProperty RFE = new SimpleBooleanProperty(this, "invoicePositionTableChangedPropertyHolder", false);
     public BooleanProperty RFF = new SimpleBooleanProperty(false);
     protected QUX RFG;
@@ -103,11 +103,11 @@ public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
         super(var1, var2);
     }
 
-    public abstract boolean RJW(JN var1, KE var2, KA var3);
+    public abstract boolean RJW(Period var1, RefId var2, KA var3);
 
-    public abstract boolean RJX(JN var1);
+    public abstract boolean RJX(Period var1);
 
-    public HR getCurrentPurchase() {
+    public InvoicePurchase getCurrentPurchase() {
         return this.REZ;
     }
 
@@ -122,7 +122,7 @@ public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
     public void setContractorFromAutocomplete(QJW var1) {
 
         if (var1 != null) {
-            HI var2 = var1.getContractor().AICD();
+            Contractor var2 = var1.getContractor().AICD();
             String var3 = this.resources.getString("micro.process.general.nip.null");
             if (!var3.equalsIgnoreCase(var2.DAJ().getValue())) {
                 this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().setText(var2.getNip().getValue());
@@ -246,7 +246,7 @@ public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
         Iterator var4 = this.REZ.getInvoiceElements().iterator();
 
         while (var4.hasNext()) {
-            HP var5 = (HP) var4.next();
+            InvoiceElementPurchase var5 = (InvoiceElementPurchase) var4.next();
             if (var5.DBK().getValue() != null) {
                 var1 = var1.add(var5.DBK().getValue());
             }
@@ -269,7 +269,7 @@ public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
 
     protected abstract void RJY();
 
-    public void RJZ(HR var1) {
+    public void RJZ(InvoicePurchase var1) {
 
         if (var1 != null) {
             this.HHD(this.fxml_include_invoiceRefNumber_boxController.fxml_component_main_element.textProperty(), var1.DAS().DDG());
@@ -278,7 +278,7 @@ public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
             this.fxml_include_receiptDate_boxController.fxml_component_main_element.valueProperty().unbindBidirectional(var1.DBR().DEC());
             this.fxml_include_invoicingDate_boxController.fxml_component_main_element.valueProperty().unbindBidirectional(var1.DAF().DDL());
             this.fxml_include_invoicingDate_boxController.fxml_component_main_element.valueProperty().unbindBidirectional(var1.DBS().DEC());
-            HI var2 = var1.DBQ();
+            Contractor var2 = var1.DBQ();
             this.HHD(this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().textProperty(), var2.DAI().DDG());
             this.HHD(this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty(), var2.DAJ().DDG());
             this.HHD(this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty(), var1.DAR().DDG());
@@ -321,11 +321,11 @@ public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
         this.RFE.set(false);
     }
 
-    protected class QUX implements ListChangeListener<HP> {
+    protected class QUX implements ListChangeListener<InvoiceElementPurchase> {
         public QUX() {
         }
 
-        public void onChanged(ListChangeListener.Change<? extends HP> var1) {
+        public void onChanged(ListChangeListener.Change<? extends InvoiceElementPurchase> var1) {
 
             if (var1 != null) {
                 QUW.this.HJJ();

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.util.Set;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class AHEE extends AHDX {
+public abstract class AHEE extends OperationAbstract {
     private AHEE() {
 
     }

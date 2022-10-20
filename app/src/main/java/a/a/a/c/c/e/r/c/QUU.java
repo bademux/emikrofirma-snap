@@ -7,24 +7,24 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.r.b.QUT;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.a.EYL;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
-import a.a.a.c.f.a.e.HN;
+import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JB;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
-import a.a.a.c.f.a.n.QSN;
+import a.a.a.c.f.a.n.InvoiceOtherSell;
 import a.a.a.c.f.b.EZT;
-import a.a.a.c.f.b.b.JN;
-import a.a.a.c.f.c.a.LP;
-import a.a.a.c.f.c.a.LQ;
+import a.a.a.c.f.b.b.Period;
+import a.a.a.c.f.c.a.ConfigurationProperties;
+import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.LS;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 
 import java.io.File;
@@ -36,9 +36,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QUU extends ELX implements EYL {
-    private LP REU;
+    private ConfigurationProperties REU;
     private LS REV;
-    private QSN REW;
+    private InvoiceOtherSell REW;
     private EPB REX;
 
     public QUU() {
@@ -58,12 +58,12 @@ public class QUU extends ELX implements EYL {
 
         try {
             if (this.REU == null) {
-                JB var1 = new JB(LP.class);
-                this.REU = (LP) this.getModelManager().HJT(this.getParentDefinition(), var1);
+                JB var1 = new JB(ConfigurationProperties.class);
+                this.REU = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.REU.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    LQ var3 = (LQ) var2.next();
+                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.REV = (LS) var3;
                     }
@@ -79,9 +79,9 @@ public class QUU extends ELX implements EYL {
     public JG getSettlementStatus(LocalDate var1) throws FFK, FFO {
 
         JG var7;
-        JN var2 = new JN(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        IY var3 = new IY(JF.class, var2, JH.VAT, null);
-        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        Period var2 = new Period(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        IY var3 = new IY(Settlement.class, var2, JH.VAT, null);
+        ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -92,17 +92,17 @@ public class QUU extends ELX implements EYL {
         }
 
         EDF var6 = (EDF) var5.next();
-        var7 = ((JF) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
+        var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
 
         return var7;
     }
 
-    public LY getUserData() {
+    public UserData getUserData() {
 
-        LY var3;
+        UserData var3;
         try {
-            JB var1 = new JB(LY.class);
-            LY var2 = (LY) this.getModelManager().HJT(this.getParentDefinition(), var1);
+            JB var1 = new JB(UserData.class);
+            UserData var2 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
             var3 = var2;
         } catch (FFK var7) {
             throw new FFI(var7.getMessage());
@@ -163,13 +163,13 @@ public class QUU extends ELX implements EYL {
 
         ArrayList var4;
         try {
-            IY var3 = new IY(JF.class, null, JH.VAT, null);
-            TwoValueBox var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            IY var3 = new IY(Settlement.class, null, JH.VAT, null);
+            ValueContainer2 var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
                 EDF var6 = (EDF) var5.next();
-                JF var7 = (JF) var6.getModelBaseElementWithIdObject();
+                Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
                 if (var7.getSettlementStatus().equals(JG.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
                     LocalDate var9 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), var8.lengthOfMonth());
@@ -192,11 +192,11 @@ public class QUU extends ELX implements EYL {
         return var4;
     }
 
-    public LY getUserDataForInvoice(HN<?> var1) throws FFK {
+    public UserData getUserDataForInvoice(Invoice<?> var1) throws FFK {
 
-        LY var4;
-        JB var2 = new JB(LY.class, var1.DBC().getValue());
-        LY var3 = (LY) this.getModelManager().HJT(this.getParentDefinition(), var2);
+        UserData var4;
+        JB var2 = new JB(UserData.class, var1.DBC().getValue());
+        UserData var3 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var2);
         var4 = var3;
 
         return var4;
@@ -228,8 +228,8 @@ public class QUU extends ELX implements EYL {
 
         ArrayList var4;
         try {
-            AGYN var3 = new AGYN(HI.class, var1);
-            TwoValueBox var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            AGYN var3 = new AGYN(Contractor.class, var1);
+            ValueContainer2 var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
 
@@ -251,17 +251,17 @@ public class QUU extends ELX implements EYL {
         return var4;
     }
 
-    public void setInvoiceOtherSell(QSN var1) {
+    public void setInvoiceOtherSell(InvoiceOtherSell var1) {
 
         this.REW = var1;
 
     }
 
-    public QSN getInvoiceOtherSell() throws FFK, FFO {
+    public InvoiceOtherSell getInvoiceOtherSell() throws FFK, FFO {
 
-        QSN var1;
+        InvoiceOtherSell var1;
         if (this.REW == null) {
-            this.REW = this.getModelManager().ROG(this.getParentDefinition(), QSN.class);
+            this.REW = this.getModelManager().ROG(this.getParentDefinition(), InvoiceOtherSell.class);
         }
 
         var1 = this.REW;

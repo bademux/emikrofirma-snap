@@ -2,7 +2,7 @@ package a.a.a.c.d.b;
 
 import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
-import a.a.a.b.e.c.FFC;
+import a.a.a.b.e.c.NewPrivateKey;
 import a.a.a.b.f.*;
 import a.a.a.c.e.a.d.*;
 import a.a.a.c.e.a.g.EWX;
@@ -40,7 +40,7 @@ public abstract class EQK {
     private final VBox FWG;
     private final Double FWH;
     private final String FWI;
-    private final OneValueBox<ProgressBar> FWJ;
+    private final ValueContainer1<ProgressBar> FWJ;
     private final EWX FWK;
     private static final long MWN = 5248000L;
 
@@ -50,7 +50,7 @@ public abstract class EQK {
         this.FWG = var3;
         this.FWI = var4;
         if (this.FWF != null && this.FWG != null) {
-            this.FWJ = new OneValueBox();
+            this.FWJ = new ValueContainer1();
             this.FWK = new EWX() {
                 public void IBI(long var1, double var3, long var5, long var7, long var9, long var11) {
                     EQK.this.setProgress(EQK.this.FWJ.getFirstValue(), var3);
@@ -67,7 +67,7 @@ public abstract class EQK {
         }
     }
 
-    public OneValueBox<ProgressBar> getProgressBarContainer() {
+    public ValueContainer1<ProgressBar> getProgressBarContainer() {
         return this.FWJ;
     }
 
@@ -75,7 +75,7 @@ public abstract class EQK {
         return this.FWK;
     }
 
-    public AGWN HQF(AGWN var1) throws FFK, FFO {
+    public DeclarationJPK HQF(DeclarationJPK var1) throws FFK, FFO {
         Object var32;
         try {
             String var3;
@@ -91,7 +91,7 @@ public abstract class EQK {
                 } else {
                     this.setProgress(FCW.getInstance().getMessageForKey("micro.jpk.sendout.validation.success"));
                     boolean var5 = false;
-                    if (AGXA.AHSV.getKodFormularza().equals(var1.getDeclarationFileSchema().getKodFormularza()) && AGXA.AHSV.getKodSystemowy().equals(var1.getDeclarationFileSchema().getKodSystemowy()) && AGXA.AHSV.getWersjaSchemy().equals(var1.getDeclarationFileSchema().getWersjaSchemy()) && AGXA.AHSV.getWariantFormularza().equals(var1.getDeclarationFileSchema().getWariantFormularza())) {
+                    if (JPKSchemaType.AHSV.getKodFormularza().equals(var1.getDeclarationFileSchema().getKodFormularza()) && JPKSchemaType.AHSV.getKodSystemowy().equals(var1.getDeclarationFileSchema().getKodSystemowy()) && JPKSchemaType.AHSV.getWersjaSchemy().equals(var1.getDeclarationFileSchema().getWersjaSchemy()) && JPKSchemaType.AHSV.getWariantFormularza().equals(var1.getDeclarationFileSchema().getWariantFormularza())) {
                         var5 = true;
                         HK var6 = (HK) var1;
                         if (var6.AICF()) {
@@ -138,12 +138,12 @@ public abstract class EQK {
                                 var12 = FCR.getSignatureMethodSelector(FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.method.selector.title"), FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.method.selector.header"), 800.0, 150.0, FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.method.selector.description"), var5 && var2);
                                 switch (var12) {
                                     case CryptCard:
-                                        TwoValueBox var13 = this.getPrivateKeyAndCertificateFromSmartCard();
+                                        ValueContainer2 var13 = this.getPrivateKeyAndCertificateFromSmartCard();
                                         if (var13 != null) {
                                             this.setProgress(FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.method.selected.cryptcard"));
 
                                             try {
-                                                EPW.HPK(var1, (FFC) var13.getFirstValue(), (X509Certificate) var13.getSecondValue());
+                                                EPW.HPK(var1, (NewPrivateKey) var13.getFirstValue(), (X509Certificate) var13.getSecondValue());
                                                 var11 = true;
                                             } catch (FFN var25) {
                                                 StringBuilder var37 = new StringBuilder();
@@ -178,7 +178,7 @@ public abstract class EQK {
                                         var11 = EPW.HPL(var1);
                                         break;
                                     case KD:
-                                        SevenValueBox var14 = this.getSignatureValuesForKD();
+                                        ValueContainer7 var14 = this.getSignatureValuesForKD();
                                         if (var14 != null) {
                                             this.setProgress(FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.method.selected.kd"));
                                             var1.setSignatureType(EHK.KD);
@@ -196,7 +196,7 @@ public abstract class EQK {
                                 if (var12 != null) {
                                     if (var11) {
                                         EQB.EQC var35;
-                                        AGWN var36;
+                                        DeclarationJPK var36;
                                         switch (var1.MWX()) {
                                             case KD:
                                                 this.FWJ.setFirstValue(this.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.send.start")));
@@ -260,7 +260,7 @@ public abstract class EQK {
 
         }
 
-        return (AGWN) var32;
+        return (DeclarationJPK) var32;
     }
 
     private void HQG(File var1) {
@@ -286,7 +286,7 @@ public abstract class EQK {
 
     }
 
-    private TwoValueBox<FFC, X509Certificate> getPrivateKeyAndCertificateFromSmartCard() throws FFO, FFK {
+    private ValueContainer2<NewPrivateKey, X509Certificate> getPrivateKeyAndCertificateFromSmartCard() throws FFO, FFK {
         FCR.QGW var1;
         try {
             if (this.FWI != null && this.FWI.length() > 0) {
@@ -311,17 +311,17 @@ public abstract class EQK {
 
                             while (var45.hasNext()) {
                                 Map.Entry var9 = (Map.Entry) var45.next();
-                                byte[] var48 = (byte[]) ((ThreeValueBox) var9.getValue()).getSecondValue();
-                                X509Certificate var50 = (X509Certificate) ((ThreeValueBox) var9.getValue()).getThirdValue();
+                                byte[] var48 = (byte[]) ((ValueContainer3) var9.getValue()).getSecondValue();
+                                X509Certificate var50 = (X509Certificate) ((ValueContainer3) var9.getValue()).getThirdValue();
                                 Date var52 = var50.getNotBefore();
                                 Date var53 = var50.getNotAfter();
                                 long var55 = (Long) var43.getKey();
-                                String var59 = (String) ((ThreeValueBox) var9.getValue()).getFirstValue();
-                                var40.add(new FiveValueBox(var59, var50, var52, var53, new TwoValueBox(var55, var48)));
+                                String var59 = (String) ((ValueContainer3) var9.getValue()).getFirstValue();
+                                var40.add(new ValueContainer5(var59, var50, var52, var53, new ValueContainer2(var55, var48)));
                             }
                         }
 
-                        FiveValueBox var42 = (FiveValueBox) FCR.IGD(FCW.getInstance().getMessageForKey("micro.dialog.listchooser.title"), FCW.getInstance().getMessageForKey("micro.tableview.cert.header"), var40, FCW.getInstance().getMessageForKey("micro.tableview.column.cert.label"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.description"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.notbefore"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.notafter"), 700.0, 300.0);
+                        ValueContainer5 var42 = (ValueContainer5) FCR.IGD(FCW.getInstance().getMessageForKey("micro.dialog.listchooser.title"), FCW.getInstance().getMessageForKey("micro.tableview.cert.header"), var40, FCW.getInstance().getMessageForKey("micro.tableview.column.cert.label"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.description"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.notbefore"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.notafter"), 700.0, 300.0);
                         if (var42 != null) {
                             String var44 = (String) var42.getFirstValue();
                             log.debug("Selected Alias Encoded " + var44);
@@ -331,13 +331,13 @@ public abstract class EQK {
                             log.debug("Selected Certificate Valid To " + var47);
                             X509Certificate var49 = (X509Certificate) var42.getSecondValue();
                             log.debug("Selected Certificate Subject " + var49.getSubjectDN());
-                            long var51 = (Long) ((TwoValueBox) var42.getFifthValue()).getFirstValue();
+                            long var51 = (Long) ((ValueContainer2) var42.getFifthValue()).getFirstValue();
                             log.debug("Selected Slot " + var51);
-                            byte[] var54 = (byte[]) ((TwoValueBox) var42.getFifthValue()).getSecondValue();
+                            byte[] var54 = (byte[]) ((ValueContainer2) var42.getFifthValue()).getSecondValue();
                             log.debug("Selected Certificate Id " + Arrays.toString(var54));
-                            FFC var56 = new FFC(var39, var51, var54);
+                            NewPrivateKey var56 = new NewPrivateKey(var39, var51, var54);
                             log.debug("Selected Private Key " + var56);
-                            TwoValueBox var57 = new TwoValueBox(var56, var49);
+                            ValueContainer2 var57 = new ValueContainer2(var56, var49);
                             return var57;
                         }
                         break;
@@ -429,7 +429,7 @@ public abstract class EQK {
                                 log.debug("Available Certificate Valid To " + var31.getNotAfter());
                                 log.debug("Available Certificate Subject " + var31.getSubjectDN());
                                 log.debug("Available Certificate Id " + Arrays.toString(var65));
-                                var58.put(var24, new ThreeValueBox(new String((new String(var64)).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8), var65, var30));
+                                var58.put(var24, new ValueContainer3(new String((new String(var64)).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8), var65, var30));
                             } else {
                                 log.error("Missing ID for certificate " + new String(var64));
                             }
@@ -459,7 +459,7 @@ public abstract class EQK {
 
     }
 
-    protected abstract SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> getSignatureValuesForKD() throws FFO, FFK;
+    protected abstract ValueContainer7<Boolean, String, String, String, LocalDate, BigDecimal, String> getSignatureValuesForKD() throws FFO, FFK;
 
     private void HQH(String var1) {
 

@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.d;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.a.c.a.c.AHDV;
+import a.a.a.c.f.a.c.a.c.SelectedField;
 import a.a.a.c.f.a.c.a.f.AHEN;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHEB extends AHDZ<Date> {
+public class AHEB extends OperationOnFieldAndVariableAbstract<Date> {
     private AHEB() {
 
     }
@@ -21,7 +21,7 @@ public class AHEB extends AHDZ<Date> {
 
     }
 
-    public void AIDR(AHDV var1) {
+    public void AIDR(SelectedField var1) {
 
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("selectedField " + var1);

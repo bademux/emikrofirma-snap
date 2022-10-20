@@ -14,13 +14,13 @@ import a.a.a.c.c.d.a.ENK;
 import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.m.c.QTB;
-import a.a.a.c.e.a.d.ThreeValueBox;
-import a.a.a.c.f.a.c.HI;
-import a.a.a.c.f.a.e.HN;
-import a.a.a.c.f.a.e.HR;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.e.a.d.ValueContainer3;
+import a.a.a.c.f.a.c.Contractor;
+import a.a.a.c.f.a.e.Invoice;
+import a.a.a.c.f.a.e.InvoicePurchase;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
@@ -33,7 +33,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 
 public class QSZ extends ENN<QTB> {
-    private HR QZF;
+    private InvoicePurchase QZF;
     @FXML
     protected QSX fxml_include_aggregatePurchaseNewLogicController;
     private final BooleanProperty QZG = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
@@ -49,9 +49,9 @@ public class QSZ extends ENN<QTB> {
     protected EMP fxml_include_left_barController;
     @FXML
     protected EMR fxml_include_top_menuController;
-    private HR QZJ = null;
+    private InvoicePurchase QZJ = null;
     private EPB QZK;
-    private HI QZL;
+    private Contractor QZL;
 
     public QSZ(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
@@ -153,10 +153,10 @@ public class QSZ extends ENN<QTB> {
                     this.QZJ.setPreviousPeriod(this.QZJ.getPeriod().DDN());
                     var1.setInvoicePurchase(this.QZJ);
                     var1.setActionType(FDO.update);
-                    JN var2 = this.QZJ.getPeriod() != null ? this.QZJ.getPeriod().DDN() : null;
-                    KE var3 = this.QZJ.getRefId() != null ? this.QZJ.getRefId().DEL() : null;
+                    Period var2 = this.QZJ.getPeriod() != null ? this.QZJ.getPeriod().DDN() : null;
+                    RefId var3 = this.QZJ.getRefId() != null ? this.QZJ.getRefId().DEL() : null;
                     KA var4 = this.QZJ.getIssuerNumber() != null ? this.QZJ.getIssuerNumber().DEJ() : null;
-                    var1.setInvoicePurchaseEditKey(new ThreeValueBox(var2, var3, var4));
+                    var1.setInvoicePurchaseEditKey(new ValueContainer3(var2, var3, var4));
                 }
             } else {
                 this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.aggregate_purchase_new.title"));
@@ -191,14 +191,14 @@ public class QSZ extends ENN<QTB> {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
         this.QZI = true;
-        JN var2 = null;
+        Period var2 = null;
         if (this.QZF != null && this.QZF.getPeriod() != null) {
             var2 = this.QZF.getPeriod();
         }
 
         QTB var4 = this.getProcess();
         var4.resetAndCleanUpProcess();
-        JN finalVar = var2;
+        Period finalVar = var2;
         this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
             public void accept(ENK<?> var1) {
 
@@ -221,14 +221,14 @@ public class QSZ extends ENN<QTB> {
             this.QZF.setIsAggregatePurchase(true);
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.QZI = true;
-            JN var2 = null;
+            Period var2 = null;
             if (this.QZF != null && this.QZF.getPeriod() != null) {
                 var2 = this.QZF.getPeriod();
             }
 
             QTB var4 = this.getProcess();
             var4.HHL();
-            JN finalVar = var2;
+            Period finalVar = var2;
             this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
                 public void accept(ENK<?> var1) {
 
@@ -255,15 +255,15 @@ public class QSZ extends ENN<QTB> {
 
     }
 
-    public void setInvoice(HN<?> var1) throws FFK {
-        this.QZJ = (HR) var1;
+    public void setInvoice(Invoice<?> var1) throws FFK {
+        this.QZJ = (InvoicePurchase) var1;
     }
 
     public void setMode(EPB var1) {
         this.QZK = var1;
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
         this.QZK = EPB.NEW;
         this.QZL = var1;
     }

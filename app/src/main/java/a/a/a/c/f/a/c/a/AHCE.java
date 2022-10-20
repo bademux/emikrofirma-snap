@@ -1,12 +1,12 @@
 package a.a.a.c.f.a.c.a;
 
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.c.a.c.AHDT;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.c.a.c.Field;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class AHCE extends AHCG {
+public abstract class AHCE extends ActionOnObject {
     protected AHCE() {
 
     }
@@ -16,5 +16,5 @@ public abstract class AHCE extends AHCG {
 
     }
 
-    public abstract TwoValueBox<AHCI, String> AICX(AHDT var1);
+    public abstract ValueContainer2<AHCI, String> AICX(Field var1);
 }

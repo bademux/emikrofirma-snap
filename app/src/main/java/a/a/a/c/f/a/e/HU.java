@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.KO;
@@ -13,24 +13,24 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HU extends HX {
-    private HI AKP;
+    private Contractor AKP;
     private KO AKQ;
 
     public HU() {
 
     }
 
-    public HI getContractor() {
+    public Contractor getContractor() {
         return this.AKP;
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
         this.AKP = var1;
     }
 
-    public HI DBV() {
+    public Contractor DBV() {
         if (this.AKP == null) {
-            this.AKP = new HI();
+            this.AKP = new Contractor();
         }
 
         return this.AKP;

@@ -8,7 +8,7 @@ import a.a.a.c.f.a.a.EZI;
 import a.a.a.c.f.a.a.EZP;
 import a.a.a.c.f.a.a.EZQ;
 import a.a.a.c.f.b.c.a.KM;
-import a.a.a.c.f.c.a.LP;
+import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.QJZ;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.FCQ;
@@ -56,7 +56,7 @@ public class QSY {
         String var2 = null;
 
         try {
-            LP var3 = EMB.getInstance().HHU();
+            ConfigurationProperties var3 = EMB.getInstance().HHU();
             var2 = (String) var3.getConfigurationPropertyOrDefault(FCQ.CalculationMethod).DEY().getValue();
         } catch (FFK var7) {
             var2 = (String) QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod).DEY().getValue();

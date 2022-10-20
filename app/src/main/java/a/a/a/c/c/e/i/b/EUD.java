@@ -1,7 +1,7 @@
 package a.a.a.c.c.e.i.b;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.c.a.ELZ;
+import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.c.ENH;
@@ -14,7 +14,7 @@ import a.a.a.c.g.b.FCW;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EUD extends ELZ {
+public class EUD extends ProcessDefinitionBase {
     public static final EOS GKG;
     public static final String GKH = "declarationList_selectAndSend_JPK.fxml";
     public static final String GKI = "declarationList_jpkConvertCSV2XML.fxml";

@@ -7,17 +7,17 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.p.b.QUC;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.a.EYL;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
-import a.a.a.c.f.a.n.QSK;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.a.n.InvoiceOtherPurchase;
+import a.a.a.c.f.b.b.Period;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QUD extends ELX implements EYL {
-    private QSK RCT;
+    private InvoiceOtherPurchase RCT;
     private EPB RCU;
 
     public QUD() {
@@ -74,9 +74,9 @@ public class QUD extends ELX implements EYL {
     public JG getSettlementStatus(LocalDate var1) throws FFK, FFO {
 
         JG var7;
-        JN var2 = new JN(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        IY var3 = new IY(JF.class, var2, JH.VAT, null);
-        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        Period var2 = new Period(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        IY var3 = new IY(Settlement.class, var2, JH.VAT, null);
+        ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -87,7 +87,7 @@ public class QUD extends ELX implements EYL {
         }
 
         EDF var6 = (EDF) var5.next();
-        var7 = ((JF) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
+        var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
 
         return var7;
     }
@@ -98,8 +98,8 @@ public class QUD extends ELX implements EYL {
 
         ArrayList var4;
         try {
-            AGYN var3 = new AGYN(HI.class, var1);
-            TwoValueBox var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            AGYN var3 = new AGYN(Contractor.class, var1);
+            ValueContainer2 var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
 
@@ -126,17 +126,17 @@ public class QUD extends ELX implements EYL {
         this.HHI();
     }
 
-    public void setInvoiceOtherPurchase(QSK var1) {
+    public void setInvoiceOtherPurchase(InvoiceOtherPurchase var1) {
 
         this.RCT = var1;
 
     }
 
-    public QSK getInvoiceOtherPurchase() throws FFK, FFO {
+    public InvoiceOtherPurchase getInvoiceOtherPurchase() throws FFK, FFO {
 
-        QSK var1;
+        InvoiceOtherPurchase var1;
         if (this.RCT == null) {
-            this.RCT = this.getModelManager().ROG(this.getParentDefinition(), QSK.class);
+            this.RCT = this.getModelManager().ROG(this.getParentDefinition(), InvoiceOtherPurchase.class);
         }
 
         var1 = this.RCT;

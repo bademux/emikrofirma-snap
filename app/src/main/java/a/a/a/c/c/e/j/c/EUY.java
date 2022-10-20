@@ -7,26 +7,26 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.j.b.EUX;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.a.EYL;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
 import a.a.a.c.f.a.e.*;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.g.IU;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JB;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
 import a.a.a.c.f.b.EZT;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JS;
-import a.a.a.c.f.b.c.KE;
-import a.a.a.c.f.c.a.LP;
-import a.a.a.c.f.c.a.LQ;
+import a.a.a.c.f.b.c.RefId;
+import a.a.a.c.f.c.a.ConfigurationProperties;
+import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.LS;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 
 import java.io.File;
@@ -38,7 +38,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EUY extends ELX implements EYL {
-    private LP GMS;
+    private ConfigurationProperties GMS;
     private LS GMT;
     private LS GMU;
     private LS GMV;
@@ -74,12 +74,12 @@ public class EUY extends ELX implements EYL {
 
         try {
             if (this.GMS == null) {
-                JB var1 = new JB(LP.class);
-                this.GMS = (LP) this.getModelManager().HJT(this.getParentDefinition(), var1);
+                JB var1 = new JB(ConfigurationProperties.class);
+                this.GMS = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.GMS.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    LQ var3 = (LQ) var2.next();
+                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.SellRefIdPattern.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GMT = (LS) var3;
                     } else if (FCQ.SellCorrectionRefIdPattern.getPropertyName().equals(var3.DEX().getValue())) {
@@ -96,7 +96,7 @@ public class EUY extends ELX implements EYL {
 
     }
 
-    public HU getInvoiceSell(HI var1) throws FFK, FFO {
+    public HU getInvoiceSell(Contractor var1) throws FFK, FFO {
 
         HU var2;
         if (this.GMW == null) {
@@ -142,9 +142,9 @@ public class EUY extends ELX implements EYL {
     public JG getSettlementStatus(LocalDate var1) throws FFK, FFO {
 
         Iterator var5;
-        JN var2 = new JN(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        IY var3 = new IY(JF.class, var2, JH.VAT, null);
-        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        Period var2 = new Period(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        IY var3 = new IY(Settlement.class, var2, JH.VAT, null);
+        ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -152,7 +152,7 @@ public class EUY extends ELX implements EYL {
         var5 = ((List) var4.getSecondValue()).iterator();
         if (var5.hasNext()) {
             EDF var6 = (EDF) var5.next();
-            JG var7 = ((JF) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
+            JG var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
             return var7;
         }
 
@@ -160,12 +160,12 @@ public class EUY extends ELX implements EYL {
 
     }
 
-    public LY getUserData() {
+    public UserData getUserData() {
 
-        LY var3;
+        UserData var3;
         try {
-            JB var1 = new JB(LY.class);
-            LY var2 = (LY) this.getModelManager().HJT(this.getParentDefinition(), var1);
+            JB var1 = new JB(UserData.class);
+            UserData var2 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
             var3 = var2;
         } catch (FFK var7) {
             throw new FFI(var7.getMessage());
@@ -239,11 +239,11 @@ public class EUY extends ELX implements EYL {
 
     }
 
-    public boolean HYB(JN var1, String var2) throws FFK, FFO {
+    public boolean HYB(Period var1, String var2) throws FFK, FFO {
 
         boolean var5;
-        IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new KE(var2), null);
-        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new RefId(var2), null);
+        ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 0) {
             var5 = false;
             return var5;
@@ -260,13 +260,13 @@ public class EUY extends ELX implements EYL {
 
         ArrayList var4;
         try {
-            IY var3 = new IY(JF.class, null, JH.VAT, null);
-            TwoValueBox var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            IY var3 = new IY(Settlement.class, null, JH.VAT, null);
+            ValueContainer2 var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
                 EDF var6 = (EDF) var5.next();
-                JF var7 = (JF) var6.getModelBaseElementWithIdObject();
+                Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
                 if (var7.getSettlementStatus().equals(JG.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
                     LocalDate var9 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), var8.lengthOfMonth());
@@ -289,11 +289,11 @@ public class EUY extends ELX implements EYL {
         return var4;
     }
 
-    public LY getUserDataForInvoice(HN<?> var1) throws FFK {
+    public UserData getUserDataForInvoice(Invoice<?> var1) throws FFK {
 
-        LY var4;
-        JB var2 = new JB(LY.class, var1.DBC().getValue());
-        LY var3 = (LY) this.getModelManager().HJT(this.getParentDefinition(), var2);
+        UserData var4;
+        JB var2 = new JB(UserData.class, var1.DBC().getValue());
+        UserData var3 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var2);
         var4 = var3;
 
         return var4;
@@ -325,8 +325,8 @@ public class EUY extends ELX implements EYL {
 
         ArrayList var4;
         try {
-            AGYN var3 = new AGYN(HI.class, var1);
-            TwoValueBox var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            AGYN var3 = new AGYN(Contractor.class, var1);
+            ValueContainer2 var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
 

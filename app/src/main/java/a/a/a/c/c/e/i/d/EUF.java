@@ -9,18 +9,18 @@ import a.a.a.c.c.a.b.ELW;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.i.b.EUD;
 import a.a.a.c.d.b.EQB;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JB;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.AILX;
-import a.a.a.c.f.c.a.LP;
-import a.a.a.c.f.c.a.LQ;
+import a.a.a.c.f.c.a.ConfigurationProperties;
+import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.LS;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 import javafx.stage.Stage;
 
@@ -30,7 +30,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EUF extends ELW {
-    private LP GKK;
+    private ConfigurationProperties GKK;
     private LS GKL;
     private LS GKM;
     private AILX MWO;
@@ -44,12 +44,12 @@ public class EUF extends ELW {
 
         try {
             if (this.GKK == null) {
-                JB var1 = new JB(LP.class);
-                this.GKK = (LP) this.getModelManager().HJT(this.getParentDefinition(), var1);
+                JB var1 = new JB(ConfigurationProperties.class);
+                this.GKK = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.GKK.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    LQ var3 = (LQ) var2.next();
+                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GKL = (LS) var3;
                     } else if (FCQ.Pkcs11LibraryFile.getPropertyName().equals(var3.DEX().getValue())) {
@@ -78,12 +78,12 @@ public class EUF extends ELW {
 
     }
 
-    public List<AGWN> getDeclarations() {
+    public List<DeclarationJPK> getDeclarations() {
 
         ArrayList var11;
         try {
-            IY var1 = new IY(AGWN.class, null, HM.JPK, null, OrderType.DESC);
-            TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+            IY var1 = new IY(DeclarationJPK.class, null, HM.JPK, null, OrderType.DESC);
+            ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             ArrayList var3 = new ArrayList();
             if (var2 != null) {
                 Iterator var4 = ((List) var2.getSecondValue()).iterator();
@@ -105,18 +105,18 @@ public class EUF extends ELW {
         return var11;
     }
 
-    public LP HWZ() {
+    public ConfigurationProperties HWZ() {
 
         Object var2;
         try {
-            LP var1 = EMB.getInstance().HHU();
+            ConfigurationProperties var1 = EMB.getInstance().HHU();
             return var1;
         } catch (FFK var6) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             var2 = null;
         }
 
-        return (LP) var2;
+        return (ConfigurationProperties) var2;
     }
 
     public File getWorkingDir(Stage var1) throws FFK {
@@ -141,11 +141,11 @@ public class EUF extends ELW {
         return var7;
     }
 
-    public Integer HXA(JN var1, HM var2, AGWW var3) {
+    public Integer HXA(Period var1, HM var2, AGWW var3) {
 
         Object var5;
         try {
-            Integer var4 = this.getModelManager().getMaxDocumentIndex(this.getParentDefinition(), HJ.class, var1, var2, var3);
+            Integer var4 = this.getModelManager().getMaxDocumentIndex(this.getParentDefinition(), Declaration.class, var1, var2, var3);
             return var4;
         } catch (FFO | FFK var9) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
@@ -155,7 +155,7 @@ public class EUF extends ELW {
         return (Integer) var5;
     }
 
-    public void HXB(HJ var1) {
+    public void HXB(Declaration var1) {
 
         try {
             if (var1 != null) {
@@ -182,19 +182,19 @@ public class EUF extends ELW {
         return var2;
     }
 
-    public void QIY(HJ var1) throws FFK, FFO {
+    public void QIY(Declaration var1) throws FFK, FFO {
 
         this.getModelManager().HKC(this.getParentDefinition(), var1);
         this.getModelManager().HKL(this.getParentDefinition());
 
     }
 
-    public LY getUserData() {
+    public UserData getUserData() {
 
-        LY var3;
+        UserData var3;
         try {
-            JB var1 = new JB(LY.class);
-            LY var2 = (LY) this.getModelManager().HJT(this.getParentDefinition(), var1);
+            JB var1 = new JB(UserData.class);
+            UserData var2 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
             var3 = var2;
         } catch (FFK var7) {
             throw new FFI(var7.getMessage());
@@ -203,17 +203,17 @@ public class EUF extends ELW {
         return var3;
     }
 
-    public HI getContractorByNip(String var1) {
+    public Contractor getContractorByNip(String var1) {
 
-        TwoValueBox var3;
+        ValueContainer2 var3;
         try {
-            AGYN var2 = new AGYN(HI.class, var1);
+            AGYN var2 = new AGYN(Contractor.class, var1);
             var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
-            HI var4;
+            Contractor var4;
             if (((List) var3.getSecondValue()).size() > 0) {
-                var4 = (HI) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
+                var4 = (Contractor) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
                 if (var4.DAJ().getValue().equals(var1)) {
-                    HI var5 = var4;
+                    Contractor var5 = var4;
                     return var5;
                 }
             }

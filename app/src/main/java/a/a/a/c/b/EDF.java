@@ -2,13 +2,13 @@ package a.a.a.c.b;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.f.KV;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.ModelBaseElementWithId;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.QSW;
 
 import java.util.Map;
 
-public class EDF<_A extends KV> extends KV {
+public class EDF<_A extends ModelBaseElementWithId> extends ModelBaseElementWithId {
     private _A FFS;
     private final EDE<_A> FFT;
     private final Map<String, Object> FFU;
@@ -24,7 +24,7 @@ public class EDF<_A extends KV> extends KV {
 
     public _A getModelBaseElementWithIdObject() throws FFK {
 
-        KV var1;
+        ModelBaseElementWithId var1;
         if (this.FFS == null) {
             this.FFS = this.FFT.HGW();
         }
@@ -60,12 +60,12 @@ public class EDF<_A extends KV> extends KV {
         return this.getEnumValue(QSW.class, "business_state");
     }
 
-    public JN getPeriod() {
+    public Period getPeriod() {
 
-        JN var3;
+        Period var3;
         Integer var1 = this.getValue("business_periodYear");
         Integer var2 = this.getValue("business_periodMonth");
-        var3 = new JN(var1, var2);
+        var3 = new Period(var1, var2);
 
         return var3;
     }
@@ -95,19 +95,19 @@ public class EDF<_A extends KV> extends KV {
 
     }
 
-    public KV getParentWrapperWithCanceledState() {
+    public ModelBaseElementWithId getParentWrapperWithCanceledState() {
         return super.getParent();
     }
 
-    public KV getParentWrapperOnlyActiveState() {
+    public ModelBaseElementWithId getParentWrapperOnlyActiveState() {
         return super.getParentOnlyActiveState();
     }
 
-    public KV getChildWrapperWithCanceledState() {
+    public ModelBaseElementWithId getChildWrapperWithCanceledState() {
         return super.getChild();
     }
 
-    public KV getChildWrapperOnlyActiveState() {
+    public ModelBaseElementWithId getChildWrapperOnlyActiveState() {
         return super.getChildOnlyActiveState();
     }
 }

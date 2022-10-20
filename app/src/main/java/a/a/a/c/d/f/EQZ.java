@@ -1,12 +1,12 @@
 package a.a.a.c.d.f;
 
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.e.HN;
-import a.a.a.c.f.a.e.HO;
-import a.a.a.c.f.a.e.HP;
-import a.a.a.c.f.a.e.HR;
-import a.a.a.c.f.a.n.QSG;
-import a.a.a.c.f.a.n.QSK;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.e.Invoice;
+import a.a.a.c.f.a.e.InvoiceElement;
+import a.a.a.c.f.a.e.InvoiceElementPurchase;
+import a.a.a.c.f.a.e.InvoicePurchase;
+import a.a.a.c.f.a.n.InvoiceOther;
+import a.a.a.c.f.a.n.InvoiceOtherPurchase;
 import a.a.a.c.f.b.c.a.KL;
 
 import java.math.BigDecimal;
@@ -18,40 +18,40 @@ public class EQZ extends ERC {
     private ERB FYF;
     private ERB FYG;
 
-    public EQZ(HN<?> var1) {
+    public EQZ(Invoice<?> var1) {
         super(false);
-        HR var2 = (HR) var1;
+        InvoicePurchase var2 = (InvoicePurchase) var1;
         List var3 = var2.getInvoiceElements();
         this.FYF = new ERB(false);
         this.FYG = new ERB(false);
         Iterator var4;
-        HP var5;
+        InvoiceElementPurchase var5;
         if (var2.getIsAggregatePurchase() != null && var2.getIsAggregatePurchase()) {
             var4 = var3.iterator();
 
             while (var4.hasNext()) {
-                var5 = (HP) var4.next();
+                var5 = (InvoiceElementPurchase) var4.next();
                 this.RID(var5);
             }
         } else {
             var4 = var3.iterator();
 
             while (var4.hasNext()) {
-                var5 = (HP) var4.next();
+                var5 = (InvoiceElementPurchase) var4.next();
                 this.HRK(var5);
             }
         }
 
     }
 
-    public EQZ(QSG<?> var1) {
+    public EQZ(InvoiceOther<?> var1) {
         super(true);
-        QSK var2 = (QSK) var1;
+        InvoiceOtherPurchase var2 = (InvoiceOtherPurchase) var1;
         HashMap var3 = new HashMap();
         Iterator var4 = var2.getSumOfAmountsDividedByTaxRate().iterator();
 
         while (var4.hasNext()) {
-            TwoValueBox var5 = (TwoValueBox) var4.next();
+            ValueContainer2 var5 = (ValueContainer2) var4.next();
             var3.put(var5.getFirstValue(), var5.getSecondValue());
         }
 
@@ -71,7 +71,7 @@ public class EQZ extends ERC {
         Iterator var7 = var2.getAmountOfTaxDividedByTaxRate().iterator();
 
         while (var7.hasNext()) {
-            TwoValueBox var6 = (TwoValueBox) var7.next();
+            ValueContainer2 var6 = (ValueContainer2) var7.next();
             var8.put(var6.getFirstValue(), var6.getSecondValue());
         }
 
@@ -86,9 +86,9 @@ public class EQZ extends ERC {
         this.getForAll().setVatOo8Tax((BigDecimal) var8.get(KL.OO_8));
     }
 
-    public void HRK(HO var1) {
-        if (var1 instanceof HP) {
-            switch (((HP) var1).DBP().getValue()) {
+    public void HRK(InvoiceElement var1) {
+        if (var1 instanceof InvoiceElementPurchase) {
+            switch (((InvoiceElementPurchase) var1).DBP().getValue()) {
                 case acquisition_of_general_goods:
                     this.FYF.HRQ(var1);
                     break;
@@ -100,9 +100,9 @@ public class EQZ extends ERC {
         super.HRK(var1);
     }
 
-    public void RID(HO var1) {
-        if (var1 instanceof HP) {
-            switch (((HP) var1).DBP().getValue()) {
+    public void RID(InvoiceElement var1) {
+        if (var1 instanceof InvoiceElementPurchase) {
+            switch (((InvoiceElementPurchase) var1).DBP().getValue()) {
                 case acquisition_of_general_goods:
                     this.FYF.RIC(var1);
                     break;

@@ -8,7 +8,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
         name = "aggregatePurchase"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class QSF extends HR {
+public class QSF extends InvoicePurchase {
     public QSF() {
         super(IA.AGGREGATE);
 

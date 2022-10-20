@@ -17,15 +17,15 @@ import a.a.a.c.c.d.h.EPE;
 import a.a.a.c.c.d.h.EPI;
 import a.a.a.c.c.e.j.c.EUY;
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.e.a.d.ThreeValueBox;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.e.a.d.ValueContainer3;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.e.*;
 import a.a.a.c.f.a.g.AGYN;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.c.b.LY;
+import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import com.github.bademux.emk.app.FXApp;
@@ -60,7 +60,7 @@ public class EUV extends ENN<EUY> {
     @FXML
     public Button fxml_generalButtonSaveAndPrint;
     private boolean GMN;
-    private HI GMO;
+    private Contractor GMO;
 
     public EUV(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
@@ -264,7 +264,7 @@ public class EUV extends ENN<EUY> {
 
     }
 
-    public void setInvoice(HN<?> var1) throws FFK {
+    public void setInvoice(Invoice<?> var1) throws FFK {
 
         this.GML = (HY) var1;
 
@@ -341,17 +341,17 @@ public class EUV extends ENN<EUY> {
 
     }
 
-    private void HXV(HI var1) {
+    private void HXV(Contractor var1) {
         try {
             new ArrayList();
             EUY var3 = this.HHG();
             List var2 = this.HXW(var1);
-            HI var4;
+            Contractor var4;
             if (var2.size() == 0) {
                 var4 = var1.AICD();
                 var3.getModelManager().HJZ(var3.getParentDefinition(), var4);
             } else {
-                var4 = (HI) ((EDF) var2.get(0)).getModelBaseElementWithIdObject();
+                var4 = (Contractor) ((EDF) var2.get(0)).getModelBaseElementWithIdObject();
                 var4.setPrivtePerson(var1.AICE());
                 var4.setName(var1.DAI());
                 var4.setNip(var1.DAJ());
@@ -381,7 +381,7 @@ public class EUV extends ENN<EUY> {
 
     }
 
-    private List<EDF<HI>> HXW(HI var1) throws FFK, FFO {
+    private List<EDF<Contractor>> HXW(Contractor var1) throws FFK, FFO {
 
         Object var8;
         Object var2 = new ArrayList();
@@ -390,11 +390,11 @@ public class EUV extends ENN<EUY> {
             AGYN var4;
             if (!var1.AICE()) {
                 if (var1.getNip() != null && var1.getNip().getValue() != null) {
-                    var4 = new AGYN(HI.class, var1.getNip().getValue());
+                    var4 = new AGYN(Contractor.class, var1.getNip().getValue());
                     var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
                 }
             } else if (var1.getName() != null && var1.getName().getValue() != null) {
-                var4 = new AGYN(HI.class, var1.QON(), null);
+                var4 = new AGYN(Contractor.class, var1.QON(), null);
                 var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
             }
         }
@@ -419,12 +419,12 @@ public class EUV extends ENN<EUY> {
         while (var3.hasNext()) {
             HQ var4 = (HQ) var3.next();
             if (var1.get(var4.getTaxRate().getValue()) == null) {
-                var1.put(var4.getTaxRate().getValue(), new ThreeValueBox(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
+                var1.put(var4.getTaxRate().getValue(), new ValueContainer3(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
             }
 
-            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
-            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
-            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
+            ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
+            ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
+            ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((ValueContainer3) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
         }
 
         if (this.GMK.equals(EPB.CORRECT)) {
@@ -442,13 +442,13 @@ public class EUV extends ENN<EUY> {
         while (var3.hasNext()) {
             KL var8 = (KL) var3.next();
             if (this.GMK.equals(EPB.CORRECT)) {
-                this.GMM.getSumOfAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getFirstValue()));
-                this.GMM.getAmountOfTaxDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getSecondValue()));
-                this.GMM.getSumOfGrossAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getThirdValue()));
+                this.GMM.getSumOfAmountsDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getFirstValue()));
+                this.GMM.getAmountOfTaxDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getSecondValue()));
+                this.GMM.getSumOfGrossAmountsDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getThirdValue()));
             } else {
-                this.GML.getSumOfAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getFirstValue()));
-                this.GML.getAmountOfTaxDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getSecondValue()));
-                this.GML.getSumOfGrossAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getThirdValue()));
+                this.GML.getSumOfAmountsDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getFirstValue()));
+                this.GML.getAmountOfTaxDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getSecondValue()));
+                this.GML.getSumOfGrossAmountsDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getThirdValue()));
             }
         }
 
@@ -456,12 +456,12 @@ public class EUV extends ENN<EUY> {
 
     private void HXY() {
 
-        JN var1 = null;
+        Period var1 = null;
         if (this.fxml_include_invoiceSaleLogicController.GLN != null && this.fxml_include_invoiceSaleLogicController.GLN.getPeriod() != null) {
             var1 = this.fxml_include_invoiceSaleLogicController.GLN.getPeriod();
         }
 
-        JN finalVar = var1;
+        Period finalVar = var1;
         this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
             public void accept(ENK<?> var1x) {
 
@@ -482,7 +482,7 @@ public class EUV extends ENN<EUY> {
         try {
             EUY var1 = this.getProcess();
             File var2 = var1.getTempFile("pdf");
-            LY var3 = var1.getUserDataForInvoice(this.GML);
+            UserData var3 = var1.getUserDataForInvoice(this.GML);
             switch (this.GMK) {
                 case NEW:
                 case EDIT:
@@ -506,7 +506,7 @@ public class EUV extends ENN<EUY> {
 
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
         this.GMK = EPB.NEW;
         this.GMO = var1;
     }

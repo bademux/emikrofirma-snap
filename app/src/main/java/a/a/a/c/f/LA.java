@@ -5,7 +5,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 @XmlTransient
-public abstract class LA extends KX<Boolean> {
+public abstract class LA extends ModelBaseTypeElement<Boolean> {
     @XmlTransient
     private final BooleanProperty APN;
 
@@ -20,7 +20,7 @@ public abstract class LA extends KX<Boolean> {
 
     }
 
-    public int compareTo(KX<Boolean> var1) {
+    public int compareTo(ModelBaseTypeElement<Boolean> var1) {
         return var1 != null && var1.getValue() != null ? var1.getValue().compareTo(this.getValue()) : -1;
     }
 

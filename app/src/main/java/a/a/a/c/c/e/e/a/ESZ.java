@@ -10,7 +10,7 @@ import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.e.EOU;
 import a.a.a.c.c.e.e.c.ETE;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.b.a.JJ;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.KO;
@@ -39,11 +39,11 @@ import java.util.*;
 
 public class ESZ extends BaseFxController {
     @FXML
-    public TableView<HI> fxml_contractorsTable;
+    public TableView<Contractor> fxml_contractorsTable;
     @FXML
-    public TableColumn<HI, KO> fxml_contact_name;
+    public TableColumn<Contractor, KO> fxml_contact_name;
     @FXML
-    public TableColumn<HI, KA> fxml_contact_nip;
+    public TableColumn<Contractor, KA> fxml_contact_nip;
     @FXML
     private TextField fxml_contractor_search;
     @FXML
@@ -66,7 +66,7 @@ public class ESZ extends BaseFxController {
     private Button fxml_newInvoiceSell;
     @FXML
     private Button fxml_newInvoivePurchase;
-    public List<HI> GFJ;
+    public List<Contractor> GFJ;
     @FXML
     public Node fxml_inner_parent;
     private ETA GFK;
@@ -113,8 +113,8 @@ public class ESZ extends BaseFxController {
         this.fxml_include_address_boxController.fxml_include_telephone_boxController.fxml_component_main_element.editableProperty().set(false);
         this.fxml_include_address_boxController.fxml_include_email_boxController.fxml_component_main_element.editableProperty().set(false);
         this.fxml_include_remarks_boxController.fxml_component_main_element.editableProperty().set(false);
-        this.fxml_contractorsTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HI>() {
-            public void changed(ObservableValue<? extends HI> var1, HI var2, HI var3) {
+        this.fxml_contractorsTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Contractor>() {
+            public void changed(ObservableValue<? extends Contractor> var1, Contractor var2, Contractor var3) {
                 if (var2 != null) {
                     ESZ.this.HUG(var2);
                     ESZ.this.HUH();
@@ -187,7 +187,7 @@ public class ESZ extends BaseFxController {
     public void QGP() throws FFO, FFK {
         this.QGG.HUK();
         if (this.QGG.HUO()) {
-            HI var1 = new HI();
+            Contractor var1 = new Contractor();
             var1.setPrivtePerson(this.QGG.fxml_contractor_private_person.isSelected());
             var1.DAI().setValue(this.QGG.fxml_include_ContractorName_boxController.fxml_component_main_element.getText());
             var1.DAJ().setValue(this.QGG.fxml_include_nip_boxController.fxml_component_main_element.getText());
@@ -241,7 +241,7 @@ public class ESZ extends BaseFxController {
             Iterator var4 = this.fxml_contractorsTable.getItems().iterator();
 
             while (true) {
-                HI var5;
+                Contractor var5;
                 String var6;
                 String var7;
                 do {
@@ -250,7 +250,7 @@ public class ESZ extends BaseFxController {
                         return;
                     }
 
-                    var5 = (HI) var4.next();
+                    var5 = (Contractor) var4.next();
                     var6 = var5.getName().getValue();
                     var7 = var5.getNip().getValue();
                 } while (!var6.toUpperCase().contains(var2) && !var7.toUpperCase().contains(var2));
@@ -262,7 +262,7 @@ public class ESZ extends BaseFxController {
         }
     }
 
-    public void HUF(HI var1) {
+    public void HUF(Contractor var1) {
 
         if (var1 != null) {
             if (var1.AICE()) {
@@ -292,7 +292,7 @@ public class ESZ extends BaseFxController {
 
     }
 
-    public void HUG(HI var1) {
+    public void HUG(Contractor var1) {
         if (var1 != null) {
             this.fxml_contractor_private_person.setSelected(false);
             this.fxml_include_ContractorName_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DAI().DDG());
@@ -344,7 +344,7 @@ public class ESZ extends BaseFxController {
         this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
             public void accept(ENN<?> var1) {
 
-                HI var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
+                Contractor var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
                 var1.setContractor(var2);
 
             }
@@ -358,7 +358,7 @@ public class ESZ extends BaseFxController {
         this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
             public void accept(ENN<?> var1) {
 
-                HI var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
+                Contractor var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
                 var1.setContractor(var2);
 
             }

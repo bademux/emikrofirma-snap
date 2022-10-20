@@ -4,9 +4,9 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.h.JF;
+import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
 import a.a.a.c.f.b.EZT;
@@ -31,13 +31,13 @@ public abstract class ELX extends ELV {
 
         ArrayList var4;
         try {
-            IY var3 = new IY(JF.class, null, JH.VAT, null);
-            TwoValueBox var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            IY var3 = new IY(Settlement.class, null, JH.VAT, null);
+            ValueContainer2 var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
                 EDF var6 = (EDF) var5.next();
-                JF var7 = (JF) var6.getModelBaseElementWithIdObject();
+                Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
                 if (var7.getSettlementStatus().equals(JG.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
                     LocalDate var9 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), var8.lengthOfMonth());

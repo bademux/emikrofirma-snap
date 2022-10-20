@@ -9,7 +9,7 @@ public class QJZ {
     public QJZ() {
     }
 
-    public static LQ<?, ?> getDefaultConfigurationProperty(FCQ var0) {
+    public static ConfigurationProperty<?, ?> getDefaultConfigurationProperty(FCQ var0) {
         if (var0 == FCQ.WorkingDir) {
             File var5 = Application.getHomeDir().toFile();
             File var2 = new File(var5, "emikrofirma");

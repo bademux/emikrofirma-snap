@@ -5,7 +5,7 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.e.e.c.ETE;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.b.a.JJ;
 import a.a.a.c.f.b.c.a.KN;
 import a.a.a.c.f.c.c.ComboBoxRequired;
@@ -50,7 +50,7 @@ public class ETB {
     public BooleanProperty QGH = new SimpleBooleanProperty(this, "validPropertyHolder", false);
     private Stage GFP;
     boolean GFQ = false;
-    private HI GFS;
+    private Contractor GFS;
     @FXML
     public Label fxml_contractor_private_person_exist;
     private ETE GFT;
@@ -158,7 +158,7 @@ public class ETB {
 
     }
 
-    public boolean RKM(HI var1) {
+    public boolean RKM(Contractor var1) {
         try {
             this.GFT = this.GFU.getProcess();
             if (this.GFT != null) {
@@ -177,20 +177,20 @@ public class ETB {
 
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
 
         this.GFS = var1.AICD();
 
     }
 
-    public HI getContractor() {
+    public Contractor getContractor() {
         return this.GFS;
     }
 
     private void HUL() {
 
         if (this.GFS == null) {
-            this.GFS = new HI();
+            this.GFS = new Contractor();
         }
 
         this.fxml_contractor_private_person.selectedProperty().bindBidirectional(this.GFS.getPrivatePerson().DDS());

@@ -7,8 +7,8 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.e.a.ETC;
 import a.a.a.c.c.e.e.b.ETD;
-import a.a.a.c.e.a.d.TwoValueBox;
-import a.a.a.c.f.a.c.HI;
+import a.a.a.c.e.a.d.ValueContainer2;
+import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.g.AGYN;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ETE extends ELV {
-    private HI GFY;
+    private Contractor GFY;
     private ETC GFZ;
 
     public ETE() {
@@ -28,11 +28,11 @@ public class ETE extends ELV {
 
     }
 
-    public void setContractor(HI var1) {
+    public void setContractor(Contractor var1) {
         this.GFY = var1;
     }
 
-    public HI getContractor() {
+    public Contractor getContractor() {
         return this.GFY;
     }
 
@@ -85,12 +85,12 @@ public class ETE extends ELV {
 
     }
 
-    public List<HI> getContractors() {
+    public List<Contractor> getContractors() {
 
         ArrayList var11;
         try {
-            AGYN var1 = new AGYN(HI.class, null);
-            TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+            AGYN var1 = new AGYN(Contractor.class, null);
+            ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             ArrayList var3 = new ArrayList();
             if (var2 != null) {
                 Iterator var4 = ((List) var2.getSecondValue()).iterator();
@@ -115,10 +115,10 @@ public class ETE extends ELV {
     public boolean HUR(String var1) {
         boolean var2 = false;
         if (var1 != null) {
-            AGYN var3 = new AGYN(HI.class, var1);
+            AGYN var3 = new AGYN(Contractor.class, var1);
 
             try {
-                TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+                ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
                 if (((List) var4.getSecondValue()).size() == 0) {
                     var2 = true;
                 }
@@ -130,13 +130,13 @@ public class ETE extends ELV {
         return var2;
     }
 
-    public boolean RKN(HI var1) {
+    public boolean RKN(Contractor var1) {
         boolean var2 = false;
         if (var1 != null) {
-            AGYN var3 = new AGYN(HI.class, var1.QON(), null);
+            AGYN var3 = new AGYN(Contractor.class, var1.QON(), null);
 
             try {
-                TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+                ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
                 if (((List) var4.getSecondValue()).size() == 0) {
                     var2 = true;
                 }

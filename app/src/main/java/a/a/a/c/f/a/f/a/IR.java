@@ -17,7 +17,7 @@ import java.util.List;
         name = "receiptRecordVat"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class IR extends IN {
+public class IR extends ReceiptRecord {
     private JR AMT;
     private JR AMU;
     private JR AMV;

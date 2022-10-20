@@ -7,14 +7,14 @@ import a.a.a.c.c.e.d.a.g.QTJ;
 import a.a.a.c.c.e.d.c.ESX;
 import a.a.a.c.d.e.QRX;
 import a.a.a.c.d.e.QRY;
-import a.a.a.c.f.a.c.HI;
-import a.a.a.c.f.a.e.HO;
-import a.a.a.c.f.a.e.HP;
-import a.a.a.c.f.a.e.HR;
+import a.a.a.c.f.a.c.Contractor;
+import a.a.a.c.f.a.e.InvoiceElement;
+import a.a.a.c.f.a.e.InvoiceElementPurchase;
+import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.b.JN;
+import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KE;
+import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.b.c.a.QSV;
@@ -43,15 +43,15 @@ import java.util.Iterator;
 public class ESU extends QUW {
     private ChangeListener<Toggle> RAK;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_itemName_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_itemName_tableColumn;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_quantity_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_quantity_tableColumn;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_measurementUnit_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_measurementUnit_tableColumn;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_unitValue_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_unitValue_tableColumn;
     @FXML
-    public TableColumn<HP, Object> fxml_registry_vatRate_tableColumn;
+    public TableColumn<InvoiceElementPurchase, Object> fxml_registry_vatRate_tableColumn;
     @FXML
     public ToggleGroup calculation_method_radio_group;
     @FXML
@@ -108,7 +108,7 @@ public class ESU extends QUW {
 
     }
 
-    public void HTV(HR var1) {
+    public void HTV(InvoicePurchase var1) {
 
         this.REZ = var1;
         if (var1 != null) {
@@ -118,7 +118,7 @@ public class ESU extends QUW {
             this.fxml_include_receiptDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DBR().DEC());
             this.fxml_include_invoicingDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DAF().DDL());
             this.fxml_include_invoicingDate_boxController.fxml_component_main_element.valueProperty().bindBidirectional(var1.DBS().DEC());
-            HI var2 = var1.DBQ();
+            Contractor var2 = var1.DBQ();
             this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAI().DDG());
             this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAR().DDG());
             this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAJ().DDG());
@@ -193,9 +193,9 @@ public class ESU extends QUW {
     }
 
     public void RKS(String var1) {
-        HP var3;
+        InvoiceElementPurchase var3;
         for (Iterator var2 = this.REZ.getInvoiceElements().iterator(); var2.hasNext(); this.RJV(null, var3, null)) {
-            var3 = (HP) var2.next();
+            var3 = (InvoiceElementPurchase) var2.next();
             if (var1.equals("NET")) {
                 var3.DBI().setValue(var3.RIF().getValue());
             } else if (var1.equals("GROSS")) {
@@ -230,7 +230,7 @@ public class ESU extends QUW {
                 var6.setProductAutocomplete(this.GFB);
                 var4.showAndWait();
                 if (var6.getResult()) {
-                    HP var7 = new HP();
+                    InvoiceElementPurchase var7 = new InvoiceElementPurchase();
                     var7.DBE().setValue((String) ((ComboBoxRequired) var6.fxml_include_itemNameRequiredTextBox_boxController.fxml_component_main_element).getValue());
                     var7.DBE().setMaxLength(var6.fxml_include_itemNameRequiredTextBox_boxController.fxml_component_root_element.getMaxLength());
                     var7.DBG().setValue(var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element.getNumber());
@@ -294,7 +294,7 @@ public class ESU extends QUW {
 
     }
 
-    public boolean RJW(JN var1, KE var2, KA var3) {
+    public boolean RJW(Period var1, RefId var2, KA var3) {
 
         boolean var4;
         if (this.GFB == null) {
@@ -307,7 +307,7 @@ public class ESU extends QUW {
         return var4;
     }
 
-    public boolean RJX(JN var1) {
+    public boolean RJX(Period var1) {
 
         boolean var2;
         if (this.GFB == null) {
@@ -320,7 +320,7 @@ public class ESU extends QUW {
         return var2;
     }
 
-    public void RJV(HO var1, HO var2, QSV var3) {
+    public void RJV(InvoiceElement var1, InvoiceElement var2, QSV var3) {
 
         var3 = QSV.valueOf(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
         QRX var4 = QRY.getInvoiceCalculationMethod(var3, false);
@@ -339,8 +339,8 @@ public class ESU extends QUW {
             Iterator var2 = this.REZ.getInvoiceElements().iterator();
 
             while (var2.hasNext()) {
-                HO var3 = (HO) var2.next();
-                HP var4 = (HP) var3;
+                InvoiceElement var3 = (InvoiceElement) var2.next();
+                InvoiceElementPurchase var4 = (InvoiceElementPurchase) var3;
                 if (var4.DBE().getValue() != null && var4.DBE().getValue().trim().length() != 0) {
                     if (var4.DBH().getValue() != null && var4.DBH().getValue().trim().length() != 0) {
                         if (var4.DBG().getValue() == null) {

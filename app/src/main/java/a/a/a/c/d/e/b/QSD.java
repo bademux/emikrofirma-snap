@@ -2,19 +2,19 @@ package a.a.a.c.d.e.b;
 
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.d.e.QRX;
-import a.a.a.c.f.a.e.HO;
+import a.a.a.c.f.a.e.InvoiceElement;
 import a.a.a.c.f.b.c.a.QSV;
 
 import java.math.BigDecimal;
 
-public class QSD implements QRX<HO> {
+public class QSD implements QRX<InvoiceElement> {
     protected final boolean QWH;
 
     public QSD(boolean var1) {
         this.QWH = var1;
     }
 
-    public HO RIB(HO var1, HO var2) {
+    public InvoiceElement RIB(InvoiceElement var1, InvoiceElement var2) {
         boolean var3 = false;
         boolean var4 = false;
         boolean var5 = false;

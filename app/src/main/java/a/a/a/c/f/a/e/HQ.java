@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class HQ extends HO {
+public class HQ extends InvoiceElement {
     public HQ() {
 
     }

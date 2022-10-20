@@ -1,10 +1,10 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
-import a.a.a.c.f.a.c.a.c.AHDT;
+import a.a.a.c.f.a.c.a.c.Field;
 import a.a.a.c.f.a.c.a.f.AHEN;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AHCY extends AHCT<Date> {
+public class AHCY extends ConditionOnFieldAndVariableAbstract<Date> {
     private final transient SimpleDateFormat AHUY;
 
     private AHCY() {
@@ -30,9 +30,9 @@ public class AHCY extends AHCT<Date> {
 
     }
 
-    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
+    public ValueContainer2<AHCI, String> AICX(Field var1) {
 
-        TwoValueBox var7;
+        ValueContainer2 var7;
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
@@ -78,11 +78,11 @@ public class AHCY extends AHCT<Date> {
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");
                 }
 
-                TwoValueBox var8 = new TwoValueBox(var14, this.AIDB("", var1));
+                ValueContainer2 var8 = new ValueContainer2(var14, this.AIDB("", var1));
                 return var8;
             }
 
-            var7 = new TwoValueBox(AHCI.SUCCESS, null);
+            var7 = new ValueContainer2(AHCI.SUCCESS, null);
         } catch (ParseException var12) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
             throw new FFI(var12);

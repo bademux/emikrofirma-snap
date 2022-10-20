@@ -10,7 +10,7 @@ import a.a.a.c.c.a.ELZ;
 import a.a.a.c.c.a.EMA;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.b.EMU;
-import com.github.bademux.emk.App;
+import com.github.bademux.emk.Application;
 import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.a.LQ;
 import a.a.a.c.f.c.a.LS;
@@ -160,9 +160,9 @@ public abstract class ELV {
                 public File IKT() {
                     DirectoryChooser var1x = new DirectoryChooser();
                     var1x.setTitle(FCW.getInstance().getMessageForKey("micro.types.workingDir.directorychooser.title"));
-                    File var2 = new File(App.GPW);
-                    if (var2.exists() && var2.isDirectory()) {
-                        var1x.setInitialDirectory(var2);
+                    File homeDir = Application.getHomeDir().toFile();
+                    if (homeDir.exists() && homeDir.isDirectory()) {
+                        var1x.setInitialDirectory(homeDir);
                     }
 
                     return var1x.showDialog(var1);

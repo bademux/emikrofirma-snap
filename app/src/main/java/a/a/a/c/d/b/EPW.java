@@ -38,7 +38,7 @@ import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCX;
 import a.a.a.c.g.c.FCZ;
-import com.github.bademux.emk.App;
+import com.github.bademux.emk.Application;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.Holder;
@@ -1113,13 +1113,12 @@ public class EPW {
                     var51.zadaniePodpisu(var14, var15, var11, var12, var13);
                 } catch (Exception var42) {
                     log.error("Something bad happened", var42);
-                    File log = new File(App.GPW + "/reports/emk.log");
                     String var57 = var42.getLocalizedMessage();
                     if (var57 == null) {
                         var57 = "";
                     }
 
-                    FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.errorGoodLooking") + " ", log, false);
+                    FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.errorGoodLooking") + " ", Application.getReportLog(), false);
                     var19 = false;
                     return (boolean) var19;
                 }
@@ -1172,13 +1171,12 @@ public class EPW {
                             var51.pobierzDokumenty((String) var12.value, var22, (Holder) var20, var21);
                         } catch (Exception var43) {
                             log.error("Something bad happened", var43);
-                            File log = new File(App.GPW + "/reports/emk.log");
                             String var63 = var43.getLocalizedMessage();
                             if (var63 == null) {
                                 var63 = "";
                             }
 
-                            FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.errorGoodLooking") + " ", log, false);
+                            FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.errorGoodLooking") + " ", Application.getReportLog(), false);
                             return false;
                         }
 

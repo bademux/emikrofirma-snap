@@ -1,6 +1,6 @@
 package a.a.a.c.f.c.a;
 
-import com.github.bademux.emk.App;
+import com.github.bademux.emk.Application;
 import a.a.a.c.g.FCQ;
 
 import java.io.File;
@@ -11,7 +11,7 @@ public class QJZ {
 
     public static LQ<?, ?> getDefaultConfigurationProperty(FCQ var0) {
         if (var0 == FCQ.WorkingDir) {
-            File var5 = new File(App.GPW);
+            File var5 = Application.getHomeDir().toFile();
             File var2 = new File(var5, "emikrofirma");
             var2.mkdirs();
             LS var3 = new LS(FCQ.WorkingDir.getPropertyName(), var2.getAbsolutePath());

@@ -7,7 +7,7 @@ import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.EWA;
 import a.a.a.c.g.b.FCW;
-import com.github.bademux.emk.utils.ReportUtils;
+import com.github.bademux.emk.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -865,11 +865,9 @@ public class FCR {
             (new EVN() {
                 public void HZI() {
                     try {
-                        File reportFile = ReportUtils.createReport();
-                        URI mailtoURI = ReportUtils.createEmailUri(reportFile, exceptions);
-                        Desktop.getDesktop().open(reportFile.getParentFile());
-                        Desktop.getDesktop().mail(mailtoURI);
-                    } catch (URISyntaxException | IOException var13) {
+                        Desktop.getDesktop().browse(URI.create(FCW.getInstance().getMessageForKey("micro.infoProgram.tab.aboutProgram.links.issues")));
+                        Desktop.getDesktop().open(new File(Application.getHomeDir() + "/reports"));
+                    } catch (IOException var13) {
                         log.error("Something bad happened", var13);
                     }
 

@@ -17,7 +17,7 @@ import a.a.a.c.e.a.d.*;
 import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.b.LX;
 import a.a.a.c.f.c.b.LY;
-import com.github.bademux.emk.utils.ReportUtils;
+import a.a.a.c.g.b.FCW;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -39,11 +39,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.*;
-
-import static com.github.bademux.emk.utils.ReportUtils.createBodyParam;
 
 @Slf4j
 public class EMP extends EMD {
@@ -103,12 +100,9 @@ public class EMP extends EMD {
                 public void HZI() {
 
                     try {
-                        String address = String.valueOf(ReportUtils.createAddressAndSubject(EMP.this.resources.getString("micro.leftbar.contact.mail.subject"))) +
-                                createBodyParam(ReportUtils.createMemoryUsage().toString());
-                        URI uri = new URI(address);
-                        Desktop.getDesktop().mail(uri);
-                    } catch (URISyntaxException | IOException var14) {
-                        log.error("Something bad happened", var14);
+                        Desktop.getDesktop().browse(URI.create(FCW.getInstance().getMessageForKey("micro.infoProgram.tab.aboutProgram.links.issues")));
+                    } catch (IOException e) {
+                        log.error("Something bad happened", e);
                     }
 
                 }

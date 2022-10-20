@@ -1,4 +1,4 @@
-package com.github.bademux.emk;
+package com.github.bademux.emk.app;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
@@ -15,10 +15,9 @@ import a.a.a.c.c.b.b.EMT;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.c.ENG;
 import a.a.a.c.e.a.a.EVK;
-import a.a.a.c.e.c.EXN;
+import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCZ;
 import com.github.bademux.emk.utils.LocaleUtils;
-import com.github.bademux.emk.utils.ReportUtils;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -50,8 +49,7 @@ import java.util.stream.Stream;
 import static com.github.bademux.emk.utils.ReportUtils.createMemoryUsage;
 
 @Slf4j
-public class App extends Application implements EMC {
-    public static final String GPW = System.getProperty("user.home") + "/AKMF";
+public class FXApp extends Application implements EMC {
     private final ResourceBundle launcherMsgResourceBundle;
     private final ResourceBundle msgResourceBundle;
     private final EMT FJC;
@@ -93,31 +91,21 @@ public class App extends Application implements EMC {
     }
 
     private static void uncaughtExceptionGlobalButtonCall(Throwable throwable) {
+        log.error("Something bad happened", throwable);
         try {
-            File reportFile = ReportUtils.createReport();
-            URI uri = ReportUtils.createEmailUri(reportFile, EXN.getInstance().getMessageForKey("micro.launcher.error.mail.subject"), throwable);
-            Desktop.getDesktop().open(reportFile.getParentFile());
-            Desktop.getDesktop().mail(uri);
-        } catch (Exception var13) {
-            log.error("Something bad happened", var13);
+            Desktop.getDesktop().browse(URI.create(FCW.getInstance().getMessageForKey("micro.infoProgram.tab.aboutProgram.links.issues")));
+            Desktop.getDesktop().open(new File(com.github.bademux.emk.Application.getHomeDir() + "/reports"));
+        } catch (Exception e) {
+            log.error("Something bad happened", e);
         }
     }
 
-    public static void main(String[] args) {
-        Security.setProperty("crypto.policy", "unlimited");
-        System.setProperty("com.sun.xml.internal.bind.v2.bytecode.ClassTailor.noOptimize", "true");
-        launch();
-    }
-
-    public App() {
+    public FXApp() {
 
         this.msgResourceBundle = ResourceBundle.getBundle("messages/messages", LocaleUtils.LOCALE);
         this.launcherMsgResourceBundle = ResourceBundle.getBundle("messages/launcher_messages", LocaleUtils.LOCALE);
         this.FJC = new EMW();
         Runtime.getRuntime().addShutdownHook(new Thread(EMY.getInstance()::HMY));
-        File homedir = new File(GPW);
-        homedir.mkdirs();
-
     }
 
     public void uncaughtException(Thread thread, Throwable e) {
@@ -130,10 +118,9 @@ public class App extends Application implements EMC {
                 log.warn("Exception skipped");
                 return;
             }
-            File reportFile = ReportUtils.createReport();
-            Desktop.getDesktop().open(reportFile.getParentFile());
-        } catch (Throwable var8) {
-            log.error("Something bad happened", var8);
+            Desktop.getDesktop().open(new File(com.github.bademux.emk.Application.getHomeDir() + "/reports"));
+        } catch (Throwable ex) {
+            log.error("Something bad happened", ex);
         }
 
     }
@@ -141,7 +128,7 @@ public class App extends Application implements EMC {
     public void start(Stage stage) {
 
         try {
-            log.info(createMemoryUsage().toString());
+            log.info(createMemoryUsage());
             Thread.setDefaultUncaughtExceptionHandler(this::uncaughtException);
             Thread.currentThread().setUncaughtExceptionHandler(this::uncaughtExceptionGlobal);
 
@@ -176,7 +163,7 @@ public class App extends Application implements EMC {
     private Map<String, EMH> getPages() {
         return Stream.<Map.Entry<String, String>>concat(
                         Stream.of("login.fxml", "register.fxml", "main.fxml").map(s -> new AbstractMap.SimpleImmutableEntry<>(s, null)),
-                        ENG.getInstance().HNI().stream().map(App::getDefinition)
+                        ENG.getInstance().HNI().stream().map(FXApp::getDefinition)
                 )
                 .map(item -> loadFxmlAndGetController(item.getKey(), item.getValue()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
@@ -266,7 +253,7 @@ public class App extends Application implements EMC {
 
     private FXMLLoader loadFxml(String fxmlName, String title) throws IOException {
         log.info("Adding dynamic process " + fxmlName);
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/" + fxmlName));
+        FXMLLoader loader = new FXMLLoader(FXApp.class.getResource("/fxml/" + fxmlName));
         loader.setControllerFactory(new EMF(this, stage, this.FJC, title, fxmlName));
         loader.setResources(this.msgResourceBundle);
         loader.load();

@@ -46,7 +46,6 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class EQF {
-    private static final String FVY = "e-mikrofirma";
     public static final Charset FVZ;
     private static final String FWA = "http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/";
     private static final String FWB = "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/";

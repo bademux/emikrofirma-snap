@@ -116,9 +116,7 @@ public class EMP extends EMD {
                             EXF.getInstance().ICO();
 
                             try {
-                                StringBuilder var1 = new StringBuilder();
-                                var1.append("mailto:").append("jpk.helpdesk@mf.gov.pl");
-                                var1.append("?cc=").append("support@akmf.pl");
+                                StringBuilder var1 = new StringBuilder("mailto:").append("bademux+emk@gmail.com");
                                String var2 = EMP.this.resources.getString("micro.leftbar.contact.mail.subject") + " [" +
                                        (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz")).format(new Date()) +
                                        " ]";

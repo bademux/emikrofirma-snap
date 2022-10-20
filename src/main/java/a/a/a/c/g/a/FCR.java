@@ -1024,8 +1024,7 @@ public class FCR {
                             EXF.getInstance().ICK("reportFile " + var3);
                             EWF.IAB(false, var3, EXF.getInstance().getDefaultOutputLoggerFile(), EXF.getInstance().getDefaultErrorLoggerFile());
                             StringBuilder var4 = new StringBuilder();
-                            var4.append("mailto:").append("jpk.helpdesk@mf.gov.pl");
-                            var4.append("?cc=").append("support@akmf.pl");
+                            var4.append("mailto:").append("bademux+emk@gmail.com");
                            String var5 = FCW.getInstance().getMessageForKey("micro.error.mail.subject") + " [" +
                                    (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz")).format(new Date()) +
                                    " ]";

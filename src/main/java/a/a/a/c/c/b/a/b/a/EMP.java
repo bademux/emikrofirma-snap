@@ -18,6 +18,7 @@ import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.b.LX;
 import a.a.a.c.f.c.b.LY;
+import com.github.bademux.emk.utils.ReportUtils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,15 +38,12 @@ import javafx.scene.text.Text;
 
 import java.awt.*;
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryUsage;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
+
+import static com.github.bademux.emk.utils.ReportUtils.createBodyParam;
 
 public class EMP extends EMD {
     @FXML
@@ -109,56 +107,24 @@ public class EMP extends EMD {
 
         try {
             this.setUpLabels();
-            this.fxml_left_bar_contact.setOnAction(new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent var1) {
-                    (new EVN() {
-                        public void HZI() {
-                            EXF.getInstance().ICO();
+            this.fxml_left_bar_contact.setOnAction(__ -> (new EVN() {
+                public void HZI() {
+                    EXF.getInstance().ICO();
 
-                            try {
-                                StringBuilder var1 = new StringBuilder("mailto:").append("bademux+emk@gmail.com");
-                               String var2 = EMP.this.resources.getString("micro.leftbar.contact.mail.subject") + " [" +
-                                       (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz")).format(new Date()) +
-                                       " ]";
-                                var1.append("&subject=").append(URLEncoder.encode(var2, StandardCharsets.UTF_8.name()).replace("+", "%20"));
-                                StringBuilder var3 = new StringBuilder();
-                                var3.append("#######");
-                                var3.append(System.lineSeparator());
+                    try {
+                        StringBuilder address = new StringBuilder()
+                                .append(ReportUtils.createAddressAndSubject(EMP.this.resources.getString("micro.leftbar.contact.mail.subject")))
+                                .append(createBodyParam(ReportUtils.createMemoryUsage().toString()));
+                        URI uri = new URI(address.toString());
+                        Desktop.getDesktop().mail(uri);
+                    } catch (URISyntaxException | IOException var14) {
+                        EXF.getInstance().ICA(var14);
+                    } finally {
+                        EXF.getInstance().ICP();
+                    }
 
-                                try {
-                                    var3.append("os.name " + System.getProperty("os.name")).append(System.lineSeparator());
-                                    var3.append("os.arch " + System.getProperty("os.arch")).append(System.lineSeparator());
-                                    var3.append("java.version " + System.getProperty("java.version")).append(System.lineSeparator());
-                                    var3.append("java.vendor " + System.getProperty("java.vendor")).append(System.lineSeparator());
-                                    var3.append("java.vm.name " + System.getProperty("java.vm.name")).append(System.lineSeparator());
-                                    var3.append("file.encoding " + System.getProperty("file.encoding")).append(System.lineSeparator());
-                                    MemoryUsage var4 = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
-                                    var3.append("memory init " + var4.getInit() / 1024L / 1024L + " MB").append(System.lineSeparator());
-                                    var3.append("memory max " + var4.getMax() / 1024L / 1024L + " MB").append(System.lineSeparator());
-                                    var3.append("memory committed " + var4.getCommitted() / 1024L / 1024L + " MB").append(System.lineSeparator());
-                                    var3.append("memory used " + var4.getUsed() / 1024L / 1024L + " MB").append(System.lineSeparator());
-                                    var3.append(System.lineSeparator());
-                                } catch (Exception var13) {
-                                    EXF.getInstance().ICA(var13);
-                                }
-
-                                var3.append(System.lineSeparator());
-                                var3.append("#######");
-                                var3.append(System.lineSeparator());
-                                var1.append("&body=").append(URLEncoder.encode(var3.toString(), StandardCharsets.UTF_8.name()).replace("+", "%20"));
-                                String var17 = var1.toString();
-                                URI var18 = new URI(var17);
-                                Desktop.getDesktop().mail(var18);
-                            } catch (URISyntaxException | IOException var14) {
-                                EXF.getInstance().ICA(var14);
-                            } finally {
-                                EXF.getInstance().ICP();
-                            }
-
-                        }
-                    }).start();
                 }
-            });
+            }).start());
             this.HJL();
         } catch (FFK var5) {
             EXF.getInstance().ICA(var5);

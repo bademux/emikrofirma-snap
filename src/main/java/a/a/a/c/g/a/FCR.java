@@ -4,12 +4,11 @@ import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
 import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.EXK;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.EWA;
-import a.a.a.c.e.a.e.EWF;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.utils.ReportUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -34,17 +33,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.awt.*;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryUsage;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
 
@@ -78,7 +70,7 @@ public class FCR {
                     var2x.setPrefHeight(var9);
                     var2x.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<_T>() {
                         public void changed(ObservableValue<? extends _T> var1xx, _T var2x, _T var3x) {
-                           var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(var3x == null);
+                            var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(var3x == null);
 
                         }
                     });
@@ -126,7 +118,7 @@ public class FCR {
                     final PasswordField var3 = new PasswordField();
                     var3.textProperty().addListener(new ChangeListener<String>() {
                         public void changed(ObservableValue<? extends String> var1xx, String var2x, String var3) {
-                           var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(var3 == null || var3.length() <= 0);
+                            var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(var3 == null || var3.length() <= 0);
 
                         }
                     });
@@ -182,9 +174,9 @@ public class FCR {
                         Hyperlink var3 = FCR.IGQ(var7);
                         var3.setOnMouseClicked(new EventHandler<MouseEvent>() {
                             public void handle(MouseEvent var1xx) {
-                               if (var1xx.getButton() == MouseButton.PRIMARY) {
-                                  var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
-                               }
+                                if (var1xx.getButton() == MouseButton.PRIMARY) {
+                                    var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
+                                }
                             }
                         });
                         ContextMenu var4x = new ContextMenu();
@@ -1008,83 +1000,18 @@ public class FCR {
         return var3;
     }
 
-    private static void IGU(final List<Throwable> var0) {
+    private static void IGU(final List<Throwable> exceptions) {
         EXF.getInstance().ICO();
 
         try {
-            if (var0 != null && Desktop.isDesktopSupported()) {
+            if (exceptions != null && Desktop.isDesktopSupported()) {
                 (new EVN() {
                     public void HZI() {
                         try {
-                            File var1 = new File(EXK.GPW + "/reports");
-                            EXF.getInstance().ICK("reportsDir " + var1);
-                            boolean var2 = var1.mkdirs();
-                            EXF.getInstance().ICK("mkdirs " + var2);
-                            File var3 = new File(var1, "report_" + (new SimpleDateFormat("yyyyMMdd'T'HHmmssS")).format(new Date()) + ".zip");
-                            EXF.getInstance().ICK("reportFile " + var3);
-                            EWF.IAB(false, var3, EXF.getInstance().getDefaultOutputLoggerFile(), EXF.getInstance().getDefaultErrorLoggerFile());
-                            StringBuilder var4 = new StringBuilder();
-                            var4.append("mailto:").append("bademux+emk@gmail.com");
-                           String var5 = FCW.getInstance().getMessageForKey("micro.error.mail.subject") + " [" +
-                                   (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz")).format(new Date()) +
-                                   " ]";
-                            var4.append("&subject=").append(URLEncoder.encode(var5, StandardCharsets.UTF_8.name()).replace("+", "%20"));
-                            var4.append("&attachment=").append(var3.toURI().toString().replace("+", "%20"));
-                            StringBuilder var6 = new StringBuilder();
-                            var6.append("#######");
-                            var6.append(System.lineSeparator());
-
-                            try {
-                                var6.append("os.name " + System.getProperty("os.name")).append(System.lineSeparator());
-                                var6.append("os.arch " + System.getProperty("os.arch")).append(System.lineSeparator());
-                                var6.append("java.version " + System.getProperty("java.version")).append(System.lineSeparator());
-                                var6.append("java.vendor " + System.getProperty("java.vendor")).append(System.lineSeparator());
-                                var6.append("java.vm.name " + System.getProperty("java.vm.name")).append(System.lineSeparator());
-                                var6.append("file.encoding " + System.getProperty("file.encoding")).append(System.lineSeparator());
-                                MemoryUsage var7 = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
-                                var6.append("memory init " + var7.getInit() / 1024L / 1024L + " MB").append(System.lineSeparator());
-                                var6.append("memory max " + var7.getMax() / 1024L / 1024L + " MB").append(System.lineSeparator());
-                                var6.append("memory committed " + var7.getCommitted() / 1024L / 1024L + " MB").append(System.lineSeparator());
-                                var6.append("memory used " + var7.getUsed() / 1024L / 1024L + " MB").append(System.lineSeparator());
-                                var6.append(System.lineSeparator());
-                            } catch (Exception var12) {
-                                EXF.getInstance().ICA(var12);
-                            }
-
-                            var6.append(System.lineSeparator());
-                            var6.append("#######");
-                            var6.append(System.lineSeparator());
-                            var6.append(System.lineSeparator());
-                            Iterator var15 = var0.iterator();
-
-                            while (var15.hasNext()) {
-                                Throwable var17 = (Throwable) var15.next();
-                                var6.append("####### BEGIN");
-                                var6.append(System.lineSeparator());
-                                var6.append(var17.getLocalizedMessage());
-                                var6.append(System.lineSeparator());
-                                var6.append(System.lineSeparator());
-                                ByteArrayOutputStream var19 = new ByteArrayOutputStream();
-                                PrintStream var20 = new PrintStream(var19, true, StandardCharsets.UTF_8.name());
-                                var17.printStackTrace(var20);
-                                var6.append(new String(var19.toByteArray(), StandardCharsets.UTF_8));
-                                var6.append(System.lineSeparator());
-                                var6.append("####### END");
-                                var6.append(System.lineSeparator());
-                            }
-
-                            var6.append(System.lineSeparator());
-                            var6.append("#######");
-                            var6.append(System.lineSeparator());
-                            var6.append(var3.getAbsolutePath());
-                            var6.append(System.lineSeparator());
-                            var6.append("#######");
-                            var6.append(System.lineSeparator());
-                            Desktop.getDesktop().open(var1);
-                            var4.append("&body=").append(URLEncoder.encode(var6.toString(), StandardCharsets.UTF_8.name()).replace("+", "%20"));
-                            String var16 = var4.toString();
-                            URI var18 = new URI(var16);
-                            Desktop.getDesktop().mail(var18);
+                            File reportFile = ReportUtils.createReport();
+                            URI mailtoURI = ReportUtils.createEmailUri(reportFile, exceptions);
+                            Desktop.getDesktop().open(reportFile.getParentFile());
+                            Desktop.getDesktop().mail(mailtoURI);
                         } catch (URISyntaxException | IOException var13) {
                             EXF.getInstance().ICA(var13);
                         }

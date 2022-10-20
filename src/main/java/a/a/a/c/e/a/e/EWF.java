@@ -12,6 +12,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import static java.util.zip.ZipOutputStream.DEFLATED;
+
 public class EWF {
     public EWF() {
     }
@@ -70,54 +72,18 @@ public class EWF {
 
     }
 
-    public static void IAB(boolean var0, File var1, File... var2) throws IOException {
+    public static void writeToZip(File outZipFile, File... files) throws IOException {
         EXF.getInstance().ICO();
-        FileOutputStream var3 = null;
-
-        try {
-            var3 = new FileOutputStream(var1);
-            ZipOutputStream var4 = new ZipOutputStream(var3);
-            var4.setMethod(8);
-            File[] var5 = var2;
-            int var6 = var2.length;
-
-            for (int var7 = 0; var7 < var6; ++var7) {
-                File var8 = var5[var7];
-                FileInputStream var9 = null;
-
-                try {
-                    var9 = new FileInputStream(var8);
-                    String var10 = null;
-                    if (var0) {
-                        var10 = var8.getPath();
-                    } else {
-                        var10 = var8.getName();
-                    }
-
-                    ZipEntry var11 = new ZipEntry(var10);
-                    var4.putNextEntry(var11);
-                    byte[] var14 = new byte[8096];
-
-                    int var12;
-                    while ((var12 = var9.read(var14)) != -1) {
-                        var4.write(var14, 0, var12);
-                        var4.flush();
-                    }
-                } finally {
-                    if (var9 != null) {
-                        var9.close();
-                    }
-
+        try(var os = new ZipOutputStream(new FileOutputStream(outZipFile))) {
+            os.setMethod(DEFLATED);
+            for (File file : files) {
+                try(var fis = new FileInputStream(file)) {
+                    os.putNextEntry(new ZipEntry(file.getName()));
+                    fis.transferTo(os);
                 }
             }
-
-            var4.flush();
-            var4.close();
+            os.flush();
         } finally {
-            if (var3 != null) {
-                var3.close();
-            }
-
             EXF.getInstance().ICP();
         }
 

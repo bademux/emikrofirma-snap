@@ -1326,7 +1326,7 @@ public class EMB {
             File var8 = Paths.get(var7.getAbsolutePath(), var2 + ".db").toFile();
             File var9 = Paths.get(var7.getAbsolutePath(), "profiles.db").toFile();
             File var10 = Paths.get(var1, var6 + ".zip").toFile();
-            EWF.IAB(false, var10, var8, var9);
+            EWF.writeToZip(var10, var8, var9);
             var9.delete();
             var8.delete();
             var7.delete();

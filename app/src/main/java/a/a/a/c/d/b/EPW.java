@@ -28,8 +28,8 @@ import a.a.a.c.f.a.c.a.MainConfiguration;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.HY;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
-import a.a.a.c.f.a.e.a.IF;
-import a.a.a.c.f.a.e.a.IG;
+import a.a.a.c.f.a.e.a.InvoiceRecordPurchase;
+import a.a.a.c.f.a.e.a.InvoiceRecordSell;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JT;
 import a.a.a.c.f.b.c.KO;
@@ -109,8 +109,8 @@ public class EPW {
             if (var1 == null) {
                 throw new FFI("No output file definition!");
             } else {
-                IG var6 = null;
-                IF var7 = null;
+                InvoiceRecordSell var6 = null;
+                InvoiceRecordPurchase var7 = null;
                 Iterator var8 = var5.iterator();
 
                 while (var8.hasNext()) {
@@ -118,10 +118,10 @@ public class EPW {
                     EDF var10 = (EDF) var9;
                     InvoiceRecord var11 = (InvoiceRecord) var10.getModelBaseElementWithIdObject();
                     Class var12 = var11.getClass();
-                    if (IG.class.isAssignableFrom(var12)) {
-                        var6 = (IG) var11;
-                    } else if (IF.class.isAssignableFrom(var12)) {
-                        var7 = (IF) var11;
+                    if (InvoiceRecordSell.class.isAssignableFrom(var12)) {
+                        var6 = (InvoiceRecordSell) var11;
+                    } else if (InvoiceRecordPurchase.class.isAssignableFrom(var12)) {
+                        var7 = (InvoiceRecordPurchase) var11;
                     }
                 }
 
@@ -370,7 +370,7 @@ public class EPW {
             URL var6 = var5.getUrl();
             log.debug("schemaFileURL " + var6);
             if (JPKSchemaType.AHSV.getKodFormularza().equals(var5.getKodFormularza()) && JPKSchemaType.AHSV.getKodSystemowy().equals(var5.getKodSystemowy()) && JPKSchemaType.AHSV.getWersjaSchemy().equals(var5.getWersjaSchemy()) && JPKSchemaType.AHSV.getWariantFormularza().equals(var5.getWariantFormularza())) {
-                HK var54 = (HK) var1;
+                DeclarationJPK_VAT var54 = (DeclarationJPK_VAT) var1;
                 if (var54.AICF()) {
                     log.info("About to verify the input file [" + var4.getAbsolutePath() + "]");
                     FileInputStream var55 = null;

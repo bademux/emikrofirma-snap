@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
-@XmlSeeAlso({AHDM.class, AHDL.class, AHDN.class})
+@XmlSeeAlso({ConstantDate.class, ConstantBigDecimal.class, ConstantInteger.class})
 public abstract class Constant<_T> extends ConfigurationBaseAbstract {
     @XmlElement(
             name = "value"

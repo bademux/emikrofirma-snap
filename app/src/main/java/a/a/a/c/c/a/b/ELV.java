@@ -13,7 +13,7 @@ import a.a.a.c.c.b.b.EMU;
 import com.github.bademux.emk.Application;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.ConfigurationProperty;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.g.FCQ;
 import a.a.a.c.g.b.FCW;
 import javafx.stage.DirectoryChooser;
@@ -131,13 +131,13 @@ public abstract class ELV {
         }
 
         ConfigurationProperties var2 = EMB.getInstance().HHU();
-        LS var3 = null;
+        PropertyString var3 = null;
         Iterator var4 = var2.getConfigurationProperties().iterator();
 
         while (var4.hasNext()) {
             ConfigurationProperty var5 = (ConfigurationProperty) var4.next();
             if (FCQ.WorkingDir.getPropertyName().equals(var5.DEX().getValue())) {
-                var3 = (LS) var5;
+                var3 = (PropertyString) var5;
             }
         }
 
@@ -171,7 +171,7 @@ public abstract class ELV {
             boolean var6 = this.RKD(var12);
             if (var6) {
                 if (var3 == null) {
-                    var3 = new LS(FCQ.WorkingDir.getPropertyName(), var12.getAbsolutePath());
+                    var3 = new PropertyString(FCQ.WorkingDir.getPropertyName(), var12.getAbsolutePath());
                     var2.getConfigurationProperties().add(var3);
                 } else {
                     var3.DEY().setValue(var12.getAbsolutePath());

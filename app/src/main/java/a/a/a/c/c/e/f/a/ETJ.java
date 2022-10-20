@@ -10,7 +10,7 @@ import a.a.a.c.c.d.a.ENJ;
 import a.a.a.c.c.e.f.c.ETM;
 import a.a.a.c.f.a.a.EYX;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
-import a.a.a.c.f.a.e.a.ID;
+import a.a.a.c.f.a.e.a.InvoiceRecordElement;
 import a.a.a.c.f.a.e.a.IH;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.b.b.Period;
@@ -35,9 +35,9 @@ import java.util.Set;
 
 public class ETJ extends ENJ<ETM> {
     @FXML
-    private TableView<ID> fxml_vat_invoice_record_sales_table;
+    private TableView<InvoiceRecordElement> fxml_vat_invoice_record_sales_table;
     @FXML
-    private TableView<ID> fxml_vat_invoice_record_purchases_table;
+    private TableView<InvoiceRecordElement> fxml_vat_invoice_record_purchases_table;
     @FXML
     private Button fxml_button_print;
     @FXML

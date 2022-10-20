@@ -6,8 +6,8 @@ import a.a.a.c.c.d.d.b.EOC;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
-import a.a.a.c.f.a.e.a.ID;
-import a.a.a.c.f.a.e.a.IE;
+import a.a.a.c.f.a.e.a.InvoiceRecordElement;
+import a.a.a.c.f.a.e.a.InvoiceRecordElementPurchase;
 import a.a.a.c.f.b.a.JJ;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.g.b.FCW;
@@ -28,33 +28,33 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 class ETF {
-    private final TableView<ID> GGA;
+    private final TableView<InvoiceRecordElement> GGA;
     private final ResourceBundle GGB;
-    private TableColumn<ID, Integer> GGC;
-    private TableColumn<ID, String> GGD;
-    private TableColumn<ID, String> GGE;
-    private TableColumn<ID, String> GGF;
-    private TableColumn<ID, Contractor> GGG;
-    private TableColumn<ID, Contractor> GGH;
-    private TableColumn<ID, ?> GGI;
-    private TableColumn<ID, ?> GGJ;
-    private TableColumn<ID, ?> GGK;
-    private TableColumn<ID, ValueContainer2<JR, JR>> GGL;
-    private TableColumn<ID, ValueContainer2<JR, JR>> GGM;
-    private TableColumn<ID, ValueContainer2<JR, JR>> GGN;
-    private TableColumn<ID, ValueContainer2<JR, JR>> QMR;
-    private TableColumn<ID, ValueContainer2<JR, JR>> GGO;
-    private TableColumn<ID, ValueContainer2<JR, JR>> GGP;
-    private TableColumn<ID, ValueContainer2<JR, JR>> GGQ;
-    private TableColumn<ID, ValueContainer2<JR, JR>> GGR;
-    private TableColumn<ID, ValueContainer2<JR, JR>> GGS;
-    private TableColumn<ID, JR> GGT;
-    private TableColumn<ID, JR> GGU;
-    private TableColumn<ID, JR> GGV;
+    private TableColumn<InvoiceRecordElement, Integer> GGC;
+    private TableColumn<InvoiceRecordElement, String> GGD;
+    private TableColumn<InvoiceRecordElement, String> GGE;
+    private TableColumn<InvoiceRecordElement, String> GGF;
+    private TableColumn<InvoiceRecordElement, Contractor> GGG;
+    private TableColumn<InvoiceRecordElement, Contractor> GGH;
+    private TableColumn<InvoiceRecordElement, ?> GGI;
+    private TableColumn<InvoiceRecordElement, ?> GGJ;
+    private TableColumn<InvoiceRecordElement, ?> GGK;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGL;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGM;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGN;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> QMR;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGO;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGP;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGQ;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGR;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGS;
+    private TableColumn<InvoiceRecordElement, JR> GGT;
+    private TableColumn<InvoiceRecordElement, JR> GGU;
+    private TableColumn<InvoiceRecordElement, JR> GGV;
     private final Boolean GGW;
     private final TableView<InvoiceRecord> GGX;
 
-    ETF(TableView<ID> var1, Boolean var2, ResourceBundle var3, TableView<InvoiceRecord> var4) {
+    ETF(TableView<InvoiceRecordElement> var1, Boolean var2, ResourceBundle var3, TableView<InvoiceRecord> var4) {
         this.GGA = var1;
         this.GGW = var2;
         this.GGB = var3;
@@ -142,7 +142,7 @@ class ETF {
         this.HUW("vatOo8", this.GGS);
     }
 
-    private void HUV(String var1, TableColumn<ID, ?> var2) {
+    private void HUV(String var1, TableColumn<InvoiceRecordElement, ?> var2) {
         TableColumn var3 = new TableColumn();
         var3.setCellFactory(new EOB());
         var3.setCellValueFactory(new PropertyValueFactory(var1));
@@ -151,7 +151,7 @@ class ETF {
         this.GGX.getColumns().add(var3);
     }
 
-    private void HUW(String var1, TableColumn<ID, ?> var2) {
+    private void HUW(String var1, TableColumn<InvoiceRecordElement, ?> var2) {
         TableColumn var3 = new TableColumn();
         var3.setCellValueFactory(new PropertyValueFactory(var1));
         var3.setCellFactory(new ETH());
@@ -165,8 +165,8 @@ class ETF {
         this.HUY(this.GGA);
         this.HUZ(this.GGA);
         this.GGF = new TableColumn(this.GGB.getString("micro.process.invoices_records.reason"));
-        this.GGF.setCellFactory(new Callback<TableColumn<ID, String>, TableCell<ID, String>>() {
-            public TableCell<ID, String> call(TableColumn<ID, String> var1) {
+        this.GGF.setCellFactory(new Callback<TableColumn<InvoiceRecordElement, String>, TableCell<InvoiceRecordElement, String>>() {
+            public TableCell<InvoiceRecordElement, String> call(TableColumn<InvoiceRecordElement, String> var1) {
                 TableCell var2 = new TableCell();
                 Text var3 = new Text();
                 var2.setGraphic(var3);
@@ -176,11 +176,11 @@ class ETF {
                 return var2;
             }
         });
-        this.GGF.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ID, String>, ObservableValue<String>>() {
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<ID, String> var1) {
-                ID var2 = var1.getValue();
+        this.GGF.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<InvoiceRecordElement, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<InvoiceRecordElement, String> var1) {
+                InvoiceRecordElement var2 = var1.getValue();
                 if (var2 != null) {
-                    if (!(var2 instanceof IE)) {
+                    if (!(var2 instanceof InvoiceRecordElementPurchase)) {
                         if (var2.getInvoiceOtherSubType() != null) {
                             return new SimpleStringProperty(var2.getInvoiceOtherSubType().getDescription());
                         }
@@ -188,8 +188,8 @@ class ETF {
                         return new SimpleStringProperty(FCW.getInstance().getMessageForKey("micro.process.invoices_records.reason.sell"));
                     }
 
-                    if (((IE) var2).DCD().getValue() != null) {
-                        return new SimpleStringProperty(((IE) var2).DCD().getValue().getDescription());
+                    if (((InvoiceRecordElementPurchase) var2).DCD().getValue() != null) {
+                        return new SimpleStringProperty(((InvoiceRecordElementPurchase) var2).DCD().getValue().getDescription());
                     }
 
                     if (var2.getInvoiceOtherSubType() != null) {
@@ -205,18 +205,18 @@ class ETF {
         this.HVB(this.GGA);
     }
 
-    private void HUY(final TableView<ID> var1) {
+    private void HUY(final TableView<InvoiceRecordElement> var1) {
         this.GGC = new TableColumn(this.GGB.getString("micro.process.invoices_records.number"));
-        this.GGC.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ID, Integer>, ObservableValue<Integer>>() {
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<ID, Integer> var1x) {
+        this.GGC.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<InvoiceRecordElement, Integer>, ObservableValue<Integer>>() {
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<InvoiceRecordElement, Integer> var1x) {
                 return new ReadOnlyObjectWrapper(var1.getItems().indexOf(var1x.getValue()) + 1);
             }
         });
         this.GGC.getStyleClass().add("column-text");
         var1.getColumns().add(this.GGC);
         this.GGD = new TableColumn(this.GGB.getString("micro.process.invoices_records.date"));
-        this.GGD.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ID, String>, ObservableValue<String>>() {
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<ID, String> var1) {
+        this.GGD.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<InvoiceRecordElement, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<InvoiceRecordElement, String> var1) {
                 if (var1 != null && var1.getValue() != null && var1.getValue().QRF().getValue() != null) {
                     try {
                         return new SimpleStringProperty(var1.getValue().QRF().DDZ());
@@ -231,8 +231,8 @@ class ETF {
         this.GGD.getStyleClass().add("column-text");
         var1.getColumns().add(this.GGD);
         this.GGE = new TableColumn(this.GGB.getString("micro.process.invoices_records.documentNumber"));
-        this.GGE.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ID, String>, ObservableValue<String>>() {
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<ID, String> var1) {
+        this.GGE.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<InvoiceRecordElement, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<InvoiceRecordElement, String> var1) {
                 return var1 != null && var1.getValue() != null && var1.getValue().HGX().getValue() != null ? new SimpleStringProperty(var1.getValue().HGX().getValue()) : new SimpleStringProperty();
             }
         });
@@ -240,12 +240,12 @@ class ETF {
         var1.getColumns().add(this.GGE);
     }
 
-    private void HUZ(TableView<ID> var1) {
+    private void HUZ(TableView<InvoiceRecordElement> var1) {
         String var2 = "%s, %s";
         this.GGI = new TableColumn(this.GGB.getString("micro.process.invoices_records.contractor"));
         this.GGG = new TableColumn(String.format(var2, this.GGB.getString("micro.process.invoices_records.contractorName"), this.GGB.getString("micro.process.invoices_records.contractorNip")));
         this.GGG.setCellValueFactory(new PropertyValueFactory("contractor"));
-        this.GGG.setCellFactory(new ETG<ID, Contractor>() {
+        this.GGG.setCellFactory(new ETG<InvoiceRecordElement, Contractor>() {
             String getFirstValue(Contractor var1) {
                 return var1.getName().getValue();
             }
@@ -257,7 +257,7 @@ class ETF {
         this.GGI.getColumns().add(this.GGG);
         this.GGH = new TableColumn(this.GGB.getString("micro.process.invoices_records.contractorAddress"));
         this.GGH.setCellValueFactory(new PropertyValueFactory("contractor"));
-        this.GGH.setCellFactory(new ETG<ID, Contractor>() {
+        this.GGH.setCellFactory(new ETG<InvoiceRecordElement, Contractor>() {
             String getFirstValue(Contractor var1) {
                 StringBuilder var2 = new StringBuilder();
                 JJ var3 = var1.getAddress();
@@ -298,7 +298,7 @@ class ETF {
         var1.getColumns().add(this.GGI);
     }
 
-    private void HVA(TableView<ID> var1) {
+    private void HVA(TableView<InvoiceRecordElement> var1) {
         this.GGJ = new TableColumn(this.GGB.getString("micro.process.invoices_records.value"));
         this.GGT = new TableColumn();
         this.HVC(this.GGT, this.GGB.getString("micro.process.invoices_records.grossValue"));
@@ -324,7 +324,7 @@ class ETF {
         var1.getColumns().add(this.GGJ);
     }
 
-    private void HVB(TableView<ID> var1) {
+    private void HVB(TableView<InvoiceRecordElement> var1) {
         this.GGK = new TableColumn(this.GGB.getString("micro.process.invoices_records.vatRates"));
         this.GGL = new TableColumn();
         this.HVC(this.GGL, this.GGB.getString("micro.process.invoices_records.vat23Col"));
@@ -383,7 +383,7 @@ class ETF {
         var1.getColumns().add(this.GGK);
     }
 
-    private void HVC(TableColumn<ID, ?> var1, String var2) {
+    private void HVC(TableColumn<InvoiceRecordElement, ?> var1, String var2) {
         VBox var3 = new VBox();
         Label var4 = new Label(var2);
         var4.setTextOverrun(OverrunStyle.ELLIPSIS);

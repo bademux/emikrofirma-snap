@@ -15,13 +15,13 @@ import java.util.List;
 public class ConfigurationProperties extends LW {
     @XmlElements({@XmlElement(
             name = "propertyBytes",
-            type = LR.class
+            type = PropertyBytes.class
     ), @XmlElement(
             name = "propertyString",
-            type = LS.class
+            type = PropertyString.class
     ), @XmlElement(
             name = "propertyBoolean",
-            type = AILX.class
+            type = PropertyBoolean.class
     )})
     private final List<ConfigurationProperty<?, ?>> AQF;
 

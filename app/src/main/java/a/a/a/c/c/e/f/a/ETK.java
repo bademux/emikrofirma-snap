@@ -6,8 +6,8 @@ import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
-import a.a.a.c.f.a.e.a.ID;
-import a.a.a.c.f.a.e.a.IE;
+import a.a.a.c.f.a.e.a.InvoiceRecordElement;
+import a.a.a.c.f.a.e.a.InvoiceRecordElementPurchase;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.c.b.UserData;
@@ -144,7 +144,7 @@ public class ETK {
         Iterator var7 = var1.getInvoiceRecordElements().iterator();
 
         while (var7.hasNext()) {
-            ID var8 = (ID) var7.next();
+            InvoiceRecordElement var8 = (InvoiceRecordElement) var7.next();
             byte var9 = 8;
             byte var10 = 13;
             byte var11 = 13;
@@ -170,8 +170,8 @@ public class ETK {
             this.HVP(var5, "contractor", var8.getContractor(), var12, var10, var11);
             if (var8.getInvoiceOtherSubType() != null) {
                 this.HVM(var5, "taxReason", var8.getInvoiceOtherSubType().getDescription(), var12);
-            } else if (var2 && ((IE) var8).DCD().getValue() != null) {
-                this.HVM(var5, "taxReason", ((IE) var8).getTaxReason().getValue().getDescription(), var12);
+            } else if (var2 && ((InvoiceRecordElementPurchase) var8).DCD().getValue() != null) {
+                this.HVM(var5, "taxReason", ((InvoiceRecordElementPurchase) var8).getTaxReason().getValue().getDescription(), var12);
             } else if (!var2) {
                 this.HVM(var5, "taxReason", FCW.getInstance().getMessageForKey("micro.process.invoices_records.reason.sell"), var12);
             } else {

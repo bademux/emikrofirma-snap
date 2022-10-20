@@ -1,8 +1,8 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.a.c.a.AHCJ;
-import a.a.a.c.f.a.c.a.c.Field;
+import a.a.a.c.f.a.c.a.ActionType;
+import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -22,7 +22,7 @@ public abstract class ConditionOnFieldAndConstantAbstract<_T> extends ConditionO
 
     }
 
-    public ConditionOnFieldAndConstantAbstract(AHCJ var1, String var2, AHDG var3, _T var4) {
+    public ConditionOnFieldAndConstantAbstract(ActionType var1, String var2, ConditionType var3, _T var4) {
         super(var1, var2, var3);
 
         this.AHUG = var4;
@@ -40,7 +40,7 @@ public abstract class ConditionOnFieldAndConstantAbstract<_T> extends ConditionO
         return "ConditionOnFieldAndConstantAbstract [actionType=" + this.AHTY + ", conditionType=" + this.AHUF + ", value=" + this.AHUG + "]";
     }
 
-    protected String AIDB(String var1, Field var2) {
+    protected String AIDB(String var1, BaseField var2) {
         return super.AIDB(var1, var2).replaceAll("##CONTEXT_VALUE##", Matcher.quoteReplacement(String.valueOf(this.AHUG)));
     }
 }

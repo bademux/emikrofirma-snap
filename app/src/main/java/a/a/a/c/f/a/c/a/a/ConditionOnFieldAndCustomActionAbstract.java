@@ -1,10 +1,10 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.a.b.AHCB;
-import a.a.a.c.f.a.c.a.AHCJ;
+import a.a.a.c.f.a.b.CustomActionClass;
+import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.ConfigurationBaseAbstract;
-import a.a.a.c.f.a.c.a.c.Field;
+import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -20,7 +20,7 @@ public abstract class ConditionOnFieldAndCustomActionAbstract<_T> extends Condit
     @XmlAttribute(
             name = "customActionClass"
     )
-    protected final Class<? extends AHCB<_T>> AHUN;
+    protected final Class<? extends CustomActionClass<_T>> AHUN;
     @XmlIDREF
     protected ConfigurationBaseAbstract[] AHUO;
 
@@ -31,7 +31,7 @@ public abstract class ConditionOnFieldAndCustomActionAbstract<_T> extends Condit
 
     }
 
-    public ConditionOnFieldAndCustomActionAbstract(AHCJ var1, String var2, AHDG var3, Class<? extends AHCB<_T>> var4, ConfigurationBaseAbstract... var5) {
+    public ConditionOnFieldAndCustomActionAbstract(ActionType var1, String var2, ConditionType var3, Class<? extends CustomActionClass<_T>> var4, ConfigurationBaseAbstract... var5) {
         super(var1, var2, var3);
 
         this.AHUN = var4;
@@ -43,11 +43,11 @@ public abstract class ConditionOnFieldAndCustomActionAbstract<_T> extends Condit
 
     }
 
-    public Class<? extends AHCB<_T>> getCustomActionClass() {
+    public Class<? extends CustomActionClass<_T>> getCustomActionClass() {
         return this.AHUN;
     }
 
-    public AHCB<_T> getCustomAction() {
+    public CustomActionClass<_T> getCustomAction() {
         try {
             Constructor var1 = null;
             Constructor[] var2 = this.AHUN.getConstructors();
@@ -76,7 +76,7 @@ public abstract class ConditionOnFieldAndCustomActionAbstract<_T> extends Condit
             if (var1 == null) {
                 throw new FFI("No constructor found!");
             }
-            return (AHCB) var1.newInstance((Object[]) this.AHUO);
+            return (CustomActionClass) var1.newInstance((Object[]) this.AHUO);
         } catch (InstantiationException | IllegalAccessException | SecurityException | IllegalArgumentException |
                  InvocationTargetException | NullPointerException e) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", e);
@@ -88,7 +88,7 @@ public abstract class ConditionOnFieldAndCustomActionAbstract<_T> extends Condit
         return "ConditionOnFieldAndCustomActionAbstract [actionType=" + this.AHTY + ", conditionType=" + this.AHUF + ", customActionClass=" + this.AHUN + ", referencedAttributes=" + Arrays.toString(this.AHUO) + "]";
     }
 
-    protected String AIDB(String var1, Field var2) {
+    protected String AIDB(String var1, BaseField var2) {
         return super.AIDB(var1, var2).replaceAll("##CONTEXT_TYPE##", Matcher.quoteReplacement(this.AHUN.getSimpleName()));
     }
 }

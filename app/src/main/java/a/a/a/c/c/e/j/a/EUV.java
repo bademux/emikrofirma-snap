@@ -44,7 +44,7 @@ import java.util.List;
 public class EUV extends ENN<EUY> {
     private EPB GMK;
     private HY GML;
-    private HV GMM;
+    private InvoiceSellCorrection GMM;
     @FXML
     private ScrollPane fxml_include_container;
     @FXML
@@ -163,7 +163,7 @@ public class EUV extends ENN<EUY> {
                     break;
                 case EDIT:
                     this.fxml_include_invoiceSaleLogicController.setInvoiceMain(this.GML);
-                    var1.setInvoiceSell((HU) this.GML);
+                    var1.setInvoiceSell((InvoiceSell) this.GML);
                     this.GML.setPreviousPeriod(this.GML.getPeriod().DDN());
                     this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_sale_new.EditName"));
                     this.fxml_include_invoiceSaleLogicController.QNH.set(true);
@@ -193,7 +193,7 @@ public class EUV extends ENN<EUY> {
                     this.fxml_include_invoiceSaleLogicController.setInvoiceMain(this.GML);
                     this.fxml_include_invoiceSaleLogicController.setInvoicePrevoiusParent(this.getPrevoiusInvoiceFromHierarchyForFromCorrectionToGetElements(this.GML));
                     this.fxml_include_invoiceSaleLogicController.setInvoiceFirstParent(getInvoiceFirstParent(this.GML));
-                    var1.setInvoiceSellCorrection((HV) this.GML);
+                    var1.setInvoiceSellCorrection((InvoiceSellCorrection) this.GML);
                     this.GML.setPreviousPeriod(this.GML.getPeriod().DDN());
                     this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_sale_new.CorrectionEditName"));
                     this.fxml_include_invoiceSaleLogicController.QNH.set(true);
@@ -242,13 +242,13 @@ public class EUV extends ENN<EUY> {
         return var2;
     }
 
-    private static HU getInvoiceFirstParent(HY var0) {
+    private static InvoiceSell getInvoiceFirstParent(HY var0) {
 
         HY var1;
         for (var1 = var0; var1.getParentInvoiceWithCanceled() != null; var1 = (HY) var1.getParentInvoiceWithCanceled()) {
         }
 
-        HU var2 = (HU) var1;
+        InvoiceSell var2 = (InvoiceSell) var1;
         return var2;
     }
 
@@ -324,7 +324,7 @@ public class EUV extends ENN<EUY> {
             EUY var1 = this.getProcess();
             var1.HHL();
             if (this.fxml_include_invoiceSaleLogicController.GLV.get()) {
-                HU var2 = (HU) this.GML;
+                InvoiceSell var2 = (InvoiceSell) this.GML;
                 this.HXV(var2.getContractor());
             }
         } catch (FFO | FFI | FFK var8) {
@@ -417,7 +417,7 @@ public class EUV extends ENN<EUY> {
         Iterator var3 = var2.iterator();
 
         while (var3.hasNext()) {
-            HQ var4 = (HQ) var3.next();
+            InvoiceElementSell var4 = (InvoiceElementSell) var3.next();
             if (var1.get(var4.getTaxRate().getValue()) == null) {
                 var1.put(var4.getTaxRate().getValue(), new ValueContainer3(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
             }
@@ -487,7 +487,7 @@ public class EUV extends ENN<EUY> {
                 case NEW:
                 case EDIT:
                 case VIEW:
-                    EPE var4 = new EPE(this.resources, (HU) this.GML, var3, var2);
+                    EPE var4 = new EPE(this.resources, (InvoiceSell) this.GML, var3, var2);
                     var4.HOE();
                     break;
                 case CORRECT:
@@ -496,7 +496,7 @@ public class EUV extends ENN<EUY> {
                     break;
                 case VIEW_CORRECTION:
                 case EDIT_CORRECTION:
-                    EPI var6 = new EPI(this.resources, (HV) this.GML, var3, var2);
+                    EPI var6 = new EPI(this.resources, (InvoiceSellCorrection) this.GML, var3, var2);
                     var6.HOE();
             }
         } catch (FFO | FFK var10) {

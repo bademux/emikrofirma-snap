@@ -6,8 +6,8 @@ import a.a.a.c.e.a.d.ValueContainer1;
 import a.a.a.c.f.a.c.a.AHCF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHDI;
-import a.a.a.c.f.a.c.a.a.AHDC;
-import a.a.a.c.f.a.c.a.d.AHEE;
+import a.a.a.c.f.a.c.a.a.ConditionOnFieldsAndCustomAction;
+import a.a.a.c.f.a.c.a.d.BaseOperationAbstract;
 import a.a.a.c.f.a.c.a.e.RuleOnFields;
 import jakarta.xml.bind.annotation.*;
 
@@ -23,16 +23,16 @@ public class ParentField extends AHDI {
     @XmlAttribute(
             name = "fieldType"
     )
-    protected final AHDS AHWA;
+    protected final FieldType AHWA;
     @XmlElement(
             name = "childFields"
     )
-    protected final Set<AHDO> AHWB;
+    protected final Set<Field> AHWB;
     @XmlElements({})
-    protected final List<AHEE> AHWC;
+    protected final List<BaseOperationAbstract> AHWC;
     @XmlElements({@XmlElement(
             name = "conditionOnFieldsAndCustomAction",
-            type = AHDC.class
+            type = ConditionOnFieldsAndCustomAction.class
     ), @XmlElement(
             name = "ruleOnFields",
             type = RuleOnFields.class
@@ -50,12 +50,12 @@ public class ParentField extends AHDI {
 
     }
 
-    public ParentField(AHDS var1) {
+    public ParentField(FieldType var1) {
         this(var1, new HashSet(), new ArrayList(), new ArrayList());
 
     }
 
-    public ParentField(AHDS var1, Set<AHDO> var2, List<AHEE> var3, List<AHCF> var4) {
+    public ParentField(FieldType var1, Set<Field> var2, List<BaseOperationAbstract> var3, List<AHCF> var4) {
 
         this.AHVY = AHCI.SUCCESS;
         this.AHVZ = 0L;
@@ -74,15 +74,15 @@ public class ParentField extends AHDI {
         this.AHVZ = this.AHVZ + 1L;
     }
 
-    public AHDS getFieldType() {
+    public FieldType getFieldType() {
         return this.AHWA;
     }
 
-    public Set<AHDO> getChildFields() {
+    public Set<Field> getChildFields() {
         return this.AHWB;
     }
 
-    public List<AHEE> getOperations() {
+    public List<BaseOperationAbstract> getOperations() {
         return this.AHWC;
     }
 
@@ -95,7 +95,7 @@ public class ParentField extends AHDI {
         Iterator var1 = this.AHWC.iterator();
 
         while (var1.hasNext()) {
-            AHEE var2 = (AHEE) var1.next();
+            BaseOperationAbstract var2 = (BaseOperationAbstract) var1.next();
             var2.AIDS(this.AHWB);
         }
 
@@ -108,7 +108,7 @@ public class ParentField extends AHDI {
             Iterator var5 = this.AHWB.iterator();
 
             while (var5.hasNext()) {
-                AHDO var6 = (AHDO) var5.next();
+                Field var6 = (Field) var5.next();
                 var4.put(var6.getFieldType(), var6);
             }
 
@@ -145,7 +145,7 @@ public class ParentField extends AHDI {
         Iterator var1 = this.AHWB.iterator();
 
         while (var1.hasNext()) {
-            AHDO var2 = (AHDO) var1.next();
+            Field var2 = (Field) var1.next();
             var2.reset();
         }
 

@@ -1,17 +1,17 @@
 package a.a.a.c.f;
 
 import a.a.a.c.f.a.a.Dictionary;
-import a.a.a.c.f.a.a.IJF;
+import a.a.a.c.f.a.a.DictionaryEntry;
 import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.*;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
-import a.a.a.c.f.a.e.a.IF;
-import a.a.a.c.f.a.e.a.IG;
+import a.a.a.c.f.a.e.a.InvoiceRecordPurchase;
+import a.a.a.c.f.a.e.a.InvoiceRecordSell;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
-import a.a.a.c.f.a.f.a.IR;
+import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JI;
+import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.a.n.*;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.b.UserData;
@@ -38,35 +38,35 @@ public final class LN {
         INVOICE_PURCHASE_INVOICE_TYPE(HT.class, INVOICE),
         INVOICE_SELL_INVOICE_TYPE(HX.class, INVOICE_SELL_TYPE),
         INVOICE_SELL_CORRECTION_TYPE(HW.class, INVOICE_SELL_TYPE),
-        INVOICE_SELL(HU.class, INVOICE_SELL_INVOICE_TYPE),
-        INVOICE_SELL_CORRECTION(HV.class, INVOICE_SELL_CORRECTION_TYPE),
+        INVOICE_SELL(InvoiceSell.class, INVOICE_SELL_INVOICE_TYPE),
+        INVOICE_SELL_CORRECTION(InvoiceSellCorrection.class, INVOICE_SELL_CORRECTION_TYPE),
         INVOICE_PURCHASE(InvoicePurchase.class, INVOICE_PURCHASE_INVOICE_TYPE),
-        AGGREGATE_PURCHASE(QSF.class, INVOICE_PURCHASE),
+        AGGREGATE_PURCHASE(AggregatePurchase.class, INVOICE_PURCHASE),
         INVOICE_OTHER(InvoiceOther.class),
         INVOICE_OTHER_PURCHASE_INVOICE_TYPE(QSM.class),
         INVOICE_OTHER_PURCHASE(InvoiceOtherPurchase.class),
         INVOICE_OTHER_SELL_INVOICE_TYPE(QSO.class),
         INVOICE_OTHER_SELL(InvoiceOtherSell.class),
         RECEIPTRECORD(ReceiptRecord.class),
-        RECEIPTRECORDVAT(IR.class, RECEIPTRECORD),
+        RECEIPTRECORDVAT(ReceiptRecordVat.class, RECEIPTRECORD),
         SETTLEMENT(Settlement.class),
-        SETTLEMENTVAT(JI.class, SETTLEMENT),
+        SETTLEMENTVAT(SettlementVat.class, SETTLEMENT),
         DECLARATION(Declaration.class),
         DECLARATIONJPK(DeclarationJPK.class, DECLARATION),
-        DECLARATIONJPK_EWP(AGWO.class, DECLARATIONJPK),
-        DECLARATIONJPK_FA(AGWP.class, DECLARATIONJPK),
-        DECLARATIONJPK_KR(AGWQ.class, DECLARATIONJPK),
-        DECLARATIONJPK_MAG(AGWR.class, DECLARATIONJPK),
-        DECLARATIONJPK_PKPIR(AGWS.class, DECLARATIONJPK),
-        DECLARATIONJPK_VAT(HK.class, DECLARATIONJPK),
-        DECLARATIONJPK_WB(AGWU.class, DECLARATIONJPK),
-        DECLARATIONJPK_STATUSTRACKER(QGX.class, DECLARATIONJPK),
+        DECLARATIONJPK_EWP(DeclarationJPK_EWP.class, DECLARATIONJPK),
+        DECLARATIONJPK_FA(DeclarationJPK_FA.class, DECLARATIONJPK),
+        DECLARATIONJPK_KR(DeclarationJPK_KR.class, DECLARATIONJPK),
+        DECLARATIONJPK_MAG(DeclarationJPK_MAG.class, DECLARATIONJPK),
+        DECLARATIONJPK_PKPIR(DeclarationJPK_PKPIR.class, DECLARATIONJPK),
+        DECLARATIONJPK_VAT(DeclarationJPK_VAT.class, DECLARATIONJPK),
+        DECLARATIONJPK_WB(DeclarationJPK_WB.class, DECLARATIONJPK),
+        DECLARATIONJPK_STATUSTRACKER(DeclarationJPK_StatusTracker.class, DECLARATIONJPK),
         INVOICERECORD(InvoiceRecord.class),
-        INVOICERECORDSELL(IG.class, INVOICERECORD),
-        INVOICERECORDPURCHASE(IF.class, INVOICERECORD),
+        INVOICERECORDSELL(InvoiceRecordSell.class, INVOICERECORD),
+        INVOICERECORDPURCHASE(InvoiceRecordPurchase.class, INVOICERECORD),
         CONTRACTOR(Contractor.class),
         DICTIONARY(Dictionary.class),
-        DICTIONARYCOMMODITY(IJF.class, DICTIONARY);
+        DICTIONARYCOMMODITY(DictionaryEntry.class, DICTIONARY);
 
         private final Class<? extends ModelBase> AQB;
         private final LO AQC;

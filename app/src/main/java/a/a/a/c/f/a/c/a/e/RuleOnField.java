@@ -4,8 +4,8 @@ import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.AHCE;
 import a.a.a.c.f.a.c.a.AHCI;
-import a.a.a.c.f.a.c.a.AHCJ;
-import a.a.a.c.f.a.c.a.c.Field;
+import a.a.a.c.f.a.c.a.ActionType;
+import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -21,7 +21,7 @@ public class RuleOnField extends AHCE {
     @XmlElement(
             name = "logicalOperator"
     )
-    protected final AHEG AHWR;
+    protected final LogicalOperator AHWR;
     @XmlElement(
             name = "conditionRight"
     )
@@ -35,7 +35,7 @@ public class RuleOnField extends AHCE {
 
     }
 
-    public RuleOnField(AHCJ var1, String var2, RuleOnFieldContainer var3, AHEG var4, RuleOnFieldContainer var5) {
+    public RuleOnField(ActionType var1, String var2, RuleOnFieldContainer var3, LogicalOperator var4, RuleOnFieldContainer var5) {
         super(var1, var2);
 
         this.AHWQ = var3;
@@ -48,7 +48,7 @@ public class RuleOnField extends AHCE {
         return this.AHWQ;
     }
 
-    public AHEG getLogicalOperator() {
+    public LogicalOperator getLogicalOperator() {
         return this.AHWR;
     }
 
@@ -56,7 +56,7 @@ public class RuleOnField extends AHCE {
         return this.AHWS;
     }
 
-    public ValueContainer2<AHCI, String> AICX(Field var1) {
+    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
 
         ValueContainer2 var5;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);

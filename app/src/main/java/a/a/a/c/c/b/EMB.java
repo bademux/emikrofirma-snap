@@ -27,7 +27,7 @@ import a.a.a.c.f.a.f.a.IQ;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
-import a.a.a.c.f.a.h.JI;
+import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.QSQ;
 import a.a.a.c.f.a.n.QSR;
@@ -441,20 +441,20 @@ public class EMB {
     private void HIC(Period var1, JH var2) throws FFK, FFO {
 
         ValueContainer2 var3 = this.FGN.HLQ(this.FGO, null, null, null, var1.DDN(), var2);
-        JI var4;
+        SettlementVat var4;
         if (var3 != null && var3.getSecondValue() != null && ((List) var3.getSecondValue()).size() != 0) {
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() != 1) {
                 throw new FFK("Settlement duplicate! [" + var1 + "] [SettlementType " + var2 + "]");
             }
 
-            var4 = (JI) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
+            var4 = (SettlementVat) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
             JG var5 = var4.getSettlementStatus();
             switch (var5) {
                 case NEW:
                     break;
                 case CANCELED_CHANGED:
                 case CANCELED_UNCHANGED:
-                    JI var6 = new JI();
+                    SettlementVat var6 = new SettlementVat();
                     var6.setPeriod(var1.DDN());
                     this.HII(FDO.insert, var6, var4);
                     break;
@@ -464,7 +464,7 @@ public class EMB {
                     throw new FFI("Unimplemented type [SettlementStatus " + var5.name() + "]!");
             }
         } else {
-            var4 = new JI();
+            var4 = new SettlementVat();
             var4.setPeriod(var1.DDN());
             this.HII(FDO.insert, var4, null);
         }

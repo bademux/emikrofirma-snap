@@ -10,7 +10,7 @@ import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.c.b.ESI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.d.*;
-import a.a.a.c.f.a.e.HV;
+import a.a.a.c.f.a.e.InvoiceSellCorrection;
 import a.a.a.c.f.a.e.HY;
 import a.a.a.c.f.a.e.IA;
 import a.a.a.c.f.a.e.IB;
@@ -21,10 +21,10 @@ import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.QSW;
-import a.a.a.c.f.c.a.AILX;
+import a.a.a.c.f.c.a.PropertyBoolean;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.ConfigurationProperty;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 import javafx.stage.Stage;
@@ -38,9 +38,9 @@ import java.util.List;
 @Slf4j
 public class ESJ extends ELW {
     private ConfigurationProperties GCU;
-    private LS GCV;
-    private LS GCW;
-    private AILX GCX;
+    private PropertyString GCV;
+    private PropertyString GCW;
+    private PropertyBoolean GCX;
     private UserData GCY;
 
     public ESJ() {
@@ -59,11 +59,11 @@ public class ESJ extends ELW {
                 while (var2.hasNext()) {
                     ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GCV = (LS) var3;
+                        this.GCV = (PropertyString) var3;
                     } else if (FCQ.Pkcs11LibraryFile.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GCW = (LS) var3;
+                        this.GCW = (PropertyString) var3;
                     } else if (FCQ.PerformVerification.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GCX = (AILX) var3;
+                        this.GCX = (PropertyBoolean) var3;
                     }
                 }
             }
@@ -127,18 +127,18 @@ public class ESJ extends ELW {
         return var11;
     }
 
-    public HK getDeclarationJPK_VAT(Settlement var1) {
+    public DeclarationJPK_VAT getDeclarationJPK_VAT(Settlement var1) {
 
-        HK var4;
+        DeclarationJPK_VAT var4;
         try {
-            EYD var2 = new EYD(HK.class, var1, null, HM.JPK, AGWW.VAT);
+            EYD var2 = new EYD(DeclarationJPK_VAT.class, var1, null, HM.JPK, AGWW.VAT);
             ValueContainer2 var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() <= 0) {
                 var4 = null;
                 return var4;
             }
 
-            var4 = (HK) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
+            var4 = (DeclarationJPK_VAT) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
         } catch (FFO | FFK var8) {
             log.error("Something bad happened", var8);
             throw new FFI(var8);
@@ -147,18 +147,18 @@ public class ESJ extends ELW {
         return var4;
     }
 
-    public AGWP getDeclarationJPK_FA(Settlement var1) {
+    public DeclarationJPK_FA getDeclarationJPK_FA(Settlement var1) {
 
-        AGWP var4;
+        DeclarationJPK_FA var4;
         try {
-            EYD var2 = new EYD(AGWP.class, var1, null, HM.JPK, AGWW.FA);
+            EYD var2 = new EYD(DeclarationJPK_FA.class, var1, null, HM.JPK, AGWW.FA);
             ValueContainer2 var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() <= 0) {
                 var4 = null;
                 return var4;
             }
 
-            var4 = (AGWP) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
+            var4 = (DeclarationJPK_FA) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
         } catch (FFO | FFK var8) {
             log.error("Something bad happened", var8);
             throw new FFI(var8);
@@ -186,7 +186,7 @@ public class ESJ extends ELW {
 
         boolean var3;
         try {
-            IU var1 = new IU(HV.class, QSW.ACTIVE, Period.AOE, IB.SELL, IA.CORRECTION, null, null, OrderType.DESC);
+            IU var1 = new IU(InvoiceSellCorrection.class, QSW.ACTIVE, Period.AOE, IB.SELL, IA.CORRECTION, null, null, OrderType.DESC);
             ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             if (((List) var2.getSecondValue()).size() <= 0) {
                 var3 = false;

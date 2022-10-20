@@ -18,12 +18,12 @@ public abstract class InvoiceRecord extends ModelBusinessPeriodAndDocIndexElemen
     private IH ALA;
     @XmlElements({@XmlElement(
             name = "invoiceRecordElement",
-            type = ID.class
+            type = InvoiceRecordElement.class
     ), @XmlElement(
             name = "invoiceRecordElementPurchase",
-            type = IE.class
+            type = InvoiceRecordElementPurchase.class
     )})
-    private Set<ID> ALB;
+    private Set<InvoiceRecordElement> ALB;
     private JR ALC;
     private JR ALD;
     private JR ALE;
@@ -68,7 +68,7 @@ public abstract class InvoiceRecord extends ModelBusinessPeriodAndDocIndexElemen
         return this.ALA;
     }
 
-    public Set<ID> getInvoiceRecordElements() {
+    public Set<InvoiceRecordElement> getInvoiceRecordElements() {
         return this.ALB;
     }
 
@@ -314,7 +314,7 @@ public abstract class InvoiceRecord extends ModelBusinessPeriodAndDocIndexElemen
         this.ALA = var1;
     }
 
-    public void setInvoiceRecordElements(Set<ID> var1) {
+    public void setInvoiceRecordElements(Set<InvoiceRecordElement> var1) {
         this.ALB = var1;
     }
 

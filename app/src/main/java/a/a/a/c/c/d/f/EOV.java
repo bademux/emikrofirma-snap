@@ -3,7 +3,7 @@ package a.a.a.c.c.d.f;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.f.a.a.EYZ;
-import a.a.a.c.f.a.a.IJF;
+import a.a.a.c.f.a.a.DictionaryEntry;
 import a.a.a.c.f.a.b.SQQ;
 import a.a.a.c.f.b.c.a.KL;
 
@@ -12,7 +12,7 @@ import java.util.*;
 public abstract class EOV implements SQQ<String> {
     private final EOW FNZ;
     private final EYZ FOA;
-    Map<String, IJF> FOB = new HashMap();
+    Map<String, DictionaryEntry> FOB = new HashMap();
 
     public EOV(final EOW var1, EYZ var2) {
         this.FNZ = var1;
@@ -25,7 +25,7 @@ public abstract class EOV implements SQQ<String> {
         var2.setChangeListener(new EYZ.EZB() {
             public void IFT(String var1) {
                 if (EOV.this.FOB != null) {
-                    IJF var2 = EOV.this.FOB.get(EOV.this.HNT(var1));
+                    DictionaryEntry var2 = EOV.this.FOB.get(EOV.this.HNT(var1));
                     if (var2 != null && var2.getTaxRateValue() != null) {
                         KL var3 = var2.getTaxRateValue().getValue();
                         if (var3 != null) {
@@ -48,7 +48,7 @@ public abstract class EOV implements SQQ<String> {
             Iterator var5 = var3.iterator();
 
             while (var5.hasNext()) {
-                IJF var6 = (IJF) var5.next();
+                DictionaryEntry var6 = (DictionaryEntry) var5.next();
                 var4.add(var6.IYX().getValue());
             }
 
@@ -56,13 +56,13 @@ public abstract class EOV implements SQQ<String> {
         }
     }
 
-    private List<IJF> QGT(String var1) {
+    private List<DictionaryEntry> QGT(String var1) {
         List var2 = this.FNZ.HNW(var1);
         this.FOB = new HashMap();
         Iterator var3 = var2.iterator();
 
         while (var3.hasNext()) {
-            IJF var4 = (IJF) var3.next();
+            DictionaryEntry var4 = (DictionaryEntry) var3.next();
             this.FOB.put(this.HNT(var4.IYX().getValue()), var4);
         }
 
@@ -74,7 +74,7 @@ public abstract class EOV implements SQQ<String> {
         String var3 = this.getName(var1);
         KL var4 = this.HNU();
         this.QGT(var2);
-        IJF var5 = this.FOB.get(var2);
+        DictionaryEntry var5 = this.FOB.get(var2);
         if (var5 != null) {
             String var6 = var5.IYX().getValue();
             KL var7 = var5.IYY().getValue();
@@ -84,7 +84,7 @@ public abstract class EOV implements SQQ<String> {
                 this.FNZ.HNY(var5);
             }
         } else {
-            var5 = new IJF();
+            var5 = new DictionaryEntry();
             var5.IYX().setValue(var3);
             var5.IYY().setValue(var4);
             this.FNZ.HNX(var5);

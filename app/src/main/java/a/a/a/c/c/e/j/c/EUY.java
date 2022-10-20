@@ -25,7 +25,7 @@ import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.ConfigurationProperty;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 
@@ -39,11 +39,11 @@ import java.util.List;
 
 public class EUY extends ELX implements EYL {
     private ConfigurationProperties GMS;
-    private LS GMT;
-    private LS GMU;
-    private LS GMV;
-    private HU GMW;
-    private HV GMX;
+    private PropertyString GMT;
+    private PropertyString GMU;
+    private PropertyString GMV;
+    private InvoiceSell GMW;
+    private InvoiceSellCorrection GMX;
     private EPB GMY;
 
     public EUY() {
@@ -62,11 +62,11 @@ public class EUY extends ELX implements EYL {
         this.HHI();
     }
 
-    public void setInvoiceSell(HU var1) {
+    public void setInvoiceSell(InvoiceSell var1) {
         this.GMW = var1;
     }
 
-    public void setInvoiceSellCorrection(HV var1) {
+    public void setInvoiceSellCorrection(InvoiceSellCorrection var1) {
         this.GMX = var1;
     }
 
@@ -81,11 +81,11 @@ public class EUY extends ELX implements EYL {
                 while (var2.hasNext()) {
                     ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.SellRefIdPattern.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GMT = (LS) var3;
+                        this.GMT = (PropertyString) var3;
                     } else if (FCQ.SellCorrectionRefIdPattern.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GMU = (LS) var3;
+                        this.GMU = (PropertyString) var3;
                     } else if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GMV = (LS) var3;
+                        this.GMV = (PropertyString) var3;
                     }
                 }
             }
@@ -96,11 +96,11 @@ public class EUY extends ELX implements EYL {
 
     }
 
-    public HU getInvoiceSell(Contractor var1) throws FFK, FFO {
+    public InvoiceSell getInvoiceSell(Contractor var1) throws FFK, FFO {
 
-        HU var2;
+        InvoiceSell var2;
         if (this.GMW == null) {
-            this.GMW = this.getModelManager().HJX(this.getParentDefinition(), HU.class);
+            this.GMW = this.getModelManager().HJX(this.getParentDefinition(), InvoiceSell.class);
             if (var1 != null) {
                 this.GMW.setContractor(var1);
             }
@@ -111,11 +111,11 @@ public class EUY extends ELX implements EYL {
         return var2;
     }
 
-    public HV getInvoiceSellCorrection() throws FFK, FFO {
+    public InvoiceSellCorrection getInvoiceSellCorrection() throws FFK, FFO {
 
-        HV var1;
+        InvoiceSellCorrection var1;
         if (this.GMX == null) {
-            this.GMX = this.getModelManager().HJX(this.getParentDefinition(), HV.class);
+            this.GMX = this.getModelManager().HJX(this.getParentDefinition(), InvoiceSellCorrection.class);
         }
 
         var1 = this.GMX;

@@ -10,7 +10,7 @@ public abstract class OperationAbstract extends AHDI {
     @XmlAttribute(
             name = "operationType"
     )
-    protected final AHEF AHWI;
+    protected final OperationType AHWI;
 
     protected OperationAbstract() {
 
@@ -18,13 +18,13 @@ public abstract class OperationAbstract extends AHDI {
 
     }
 
-    public OperationAbstract(AHEF var1) {
+    public OperationAbstract(OperationType var1) {
 
         this.AHWI = var1;
 
     }
 
-    public AHEF getOperationType() {
+    public OperationType getOperationType() {
         return this.AHWI;
     }
 

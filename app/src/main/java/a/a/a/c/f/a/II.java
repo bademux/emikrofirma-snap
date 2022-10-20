@@ -3,43 +3,39 @@ package a.a.a.c.f.a;
 import a.a.a.b.f.FFI;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.*;
-import a.a.a.c.f.a.e.a.IF;
-import a.a.a.c.f.a.e.a.IG;
-import a.a.a.c.f.a.f.a.IR;
-import a.a.a.c.f.a.h.JI;
 import a.a.a.c.f.a.n.*;
 
 public enum II {
     Invoice(a.a.a.c.f.a.e.Invoice.class),
     InvoiceSellType(HY.class),
-    InvoiceSell(HU.class),
+    InvoiceSell(a.a.a.c.f.a.e.InvoiceSell.class),
     InvoiceSellCorrectionType(HW.class),
-    InvoiceSellCorrection(HV.class),
+    InvoiceSellCorrection(a.a.a.c.f.a.e.InvoiceSellCorrection.class),
     InvoicePurchaseInvoiceType(HT.class),
     InvoicePurchase(a.a.a.c.f.a.e.InvoicePurchase.class),
-    AggregatePurchase(QSF.class),
+    AggregatePurchase(a.a.a.c.f.a.e.AggregatePurchase.class),
     InvoiceOther(a.a.a.c.f.a.n.InvoiceOther.class),
     InvoiceOtherPurchaseInvoiceType(QSM.class),
     InvoiceOtherPurchase(a.a.a.c.f.a.n.InvoiceOtherPurchase.class),
     InvoiceOtherSellInvoiceType(QSO.class),
     InvoiceOtherSell(a.a.a.c.f.a.n.InvoiceOtherSell.class),
     ReceiptRecord(a.a.a.c.f.a.f.a.ReceiptRecord.class),
-    ReceiptRecordVat(IR.class),
+    ReceiptRecordVat(a.a.a.c.f.a.f.a.ReceiptRecordVat.class),
     Settlement(a.a.a.c.f.a.h.Settlement.class),
-    SettlementVat(JI.class),
+    SettlementVat(a.a.a.c.f.a.h.SettlementVat.class),
     Declaration(a.a.a.c.f.a.d.Declaration.class),
     DeclarationJPK(a.a.a.c.f.a.d.DeclarationJPK.class),
-    DeclarationJPK_EWP(AGWO.class),
-    DeclarationJPK_FA(AGWP.class),
-    DeclarationJPK_KR(AGWQ.class),
-    DeclarationJPK_MAG(AGWR.class),
-    DeclarationJPK_PKPIR(AGWS.class),
-    DeclarationJPK_VAT(HK.class),
-    DeclarationJPK_WB(AGWU.class),
-    DeclarationJPK_STATUSTRACKER(QGX.class),
+    DeclarationJPK_EWP(a.a.a.c.f.a.d.DeclarationJPK_EWP.class),
+    DeclarationJPK_FA(a.a.a.c.f.a.d.DeclarationJPK_FA.class),
+    DeclarationJPK_KR(a.a.a.c.f.a.d.DeclarationJPK_KR.class),
+    DeclarationJPK_MAG(a.a.a.c.f.a.d.DeclarationJPK_MAG.class),
+    DeclarationJPK_PKPIR(a.a.a.c.f.a.d.DeclarationJPK_PKPIR.class),
+    DeclarationJPK_VAT(a.a.a.c.f.a.d.DeclarationJPK_VAT.class),
+    DeclarationJPK_WB(a.a.a.c.f.a.d.DeclarationJPK_WB.class),
+    DeclarationJPK_STATUSTRACKER(DeclarationJPK_StatusTracker.class),
     InvoiceRecord(a.a.a.c.f.a.e.a.InvoiceRecord.class),
-    InvoiceRecordSell(IG.class),
-    InvoiceRecordPurchase(IF.class),
+    InvoiceRecordSell(a.a.a.c.f.a.e.a.InvoiceRecordSell.class),
+    InvoiceRecordPurchase(a.a.a.c.f.a.e.a.InvoiceRecordPurchase.class),
     Contractor(a.a.a.c.f.a.c.Contractor.class);
 
     private final Class<? extends ModelBusinessTopElement> AMG;

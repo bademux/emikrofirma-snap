@@ -26,20 +26,20 @@ import a.a.a.c.f.a.ModelBusinessPeriodAndDocIndexElement;
 import a.a.a.c.f.a.ModelBusinessPeriodElement;
 import a.a.a.c.f.a.ModelBusinessTopElement;
 import a.a.a.c.f.a.a.Dictionary;
-import a.a.a.c.f.a.a.IJF;
+import a.a.a.c.f.a.a.DictionaryEntry;
 import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.*;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
-import a.a.a.c.f.a.e.a.IF;
-import a.a.a.c.f.a.e.a.IG;
+import a.a.a.c.f.a.e.a.InvoiceRecordPurchase;
+import a.a.a.c.f.a.e.a.InvoiceRecordSell;
 import a.a.a.c.f.a.e.a.IH;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
 import a.a.a.c.f.a.f.a.IQ;
-import a.a.a.c.f.a.f.a.IR;
+import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JH;
-import a.a.a.c.f.a.h.JI;
+import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.a.n.*;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.*;
@@ -96,7 +96,7 @@ public class EMX implements ENC {
 
         try {
             this.initProfilesConnection();
-            Class[] jaxbClasses = new Class[]{ConfigurationProperties.class, UserData.class, HU.class, HV.class, InvoicePurchase.class, QSF.class, InvoiceOtherSell.class, InvoiceOtherPurchase.class, IG.class, IF.class, IR.class, JI.class, AGWO.class, AGWP.class, AGWQ.class, AGWR.class, AGWS.class, HK.class, AGWU.class, QGX.class, Dictionary.class, IJF.class, KJ.class, KN.class, KL.class, KM.class, KI.class, KK.class, QSV.class};
+            Class[] jaxbClasses = new Class[]{ConfigurationProperties.class, UserData.class, InvoiceSell.class, InvoiceSellCorrection.class, InvoicePurchase.class, AggregatePurchase.class, InvoiceOtherSell.class, InvoiceOtherPurchase.class, InvoiceRecordSell.class, InvoiceRecordPurchase.class, ReceiptRecordVat.class, SettlementVat.class, DeclarationJPK_EWP.class, DeclarationJPK_FA.class, DeclarationJPK_KR.class, DeclarationJPK_MAG.class, DeclarationJPK_PKPIR.class, DeclarationJPK_VAT.class, DeclarationJPK_WB.class, DeclarationJPK_StatusTracker.class, Dictionary.class, DictionaryEntry.class, KJ.class, KN.class, KL.class, KM.class, KI.class, KK.class, QSV.class};
             this.FIU = new FEO(false, true, StandardCharsets.UTF_8, jaxbClasses);
             this.FIV = new FEP(jaxbClasses);
             this.FIV.setListener(new Unmarshaller.Listener() {
@@ -2185,13 +2185,13 @@ public class EMX implements ENC {
 
     }
 
-    private static HU getInvoiceFirstParent(Invoice<?> var0) {
+    private static InvoiceSell getInvoiceFirstParent(Invoice<?> var0) {
 
         Invoice var1;
         for (var1 = var0; var1.getParentInvoiceOnlyActive() != null; var1 = var1.getParentInvoiceOnlyActive()) {
         }
 
-        HU var2 = (HU) var1;
+        InvoiceSell var2 = (InvoiceSell) var1;
         return var2;
     }
 
@@ -2237,7 +2237,7 @@ public class EMX implements ENC {
                 switch (var3.getInvoiceSubType()) {
                     case INVOICE:
                     case AGGREGATE:
-                        HU var14 = (HU) var3;
+                        InvoiceSell var14 = (InvoiceSell) var3;
                         if (var14.getAmountSummaryWithoutTax() != null && var14.getAmountSummaryWithoutTax().getValue() != null) {
                             var4.add(new CellValue(FMG, var14.getAmountSummaryWithoutTax().getValue()));
                         }
@@ -2261,7 +2261,7 @@ public class EMX implements ENC {
                         }
                         break label319;
                     case CORRECTION:
-                        HV var13 = (HV) var3;
+                        InvoiceSellCorrection var13 = (InvoiceSellCorrection) var3;
                         if (var13.getDifferenceAmountSummaryWithoutTax() != null && var13.getDifferenceAmountSummaryWithoutTax().getValue() != null) {
                             var4.add(new CellValue(FMG, var13.getDifferenceAmountSummaryWithoutTax().getValue()));
                         }
@@ -2274,7 +2274,7 @@ public class EMX implements ENC {
                             var4.add(new CellValue(FMI, var13.getDifferenceAmountTax().getValue()));
                         }
 
-                        HU var15 = getInvoiceFirstParent(var3);
+                        InvoiceSell var15 = getInvoiceFirstParent(var3);
                         if (var15.getTransactionDate() != null && var15.getTransactionDate().getValue() != null) {
                             var4.add(new CellValue(QNR, var15.getTransactionDate().getValueDate()));
                         }
@@ -2283,7 +2283,7 @@ public class EMX implements ENC {
                         for (var7 = var13; ((Invoice) var7).getParentInvoiceOnlyActive() != null; var7 = ((Invoice) var7).getParentInvoiceOnlyActive()) {
                         }
 
-                        HU var8 = (HU) var7;
+                        InvoiceSell var8 = (InvoiceSell) var7;
                         Contractor var9 = var8.getContractor();
                         if (var9 != null && var9.getName() != null && var9.getName().getValue() != null) {
                             var4.add(new CellValue(FME, var9.getName().getValue()));

@@ -2,8 +2,8 @@ package a.a.a.c.c.d.h;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.e.HQ;
-import a.a.a.c.f.a.e.HU;
+import a.a.a.c.f.a.e.InvoiceElementSell;
+import a.a.a.c.f.a.e.InvoiceSell;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.b.c.a.QSW;
@@ -36,10 +36,10 @@ import java.util.ResourceBundle;
 
 public class EPE extends EPL {
 
-    private final HU FPN;
+    private final InvoiceSell FPN;
     private final UserData FPO;
 
-    public EPE(ResourceBundle var1, HU var2, UserData var3, File var4) {
+    public EPE(ResourceBundle var1, InvoiceSell var2, UserData var3, File var4) {
         super(var1, var4);
         this.FPN = var2;
         this.FPO = var3;
@@ -167,7 +167,7 @@ public class EPE extends EPL {
 
         Element var2;
         while (var4.hasNext()) {
-            HQ var5 = (HQ) var4.next();
+            InvoiceElementSell var5 = (InvoiceElementSell) var4.next();
             ++var3;
             var2 = var1.getDocument().createElement("invoiceSellElements");
             var1.HOR("nr", String.valueOf(var3), var2);

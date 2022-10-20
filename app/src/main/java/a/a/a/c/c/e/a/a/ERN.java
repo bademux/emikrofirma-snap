@@ -11,9 +11,9 @@ import a.a.a.c.c.b.b.EMU;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.a.c.ERU;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.c.a.AILX;
+import a.a.a.c.f.c.a.PropertyBoolean;
 import a.a.a.c.f.c.a.ConfigurationProperties;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.c.TextFieldValidated_RefIdPattern;
 import a.a.a.c.g.FCQ;
 import a.a.a.c.g.a.FCR;
@@ -34,11 +34,11 @@ import java.util.Map;
 
 public class ERN extends BaseProgressFxController<ERU> {
     private ConfigurationProperties GAD;
-    private LS GAE;
-    private LS GAF;
-    private AILX GAG;
-    private LS GAH;
-    private LS GAI;
+    private PropertyString GAE;
+    private PropertyString GAF;
+    private PropertyBoolean GAG;
+    private PropertyString GAH;
+    private PropertyString GAI;
     private final BooleanProperty GAJ = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
     private final BooleanProperty RAA = new SimpleBooleanProperty(this, "innerChangedPropertyHolder", false);
     private ERO GAK;
@@ -176,11 +176,11 @@ public class ERN extends BaseProgressFxController<ERU> {
             this.RAA.set(false);
             final ERU var1 = this.HHG();
             this.GAD = var1.getConfigurationProperties();
-            this.GAE = (LS) this.GAD.getConfigurationPropertyOrDefault(FCQ.WorkingDir);
-            this.GAF = (LS) this.GAD.getConfigurationPropertyOrDefault(FCQ.Pkcs11LibraryFile);
-            this.GAG = (AILX) this.GAD.getConfigurationPropertyOrDefault(FCQ.PerformVerification);
-            this.GAH = (LS) this.GAD.getConfigurationPropertyOrDefault(FCQ.SellRefIdPattern);
-            this.GAI = (LS) this.GAD.getConfigurationPropertyOrDefault(FCQ.SellCorrectionRefIdPattern);
+            this.GAE = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(FCQ.WorkingDir);
+            this.GAF = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(FCQ.Pkcs11LibraryFile);
+            this.GAG = (PropertyBoolean) this.GAD.getConfigurationPropertyOrDefault(FCQ.PerformVerification);
+            this.GAH = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(FCQ.SellRefIdPattern);
+            this.GAI = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(FCQ.SellCorrectionRefIdPattern);
             this.fxml_include_configurationLogicController.HSI(this.GAE, this.GAF, this.GAG, this.GAH, this.GAI);
             if (this.GAK == null) {
                 this.GAK = new ERO(var1.getModelManager(), this.fxml_include_configurationLogicController, this.fxml_include_configurationLogicController.GAV, this.fxml_include_configurationLogicController.fxml_config_f_preview);

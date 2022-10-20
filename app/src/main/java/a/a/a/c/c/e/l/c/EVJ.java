@@ -11,7 +11,7 @@ import a.a.a.c.c.d.g.EPA;
 import a.a.a.c.c.e.l.b.EVI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.e.Invoice;
-import a.a.a.c.f.a.e.HV;
+import a.a.a.c.f.a.e.InvoiceSellCorrection;
 import a.a.a.c.f.a.e.HY;
 import a.a.a.c.f.a.e.IB;
 import a.a.a.c.f.a.g.IU;
@@ -26,7 +26,7 @@ import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.b.c.a.QSW;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.ConfigurationProperty;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.a.QJZ;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
@@ -40,7 +40,7 @@ import java.util.List;
 
 public class EVJ extends QVI {
     private ConfigurationProperties GPG;
-    private LS GPH;
+    private PropertyString GPH;
 
     public EVJ() {
         super(EVI.GPE.getProcessName());
@@ -61,7 +61,7 @@ public class EVJ extends QVI {
                 while (var2.hasNext()) {
                     ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GPH = (LS) var3;
+                        this.GPH = (PropertyString) var3;
                     }
                 }
             }
@@ -146,7 +146,7 @@ public class EVJ extends QVI {
 
     }
 
-    public void HZE(HV var1) throws FFK, FFO {
+    public void HZE(InvoiceSellCorrection var1) throws FFK, FFO {
 
         this.getModelManager().HKB(this.getParentDefinition(), var1);
         this.getModelManager().HKL(this.getParentDefinition());
@@ -169,7 +169,7 @@ public class EVJ extends QVI {
         File var1 = new File(this.GPH.DEY().getValue());
         boolean var2 = var1.mkdirs();
         if (!var2) {
-            LS var3 = (LS) QJZ.getDefaultConfigurationProperty(FCQ.WorkingDir);
+            PropertyString var3 = (PropertyString) QJZ.getDefaultConfigurationProperty(FCQ.WorkingDir);
             var1 = new File(var3.DEY().getValue());
         }
 

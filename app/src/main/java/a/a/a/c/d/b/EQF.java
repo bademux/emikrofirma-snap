@@ -10,10 +10,10 @@ import a.a.a.c.e.a.g.EWX;
 import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.d.JPKSchemaType;
 import a.a.a.c.f.a.e.*;
-import a.a.a.c.f.a.e.a.ID;
-import a.a.a.c.f.a.e.a.IE;
-import a.a.a.c.f.a.e.a.IF;
-import a.a.a.c.f.a.e.a.IG;
+import a.a.a.c.f.a.e.a.InvoiceRecordElement;
+import a.a.a.c.f.a.e.a.InvoiceRecordElementPurchase;
+import a.a.a.c.f.a.e.a.InvoiceRecordPurchase;
+import a.a.a.c.f.a.e.a.InvoiceRecordSell;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
@@ -128,7 +128,7 @@ public class EQF {
 
                 JV var18 = null;
                 if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
-                    var18 = getOriginalInvoice((HV) var17).DAU();
+                    var18 = getOriginalInvoice((InvoiceSellCorrection) var17).DAU();
                 } else {
                     var18 = var17.DAU();
                 }
@@ -147,7 +147,7 @@ public class EQF {
                 ValueContainer2 var26;
                 ValueContainer2 var27;
                 if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
-                    Map var28 = getTaxRateSummaryDiffForCorrection((HV) var17);
+                    Map var28 = getTaxRateSummaryDiffForCorrection((InvoiceSellCorrection) var17);
                     if (var28.get(KL.RATE_23) != null) {
                         var19 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_23)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_23)).getSecondValue());
                     } else {
@@ -214,7 +214,7 @@ public class EQF {
                 }
 
                 if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
-                    var15 = var15.add(((HV) var17).DBZ().getValue());
+                    var15 = var15.add(((InvoiceSellCorrection) var17).DBZ().getValue());
                 } else {
                     var15 = var15.add(var17.DAV().getValue());
                 }
@@ -279,9 +279,9 @@ public class EQF {
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_106E_3", QLF, false);
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "RodzajFaktury", var17.getInvoiceSubType().getJpkName());
                 if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
-                    HV var32 = (HV) var17;
+                    InvoiceSellCorrection var32 = (InvoiceSellCorrection) var17;
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "PrzyczynaKorekty", var32.DBX().getValue());
-                    HU var33 = getOriginalInvoice(var32);
+                    InvoiceSell var33 = getOriginalInvoice(var32);
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "NrFaKorygowanej", var33.DAS().getValue());
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "OkresFaKorygowanej", var33.IYZ().DDZ());
                 }
@@ -301,7 +301,7 @@ public class EQF {
                     Invoice var48 = var47.getParentInvoiceOnlyActive();
 
                     for (Iterator var50 = ((HY) var48).getInvoiceElements().iterator(); var50.hasNext(); var12.writeEndElement()) {
-                        HQ var52 = (HQ) var50.next();
+                        InvoiceElementSell var52 = (InvoiceElementSell) var50.next();
                         ++var43;
                         var12.writeStartElement("http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "FakturaWiersz");
                         HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_2B", var47.DAS().getValue());
@@ -328,7 +328,7 @@ public class EQF {
                 }
 
                 for (Iterator var49 = var47.getInvoiceElements().iterator(); var49.hasNext(); var12.writeEndElement()) {
-                    HQ var51 = (HQ) var49.next();
+                    InvoiceElementSell var51 = (InvoiceElementSell) var49.next();
                     ++var43;
                     var12.writeStartElement("http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "FakturaWiersz");
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_2B", var47.DAS().getValue());
@@ -378,7 +378,7 @@ public class EQF {
         }
     }
 
-    public static Map<KL, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(HV var0) {
+    public static Map<KL, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(InvoiceSellCorrection var0) {
 
         Invoice var1 = var0.getParentInvoiceOnlyActive();
         HashMap var2 = new HashMap();
@@ -423,27 +423,27 @@ public class EQF {
         switch (var0.getInvoiceSubType()) {
             case INVOICE:
             case AGGREGATE:
-                var1 = ((HU) var0).DBV();
+                var1 = ((InvoiceSell) var0).DBV();
                 return var1;
             case CORRECTION:
-                var1 = getOriginalInvoice((HV) var0).DBV();
+                var1 = getOriginalInvoice((InvoiceSellCorrection) var0).DBV();
                 return var1;
             default:
                 throw new FFI("unknown invoice subtype");
         }
     }
 
-    public static HU getOriginalInvoice(HV var0) {
+    public static InvoiceSell getOriginalInvoice(InvoiceSellCorrection var0) {
 
         Object var1;
         for (var1 = var0; ((Invoice) var1).getParentInvoiceOnlyActive() != null; var1 = ((Invoice) var1).getParentInvoiceOnlyActive()) {
         }
 
-        HU var2 = (HU) var1;
+        InvoiceSell var2 = (InvoiceSell) var1;
         return var2;
     }
 
-    public static byte[] HQD(EWX var0, String var1, File var2, String var3, Period var4, UserData var5, IG var6, IF var7) throws FFO {
+    public static byte[] HQD(EWX var0, String var1, File var2, String var3, Period var4, UserData var5, InvoiceRecordSell var6, InvoiceRecordPurchase var7) throws FFO {
 
         byte var8 = 0;
         FileOutputStream var9 = null;
@@ -517,11 +517,11 @@ public class EQF {
 
                 label1557:
                 while (true) {
-                    ID var42;
+                    InvoiceRecordElement var42;
                     BigDecimal var46;
                     BigDecimal var47;
                     String var50;
-                    ID var52;
+                    InvoiceRecordElement var52;
                     String var53;
                     String var54;
                     boolean var80;
@@ -564,7 +564,7 @@ public class EQF {
                                     Iterator var78 = var6.getInvoiceRecordElements().iterator();
 
                                     while (true) {
-                                        ID var79;
+                                        InvoiceRecordElement var79;
                                         do {
                                             if (!var78.hasNext()) {
                                                 if (var20 > 0) {
@@ -576,7 +576,7 @@ public class EQF {
                                                 break label1557;
                                             }
 
-                                            var79 = (ID) var78.next();
+                                            var79 = (InvoiceRecordElement) var78.next();
                                         } while (var21.contains(var79));
 
                                         ++var20;
@@ -675,7 +675,7 @@ public class EQF {
                                             var91 = var7.getInvoiceRecordElements().iterator();
 
                                             while (var91.hasNext()) {
-                                                var52 = (ID) var91.next();
+                                                var52 = (InvoiceRecordElement) var91.next();
                                                 var53 = var52.HGX().getValue();
                                                 var54 = var52.HGY().DAJ().getValue();
                                                 if (var92.equals(var53) && var50.equals(var54)) {
@@ -701,7 +701,7 @@ public class EQF {
                                                     Iterator var97 = var6.getInvoiceRecordElements().iterator();
 
                                                     while (var97.hasNext()) {
-                                                        ID var55 = (ID) var97.next();
+                                                        InvoiceRecordElement var55 = (InvoiceRecordElement) var97.next();
                                                         String var56 = var55.HGX().getValue();
                                                         String var57 = var55.HGY().DAJ().getValue();
                                                         if (var92.equals(var56) && var50.equals(var57)) {
@@ -757,7 +757,7 @@ public class EQF {
                                     }
                                 }
 
-                                var42 = (ID) var41.next();
+                                var42 = (InvoiceRecordElement) var41.next();
                             } while (var42.getContractor() == null);
                         } while (var42.getContractor().getNip() == null);
                     } while (!"BRAK".equals(var42.getContractor().getNip().getValue()));
@@ -826,7 +826,7 @@ public class EQF {
                         Iterator var48 = var7.getInvoiceRecordElements().iterator();
 
                         while (var48.hasNext()) {
-                            ID var49 = (ID) var48.next();
+                            InvoiceRecordElement var49 = (InvoiceRecordElement) var48.next();
                             var50 = var49.HGX().getValue();
                             String var51 = var49.HGY().DAJ().getValue();
                             if (var83.equals(var50) && var84.equals(var51)) {
@@ -851,7 +851,7 @@ public class EQF {
                                 var91 = var6.getInvoiceRecordElements().iterator();
 
                                 while (var91.hasNext()) {
-                                    var52 = (ID) var91.next();
+                                    var52 = (InvoiceRecordElement) var91.next();
                                     var53 = var52.HGX().getValue();
                                     var54 = var52.HGY().DAJ().getValue();
                                     if (var83.equals(var53) && var84.equals(var54)) {
@@ -901,8 +901,8 @@ public class EQF {
                 Iterator var69 = var7.getInvoiceRecordElements().iterator();
 
                 while (var69.hasNext()) {
-                    ID var70 = (ID) var69.next();
-                    IE var71 = (IE) var70;
+                    InvoiceRecordElement var70 = (InvoiceRecordElement) var69.next();
+                    InvoiceRecordElementPurchase var71 = (InvoiceRecordElementPurchase) var70;
                     ++var20;
                     EWX.IBJ(var0, 0.55 + 0.4 * ((double) var20 / (double) var19), 0L, 0L);
                     var13.writeStartElement("http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "ZakupWiersz");

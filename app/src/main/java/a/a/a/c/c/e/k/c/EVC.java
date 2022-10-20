@@ -10,7 +10,7 @@ import a.a.a.c.c.e.k.b.EVB;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.f.a.IP;
 import a.a.a.c.f.a.f.a.IQ;
-import a.a.a.c.f.a.f.a.IR;
+import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JD;
 import a.a.a.c.f.a.h.Settlement;
@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EVC extends ELV {
-    private IR GNP;
+    private ReceiptRecordVat GNP;
     private ENL.ENM GNQ;
 
     public EVC() {
@@ -37,7 +37,7 @@ public class EVC extends ELV {
 
     protected void HHI() {
 
-        this.GNP = new IR();
+        this.GNP = new ReceiptRecordVat();
         this.GNP.setRefId(new RefId(FCW.getInstance().getMessageForKey("micro.process.cash_register_new.RefId_value")));
         this.GNP.setNet(new JR(BigDecimal.ZERO));
         this.GNP.setGross(new JR(BigDecimal.ZERO));
@@ -88,14 +88,14 @@ public class EVC extends ELV {
 
     }
 
-    public IR getReceiptRecord(Period var1) {
+    public ReceiptRecordVat getReceiptRecord(Period var1) {
         try {
-            JD var2 = new JD(IR.class, var1, IQ.VAT, null, null, null);
+            JD var2 = new JD(ReceiptRecordVat.class, var1, IQ.VAT, null, null, null);
             ValueContainer2 var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
             if (((List) var3.getSecondValue()).size() > 1) {
                 throw new FFO("More than one ReceiptRecord per one period!");
             } else {
-                return ((List) var3.getSecondValue()).size() > 0 ? (IR) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject() : null;
+                return ((List) var3.getSecondValue()).size() > 0 ? (ReceiptRecordVat) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject() : null;
             }
         } catch (FFO | FFK var4) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var4);
@@ -124,11 +124,11 @@ public class EVC extends ELV {
         return var10;
     }
 
-    public IR getReceiptRecord() {
+    public ReceiptRecordVat getReceiptRecord() {
         return this.GNP;
     }
 
-    public void setReceiptRecord(IR var1) {
+    public void setReceiptRecord(ReceiptRecordVat var1) {
         this.GNP = var1;
     }
 

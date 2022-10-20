@@ -10,7 +10,7 @@ import a.a.a.c.c.e.h.b.ETU;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
 import a.a.a.c.f.a.f.a.IQ;
-import a.a.a.c.f.a.f.a.IR;
+import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JD;
 import a.a.a.c.f.a.h.Settlement;
@@ -42,9 +42,9 @@ public class ETV extends QVI {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<IR>>> getReceiptRecords(int var1, int var2, Period var3) {
+    public ValueContainer2<Integer, List<EDF<ReceiptRecordVat>>> getReceiptRecords(int var1, int var2, Period var3) {
         try {
-            JD var4 = new JD(IR.class, var3, IQ.VAT, OrderType.DESC, var1, var2);
+            JD var4 = new JD(ReceiptRecordVat.class, var3, IQ.VAT, OrderType.DESC, var1, var2);
             ValueContainer2 var5 = this.getModelManager().HJY(this.getParentDefinition(), var4);
             return var5;
         } catch (FFO | FFK var6) {
@@ -98,7 +98,7 @@ public class ETV extends QVI {
         return var7;
     }
 
-    public void QOS(IR var1) throws FFK, FFO {
+    public void QOS(ReceiptRecordVat var1) throws FFK, FFO {
 
         if (var1 == null) {
             throw FCZ.getInstance().QNZ();

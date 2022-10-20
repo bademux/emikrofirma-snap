@@ -2,7 +2,7 @@ package a.a.a.c.d.f;
 
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.e.Invoice;
-import a.a.a.c.f.a.e.HV;
+import a.a.a.c.f.a.e.InvoiceSellCorrection;
 import a.a.a.c.f.b.c.a.KL;
 
 import java.math.BigDecimal;
@@ -45,7 +45,7 @@ public class ERE extends ERC {
             var20.put(var8.getFirstValue(), var8.getSecondValue());
         }
 
-        HV var22 = (HV) var1;
+        InvoiceSellCorrection var22 = (InvoiceSellCorrection) var1;
         HashMap var23 = new HashMap();
         KL[] var9 = KL.values();
         int var10 = var9.length;

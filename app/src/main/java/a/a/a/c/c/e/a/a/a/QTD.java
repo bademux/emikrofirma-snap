@@ -1,14 +1,14 @@
 package a.a.a.c.c.e.a.a.a;
 
 import a.a.a.c.f.b.c.a.QSV;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 public class QTD implements ChangeListener<QSV> {
-    private final LS QZZ;
+    private final PropertyString QZZ;
 
-    public QTD(LS var1) {
+    public QTD(PropertyString var1) {
         this.QZZ = var1;
     }
 

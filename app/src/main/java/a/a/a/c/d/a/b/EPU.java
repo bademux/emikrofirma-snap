@@ -1,8 +1,8 @@
 package a.a.a.c.d.a.b;
 
-import a.a.a.c.f.a.b.AHCB;
+import a.a.a.c.f.a.b.CustomActionClass;
 
-public class EPU implements AHCB<String> {
+public class EPU implements CustomActionClass<String> {
     protected static final int FUJ = 10;
     protected static final int FUK = 2;
     private static final int FUL = 11;

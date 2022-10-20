@@ -12,7 +12,7 @@ public abstract class ActionOnObject extends AHDI {
     @XmlElement(
             name = "actionType"
     )
-    protected final AHCJ AHTY;
+    protected final ActionType AHTY;
     @XmlElement(
             name = "messageOnError"
     )
@@ -25,14 +25,14 @@ public abstract class ActionOnObject extends AHDI {
 
     }
 
-    public ActionOnObject(AHCJ var1, String var2) {
+    public ActionOnObject(ActionType var1, String var2) {
 
         this.AHTY = var1;
         this.AHTZ = var2;
 
     }
 
-    public AHCJ getActionType() {
+    public ActionType getActionType() {
         return this.AHTY;
     }
 

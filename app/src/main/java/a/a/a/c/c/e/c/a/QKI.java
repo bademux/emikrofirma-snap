@@ -122,7 +122,7 @@ public class QKI {
                     }
 
                     JPKSchemaType var12 = (JPKSchemaType) var11.get(0);
-                    HK var13 = new HK(var4, var5, var12);
+                    DeclarationJPK_VAT var13 = new DeclarationJPK_VAT(var4, var5, var12);
                     var13.setDeclarationFileCheckSumMD5(new JT(var9));
                     File var14 = new File(var7, "tmp_" + System.nanoTime());
                     var14.mkdirs();

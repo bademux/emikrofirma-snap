@@ -4,10 +4,10 @@ import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.AHCF;
 import a.a.a.c.f.a.c.a.AHCI;
-import a.a.a.c.f.a.c.a.AHCJ;
-import a.a.a.c.f.a.c.a.a.AHDG;
-import a.a.a.c.f.a.c.a.c.AHDS;
-import a.a.a.c.f.a.c.a.c.Field;
+import a.a.a.c.f.a.c.a.ActionType;
+import a.a.a.c.f.a.c.a.a.ConditionType;
+import a.a.a.c.f.a.c.a.c.FieldType;
+import a.a.a.c.f.a.c.a.c.BaseField;
 import a.a.a.c.g.b.FCW;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RuleOnFields extends AHCF {
     @XmlAttribute
-    protected final AHEG AHWU;
+    protected final LogicalOperator AHWU;
     protected final RuleOnFieldsContainer AHWV;
     protected final RuleOnFieldsContainer AHWW;
 
@@ -31,7 +31,7 @@ public class RuleOnFields extends AHCF {
 
     }
 
-    public RuleOnFields(AHCJ var1, String var2, RuleOnFieldsContainer var3, AHEG var4, RuleOnFieldsContainer var5) {
+    public RuleOnFields(ActionType var1, String var2, RuleOnFieldsContainer var3, LogicalOperator var4, RuleOnFieldsContainer var5) {
         super(var1, var2);
 
         this.AHWV = var3;
@@ -44,7 +44,7 @@ public class RuleOnFields extends AHCF {
         return this.AHWV;
     }
 
-    public AHEG getLogicalOperator() {
+    public LogicalOperator getLogicalOperator() {
         return this.AHWU;
     }
 
@@ -52,7 +52,7 @@ public class RuleOnFields extends AHCF {
         return this.AHWW;
     }
 
-    public ValueContainer2<AHCI, String> AICY(Map<AHDS, Field> var1) {
+    public ValueContainer2<AHCI, String> AICY(Map<FieldType, BaseField> var1) {
 
         ValueContainer2 var14;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("fields " + var1);
@@ -60,8 +60,8 @@ public class RuleOnFields extends AHCF {
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("logicalOperator " + this.AHWU);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionRight " + this.AHWW);
         boolean var2 = false;
-        Field var3 = var1.get(this.AHWV.getDeclaredFieldType());
-        Field var4 = var1.get(this.AHWW.getDeclaredFieldType());
+        BaseField var3 = var1.get(this.AHWV.getDeclaredFieldType());
+        BaseField var4 = var1.get(this.AHWW.getDeclaredFieldType());
         ValueContainer2 var5 = null;
         ValueContainer2 var6 = null;
         String var7;
@@ -93,8 +93,8 @@ public class RuleOnFields extends AHCF {
                     throw new FFI("Invalid logicalOperator [" + this.AHWU + "]!");
             }
         } else {
-            var7 = FCW.getInstance().getMessageForKey("micro.rules.field.valueoffield") + " " + var3.getFieldType().name() + " " + (var3.AIDH() ? AHDG.ISSET.getDescription() : AHDG.ISNOTSET.getDescription());
-            String var8 = FCW.getInstance().getMessageForKey("micro.rules.field.valueoffield") + " " + var4.getFieldType().name() + " " + (var4.AIDH() ? AHDG.ISSET.getDescription() : AHDG.ISNOTSET.getDescription());
+            var7 = FCW.getInstance().getMessageForKey("micro.rules.field.valueoffield") + " " + var3.getFieldType().name() + " " + (var3.AIDH() ? ConditionType.ISSET.getDescription() : ConditionType.ISNOTSET.getDescription());
+            String var8 = FCW.getInstance().getMessageForKey("micro.rules.field.valueoffield") + " " + var4.getFieldType().name() + " " + (var4.AIDH() ? ConditionType.ISSET.getDescription() : ConditionType.ISNOTSET.getDescription());
             var5 = new ValueContainer2(null, var7);
             var6 = new ValueContainer2(null, var8);
         }

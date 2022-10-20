@@ -30,7 +30,7 @@ public class EOZ {
         return HOD(var0.getInvoiceWrapper());
     }
 
-    public static HU getOriginalInvoice(Invoice<HQ> var0) throws FFO {
+    public static InvoiceSell getOriginalInvoice(Invoice<InvoiceElementSell> var0) throws FFO {
         if (var0.getParentInvoiceOnlyActive() == null) {
             throw FCZ.getInstance().IHN();
         } else {
@@ -38,11 +38,11 @@ public class EOZ {
             for (var1 = var0; var1.getParentInvoiceOnlyActive() != null; var1 = var1.getParentInvoiceOnlyActive()) {
             }
 
-            return (HU) var1;
+            return (InvoiceSell) var1;
         }
     }
 
-    public static Map<KL, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(HV var0) {
+    public static Map<KL, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(InvoiceSellCorrection var0) {
 
         Invoice var1 = var0.getParentInvoiceOnlyActive();
         HashMap var2 = new HashMap();

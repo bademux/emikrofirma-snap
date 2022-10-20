@@ -1,8 +1,8 @@
 package a.a.a.c.d.a.b;
 
-import a.a.a.c.f.a.b.AHCB;
+import a.a.a.c.f.a.b.CustomActionClass;
 
-public class EPR implements AHCB<String> {
+public class EPR implements CustomActionClass<String> {
     private static final int FTV = 9;
     private static final int FTW = 11;
 

@@ -4,7 +4,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.l.c.EVJ;
 import a.a.a.c.f.a.a.EZD;
-import a.a.a.c.f.a.e.HV;
+import a.a.a.c.f.a.e.InvoiceSellCorrection;
 import a.a.a.c.f.b.b.Period;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class EVH {
     private Stage GOZ;
     private ResourceBundle GPA;
-    private HV GPB;
+    private InvoiceSellCorrection GPB;
     private boolean GPC;
     @FXML
     public EZD fxml_invoicing_date_dateController;
@@ -92,7 +92,7 @@ public class EVH {
         this.GPA = var1;
     }
 
-    public void setInvoiceSellCorrection(HV var1) {
+    public void setInvoiceSellCorrection(InvoiceSellCorrection var1) {
         this.GPB = var1;
     }
 

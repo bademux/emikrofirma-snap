@@ -22,8 +22,8 @@ import a.a.a.c.f.a.a.EZR;
 import a.a.a.c.f.a.a.EZS;
 import a.a.a.c.f.a.a.QRU;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.c.a.AILX;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyBoolean;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.c.TextFieldValidated_RefIdPattern;
 import a.a.a.c.g.a.FCR;
 import com.github.bademux.emk.app.FXApp;
@@ -425,7 +425,7 @@ public class ERS extends BaseFxController {
 
     }
 
-    public void HSI(LS var1, LS var2, AILX var3, LS var4, LS var5) {
+    public void HSI(PropertyString var1, PropertyString var2, PropertyBoolean var3, PropertyString var4, PropertyString var5) {
 
         if (var1 != null) {
             this.fxml_include_propertyWorkingDir_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DEY().DDG());
@@ -453,7 +453,7 @@ public class ERS extends BaseFxController {
 
     }
 
-    public void HSJ(LS var1, LS var2, AILX var3, LS var4, LS var5) {
+    public void HSJ(PropertyString var1, PropertyString var2, PropertyBoolean var3, PropertyString var4, PropertyString var5) {
 
         if (var1 != null) {
             this.fxml_include_propertyWorkingDir_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DEY().DDG());

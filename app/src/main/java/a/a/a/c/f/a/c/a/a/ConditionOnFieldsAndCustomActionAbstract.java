@@ -2,8 +2,8 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.h.EWY;
-import a.a.a.c.f.a.b.AHCB;
-import a.a.a.c.f.a.c.a.AHCJ;
+import a.a.a.c.f.a.b.CustomActionClass;
+import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.ConfigurationBaseAbstract;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -20,7 +20,7 @@ public abstract class ConditionOnFieldsAndCustomActionAbstract<_T> extends Condi
     @XmlAttribute(
             name = "customActionClass"
     )
-    protected final Class<? extends AHCB<_T>> AHVF;
+    protected final Class<? extends CustomActionClass<_T>> AHVF;
     @XmlIDREF
     protected ConfigurationBaseAbstract[] AHVG;
     protected String[] AHVH;
@@ -33,7 +33,7 @@ public abstract class ConditionOnFieldsAndCustomActionAbstract<_T> extends Condi
 
     }
 
-    public ConditionOnFieldsAndCustomActionAbstract(AHCJ var1, String var2, AHDG var3, Class<? extends AHCB<_T>> var4, ConfigurationBaseAbstract[] var5, String[] var6) {
+    public ConditionOnFieldsAndCustomActionAbstract(ActionType var1, String var2, ConditionType var3, Class<? extends CustomActionClass<_T>> var4, ConfigurationBaseAbstract[] var5, String[] var6) {
         super(var1, var2, var3);
 
         this.AHVF = var4;
@@ -46,11 +46,11 @@ public abstract class ConditionOnFieldsAndCustomActionAbstract<_T> extends Condi
 
     }
 
-    public Class<? extends AHCB<_T>> getCustomActionClass() {
+    public Class<? extends CustomActionClass<_T>> getCustomActionClass() {
         return this.AHVF;
     }
 
-    public AHCB<_T> getCustomAction() {
+    public CustomActionClass<_T> getCustomAction() {
         try {
             Constructor var1 = null;
             Constructor[] var2 = this.AHVF.getConstructors();
@@ -92,7 +92,7 @@ public abstract class ConditionOnFieldsAndCustomActionAbstract<_T> extends Condi
                     }
                 }
 
-                return (AHCB) var1.newInstance(var10);
+                return (CustomActionClass) var1.newInstance(var10);
             } else {
                 throw new FFI("No constructor found!");
             }

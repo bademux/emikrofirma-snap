@@ -3,55 +3,55 @@ package a.a.a.c.f.a.c.a.e;
 import a.a.a.c.f.a.c.a.AHCE;
 import a.a.a.c.f.a.c.a.AHDI;
 import a.a.a.c.f.a.c.a.a.*;
-import a.a.a.c.f.a.c.a.c.AHDS;
+import a.a.a.c.f.a.c.a.c.FieldType;
 import jakarta.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RuleOnFieldsContainer extends AHDI {
     @XmlAttribute
-    protected final AHDS AHWX;
+    protected final FieldType AHWX;
     @XmlElements({@XmlElement(
             name = "conditionOnFieldIsSet",
-            type = AHDF.class
+            type = ConditionOnFieldIsSet.class
     ), @XmlElement(
             name = "conditionOnFieldIsNotSet",
-            type = AHDE.class
+            type = ConditionOnFieldIsNotSet.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantDate",
-            type = AHCN.class
+            type = ConditionOnFieldAndConstantDate.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantDateTime",
-            type = AHCO.class
+            type = ConditionOnFieldAndConstantDateTime.class
     ), @XmlElement(
             name = "ConditionOnFieldAndConstantBigDecimal",
-            type = AHCM.class
+            type = ConditionOnFieldAndConstantBigDecimal.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantRegEx",
-            type = AHCP.class
+            type = ConditionOnFieldAndConstantRegEx.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantString",
-            type = AHCQ.class
+            type = ConditionOnFieldAndConstantString.class
     ), @XmlElement(
             name = "conditionOnFieldAndCustomAction",
-            type = AHCR.class
+            type = ConditionOnFieldAndCustomAction.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableDate",
-            type = AHCY.class
+            type = ConditionOnFieldAndVariableDate.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableDateTime",
-            type = AHCZ.class
+            type = ConditionOnFieldAndVariableDateTime.class
     ), @XmlElement(
             name = "ConditionOnFieldAndVariableBigDecimal",
-            type = AHCX.class
+            type = ConditionOnFieldAndVariableBigDecimal.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableInteger",
-            type = AHDA.class
+            type = ConditionOnFieldAndVariableInteger.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableOffsetDateLong",
-            type = AHCW.class
+            type = ConditionOnFieldAndVariableOffsetDateLong.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableOffsetDateTimeLong",
-            type = AHCV.class
+            type = ConditionOnFieldAndVariableOffsetDateTimeLong.class
     ), @XmlElement(
             name = "ruleOnField",
             type = RuleOnField.class
@@ -65,14 +65,14 @@ public class RuleOnFieldsContainer extends AHDI {
 
     }
 
-    public RuleOnFieldsContainer(AHDS var1, AHCE var2) {
+    public RuleOnFieldsContainer(FieldType var1, AHCE var2) {
 
         this.AHWX = var1;
         this.AHWY = var2;
 
     }
 
-    public AHDS getDeclaredFieldType() {
+    public FieldType getDeclaredFieldType() {
         return this.AHWX;
     }
 

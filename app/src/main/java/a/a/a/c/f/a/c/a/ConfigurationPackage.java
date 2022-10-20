@@ -2,9 +2,9 @@ package a.a.a.c.f.a.c.a;
 
 import a.a.a.c.e.a.d.ValueContainer1;
 import a.a.a.c.f.a.c.a.b.Constant;
-import a.a.a.c.f.a.c.a.b.AHDL;
-import a.a.a.c.f.a.c.a.b.AHDM;
-import a.a.a.c.f.a.c.a.b.AHDN;
+import a.a.a.c.f.a.c.a.b.ConstantBigDecimal;
+import a.a.a.c.f.a.c.a.b.ConstantDate;
+import a.a.a.c.f.a.c.a.b.ConstantInteger;
 import a.a.a.c.f.a.c.a.c.ParentField;
 import a.a.a.c.f.a.c.a.c.SelectedField;
 import a.a.a.c.f.a.c.a.f.*;
@@ -21,27 +21,27 @@ import java.util.*;
 public class ConfigurationPackage extends AHDI {
     @XmlElements({@XmlElement(
             name = "variableDate",
-            type = AHEN.class
+            type = VariableDate.class
     ), @XmlElement(
             name = "variableDateTime",
-            type = AHEO.class
+            type = VariableDateTime.class
     ), @XmlElement(
             name = "variableBigDecimal",
-            type = AHEM.class
+            type = VariableBigDecimal.class
     ), @XmlElement(
             name = "variableInteger",
-            type = AHEP.class
+            type = VariableInteger.class
     )})
-    private final List<Variable<?>> AHVK;
+    private final List<VariableRef<?>> AHVK;
     @XmlElements({@XmlElement(
             name = "constantDate",
-            type = AHDM.class
+            type = ConstantDate.class
     ), @XmlElement(
             name = "constantBigDecimal",
-            type = AHDL.class
+            type = ConstantBigDecimal.class
     ), @XmlElement(
             name = "constantInteger",
-            type = AHDN.class
+            type = ConstantInteger.class
     )})
     private final List<Constant<?>> AHVL;
     @XmlElement(
@@ -67,7 +67,7 @@ public class ConfigurationPackage extends AHDI {
 
     }
 
-    public List<Variable<?>> getVariables() {
+    public List<VariableRef<?>> getVariables() {
         return this.AHVK;
     }
 

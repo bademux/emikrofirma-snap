@@ -26,8 +26,8 @@ import a.a.a.c.c.d.h.EPI;
 import a.a.a.c.c.e.l.c.EVJ;
 import a.a.a.c.f.a.a.EZG;
 import a.a.a.c.f.a.e.Invoice;
-import a.a.a.c.f.a.e.HU;
-import a.a.a.c.f.a.e.HV;
+import a.a.a.c.f.a.e.InvoiceSell;
+import a.a.a.c.f.a.e.InvoiceSellCorrection;
 import a.a.a.c.f.a.e.HY;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.b.b.Period;
@@ -747,7 +747,7 @@ public class EVD extends ENO<EVJ> {
 
         try {
             log.info("Button [invoice_correct] clicked");
-            final HU var2 = (HU) ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
+            final InvoiceSell var2 = (InvoiceSell) ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
             this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
                 public void accept(ENN<?> var1) {
 
@@ -829,7 +829,7 @@ public class EVD extends ENO<EVJ> {
             var6.setResources(this.resources);
             var6.setParentController(this);
             var6.setImplematation(this.getProcess());
-            HV var7 = (HV) ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
+            InvoiceSellCorrection var7 = (InvoiceSellCorrection) ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
             var7.setPreviousPeriod(var7.getPeriod().DDN());
             var6.setInvoiceSellCorrection(var7);
             var6.HZC();
@@ -883,13 +883,13 @@ public class EVD extends ENO<EVJ> {
                     var3 = this.getProcess();
                     var4 = var3.getTempFile("pdf");
                     var5 = var3.getUserDataForInvoice(var2);
-                    EPI var6 = new EPI(this.resources, (HV) var2, var5, var4);
+                    EPI var6 = new EPI(this.resources, (InvoiceSellCorrection) var2, var5, var4);
                     var6.HOE();
                 } else {
                     var3 = this.getProcess();
                     var4 = var3.getTempFile("pdf");
                     var5 = var3.getUserDataForInvoice(var2);
-                    EPE var14 = new EPE(this.resources, (HU) var2, var5, var4);
+                    EPE var14 = new EPE(this.resources, (InvoiceSell) var2, var5, var4);
                     var14.HOE();
                 }
             }

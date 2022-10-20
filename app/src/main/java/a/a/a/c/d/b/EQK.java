@@ -93,7 +93,7 @@ public abstract class EQK {
                     boolean var5 = false;
                     if (JPKSchemaType.AHSV.getKodFormularza().equals(var1.getDeclarationFileSchema().getKodFormularza()) && JPKSchemaType.AHSV.getKodSystemowy().equals(var1.getDeclarationFileSchema().getKodSystemowy()) && JPKSchemaType.AHSV.getWersjaSchemy().equals(var1.getDeclarationFileSchema().getWersjaSchemy()) && JPKSchemaType.AHSV.getWariantFormularza().equals(var1.getDeclarationFileSchema().getWariantFormularza())) {
                         var5 = true;
-                        HK var6 = (HK) var1;
+                        DeclarationJPK_VAT var6 = (DeclarationJPK_VAT) var1;
                         if (var6.AICF()) {
                             this.FWJ.setFirstValue(this.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.verification.start")));
                             boolean var7 = EPW.HPA(this.FWK, var1);

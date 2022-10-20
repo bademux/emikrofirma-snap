@@ -15,7 +15,7 @@ import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.ConfigurationProperty;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 
@@ -28,7 +28,7 @@ import java.util.Set;
 public class ETM extends ELV {
     private UserData GHO;
     private ConfigurationProperties GHP;
-    private LS GHQ;
+    private PropertyString GHQ;
 
     public ETM() {
         super(ETL.GHN.getProcessName());
@@ -51,7 +51,7 @@ public class ETM extends ELV {
                 while (var3.hasNext()) {
                     ConfigurationProperty var4 = (ConfigurationProperty) var3.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var4.DEX().getValue())) {
-                        this.GHQ = (LS) var4;
+                        this.GHQ = (PropertyString) var4;
                     }
                 }
             }

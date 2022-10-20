@@ -6,9 +6,9 @@ import a.a.a.c.c.d.g.EOZ;
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.ValueContainer3;
 import a.a.a.c.f.a.e.Invoice;
-import a.a.a.c.f.a.e.HQ;
-import a.a.a.c.f.a.e.HU;
-import a.a.a.c.f.a.e.HV;
+import a.a.a.c.f.a.e.InvoiceElementSell;
+import a.a.a.c.f.a.e.InvoiceSell;
+import a.a.a.c.f.a.e.InvoiceSellCorrection;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.b.c.a.QSW;
@@ -41,17 +41,17 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class EPI extends EPL {
-    private final HV FQF;
-    private final HU FQG;
-    private final Invoice<HQ> FQH;
+    private final InvoiceSellCorrection FQF;
+    private final InvoiceSell FQG;
+    private final Invoice<InvoiceElementSell> FQH;
     private final UserData FQI;
 
-    public EPI(ResourceBundle var1, HV var2, UserData var3, File var4) throws FFO {
+    public EPI(ResourceBundle var1, InvoiceSellCorrection var2, UserData var3, File var4) throws FFO {
         super(var1, var4);
         this.FQF = var2;
         this.FQI = var3;
         this.FQG = EOZ.getOriginalInvoice(var2);
-        this.FQH = (Invoice<HQ>) var2.getParentInvoiceOnlyActive();
+        this.FQH = (Invoice<InvoiceElementSell>) var2.getParentInvoiceOnlyActive();
     }
 
     public void HOF() throws FFK {
@@ -193,9 +193,9 @@ public class EPI extends EPL {
         Iterator var4 = this.FQF.getInvoiceElements().iterator();
 
         Element var2;
-        HQ var5;
+        InvoiceElementSell var5;
         while (var4.hasNext()) {
-            var5 = (HQ) var4.next();
+            var5 = (InvoiceElementSell) var4.next();
             ++var3;
             var2 = var1.getDocument().createElement("invoiceSellElements");
             var1.HOR("nr", String.valueOf(var3), var2);
@@ -220,7 +220,7 @@ public class EPI extends EPL {
         var4 = this.FQH.getInvoiceElements().iterator();
 
         while (var4.hasNext()) {
-            var5 = (HQ) var4.next();
+            var5 = (InvoiceElementSell) var4.next();
             ++var3;
             var2 = var1.getDocument().createElement("invoiceSellElementsBeforeCorrection");
             var1.HOR("nr", String.valueOf(var3), var2);

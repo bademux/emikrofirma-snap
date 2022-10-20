@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.f.Variable;
+import a.a.a.c.f.a.c.a.f.VariableRef;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlIDREF;
@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class ActionOnVariable<_T> extends ActionOnObject {
     @XmlIDREF
-    protected final Variable<_T> AHUA;
+    protected final VariableRef<_T> AHUA;
 
     protected ActionOnVariable() {
 
@@ -20,7 +20,7 @@ public abstract class ActionOnVariable<_T> extends ActionOnObject {
 
     }
 
-    public ActionOnVariable(Variable<_T> var1, AHCJ var2, String var3) {
+    public ActionOnVariable(VariableRef<_T> var1, ActionType var2, String var3) {
         super(var2, var3);
 
         this.AHUA = var1;
@@ -30,7 +30,7 @@ public abstract class ActionOnVariable<_T> extends ActionOnObject {
 
     }
 
-    public Variable<_T> getVariable() {
+    public VariableRef<_T> getVariable() {
         return this.AHUA;
     }
 

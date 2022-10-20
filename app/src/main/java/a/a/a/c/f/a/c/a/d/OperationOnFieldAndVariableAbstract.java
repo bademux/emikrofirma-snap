@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.c.a.d;
 
-import a.a.a.c.f.a.c.a.f.Variable;
+import a.a.a.c.f.a.c.a.f.VariableRef;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -12,7 +12,7 @@ public abstract class OperationOnFieldAndVariableAbstract<_T> extends OperationO
             name = "variableRef"
     )
     @XmlIDREF
-    protected final Variable<_T> AHWJ;
+    protected final VariableRef<_T> AHWJ;
 
     protected OperationOnFieldAndVariableAbstract() {
 
@@ -20,14 +20,14 @@ public abstract class OperationOnFieldAndVariableAbstract<_T> extends OperationO
 
     }
 
-    public OperationOnFieldAndVariableAbstract(AHEF var1, Variable<_T> var2) {
+    public OperationOnFieldAndVariableAbstract(OperationType var1, VariableRef<_T> var2) {
         super(var1);
 
         this.AHWJ = var2;
 
     }
 
-    public Variable<_T> getVariableRef() {
+    public VariableRef<_T> getVariableRef() {
         return this.AHWJ;
     }
 

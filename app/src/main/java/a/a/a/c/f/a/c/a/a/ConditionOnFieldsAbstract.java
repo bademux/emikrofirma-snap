@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.c.f.a.c.a.AHCF;
-import a.a.a.c.f.a.c.a.AHCJ;
+import a.a.a.c.f.a.c.a.ActionType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -13,7 +13,7 @@ public abstract class ConditionOnFieldsAbstract extends AHCF {
     @XmlAttribute(
             name = "conditionType"
     )
-    protected final AHDG AHVE;
+    protected final ConditionType AHVE;
 
     protected ConditionOnFieldsAbstract() {
 
@@ -21,7 +21,7 @@ public abstract class ConditionOnFieldsAbstract extends AHCF {
 
     }
 
-    public ConditionOnFieldsAbstract(AHCJ var1, String var2, AHDG var3) {
+    public ConditionOnFieldsAbstract(ActionType var1, String var2, ConditionType var3) {
         super(var1, var2);
 
         this.AHVE = var3;

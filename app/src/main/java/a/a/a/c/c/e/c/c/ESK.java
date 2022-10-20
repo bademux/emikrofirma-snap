@@ -3,12 +3,12 @@ package a.a.a.c.c.e.c.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
-import a.a.a.c.f.a.d.HK;
+import a.a.a.c.f.a.d.DeclarationJPK_VAT;
 import a.a.a.c.f.a.h.Settlement;
 
 public abstract class ESK {
     private Settlement GCZ;
-    private HK QNE;
+    private DeclarationJPK_VAT QNE;
     protected final ESJ GDB;
     private final EDF<Settlement> GDC;
     private boolean QNF = false;
@@ -41,9 +41,9 @@ public abstract class ESK {
         return var1;
     }
 
-    public HK getDeclarationJPKVAT() {
+    public DeclarationJPK_VAT getDeclarationJPKVAT() {
 
-        HK var1;
+        DeclarationJPK_VAT var1;
         if (this.QNE == null && !this.QNF) {
             this.QNE = this.GDB.getDeclarationJPK_VAT(this.getSettlement());
             if (this.QNE == null) {

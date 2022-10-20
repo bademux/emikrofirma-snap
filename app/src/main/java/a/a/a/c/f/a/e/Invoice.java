@@ -36,7 +36,7 @@ public abstract class Invoice<_T extends InvoiceElement> extends ModelBusinessPe
     private QSU QWN;
     @XmlElements({@XmlElement(
             name = "invoiceElementSell",
-            type = HQ.class
+            type = InvoiceElementSell.class
     ), @XmlElement(
             name = "invoiceElementPurchase",
             type = InvoiceElementPurchase.class

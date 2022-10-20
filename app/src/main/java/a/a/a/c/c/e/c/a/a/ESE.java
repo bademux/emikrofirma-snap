@@ -3,7 +3,7 @@ package a.a.a.c.c.e.c.a.a;
 import a.a.a.b.f.FFI;
 import a.a.a.c.c.e.c.a.ESG;
 import a.a.a.c.c.e.c.c.ESL;
-import a.a.a.c.f.a.d.HK;
+import a.a.a.c.f.a.d.DeclarationJPK_VAT;
 import a.a.a.c.f.a.d.HL;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.g.b.FCW;
@@ -44,7 +44,7 @@ public class ESE implements ChangeListener<TreeItem<ESL>> {
                     throw new FFI("wrong status");
             }
 
-            HK var5 = var3.getValue().getDeclarationJPKVAT();
+            DeclarationJPK_VAT var5 = var3.getValue().getDeclarationJPKVAT();
             HL var6 = null;
             this.GBU.QMS.set(false);
             if (var5 != null) {

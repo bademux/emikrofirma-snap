@@ -15,13 +15,13 @@ import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.c.QJW;
 import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.a.e.IB;
-import a.a.a.c.f.a.e.QSF;
+import a.a.a.c.f.a.e.AggregatePurchase;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.g.IU;
 import a.a.a.c.f.a.g.JE;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
-import a.a.a.c.f.a.h.JI;
+import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.RefId;
@@ -47,7 +47,7 @@ public class QTB extends ELX implements EYL {
 
         try {
             if (this.QZO == null) {
-                this.QZO = this.getModelManager().HJX(this.getParentDefinition(), QSF.class);
+                this.QZO = this.getModelManager().HJX(this.getParentDefinition(), AggregatePurchase.class);
                 this.QZO.DAW().setValue(BigDecimal.ZERO);
                 this.QZO.DAV().setValue(BigDecimal.ZERO);
                 this.QZO.DAX().setValue(BigDecimal.ZERO);
@@ -196,13 +196,13 @@ public class QTB extends ELX implements EYL {
         try {
             boolean var2 = false;
             if (var1 != null && var1.getYear() != null && var1.getMonth() != null) {
-                JE var3 = new JE(JI.class, var1, JH.VAT);
+                JE var3 = new JE(SettlementVat.class, var1, JH.VAT);
                 ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
                 if (((List) var4.getSecondValue()).isEmpty()) {
                     var2 = true;
                 } else {
                     EDF var5 = (EDF) ((List) var4.getSecondValue()).get(0);
-                    JI var6 = (JI) var5.getModelBaseElementWithIdObject();
+                    SettlementVat var6 = (SettlementVat) var5.getModelBaseElementWithIdObject();
                     if (var6 != null) {
                         var2 = !JG.SETTLED.equals(var6.getSettlementStatus());
                     }

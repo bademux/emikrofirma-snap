@@ -1,35 +1,35 @@
 package a.a.a.c.d.a.b;
 
-import a.a.a.c.f.a.b.AHCB;
-import a.a.a.c.f.a.c.a.c.AHDS;
-import a.a.a.c.f.a.c.a.c.Field;
+import a.a.a.c.f.a.b.CustomActionClass;
+import a.a.a.c.f.a.c.a.c.FieldType;
+import a.a.a.c.f.a.c.a.c.BaseField;
 
 import java.util.Map;
 
-public class EPS implements AHCB<Map<AHDS, Field>> {
-    private final AHDS FTX;
-    private final AHDS FTY;
-    private final AHDS FTZ;
-    private final AHDS FUA;
-    private final AHDS FUB;
-    private final AHDS FUC;
-    private final AHDS FUD;
-    private final AHDS FUE;
+public class EPS implements CustomActionClass<Map<FieldType, BaseField>> {
+    private final FieldType FTX;
+    private final FieldType FTY;
+    private final FieldType FTZ;
+    private final FieldType FUA;
+    private final FieldType FUB;
+    private final FieldType FUC;
+    private final FieldType FUD;
+    private final FieldType FUE;
 
     public EPS(String var1, String var2, String var3, String var4, String var5, String var6, String var7, String var8) {
 
-        this.FTX = AHDS.valueOf(var1);
-        this.FTY = AHDS.valueOf(var2);
-        this.FTZ = AHDS.valueOf(var3);
-        this.FUA = AHDS.valueOf(var4);
-        this.FUB = AHDS.valueOf(var5);
-        this.FUC = AHDS.valueOf(var6);
-        this.FUD = AHDS.valueOf(var7);
-        this.FUE = AHDS.valueOf(var8);
+        this.FTX = FieldType.valueOf(var1);
+        this.FTY = FieldType.valueOf(var2);
+        this.FTZ = FieldType.valueOf(var3);
+        this.FUA = FieldType.valueOf(var4);
+        this.FUB = FieldType.valueOf(var5);
+        this.FUC = FieldType.valueOf(var6);
+        this.FUD = FieldType.valueOf(var7);
+        this.FUE = FieldType.valueOf(var8);
 
     }
 
-    public boolean AIBY(Map<AHDS, Field> var1) {
+    public boolean AIBY(Map<FieldType, BaseField> var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("fields " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalFieldName_KodKraju " + this.FTX);
@@ -42,14 +42,14 @@ public class EPS implements AHCB<Map<AHDS, Field>> {
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalFieldName_Poczta " + this.FUE);
 
         boolean var10;
-        Field var2 = var1.get(this.FTX);
-        Field var3 = var1.get(this.FTY);
-        Field var4 = var1.get(this.FTZ);
-        Field var5 = var1.get(this.FUA);
-        Field var6 = var1.get(this.FUB);
-        Field var7 = var1.get(this.FUC);
-        Field var8 = var1.get(this.FUD);
-        Field var9 = var1.get(this.FUE);
+        BaseField var2 = var1.get(this.FTX);
+        BaseField var3 = var1.get(this.FTY);
+        BaseField var4 = var1.get(this.FTZ);
+        BaseField var5 = var1.get(this.FUA);
+        BaseField var6 = var1.get(this.FUB);
+        BaseField var7 = var1.get(this.FUC);
+        BaseField var8 = var1.get(this.FUD);
+        BaseField var9 = var1.get(this.FUE);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_KodKraju " + var2);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_Wojewodztwo " + var3);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_Powiat " + var4);
@@ -63,7 +63,7 @@ public class EPS implements AHCB<Map<AHDS, Field>> {
         return var10;
     }
 
-    public String getContextString(Map<AHDS, Field> var1) {
+    public String getContextString(Map<FieldType, BaseField> var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("fields " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalFieldName_KodKraju " + this.FTX);
@@ -76,14 +76,14 @@ public class EPS implements AHCB<Map<AHDS, Field>> {
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalFieldName_Poczta " + this.FUE);
 
         String var11;
-        Field var2 = var1.get(this.FTX);
-        Field var3 = var1.get(this.FTY);
-        Field var4 = var1.get(this.FTZ);
-        Field var5 = var1.get(this.FUA);
-        Field var6 = var1.get(this.FUB);
-        Field var7 = var1.get(this.FUC);
-        Field var8 = var1.get(this.FUD);
-        Field var9 = var1.get(this.FUE);
+        BaseField var2 = var1.get(this.FTX);
+        BaseField var3 = var1.get(this.FTY);
+        BaseField var4 = var1.get(this.FTZ);
+        BaseField var5 = var1.get(this.FUA);
+        BaseField var6 = var1.get(this.FUB);
+        BaseField var7 = var1.get(this.FUC);
+        BaseField var8 = var1.get(this.FUD);
+        BaseField var9 = var1.get(this.FUE);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_KodKraju " + var2);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_Wojewodztwo " + var3);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("postalField_Powiat " + var4);

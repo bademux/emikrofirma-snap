@@ -8,12 +8,12 @@ import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.II;
 import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.InvoicePurchase;
-import a.a.a.c.f.a.e.HU;
+import a.a.a.c.f.a.e.InvoiceSell;
 import a.a.a.c.f.a.e.HY;
 import a.a.a.c.f.a.e.a.*;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
 import a.a.a.c.f.a.f.a.IP;
-import a.a.a.c.f.a.f.a.IR;
+import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.InvoiceOtherPurchase;
 import a.a.a.c.f.a.n.InvoiceOtherSell;
@@ -35,11 +35,11 @@ public class EQQ {
 
         HashSet var5 = new HashSet();
         Period var6 = var0.DDN();
-        IG var7 = new IG();
+        InvoiceRecordSell var7 = new InvoiceRecordSell();
         var7.setPeriod(var6);
         var7.setUserDataVersion(var1.getVersion());
         var5.add(var7);
-        IF var8 = new IF();
+        InvoiceRecordPurchase var8 = new InvoiceRecordPurchase();
         var8.setPeriod(var6);
         var8.setUserDataVersion(var1.getVersion());
         var5.add(var8);
@@ -70,11 +70,11 @@ public class EQQ {
         return var15;
     }
 
-    private static ID HQX(ReceiptRecord var0) {
-        if (!(var0 instanceof IR var1)) {
+    private static InvoiceRecordElement HQX(ReceiptRecord var0) {
+        if (!(var0 instanceof ReceiptRecordVat var1)) {
             throw new UnsupportedOperationException();
         } else {
-            ID var2 = new ID();
+            InvoiceRecordElement var2 = new InvoiceRecordElement();
             var2.setDate(var1.getCreationDate());
             var2.setRefId(var1.getRefId());
             var2.setNet(var1.getNet());
@@ -129,17 +129,17 @@ public class EQQ {
     private static void HQY(Invoice<?> var0, InvoiceRecord var1, InvoiceRecord var2) {
         II var3 = II.getByType(var0.getClass());
         EQZ var4 = null;
-        ID var11;
+        InvoiceRecordElement var11;
         switch (var3) {
             case InvoiceSell:
-                var11 = new ID();
+                var11 = new InvoiceRecordElement();
                 var11.HGZ().setValue(false);
                 ERA var10 = new ERA(var0);
                 var11.setRefId(var0.getRefId());
                 var11.setCreationDate(var0.DAT().DEF());
                 var11.setTransactionDate(var0.DAU().DEF());
                 var11.setDate(((HY) var0).getInvoicingDate());
-                var11.setContractor(((HU) var0).getContractor());
+                var11.setContractor(((InvoiceSell) var0).getContractor());
                 setBasicVatPricesForInvoiceRecordElement(var11, var10.getForAll());
                 if (var10.HRL()) {
                     var11.setVatOo23(new ValueContainer2(new JR(var10.getForAll().getVatOo23Amount()), new JR(var10.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
@@ -149,7 +149,7 @@ public class EQQ {
                 HQZ(var1, var11);
                 break;
             case InvoiceSellCorrection:
-                var11 = new ID();
+                var11 = new InvoiceRecordElement();
                 var11.HGZ().setValue(false);
                 ERE var9 = new ERE(var0);
                 var11.setRefId(var0.getRefId());
@@ -161,7 +161,7 @@ public class EQQ {
                 var11.setCreationDate(var0.DAT().DEF());
                 var11.setTransactionDate(var12.DAU().DEF());
                 var11.setDate(((HY) var0).getInvoicingDate());
-                var11.setContractor(((HU) var12).getContractor());
+                var11.setContractor(((InvoiceSell) var12).getContractor());
                 setBasicVatPricesForInvoiceRecordElement(var11, var9.getForAll());
                 if (var9.HRL()) {
                     var11.setVatOo23(new ValueContainer2(new JR(var9.getForAll().getVatOo23Amount()), new JR(var9.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
@@ -172,7 +172,7 @@ public class EQQ {
                 break;
             case InvoicePurchase:
             case AggregatePurchase:
-                IE var5 = new IE();
+                InvoiceRecordElementPurchase var5 = new InvoiceRecordElementPurchase();
                 var5.HGZ().setValue(false);
                 var4 = new EQZ(var0);
                 var5.setRefId(var0.getRefId());
@@ -180,7 +180,7 @@ public class EQQ {
                 var5.setTransactionDate(var0.getTransactionDate().DEF());
                 var5.setReceiveDate(var6.getReceiveDate().DEF());
                 var5.setCreationDate(var0.getCreationDate().DEF());
-                IE var7 = new IE();
+                InvoiceRecordElementPurchase var7 = new InvoiceRecordElementPurchase();
                 var7.setRefId(var0.getRefId());
                 var7.setTransactionDate(var0.getTransactionDate().DEF());
                 var7.setReceiveDate(var6.getReceiveDate().DEF());
@@ -216,7 +216,7 @@ public class EQQ {
 
     }
 
-    private static void HQZ(InvoiceRecord var0, ID var1) {
+    private static void HQZ(InvoiceRecord var0, InvoiceRecordElement var1) {
         var0.setGross(new JR(var0.QQR().getValue().add(var1.QRG().getValue())));
         var0.setNet(new JR(var0.QQS().getValue().add(var1.QRH().getValue())));
         var0.setVat(new JR(var0.QQT().getValue().add(var1.QRI().getValue())));
@@ -232,8 +232,8 @@ public class EQQ {
         var0.getInvoiceRecordElements().add(var1);
     }
 
-    private static ID HRA(ID var0) {
-        ID var1 = new ID();
+    private static InvoiceRecordElement HRA(InvoiceRecordElement var0) {
+        InvoiceRecordElement var1 = new InvoiceRecordElement();
         var1.HGZ().setValue(true);
         var1.setContractor(var0.getContractor());
         var1.setDate(var0.QRF());
@@ -260,11 +260,11 @@ public class EQQ {
         return var1;
     }
 
-    private static void HRB(ID var0, EQZ var1, ERB var2, Invoice<?> var3, KM var4) {
+    private static void HRB(InvoiceRecordElement var0, EQZ var1, ERB var2, Invoice<?> var3, KM var4) {
         setBasicVatPricesForInvoiceRecordElement(var0, var2);
         var0.setDate(((InvoicePurchase) var3).getInvoicingDate());
-        if (var0 instanceof IE) {
-            ((IE) var0).DCD().setValue(var4);
+        if (var0 instanceof InvoiceRecordElementPurchase) {
+            ((InvoiceRecordElementPurchase) var0).DCD().setValue(var4);
         }
 
         var0.setContractor(((InvoicePurchase) var3).getContractor());
@@ -285,9 +285,9 @@ public class EQQ {
 
     }
 
-    private static void setBasicVatPricesForInvoiceRecordElement(ID var0, ERB var1) {
+    private static void setBasicVatPricesForInvoiceRecordElement(InvoiceRecordElement var0, ERB var1) {
         var0.setNet(new JR(var1.getNetPrice()));
-        if (var1.getInvoiceIsOo() && !(var0 instanceof IE)) {
+        if (var1.getInvoiceIsOo() && !(var0 instanceof InvoiceRecordElementPurchase)) {
             BigDecimal var2 = BigDecimal.ZERO;
             BigDecimal var3 = BigDecimal.ZERO;
             BigDecimal var4 = BigDecimal.ZERO;
@@ -328,7 +328,7 @@ public class EQQ {
             case SELL_REASON_2:
             case SELL_REASON_3:
             case SELL_REASON_4:
-                ID var9 = new ID();
+                InvoiceRecordElement var9 = new InvoiceRecordElement();
                 var9.setInvoiceOtherSubType(var0.getInvoiceOtherSubType());
                 var9.HGZ().setValue(false);
                 ERA var8 = new ERA(var0);
@@ -354,7 +354,7 @@ public class EQQ {
             case PURCHASE_REASON_2:
             case PURCHASE_REASON_3:
             case PURCHASE_REASON_4:
-                IE var4 = new IE();
+                InvoiceRecordElementPurchase var4 = new InvoiceRecordElementPurchase();
                 var4.setInvoiceOtherSubType(var0.getInvoiceOtherSubType());
                 var4.HGZ().setValue(false);
                 var3 = new EQZ(var0);

@@ -9,12 +9,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 @XmlTransient
-public abstract class HY extends Invoice<HQ> {
+public abstract class HY extends Invoice<InvoiceElementSell> {
     protected JV IVO;
     private JS IVP;
     private JS ROZ;
     @XmlTransient
-    private final ObjectProperty<ObservableList<HQ>> AKX;
+    private final ObjectProperty<ObservableList<InvoiceElementSell>> AKX;
 
     protected HY(IA var1) {
         super(IB.SELL, var1);
@@ -62,22 +62,22 @@ public abstract class HY extends Invoice<HQ> {
         this.getMpp().setValue(var1);
     }
 
-    public final ObjectProperty<ObservableList<HQ>> DBU() {
+    public final ObjectProperty<ObservableList<InvoiceElementSell>> DBU() {
         return this.AKX;
     }
 
-    private class HZ extends SimpleObjectProperty<ObservableList<HQ>> {
+    private class HZ extends SimpleObjectProperty<ObservableList<InvoiceElementSell>> {
         private final HY AKW;
 
         public HZ(HY var2) {
             this.AKW = var2;
         }
 
-        public ObservableList<HQ> get() {
+        public ObservableList<InvoiceElementSell> get() {
             return FXCollections.observableList(this.AKW.getInvoiceElements());
         }
 
-        public void set(ObservableList<HQ> var1) {
+        public void set(ObservableList<InvoiceElementSell> var1) {
             if (var1 != null) {
                 this.AKW.setInvoiceElements(var1);
             }

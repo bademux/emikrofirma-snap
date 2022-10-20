@@ -16,10 +16,10 @@ import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JB;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.c.a.AILX;
+import a.a.a.c.f.c.a.PropertyBoolean;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.ConfigurationProperty;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 import javafx.stage.Stage;
@@ -31,9 +31,9 @@ import java.util.List;
 
 public class EUF extends ELW {
     private ConfigurationProperties GKK;
-    private LS GKL;
-    private LS GKM;
-    private AILX MWO;
+    private PropertyString GKL;
+    private PropertyString GKM;
+    private PropertyBoolean MWO;
 
     public EUF() {
         super(EUD.GKG.getProcessName());
@@ -51,11 +51,11 @@ public class EUF extends ELW {
                 while (var2.hasNext()) {
                     ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GKL = (LS) var3;
+                        this.GKL = (PropertyString) var3;
                     } else if (FCQ.Pkcs11LibraryFile.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.GKM = (LS) var3;
+                        this.GKM = (PropertyString) var3;
                     } else if (FCQ.PerformVerification.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.MWO = (AILX) var3;
+                        this.MWO = (PropertyBoolean) var3;
                     }
                 }
             }
@@ -169,7 +169,7 @@ public class EUF extends ELW {
 
     }
 
-    public boolean QIX(QGX var1) throws FFK, FFO {
+    public boolean QIX(DeclarationJPK_StatusTracker var1) throws FFK, FFO {
 
         boolean var2;
         if (!EQB.QIU(var1)) {

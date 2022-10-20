@@ -21,64 +21,64 @@ import java.util.Iterator;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SelectedField extends Field {
+public class SelectedField extends BaseField {
     private transient AHCI AHWE;
     @XmlElements({@XmlElement(
             name = "operationOnFieldAndVariableDate",
-            type = AHEB.class
+            type = OperationOnFieldAndVariableDate.class
     ), @XmlElement(
             name = "operationOnFieldAndVariableDateTime",
-            type = AHEC.class
+            type = OperationOnFieldAndVariableDateTime.class
     ), @XmlElement(
             name = "OperationOnFieldAndVariableBigDecimal",
-            type = AHEA.class
+            type = OperationOnFieldAndVariableBigDecimal.class
     ), @XmlElement(
             name = "operationOnFieldAndVariableInteger",
-            type = AHED.class
+            type = OperationOnFieldAndVariableInteger.class
     )})
     protected final List<OperationOnFieldAbstract> AHWF;
     @XmlElements({@XmlElement(
             name = "conditionOnFieldIsSet",
-            type = AHDF.class
+            type = ConditionOnFieldIsSet.class
     ), @XmlElement(
             name = "conditionOnFieldIsNotSet",
-            type = AHDE.class
+            type = ConditionOnFieldIsNotSet.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantDate",
-            type = AHCN.class
+            type = ConditionOnFieldAndConstantDate.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantDateTime",
-            type = AHCO.class
+            type = ConditionOnFieldAndConstantDateTime.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantBigDecimal",
-            type = AHCM.class
+            type = ConditionOnFieldAndConstantBigDecimal.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantRegEx",
-            type = AHCP.class
+            type = ConditionOnFieldAndConstantRegEx.class
     ), @XmlElement(
             name = "conditionOnFieldAndConstantString",
-            type = AHCQ.class
+            type = ConditionOnFieldAndConstantString.class
     ), @XmlElement(
             name = "conditionOnFieldAndCustomAction",
-            type = AHCR.class
+            type = ConditionOnFieldAndCustomAction.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableDate",
-            type = AHCY.class
+            type = ConditionOnFieldAndVariableDate.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableDateTime",
-            type = AHCZ.class
+            type = ConditionOnFieldAndVariableDateTime.class
     ), @XmlElement(
             name = "ConditionOnFieldAndVariableBigDecimal",
-            type = AHCX.class
+            type = ConditionOnFieldAndVariableBigDecimal.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableInteger",
-            type = AHDA.class
+            type = ConditionOnFieldAndVariableInteger.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableOffsetDateLong",
-            type = AHCW.class
+            type = ConditionOnFieldAndVariableOffsetDateLong.class
     ), @XmlElement(
             name = "conditionOnFieldAndVariableOffsetDateTimeLong",
-            type = AHCV.class
+            type = ConditionOnFieldAndVariableOffsetDateTimeLong.class
     ), @XmlElement(
             name = "ruleOnField",
             type = RuleOnField.class
@@ -93,12 +93,12 @@ public class SelectedField extends Field {
 
     }
 
-    public SelectedField(AHDS var1) {
+    public SelectedField(FieldType var1) {
         this(var1, new ArrayList(), new ArrayList());
 
     }
 
-    public SelectedField(AHDS var1, List<OperationOnFieldAbstract> var2, List<AHCE> var3) {
+    public SelectedField(FieldType var1, List<OperationOnFieldAbstract> var2, List<AHCE> var3) {
         super(var1);
 
         this.AHWE = AHCI.SUCCESS;

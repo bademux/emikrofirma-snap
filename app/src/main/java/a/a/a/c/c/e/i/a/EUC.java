@@ -119,25 +119,25 @@ public class EUC {
                         Object var15 = null;
                         switch (var10) {
                             case VAT:
-                                var15 = new HK(var7, var3, var6, var14);
+                                var15 = new DeclarationJPK_VAT(var7, var3, var6, var14);
                                 break;
                             case PKPIR:
-                                var15 = new AGWS(var7, var3, var6);
+                                var15 = new DeclarationJPK_PKPIR(var7, var3, var6);
                                 break;
                             case EWP:
-                                var15 = new AGWO(var7, var3, var6);
+                                var15 = new DeclarationJPK_EWP(var7, var3, var6);
                                 break;
                             case FA:
-                                var15 = new AGWP(var7, var3, var6);
+                                var15 = new DeclarationJPK_FA(var7, var3, var6);
                                 break;
                             case KR:
-                                var15 = new AGWQ(var7, var3, var6);
+                                var15 = new DeclarationJPK_KR(var7, var3, var6);
                                 break;
                             case MAG:
-                                var15 = new AGWR(var7, var3, var6);
+                                var15 = new DeclarationJPK_MAG(var7, var3, var6);
                                 break;
                             case WB:
-                                var15 = new AGWU(var7, var3, var6);
+                                var15 = new DeclarationJPK_WB(var7, var3, var6);
                                 break;
                             default:
                                 var1.setProgressAndAlertError(FCW.getInstance().getMessageForKey("micro.jpk.sendout.invaliddeclaration.type").replaceFirst("##DECLARATIONTYPE##", var10.name()));
@@ -246,7 +246,7 @@ public class EUC {
                     }
 
                     JPKSchemaType var10 = (JPKSchemaType) var9.get(0);
-                    AGWP var11 = new AGWP(1, var3, var10);
+                    DeclarationJPK_FA var11 = new DeclarationJPK_FA(1, var3, var10);
                     var11.setDeclarationFileCheckSumMD5(new JT(var7));
                     File var12 = new File(var5, "tmp_" + System.nanoTime());
                     var12.mkdirs();

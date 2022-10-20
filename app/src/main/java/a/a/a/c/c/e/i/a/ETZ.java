@@ -196,7 +196,7 @@ public class ETZ extends BaseFxController {
     protected void fxml_handleButton_declaration_list_track_jpk_status(ActionEvent var1) {
 
         try {
-            final QGX var2 = new QGX(this.fxml_declaration_list_jpk_ref_idController.fxml_component_main_element.getText());
+            final DeclarationJPK_StatusTracker var2 = new DeclarationJPK_StatusTracker(this.fxml_declaration_list_jpk_ref_idController.fxml_component_main_element.getText());
             Integer var3 = this.QHT.HXA(Period.AOE, HM.JPK, AGWW.STATUS_TRACKER);
             var2.FJI().setValue(var3);
             final MTI var4 = new MTI(null);

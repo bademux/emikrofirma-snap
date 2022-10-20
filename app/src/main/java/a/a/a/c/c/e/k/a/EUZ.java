@@ -20,7 +20,7 @@ import a.a.a.c.f.a.a.EYV;
 import a.a.a.c.f.a.a.EYX;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
 import a.a.a.c.f.a.f.a.IP;
-import a.a.a.c.f.a.f.a.IR;
+import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
@@ -55,7 +55,7 @@ import java.time.LocalDate;
 public class EUZ extends ENL<EVC> implements EMO<IP> {
     private static final int GMZ = 32;
     private ENL.ENM GNA;
-    private IR GNB;
+    private ReceiptRecordVat GNB;
     @FXML
     public EYQ fxml_data_refIdController;
     @FXML
@@ -119,7 +119,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
 
     }
 
-    public void setReceiptRecordVat(IR var1) throws FFK {
+    public void setReceiptRecordVat(ReceiptRecordVat var1) throws FFK {
         this.GNB = var1;
     }
 
@@ -246,7 +246,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
                 this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.cash_register_new.Title"));
             }
 
-            IR var2 = var1.getReceiptRecord();
+            ReceiptRecordVat var2 = var1.getReceiptRecord();
             this.fxml_data_refIdController.fxml_component_main_element.textProperty().bindBidirectional(var2.getRefId().DDG());
             this.fxml_include_period_boxController.setPeriod(var2.getPeriod());
             this.GND.addAll(var2.DCM());
@@ -342,7 +342,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
 
     private void HYC() throws FFO, FFK {
         this.GNI = true;
-        IR var1 = this.GNJ.getReceiptRecord();
+        ReceiptRecordVat var1 = this.GNJ.getReceiptRecord();
         var1.setPeriod(this.fxml_include_period_boxController.getPeriod());
         var1.setCreationDate(new JV(this.fxml_include_date_boxController.fxml_component_main_element.getValue()));
         var1.setRefId(new RefId(this.fxml_data_refIdController.fxml_component_main_element.getText()));
@@ -411,7 +411,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
                 Period var7 = this.fxml_include_period_boxController.getPeriod();
                 if (var7 != null) {
                     boolean var8 = this.getProcess().HYK(var7);
-                    IR var5 = this.getProcess().getReceiptRecord(var7);
+                    ReceiptRecordVat var5 = this.getProcess().getReceiptRecord(var7);
                     if (var8) {
                         this.fxml_include_period_boxController.setValid(false, this.resources.getString("micro.process.cash_register_new.Error.SettlementSettled"));
                     } else if (var5 != null && !var5.equals(this.GNJ.getReceiptRecord())) {

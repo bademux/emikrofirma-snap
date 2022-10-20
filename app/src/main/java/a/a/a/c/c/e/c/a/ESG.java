@@ -21,7 +21,7 @@ import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JI;
+import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JX;
 import a.a.a.c.f.b.c.a.KH;
@@ -288,7 +288,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
         }
 
         Integer var1 = this.fxml_settelmentTable.getSelectionModel().getSelectedIndex();
-        HK var2 = ((ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue()).getDeclarationJPKVAT();
+        DeclarationJPK_VAT var2 = ((ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue()).getDeclarationJPKVAT();
         ESL var3 = (ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue();
         HL var4 = null;
         if (var2 != null) {
@@ -717,7 +717,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
                 Period var8 = new Period((Integer) ((ComboBoxRequired) var6.fxml_invoice_settlements_yearController.fxml_component_main_element).getValue(), ((KH) ((ComboBoxRequired) var6.fxml_invoice_settlements_monthController.fxml_component_main_element).getValue()).getNumber());
                 JG var9 = var7.getSettlementStatus(var8);
                 if (var9 == null) {
-                    JI var10 = new JI();
+                    SettlementVat var10 = new SettlementVat();
                     var10.setPeriod(var8.DDN());
                     var7.HTK(var10);
                     this.HTG(var10);

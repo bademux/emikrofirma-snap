@@ -162,7 +162,7 @@ public class EPV extends DefaultHandler {
                     Iterator var18 = var16.getChildFields().iterator();
 
                     while (var18.hasNext()) {
-                        AHDO var10 = (AHDO) var18.next();
+                        Field var10 = (Field) var18.next();
                         boolean var11 = this.HOU(var10.getFieldType());
                         if (var11) {
                             var10.setValue(this.FUT.getValue());
@@ -188,7 +188,7 @@ public class EPV extends DefaultHandler {
         this.FUT.setValue(var4.toString());
     }
 
-    private boolean HOU(AHDS var1) {
+    private boolean HOU(FieldType var1) {
 
         log.debug("declaredFieldType " + var1);
 

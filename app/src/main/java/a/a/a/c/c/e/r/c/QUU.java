@@ -23,7 +23,7 @@ import a.a.a.c.f.b.EZT;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.ConfigurationProperty;
-import a.a.a.c.f.c.a.LS;
+import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.FCQ;
 
@@ -37,7 +37,7 @@ import java.util.List;
 
 public class QUU extends ELX implements EYL {
     private ConfigurationProperties REU;
-    private LS REV;
+    private PropertyString REV;
     private InvoiceOtherSell REW;
     private EPB REX;
 
@@ -65,7 +65,7 @@ public class QUU extends ELX implements EYL {
                 while (var2.hasNext()) {
                     ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
                     if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
-                        this.REV = (LS) var3;
+                        this.REV = (PropertyString) var3;
                     }
                 }
             }

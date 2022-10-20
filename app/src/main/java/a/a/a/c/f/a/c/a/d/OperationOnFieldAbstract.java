@@ -10,7 +10,7 @@ public abstract class OperationOnFieldAbstract extends OperationAbstract {
 
     }
 
-    public OperationOnFieldAbstract(AHEF var1) {
+    public OperationOnFieldAbstract(OperationType var1) {
         super(var1);
 
     }

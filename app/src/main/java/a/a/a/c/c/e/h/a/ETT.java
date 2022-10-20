@@ -15,7 +15,7 @@ import a.a.a.c.c.d.d.ENZ;
 import a.a.a.c.c.d.d.b.EOB;
 import a.a.a.c.c.e.h.c.ETV;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.f.a.IR;
+import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.RefId;
@@ -49,17 +49,17 @@ public class ETT extends BaseProgressFxController<ETV> {
     private static final int GIX = 12;
     private static final int GIY = 32;
     @FXML
-    TableView<IR> fxml_cash_register_list;
+    TableView<ReceiptRecordVat> fxml_cash_register_list;
     @FXML
-    TableColumn<IR, Period> fxml_cash_register_list_period;
+    TableColumn<ReceiptRecordVat, Period> fxml_cash_register_list_period;
     @FXML
-    TableColumn<IR, RefId> fxml_cash_register_list_ref_id;
+    TableColumn<ReceiptRecordVat, RefId> fxml_cash_register_list_ref_id;
     @FXML
-    TableColumn<IR, JR> fxml_cash_register_list_net;
+    TableColumn<ReceiptRecordVat, JR> fxml_cash_register_list_net;
     @FXML
-    TableColumn<IR, JR> fxml_cash_register_list_vat_amount;
+    TableColumn<ReceiptRecordVat, JR> fxml_cash_register_list_vat_amount;
     @FXML
-    TableColumn<IR, JR> fxml_cash_register_list_gross;
+    TableColumn<ReceiptRecordVat, JR> fxml_cash_register_list_gross;
     @FXML
     Button fxml_cash_register_list_button_view;
     @FXML
@@ -80,7 +80,7 @@ public class ETT extends BaseProgressFxController<ETV> {
     private Label fxml_cash_register_list_button_edit_error_label;
     SimpleIntegerProperty GIZ = new SimpleIntegerProperty();
     private final BooleanProperty GJA = new SimpleBooleanProperty(false);
-    ObservableList<IR> GJB;
+    ObservableList<ReceiptRecordVat> GJB;
     private int GJC = 0;
     private SortedMap<String, SortedSet<KH>> GJD;
     private Period GJF;
@@ -112,8 +112,8 @@ public class ETT extends BaseProgressFxController<ETV> {
         this.fxml_cash_register_list_button_view.disableProperty().bind(Bindings.isEmpty(this.fxml_cash_register_list.getSelectionModel().getSelectedItems()));
         this.fxml_cash_register_list_button_edit.disableProperty().bind(Bindings.isEmpty(this.fxml_cash_register_list.getSelectionModel().getSelectedItems()).or(this.GJA.not()));
         this.fxml_cash_register_list_button_remove.disableProperty().bind(Bindings.isEmpty(this.fxml_cash_register_list.getSelectionModel().getSelectedItems()).or(this.GJA.not()));
-        this.fxml_cash_register_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<IR>() {
-            public void changed(ObservableValue<? extends IR> var1, IR var2, IR var3) {
+        this.fxml_cash_register_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ReceiptRecordVat>() {
+            public void changed(ObservableValue<? extends ReceiptRecordVat> var1, ReceiptRecordVat var2, ReceiptRecordVat var3) {
                 try {
                     if (var3 != null) {
                         boolean var4 = ETT.this.getProcess().HWH(var3.getCreationDate().getValueDate());
@@ -136,9 +136,9 @@ public class ETT extends BaseProgressFxController<ETV> {
         this.fxml_cash_register_list_period.setCellValueFactory(new PropertyValueFactory("period"));
         this.fxml_cash_register_list_period.setCellFactory(new ENZ());
         this.fxml_cash_register_list_ref_id.setCellValueFactory(new PropertyValueFactory("refId"));
-        this.fxml_cash_register_list_ref_id.setCellFactory(new Callback<TableColumn<IR, RefId>, TableCell<IR, RefId>>() {
-            public TableCell<IR, RefId> call(TableColumn<IR, RefId> var1) {
-                return new TableCell<IR, RefId>() {
+        this.fxml_cash_register_list_ref_id.setCellFactory(new Callback<TableColumn<ReceiptRecordVat, RefId>, TableCell<ReceiptRecordVat, RefId>>() {
+            public TableCell<ReceiptRecordVat, RefId> call(TableColumn<ReceiptRecordVat, RefId> var1) {
+                return new TableCell<ReceiptRecordVat, RefId>() {
                     protected void updateItem(RefId var1, boolean var2) {
                         super.updateItem(var1, var2);
                         if (!var2 && var1 != null) {
@@ -230,7 +230,7 @@ public class ETT extends BaseProgressFxController<ETV> {
 
                 while (var4.hasNext()) {
                     EDF var5 = (EDF) var4.next();
-                    this.GJB.add((IR) var5.getModelBaseElementWithIdObject());
+                    this.GJB.add((ReceiptRecordVat) var5.getModelBaseElementWithIdObject());
                 }
             }
 
@@ -257,7 +257,7 @@ public class ETT extends BaseProgressFxController<ETV> {
     protected void fxml_handleButton_cash_register_list_view(ActionEvent var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [view] clicked");
-        final IR var2 = this.fxml_cash_register_list.getSelectionModel().getSelectedItem();
+        final ReceiptRecordVat var2 = this.fxml_cash_register_list.getSelectionModel().getSelectedItem();
         this.HHB();
         this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
             public void accept(ENL<?> var1) {
@@ -278,7 +278,7 @@ public class ETT extends BaseProgressFxController<ETV> {
     protected void fxml_handleButton_cash_register_list_edit(ActionEvent var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
-        final IR var2 = this.fxml_cash_register_list.getSelectionModel().getSelectedItem();
+        final ReceiptRecordVat var2 = this.fxml_cash_register_list.getSelectionModel().getSelectedItem();
         this.HHB();
         this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
             public void accept(ENL<?> var1) {

@@ -2,7 +2,7 @@ package a.a.a.c.d.f;
 
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.e.Invoice;
-import a.a.a.c.f.a.e.HU;
+import a.a.a.c.f.a.e.InvoiceSell;
 import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.InvoiceOtherSell;
 import a.a.a.c.f.b.c.a.KL;
@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class ERA extends ERC {
     public ERA(Invoice<?> var1) {
         super(true);
-        HU var2 = (HU) var1;
+        InvoiceSell var2 = (InvoiceSell) var1;
         HashMap var3 = new HashMap();
         Iterator var4 = var2.getSumOfAmountsDividedByTaxRate().iterator();
 

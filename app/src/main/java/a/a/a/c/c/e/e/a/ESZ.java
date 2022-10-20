@@ -2,9 +2,8 @@ package a.a.a.c.c.e.e.a;
 
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
-import a.a.a.c.c.b.a.EMD;
+import java.util.function.Consumer;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.d.EOQ;
@@ -18,6 +17,7 @@ import a.a.a.c.f.b.c.KO;
 import a.a.a.c.f.b.c.a.KN;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -37,7 +37,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.*;
 
-public class ESZ extends EMD {
+public class ESZ extends BaseFxController {
     @FXML
     public TableView<HI> fxml_contractorsTable;
     @FXML
@@ -73,7 +73,7 @@ public class ESZ extends EMD {
     private ETE GFL;
     private ETB QGG;
 
-    public ESZ(EMC var1, String var2) {
+    public ESZ(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -171,7 +171,7 @@ public class ESZ extends EMD {
         Stage var3 = new Stage();
         var3.setTitle(this.resources.getString("micro.process.contacts_new.NewContact"));
         var3.initModality(Modality.WINDOW_MODAL);
-        var3.initOwner(this.FGW);
+        var3.initOwner(this.primaryStage);
         Scene var4 = new Scene(var2);
         var3.setScene(var4);
         var3.getIcons().add(new Image("/img/app/e_logo.png"));
@@ -341,8 +341,8 @@ public class ESZ extends EMD {
     @FXML
     protected void fxml_handleButton_newInvoiceSell(ActionEvent var1) {
 
-        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-            public void HNE(ENN<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+            public void accept(ENN<?> var1) {
 
                 HI var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
                 var1.setContractor(var2);
@@ -355,8 +355,8 @@ public class ESZ extends EMD {
     @FXML
     protected void fxml_handleButton_newInvoicePurchase(ActionEvent var1) {
 
-        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-            public void HNE(ENN<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+            public void accept(ENN<?> var1) {
 
                 HI var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
                 var1.setContractor(var2);

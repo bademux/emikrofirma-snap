@@ -1,7 +1,6 @@
 package a.a.a.c.c.e.d.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.d.a.QUW;
 import a.a.a.c.c.d.e.EOT;
 import a.a.a.c.c.e.d.a.g.QTJ;
@@ -20,6 +19,7 @@ import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.c.ComboBoxRequired;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -62,7 +62,7 @@ public class ESU extends QUW {
     public RadioButton fxml_radio_button_gross;
     private ESX GFB;
 
-    public ESU(EMC var1, String var2) {
+    public ESU(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -218,7 +218,7 @@ public class ESU extends QUW {
                 Stage var4 = new Stage();
                 var4.setTitle(this.resources.getString("micro.process.invoice_purchase_addNewPosition.Header"));
                 var4.initModality(Modality.WINDOW_MODAL);
-                var4.initOwner(this.FGW);
+                var4.initOwner(this.primaryStage);
                 var4.setResizable(false);
                 var4.getIcons().add(new Image("/img/app/e_logo.png"));
                 Scene var5 = new Scene(var3);

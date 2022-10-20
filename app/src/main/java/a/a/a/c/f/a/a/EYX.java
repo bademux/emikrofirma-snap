@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.f.a.EXU;
+import a.a.a.c.f.a.BaseBoxController;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.c.a.PeriodBox;
 import javafx.beans.property.BooleanProperty;
@@ -16,7 +16,7 @@ import javafx.util.StringConverter;
 import java.time.LocalDate;
 import java.util.Calendar;
 
-public class EYX extends EXU {
+public class EYX extends BaseBoxController {
     @FXML
     public Label fxml_component_label_element;
     @FXML

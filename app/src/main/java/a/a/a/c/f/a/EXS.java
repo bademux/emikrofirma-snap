@@ -3,7 +3,7 @@ package a.a.a.c.f.a;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
-public class EXS extends EXU {
+public class EXS extends BaseBoxController {
     protected BooleanProperty GVH = new SimpleBooleanProperty(this, "changed", false);
 
     public EXS(String var1) {

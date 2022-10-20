@@ -5,7 +5,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 
-public class EYH<_PARENT extends RequiredGridPane, _CONTEXT extends EYJ> extends EXU {
+public class EYH<_PARENT extends RequiredGridPane, _CONTEXT extends EYJ> extends BaseBoxController {
     @FXML
     public _PARENT fxml_component_root_element;
     @FXML

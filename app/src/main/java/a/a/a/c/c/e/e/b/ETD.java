@@ -2,7 +2,7 @@ package a.a.a.c.c.e.e.b;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ELZ;
-import a.a.a.c.c.a.a.ELU;
+import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.c.ENH;
 import a.a.a.c.c.d.EOS;
@@ -48,7 +48,7 @@ public class ETD extends ELZ {
         return ETE.class;
     }
 
-    public Class<? extends ELU<?>> getProcessControllerWindowClass() {
+    public Class<? extends BaseProgressFxController<?>> getProcessControllerWindowClass() {
         return ETA.class;
     }
 

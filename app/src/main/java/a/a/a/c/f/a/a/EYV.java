@@ -1,12 +1,12 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.f.a.EXU;
+import a.a.a.c.f.a.BaseBoxController;
 import a.a.a.c.f.c.c.TextFieldValidated_BigDecimal;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
-public class EYV extends EXU {
+public class EYV extends BaseBoxController {
     @FXML
     public Label fxml_types_bc_label;
     @FXML

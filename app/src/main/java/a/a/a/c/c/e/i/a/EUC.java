@@ -4,7 +4,6 @@ import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.QGU;
-import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.l.MDP;
 import a.a.a.c.c.e.i.d.EUF;
@@ -19,6 +18,7 @@ import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -42,7 +42,7 @@ public class EUC {
     private ResourceBundle resources;
     private Stage GKD;
     private EUF GKE;
-    private EMC QHW;
+    private FXApp QHW;
     private String QHX;
     @FXML
     private TextArea fxml_textArea_log;
@@ -78,7 +78,7 @@ public class EUC {
 
     }
 
-    public void setApplication(EMC var1) {
+    public void setApplication(FXApp var1) {
         this.QHW = var1;
     }
 
@@ -172,7 +172,7 @@ public class EUC {
                 Platform.runLater(new Runnable() {
                     public void run() {
                         EUC.this.GKD.close();
-                        EUC.this.QHW.HJE(EUC.this.QHX, EOS.CONFIG.getProcessFxmlFileName(), null);
+                        EUC.this.QHW.initController(EUC.this.QHX, EOS.CONFIG.getProcessFxmlFileName(), null);
                     }
                 });
             } else {
@@ -272,7 +272,7 @@ public class EUC {
                 Platform.runLater(new Runnable() {
                     public void run() {
                         EUC.this.GKD.close();
-                        EUC.this.QHW.HJE(EUC.this.QHX, EOS.CONFIG.getProcessFxmlFileName(), null);
+                        EUC.this.QHW.initController(EUC.this.QHX, EOS.CONFIG.getProcessFxmlFileName(), null);
                     }
                 });
             } else {

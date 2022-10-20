@@ -4,15 +4,15 @@ import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.a.a.ELU;
-import a.a.a.c.c.b.EMC;
+import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.b.c.ESC;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
@@ -20,7 +20,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 
-public class ERY extends ELU<ESC> {
+public class ERY extends BaseProgressFxController<ESC> {
     private LY GBN;
     private final BooleanProperty GBO = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
     private boolean GBP;
@@ -37,14 +37,14 @@ public class ERY extends ELU<ESC> {
     @FXML
     private EMR fxml_include_top_menuController;
 
-    public ERY(EMC var1, EMT var2, String var3, String var4) {
+    public ERY(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
         try {
-            super.HHE();
+            super.init();
             this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.user.label"));
             this.GBO.bind(this.fxml_include_userLogicController.GBK);
             this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_userLogicController.GBL.and(this.fxml_include_userLogicController.GBK).not());
@@ -75,7 +75,7 @@ public class ERY extends ELU<ESC> {
                             case Confirm:
                                 this.GBP = true;
                                 this.getProcessAndFinish();
-                                this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+                                this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
                                 break;
                             case Reject:
                                 this.GBP = false;
@@ -157,7 +157,7 @@ public class ERY extends ELU<ESC> {
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
         this.GBP = true;
         this.getProcessAndReset();
-        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
 
     }
 
@@ -172,7 +172,7 @@ public class ERY extends ELU<ESC> {
                 case Confirm:
                     this.GBP = true;
                     this.getProcessAndFinish();
-                    this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+                    this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
                     break;
                 case Reject:
                     this.GBP = false;

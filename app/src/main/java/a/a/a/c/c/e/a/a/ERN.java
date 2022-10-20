@@ -4,12 +4,11 @@ import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.a.a.ELU;
-import a.a.a.c.c.b.EMC;
+import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
 import a.a.a.c.c.b.b.EMU;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.a.c.ERU;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.c.a.AILX;
@@ -19,6 +18,7 @@ import a.a.a.c.f.c.c.TextFieldValidated_RefIdPattern;
 import a.a.a.c.g.FCQ;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -32,7 +32,7 @@ import javafx.scene.control.TextField;
 import java.util.Date;
 import java.util.Map;
 
-public class ERN extends ELU<ERU> {
+public class ERN extends BaseProgressFxController<ERU> {
     private LP GAD;
     private LS GAE;
     private LS GAF;
@@ -97,14 +97,14 @@ public class ERN extends ELU<ERU> {
 
     }
 
-    public ERN(EMC var1, EMT var2, String var3, String var4) {
+    public ERN(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
         try {
-            super.HHE();
+            super.init();
             this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.config.label"));
             this.GAJ.bind(this.fxml_include_configurationLogicController.fxml_include_propertyWorkingDir_boxController.changedProperty().or(this.fxml_include_configurationLogicController.fxml_include_propertyPkcs11LibraryFile_boxController.changedProperty().or(this.fxml_include_configurationLogicController.fxml_include_performVerificationLabeledCheckBox_boxController.changedProperty().or(this.fxml_include_configurationLogicController.GAV.changedProperty().or(this.fxml_include_configurationLogicController.GAW.changedProperty().or(this.RAA))))));
             this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_configurationLogicController.fxml_include_propertyWorkingDir_boxController.requiredAndValidProperty().and(this.fxml_include_configurationLogicController.fxml_include_propertyPkcs11LibraryFile_boxController.requiredAndValidProperty().and(this.fxml_include_configurationLogicController.GAV.IFE().and(this.fxml_include_configurationLogicController.GAW.IFE()))).and(this.fxml_include_configurationLogicController.fxml_include_propertyWorkingDir_boxController.changedProperty().or(this.fxml_include_configurationLogicController.fxml_include_propertyPkcs11LibraryFile_boxController.changedProperty().or(this.fxml_include_configurationLogicController.fxml_include_performVerificationLabeledCheckBox_boxController.changedProperty().or(this.fxml_include_configurationLogicController.GAV.changedProperty().or(this.fxml_include_configurationLogicController.GAW.changedProperty().or(this.RAA)))))).not());
@@ -251,7 +251,7 @@ public class ERN extends ELU<ERU> {
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
         this.GAN = true;
         this.getProcessAndReset();
-        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
 
     }
 
@@ -262,7 +262,7 @@ public class ERN extends ELU<ERU> {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.GAN = true;
             this.getProcessAndFinish();
-            this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+            this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
         } catch (Exception var6) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);

@@ -4,12 +4,11 @@ import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
-import a.a.a.c.c.a.a.ELU;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
+import a.a.a.c.c.a.a.BaseProgressFxController;
+import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.d.d.ENZ;
@@ -23,6 +22,7 @@ import a.a.a.c.f.b.c.KE;
 import a.a.a.c.f.b.c.a.KH;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -45,7 +45,7 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
-public class ETT extends ELU<ETV> {
+public class ETT extends BaseProgressFxController<ETV> {
     private static final int GIX = 12;
     private static final int GIY = 32;
     @FXML
@@ -99,14 +99,14 @@ public class ETT extends ELU<ETV> {
     };
     Integer GJI = 0;
 
-    public ETT(EMC var1, EMT var2, String var3, String var4) {
+    public ETT(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
 
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
-        super.HHE();
+        super.init();
         this.GJB = FXCollections.observableArrayList();
         this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.cash_register_list.Title"));
         this.fxml_cash_register_list_button_view.disableProperty().bind(Bindings.isEmpty(this.fxml_cash_register_list.getSelectionModel().getSelectedItems()));
@@ -259,8 +259,8 @@ public class ETT extends ELU<ETV> {
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [view] clicked");
         final IR var2 = this.fxml_cash_register_list.getSelectionModel().getSelectedItem();
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new ENB<ENL<?>>() {
-            public void HNE(ENL<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
+            public void accept(ENL<?> var1) {
 
                 try {
                     var1.setMode(ENL.ENM.VIEW);
@@ -280,8 +280,8 @@ public class ETT extends ELU<ETV> {
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
         final IR var2 = this.fxml_cash_register_list.getSelectionModel().getSelectedItem();
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new ENB<ENL<?>>() {
-            public void HNE(ENL<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
+            public void accept(ENL<?> var1) {
 
                 try {
                     var1.setMode(ENL.ENM.EDIT);
@@ -322,8 +322,8 @@ public class ETT extends ELU<ETV> {
     protected void fxml_cash_register_list_button_new_register(ActionEvent var1) {
 
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new ENB<ENL<?>>() {
-            public void HNE(ENL<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
+            public void accept(ENL<?> var1) {
 
                 var1.setMode(ENL.ENM.NEW);
 

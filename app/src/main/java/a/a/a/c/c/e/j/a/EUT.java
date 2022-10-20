@@ -3,8 +3,7 @@ package a.a.a.c.c.e.j.a;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.EMD;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.e.EOT;
@@ -28,6 +27,7 @@ import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
@@ -55,7 +55,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Iterator;
 
-public class EUT extends EMD implements EMO<HO>, EYR {
+public class EUT extends BaseFxController implements EMO<HO>, EYR {
     public EUY GLL;
     public EPB GLM;
     public HY GLN;
@@ -231,7 +231,7 @@ public class EUT extends EMD implements EMO<HO>, EYR {
     private String GMI;
     private HI GMJ;
 
-    public EUT(EMC var1, String var2) {
+    public EUT(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -904,7 +904,7 @@ public class EUT extends EMD implements EMO<HO>, EYR {
         Stage var3 = new Stage();
         var3.setTitle(this.resources.getString("micro.process.invoice_sale_new.DialogAddNewInvoiceElement.DialogName"));
         var3.initModality(Modality.WINDOW_MODAL);
-        var3.initOwner(this.FGW);
+        var3.initOwner(this.primaryStage);
         var3.setResizable(false);
         Scene var4 = new Scene(var2);
         var3.setScene(var4);

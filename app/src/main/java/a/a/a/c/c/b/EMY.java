@@ -12,7 +12,6 @@ public class EMY {
 
     public static EMY getInstance() {
         if (FIX == null) {
-            Class var0 = EMY.class;
             synchronized (EMY.class) {
                 if (FIX == null) {
                     FIX = new EMY();

@@ -4,9 +4,8 @@ import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
-import a.a.a.c.c.b.a.EMD;
+import java.util.function.Consumer;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.a.a.EML;
 import a.a.a.c.c.b.a.a.a.EMM;
 import a.a.a.c.c.e.a.a.b.ERH;
@@ -27,6 +26,7 @@ import a.a.a.c.f.c.a.AILX;
 import a.a.a.c.f.c.a.LS;
 import a.a.a.c.f.c.c.TextFieldValidated_RefIdPattern;
 import a.a.a.c.g.a.FCR;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -59,7 +59,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ERS extends EMD {
+public class ERS extends BaseFxController {
     private final ERR GAU = new ERR();
     @FXML
     private Node fxml_inner_parent;
@@ -192,7 +192,7 @@ public class ERS extends EMD {
     public final String GBG = "F_KOR-#%yyyy%#-#%MM%#-#%dd%#/#%sequence2%#";
     private boolean QMB;
 
-    public ERS(EMC var1, String var2) {
+    public ERS(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -514,8 +514,8 @@ public class ERS extends EMD {
             if (var2.FHT) {
                 FCR.getMessageBoxDialog(this.resources.getString("micro.changePassword.title"), this.resources.getString("micro.changePassword.button.success.message"), 500.0, 75.0, this.getPrimaryStage());
                 this.QMB = true;
-                this.getApplication().HJE(this.getFxmlName(), "login.fxml", new ENB<EMM>() {
-                    public void HNE(EMM var1) {
+                this.getApplication().initController(this.getFxmlName(), "login.fxml", new Consumer<EMM>() {
+                    public void accept(EMM var1) {
                         var1.setLogout(true);
                     }
                 });
@@ -537,7 +537,7 @@ public class ERS extends EMD {
                 var3.setTitle("Tworzenie kopii zapasowej");
                 File var4 = Application.getHomeDir().toFile();
                 var3.setInitialDirectory(var4);
-                File var5 = var3.showDialog(this.FGW);
+                File var5 = var3.showDialog(this.primaryStage);
                 if (var5 == null) {
                     return;
                 }
@@ -568,7 +568,7 @@ public class ERS extends EMD {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("loading backup ...");
             File var4 = Application.getHomeDir().toFile();
             var2.setInitialDirectory(var4);
-            File var5 = var2.showOpenDialog(this.FGW.getScene().getWindow());
+            File var5 = var2.showOpenDialog(this.primaryStage.getScene().getWindow());
             if (var5 == null) {
                 org.slf4j.LoggerFactory.getLogger(getClass()).info("loading backup cancelled");
                 return;
@@ -577,18 +577,18 @@ public class ERS extends EMD {
             try {
                 EMB.getInstance().QQN(var5);
                 org.slf4j.LoggerFactory.getLogger(getClass()).info("loading backup done");
-                FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseSuccess"), 550.0, 150.0, this.FGW);
-                this.getApplication().HJE(this.getFxmlName(), "login.fxml", new ENB<EMM>() {
-                    public void HNE(EMM var1) {
+                FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseSuccess"), 550.0, 150.0, this.primaryStage);
+                this.getApplication().initController(this.getFxmlName(), "login.fxml", new Consumer<EMM>() {
+                    public void accept(EMM var1) {
                         var1.setLogout(true);
                     }
                 });
             } catch (FFK var7) {
                 org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
-                FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseFailure"), 550.0, 150.0, this.FGW);
+                FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseFailure"), 550.0, 150.0, this.primaryStage);
             } catch (FFI var8) {
                 org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
-                FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), var8.getMessage(), 550.0, 150.0, this.FGW);
+                FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), var8.getMessage(), 550.0, 150.0, this.primaryStage);
             }
         }
 
@@ -600,8 +600,8 @@ public class ERS extends EMD {
         try {
             EMB.getInstance().HJC();
             FCR.getMessageBoxDialog(this.resources.getString("micro.changePassword.title"), "Usunieto haslo", 500.0, 75.0, this.getPrimaryStage());
-            this.getApplication().HJE(this.getFxmlName(), "login.fxml", new ENB<EMM>() {
-                public void HNE(EMM var1) {
+            this.getApplication().initController(this.getFxmlName(), "login.fxml", new Consumer<EMM>() {
+                public void accept(EMM var1) {
                     var1.setLogout(true);
                 }
             });
@@ -621,7 +621,7 @@ public class ERS extends EMD {
         Stage var3 = new Stage();
         var3.setTitle(this.resources.getString("micro.changePassword.title"));
         var3.initModality(Modality.WINDOW_MODAL);
-        var3.initOwner(this.FGW);
+        var3.initOwner(this.primaryStage);
         var3.setResizable(false);
         Scene var4 = new Scene(var2);
         var3.setScene(var4);

@@ -5,28 +5,23 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.a.ELZ;
 import a.a.a.c.c.a.EMA;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.b.b.EMT;
 import a.a.a.c.c.b.b.EMU;
 import a.a.a.c.c.c.ENG;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
-public class EMW implements EMT {
-    private final EMU FIE;
-    private final Map<String, List<ELV>> FIF;
+@Slf4j
+public class EMW {
+    private final EMU FIE = new EMV();
+    private final Map<String, List<ELV>> FIF= new HashMap();
 
     public EMW() {
-
-        this.FIE = new EMV();
-        this.FIF = new HashMap();
         Set var1 = ENG.getInstance().HNI();
-        Iterator var2 = var1.iterator();
-
-        while (var2.hasNext()) {
-            String var3 = (String) var2.next();
-            this.FIF.put(var3, new ArrayList());
+        Iterator it = var1.iterator();
+        while (it.hasNext()) {
+            this.FIF.put((String) it.next(), new ArrayList());
         }
-
     }
 
     public ELV HJR(String var1) throws FFK, FFO {
@@ -51,7 +46,7 @@ public class EMW implements EMT {
                 var15 = var3;
             }
         } catch (IllegalAccessException | InstantiationException var13) {
-            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var13);
+            log.error("Something bad happened", var13);
             throw new FFK(var13);
         }
 

@@ -1,7 +1,6 @@
 package a.a.a.c.c.e.b.a;
 
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.EMD;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.m.QKL;
 import a.a.a.c.c.d.m.QKN;
@@ -11,12 +10,13 @@ import a.a.a.c.f.b.c.a.KK;
 import a.a.a.c.f.b.c.a.KN;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.f.c.c.ComboBoxRequired;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 
-public class ERV extends EMD {
+public class ERV extends BaseFxController {
     public BooleanProperty GBK = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
     public BooleanProperty GBL = new SimpleBooleanProperty(this, "requiredAndValidPropertyHolder", false);
     @FXML
@@ -38,7 +38,7 @@ public class ERV extends EMD {
     @FXML
     public EZP<KK> fxml_include_taxOffice_boxController;
 
-    public ERV(EMC var1, String var2) {
+    public ERV(FXApp var1, String var2) {
         super(var1, var2);
     }
 

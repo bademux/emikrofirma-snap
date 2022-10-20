@@ -2,8 +2,7 @@ package a.a.a.c.c.e.i.a;
 
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.EMD;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.d.d.*;
 import a.a.a.c.c.e.i.a.a.ETW;
 import a.a.a.c.c.e.i.c.EUE;
@@ -17,6 +16,7 @@ import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
@@ -37,7 +37,7 @@ import java.util.Date;
 import java.util.List;
 
 @Slf4j
-public class ETZ extends EMD {
+public class ETZ extends BaseFxController {
     private static final int GJQ = 50;
     @FXML
     private TableView<AGWN> fxml_declaration_list_declaration_table;
@@ -75,7 +75,7 @@ public class ETZ extends EMD {
     private EUA QHU;
     private Node QHV;
 
-    public ETZ(EMC var1, String var2) {
+    public ETZ(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -201,7 +201,7 @@ public class ETZ extends EMD {
             var2.FJI().setValue(var3);
             final MTI var4 = new MTI(null);
             final MTI var5 = new MTI(Boolean.FALSE);
-            MSX var6 = new MSX(this.FGW, this.QHV.disableProperty()) {
+            MSX var6 = new MSX(this.primaryStage, this.QHV.disableProperty()) {
                 public void MXI() {
 
                     try {

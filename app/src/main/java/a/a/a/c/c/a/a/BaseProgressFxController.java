@@ -5,22 +5,21 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.a.EMA;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.a.EMI;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.a.a.BaseSceneFxController;
+import a.a.a.c.c.b.b.a.EMW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
-public abstract class ELU<_PROCESS extends ELV> extends EMI {
+public abstract class BaseProgressFxController<_PROCESS extends ELV> extends BaseSceneFxController {
     private final String FGD;
-    private final EMT FGE;
+    private final EMW FGE;
     private _PROCESS FGF;
     @FXML
     private Text fxml_textVersions;
 
-    public ELU(EMC var1, EMT var2, String var3, String var4) {
-        super(var1, var4);
-
+    public BaseProgressFxController(FXApp fxApp, EMW var2, String var3, String fxmlName) {
+        super(fxApp, fxmlName);
         this.FGE = var2;
         this.FGD = var3;
 
@@ -50,26 +49,21 @@ public abstract class ELU<_PROCESS extends ELV> extends EMI {
     }
 
     protected void resetAndCleanUpProcess() throws FFK, FFO {
-
         this.FGE.resetAndCleanUpProcess(this.FGD);
 
     }
 
     protected EMA getCurrentProcessMainStatus() throws FFK, FFO {
-
-        EMA var1;
-        var1 = this.FGE.getMainStatus(this.FGD);
-
-        return var1;
+        return this.FGE.getMainStatus(this.FGD);
     }
 
     public String getTitle() throws FFK {
         return EMB.getInstance().getApplicationTitle(this.resources.getString("micro.application.title"));
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
-        super.HHE();
+        super.init();
         this.fxml_textVersions.setText(this.getVersionFromPackage(this.getClass().getPackage()));
 
     }

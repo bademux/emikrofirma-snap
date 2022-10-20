@@ -4,14 +4,10 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ELZ;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.EMY;
-import a.a.a.c.c.b.ENB;
-import a.a.a.c.c.b.a.EMF;
-import a.a.a.c.c.b.a.EMG;
-import a.a.a.c.c.b.a.EMN;
-import a.a.a.c.c.b.a.a.EMH;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.a.ControllerFactory;
+import a.a.a.c.c.b.a.FxController;
+import a.a.a.c.c.b.a.a.BaseSceneFxController;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.c.ENG;
 import a.a.a.c.e.a.a.EVK;
@@ -31,6 +27,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,27 +35,28 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.security.Security;
+import java.net.URL;
 import java.util.AbstractMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.github.bademux.emk.utils.ReportUtils.createMemoryUsage;
 
 @Slf4j
-public class FXApp extends Application implements EMC {
+public class FXApp extends Application {
     private final ResourceBundle launcherMsgResourceBundle;
     private final ResourceBundle msgResourceBundle;
-    private final EMT FJC;
+    private final EMW FJC;
     private final Screen FJK = Screen.getPrimary();
     private Stage stage;
     private double width = -1.0;
     private double height = -1.0;
-    private Map<String, EMH> pages;
-    private EMH FJJ;
+    private Map<String, BaseSceneFxController> pages;
+    private BaseSceneFxController controller;
 
     private void uncaughtExceptionGlobal(Thread thread, Throwable exception) {
 
@@ -160,7 +158,7 @@ public class FXApp extends Application implements EMC {
 
     }
 
-    private Map<String, EMH> getPages() {
+    private Map<String, BaseSceneFxController> getPages() {
         return Stream.<Map.Entry<String, String>>concat(
                         Stream.of("login.fxml", "register.fxml", "main.fxml").map(s -> new AbstractMap.SimpleImmutableEntry<>(s, null)),
                         ENG.getInstance().HNI().stream().map(FXApp::getDefinition)
@@ -172,19 +170,19 @@ public class FXApp extends Application implements EMC {
     private void start() {
         try {
             if (EMB.getInstance().HHP().size() == 0) {
-                HNC("register.fxml", null);
+                initController("register.fxml", null);
             } else {
-                HNC("login.fxml", null);
+                initController("login.fxml", null);
             }
 
             stage.getIcons().add(new Image("/img/app/e_logo.png"));
             stage.widthProperty().addListener((observable, oldValue, newValue) -> {
-                if (FJJ != null) {
+                if (controller != null) {
                     width = widthPropertyListener(newValue);
                 }
             });
             stage.heightProperty().addListener((observable, oldValue, newValue) -> {
-                if (FJJ != null) {
+                if (controller != null) {
                     height = heightPropertyListener(newValue);
                 }
             });
@@ -196,15 +194,15 @@ public class FXApp extends Application implements EMC {
     }
 
     private double widthPropertyListener(Number newValue) {
-        if (FJJ.HHF()) {
-            return width < 0.0 ? FJJ.getPrefWidth() : Math.min(newValue.doubleValue(), FJK.getVisualBounds().getWidth());
+        if (controller.HHF()) {
+            return width < 0.0 ? controller.getPrefWidth() : Math.min(newValue.doubleValue(), FJK.getVisualBounds().getWidth());
         }
         return -1.0;
     }
 
     private double heightPropertyListener(Number newValue) {
-        if (FJJ.HHF()) {
-            return height < 0.0 ? FJJ.getPrefWidth() : Math.min(newValue.doubleValue(), FJK.getVisualBounds().getHeight() - 23.0);
+        if (controller.HHF()) {
+            return height < 0.0 ? controller.getPrefWidth() : Math.min(newValue.doubleValue(), FJK.getVisualBounds().getHeight() - 23.0);
         }
         return -1.0;
     }
@@ -231,10 +229,12 @@ public class FXApp extends Application implements EMC {
     }
 
     @SneakyThrows
-    private Map.Entry<String, EMH> loadFxmlAndGetController(String fxmlName, String title) {
+    private Map.Entry<String, BaseSceneFxController> loadFxmlAndGetController(String fxmlName, String title) {
         try {
-            var controller = getController(loadFxml(fxmlName, title));
-            controller.HHE();
+            var controllerFactory = new ControllerFactory(this, stage, FJC, title, fxmlName);
+            URL fxmlUrl = getClass().getResource("/fxml/" + fxmlName);
+            var controller = loadFxml(controllerFactory, fxmlUrl, msgResourceBundle);
+            controller.init();
             return Map.entry(fxmlName, controller);
         } catch (FFK | IOException e) {
             log.error("Something bad happened", e);
@@ -242,134 +242,106 @@ public class FXApp extends Application implements EMC {
         }
     }
 
-    @SneakyThrows
-    private static EMH getController(FXMLLoader loader) {
-        var controller = loader.getController();
-        if (!(controller instanceof EMG)) {
-            throw new IllegalStateException("Unknown controller type: " + controller.getClass());
-        }
-        return (EMH) controller;
-    }
-
-    private FXMLLoader loadFxml(String fxmlName, String title) throws IOException {
-        log.info("Adding dynamic process " + fxmlName);
-        FXMLLoader loader = new FXMLLoader(FXApp.class.getResource("/fxml/" + fxmlName));
-        loader.setControllerFactory(new EMF(this, stage, this.FJC, title, fxmlName));
-        loader.setResources(this.msgResourceBundle);
+    private static BaseSceneFxController loadFxml(Callback<Class<?>, Object> controllerFactory, URL fxmlUrl, ResourceBundle resources) throws IOException {
+        log.info("Adding dynamic process " + fxmlUrl);
+        var loader = new FXMLLoader(fxmlUrl, resources, null, controllerFactory);
         loader.load();
-        return loader;
+        var controller = loader.getController();
+        assert controller instanceof FxController : "Unknown controller type: " + controller.getClass();
+        return (BaseSceneFxController) controller;
     }
 
-    public void HJD(String var1, String var2) {
-
-        this.HJE(var1, var2, null);
-
-    }
-
-    public <_T extends EMH> void HJE(String var1, String var2, ENB<_T> var3) {
+    public <_T extends FxController> void initController(String fxmlNameOne, String fxmlNameTwo, Consumer<_T> consumer) {
 
         try {
-            EMH var4 = this.pages.get(var1);
-            EMH var5 = this.pages.get(var2);
-            boolean var6 = true;
-            if (var4 != null) {
-                var6 = this.HND(var4);
-            }
-
-            if (var6) {
-                if (var5 == null) {
-                    throw FCZ.getInstance().IHH(var1, var2);
+            BaseSceneFxController controllerOne = this.pages.get(fxmlNameOne);
+            BaseSceneFxController controllerTwo = this.pages.get(fxmlNameTwo);
+            if (controllerOne != null) {
+                if (controllerOne == null) {
+                    throw FCZ.getInstance().IHF();
                 }
-
-                this.HNC(var5, var3);
+                if (controllerOne.HHB()) {
+                    if (controllerTwo == null) {
+                        throw FCZ.getInstance().IHH(fxmlNameOne, fxmlNameTwo);
+                    }
+                    initController(controllerTwo, consumer);
+                }
             }
-        } catch (Exception var10) {
-            log.error("Something bad happened", var10);
-            throw new FFI(var10);
+
+        } catch (Exception e) {
+            log.error("Something bad happened", e);
+            throw new FFI(e);
         }
 
     }
 
-    private <_T extends EMH> void HNC(String var1, ENB<_T> var2) throws FFK {
-
-        EMH var3 = this.pages.get(var1);
-        if (var3 == null) {
-            throw FCZ.getInstance().IHE(var1);
+    private <_T extends FxController> void initController(String fxmlName, Consumer<_T> consumer) throws FFK {
+        BaseSceneFxController controller = this.pages.get(fxmlName);
+        if (controller == null) {
+            throw FCZ.getInstance().IHE(fxmlName);
         }
 
-        this.HNC(var3, var2);
+        this.initController(controller, consumer);
 
     }
 
-    private <_T extends EMH> void HNC(EMH var1, ENB<_T> var2) throws FFK {
+    private <_T extends FxController> void initController(BaseSceneFxController controller, Consumer<_T> consumer) throws FFK {
 
-        if (var1 == null) {
+        if (controller == null) {
             throw FCZ.getInstance().IHF();
         }
 
-        this.FJJ = var1;
-        if (var2 != null) {
-            var2.HNE((_T) var1);
+        this.controller = controller;
+        if (consumer != null) {
+            consumer.accept((_T) controller);
         }
 
-        if (var1.getScene() != null) {
-            var1.getScene().setRoot(new Pane());
+        if (controller.getScene() != null) {
+            controller.getScene().setRoot(new Pane());
         }
 
-        Stage var3 = var1.getPrimaryStage();
+        Stage stage = controller.getPrimaryStage();
         if (this.width <= 0.0) {
-            this.width = var1.getPrefWidth();
+            this.width = controller.getPrefWidth();
         }
 
         if (this.height <= 0.0) {
-            this.height = var1.getPrefHeight();
+            this.height = controller.getPrefHeight();
         }
 
-        var1.setScene(new Scene(var1.getParent(), this.width, this.height));
-        if (!var1.HHF() && var3.isMaximized()) {
-            var3.setMaximized(false);
+        controller.setScene(new Scene(controller.getParent(), this.width, this.height));
+        if (!controller.HHF() && stage.isMaximized()) {
+            stage.setMaximized(false);
         }
 
-        var3.setResizable(var1.HHF());
-        var3.setScene(var1.getScene());
-        var3.setMinWidth(var1.getMinWidth());
-        var3.setMinHeight(var1.getMinHeight());
-        var3.setMaxWidth(var1.getMaxWidth());
-        var3.setMaxHeight(var1.getMaxHeight());
-        var3.sizeToScene();
-        if (!var1.HHF()) {
+        stage.setResizable(controller.HHF());
+        stage.setScene(controller.getScene());
+        stage.setMinWidth(controller.getMinWidth());
+        stage.setMinHeight(controller.getMinHeight());
+        stage.setMaxWidth(controller.getMaxWidth());
+        stage.setMaxHeight(controller.getMaxHeight());
+        stage.sizeToScene();
+        if (!controller.HHF()) {
             Rectangle2D var4 = Screen.getPrimary().getVisualBounds();
-            var3.setX(var4.getWidth() / 2.0 - var3.getWidth() / 2.0);
-            var3.setY(var4.getHeight() / 2.0 - var3.getHeight() / 2.0);
-            if (var3.getX() < 0.0) {
-                var3.setX(0.0);
+            stage.setX(var4.getWidth() / 2.0 - stage.getWidth() / 2.0);
+            stage.setY(var4.getHeight() / 2.0 - stage.getHeight() / 2.0);
+            if (stage.getX() < 0.0) {
+                stage.setX(0.0);
             }
 
-            if (var3.getY() < 0.0) {
-                var3.setY(0.0);
+            if (stage.getY() < 0.0) {
+                stage.setY(0.0);
             }
         } else if (EMB.getInstance().HHO()) {
             EMB.getInstance().setMaximizeWindow(false);
-            var3.hide();
-            var3.setMaximized(true);
-            var3.show();
+            stage.hide();
+            stage.setMaximized(true);
+            stage.show();
         }
 
-        var3.setTitle(var1.getTitle());
-        var1.HHC();
+        stage.setTitle(controller.getTitle());
+        controller.HHC();
 
-    }
-
-    private boolean HND(EMN var1) throws FFK {
-
-        boolean var2;
-        if (var1 == null) {
-            throw FCZ.getInstance().IHF();
-        }
-
-        var2 = var1.HHB();
-
-        return var2;
     }
 
 }

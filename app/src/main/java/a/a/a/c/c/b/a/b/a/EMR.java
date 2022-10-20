@@ -2,10 +2,10 @@ package a.a.a.c.c.b.a.b.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.EMD;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.f.c.a.CustomAnchorPane;
 import a.a.a.c.g.FCV;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class EMR extends EMD {
+public class EMR extends BaseFxController {
     @FXML
     public CustomAnchorPane fxml_top_menu;
     @FXML
@@ -25,7 +25,7 @@ public class EMR extends EMD {
     private EMS FIC;
     private EMS FID;
 
-    public EMR(EMC var1, String var2) {
+    public EMR(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -50,7 +50,7 @@ public class EMR extends EMD {
     protected void fxml_handleButton_home_button(ActionEvent var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [home] clicked");
-        this.getApplication().HJD(this.getFxmlName(), FCV.MAIN.getFxmlFileName());
+        this.getApplication().initController(this.getFxmlName(), FCV.MAIN.getFxmlFileName(), null);
 
     }
 

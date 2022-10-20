@@ -4,9 +4,8 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ELZ;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
-import a.a.a.c.c.b.a.EMD;
+import java.util.function.Consumer;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.a.a.EMJ;
 import a.a.a.c.c.b.a.a.a.EMM;
 import a.a.a.c.c.c.ENG;
@@ -18,6 +17,7 @@ import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.b.LX;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.*;
 
 @Slf4j
-public class EMP extends EMD {
+public class EMP extends BaseFxController {
     @FXML
     private AnchorPane fxml_left_parent;
     @FXML
@@ -60,7 +60,7 @@ public class EMP extends EMD {
     private final Map<Integer, EVZ<QVH, ContextMenu>> RHF = new HashMap();
     private final List<EVZ<Boolean, Button>> FHY = new ArrayList();
 
-    public EMP(EMC var1, String var2) {
+    public EMP(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -140,8 +140,8 @@ public class EMP extends EMD {
                 return var1.getFirstValue().compareTo(var2.getFirstValue());
             }
         });
-        this.HJM(this.FHX, this.resources.getString("micro.leftBar.button.LogOut"), "btn-menuitem", EMM.class.getSimpleName(), "login.fxml", new ENB<EMM>() {
-            public void HNE(EMM var1) {
+        this.HJM(this.FHX, this.resources.getString("micro.leftBar.button.LogOut"), "btn-menuitem", EMM.class.getSimpleName(), "login.fxml", new Consumer<EMM>() {
+            public void accept(EMM var1) {
                 var1.setLogout(true);
             }
         });
@@ -307,7 +307,7 @@ public class EMP extends EMD {
                             var58.setOnAction(new EventHandler<ActionEvent>() {
                                 public void handle(ActionEvent var1) {
                                     log.info("Menu [" + var55 + "] clicked");
-                                    EMP.this.getApplication().HJD(EMP.this.getFxmlName(), var56);
+                                    EMP.this.getApplication().initController(EMP.this.getFxmlName(), var56, null);
                                 }
                             });
                             if (var47.getItems().size() < var53 + 1) {
@@ -344,11 +344,11 @@ public class EMP extends EMD {
         this.RHF.put(var1, var2);
     }
 
-    private void HJM(ContextMenu var1, String var2, String var3, final String var4, final String var5, final ENB var6) {
+    private void HJM(ContextMenu var1, String var2, String var3, final String var4, final String var5, final Consumer var6) {
         this.HJN(var1, var2, var3, new EventHandler<ActionEvent>() {
             public void handle(ActionEvent var1) {
                 log.info("Button [" + var4 + "] clicked");
-                EMP.this.getApplication().HJE(EMP.this.getFxmlName(), var5, var6);
+                EMP.this.getApplication().initController(EMP.this.getFxmlName(), var5, var6);
             }
         });
     }
@@ -364,7 +364,7 @@ public class EMP extends EMD {
         return this.HJP(var1, var2, var3, new EventHandler<ActionEvent>() {
             public void handle(ActionEvent var1) {
                 log.info("Button [" + var4 + "] clicked");
-                EMP.this.getApplication().HJD(EMP.this.getFxmlName(), var5);
+                EMP.this.getApplication().initController(EMP.this.getFxmlName(), var5, null);
             }
         }, var6);
     }

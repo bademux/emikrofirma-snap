@@ -2,7 +2,7 @@ package a.a.a.c.c.e.m.b;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ELZ;
-import a.a.a.c.c.a.a.ELU;
+import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.c.ENH;
 import a.a.a.c.c.d.EOS;
@@ -40,7 +40,7 @@ public class QTA extends ELZ {
         return QTB.class;
     }
 
-    public Class<? extends ELU<?>> getProcessControllerWindowClass() {
+    public Class<? extends BaseProgressFxController<?>> getProcessControllerWindowClass() {
         return QSZ.class;
     }
 

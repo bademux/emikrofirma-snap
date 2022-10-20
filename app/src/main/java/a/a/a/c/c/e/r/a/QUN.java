@@ -2,8 +2,7 @@ package a.a.a.c.c.e.r.a;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.EMD;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.e.EOT;
@@ -29,6 +28,7 @@ import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.a.QJZ;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.FCQ;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.*;
@@ -53,7 +53,7 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-public class QUN extends EMD implements EMO<QSJ>, EYR {
+public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
     public QUU RDU;
     ERF RDV = new ERF(false, 2, 2);
     private QSN RDW;
@@ -121,7 +121,7 @@ public class QUN extends EMD implements EMO<QSJ>, EYR {
     private final ListProperty<QSJ> REI = new SimpleListProperty();
     private QUP REJ;
 
-    public QUN(EMC var1, String var2) {
+    public QUN(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -384,7 +384,7 @@ public class QUN extends EMD implements EMO<QSJ>, EYR {
             Stage var4 = new Stage();
             var4.setTitle(this.resources.getString("micro.process.invoice_sale_new.DialogAddNewInvoiceElement.DialogName"));
             var4.initModality(Modality.WINDOW_MODAL);
-            var4.initOwner(this.FGW);
+            var4.initOwner(this.primaryStage);
             var4.setResizable(false);
             Scene var5 = new Scene(var3);
             var4.setScene(var5);

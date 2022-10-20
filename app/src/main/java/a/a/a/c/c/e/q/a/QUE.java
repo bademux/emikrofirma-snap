@@ -4,11 +4,10 @@ import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
+import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.ENI;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENO;
@@ -33,6 +32,7 @@ import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.c.FCZ;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
@@ -112,7 +112,7 @@ public class QUE extends ENO<QUL> {
     private final QUG RDL = new QUG();
     private final QUH RDM = new QUH();
 
-    public QUE(EMC var1, EMT var2, String var3, String var4) {
+    public QUE(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
 
     }
@@ -186,10 +186,10 @@ public class QUE extends ENO<QUL> {
 
     }
 
-    public void HHE() {
+    public void init() {
 
         try {
-            super.HHE();
+            super.init();
         } catch (FFK var5) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
@@ -255,8 +255,8 @@ public class QUE extends ENO<QUL> {
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [view] clicked");
             final QSN var1 = (QSN) ((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getRealInvoice();
-            this.getApplication().HJE(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), new ENB<QUV<?>>() {
-                public void HNE(QUV<?> var1x) {
+            this.getApplication().initController(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
+                public void accept(QUV<?> var1x) {
 
                     try {
                         var1x.setInvoice(var1);
@@ -281,8 +281,8 @@ public class QUE extends ENO<QUL> {
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
             final QSN var1 = (QSN) ((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getRealInvoice();
-            this.getApplication().HJE(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), new ENB<QUV<?>>() {
-                public void HNE(QUV<?> var1x) {
+            this.getApplication().initController(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
+                public void accept(QUV<?> var1x) {
 
                     try {
                         var1x.setInvoice(var1);
@@ -331,7 +331,7 @@ public class QUE extends ENO<QUL> {
     private void fxml_other_sale_list_button_new_other_sale() {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [SALE_NEW_OTHER] clicked");
-        this.getApplication().HJD(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName());
+        this.getApplication().initController(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), null);
 
     }
 
@@ -408,7 +408,7 @@ public class QUE extends ENO<QUL> {
         try {
             final Callback<Integer, Node> var2 = this::RMX;
             final MTI var3 = new MTI(null);
-            MSX var4 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var4 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
 
                     try {
@@ -482,7 +482,7 @@ public class QUE extends ENO<QUL> {
             this.fxml_other_sale_list_year.setDisable(true);
             final Callback<Integer, Node> var3 = this::RMX;
             final MTI var4 = new MTI(null);
-            MSX var5 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var5 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
 
                     try {

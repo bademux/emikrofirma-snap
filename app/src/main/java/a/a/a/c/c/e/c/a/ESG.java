@@ -3,12 +3,11 @@ package a.a.a.c.c.e.c.a;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.a.a.ELU;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
+import a.a.a.c.c.a.a.BaseProgressFxController;
+import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENJ;
 import a.a.a.c.c.d.a.ENO;
@@ -31,6 +30,7 @@ import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
@@ -59,7 +59,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Slf4j
-public class ESG extends ELU<ESJ> {
+public class ESG extends BaseProgressFxController<ESJ> {
     @FXML
     public Button fxml_generalButtonSettllePeriod;
     @FXML
@@ -114,7 +114,7 @@ public class ESG extends ELU<ESJ> {
     public BooleanProperty GCL = new SimpleBooleanProperty(false);
     public BooleanProperty GCM = new SimpleBooleanProperty(false);
 
-    public ESG(EMC var1, EMT var2, String var3, String var4) {
+    public ESG(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
 
     }
@@ -346,7 +346,7 @@ public class ESG extends ELU<ESJ> {
                 Stage var5 = new Stage();
                 var5.setTitle(this.resources.getString("micro.process.invoices_settlements.generateandsend_jpk_vat.dialog.header"));
                 var5.initModality(Modality.WINDOW_MODAL);
-                var5.initOwner(this.FGW);
+                var5.initOwner(this.primaryStage);
                 Scene var6 = new Scene(var4);
                 var5.setScene(var6);
                 QKI var7 = var3.getController();
@@ -384,7 +384,7 @@ public class ESG extends ELU<ESJ> {
         try {
             final MTI var3 = new MTI(null);
             final MTI var4 = new MTI(Boolean.FALSE);
-            MSX var5 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var5 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
 
                     try {
@@ -479,7 +479,7 @@ public class ESG extends ELU<ESJ> {
     @FXML
     protected void fxml_handleButton_goto_jpk_list(ActionEvent var1) {
 
-        this.getApplication().HJE(this.getFxmlName(), EOS.DECLARATION_LIST.getProcessFxmlFileName(), null);
+        this.getApplication().initController(this.getFxmlName(), EOS.DECLARATION_LIST.getProcessFxmlFileName(), null);
 
     }
 
@@ -500,7 +500,7 @@ public class ESG extends ELU<ESJ> {
                 log.info("Period is going to be settled.");
                 final ESJ var5 = this.getProcess();
                 final MTI var6 = new MTI(null);
-                MSX var7 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+                MSX var7 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                     public void MXI() {
 
                         try {
@@ -605,8 +605,8 @@ public class ESG extends ELU<ESJ> {
 
         final JF var2 = ((ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue()).getSettlement();
         if (var2 != null) {
-            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICES_RECORDS.getProcessFxmlFileName(), new ENB<ENJ<?>>() {
-                public void HNE(ENJ<?> var1) {
+            this.getApplication().initController(this.getFxmlName(), EOS.INVOICES_RECORDS.getProcessFxmlFileName(), new Consumer<ENJ<?>>() {
+                public void accept(ENJ<?> var1) {
 
                     try {
                         var1.setSettlement(var2);
@@ -627,8 +627,8 @@ public class ESG extends ELU<ESJ> {
     protected void fxml_handleButton_NotSettledInvoices(ActionEvent var1) {
 
         log.info("Button [No Settle Invoice Sell] clicked");
-        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_LIST.getProcessFxmlFileName(), new ENB<ENO<?>>() {
-            public void HNE(ENO<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_LIST.getProcessFxmlFileName(), new Consumer<ENO<?>>() {
+            public void accept(ENO<?> var1) {
 
                 var1.setOnlyEmptyPeriod();
 
@@ -702,7 +702,7 @@ public class ESG extends ELU<ESJ> {
             Stage var4 = new Stage();
             var4.setTitle(this.resources.getString("micro.process.invoices_settlements.dialogEmpty.Title"));
             var4.initModality(Modality.WINDOW_MODAL);
-            var4.initOwner(this.FGW);
+            var4.initOwner(this.primaryStage);
             Scene var5 = new Scene(var3);
             var4.setScene(var5);
             var4.setResizable(false);

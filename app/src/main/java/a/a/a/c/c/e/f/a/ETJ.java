@@ -3,10 +3,9 @@ package a.a.a.c.c.e.f.a;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.a.ENJ;
 import a.a.a.c.c.e.f.c.ETM;
 import a.a.a.c.f.a.a.EYX;
@@ -16,6 +15,7 @@ import a.a.a.c.f.a.e.a.IH;
 import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.g.a.FCT;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -74,14 +74,14 @@ public class ETJ extends ENJ<ETM> {
     @FXML
     private EMP fxml_include_left_barController;
 
-    public ETJ(EMC var1, EMT var2, String var3, String var4) {
+    public ETJ(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
 
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
-        super.HHE();
+        super.init();
         this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoices_records.title"));
         this.GHE = new Date();
         this.GHF = new ETK(this.resources);
@@ -226,7 +226,7 @@ public class ETJ extends ENJ<ETM> {
     protected void fxml_handleButton_close(ActionEvent var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [close] clicked");
-        this.getApplication().HJD(this.getFxmlName(), this.GHB);
+        this.getApplication().initController(this.getFxmlName(), this.GHB, null);
 
     }
 

@@ -3,16 +3,16 @@ package a.a.a.c.c.e.e.a;
 import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.a.a.ELU;
-import a.a.a.c.c.b.EMC;
+import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.e.c.ETE;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.b.c.a.KN;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.a.FCR;
+import com.github.bademux.emk.app.FXApp;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Collections;
 
-public class ETA extends ELU<ETE> {
+public class ETA extends BaseProgressFxController<ETE> {
     @FXML
     private ScrollPane fxml_include_container;
     @FXML
@@ -43,13 +43,13 @@ public class ETA extends ELU<ETE> {
     public Button fxml_generalbuttonRemove;
     private ETE GFM;
 
-    public ETA(EMC var1, EMT var2, String var3, String var4) {
+    public ETA(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
-        super.HHE();
+        super.init();
         this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.contacts_list.menu.title"));
         this.fxml_generalbuttonEdit.disableProperty().bind(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().selectedItemProperty().isNull());
         this.fxml_generalbuttonRemove.disableProperty().bind(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().selectedItemProperty().isNull());
@@ -90,7 +90,7 @@ public class ETA extends ELU<ETE> {
             Stage var4 = new Stage();
             var4.setTitle(this.resources.getString("micro.process.contacts_new.NewContact"));
             var4.initModality(Modality.WINDOW_MODAL);
-            var4.initOwner(this.FGW);
+            var4.initOwner(this.primaryStage);
             Scene var5 = new Scene(var3);
             var4.setScene(var5);
             var4.setResizable(false);

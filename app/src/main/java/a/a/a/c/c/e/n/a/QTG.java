@@ -3,17 +3,17 @@ package a.a.a.c.c.e.n.a;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.a.a.ELU;
-import a.a.a.c.c.b.EMC;
+import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.n.c.QTI;
+import com.github.bademux.emk.app.FXApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 
-public class QTG extends ELU<QTI> {
+public class QTG extends BaseProgressFxController<QTI> {
     @FXML
     private ScrollPane fxml_include_container;
     @FXML
@@ -23,14 +23,14 @@ public class QTG extends ELU<QTI> {
     @FXML
     private EMR fxml_include_top_menuController;
 
-    public QTG(EMC var1, EMT var2, String var3, String var4) {
+    public QTG(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
         try {
-            super.HHE();
+            super.init();
         } catch (FFK var5) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
@@ -77,7 +77,7 @@ public class QTG extends ELU<QTI> {
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [close] clicked");
         QTI var2 = this.getProcess();
         var2.resetAndCleanUpProcess();
-        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
 
     }
 }

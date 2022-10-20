@@ -4,12 +4,12 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.a.EMI;
+import a.a.a.c.c.b.a.a.BaseSceneFxController;
 import a.a.a.c.f.c.b.LX;
 import a.a.a.c.f.c.c.PasswordFieldRequired_8;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCZ;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -27,7 +27,7 @@ import javafx.scene.text.Text;
 
 import java.util.Comparator;
 
-public class EMM extends EMI {
+public class EMM extends BaseSceneFxController {
     public static final String FHU = "login.fxml";
     @FXML
     private ComboBox<String> fxml_userName;
@@ -44,8 +44,8 @@ public class EMM extends EMI {
     private boolean FHW = false;
     private String RHG = null;
 
-    public EMM(EMC var1, String var2) {
-        super(var1, var2);
+    public EMM(FXApp fxApp, String fxmlName) {
+        super(fxApp, fxmlName);
     }
 
     public String getTitle() {
@@ -67,7 +67,7 @@ public class EMM extends EMI {
             }
 
             this.RHG = this.fxml_userName.getValue();
-            this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+            this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
         } catch (FFO | FFK var6) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             this.fxml_loginText.setText(var6.getLocalizedMessage());
@@ -79,7 +79,7 @@ public class EMM extends EMI {
     protected void fxml_handleButton_register(ActionEvent var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [register] clicked");
-        this.getApplication().HJD(this.getFxmlName(), "register.fxml");
+        this.getApplication().initController(this.getFxmlName(), "register.fxml", null);
 
     }
 
@@ -101,9 +101,9 @@ public class EMM extends EMI {
 
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
-        super.HHE();
+        super.init();
         this.fxml_passwordField.textProperty().addListener(new ChangeListener<String>() {
             public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
                 if (EMM.this.FHV.get()) {
@@ -163,7 +163,7 @@ public class EMM extends EMI {
             this.fxml_userName.getItems().clear();
             ObservableList var1 = FXCollections.observableArrayList(EMB.getInstance().HHP());
             if (var1 == null) {
-                this.getApplication().HJD(this.getFxmlName(), "register.fxml");
+                this.getApplication().initController(this.getFxmlName(), "register.fxml", null);
             } else {
                 var1.sort(new Comparator<String>() {
                     public int compare(String var1, String var2) {

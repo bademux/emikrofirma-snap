@@ -5,7 +5,6 @@ import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.QGU;
-import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.l.MDP;
 import a.a.a.c.c.e.c.c.ESJ;
@@ -20,6 +19,7 @@ import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -42,7 +42,7 @@ public class QKI {
     private Stage QMV;
     private ESJ QMW;
     private JF QMX;
-    private EMC QMY;
+    private FXApp QMY;
     private String QMZ;
     @FXML
     private TextArea fxml_textArea_log;
@@ -86,7 +86,7 @@ public class QKI {
 
     }
 
-    public void setApplication(EMC var1) {
+    public void setApplication(FXApp var1) {
         this.QMY = var1;
     }
 
@@ -146,7 +146,7 @@ public class QKI {
                 Platform.runLater(new Runnable() {
                     public void run() {
                         QKI.this.QMV.close();
-                        QKI.this.QMY.HJE(QKI.this.QMZ, EOS.CONFIG.getProcessFxmlFileName(), null);
+                        QKI.this.QMY.initController(QKI.this.QMZ, EOS.CONFIG.getProcessFxmlFileName(), null);
                     }
                 });
             } else {

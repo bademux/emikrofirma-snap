@@ -51,10 +51,10 @@ public class MDP extends EQK {
                 MME var8;
                 AnchorPane var2;
                 try {
-                    FXMLLoader var1 = new FXMLLoader();
-                    var1.setLocation(MDP.class.getResource("/fxml/kdDialog.fxml"));
-                    var1.setResources(MDP.this.MWM);
-                    var2 = var1.load();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(MDP.class.getResource("/fxml/kdDialog.fxml"));
+                    loader.setResources(MDP.this.MWM);
+                    var2 = loader.load();
                     Stage var3 = new Stage();
                     var3.setTitle(MDP.this.MWM.getString("micro.jpk.sendout.signature.method.kd.dialog.title"));
                     var3.initModality(Modality.APPLICATION_MODAL);
@@ -62,7 +62,7 @@ public class MDP extends EQK {
                     var3.getIcons().add(new Image("/img/app/e_logo.png"));
                     Scene var4 = new Scene(var2);
                     var3.setScene(var4);
-                    MDG var5 = var1.getController();
+                    MDG var5 = loader.getController();
                     var5.setDialogStage(var3);
                     var5.setupDefaults();
                     var3.showAndWait();

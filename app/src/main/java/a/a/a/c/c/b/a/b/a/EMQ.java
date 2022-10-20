@@ -1,14 +1,14 @@
 package a.a.a.c.c.b.a.b.a;
 
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.EMD;
+import a.a.a.c.c.b.a.BaseFxController;
+import com.github.bademux.emk.app.FXApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class EMQ extends EMD {
+public class EMQ extends BaseFxController {
     private String FHZ;
 
-    public EMQ(EMC var1, String var2) {
+    public EMQ(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -28,7 +28,7 @@ public class EMQ extends EMD {
     protected void fxml_handleButton_back(ActionEvent var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [back] clicked");
-        this.getApplication().HJD(this.getFxmlName(), this.getFxmlNameDirection());
+        this.getApplication().initController(this.getFxmlName(), this.getFxmlNameDirection(), null);
 
     }
 

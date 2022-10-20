@@ -1,8 +1,7 @@
 package a.a.a.c.c.e.p.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.EMD;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.e.EOT;
@@ -24,6 +23,7 @@ import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.c.ComboBoxRequired;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.*;
 import javafx.event.ActionEvent;
@@ -49,7 +49,7 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-public class QTW extends EMD implements EMO<QSI>, EYR {
+public class QTW extends BaseFxController implements EMO<QSI>, EYR {
     public QUD RBV;
     private QSK RBW;
     @FXML
@@ -120,7 +120,7 @@ public class QTW extends EMD implements EMO<QSI>, EYR {
     private final BooleanProperty RCI = new SimpleBooleanProperty(false);
     private QTY RCJ;
 
-    public QTW(EMC var1, String var2) {
+    public QTW(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -422,7 +422,7 @@ public class QTW extends EMD implements EMO<QSI>, EYR {
             Stage var4 = new Stage();
             var4.setTitle(this.resources.getString("micro.process.other_purchase_new.DialogAddNewOtherElement.DialogName"));
             var4.initModality(Modality.WINDOW_MODAL);
-            var4.initOwner(this.FGW);
+            var4.initOwner(this.primaryStage);
             var4.setResizable(false);
             Scene var5 = new Scene(var3);
             var4.setScene(var5);

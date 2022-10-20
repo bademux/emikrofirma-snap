@@ -3,11 +3,10 @@ package a.a.a.c.c.e.k.a;
 import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.d.d.b.EOB;
@@ -29,6 +28,7 @@ import a.a.a.c.f.b.c.KE;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -109,7 +109,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
     private boolean GNI;
     private EVC GNJ;
 
-    public EUZ(EMC var1, EMT var2, String var3, String var4) {
+    public EUZ(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
         this.GNA = ENL.ENM.NEW;
         this.GNE = false;
@@ -127,10 +127,10 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
         this.GNA = var1;
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
         try {
-            super.HHE();
+            super.init();
             this.GNJ = this.getProcess();
             this.fxml_include_period_boxController.initialize(false);
             this.fxml_include_period_boxController.setListener(new ChangeListener<Integer>() {
@@ -275,7 +275,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
     protected void fxml_handleButton_back(ActionEvent var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [back] clicked");
-        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
 
     }
 
@@ -291,7 +291,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
             Stage var4 = new Stage();
             var4.setTitle(this.resources.getString("micro.process.cash_register_new.AddItemDialogTitle"));
             var4.initModality(Modality.WINDOW_MODAL);
-            var4.initOwner(this.FGW);
+            var4.initOwner(this.primaryStage);
             Scene var5 = new Scene(var3);
             var4.setScene(var5);
             var4.setResizable(false);
@@ -356,7 +356,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.HYC();
             this.GNJ.HHL();
-            this.getApplication().HJD(this.getFxmlName(), EOS.CASH_REGISTER_LIST.getProcessFxmlFileName());
+            this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_LIST.getProcessFxmlFileName(), null);
         } catch (Exception var6) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
@@ -371,7 +371,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
         this.GNI = true;
         EVC var2 = this.getProcess();
         var2.resetAndCleanUpProcess();
-        this.getApplication().HJD(this.getFxmlName(), EOS.CASH_REGISTER_LIST.getProcessFxmlFileName());
+        this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_LIST.getProcessFxmlFileName(), null);
 
     }
 

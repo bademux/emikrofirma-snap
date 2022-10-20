@@ -5,9 +5,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.a.ELZ;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
-import a.a.a.c.c.b.a.a.EMI;
+import java.util.function.Consumer;
+import a.a.a.c.c.b.a.a.BaseSceneFxController;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.c.ENG;
 import a.a.a.c.c.c.ENH;
@@ -16,6 +15,7 @@ import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.a.FCT;
+import com.github.bademux.emk.app.FXApp;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.*;
 
 @Slf4j
-public class EMJ extends EMI {
+public class EMJ extends BaseSceneFxController {
     public static final String FHD = "main.fxml";
     @FXML
     private AnchorPane fxml_anchor_pane_processes;
@@ -51,17 +51,17 @@ public class EMJ extends EMI {
     @FXML
     private Button fxml_button_logOut;
 
-    public EMJ(EMC var1, String var2) {
-        super(var1, var2);
+    public EMJ(FXApp fxApp, String fxmlName) {
+        super(fxApp, fxmlName);
     }
 
     public String getTitle() throws FFK {
         return EMB.getInstance().getApplicationTitle(this.resources.getString("micro.application.title"));
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
-        super.HHE();
+        super.init();
         this.fxml_textVersions.setText(this.getVersionFromPackage(EMJ.class.getPackage()));
         this.HJF();
 
@@ -146,7 +146,7 @@ public class EMJ extends EMI {
                             var36.setOnAction(new EventHandler<ActionEvent>() {
                                 public void handle(ActionEvent var1) {
                                     log.info("Button [" + var28 + "] clicked");
-                                    EMJ.this.getApplication().HJD(EMJ.this.getFxmlName(), finalVar);
+                                    EMJ.this.getApplication().initController(EMJ.this.getFxmlName(), finalVar, null);
                                 }
                             });
                             this.FHE.add(new EVZ(var32, var36));
@@ -170,7 +170,7 @@ public class EMJ extends EMI {
                             var20.setOnAction(new EventHandler<ActionEvent>() {
                                 public void handle(ActionEvent var1) {
                                     log.info("Menu [" + var28 + "] clicked");
-                                    EMJ.this.getApplication().HJD(EMJ.this.getFxmlName(), finalVar1);
+                                    EMJ.this.getApplication().initController(EMJ.this.getFxmlName(), finalVar1, null);
                                 }
                             });
                             if (var19.getItems().size() >= var16 + 1) {
@@ -296,8 +296,8 @@ public class EMJ extends EMI {
     @FXML
     private void fxml_handleButton_LogOut(ActionEvent var1) throws FFO, FFK {
 
-        this.getApplication().HJE(this.getFxmlName(), "login.fxml", new ENB<EMM>() {
-            public void HNE(EMM var1) {
+        this.getApplication().initController(this.getFxmlName(), "login.fxml", new Consumer<EMM>() {
+            public void accept(EMM var1) {
                 var1.setLogout(true);
             }
         });

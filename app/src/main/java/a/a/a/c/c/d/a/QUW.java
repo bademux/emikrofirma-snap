@@ -1,7 +1,6 @@
 package a.a.a.c.c.d.a;
 
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.a.EMD;
+import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.d.o.*;
 import a.a.a.c.e.a.a.EVN;
@@ -15,6 +14,7 @@ import a.a.a.c.f.b.a.JJ;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.KE;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ListProperty;
@@ -37,7 +37,7 @@ import java.net.URISyntaxException;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
-public abstract class QUW extends EMD implements EMO<HO>, EYR {
+public abstract class QUW extends BaseFxController implements EMO<HO>, EYR {
     @FXML
     public EYQ fxml_include_invoiceRefNumber_boxController;
     @FXML
@@ -99,7 +99,7 @@ public abstract class QUW extends EMD implements EMO<HO>, EYR {
     @FXML
     Hyperlink fxml_hyperlink_nipCheckPage;
 
-    public QUW(EMC var1, String var2) {
+    public QUW(FXApp var1, String var2) {
         super(var1, var2);
     }
 

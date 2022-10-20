@@ -4,11 +4,10 @@ import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
+import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.ENI;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENO;
@@ -33,6 +32,7 @@ import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.c.FCZ;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
@@ -114,7 +114,7 @@ public class QTN extends ENO<QTU> {
     private final QTP RBM = new QTP();
     private final QTQ RBN = new QTQ();
 
-    public QTN(EMC var1, EMT var2, String var3, String var4) {
+    public QTN(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
 
     }
@@ -186,10 +186,10 @@ public class QTN extends ENO<QTU> {
 
     }
 
-    public void HHE() {
+    public void init() {
 
         try {
-            super.HHE();
+            super.init();
         } catch (FFK var5) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
@@ -296,7 +296,7 @@ public class QTN extends ENO<QTU> {
         try {
             final Callback<Integer, Node> var2 = this::RLL;
             final MTI var3 = new MTI(null);
-            MSX var4 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var4 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
                     try {
                         QTN.this.RBI = QTN.this.getProcess().getInvoicesOtherPurchase(Integer.valueOf(QTN.this.fxml_other_purchase_list_year.getValue()), Integer.valueOf(QTN.this.fxml_other_purchase_list_month.getValue().getMonthNumberString()), null, QSW.ACTIVE);
@@ -369,7 +369,7 @@ public class QTN extends ENO<QTU> {
             this.fxml_other_purchase_list_year.setDisable(true);
             final Callback<Integer, Node> var3 = this::RLL;
             final MTI var4 = new MTI(null);
-            MSX var5 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var5 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
 
                     try {
@@ -647,8 +647,8 @@ public class QTN extends ENO<QTU> {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [view] clicked");
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<QUV<?>>() {
-            public void HNE(QUV<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
+            public void accept(QUV<?> var1) {
 
                 try {
                     var1.setInvoice(((QVB) QTN.this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem()).getRealInvoice());
@@ -668,8 +668,8 @@ public class QTN extends ENO<QTU> {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<QUV<?>>() {
-            public void HNE(QUV<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
+            public void accept(QUV<?> var1) {
 
                 try {
                     var1.setInvoice(((QVB) QTN.this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem()).getRealInvoice());
@@ -714,7 +714,7 @@ public class QTN extends ENO<QTU> {
     private void fxml_other_purchase_list_button_new_other_purchase() {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [PURCHASE_NEW_OTHER] clicked");
-        this.getApplication().HJD(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName());
+        this.getApplication().initController(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), null);
 
     }
 

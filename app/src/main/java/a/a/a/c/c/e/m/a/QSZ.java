@@ -5,11 +5,10 @@ import a.a.a.b.c.FEN;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
+import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENK;
 import a.a.a.c.c.d.a.ENN;
@@ -25,6 +24,7 @@ import a.a.a.c.f.b.c.KE;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
@@ -53,15 +53,15 @@ public class QSZ extends ENN<QTB> {
     private EPB QZK;
     private HI QZL;
 
-    public QSZ(EMC var1, EMT var2, String var3, String var4) {
+    public QSZ(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
         this.QZK = EPB.NEW;
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
         try {
-            super.HHE();
+            super.init();
             this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.aggregate_purchase_new.title"));
             this.QZG.bind(this.fxml_include_aggregatePurchaseNewLogicController.RFB);
             this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_aggregatePurchaseNewLogicController.RFC.and(this.fxml_include_aggregatePurchaseNewLogicController.RFB.and(this.QZH.not())).not());
@@ -199,8 +199,8 @@ public class QSZ extends ENN<QTB> {
         QTB var4 = this.getProcess();
         var4.resetAndCleanUpProcess();
         JN finalVar = var2;
-        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
-            public void HNE(ENK<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
+            public void accept(ENK<?> var1) {
 
                 try {
                     var1.setPeriod(finalVar);
@@ -229,8 +229,8 @@ public class QSZ extends ENN<QTB> {
             QTB var4 = this.getProcess();
             var4.HHL();
             JN finalVar = var2;
-            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
-                public void HNE(ENK<?> var1) {
+            this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
+                public void accept(ENK<?> var1) {
 
                     try {
                         var1.setPeriod(finalVar);

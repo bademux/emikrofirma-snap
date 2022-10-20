@@ -5,11 +5,10 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
+import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.ENI;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENN;
@@ -42,6 +41,7 @@ import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.c.FCZ;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
@@ -180,7 +180,7 @@ public class EVD extends ENO<EVJ> {
     };
     private JN GOI = null;
 
-    public EVD(EMC var1, EMT var2, String var3, String var4) {
+    public EVD(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
 
     }
@@ -192,10 +192,10 @@ public class EVD extends ENO<EVJ> {
 
     }
 
-    public void HHE() {
+    public void init() {
 
         try {
-            super.HHE();
+            super.init();
             this.fxml_invoice_sale_list_searchController.fxml_component_main_element.setPromptText(this.resources.getString("micro.process.invoice_sale_list.Find"));
             this.fxml_invoice_sale_list_table_tree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<EVG>>() {
                 public void changed(ObservableValue<? extends TreeItem<EVG>> var1, TreeItem<EVG> var2, TreeItem<EVG> var3) {
@@ -457,7 +457,7 @@ public class EVD extends ENO<EVJ> {
             final MTI var2 = new MTI(null);
             this.fxml_invoice_sale_list_pagination.setPageCount(1);
             final Callback<Integer, Node> var3 = this::HYP;
-            MSX var4 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var4 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
 
                     try {
@@ -542,7 +542,7 @@ public class EVD extends ENO<EVJ> {
             this.fxml_invoice_sale_list_canceled_invoices.setDisable(true);
             final Callback<Integer, Node> var3 = this::HYP;
             final MTI var4 = new MTI(null);
-            MSX var5 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var5 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
 
                     try {
@@ -707,7 +707,7 @@ public class EVD extends ENO<EVJ> {
     protected void fxml_handleButton_back(ActionEvent var1) {
 
         log.info("Button [back] clicked");
-        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
 
     }
 
@@ -717,8 +717,8 @@ public class EVD extends ENO<EVJ> {
         try {
             log.info("Button [invoice_edit] clicked");
             final HN var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
-            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-                public void HNE(ENN<?> var1) {
+            this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+                public void accept(ENN<?> var1) {
 
                     try {
                         if (EOZ.HOD(var2)) {
@@ -748,8 +748,8 @@ public class EVD extends ENO<EVJ> {
         try {
             log.info("Button [invoice_correct] clicked");
             final HU var2 = (HU) ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
-            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-                public void HNE(ENN<?> var1) {
+            this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+                public void accept(ENN<?> var1) {
 
                     try {
                         var1.setInvoice(var2);
@@ -774,8 +774,8 @@ public class EVD extends ENO<EVJ> {
         try {
             log.info("Button [invoice_view] clicked");
             final HN var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
-            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-                public void HNE(ENN<?> var1) {
+            this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+                public void accept(ENN<?> var1) {
 
                     try {
                         if (EOZ.HOD(var2)) {
@@ -819,7 +819,7 @@ public class EVD extends ENO<EVJ> {
             Stage var4 = new Stage();
             var4.setTitle(this.resources.getString("micro.process.invoice_sale_list.SetInvoicingDate.title"));
             var4.initModality(Modality.WINDOW_MODAL);
-            var4.initOwner(this.FGW);
+            var4.initOwner(this.primaryStage);
             Scene var5 = new Scene(var3);
             var4.setScene(var5);
             var4.setResizable(false);
@@ -929,8 +929,8 @@ public class EVD extends ENO<EVJ> {
     protected void fxml_invoice_sale_list_button_new_invoice(ActionEvent var1) {
 
         log.info("Button [new_invoice] clicked");
-        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-            public void HNE(ENN<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+            public void accept(ENN<?> var1) {
 
                 var1.setMode(EPB.NEW);
 
@@ -1233,7 +1233,7 @@ public class EVD extends ENO<EVJ> {
 
     private void HZB() {
 
-        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
 
     }
 

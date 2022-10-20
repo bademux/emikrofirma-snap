@@ -5,11 +5,10 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
+import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENK;
 import a.a.a.c.c.d.a.ENN;
@@ -29,6 +28,7 @@ import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
+import com.github.bademux.emk.app.FXApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -62,7 +62,7 @@ public class EUV extends ENN<EUY> {
     private boolean GMN;
     private HI GMO;
 
-    public EUV(EMC var1, EMT var2, String var3, String var4) {
+    public EUV(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
         this.GMK = EPB.NEW;
         this.GMN = false;
@@ -80,10 +80,10 @@ public class EUV extends ENN<EUY> {
 
     }
 
-    public void HHE() {
+    public void init() {
 
         try {
-            super.HHE();
+            super.init();
             this.fxml_generalButtonSave.visibleProperty().bind(this.fxml_include_invoiceSaleLogicController.GLT);
             this.fxml_generalButtonSave.managedProperty().bind(this.fxml_include_invoiceSaleLogicController.GLT);
             this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_invoiceSaleLogicController.GLS.and(this.fxml_include_invoiceSaleLogicController.GLT.and(this.fxml_include_invoiceSaleLogicController.GLU)).not());
@@ -462,8 +462,8 @@ public class EUV extends ENN<EUY> {
         }
 
         JN finalVar = var1;
-        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
-            public void HNE(ENK<?> var1x) {
+        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
+            public void accept(ENK<?> var1x) {
 
                 try {
                     var1x.setPeriod(finalVar);

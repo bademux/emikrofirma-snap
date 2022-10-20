@@ -3,12 +3,12 @@ package a.a.a.c.c.b.a.a.a;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
-import a.a.a.c.c.b.a.a.EMI;
+import java.util.function.Consumer;
+import a.a.a.c.c.b.a.a.BaseSceneFxController;
 import a.a.a.c.f.c.c.PasswordFieldRequired_8;
 import a.a.a.c.f.c.c.TextFieldValidated_NIP;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -20,7 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
-public class EMK extends EMI {
+public class EMK extends BaseSceneFxController {
     public static final String FHF = "register.fxml";
     @FXML
     private TextFieldValidated_NIP fxml_registerTextFieldUserName;
@@ -40,8 +40,8 @@ public class EMK extends EMI {
     private boolean FHH = false;
     private boolean FHI = true;
 
-    public EMK(EMC var1, String var2) {
-        super(var1, var2);
+    public EMK(FXApp fxApp, String fxmlName) {
+        super(fxApp, fxmlName);
     }
 
     public String getTitle() {
@@ -60,8 +60,8 @@ public class EMK extends EMI {
             this.fxml_registerText.setText("");
             final String var2 = this.fxml_registerTextFieldUserName.getText().trim();
             if (EMB.getInstance().HHQ(var2, this.fxml_checkBoxUsePassword.isSelected(), this.fxml_registerPasswordFieldPassword.getText(), this.fxml_registerPasswordFieldRepeatedPassword.getText())) {
-                this.getApplication().HJE(this.getFxmlName(), "login.fxml", new ENB<EMM>() {
-                    public void HNE(EMM var1) {
+                this.getApplication().initController(this.getFxmlName(), "login.fxml", new Consumer<EMM>() {
+                    public void accept(EMM var1) {
                         if (var1 != null) {
                             var1.setLastLogin(var2);
                         }
@@ -76,9 +76,9 @@ public class EMK extends EMI {
 
     }
 
-    public void HHE() throws FFK {
+    public void init() throws FFK {
 
-        super.HHE();
+        super.init();
         this.fxml_registerTextFieldUserName.textProperty().addListener(new ChangeListener<String>() {
             public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
                 EMK.this.FHG = var3 != null && var3.length() > 0 && !EMK.this.fxml_registerTextFieldUserName.IEU().get();

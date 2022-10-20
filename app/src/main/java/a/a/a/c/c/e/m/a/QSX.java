@@ -1,7 +1,6 @@
 package a.a.a.c.c.e.m.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.d.a.QUW;
 import a.a.a.c.c.d.e.EOT;
 import a.a.a.c.c.e.m.c.QTB;
@@ -18,6 +17,7 @@ import a.a.a.c.f.b.c.KE;
 import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.c.ComboBoxRequired;
+import com.github.bademux.emk.app.FXApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +34,7 @@ import java.util.Iterator;
 public class QSX extends QUW {
     private QTB QZB;
 
-    public QSX(EMC var1, String var2) {
+    public QSX(FXApp var1, String var2) {
         super(var1, var2);
     }
 
@@ -104,7 +104,7 @@ public class QSX extends QUW {
                 Stage var4 = new Stage();
                 var4.setTitle(this.resources.getString("micro.process.invoice_purchase_addNewPosition.Header"));
                 var4.initModality(Modality.WINDOW_MODAL);
-                var4.initOwner(this.FGW);
+                var4.initOwner(this.primaryStage);
                 var4.setResizable(false);
                 var4.getIcons().add(new Image("/img/app/e_logo.png"));
                 Scene var5 = new Scene(var3);

@@ -5,11 +5,10 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
-import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
+import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
-import a.a.a.c.c.b.b.EMT;
+import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.ENI;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.a.ENN;
@@ -32,6 +31,7 @@ import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.c.FCZ;
+import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
@@ -132,7 +132,7 @@ public class ETN extends ENO<ETS> {
     @FXML
     private EMR fxml_include_top_menuController;
 
-    public ETN(EMC var1, EMT var2, String var3, String var4) {
+    public ETN(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
 
     }
@@ -142,11 +142,11 @@ public class ETN extends ENO<ETS> {
         this.GHY = this.resources.getString("micro.process.invoice_purchase_list.SearchAll");
     }
 
-    public void HHE() {
+    public void init() {
 
         try {
             this.fxml_invoice_purchase_list_searchController.fxml_component_main_element.setPromptText(this.resources.getString("micro.process.invoice_purchase_list.Find"));
-            super.HHE();
+            super.init();
             this.fxml_invoice_purchase_list_table_tree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ETQ>() {
                 public void changed(ObservableValue<? extends ETQ> var1, ETQ var2, ETQ var3) {
                     if (var3 != null) {
@@ -393,7 +393,7 @@ public class ETN extends ENO<ETS> {
             final Callback<Integer, Node> var8 = this::HVS;
             Integer finalVar = var4;
             Integer finalVar1 = var5;
-            MSX var9 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var9 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
 
                     try {
@@ -462,7 +462,7 @@ public class ETN extends ENO<ETS> {
             this.fxml_invoice_purchase_list_year.setDisable(true);
             final Callback<Integer, Node> var3 = this::HVS;
             final MTI var4 = new MTI(null);
-            MSX var5 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
+            MSX var5 = new MSX(this.primaryStage, this.fxml_parent.disableProperty()) {
                 public void MXI() {
 
                     try {
@@ -556,7 +556,7 @@ public class ETN extends ENO<ETS> {
 
         log.info("Button [back] clicked");
         this.HHB();
-        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
 
     }
 
@@ -565,8 +565,8 @@ public class ETN extends ENO<ETS> {
 
         log.info("Button [invoice_edit] clicked");
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), this.getFxmlForItem(), new ENB<ENN<?>>() {
-            public void HNE(ENN<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), this.getFxmlForItem(), new Consumer<ENN<?>>() {
+            public void accept(ENN<?> var1) {
 
                 try {
                     var1.setInvoice(ETN.this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject());
@@ -600,8 +600,8 @@ public class ETN extends ENO<ETS> {
 
         log.info("Button [view] clicked");
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), this.getFxmlForItem(), new ENB<ENN<?>>() {
-            public void HNE(ENN<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), this.getFxmlForItem(), new Consumer<ENN<?>>() {
+            public void accept(ENN<?> var1) {
 
                 try {
                     HR var2 = ETN.this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject();
@@ -622,8 +622,8 @@ public class ETN extends ENO<ETS> {
 
         log.info("Button [new_invoice] clicked");
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-            public void HNE(ENN<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+            public void accept(ENN<?> var1) {
 
                 var1.setMode(EPB.NEW);
 
@@ -637,8 +637,8 @@ public class ETN extends ENO<ETS> {
 
         log.info("Button [new_aggregate_invoice] clicked");
         this.HHB();
-        this.getApplication().HJE(this.getFxmlName(), EOS.AGGREGATE_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-            public void HNE(ENN<?> var1) {
+        this.getApplication().initController(this.getFxmlName(), EOS.AGGREGATE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+            public void accept(ENN<?> var1) {
 
                 var1.setMode(EPB.NEW);
 
@@ -850,7 +850,7 @@ public class ETN extends ENO<ETS> {
 
     private void HWB() {
 
-        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
+        this.getApplication().initController(this.getFxmlName(), "main.fxml", null);
 
     }
 

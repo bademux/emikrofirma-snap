@@ -1,6 +1,5 @@
 package a.a.a.c.f.c.c;
 
-import a.a.a.c.e.a.j.EXC;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EYE;
 import a.a.a.c.f.c.c.a.UnaryOperator_Number;
@@ -10,6 +9,8 @@ import javafx.scene.control.TextFormatter;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+
+import static com.github.bademux.emk.utils.LocaleUtils.LOCALE;
 
 public class TextFieldValidated_Number extends TextFieldRequired implements EYE {
     private BigDecimal GZF;
@@ -34,7 +35,7 @@ public class TextFieldValidated_Number extends TextFieldRequired implements EYE 
         this.GZK = new SimpleDoubleProperty(this, "minimumValue", -1.7976931348623157E308);
         this.GZL = new SimpleDoubleProperty(this, "maximumValue", 1.7976931348623157E308);
         this.GZF = BigDecimal.ZERO;
-        this.GZG = (DecimalFormat) DecimalFormat.getInstance(EXC.getInstance().getCurrentLocale());
+        this.GZG = (DecimalFormat) DecimalFormat.getInstance(LOCALE);
         this.GZG.setParseBigDecimal(true);
         this.IFW();
     }

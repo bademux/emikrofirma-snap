@@ -7,7 +7,6 @@ import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWC;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.j.EXC;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.d.AGXA;
@@ -19,9 +18,7 @@ import a.a.a.c.f.a.e.a.IG;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.a.KK;
 import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.b.FCW;
@@ -44,6 +41,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.Pattern;
+
+import static com.github.bademux.emk.utils.LocaleUtils.LOCALE;
 
 public class EQF {
     public static final Charset FVZ;
@@ -1197,7 +1196,7 @@ public class EQF {
     private static class EQI implements EQH<BigDecimal> {
         private static final String FVV = "-{0,1}\\d+([,.]{1}(\\d)+){0,1}";
         private static final Pattern FVW = Pattern.compile("-{0,1}\\d+([,.]{1}(\\d)+){0,1}");
-        private final DecimalFormat FVX = (DecimalFormat) DecimalFormat.getInstance(EXC.getInstance().getCurrentLocale());
+        private final DecimalFormat FVX = (DecimalFormat) DecimalFormat.getInstance(LOCALE);
 
         public EQI() {
             this.FVX.setMinimumFractionDigits(EQY.FYD);

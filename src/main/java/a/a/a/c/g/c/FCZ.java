@@ -3,10 +3,8 @@ package a.a.a.c.g.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.e.a.j.EXC;
-import a.a.a.c.e.a.j.EXD;
 import a.a.a.c.e.a.k.a.EXF;
-import org.xml.sax.Locator;
+import com.github.bademux.emk.utils.LocaleUtils;
 import org.xml.sax.SAXParseException;
 
 import java.io.File;
@@ -33,7 +31,7 @@ public class FCZ {
         EXF.getInstance().ICO();
 
         try {
-            this.HBL = ResourceBundle.getBundle("messages/exceptions", EXC.getInstance().getCurrentLocaleOrDefault(), new EXD());
+            this.HBL = ResourceBundle.getBundle("messages/exceptions", LocaleUtils.LOCALE);
         } finally {
             EXF.getInstance().ICP();
         }

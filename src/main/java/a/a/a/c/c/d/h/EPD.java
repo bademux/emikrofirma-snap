@@ -68,8 +68,8 @@ public class EPD extends EPJ {
             transformer.setParameter("documentFormSchema", this.FPL.getWersjaSchemy());
             transformer.setParameter("documentGenerationDateTime", this.FPM.getUpoSigningTime());
 
-            try (var fos = new FileOutputStream(this.FPP)) {
-                transformer.transform(new StreamSource(EPD.class.getResourceAsStream("/fop/upo.xml")), new SAXResult(FopUtils.createFopHandler(fos)));
+            try (var fos = new FileOutputStream(this.FPP); var src = EPD.class.getResourceAsStream("/fop/upo.xml")) {
+                transformer.transform(new StreamSource(src), new SAXResult(FopUtils.createFopHandler(fos)));
                 fos.flush();
             }
         } catch (TransformerException | ConfigurationException | SAXException | IOException var15) {

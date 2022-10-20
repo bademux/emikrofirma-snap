@@ -4,7 +4,6 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.d.d.b.EOC;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.j.EXC;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.a.IC;
@@ -15,7 +14,6 @@ import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.b.FCW;
 import com.github.bademux.emk.utils.FopUtils;
-import com.github.bademux.emk.utils.XmlUtils;
 import org.apache.fop.configuration.ConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -27,6 +25,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 import java.awt.*;
@@ -36,6 +35,8 @@ import java.io.IOException;
 import java.time.Month;
 import java.time.format.TextStyle;
 import java.util.*;
+
+import static com.github.bademux.emk.utils.LocaleUtils.LOCALE;
 
 public class ETK {
     private LY GHI;
@@ -68,12 +69,12 @@ public class ETK {
 
             Transformer transformer = TransformerFactory.newInstance().newTransformer(new StreamSource(ETJ.class.getResourceAsStream("/fop/invoices_records.xsl")));
             ETI.setResources(this.GHM);
-            transformer.setParameter("month", Month.of(var4.getPeriod().getMonth().getValue()).getDisplayName(TextStyle.FULL_STANDALONE, EXC.getInstance().getCurrentLocale()));
+            transformer.setParameter("month", Month.of(var4.getPeriod().getMonth().getValue()).getDisplayName(TextStyle.FULL_STANDALONE, LOCALE));
             transformer.setParameter("year", var4.getPeriod().getYear().getValue());
             transformer.setParameter("isPurchase", var1);
             this.HVK(transformer, var1);
             try (var fos = new FileOutputStream(file)) {
-                transformer.transform(XmlUtils.createAndTransformStreamSource(this.HVL(var4, var1)), new SAXResult(FopUtils.createFopHandler(fos)));
+                transformer.transform(new DOMSource(this.HVL(var4, var1)), new SAXResult(FopUtils.createFopHandler(fos)));
                 fos.flush();
             }
             if (Desktop.isDesktopSupported()) {

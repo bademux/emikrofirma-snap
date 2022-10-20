@@ -16,18 +16,17 @@ import a.a.a.c.f.b.c.a.QSW;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.c.FCZ;
 import com.github.bademux.emk.utils.FopUtils;
-import com.github.bademux.emk.utils.XmlUtils;
 import org.apache.fop.configuration.ConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
@@ -173,7 +172,7 @@ public class EPI extends EPL {
             }
 
             try(var fos = new FileOutputStream(this.FPP)) {
-                transformer.transform(XmlUtils.createAndTransformStreamSource(this.HOP()), new SAXResult(FopUtils.createFopHandler(fos)));
+                transformer.transform(new DOMSource(this.HOP()), new SAXResult(FopUtils.createFopHandler(fos)));
                 fos.flush();
             }
         } catch (FileNotFoundException var32) {

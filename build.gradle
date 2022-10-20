@@ -9,31 +9,36 @@ repositories {
     mavenCentral()
 }
 
-javafx {
-    version = openfxVersion
-    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.swing' ]
-}
-
 dependencies {
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
 
-    implementation (group: 'com.googlecode.json-simple', name: 'json-simple', version: jsonSimpleVersion){
+    implementation(group: 'com.googlecode.json-simple', name: 'json-simple', version: jsonSimpleVersion) {
         exclude module: 'junit'
     }
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: sqliteVersion
-    implementation group: 'org.apache.xmlgraphics', name: 'fop-core', version: fopVersion
+    implementation(implementation group: 'org.apache.xmlgraphics', name: 'fop-core', version: fopVersion) {
+        exclude module: 'batik-script'
+        exclude module: 'batik-anim'
+        exclude module: 'batik-extension'
+        exclude module: 'batik-shared-resources'
+        exclude module: 'batik-dom'
+        exclude module: 'batik-ext'
+        exclude module: 'batik-i18n'
+        exclude module: 'batik-xml'
+        exclude module: 'batik-parser'
+        exclude module: 'batik-svg-dom'
+        exclude module: 'batik-gvt'
+    }
     implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: jakartaXmlBindVersion
     implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxXmlBindVersion
     implementation group: 'jakarta.xml.ws', name: 'jakarta.xml.ws-api', version: jakartaXmlVersion
-    implementation group: 'com.sun.xml.ws', name: 'jaxws-rt', version: sunXmlWsVersion
-}
-
-
-compileJava {
-    options.encoding = 'UTF-8'
+    implementation(group: 'com.sun.xml.ws', name: 'jaxws-rt', version: sunXmlWsVersion) {
+        exclude module: 'angus-mail'
+        exclude module: 'mail-api'
+    }
 }
 
 application {
@@ -41,8 +46,15 @@ application {
 }
 
 compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xmaxerrs' << '1000'
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+}
+
+javafx {
+    version = openfxVersion
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.swing']
 }
 
 run {

@@ -1,16 +1,16 @@
 package a.a.a.c.c.d;
 
-import a.a.a.c.e.a.j.EXC;
-
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+
+import static com.github.bademux.emk.utils.LocaleUtils.LOCALE;
 
 public class ENI {
     public ENI() {
     }
 
     public static DecimalFormat get() {
-        DecimalFormat var0 = (DecimalFormat) DecimalFormat.getInstance(EXC.getInstance().getCurrentLocale());
+        DecimalFormat var0 = (DecimalFormat) DecimalFormat.getInstance(LOCALE);
         var0.setParseBigDecimal(true);
         var0.setDecimalSeparatorAlwaysShown(true);
         var0.setMinimumFractionDigits(2);

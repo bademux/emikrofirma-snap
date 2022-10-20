@@ -23,7 +23,7 @@ public class FopUtils {
     public static final byte[] FONT_CONFIG = readFontConfig();
 
     @SneakyThrows
-    public static ContentHandler createFopHandler(FileOutputStream fos) throws ConfigurationException, FOPException {
+    public static ContentHandler createFopHandler(OutputStream fos) throws ConfigurationException, FOPException {
         var fopFactory = new FopConfParser(
                 new ByteArrayInputStream(FONT_CONFIG),
                 EnvironmentalProfileFactory.createRestrictedIO(DEFAULT_BASE_URI, RESOURCE_RESOLVER))

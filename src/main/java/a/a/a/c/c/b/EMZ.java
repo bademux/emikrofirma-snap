@@ -14,10 +14,9 @@ import a.a.a.c.e.a.a.EVL;
 import a.a.a.c.e.a.c.EVW;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.j.EXC;
-import a.a.a.c.e.a.j.EXD;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.g.c.FCZ;
+import com.github.bademux.emk.utils.LocaleUtils;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -50,7 +49,7 @@ public class EMZ extends Application implements EMC {
         EXF.getInstance().ICO();
 
         try {
-            this.FJB = ResourceBundle.getBundle("messages/messages", EXC.getInstance().getCurrentLocaleOrDefault(), new EXD());
+            this.FJB = ResourceBundle.getBundle("messages/messages", LocaleUtils.LOCALE);
             this.FJC = new EMW();
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 public void run() {

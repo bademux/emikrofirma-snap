@@ -1,12 +1,13 @@
 package a.a.a.c.d.g;
 
-import a.a.a.c.e.a.j.EXC;
 import a.a.a.c.f.b.c.JR;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+
+import static com.github.bademux.emk.utils.LocaleUtils.LOCALE;
 
 public class ERF {
     private final boolean FZE;
@@ -19,7 +20,7 @@ public class ERF {
         this.FZE = var1;
         this.FZF = var2;
         this.FZG = var3;
-        this.FZI = (DecimalFormat) DecimalFormat.getInstance(EXC.getInstance().getCurrentLocale());
+        this.FZI = (DecimalFormat) DecimalFormat.getInstance(LOCALE);
         this.FZI.setParseBigDecimal(true);
         this.FZI.setMinimumFractionDigits(this.FZG);
         this.FZI.setMaximumFractionDigits(this.FZG);

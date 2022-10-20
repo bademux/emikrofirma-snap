@@ -8,11 +8,10 @@ import a.a.a.c.e.a.c.EVW;
 import a.a.a.c.e.a.d.EWD;
 import a.a.a.c.e.a.e.EWF;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.j.EXC;
-import a.a.a.c.e.a.j.EXD;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.e.b.EXJ;
 import a.a.a.c.e.c.EXN;
+import com.github.bademux.emk.utils.LocaleUtils;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -55,7 +54,7 @@ public class EXK extends Application implements EVW {
     private final Rectangle2D GTU = Screen.getPrimary().getVisualBounds();
     private Stage stage;
     private EXJ GTW;
-    private static final Image QLA = new Image("/img/app/e_logo.png");
+    private static final Image QLA = new Image(EXK.class.getResource("/img/app/e_logo.png").toExternalForm());
     private boolean QQO = false;
     private Application GUD = null;
 
@@ -176,7 +175,7 @@ public class EXK extends Application implements EVW {
         try {
             File homedir = new File(GPW);
             homedir.mkdirs();
-            this.GTN = ResourceBundle.getBundle("messages/launcher_messages", EXC.getInstance().getCurrentLocaleOrDefault(), new EXD());
+            this.GTN = ResourceBundle.getBundle("messages/launcher_messages", LocaleUtils.LOCALE);
             this.msgInit = this.GTN.getString("micro.launcher.progress.step.init");
             this.msgStopSuccess = this.GTN.getString("micro.launcher.progress.step.stop.success");
             this.msgStopFailure = this.GTN.getString("micro.launcher.progress.step.stop.failure");

@@ -1,0 +1,57 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.gradlex.extra-java-module-info' version '1.0'
+}
+
+version '2.0.0'
+
+dependencies {
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+
+    implementation project(path: ':fopcore', configuration: 'moduleJar')
+    implementation group: 'com.github.cliftonlabs', name: 'json-simple', version: jsonSimpleVersion
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: sqliteVersion
+    implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: jakartaXmlBindVersion
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxXmlBindVersion
+    implementation group: 'jakarta.xml.ws', name: 'jakarta.xml.ws-api', version: jakartaXmlVersion
+    implementation group: 'com.sun.xml.ws', name: 'jaxws-rt', version: sunXmlWsVersion
+}
+
+application {
+    mainModule.set('emk')
+    mainClass.set('a.a.a.c.e.EXK')
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xmaxerrs' << '1000'
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+javafx {
+    version = openfxVersion
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.swing']
+}
+
+run {
+    enableAssertions = true
+}
+
+test {
+    useJUnitPlatform()
+}
+
+extraJavaModuleInfo {
+    failOnMissingModuleInfo.set(true)
+    automaticModule('com.github.cliftonlabs:json-simple', 'com.googlecode.jsonsimple')
+//    module('com.googlecode.json-simple:json-simple', 'com.googlecode.jsonsimple') {
+//        exports 'org.json.simple'
+//        exports 'org.json.simple.parser'
+//    }
+
+}

@@ -1,2 +1,4 @@
 rootProject.name = 'emk'
 
+include 'fopcore'
+include 'app'

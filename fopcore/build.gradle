@@ -1,0 +1,47 @@
+plugins {
+    id 'java-library'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+version fopVersion
+
+dependencies {
+    implementation(group: 'org.apache.xmlgraphics', name: 'fop-core', version: fopVersion) {
+        exclude module: 'xml-apis'
+        exclude module: 'xml-apis-ext'
+        exclude module: 'xalan'
+        exclude module: 'serializer'
+    }
+}
+
+java {
+    modularity.inferModulePath.set(true)
+}
+
+shadowJar {
+    mergeServiceFiles()
+    exclude('**/FopMarker.class')
+}
+
+configurations {
+    moduleJar {
+        canBeConsumed = true
+        canBeResolved = false
+    }
+}
+
+task appendModueInfo(type: Jar, dependsOn: tasks.shadowJar) {
+    group 'shadow'
+
+    from zipTree(tasks.shadowJar.archiveFile)
+    from tasks.compileJava.destinationDirectory.file('module-info.class')
+    archiveBaseName.set(tasks.shadowJar.archiveBaseName)
+    archiveVersion.set(tasks.shadowJar.archiveVersion)
+    archiveClassifier.set('module')
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+}
+
+artifacts {
+    moduleJar tasks.appendModueInfo
+}
+

@@ -3,16 +3,12 @@ package a.a.a.c.e.a.g;
 import a.a.a.c.e.a.k.a.EXF;
 
 public abstract class EWX {
-    public static final String GRR = "0.00";
-    public static final String GRS = " MB/s";
     private long GRT;
     private double GRU;
     private long GRV;
     private long GRW;
     private long GRX;
     private long GRY;
-    private int GRZ;
-    private int GSA;
 
     public EWX() {
         this(10);
@@ -26,8 +22,6 @@ public abstract class EWX {
         EXF.getInstance().ICO();
 
         try {
-            this.GRZ = var2;
-            this.GSA = var3;
             this.GRT = System.currentTimeMillis();
             this.GRU = 0.0;
             this.GRV = 0L;
@@ -38,22 +32,6 @@ public abstract class EWX {
             EXF.getInstance().ICP();
         }
 
-    }
-
-    public int getListItemIndex() {
-        return this.GRZ;
-    }
-
-    public void setListItemIndex(int var1) {
-        this.GRZ = var1;
-    }
-
-    public int getListItemSize() {
-        return this.GSA;
-    }
-
-    public void setListItemSize(int var1) {
-        this.GSA = var1;
     }
 
     public void IBH(double var1, long var3, long var5) {
@@ -74,38 +52,6 @@ public abstract class EWX {
     }
 
     public abstract void IBI(long var1, double var3, long var5, long var7, long var9, long var11);
-
-    public long getLastUpdate() {
-        return this.GRT;
-    }
-
-    public double getCurrentProgress() {
-        return this.GRU;
-    }
-
-    public long getUpdateChunkDuration() {
-        return this.GRV;
-    }
-
-    public long getUpdateChunkSize() {
-        return this.GRW;
-    }
-
-    public double getUpdateChunkMBperSecondAvg() {
-        Double var1 = (double) this.GRY * 1000.0 / (double) (this.GRX * 1024L * 1024L);
-        return var1 > 0.0 ? var1 : 0.0;
-    }
-
-    public double getUpdateChunkMBperSecond() {
-        Double var1;
-        if (this.GRV != 0L) {
-            var1 = (double) this.GRW * 1000.0 / (double) (this.GRV * 1024L * 1024L);
-        } else {
-            var1 = 0.0;
-        }
-
-        return var1 > 0.0 ? var1 : 0.0;
-    }
 
     public static void IBJ(EWX var0, double var1, long var3, long var5) {
         EXF.getInstance().ICO();

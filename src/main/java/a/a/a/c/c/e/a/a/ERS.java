@@ -16,7 +16,7 @@ import a.a.a.c.c.e.a.a.b.ERM;
 import a.a.a.c.c.e.a.a.c.ERP;
 import a.a.a.c.c.e.a.a.c.ERQ;
 import a.a.a.c.c.e.a.a.c.ERR;
-import a.a.a.c.e.a.c.EVW;
+import a.a.a.c.e.EXK;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EZQ;
@@ -26,8 +26,6 @@ import a.a.a.c.f.a.a.QRU;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.c.a.AILX;
 import a.a.a.c.f.c.a.LS;
-import a.a.a.c.f.c.c.PathFieldRequired;
-import a.a.a.c.f.c.c.TextFieldValidated_Number;
 import a.a.a.c.f.c.c.TextFieldValidated_RefIdPattern;
 import a.a.a.c.g.a.FCR;
 import javafx.beans.value.ChangeListener;
@@ -561,7 +559,7 @@ public class ERS extends EMD {
             try {
                 DirectoryChooser var3 = new DirectoryChooser();
                 var3.setTitle("Tworzenie kopii zapasowej");
-                File var4 = new File(EVW.GPW);
+                File var4 = new File(EXK.GPW);
                 var3.setInitialDirectory(var4);
                 File var5 = var3.showDialog(this.FGW);
                 if (var5 == null) {
@@ -592,7 +590,7 @@ public class ERS extends EMD {
         if (var3.equals(FEN.Confirm)) {
             var2.setTitle("Wczytywanie kopii zapasowej");
             EXF.getInstance().ICE("loading backup ...");
-            File var4 = new File(EVW.GPW);
+            File var4 = new File(EXK.GPW);
             var2.setInitialDirectory(var4);
             File var5 = var2.showOpenDialog(this.FGW.getScene().getWindow());
             if (var5 == null) {
@@ -877,7 +875,7 @@ public class ERS extends EMD {
                     Desktop var2 = null;
                     if (Desktop.isDesktopSupported()) {
                         var2 = Desktop.getDesktop();
-                        var2.open(new File(EVW.GPW));
+                        var2.open(new File(EXK.GPW));
                     }
                 } catch (Exception var5) {
                     EXF.getInstance().ICA(var5);

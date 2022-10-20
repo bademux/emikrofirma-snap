@@ -28,7 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.apache.avalon.framework.configuration.ConfigurationException;
+import org.apache.fop.configuration.ConfigurationException;
 import org.xml.sax.SAXException;
 
 import java.util.Date;
@@ -264,7 +264,7 @@ public class ETJ extends ENJ<ETM> {
                 EXF.getInstance().ICE("Button [print purchases] clicked");
                 this.GHF.HVI(this.getProcess().getTempFile("pdf"));
             }
-        } catch (SAXException | ConfigurationException var6) {
+        } catch (SAXException var6) {
             EXF.getInstance().ICA(var6);
             FCT.IGX("", var6);
         } finally {

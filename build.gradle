@@ -22,7 +22,7 @@ dependencies {
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: jsonSimpleVersion
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: sqliteVersion
-    implementation group: 'org.apache.xmlgraphics', name: 'fop', version: fopVersion
+    implementation group: 'org.apache.xmlgraphics', name: 'fop-core', version: fopVersion
     implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: jakartaXmlBindVersion
     implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxXmlBindVersion
     implementation group: 'jakarta.xml.ws', name: 'jakarta.xml.ws-api', version: jakartaXmlVersion

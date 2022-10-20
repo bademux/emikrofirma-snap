@@ -12,18 +12,11 @@ import a.a.a.c.f.a.e.a.ID;
 import a.a.a.c.f.a.e.a.IE;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.b.FCW;
-import org.apache.avalon.framework.configuration.Configuration;
-import org.apache.avalon.framework.configuration.ConfigurationException;
-import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
-import org.apache.fop.apps.FOUserAgent;
-import org.apache.fop.apps.Fop;
-import org.apache.fop.apps.FopFactory;
-import org.apache.fop.apps.FopFactoryBuilder;
-import org.apache.xmlgraphics.io.Resource;
-import org.apache.xmlgraphics.io.ResourceResolver;
+import com.github.bademux.emk.utils.FopUtils;
+import com.github.bademux.emk.utils.XmlUtils;
+import org.apache.fop.configuration.ConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -34,14 +27,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.awt.*;
-import java.io.*;
-import java.math.BigDecimal;
-import java.net.URI;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Month;
 import java.time.format.TextStyle;
 import java.util.*;
@@ -57,17 +48,16 @@ public class ETK {
         this.GHM = var1;
     }
 
-    public void HVH(File var1) throws FFK, ConfigurationException, SAXException {
+    public void HVH(File var1) throws FFK, SAXException {
         this.HVJ(false, var1);
     }
 
-    public void HVI(File var1) throws FFK, ConfigurationException, SAXException {
+    public void HVI(File var1) throws FFK, SAXException {
         this.HVJ(true, var1);
     }
 
-    private void HVJ(boolean var1, final File var2) throws FFK {
+    private void HVJ(boolean var1, final File file) throws FFK {
         EXF.getInstance().ICO();
-        FileOutputStream var3 = null;
 
         try {
             EXF.getInstance().ICE("Button [print sales] clicked");
@@ -76,46 +66,21 @@ public class ETK {
                 var4 = this.GHL;
             }
 
-            Document var5 = this.HVL(var4, var1);
-            ByteArrayOutputStream var6 = new ByteArrayOutputStream();
-            DOMSource var7 = new DOMSource(var5);
-            StreamResult var8 = new StreamResult(var6);
-            TransformerFactory.newInstance().newTransformer().transform(var7, var8);
-            ByteArrayInputStream var9 = new ByteArrayInputStream(var6.toByteArray());
-            FopFactoryBuilder var10 = new FopFactoryBuilder((new File(".")).toURI(), new ResourceResolver() {
-                public Resource getResource(URI var1) throws IOException {
-                    return new Resource(this.getClass().getResourceAsStream(var1.getPath()));
-                }
-
-                public OutputStream getOutputStream(URI var1) throws IOException {
-                    return new FileOutputStream(new File(var1));
-                }
-            });
-            var3 = new FileOutputStream(var2);
-            InputStream var11 = null;
-            var11 = ETJ.class.getResourceAsStream("/fop/jpkFont.xsl");
-            DefaultConfigurationBuilder var12 = new DefaultConfigurationBuilder();
-            Configuration var13 = var12.build(var11);
-            var10.setConfiguration(var13);
-            FopFactory var14 = var10.build();
-            FOUserAgent var15 = var14.newFOUserAgent();
-            Fop var16 = var14.newFop("application/pdf", var15, var3);
-            TransformerFactory var17 = TransformerFactory.newInstance();
-            Transformer var18 = var17.newTransformer(new StreamSource(ETJ.class.getResourceAsStream("/fop/invoices_records.xsl")));
+            Transformer transformer = TransformerFactory.newInstance().newTransformer(new StreamSource(ETJ.class.getResourceAsStream("/fop/invoices_records.xsl")));
             ETI.setResources(this.GHM);
-            var18.setParameter("month", Month.of(var4.getPeriod().getMonth().getValue()).getDisplayName(TextStyle.FULL_STANDALONE, EXC.getInstance().getCurrentLocale()));
-            var18.setParameter("year", var4.getPeriod().getYear().getValue());
-            var18.setParameter("isPurchase", var1);
-            this.HVK(var18, var1);
-            SAXResult var19 = new SAXResult(var16.getDefaultHandler());
-            var18.transform(new StreamSource(var9), var19);
-            var3.flush();
-            var3.close();
+            transformer.setParameter("month", Month.of(var4.getPeriod().getMonth().getValue()).getDisplayName(TextStyle.FULL_STANDALONE, EXC.getInstance().getCurrentLocale()));
+            transformer.setParameter("year", var4.getPeriod().getYear().getValue());
+            transformer.setParameter("isPurchase", var1);
+            this.HVK(transformer, var1);
+            try (var fos = new FileOutputStream(file)) {
+                transformer.transform(XmlUtils.createAndTransformStreamSource(this.HVL(var4, var1)), new SAXResult(FopUtils.createFopHandler(fos)));
+                fos.flush();
+            }
             if (Desktop.isDesktopSupported()) {
                 (new EVN() {
                     public void HZI() {
                         try {
-                            Desktop.getDesktop().open(var2);
+                            Desktop.getDesktop().open(file);
                         } catch (IOException var2x) {
                             EXF.getInstance().ICA(var2x);
                         }

@@ -10,37 +10,28 @@ import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HQ;
 import a.a.a.c.f.a.e.HU;
 import a.a.a.c.f.a.e.HV;
-import a.a.a.c.f.b.c.a.KI;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.b.c.a.QSW;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.c.FCZ;
-import org.apache.avalon.framework.configuration.Configuration;
-import org.apache.avalon.framework.configuration.ConfigurationException;
-import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
-import org.apache.fop.apps.FOUserAgent;
-import org.apache.fop.apps.Fop;
-import org.apache.fop.apps.FopFactory;
-import org.apache.fop.apps.FopFactoryBuilder;
-import org.apache.xmlgraphics.io.Resource;
-import org.apache.xmlgraphics.io.ResourceResolver;
+import com.github.bademux.emk.utils.FopUtils;
+import com.github.bademux.emk.utils.XmlUtils;
+import org.apache.fop.configuration.ConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.math.BigDecimal;
-import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.ZoneId;
 import java.util.Base64;
@@ -66,95 +57,69 @@ public class EPI extends EPL {
         EXF.getInstance().ICO();
 
         try {
-            Document var1 = this.HOP();
-            ByteArrayOutputStream var2 = new ByteArrayOutputStream();
-            DOMSource var3 = new DOMSource(var1);
-            StreamResult var4 = new StreamResult(var2);
-            TransformerFactory.newInstance().newTransformer().transform(var3, var4);
-            ByteArrayInputStream var5 = new ByteArrayInputStream(var2.toByteArray());
-            FopFactoryBuilder var6 = new FopFactoryBuilder((new File(".")).toURI(), new ResourceResolver() {
-                public Resource getResource(URI var1) throws IOException {
-                    return new Resource(this.getClass().getResourceAsStream(var1.getPath()));
-                }
-
-                public OutputStream getOutputStream(URI var1) throws IOException {
-                    return new FileOutputStream(new File(var1));
-                }
-            });
-            FileOutputStream var7 = null;
-            var7 = new FileOutputStream(this.FPP);
-            InputStream var8 = null;
-            var8 = EPE.class.getResourceAsStream("/fop/jpkFont.xsl");
-            DefaultConfigurationBuilder var9 = new DefaultConfigurationBuilder();
-            Configuration var10 = var9.build(var8);
-            var6.setConfiguration(var10);
-            FopFactory var11 = var6.build();
-            FOUserAgent var12 = var11.newFOUserAgent();
-            Fop var13 = var11.newFop("application/pdf", var12, var7);
-            TransformerFactory var14 = TransformerFactory.newInstance();
-            Transformer var15 = var14.newTransformer(new StreamSource(EPE.class.getResourceAsStream("/fop/invoice_sale_correction.xsl")));
+            Transformer transformer = TransformerFactory.newInstance().newTransformer(new StreamSource(EPE.class.getResourceAsStream("/fop/invoice_sale_correction.xsl")));
             byte[] var16 = this.FQI.DFM().getValue();
             String var17;
             if (var16 != null && var16.length > 0) {
                 var17 = new String(Base64.getEncoder().encode(var16), StandardCharsets.UTF_8);
-                var15.setParameter("image", var17);
+                transformer.setParameter("image", var17);
             }
 
-            var15.setParameter("ref_id", this.HOL(this.FQF.getRefId().getValue(), 18));
-            var15.setParameter("creation_date", this.FQF.getCreationDate().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
+            transformer.setParameter("ref_id", this.HOL(this.FQF.getRefId().getValue(), 18));
+            transformer.setParameter("creation_date", this.FQF.getCreationDate().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
             var17 = this.HOL(this.FQG.getCreationPlace().getValue(), 34);
             if (var17 != null && var17.trim().length() > 0) {
-                var15.setParameter("creation_place", ", " + var17);
+                transformer.setParameter("creation_place", ", " + var17);
             }
 
-            var15.setParameter("transaction_date", this.FQG.getTransactionDate().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
-            var15.setParameter("seller_name", this.HOL(this.FQI.DFH().getValue(), 25));
-            var15.setParameter("seller_street", this.HOL(this.FQI.DFN().DDA().getValue(), 25));
-            var15.setParameter("seller_house_number", this.FQI.DFN().DDB().getValue());
+            transformer.setParameter("transaction_date", this.FQG.getTransactionDate().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
+            transformer.setParameter("seller_name", this.HOL(this.FQI.DFH().getValue(), 25));
+            transformer.setParameter("seller_street", this.HOL(this.FQI.DFN().DDA().getValue(), 25));
+            transformer.setParameter("seller_house_number", this.FQI.DFN().DDB().getValue());
             String var18 = this.FQI.DFN().DDC().getValue();
             if (var18 != null && var18.trim().length() > 0) {
-                var15.setParameter("seller_apartment_number", this.FPQ.getString("micro.process.invoice_sale_new.Print.ApartmentNumber") + " " + var18);
+                transformer.setParameter("seller_apartment_number", this.FPQ.getString("micro.process.invoice_sale_new.Print.ApartmentNumber") + " " + var18);
             }
 
-            var15.setParameter("seller_zip", this.FQI.DFN().getPostalCode().getValue());
-            var15.setParameter("seller_city", this.HOL(this.FQI.DFN().DCZ().getValue(), 25));
-            var15.setParameter("seller_nip", this.FQI.DFF().getValue());
+            transformer.setParameter("seller_zip", this.FQI.DFN().getPostalCode().getValue());
+            transformer.setParameter("seller_city", this.HOL(this.FQI.DFN().DCZ().getValue(), 25));
+            transformer.setParameter("seller_nip", this.FQI.DFF().getValue());
             String var19 = this.FQI.DFO().getValue();
             if (var19 != null && var19.trim().length() > 0) {
-                var15.setParameter("seller_account_number", this.FPQ.getString("micro.process.invoice_sale_new.Print.AccountNumber") + " " + var19);
+                transformer.setParameter("seller_account_number", this.FPQ.getString("micro.process.invoice_sale_new.Print.AccountNumber") + " " + var19);
             }
 
             String var20 = this.FQI.DFK().getValue();
             if (var20 != null && var20.trim().length() > 0) {
-                var15.setParameter("seller_phone_number", this.FPQ.getString("micro.process.invoice_sale_new.Print.PhoneNumber") + " " + var20);
+                transformer.setParameter("seller_phone_number", this.FPQ.getString("micro.process.invoice_sale_new.Print.PhoneNumber") + " " + var20);
             }
 
-            var15.setParameter("buyer_name", this.HOL(this.FQG.getContractor().DAI().getValue(), 25));
-            var15.setParameter("buyer_street", this.HOL(this.FQG.getContractor().DAM().getStreet().getValue(), 25));
-            var15.setParameter("buyer_house_number", this.FQG.getContractor().DAM().DDB().getValue());
+            transformer.setParameter("buyer_name", this.HOL(this.FQG.getContractor().DAI().getValue(), 25));
+            transformer.setParameter("buyer_street", this.HOL(this.FQG.getContractor().DAM().getStreet().getValue(), 25));
+            transformer.setParameter("buyer_house_number", this.FQG.getContractor().DAM().DDB().getValue());
             String var21 = this.FQG.getContractor().DAM().DDC().getValue();
             if (var21 != null && var21.trim().length() > 0) {
-                var15.setParameter("buyer_apartment_number", this.FPQ.getString("micro.process.invoice_sale_new.Print.ApartmentNumber") + " " + var21);
+                transformer.setParameter("buyer_apartment_number", this.FPQ.getString("micro.process.invoice_sale_new.Print.ApartmentNumber") + " " + var21);
             }
 
-            var15.setParameter("buyer_zip", this.FQG.getContractor().DAM().DDD().getValue());
-            var15.setParameter("buyer_city", this.HOL(this.FQG.getContractor().DAM().DCZ().getValue(), 25));
-            var15.setParameter("buyer_nip", this.FQG.getContractor().DAJ().getValue());
+            transformer.setParameter("buyer_zip", this.FQG.getContractor().DAM().DDD().getValue());
+            transformer.setParameter("buyer_city", this.HOL(this.FQG.getContractor().DAM().DCZ().getValue(), 25));
+            transformer.setParameter("buyer_nip", this.FQG.getContractor().DAJ().getValue());
             BigDecimal var22 = EQY.HRJ(this.FQF.DAV().getValue(), this.FQH.DAV().getValue());
             if (var22.compareTo(BigDecimal.ZERO) >= 0) {
-                var15.setParameter("to_pay_or_to_return_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.ToPayPlus"));
+                transformer.setParameter("to_pay_or_to_return_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.ToPayPlus"));
             } else {
-                var15.setParameter("to_pay_or_to_return_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.ToPayMinus"));
+                transformer.setParameter("to_pay_or_to_return_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.ToPayMinus"));
             }
 
-            var15.setParameter("to_pay", this.FQJ.format(var22.abs()));
-            var15.setParameter("to_pay_words", this.HOK(var22.abs()));
-            var15.setParameter("payment_type", this.FQF.getPaymentMethod().getValue().getDescription());
-            var15.setParameter("summary", this.FPQ.getString("micro.process.invoice_sale_new.Print.All"));
-            var15.setParameter("sum_net", this.HOI(this.FQF.getAmountSummaryWithoutTax().getValue()));
-            var15.setParameter("sum_tax", this.HOI(this.FQF.getAmountTax().getValue()));
-            var15.setParameter("sum_brut", this.HOI(this.FQF.getAmountSummaryWithTax().getValue()));
-            var15.setParameter("is_cancelled", this.FQF.getState() != null && this.FQF.getState().equals(QSW.CANCELED));
+            transformer.setParameter("to_pay", this.FQJ.format(var22.abs()));
+            transformer.setParameter("to_pay_words", this.HOK(var22.abs()));
+            transformer.setParameter("payment_type", this.FQF.getPaymentMethod().getValue().getDescription());
+            transformer.setParameter("summary", this.FPQ.getString("micro.process.invoice_sale_new.Print.All"));
+            transformer.setParameter("sum_net", this.HOI(this.FQF.getAmountSummaryWithoutTax().getValue()));
+            transformer.setParameter("sum_tax", this.HOI(this.FQF.getAmountTax().getValue()));
+            transformer.setParameter("sum_brut", this.HOI(this.FQF.getAmountSummaryWithTax().getValue()));
+            transformer.setParameter("is_cancelled", this.FQF.getState() != null && this.FQF.getState().equals(QSW.CANCELED));
             boolean var23 = false;
             if (this.FQF.DBA().getValue() != null) {
                 var23 = this.FQF.DBA().getValue();
@@ -166,51 +131,51 @@ public class EPI extends EPL {
             }
 
             if (var23) {
-                var15.setParameter("payment_date_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.PayedDate"));
-                var15.setParameter("payment_date", this.FQF.getCreationDate().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
+                transformer.setParameter("payment_date_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.PayedDate"));
+                transformer.setParameter("payment_date", this.FQF.getCreationDate().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
             } else if (var24) {
-                var15.setParameter("payment_date_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.PaymentDate"));
-                var15.setParameter("payment_date", this.FPQ.getString("micro.process.invoice_sale_new.Print.PaymentDateByDeal"));
+                transformer.setParameter("payment_date_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.PaymentDate"));
+                transformer.setParameter("payment_date", this.FPQ.getString("micro.process.invoice_sale_new.Print.PaymentDateByDeal"));
             } else {
-                var15.setParameter("payment_date_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.PaymentDate"));
-                var15.setParameter("payment_date", this.FQF.getPaymentDate().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
+                transformer.setParameter("payment_date_name", this.FPQ.getString("micro.process.invoice_sale_new.Print.PaymentDate"));
+                transformer.setParameter("payment_date", this.FQF.getPaymentDate().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
             }
 
             String var25 = this.FQF.QOQ().getValue();
             if (var25 != null) {
-                var15.setParameter("exempt_reason", this.HOL(var25, 100));
+                transformer.setParameter("exempt_reason", this.HOL(var25, 100));
             }
 
             String var26 = this.FQF.DBB().getValue();
             if (var26 != null) {
-                var15.setParameter("remarks", this.HOL(var26, 63));
+                transformer.setParameter("remarks", this.HOL(var26, 63));
             }
 
-            var15.setParameter("sum_net_before_correction", this.FQJ.format(this.FQH.DAW().getValue()));
-            var15.setParameter("sum_tax_before_correction", this.FQJ.format(this.FQH.DAX().getValue()));
-            var15.setParameter("sum_brut_before_correction", this.FQJ.format(this.FQH.DAV().getValue()));
-            var15.setParameter("correction_reason", this.HOL(this.FQF.getCorrectionReason().getValue(), 34));
-            var15.setParameter("ref_id_old", this.FQG.DAS().getValue());
-            var15.setParameter("creation_date_old", this.FQG.DAT().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
-            var15.setParameter("diff_sum_net", this.FQJ.format(EQY.HRJ(this.FQF.DAW().getValue(), this.FQH.DAW().getValue())));
-            var15.setParameter("diff_sum_tax", this.FQJ.format(EQY.HRJ(this.FQF.DAX().getValue(), this.FQH.DAX().getValue())));
-            var15.setParameter("diff_sum_brut", this.FQJ.format(EQY.HRJ(this.FQF.DAV().getValue(), this.FQH.DAV().getValue())));
+            transformer.setParameter("sum_net_before_correction", this.FQJ.format(this.FQH.DAW().getValue()));
+            transformer.setParameter("sum_tax_before_correction", this.FQJ.format(this.FQH.DAX().getValue()));
+            transformer.setParameter("sum_brut_before_correction", this.FQJ.format(this.FQH.DAV().getValue()));
+            transformer.setParameter("correction_reason", this.HOL(this.FQF.getCorrectionReason().getValue(), 34));
+            transformer.setParameter("ref_id_old", this.FQG.DAS().getValue());
+            transformer.setParameter("creation_date_old", this.FQG.DAT().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
+            transformer.setParameter("diff_sum_net", this.FQJ.format(EQY.HRJ(this.FQF.DAW().getValue(), this.FQH.DAW().getValue())));
+            transformer.setParameter("diff_sum_tax", this.FQJ.format(EQY.HRJ(this.FQF.DAX().getValue(), this.FQH.DAX().getValue())));
+            transformer.setParameter("diff_sum_brut", this.FQJ.format(EQY.HRJ(this.FQF.DAV().getValue(), this.FQH.DAV().getValue())));
             if (this.FQH.getInvoiceElements() != null && this.FQH.getInvoiceElements().size() != 0 && this.FQH.getInvoiceElements().get(0).RIG().getValue() != null && this.FQH.getInvoiceElements().get(0).RIG().getValue().equals(QSV.GROSS)) {
-                var15.setParameter("unit_price_before_correction", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementBrutPrice"));
+                transformer.setParameter("unit_price_before_correction", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementBrutPrice"));
             } else {
-                var15.setParameter("unit_price_before_correction", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementNetPrice"));
+                transformer.setParameter("unit_price_before_correction", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementNetPrice"));
             }
 
             if (this.FQF.getInvoiceElements() != null && this.FQF.getInvoiceElements().size() != 0 && this.FQF.getInvoiceElements().get(0).RIG().getValue() != null && this.FQF.getInvoiceElements().get(0).RIG().getValue().equals(QSV.GROSS)) {
-                var15.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementBrutPrice"));
+                transformer.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementBrutPrice"));
             } else {
-                var15.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementNetPrice"));
+                transformer.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementNetPrice"));
             }
 
-            SAXResult var27 = new SAXResult(var13.getDefaultHandler());
-            var15.transform(new StreamSource(var5), var27);
-            var7.flush();
-            var7.close();
+            try(var fos = new FileOutputStream(this.FPP)) {
+                transformer.transform(XmlUtils.createAndTransformStreamSource(this.HOP()), new SAXResult(FopUtils.createFopHandler(fos)));
+                fos.flush();
+            }
         } catch (FileNotFoundException var32) {
             EXF.getInstance().ICA(var32);
             throw FCZ.getInstance().IHI(this.FPP);

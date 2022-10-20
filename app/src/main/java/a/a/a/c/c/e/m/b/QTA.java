@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.m.a.QSZ;
 import a.a.a.c.c.e.m.c.QTB;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QTA extends ProcessDefinitionBase {
-    public static final EOS QZM;
+    public static final Stage QZM;
     public static final String QZN = "aggregatePurchaseNewLogic_addNewPosition.fxml";
 
     public QTA() {
@@ -25,8 +25,8 @@ public class QTA extends ProcessDefinitionBase {
         return QZM.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
-        if (var1 == ENH.MAIN) {
+    public String getTitle(Anchor var1) throws FFK {
+        if (var1 == Anchor.MAIN) {
             return FCW.getInstance().getMessageForKey("micro.process.aggregate_purchase_new.menu.title");
         }
         throw new FFK("Invalid anchor type [" + var1 + "]!");
@@ -46,15 +46,15 @@ public class QTA extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.CONFIGURATION_PROPERTIES));
-        var1.add(new LN(LN.LO.INVOICE_PURCHASE));
-        var1.add(new LN(LN.LO.SETTLEMENT));
-        var1.add(new LN(LN.LO.DICTIONARY));
-        var1.add(new LN(LN.LO.CONTRACTOR));
+        var1.add(new LN(LN.StageType.CONFIGURATION_PROPERTIES));
+        var1.add(new LN(LN.StageType.INVOICE_PURCHASE));
+        var1.add(new LN(LN.StageType.SETTLEMENT));
+        var1.add(new LN(LN.StageType.DICTIONARY));
+        var1.add(new LN(LN.StageType.CONTRACTOR));
         return var1;
     }
 
     static {
-        QZM = EOS.AGGREGATE_PURCHASE_NEW;
+        QZM = Stage.AGGREGATE_PURCHASE_NEW;
     }
 }

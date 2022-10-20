@@ -1,6 +1,6 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 
 public class FAD<_A, _B extends ComboBoxRequired<_A>> extends FAE<_A, _B> {
@@ -24,7 +24,7 @@ public class FAD<_A, _B extends ComboBoxRequired<_A>> extends FAE<_A, _B> {
                 } else {
                     this.GXH.IEU().set(true);
                 }
-            } else if (var2 instanceof QST var7) {
+            } else if (var2 instanceof ObjectWithTitle var7) {
                 if (var7.getTitle(this.QVP).length() == 0) {
                     this.GXH.IEU().set(!this.GXH.IFB());
                 } else {

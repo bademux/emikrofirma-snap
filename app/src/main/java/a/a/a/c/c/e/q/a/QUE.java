@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.q.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -9,7 +9,7 @@ import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.ENI;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.a.ENO;
 import a.a.a.c.c.d.a.QUV;
 import a.a.a.c.c.d.d.EOG;
@@ -17,16 +17,16 @@ import a.a.a.c.c.d.d.EOK;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.d.QUZ;
 import a.a.a.c.c.d.g.EOX;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.d.n.QVB;
 import a.a.a.c.c.e.q.c.QUL;
 import a.a.a.c.f.a.a.EZG;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.f.a.n.InvoiceOtherSell;
-import a.a.a.c.f.a.n.QSQ;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.KH;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.MonthType;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
@@ -57,7 +57,7 @@ public class QUE extends ENO<QUL> {
     @FXML
     private Button fxml_other_sale_list_button_new_other;
     @FXML
-    private ComboBox<KH> fxml_other_sale_list_month;
+    private ComboBox<MonthType> fxml_other_sale_list_month;
     @FXML
     private ComboBox<String> fxml_other_sale_list_year;
     @FXML
@@ -71,7 +71,7 @@ public class QUE extends ENO<QUL> {
     @FXML
     private TableColumn<QVB<InvoiceOtherSell>, String> fxml_other_sale_list_table_column_ref_id;
     @FXML
-    private TableColumn<QVB<InvoiceOtherSell>, QSQ> fxml_other_sale_list_table_column_other_type;
+    private TableColumn<QVB<InvoiceOtherSell>, InvoiceOtherSubtype> fxml_other_sale_list_table_column_other_type;
     @FXML
     private TableColumn<QVB<InvoiceOtherSell>, BigDecimal> fxml_other_sale_list_table_column_sum_net;
     @FXML
@@ -98,10 +98,10 @@ public class QUE extends ENO<QUL> {
     private Button fxml_other_sale_list_button_delete;
     @FXML
     private Label fxml_other_sale_list_button_error_label;
-    private SortedMap<String, SortedSet<KH>> RDA = null;
+    private SortedMap<String, SortedSet<MonthType>> RDA = null;
     private Period RDB = null;
     private String RDC;
-    private KH RDD;
+    private MonthType RDD;
     private String RDE;
     private static final int RDF = 50;
     private int RDG = 0;
@@ -219,9 +219,9 @@ public class QUE extends ENO<QUL> {
             this.RDK.RMO();
             if (this.RDB != null && this.RDB.getYear() != null && this.RDB.getYear().getValue() != null && this.RDB.getMonth() != null && this.RDB.getMonth().getValue() != null) {
                 org.slf4j.LoggerFactory.getLogger(getClass()).info("Initial period " + this.RDB);
-                if (this.RDA.get(String.valueOf(this.RDB.DDJ().getValue())) != null && this.RDA.get(String.valueOf(this.RDB.DDJ().getValue())).contains(KH.getMonthByNumber(this.RDB.DDK().getValue()))) {
+                if (this.RDA.get(String.valueOf(this.RDB.DDJ().getValue())) != null && this.RDA.get(String.valueOf(this.RDB.DDJ().getValue())).contains(MonthType.getMonthByNumber(this.RDB.DDK().getValue()))) {
                     this.fxml_other_sale_list_year.getSelectionModel().select(String.valueOf(this.RDB.DDJ().getValue()));
-                    this.fxml_other_sale_list_month.getSelectionModel().select(KH.getMonthByNumber(this.RDB.DDK().getValue()));
+                    this.fxml_other_sale_list_month.getSelectionModel().select(MonthType.getMonthByNumber(this.RDB.DDK().getValue()));
                 } else {
                     this.fxml_other_sale_list_year.getSelectionModel().select(this.RDC);
                     this.fxml_other_sale_list_month.getSelectionModel().select(this.RDD);
@@ -255,12 +255,12 @@ public class QUE extends ENO<QUL> {
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [view] clicked");
             final InvoiceOtherSell var1 = (InvoiceOtherSell) ((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getRealInvoice();
-            this.getApplication().initController(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
+            this.getApplication().initController(this.getFxmlName(), Stage.SALE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
                 public void accept(QUV<?> var1x) {
 
                     try {
                         var1x.setInvoice(var1);
-                        var1x.setMode(EPB.VIEW);
+                        var1x.setMode(Mode.VIEW);
                     } catch (FFK var6) {
                         org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
                         throw new FFI(var6);
@@ -281,12 +281,12 @@ public class QUE extends ENO<QUL> {
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
             final InvoiceOtherSell var1 = (InvoiceOtherSell) ((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getRealInvoice();
-            this.getApplication().initController(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
+            this.getApplication().initController(this.getFxmlName(), Stage.SALE_NEW.getProcessFxmlFileName(), new Consumer<QUV<?>>() {
                 public void accept(QUV<?> var1x) {
 
                     try {
                         var1x.setInvoice(var1);
-                        var1x.setMode(EPB.EDIT);
+                        var1x.setMode(Mode.EDIT);
                     } catch (FFK var6) {
                         org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
                         throw new FFI(var6);
@@ -306,7 +306,7 @@ public class QUE extends ENO<QUL> {
 
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [delete] clicked");
-            FEN var1 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.other_sale_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.other_sale_list.Dialog.deleteAreYouSure.header"));
+            DialogButton var1 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.other_sale_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.other_sale_list.Dialog.deleteAreYouSure.header"));
             switch (var1) {
                 case Confirm:
                     this.getProcess().RNF(((QVB) this.fxml_other_sale_list_table.getSelectionModel().getSelectedItem()).getInvoiceWrapper());
@@ -331,7 +331,7 @@ public class QUE extends ENO<QUL> {
     private void fxml_other_sale_list_button_new_other_sale() {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [SALE_NEW_OTHER] clicked");
-        this.getApplication().initController(this.getFxmlName(), EOS.SALE_NEW.getProcessFxmlFileName(), null);
+        this.getApplication().initController(this.getFxmlName(), Stage.SALE_NEW.getProcessFxmlFileName(), null);
 
     }
 
@@ -346,7 +346,7 @@ public class QUE extends ENO<QUL> {
             Calendar var3 = Calendar.getInstance();
             int var4 = var3.get(1);
             int var5 = var3.get(2);
-            this.RDD = KH.getMonthByNumber(var5 + 1);
+            this.RDD = MonthType.getMonthByNumber(var5 + 1);
             this.RDC = String.valueOf(var4);
             if (this.RDA != null && this.RDA.get(this.RDC) == null) {
                 this.RDA.put(this.RDC, new TreeSet());
@@ -394,7 +394,7 @@ public class QUE extends ENO<QUL> {
         if (this.RDC.equals(var1) && var2) {
             this.fxml_other_sale_list_month.setValue(this.RDD);
         } else if (this.RDA.get(var1) != null && this.RDA.get(var1).size() > 0) {
-            this.fxml_other_sale_list_month.setValue((KH) ((SortedSet) this.RDA.get(var1)).last());
+            this.fxml_other_sale_list_month.setValue((MonthType) ((SortedSet) this.RDA.get(var1)).last());
         }
 
         if (!var3) {
@@ -412,7 +412,7 @@ public class QUE extends ENO<QUL> {
                 public void MXI() {
 
                     try {
-                        QUE.this.RDH = QUE.this.getProcess().getInvoicesOtherSell(Integer.valueOf(QUE.this.fxml_other_sale_list_year.getValue()), Integer.valueOf(QUE.this.fxml_other_sale_list_month.getValue().getMonthNumberString()), null, QSW.ACTIVE);
+                        QUE.this.RDH = QUE.this.getProcess().getInvoicesOtherSell(Integer.valueOf(QUE.this.fxml_other_sale_list_year.getValue()), Integer.valueOf(QUE.this.fxml_other_sale_list_month.getValue().getMonthNumberString()), null, InvoiceState.ACTIVE);
                     } catch (Exception var5) {
                         org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
                         var3.setObject(var5);
@@ -638,7 +638,7 @@ public class QUE extends ENO<QUL> {
     private QUI RNA(QVB<InvoiceOtherSell> var1) {
 
         QUI var3;
-        if (var1.getState().equals(QSW.CANCELED)) {
+        if (var1.getState().equals(InvoiceState.CANCELED)) {
             QUI var10 = new QUI(false, null);
             return var10;
         }
@@ -721,8 +721,8 @@ public class QUE extends ENO<QUL> {
             throw FCZ.getInstance().IHJ();
         }
 
-        JG var3 = var2.getSettlementStatus(var1);
-        if (var3 == JG.SETTLED) {
+        SettlementStatus var3 = var2.getSettlementStatus(var1);
+        if (var3 == SettlementStatus.SETTLED) {
             var4 = true;
             return var4;
         }
@@ -805,7 +805,7 @@ public class QUE extends ENO<QUL> {
         }
     }
 
-    private class QUF implements ChangeListener<KH> {
+    private class QUF implements ChangeListener<MonthType> {
         protected boolean RCV;
 
         private QUF() {
@@ -823,7 +823,7 @@ public class QUE extends ENO<QUL> {
             return this.RCV;
         }
 
-        public void changed(ObservableValue<? extends KH> var1, KH var2, KH var3) {
+        public void changed(ObservableValue<? extends MonthType> var1, MonthType var2, MonthType var3) {
 
             if (var3 != null && !this.RCV) {
                 QUE.this.getInvoicesByPeriod(false);

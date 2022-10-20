@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.l.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -10,17 +10,17 @@ import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.ENI;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.a.ENO;
-import a.a.a.c.c.d.b.ENP;
+import a.a.a.c.c.d.b.InvoiceFilteringType;
 import a.a.a.c.c.d.d.EOK;
 import a.a.a.c.c.d.d.EOM;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.g.EOX;
 import a.a.a.c.c.d.g.EOZ;
 import a.a.a.c.c.d.g.EPA;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.d.h.EPE;
 import a.a.a.c.c.d.h.EPI;
 import a.a.a.c.c.e.l.c.EVJ;
@@ -28,13 +28,13 @@ import a.a.a.c.f.a.a.EZG;
 import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.InvoiceSell;
 import a.a.a.c.f.a.e.InvoiceSellCorrection;
-import a.a.a.c.f.a.e.HY;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.e.BaseInvoiceSell;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JS;
-import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.a.KH;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.PrivtePerson;
+import a.a.a.c.f.b.c.InvoicingDate;
+import a.a.a.c.f.b.c.a.MonthType;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
@@ -59,7 +59,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import lombok.extern.slf4j.Slf4j;
 
@@ -125,7 +124,7 @@ public class EVD extends ENO<EVJ> {
     @FXML
     private TreeTableColumn<EVG, String> fxml_invoice_sale_list_tree_table_column_canceled;
     @FXML
-    private ComboBox<KH> fxml_invoice_sale_list_month;
+    private ComboBox<MonthType> fxml_invoice_sale_list_month;
     @FXML
     private ComboBox<String> fxml_invoice_sale_list_year;
     @FXML
@@ -150,16 +149,16 @@ public class EVD extends ENO<EVJ> {
     private CheckBox fxml_invoice_sale_list_extended_view;
     @FXML
     private ScrollPane fxml_invoice_sale_list_scroll_pane;
-    private SortedMap<String, SortedSet<KH>> GNU;
+    private SortedMap<String, SortedSet<MonthType>> GNU;
     private final DecimalFormat GNV = ENI.get();
     private boolean GNW = false;
     private int GNX = 0;
     private boolean GNY = true;
     private String GNZ;
     private String GOA;
-    private KH GOB;
+    private MonthType GOB;
     protected final ListProperty<EOX<String>> GOC = new SimpleListProperty(FXCollections.observableArrayList());
-    private List<EPA<HY>> GOD;
+    private List<EPA<BaseInvoiceSell>> GOD;
     private final ChangeListener<Boolean> GOE = new ChangeListener<Boolean>() {
         public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
 
@@ -341,7 +340,7 @@ public class EVD extends ENO<EVJ> {
             Calendar var3 = Calendar.getInstance();
             int var4 = var3.get(1);
             int var5 = var3.get(2);
-            this.GOB = KH.getMonthByNumber(var5 + 1);
+            this.GOB = MonthType.getMonthByNumber(var5 + 1);
             this.GOA = String.valueOf(var4);
             if (this.GNU != null && this.GNU.get(this.GOA) == null) {
                 this.GNU.put(this.GOA, new TreeSet());
@@ -390,7 +389,7 @@ public class EVD extends ENO<EVJ> {
         if (this.GOA.equals(var1) && var2) {
             this.fxml_invoice_sale_list_month.setValue(this.GOB);
         } else if (this.GNU.get(var1) != null && this.GNU.get(var1).size() > 0) {
-            this.fxml_invoice_sale_list_month.setValue((KH) ((SortedSet) this.GNU.get(var1)).last());
+            this.fxml_invoice_sale_list_month.setValue((MonthType) ((SortedSet) this.GNU.get(var1)).last());
         }
 
         if (!var3) {
@@ -415,9 +414,9 @@ public class EVD extends ENO<EVJ> {
             this.GOG.setDontLoad(true);
             this.GOF.QJG();
             if (this.GOI != null && this.GOI.getYear() != null && this.GOI.getYear().getValue() != null && this.GOI.getMonth() != null && this.GOI.getMonth().getValue() != null) {
-                if (this.GNU.get(String.valueOf(this.GOI.DDJ().getValue())) != null && this.GNU.get(String.valueOf(this.GOI.DDJ().getValue())).contains(KH.getMonthByNumber(this.GOI.DDK().getValue()))) {
+                if (this.GNU.get(String.valueOf(this.GOI.DDJ().getValue())) != null && this.GNU.get(String.valueOf(this.GOI.DDJ().getValue())).contains(MonthType.getMonthByNumber(this.GOI.DDK().getValue()))) {
                     this.fxml_invoice_sale_list_year.getSelectionModel().select(String.valueOf(this.GOI.DDJ().getValue()));
-                    this.fxml_invoice_sale_list_month.getSelectionModel().select(KH.getMonthByNumber(this.GOI.DDK().getValue()));
+                    this.fxml_invoice_sale_list_month.getSelectionModel().select(MonthType.getMonthByNumber(this.GOI.DDK().getValue()));
                 } else {
                     this.fxml_invoice_sale_list_year.getSelectionModel().select(this.GOA);
                     this.fxml_invoice_sale_list_month.getSelectionModel().select(this.GOB);
@@ -463,17 +462,17 @@ public class EVD extends ENO<EVJ> {
                     try {
                         EVJ var1x = EVD.this.getProcess();
                         if (EVD.this.fxml_invoice_sale_list_only_empty_period.isSelected()) {
-                            EVD.this.GOD = var1x.getInvoices(ENP.ONLY_EMPTY, null, null, null, null);
+                            EVD.this.GOD = var1x.getInvoices(InvoiceFilteringType.ONLY_EMPTY, null, null, null, null);
                             return;
                         }
 
                         if (EVD.this.fxml_invoice_sale_list_canceled_invoices.isSelected()) {
-                            EVD.this.GOD = var1x.getInvoices(ENP.ONLY_CANCELED, null, null, null, null);
+                            EVD.this.GOD = var1x.getInvoices(InvoiceFilteringType.ONLY_CANCELED, null, null, null, null);
                             return;
                         }
 
                         if (EVD.this.fxml_invoice_sale_list_year.getValue() != null && EVD.this.fxml_invoice_sale_list_month.getValue() != null) {
-                            EVD.this.GOD = var1x.getInvoices(ENP.WITHOUT_EMPTY, Integer.valueOf(EVD.this.fxml_invoice_sale_list_year.getValue()), Integer.valueOf(EVD.this.fxml_invoice_sale_list_month.getValue().getMonthNumberString()), null, null);
+                            EVD.this.GOD = var1x.getInvoices(InvoiceFilteringType.WITHOUT_EMPTY, Integer.valueOf(EVD.this.fxml_invoice_sale_list_year.getValue()), Integer.valueOf(EVD.this.fxml_invoice_sale_list_month.getValue().getMonthNumberString()), null, null);
                         }
                     } catch (FFO | FFK var6) {
                         log.error("Something bad happened", var6);
@@ -548,9 +547,9 @@ public class EVD extends ENO<EVJ> {
                     try {
                         EVJ var1 = EVD.this.getProcess();
                         if (EVD.this.fxml_invoice_sale_list_year_search.getValue().equals(EVD.this.GNZ)) {
-                            EVD.this.GOD = var1.getInvoices(ENP.ALL, null, null, var2, null);
+                            EVD.this.GOD = var1.getInvoices(InvoiceFilteringType.ALL, null, null, var2, null);
                         } else {
-                            EVD.this.GOD = var1.getInvoices(ENP.WITHOUT_EMPTY, Integer.valueOf(EVD.this.fxml_invoice_sale_list_year_search.getValue()), null, var2, null);
+                            EVD.this.GOD = var1.getInvoices(InvoiceFilteringType.WITHOUT_EMPTY, Integer.valueOf(EVD.this.fxml_invoice_sale_list_year_search.getValue()), null, var2, null);
                         }
                     } catch (FFK | FFO | NumberFormatException var6) {
                         log.error("Something bad happened", var6);
@@ -717,16 +716,16 @@ public class EVD extends ENO<EVJ> {
         try {
             log.info("Button [invoice_edit] clicked");
             final Invoice var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
-            this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+            this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
                 public void accept(ENN<?> var1) {
 
                     try {
                         if (EOZ.HOD(var2)) {
                             var1.setInvoice(var2);
-                            var1.setMode(EPB.EDIT_CORRECTION);
+                            var1.setMode(Mode.EDIT_CORRECTION);
                         } else {
                             var1.setInvoice(var2);
-                            var1.setMode(EPB.EDIT);
+                            var1.setMode(Mode.EDIT);
                         }
                     } catch (FFK var6) {
                         log.error("Something bad happened", var6);
@@ -748,12 +747,12 @@ public class EVD extends ENO<EVJ> {
         try {
             log.info("Button [invoice_correct] clicked");
             final InvoiceSell var2 = (InvoiceSell) ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
-            this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+            this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
                 public void accept(ENN<?> var1) {
 
                     try {
                         var1.setInvoice(var2);
-                        var1.setMode(EPB.CORRECT);
+                        var1.setMode(Mode.CORRECT);
                     } catch (FFK var6) {
                         log.error("Something bad happened", var6);
                         throw new FFI(var6);
@@ -774,16 +773,16 @@ public class EVD extends ENO<EVJ> {
         try {
             log.info("Button [invoice_view] clicked");
             final Invoice var2 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice().getModelBaseElementWithIdObject();
-            this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+            this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
                 public void accept(ENN<?> var1) {
 
                     try {
                         if (EOZ.HOD(var2)) {
                             var1.setInvoice(var2);
-                            var1.setMode(EPB.VIEW_CORRECTION);
+                            var1.setMode(Mode.VIEW_CORRECTION);
                         } else {
                             var1.setInvoice(var2);
-                            var1.setMode(EPB.VIEW);
+                            var1.setMode(Mode.VIEW);
                         }
                     } catch (FFK var6) {
                         log.error("Something bad happened", var6);
@@ -816,7 +815,7 @@ public class EVD extends ENO<EVJ> {
                 throw FCZ.getInstance().IHI(new File("/fxml/invoice_sale_list_set_receive_date.fxml"));
             }
 
-            Stage var4 = new Stage();
+            javafx.stage.Stage var4 = new javafx.stage.Stage();
             var4.setTitle(this.resources.getString("micro.process.invoice_sale_list.SetInvoicingDate.title"));
             var4.initModality(Modality.WINDOW_MODAL);
             var4.initOwner(this.primaryStage);
@@ -836,10 +835,10 @@ public class EVD extends ENO<EVJ> {
             var4.showAndWait();
             if (var6.HZD() && var6.fxml_invoicing_date_dateController.fxml_component_main_element.getValue() != null) {
                 Date var8 = Date.from(var6.fxml_invoicing_date_dateController.fxml_component_main_element.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-                var7.setInvoicingDate(new JV(var8));
+                var7.setInvoicingDate(new InvoicingDate(var8));
                 Period var9 = new Period(var8);
                 var7.setPeriod(var9);
-                var7.setUsingInvoicingDate(new JS(true));
+                var7.setUsingInvoicingDate(new PrivtePerson(true));
                 EVJ var10 = this.getProcess();
                 if (var10 == null) {
                     throw FCZ.getInstance().IHJ();
@@ -905,7 +904,7 @@ public class EVD extends ENO<EVJ> {
 
         try {
             log.info("Button [cancel] clicked");
-            FEN var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.invoice_sale_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.invoice_sale_list.Dialog.deleteAreYouSure.header"));
+            DialogButton var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.invoice_sale_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.invoice_sale_list.Dialog.deleteAreYouSure.header"));
             switch (var2) {
                 case Confirm:
                     this.getProcess().RKY(((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice());
@@ -929,10 +928,10 @@ public class EVD extends ENO<EVJ> {
     protected void fxml_invoice_sale_list_button_new_invoice(ActionEvent var1) {
 
         log.info("Button [new_invoice] clicked");
-        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
             public void accept(ENN<?> var1) {
 
-                var1.setMode(EPB.NEW);
+                var1.setMode(Mode.NEW);
 
             }
         });
@@ -1059,10 +1058,10 @@ public class EVD extends ENO<EVJ> {
         this.setCancelDisable(true);
     }
 
-    private EVE HYT(EDF<HY> var1) {
+    private EVE HYT(EDF<BaseInvoiceSell> var1) {
 
         EVE var3;
-        if (var1.getState().equals(QSW.CANCELED)) {
+        if (var1.getState().equals(InvoiceState.CANCELED)) {
             EVE var10 = new EVE(false, null);
             return var10;
         }
@@ -1093,7 +1092,7 @@ public class EVD extends ENO<EVJ> {
         return var3;
     }
 
-    private EVE RKX(EDF<HY> var1) {
+    private EVE RKX(EDF<BaseInvoiceSell> var1) {
 
         EVE var3;
         boolean var2 = false;
@@ -1112,7 +1111,7 @@ public class EVD extends ENO<EVJ> {
             return var3;
         }
 
-        if (!var1.getState().equals(QSW.CANCELED)) {
+        if (!var1.getState().equals(InvoiceState.CANCELED)) {
             if (var1.getChildWrapperOnlyActiveState() != null) {
                 var3 = new EVE(false, this.resources.getString("micro.process.invoice_sale_list.error.CantCancelInvoiceWithChildren"));
                 return var3;
@@ -1127,10 +1126,10 @@ public class EVD extends ENO<EVJ> {
         return var3;
     }
 
-    private EVE HYU(EDF<HY> var1) {
+    private EVE HYU(EDF<BaseInvoiceSell> var1) {
 
         EVE var2;
-        if (!var1.getState().equals(QSW.CANCELED) || !EOZ.HOD(var1) || var1.getParentWrapperOnlyActiveState() != null) {
+        if (!var1.getState().equals(InvoiceState.CANCELED) || !EOZ.HOD(var1) || var1.getParentWrapperOnlyActiveState() != null) {
             var2 = new EVE(true, null);
             return var2;
         }
@@ -1140,10 +1139,10 @@ public class EVD extends ENO<EVJ> {
         return var2;
     }
 
-    private EVE HYV(EDF<HY> var1) {
+    private EVE HYV(EDF<BaseInvoiceSell> var1) {
 
         EVE var2;
-        if (!var1.getState().equals(QSW.CANCELED)) {
+        if (!var1.getState().equals(InvoiceState.CANCELED)) {
             if (EOZ.HOD(var1)) {
                 var2 = new EVE(false, null);
                 return var2;
@@ -1158,10 +1157,10 @@ public class EVD extends ENO<EVJ> {
         return var2;
     }
 
-    private EVE HYW(EDF<HY> var1) {
+    private EVE HYW(EDF<BaseInvoiceSell> var1) {
 
         EVE var2;
-        if (var1.getState().equals(QSW.CANCELED)) {
+        if (var1.getState().equals(InvoiceState.CANCELED)) {
             var2 = new EVE(false, null);
             return var2;
         }
@@ -1176,7 +1175,7 @@ public class EVD extends ENO<EVJ> {
         return var2;
     }
 
-    private EVE HYX(EDF<HY> var1) {
+    private EVE HYX(EDF<BaseInvoiceSell> var1) {
 
         EVE var2;
         var2 = new EVE(true, null);
@@ -1184,7 +1183,7 @@ public class EVD extends ENO<EVJ> {
         return var2;
     }
 
-    public boolean HYY(EDF<HY> var1) throws FFK, FFO {
+    public boolean HYY(EDF<BaseInvoiceSell> var1) throws FFK, FFO {
 
         boolean var3;
         boolean var2 = this.HYZ(var1.getPeriod());
@@ -1201,8 +1200,8 @@ public class EVD extends ENO<EVJ> {
             throw FCZ.getInstance().IHJ();
         }
 
-        JG var3 = var2.getSettlementStatus(var1);
-        if (var3 != JG.SETTLED) {
+        SettlementStatus var3 = var2.getSettlementStatus(var1);
+        if (var3 != SettlementStatus.SETTLED) {
             var4 = false;
             return var4;
         }
@@ -1220,8 +1219,8 @@ public class EVD extends ENO<EVJ> {
             throw FCZ.getInstance().IHJ();
         }
 
-        JG var3 = var2.getSettlementStatus(var1);
-        if (var3 != JG.SETTLED) {
+        SettlementStatus var3 = var2.getSettlementStatus(var1);
+        if (var3 != SettlementStatus.SETTLED) {
             var4 = false;
             return var4;
         }
@@ -1415,7 +1414,7 @@ public class EVD extends ENO<EVJ> {
         }
     }
 
-    private class QHB implements ChangeListener<KH> {
+    private class QHB implements ChangeListener<MonthType> {
         protected boolean QIG;
 
         private QHB() {
@@ -1433,7 +1432,7 @@ public class EVD extends ENO<EVJ> {
             return this.QIG;
         }
 
-        public void changed(ObservableValue<? extends KH> var1, KH var2, KH var3) {
+        public void changed(ObservableValue<? extends MonthType> var1, MonthType var2, MonthType var3) {
 
             if (var3 != null && !this.QIG) {
                 EVD.this.getInvoicesByPeriod();

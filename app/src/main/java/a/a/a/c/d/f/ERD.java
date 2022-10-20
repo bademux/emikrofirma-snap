@@ -1,7 +1,7 @@
 package a.a.a.c.d.f;
 
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.b.c.JR;
+import a.a.a.c.f.b.c.Amount;
 
 import java.math.BigDecimal;
 
@@ -9,7 +9,7 @@ public class ERD {
     public ERD() {
     }
 
-    public static ValueContainer2<JR, JR> HRV(ValueContainer2<JR, JR> var0, ValueContainer2<JR, JR> var1) {
+    public static ValueContainer2<Amount, Amount> HRV(ValueContainer2<Amount, Amount> var0, ValueContainer2<Amount, Amount> var1) {
         BigDecimal var2 = BigDecimal.ZERO;
         BigDecimal var3 = BigDecimal.ZERO;
         BigDecimal var4 = BigDecimal.ZERO;
@@ -34,6 +34,6 @@ public class ERD {
             }
         }
 
-        return new ValueContainer2(new JR(var2.add(var4)), new JR(var3.add(var5)));
+        return new ValueContainer2(new Amount(var2.add(var4)), new Amount(var3.add(var5)));
     }
 }

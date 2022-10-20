@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import a.a.a.c.f.a.c.a.f.VariableDateTime;
@@ -46,7 +46,7 @@ public class ConditionOnFieldAndVariableOffsetDateTimeLong extends ConditionOnFi
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         ValueContainer2 var10;
         try {
@@ -113,13 +113,13 @@ public class ConditionOnFieldAndVariableOffsetDateTimeLong extends ConditionOnFi
 
             if (!var9) {
                 var10 = null;
-                AHCI var25;
+                ActionResult var25;
                 switch (this.AHTY) {
                     case WARNING:
-                        var25 = AHCI.WARNING;
+                        var25 = ActionResult.WARNING;
                         break;
                     case ERROR:
-                        var25 = AHCI.ERROR;
+                        var25 = ActionResult.ERROR;
                         break;
                     default:
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");
@@ -129,7 +129,7 @@ public class ConditionOnFieldAndVariableOffsetDateTimeLong extends ConditionOnFi
                 return var11;
             }
 
-            var10 = new ValueContainer2(AHCI.SUCCESS, null);
+            var10 = new ValueContainer2(ActionResult.SUCCESS, null);
         } catch (DatatypeConfigurationException | ParseException var23) {
             log.error("Something bad happened", var23);
             throw new FFI(var23);

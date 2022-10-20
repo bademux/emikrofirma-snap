@@ -11,7 +11,7 @@ import a.a.a.c.c.e.f.c.ETM;
 import a.a.a.c.f.a.a.EYX;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.InvoiceRecordElement;
-import a.a.a.c.f.a.e.a.IH;
+import a.a.a.c.f.a.e.a.InvoiceRecordType;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.g.a.FCT;
@@ -177,7 +177,7 @@ public class ETJ extends ENJ<ETM> {
 
                 while (var2.hasNext()) {
                     InvoiceRecord var3 = (InvoiceRecord) var2.next();
-                    if (IH.SELL.equals(var3.getInvoiceRecordType())) {
+                    if (InvoiceRecordType.SELL.equals(var3.getInvoiceRecordType())) {
                         this.GHC = var3;
                     } else {
                         this.GHD = var3;

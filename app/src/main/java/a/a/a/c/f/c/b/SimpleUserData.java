@@ -1,9 +1,9 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.f.b.c.JS;
-import a.a.a.c.f.b.c.JT;
+import a.a.a.c.f.b.c.PrivtePerson;
+import a.a.a.c.f.b.c.Bytes;
 import a.a.a.c.f.b.c.JZ;
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.b.c.Text;
 import a.a.a.c.f.c.LW;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -14,18 +14,18 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SimpleUserData extends LW {
-    private KO AQK;
+    private Text AQK;
     private JZ AQL;
-    private JS AQM;
-    private JT AQN;
-    private JT AQO;
+    private PrivtePerson AQM;
+    private Bytes AQN;
+    private Bytes AQO;
     private Integer FGC;
 
     public SimpleUserData() {
 
     }
 
-    public SimpleUserData(KO var1, JZ var2, JS var3, JT var4, JT var5, Boolean var6) {
+    public SimpleUserData(Text var1, JZ var2, PrivtePerson var3, Bytes var4, Bytes var5, Boolean var6) {
         this();
 
         this.AQK = var1;
@@ -37,19 +37,19 @@ public class SimpleUserData extends LW {
 
     }
 
-    public KO getUsername() {
+    public Text getUsername() {
         return this.AQK;
     }
 
-    public KO DEZ() {
+    public Text DEZ() {
         if (this.AQK == null) {
-            this.AQK = new KO();
+            this.AQK = new Text();
         }
 
         return this.AQK;
     }
 
-    public void setUsername(KO var1) {
+    public void setUsername(Text var1) {
         this.AQK = var1;
     }
 
@@ -69,51 +69,51 @@ public class SimpleUserData extends LW {
         this.AQL = var1;
     }
 
-    public JS getUsePassword() {
+    public PrivtePerson getUsePassword() {
         return this.AQM;
     }
 
-    public JS DFB() {
+    public PrivtePerson DFB() {
         if (this.AQM == null) {
-            this.AQM = new JS();
+            this.AQM = new PrivtePerson();
         }
 
         return this.AQM;
     }
 
-    public void setUsePassword(JS var1) {
+    public void setUsePassword(PrivtePerson var1) {
         this.AQM = var1;
     }
 
-    public JT getPassword() {
+    public Bytes getPassword() {
         return this.AQO;
     }
 
-    public JT DFC() {
+    public Bytes DFC() {
         if (this.AQO == null) {
-            this.AQO = new JT();
+            this.AQO = new Bytes();
         }
 
         return this.AQO;
     }
 
-    public void setPassword(JT var1) {
+    public void setPassword(Bytes var1) {
         this.AQO = var1;
     }
 
-    public JT getSalt() {
+    public Bytes getSalt() {
         return this.AQN;
     }
 
-    public JT DFD() {
+    public Bytes DFD() {
         if (this.AQN == null) {
-            this.AQN = new JT();
+            this.AQN = new Bytes();
         }
 
         return this.AQN;
     }
 
-    public void setSalt(JT var1) {
+    public void setSalt(Bytes var1) {
         this.AQN = var1;
     }
 

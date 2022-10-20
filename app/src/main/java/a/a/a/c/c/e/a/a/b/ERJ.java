@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.a.a.b;
 
-import a.a.a.c.c.e.a.a.c.ERP;
+import a.a.a.c.c.e.a.a.c.ElementType;
 import a.a.a.c.c.e.a.a.c.ERR;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -14,10 +14,10 @@ import javafx.scene.paint.Color;
 
 public class ERJ implements EventHandler<MouseEvent> {
     private final ERR FZP;
-    private final ERP FZQ;
+    private final ElementType FZQ;
     private final TransferMode FZR;
 
-    public ERJ(ERR var1, ERP var2, TransferMode var3) {
+    public ERJ(ERR var1, ElementType var2, TransferMode var3) {
         this.FZP = var1;
         this.FZQ = var2;
         this.FZR = var3;

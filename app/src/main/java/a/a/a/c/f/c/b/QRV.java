@@ -1,9 +1,9 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.c.ComboBoxRequiredText;
 
-public class QRV<_A extends QST, _B extends ComboBoxRequiredText<_A>> extends FAE<_A, _B> {
+public class QRV<_A extends ObjectWithTitle, _B extends ComboBoxRequiredText<_A>> extends FAE<_A, _B> {
     private int QVQ;
 
     public QRV(_B var1) {

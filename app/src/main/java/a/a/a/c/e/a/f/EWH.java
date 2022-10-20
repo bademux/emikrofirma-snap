@@ -55,14 +55,14 @@ public class EWH extends EWM {
     public static <_PAYLOAD_TYPE, _RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAX(HttpSenderRequest<_PAYLOAD_TYPE> var0, EWX var1, EWX var2, EWG<_RESULT_TYPE> var3) throws Exception {
 
         HttpSenderResult var14;
-        EWP var4 = var0.getMethod();
-        EWS var5 = var0.getProtocol();
+        HttpMethod var4 = var0.getMethod();
+        Schema var5 = var0.getProtocol();
         String var6 = var0.getHost();
         int var7 = var0.getPort();
         String var8 = var0.getFile();
         LinkedHashMap var9 = new LinkedHashMap();
         var9.putAll(var0.getHeaderFields());
-        EWQ var10 = var0.getContentType();
+        Mime var10 = var0.getContentType();
         InputStream var11 = var0.getPayloadStream();
         long var12 = var0.getPayloadSize();
         var14 = IAZ(var4, var5, var6, var7, var8, var9, var10, var11, var12, var1, var2, var3);
@@ -70,7 +70,7 @@ public class EWH extends EWM {
         return var14;
     }
 
-    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAY(EWP var0, EWS var1, String var2, int var3, String var4, Map<String, String> var5, EWQ var6, InputStream var7, long var8, EWX var10, EWG<_RESULT_TYPE> var11) throws Exception {
+    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAY(HttpMethod var0, Schema var1, String var2, int var3, String var4, Map<String, String> var5, Mime var6, InputStream var7, long var8, EWX var10, EWG<_RESULT_TYPE> var11) throws Exception {
 
         HttpSenderResult var12;
         var12 = IAZ(var0, var1, var2, var3, var4, var5, var6, var7, var8, var10, var10, var11);
@@ -78,7 +78,7 @@ public class EWH extends EWM {
         return var12;
     }
 
-    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAZ(EWP var0, EWS var1, String var2, int var3, String var4, Map<String, String> var5, EWQ var6, InputStream var7, long var8, EWX var10, EWX var11, EWG<_RESULT_TYPE> var12) throws Exception {
+    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> IAZ(HttpMethod var0, Schema var1, String var2, int var3, String var4, Map<String, String> var5, Mime var6, InputStream var7, long var8, EWX var10, EWX var11, EWG<_RESULT_TYPE> var12) throws Exception {
 
         HttpSenderResult var52;
         LinkedHashMap var13 = new LinkedHashMap();
@@ -252,10 +252,10 @@ public class EWH extends EWM {
         return var52;
     }
 
-    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> MXE(EWP var0, EWS var1, String var2, int var3, String var4, String var5, List<ValueContainer3<String, InputStream, Long>> var6, EWX var7, EWX var8, EWG<_RESULT_TYPE> var9, X509Certificate var10) throws Exception {
+    public static <_RESULT_TYPE> HttpSenderResult<_RESULT_TYPE> MXE(HttpMethod var0, Schema var1, String var2, int var3, String var4, String var5, List<ValueContainer3<String, InputStream, Long>> var6, EWX var7, EWX var8, EWG<_RESULT_TYPE> var9, X509Certificate var10) throws Exception {
 
         LinkedHashMap var11 = new LinkedHashMap();
-        var11.put("Content-Type", EWQ.MULTIPART_RELATED.getMimeType() + "; boundary=" + var5);
+        var11.put("Content-Type", Mime.MULTIPART_RELATED.getMimeType() + "; boundary=" + var5);
         var11.put("Host", var2);
         ByteArrayOutputStream var12 = new ByteArrayOutputStream();
         Long var13 = 0L;
@@ -269,7 +269,7 @@ public class EWH extends EWM {
             Long var17 = (Long) var15.getThirdValue();
             var13 = var13 + var17;
             var12.write(("--" + var5 + "\r\n").getBytes(StandardCharsets.UTF_8));
-            var12.write(("Content-Type: " + EWQ.TEXT_XML.getMimeType() + "\r\n").getBytes(StandardCharsets.UTF_8));
+            var12.write(("Content-Type: " + Mime.TEXT_XML.getMimeType() + "\r\n").getBytes(StandardCharsets.UTF_8));
             var12.write(("Content-ID: " + var16 + "\r\n").getBytes(StandardCharsets.UTF_8));
             var12.write("\r\n".getBytes(StandardCharsets.UTF_8));
             var12.write("\r\n".getBytes(StandardCharsets.UTF_8));
@@ -423,7 +423,7 @@ public class EWH extends EWM {
                     var51 = (InputStream) var46.getSecondValue();
                     Long var53 = (Long) var46.getThirdValue();
                     var37.write(("--" + var5 + "\r\n").getBytes(StandardCharsets.UTF_8));
-                    var37.write(("Content-Type: " + EWQ.TEXT_XML.getMimeType() + "\r\n").getBytes(StandardCharsets.UTF_8));
+                    var37.write(("Content-Type: " + Mime.TEXT_XML.getMimeType() + "\r\n").getBytes(StandardCharsets.UTF_8));
                     var37.write(("Content-ID: " + var22 + "\r\n").getBytes(StandardCharsets.UTF_8));
                     var37.write("\r\n".getBytes(StandardCharsets.UTF_8));
                     if (var51 != null && var53 > 0L) {

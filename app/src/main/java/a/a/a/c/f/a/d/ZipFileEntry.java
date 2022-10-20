@@ -11,12 +11,12 @@ public class ZipFileEntry {
     protected String AHTJ;
     protected transient File AHTK;
     protected String AHTL;
-    protected AGWY AHTM;
+    protected FinishUploadResponseStatus AHTM;
 
     public ZipFileEntry() {
     }
 
-    public ZipFileEntry(File var1, File var2, AGWY var3, String var4) {
+    public ZipFileEntry(File var1, File var2, FinishUploadResponseStatus var3, String var4) {
         this.AHTI = var1;
         if (this.AHTI != null) {
             this.AHTJ = this.AHTI.getName();
@@ -70,11 +70,11 @@ public class ZipFileEntry {
         this.AHTL = var1;
     }
 
-    public AGWY getFileUploadResponseStatus() {
+    public FinishUploadResponseStatus getFileUploadResponseStatus() {
         return this.AHTM;
     }
 
-    public void setFileUploadResponseStatus(AGWY var1) {
+    public void setFileUploadResponseStatus(FinishUploadResponseStatus var1) {
         this.AHTM = var1;
     }
 

@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.n;
 
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.b.c.JV;
+import a.a.a.c.f.b.c.InvoicingDate;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -15,10 +15,10 @@ import javafx.collections.ObservableList;
         name = "invoiceOtherPurchase"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class InvoiceOtherPurchase extends QSM {
+public class InvoiceOtherPurchase extends BaseInvoicePurchase {
     private Contractor QYD;
-    private JV QYE;
-    private JV QYF;
+    private InvoicingDate QYE;
+    private InvoicingDate QYF;
     @XmlTransient
     private final ObjectProperty<ObservableList<InvoiceOtherElementPurchase>> QYG = new QSL(this);
 
@@ -42,35 +42,35 @@ public class InvoiceOtherPurchase extends QSM {
         this.QYD = var1;
     }
 
-    public JV getReceiveDate() {
+    public InvoicingDate getReceiveDate() {
         return this.QYE;
     }
 
-    public JV RJN() {
+    public InvoicingDate RJN() {
         if (this.QYE == null) {
-            this.QYE = new JV();
+            this.QYE = new InvoicingDate();
         }
 
         return this.QYE;
     }
 
-    public void setReceiveDate(JV var1) {
+    public void setReceiveDate(InvoicingDate var1) {
         this.QYE = var1;
     }
 
-    public JV getInvoicingDate() {
+    public InvoicingDate getInvoicingDate() {
         return this.QYF;
     }
 
-    public JV RJO() {
+    public InvoicingDate RJO() {
         if (this.QYF == null) {
-            this.QYF = new JV();
+            this.QYF = new InvoicingDate();
         }
 
         return this.QYF;
     }
 
-    public void setInvoicingDate(JV var1) {
+    public void setInvoicingDate(InvoicingDate var1) {
         this.QYF = var1;
     }
 

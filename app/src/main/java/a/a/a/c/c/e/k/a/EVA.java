@@ -5,10 +5,10 @@ import a.a.a.c.d.e.EQY;
 import a.a.a.c.f.a.a.EZI;
 import a.a.a.c.f.a.a.EZP;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
-import a.a.a.c.f.a.f.a.IP;
-import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.KQ;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.a.f.a.RecordElementVat;
+import a.a.a.c.f.b.c.Amount;
+import a.a.a.c.f.b.c.TaxRateModel;
+import a.a.a.c.f.b.c.a.TaxRate;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -20,13 +20,13 @@ public class EVA {
     @FXML
     private EZI fxml_item_netController;
     @FXML
-    public EZP<KL> fxml_item_tax_rateController;
+    public EZP<TaxRate> fxml_item_tax_rateController;
     @FXML
     private Button fxml_button_save;
     @FXML
     private Button fxml_button_cancel;
     private Stage stage;
-    private IP GNL;
+    private RecordElementVat GNL;
     private boolean GNM = false;
 
     public EVA() {
@@ -47,9 +47,9 @@ public class EVA {
     @FXML
     private void fxml_handleButton_save(ActionEvent var1) {
 
-        this.GNL.setTaxRate(new KQ((KL) ((ComboBoxRequired) this.fxml_item_tax_rateController.fxml_component_main_element).getValue()));
-        this.GNL.setNet(new JR(this.fxml_item_netController.fxml_component_main_element.getNumber()));
-        this.GNL.setVat(new JR(EQY.getTaxValue(this.GNL.getNet().getValue(), this.GNL.getTaxRate().getValue())));
+        this.GNL.setTaxRate(new TaxRateModel((TaxRate) ((ComboBoxRequired) this.fxml_item_tax_rateController.fxml_component_main_element).getValue()));
+        this.GNL.setNet(new Amount(this.fxml_item_netController.fxml_component_main_element.getNumber()));
+        this.GNL.setVat(new Amount(EQY.getTaxValue(this.GNL.getNet().getValue(), this.GNL.getTaxRate().getValue())));
         this.GNM = true;
         this.stage.close();
 
@@ -63,11 +63,11 @@ public class EVA {
 
     }
 
-    public IP getCashRegisterItem() {
+    public RecordElementVat getCashRegisterItem() {
         return this.GNL;
     }
 
-    public void setRecordElementVat(IP var1) {
+    public void setRecordElementVat(RecordElementVat var1) {
         this.GNL = var1;
     }
 

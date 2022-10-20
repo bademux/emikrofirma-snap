@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.i.a.EUA;
 import a.a.a.c.c.e.i.d.EUF;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EUD extends ProcessDefinitionBase {
-    public static final EOS GKG;
+    public static final Stage GKG;
     public static final String GKH = "declarationList_selectAndSend_JPK.fxml";
     public static final String GKI = "declarationList_jpkConvertCSV2XML.fxml";
     public static final String QMQ = "declarationList_dialog_generate_jpk_fa_options.fxml";
@@ -27,7 +27,7 @@ public class EUD extends ProcessDefinitionBase {
         return GKG.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
+    public String getTitle(Anchor var1) throws FFK {
         switch (var1) {
             case MAIN:
                 return FCW.getInstance().getMessageForKey("micro.process.jpk_list.title");
@@ -52,16 +52,16 @@ public class EUD extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.DECLARATIONJPK));
-        var1.add(new LN(LN.LO.DECLARATION));
-        var1.add(new LN(LN.LO.CONFIGURATION_PROPERTIES));
-        var1.add(new LN(LN.LO.USER_DATA));
-        var1.add(new LN(LN.LO.CONTRACTOR));
-        var1.add(new LN(LN.LO.INVOICE_SELL_TYPE));
+        var1.add(new LN(LN.StageType.DECLARATIONJPK));
+        var1.add(new LN(LN.StageType.DECLARATION));
+        var1.add(new LN(LN.StageType.CONFIGURATION_PROPERTIES));
+        var1.add(new LN(LN.StageType.USER_DATA));
+        var1.add(new LN(LN.StageType.CONTRACTOR));
+        var1.add(new LN(LN.StageType.INVOICE_SELL_TYPE));
         return var1;
     }
 
     static {
-        GKG = EOS.DECLARATION_LIST;
+        GKG = Stage.DECLARATION_LIST;
     }
 }

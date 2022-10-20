@@ -3,8 +3,8 @@ package a.a.a.c.f.a.c.a.c;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.e.a.d.ValueContainer1;
-import a.a.a.c.f.a.c.a.AHCF;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.BaseRule;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.AHDI;
 import a.a.a.c.f.a.c.a.a.ConditionOnFieldsAndCustomAction;
 import a.a.a.c.f.a.c.a.d.BaseOperationAbstract;
@@ -18,7 +18,7 @@ import java.util.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ParentField extends AHDI {
-    private transient AHCI AHVY;
+    private transient ActionResult AHVY;
     private transient Long AHVZ;
     @XmlAttribute(
             name = "fieldType"
@@ -37,11 +37,11 @@ public class ParentField extends AHDI {
             name = "ruleOnFields",
             type = RuleOnFields.class
     )})
-    protected final List<AHCF> AHWD;
+    protected final List<BaseRule> AHWD;
 
     private ParentField() {
 
-        this.AHVY = AHCI.SUCCESS;
+        this.AHVY = ActionResult.SUCCESS;
         this.AHVZ = 0L;
         this.AHWA = null;
         this.AHWB = new HashSet();
@@ -55,9 +55,9 @@ public class ParentField extends AHDI {
 
     }
 
-    public ParentField(FieldType var1, Set<Field> var2, List<BaseOperationAbstract> var3, List<AHCF> var4) {
+    public ParentField(FieldType var1, Set<Field> var2, List<BaseOperationAbstract> var3, List<BaseRule> var4) {
 
-        this.AHVY = AHCI.SUCCESS;
+        this.AHVY = ActionResult.SUCCESS;
         this.AHVZ = 0L;
         this.AHWA = var1;
         this.AHWB = var2;
@@ -66,7 +66,7 @@ public class ParentField extends AHDI {
 
     }
 
-    public AHCI getGeneralResult() {
+    public ActionResult getGeneralResult() {
         return this.AHVY;
     }
 
@@ -86,7 +86,7 @@ public class ParentField extends AHDI {
         return this.AHWC;
     }
 
-    public List<AHCF> getRules() {
+    public List<BaseRule> getRules() {
         return this.AHWD;
     }
 
@@ -115,17 +115,17 @@ public class ParentField extends AHDI {
             var5 = this.AHWD.iterator();
 
             while (var5.hasNext()) {
-                AHCF var14 = (AHCF) var5.next();
+                BaseRule var14 = (BaseRule) var5.next();
                 org.slf4j.LoggerFactory.getLogger(getClass()).debug("rule " + var14);
                 ValueContainer2 var7 = var14.AICY(var4);
-                switch ((AHCI) var7.getFirstValue()) {
+                switch ((ActionResult) var7.getFirstValue()) {
                     case SUCCESS:
                         break;
                     case WARNING:
                     case ERROR:
-                        this.AHVY = this.AIDM(this.AHVY, (AHCI) var7.getFirstValue());
+                        this.AHVY = this.AIDM(this.AHVY, (ActionResult) var7.getFirstValue());
                         var2.setFirstValue(var2.getFirstValue() + 1);
-                        String var8 = this.getFieldType() + var3 + this.AHVZ + var3 + var7.getFirstValue() + var3 + ((AHCI) var7.getFirstValue()).getDescription() + var3 + var7.getSecondValue() + System.lineSeparator();
+                        String var8 = this.getFieldType() + var3 + this.AHVZ + var3 + var7.getFirstValue() + var3 + ((ActionResult) var7.getFirstValue()).getDescription() + var3 + var7.getSecondValue() + System.lineSeparator();
                         org.slf4j.LoggerFactory.getLogger(getClass()).info(var8);
                         var1.write(var8.getBytes(StandardCharsets.UTF_8));
                         var1.flush();
@@ -151,7 +151,7 @@ public class ParentField extends AHDI {
 
     }
 
-    private AHCI AIDM(AHCI var1, AHCI var2) {
+    private ActionResult AIDM(ActionResult var1, ActionResult var2) {
         boolean var3 = true;
         int var4;
         if (var1.getLevel() >= var2.getLevel()) {
@@ -160,7 +160,7 @@ public class ParentField extends AHDI {
             var4 = var2.getLevel();
         }
 
-        return AHCI.getByLevel(var4);
+        return ActionResult.getByLevel(var4);
     }
 
     public int hashCode() {

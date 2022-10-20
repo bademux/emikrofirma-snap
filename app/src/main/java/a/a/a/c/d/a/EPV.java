@@ -2,7 +2,7 @@ package a.a.a.c.d.a;
 
 import a.a.a.c.d.a.a.EPP;
 import a.a.a.c.e.a.d.ValueContainer1;
-import a.a.a.c.f.a.c.AHEQ;
+import a.a.a.c.f.a.c.XmlSchemaNamespace;
 import a.a.a.c.f.a.c.a.ConfigurationPackage;
 import a.a.a.c.f.a.c.a.MainConfiguration;
 import a.a.a.c.f.a.c.a.c.*;
@@ -20,7 +20,7 @@ public class EPV extends DefaultHandler {
     final ValueContainer1<Integer> FUN;
     private final String FUO;
     private final MainConfiguration FUP;
-    private final Stack<Map<String, AHEQ>> FUQ;
+    private final Stack<Map<String, XmlSchemaNamespace>> FUQ;
     private final Stack<DeclaredFieldElementNS> FUR;
     private final Stack<ParentField> FUS;
     private DeclaredFieldElementNS FUT = null;
@@ -52,8 +52,8 @@ public class EPV extends DefaultHandler {
         HashMap var5 = new HashMap();
 
         for (int var6 = 0; var6 < var4.getLength(); ++var6) {
-            if (AHEQ.AIDW(var4.getValue(var6))) {
-                var5.put(var4.getQName(var6).replaceFirst("xmlns", "").replaceFirst(":", ""), AHEQ.getByValue(var4.getValue(var6)));
+            if (XmlSchemaNamespace.AIDW(var4.getValue(var6))) {
+                var5.put(var4.getQName(var6).replaceFirst("xmlns", "").replaceFirst(":", ""), XmlSchemaNamespace.getByValue(var4.getValue(var6)));
             }
         }
 
@@ -68,7 +68,7 @@ public class EPV extends DefaultHandler {
             var7 = var3;
         }
 
-        AHEQ var9 = this.HOV(var8);
+        XmlSchemaNamespace var9 = this.HOV(var8);
         ArrayList var10 = new ArrayList();
 
         for (int var11 = 0; var11 < var4.getLength(); ++var11) {
@@ -84,7 +84,7 @@ public class EPV extends DefaultHandler {
                     var13 = var12;
                 }
 
-                AHDP var15 = new AHDP(this.HOV(var14), var13, var4.getValue(var11));
+                DeclaredAtributeElementNS var15 = new DeclaredAtributeElementNS(this.HOV(var14), var13, var4.getValue(var11));
                 var10.add(var15);
             }
         }
@@ -213,12 +213,12 @@ public class EPV extends DefaultHandler {
         }
 
         if (var3.length > var5 + 1) {
-            if (var3.length == var5 + 2 && var3[var5 + 1] instanceof AHDP) {
+            if (var3.length == var5 + 2 && var3[var5 + 1] instanceof DeclaredAtributeElementNS) {
                 var12 = false;
                 Iterator var7 = this.FUT.getAttributes().iterator();
 
                 while (var7.hasNext()) {
-                    AHDP var8 = (AHDP) var7.next();
+                    DeclaredAtributeElementNS var8 = (DeclaredAtributeElementNS) var7.next();
                     if (var8.equals(var3[var5 + 1])) {
                         var12 = true;
                         break;
@@ -239,7 +239,7 @@ public class EPV extends DefaultHandler {
         return var12;
     }
 
-    private AHEQ HOV(String var1) {
+    private XmlSchemaNamespace HOV(String var1) {
 
         log.debug("namespacePrefix" + var1);
 
@@ -254,7 +254,7 @@ public class EPV extends DefaultHandler {
             var3 = (Map) var2.next();
         } while (!var3.containsKey(var1));
 
-        AHEQ var4 = (AHEQ) var3.get(var1);
+        XmlSchemaNamespace var4 = (XmlSchemaNamespace) var3.get(var1);
         return var4;
     }
 }

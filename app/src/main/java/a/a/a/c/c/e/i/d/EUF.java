@@ -12,16 +12,15 @@ import a.a.a.c.d.b.EQB;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.d.*;
-import a.a.a.c.f.a.g.AGYN;
-import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.g.JB;
+import a.a.a.c.f.a.g.ContractorModelCriteria;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
+import a.a.a.c.f.a.g.ModelTechnicalElementCriteria;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.PropertyBoolean;
 import a.a.a.c.f.c.a.ConfigurationProperties;
-import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -44,17 +43,17 @@ public class EUF extends ELW {
 
         try {
             if (this.GKK == null) {
-                JB var1 = new JB(ConfigurationProperties.class);
+                ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(ConfigurationProperties.class);
                 this.GKK = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.GKK.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
-                    if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
+                    a.a.a.c.f.c.a.ConfigurationProperty var3 = (a.a.a.c.f.c.a.ConfigurationProperty) var2.next();
+                    if (ConfigurationProperty.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GKL = (PropertyString) var3;
-                    } else if (FCQ.Pkcs11LibraryFile.getPropertyName().equals(var3.DEX().getValue())) {
+                    } else if (ConfigurationProperty.Pkcs11LibraryFile.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GKM = (PropertyString) var3;
-                    } else if (FCQ.PerformVerification.getPropertyName().equals(var3.DEX().getValue())) {
+                    } else if (ConfigurationProperty.PerformVerification.getPropertyName().equals(var3.DEX().getValue())) {
                         this.MWO = (PropertyBoolean) var3;
                     }
                 }
@@ -82,7 +81,7 @@ public class EUF extends ELW {
 
         ArrayList var11;
         try {
-            IY var1 = new IY(DeclarationJPK.class, null, HM.JPK, null, OrderType.DESC);
+            ModelBusinessPeriodElementTypedCriteria var1 = new ModelBusinessPeriodElementTypedCriteria(DeclarationJPK.class, null, DeclarationType.JPK, null, OrderType.DESC);
             ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             ArrayList var3 = new ArrayList();
             if (var2 != null) {
@@ -131,7 +130,7 @@ public class EUF extends ELW {
         return this.MWO != null && this.MWO.getValue() != null ? this.MWO.getValue().getValue() : true;
     }
 
-    public File getDeclarationTmpFile(Stage var1, HM var2, AGWW var3, String var4) throws FFK {
+    public File getDeclarationTmpFile(Stage var1, DeclarationType var2, DeclarationSubtype var3, String var4) throws FFK {
 
         File var7;
         File var5 = this.getWorkingDir(var1);
@@ -141,7 +140,7 @@ public class EUF extends ELW {
         return var7;
     }
 
-    public Integer HXA(Period var1, HM var2, AGWW var3) {
+    public Integer HXA(Period var1, DeclarationType var2, DeclarationSubtype var3) {
 
         Object var5;
         try {
@@ -193,7 +192,7 @@ public class EUF extends ELW {
 
         UserData var3;
         try {
-            JB var1 = new JB(UserData.class);
+            ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(UserData.class);
             UserData var2 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
             var3 = var2;
         } catch (FFK var7) {
@@ -207,7 +206,7 @@ public class EUF extends ELW {
 
         ValueContainer2 var3;
         try {
-            AGYN var2 = new AGYN(Contractor.class, var1);
+            ContractorModelCriteria var2 = new ContractorModelCriteria(Contractor.class, var1);
             var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
             Contractor var4;
             if (((List) var3.getSecondValue()).size() > 0) {

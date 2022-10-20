@@ -3,7 +3,7 @@ package a.a.a.c.c.e.j.a.a;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.j.a.EUT;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.h.SettlementStatus;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
@@ -35,8 +35,8 @@ public class EUR implements ChangeListener<LocalDate> {
             boolean var4 = false;
 
             try {
-                JG var5 = this.GLH.GLL.getSettlementStatus(var3);
-                if (var5 == JG.SETTLED) {
+                SettlementStatus var5 = this.GLH.GLL.getSettlementStatus(var3);
+                if (var5 == SettlementStatus.SETTLED) {
                     var4 = true;
                 }
             } catch (FFO | FFK var9) {

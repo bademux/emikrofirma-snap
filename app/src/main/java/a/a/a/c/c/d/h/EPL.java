@@ -32,9 +32,9 @@ public abstract class EPL extends EPF {
         long var2 = var1.longValue();
         short var4 = var1.remainder(BigDecimal.ONE).movePointRight(var1.scale()).abs().toBigInteger().shortValue();
         String var5 = this.HON(var2);
-        var5 = var5 + this.getEnding(EPK.ZLOTY, var2) + ", ";
+        var5 = var5 + this.getEnding(AmountType.ZLOTY, var2) + ", ";
         var5 = var5 + this.HON(var4);
-        var5 = var5 + this.getEnding(EPK.GROSZ, var4);
+        var5 = var5 + this.getEnding(AmountType.GROSZ, var4);
         return var5;
     }
 
@@ -161,7 +161,7 @@ public abstract class EPL extends EPF {
         return "";
     }
 
-    public String getEnding(EPK var1, long var2) {
+    public String getEnding(AmountType var1, long var2) {
         if (var2 < 0L) {
             var2 = -var2;
         }

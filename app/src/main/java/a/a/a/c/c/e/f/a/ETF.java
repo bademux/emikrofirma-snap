@@ -8,8 +8,8 @@ import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.InvoiceRecordElement;
 import a.a.a.c.f.a.e.a.InvoiceRecordElementPurchase;
-import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.c.JR;
+import a.a.a.c.f.b.a.Address;
+import a.a.a.c.f.b.c.Amount;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -39,18 +39,18 @@ class ETF {
     private TableColumn<InvoiceRecordElement, ?> GGI;
     private TableColumn<InvoiceRecordElement, ?> GGJ;
     private TableColumn<InvoiceRecordElement, ?> GGK;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGL;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGM;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGN;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> QMR;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGO;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGP;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGQ;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGR;
-    private TableColumn<InvoiceRecordElement, ValueContainer2<JR, JR>> GGS;
-    private TableColumn<InvoiceRecordElement, JR> GGT;
-    private TableColumn<InvoiceRecordElement, JR> GGU;
-    private TableColumn<InvoiceRecordElement, JR> GGV;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> GGL;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> GGM;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> GGN;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> QMR;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> GGO;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> GGP;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> GGQ;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> GGR;
+    private TableColumn<InvoiceRecordElement, ValueContainer2<Amount, Amount>> GGS;
+    private TableColumn<InvoiceRecordElement, Amount> GGT;
+    private TableColumn<InvoiceRecordElement, Amount> GGU;
+    private TableColumn<InvoiceRecordElement, Amount> GGV;
     private final Boolean GGW;
     private final TableView<InvoiceRecord> GGX;
 
@@ -260,7 +260,7 @@ class ETF {
         this.GGH.setCellFactory(new ETG<InvoiceRecordElement, Contractor>() {
             String getFirstValue(Contractor var1) {
                 StringBuilder var2 = new StringBuilder();
-                JJ var3 = var1.getAddress();
+                Address var3 = var1.getAddress();
                 if (var3 != null) {
                     var2.append(Optional.ofNullable(var3.getStreet().getValue()).orElse(""));
                     var2.append(" ");
@@ -279,7 +279,7 @@ class ETF {
 
             String getSecondValue(Contractor var1) {
                 StringBuilder var2 = new StringBuilder();
-                JJ var3 = var1.getAddress();
+                Address var3 = var1.getAddress();
                 if (var3 != null) {
                     if (var3.getPostalCode() != null && var3.getPostalCode().getValue() != null) {
                         var2.append(var3.getPostalCode().getValue());
@@ -393,12 +393,12 @@ class ETF {
         var1.setGraphic(var3);
     }
 
-    private class ETH<_T> extends ETG<_T, ValueContainer2<JR, JR>> {
+    private class ETH<_T> extends ETG<_T, ValueContainer2<Amount, Amount>> {
         private ETH() {
             super();
         }
 
-        String getFirstValue(ValueContainer2<JR, JR> var1) {
+        String getFirstValue(ValueContainer2<Amount, Amount> var1) {
             String var2 = "";
             if (var1 != null && var1.getFirstValue() != null && var1.getFirstValue().getValue() != null) {
                 var2 = EOC.HNN(var1.getFirstValue().getValue());
@@ -407,7 +407,7 @@ class ETF {
             return var2;
         }
 
-        String getSecondValue(ValueContainer2<JR, JR> var1) {
+        String getSecondValue(ValueContainer2<Amount, Amount> var1) {
             String var2 = "";
             if (var1 != null && var1.getSecondValue() != null && var1.getSecondValue().getValue() != null) {
                 var2 = EOC.HNN(var1.getSecondValue().getValue());

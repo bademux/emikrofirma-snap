@@ -1,26 +1,26 @@
 package a.a.a.c.f.a.c.a.c;
 
-import a.a.a.c.f.a.c.AHEQ;
+import a.a.a.c.f.a.c.XmlSchemaNamespace;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DeclaredFieldElementNS extends DeclaredFieldBaseNS {
-    private final List<AHDP> AHVT;
+    private final List<DeclaredAtributeElementNS> AHVT;
 
-    public DeclaredFieldElementNS(AHEQ var1, String var2, List<AHDP> var3) {
+    public DeclaredFieldElementNS(XmlSchemaNamespace var1, String var2, List<DeclaredAtributeElementNS> var3) {
         super(var1, var2);
 
         this.AHVT = var3;
 
     }
 
-    public DeclaredFieldElementNS(AHEQ var1, String var2) {
+    public DeclaredFieldElementNS(XmlSchemaNamespace var1, String var2) {
         this(var1, var2, new ArrayList());
 
     }
 
-    public List<AHDP> getAttributes() {
+    public List<DeclaredAtributeElementNS> getAttributes() {
         return this.AHVT;
     }
 

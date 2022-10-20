@@ -7,8 +7,8 @@ import a.a.a.c.c.d.d.h.QKK;
 import a.a.a.c.c.d.f.EOV;
 import a.a.a.c.c.e.d.c.ESX;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.KM;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.TaxReason;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,11 +29,11 @@ public class ESM {
     @FXML
     public EYQ fxml_include_measurementUnitRequiredTextBox_boxController;
     @FXML
-    public EZP<KL> fxml_include_taxRateRequiredComboBox_boxController;
+    public EZP<TaxRate> fxml_include_taxRateRequiredComboBox_boxController;
     @FXML
     public EZQ fxml_include_deductHalfLabeledCheckBox_boxController;
     @FXML
-    public EZP<KM> fxml_include_taxReasonRequiredComboBox_boxController;
+    public EZP<TaxReason> fxml_include_taxReasonRequiredComboBox_boxController;
     @FXML
     private Button fxml_button_save;
     @FXML
@@ -51,19 +51,19 @@ public class ESM {
 
         this.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getCellFactory().call(null));
-        this.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element.getItems().addAll(KL.values());
+        this.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element.getItems().addAll(TaxRate.values());
         this.fxml_include_itemNameRequiredTextBox_boxController.setValueMaxLength(300);
         this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getCellFactory().call(null));
-        this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.getItems().addAll(KM.values());
+        this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.getItems().addAll(TaxReason.values());
         this.fxml_button_save.disableProperty().bind(this.fxml_include_itemNameRequiredTextBox_boxController.requiredAndValidProperty().and(this.fxml_include_netUnitValueNumberBox_boxController.requiredAndValidProperty().and(this.fxml_include_quantityNumberBox_boxController.requiredAndValidProperty().and(this.fxml_include_measurementUnitRequiredTextBox_boxController.requiredAndValidProperty().and(this.fxml_include_taxRateRequiredComboBox_boxController.requiredAndValidProperty().and(this.fxml_include_taxReasonRequiredComboBox_boxController.requiredAndValidProperty()))))).not());
 
     }
 
     public void setupDefaults(ResourceBundle var1) {
 
-        ((ComboBoxRequired) this.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getSelectionModel().select(KL.RATE_23);
-        ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getSelectionModel().select(KM.acquisition_of_general_goods);
+        ((ComboBoxRequired) this.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getSelectionModel().select(TaxRate.RATE_23);
+        ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getSelectionModel().select(TaxReason.acquisition_of_general_goods);
         this.fxml_include_measurementUnitRequiredTextBox_boxController.fxml_component_main_element.setText(var1.getString("micro.process.invoice_purchase_addNewPosition.Quantity.DefaultUnit"));
         String var2 = this.RAL;
         this.fxml_include_netUnitValueNumberBox_boxController.fxml_component_root_element.setLabel(var1.getString("micro.process.invoice_purchase_addNewPosition.RegistryTable_UnitValue_" + var2));

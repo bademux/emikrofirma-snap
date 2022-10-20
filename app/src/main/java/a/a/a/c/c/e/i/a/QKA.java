@@ -8,11 +8,11 @@ import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZM;
 import a.a.a.c.f.a.a.EZP;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.d.QJX;
-import a.a.a.c.f.a.d.QJY;
+import a.a.a.c.f.a.d.JpkFaGenerateSettings;
+import a.a.a.c.f.a.d.DateType;
 import a.a.a.c.f.b.EZT;
-import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.a.KK;
+import a.a.a.c.f.b.c.Nip;
+import a.a.a.c.f.b.c.a.TaxOffice;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import javafx.beans.property.BooleanProperty;
@@ -31,7 +31,7 @@ import java.util.ResourceBundle;
 
 public class QKA {
     @FXML
-    private EZP<KK> fxml_jpk_dialog_fa_settings_combo_box_tax_officeController;
+    private EZP<TaxOffice> fxml_jpk_dialog_fa_settings_combo_box_tax_officeController;
     @FXML
     private Label fxml_jpk_dialog_fa_settings_tax_office_code;
     @FXML
@@ -55,9 +55,9 @@ public class QKA {
     private final BooleanProperty QME = new SimpleBooleanProperty(false);
     private EUF QMF;
     private ResourceBundle QMG;
-    private QJY QMH;
+    private DateType QMH;
     private Stage QMI;
-    private QJX QMJ;
+    private JpkFaGenerateSettings QMJ;
     private final QKB QMK = new QKB();
     private final QKC QML = new QKC();
     QKD QMM = new QKD();
@@ -71,7 +71,7 @@ public class QKA {
     @FXML
     private void initialize() {
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.setConverter(new QKL(this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element));
-        this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.getItems().addAll(KK.DEN());
+        this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.getItems().addAll(TaxOffice.DEN());
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.editableProperty().set(true);
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.setOnKeyReleased(new QKN());
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.showingProperty().addListener(new QKO(this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element));
@@ -83,7 +83,7 @@ public class QKA {
         this.fxml_jpk_dialog_fa_settings_text_field_nipController.fxml_component_main_element.textProperty().addListener(this.QMN);
         this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_creation_date.setSelected(true);
         this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_transaction_date.setSelected(false);
-        this.QMH = QJY.CREATION_DATE;
+        this.QMH = DateType.CREATION_DATE;
         this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_creation_date.selectedProperty().addListener(this.QMO);
         this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_transaction_date.selectedProperty().addListener(this.QMP);
         this.RPD();
@@ -110,25 +110,25 @@ public class QKA {
         this.QMI = var1;
     }
 
-    public QJX getJpkFaGenerateSettings() {
+    public JpkFaGenerateSettings getJpkFaGenerateSettings() {
         return this.QMJ;
     }
 
     public void QOW() {
         UserData var1 = this.QMF.getUserData();
-        KK var2 = var1.DFQ().getValue();
+        TaxOffice var2 = var1.DFQ().getValue();
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.setValue(var2);
     }
 
     @FXML
     public void fxml_jpk_dialog_fa_settings_button_generate_and_send_clicked(ActionEvent var1) {
 
-        KA var2 = null;
+        Nip var2 = null;
         if (this.fxml_jpk_dialog_fa_settings_checkbox_use_nip_filter.isSelected()) {
-            var2 = new KA(this.fxml_jpk_dialog_fa_settings_text_field_nipController.fxml_component_main_element.getText());
+            var2 = new Nip(this.fxml_jpk_dialog_fa_settings_text_field_nipController.fxml_component_main_element.getText());
         }
 
-        this.QMJ = new QJX(this.QMH, this.fxml_jpk_dialog_fa_settings_date_picker_date_fromController.fxml_component_main_element.getValue(), this.fxml_jpk_dialog_fa_settings_date_picker_date_toController.fxml_component_main_element.getValue(), this.fxml_jpk_dialog_fa_settings_checkbox_use_nip_filter.isSelected(), var2, (KK) ((ComboBoxRequired) this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element).getValue());
+        this.QMJ = new JpkFaGenerateSettings(this.QMH, this.fxml_jpk_dialog_fa_settings_date_picker_date_fromController.fxml_component_main_element.getValue(), this.fxml_jpk_dialog_fa_settings_date_picker_date_toController.fxml_component_main_element.getValue(), this.fxml_jpk_dialog_fa_settings_checkbox_use_nip_filter.isSelected(), var2, (TaxOffice) ((ComboBoxRequired) this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element).getValue());
         this.QMI.close();
 
     }
@@ -147,7 +147,7 @@ public class QKA {
         public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
             if (var3) {
                 QKA.this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_creation_date.setSelected(false);
-                QKA.this.QMH = QJY.TRANSACTION_DATE;
+                QKA.this.QMH = DateType.TRANSACTION_DATE;
             } else {
                 QKA.this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_creation_date.setSelected(true);
             }
@@ -162,7 +162,7 @@ public class QKA {
         public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
             if (var3) {
                 QKA.this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_transaction_date.setSelected(false);
-                QKA.this.QMH = QJY.CREATION_DATE;
+                QKA.this.QMH = DateType.CREATION_DATE;
             } else {
                 QKA.this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_transaction_date.setSelected(true);
             }
@@ -189,11 +189,11 @@ public class QKA {
         }
     }
 
-    private class QKD implements ChangeListener<KK> {
+    private class QKD implements ChangeListener<TaxOffice> {
         private QKD() {
         }
 
-        public void changed(ObservableValue<? extends KK> var1, KK var2, KK var3) {
+        public void changed(ObservableValue<? extends TaxOffice> var1, TaxOffice var2, TaxOffice var3) {
             if (var3 != null) {
                 QKA.this.fxml_jpk_dialog_fa_settings_tax_office_code.setText(QKA.this.QMG.getString("micro.process.jpk_list.dialog_fa_settings.taxOfficeCode") + var3.getKey());
             }

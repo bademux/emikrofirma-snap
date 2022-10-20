@@ -10,9 +10,9 @@ import a.a.a.c.f.a.ModelBusinessTopElement;
 import a.a.a.c.f.a.a.Dictionary;
 import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.InvoiceElement;
-import a.a.a.c.f.a.g.EYD;
-import a.a.a.c.f.a.g.IW;
-import a.a.a.c.f.a.g.JB;
+import a.a.a.c.f.a.g.PeriodModelCriteria;
+import a.a.a.c.f.a.g.ModelBusinessElementCriteria;
+import a.a.a.c.f.a.g.ModelTechnicalElementCriteria;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.InvoiceOtherElement;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface EMU {
-    <T extends LW, Q extends JB<T>> T HJT(ProcessDefinitionBase var1, Q var2) throws FFK;
+    <T extends LW, Q extends ModelTechnicalElementCriteria<T>> T HJT(ProcessDefinitionBase var1, Q var2) throws FFK;
 
     <T extends LW> void HJU(ProcessDefinitionBase var1, T var2) throws FFK;
 
@@ -36,7 +36,7 @@ public interface EMU {
 
     <A extends InvoiceOther<B>, B extends InvoiceOtherElement> A ROG(ProcessDefinitionBase var1, Class<A> var2) throws FFK, FFO;
 
-    <T extends ModelBusinessTopElement, Q extends IW<T>, R extends EDF<T>, S extends List<R>> ValueContainer2<Integer, S> HJY(ProcessDefinitionBase var1, Q var2) throws FFK, FFO;
+    <T extends ModelBusinessTopElement, Q extends ModelBusinessElementCriteria<T>, R extends EDF<T>, S extends List<R>> ValueContainer2<Integer, S> HJY(ProcessDefinitionBase var1, Q var2) throws FFK, FFO;
 
     <T extends ModelBusinessTopElement> void HJZ(ProcessDefinitionBase var1, T var2) throws FFK, FFO;
 
@@ -50,9 +50,9 @@ public interface EMU {
 
     <T extends ModelBusinessTopElement> Integer getMaxDocumentIndex(ProcessDefinitionBase var1, Class<T> var2, Period var3, Enum<?> var4, Enum<?> var5) throws FFK, FFO;
 
-    <T extends ModelBusinessPeriodElement, I extends Enum<I>, L extends Enum<L>, Q extends EYD<T, I, L>, R extends EDF<T>, S extends List<R>> ValueContainer2<Integer, S> HKD(ProcessDefinitionBase var1, Q var2) throws FFK, FFO;
+    <T extends ModelBusinessPeriodElement, I extends Enum<I>, L extends Enum<L>, Q extends PeriodModelCriteria<T, I, L>, R extends EDF<T>, S extends List<R>> ValueContainer2<Integer, S> HKD(ProcessDefinitionBase var1, Q var2) throws FFK, FFO;
 
-    <T extends ModelBusinessTopElement, Q extends IW<T>, R extends EDF<T>, S extends List<R>> ValueContainer2<Integer, S> HKE(ProcessDefinitionBase var1, Q var2) throws FFK, FFO;
+    <T extends ModelBusinessTopElement, Q extends ModelBusinessElementCriteria<T>, R extends EDF<T>, S extends List<R>> ValueContainer2<Integer, S> HKE(ProcessDefinitionBase var1, Q var2) throws FFK, FFO;
 
     <T extends Dictionary> void HKF(ProcessDefinitionBase var1, T var2) throws FFK, FFO;
 

@@ -1,12 +1,12 @@
 package a.a.a.c.f.c.a;
 
 import a.a.a.c.f.ModelBaseTypeElement;
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.b.c.Text;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class ConfigurationProperty<_A extends ModelBaseTypeElement<_B>, _B> extends LT {
-    protected KO AQG;
+    protected Text AQG;
     protected _A AQH;
 
     public ConfigurationProperty() {
@@ -14,26 +14,26 @@ public abstract class ConfigurationProperty<_A extends ModelBaseTypeElement<_B>,
 
     }
 
-    public ConfigurationProperty(KO var1, _A var2) {
+    public ConfigurationProperty(Text var1, _A var2) {
 
         this.AQG = var1;
         this.AQH = var2;
 
     }
 
-    public KO getName() {
+    public Text getName() {
         return this.AQG;
     }
 
-    public KO DEX() {
+    public Text DEX() {
         if (this.AQG == null) {
-            this.AQG = new KO();
+            this.AQG = new Text();
         }
 
         return this.AQG;
     }
 
-    public void setName(KO var1) {
+    public void setName(Text var1) {
         this.AQG = var1;
     }
 

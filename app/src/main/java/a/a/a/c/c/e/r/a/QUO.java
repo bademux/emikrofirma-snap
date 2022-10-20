@@ -6,8 +6,8 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.f.a.a.EZI;
 import a.a.a.c.f.a.a.EZP;
-import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
+import a.a.a.c.f.b.c.a.TaxRate;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,13 +25,13 @@ public class QUO {
     boolean REK = false;
     private Stage REL;
     private ResourceBundle REM;
-    private QSQ REN;
+    private InvoiceOtherSubtype REN;
     @FXML
     public EZI fxml_other_sale_new_add_other_element_netController;
     @FXML
     public EZI fxml_other_sale_new_add_other_element_taxController;
     @FXML
-    public EZP<KL> fxml_other_sale_new_add_other_element_tax_typeController;
+    public EZP<TaxRate> fxml_other_sale_new_add_other_element_tax_typeController;
 
     public QUO() {
     }
@@ -48,15 +48,15 @@ public class QUO {
                 this.fxml_other_sale_new_add_other_element_taxController.fxml_component_root_element.setManaged(false);
                 this.fxml_other_sale_new_add_other_element_taxController.fxml_component_root_element.setVisible(false);
                 this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element.setDisable(false);
-                ((ComboBoxRequired) this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getItems().add(KL.RATE_23);
-                ((ComboBoxRequired) this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getItems().add(KL.RATE_8);
-                ((ComboBoxRequired) this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getItems().add(KL.RATE_5);
-                ((ComboBoxRequired) this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getItems().add(KL.RATE_4);
-                if (QSQ.SELL_REASON_1.equals(this.REN)) {
+                ((ComboBoxRequired) this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getItems().add(TaxRate.RATE_23);
+                ((ComboBoxRequired) this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getItems().add(TaxRate.RATE_8);
+                ((ComboBoxRequired) this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getItems().add(TaxRate.RATE_5);
+                ((ComboBoxRequired) this.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getItems().add(TaxRate.RATE_4);
+                if (InvoiceOtherSubtype.SELL_REASON_1.equals(this.REN)) {
                     this.fxml_other_sale_new_add_other_element_netController.fxml_component_root_element.setAllowNegative(true);
                     this.fxml_other_sale_new_add_other_element_netController.fxml_component_root_element.setAllowOnlyNegative(true);
                     this.fxml_other_sale_new_add_other_element_netController.setNegativeOnlyMessage();
-                } else if (QSQ.SELL_REASON_2.equals(this.REN)) {
+                } else if (InvoiceOtherSubtype.SELL_REASON_2.equals(this.REN)) {
                     this.fxml_other_sale_new_add_other_element_netController.fxml_component_root_element.setAllowNegative(false);
                     this.fxml_other_sale_new_add_other_element_netController.fxml_component_root_element.setAllowOnlyNegative(false);
                     this.fxml_other_sale_new_add_other_element_netController.setPositiveOnlyMessage();
@@ -96,7 +96,7 @@ public class QUO {
         return this.REL;
     }
 
-    public void setOtherType(QSQ var1) {
+    public void setOtherType(InvoiceOtherSubtype var1) {
         this.REN = var1;
     }
 

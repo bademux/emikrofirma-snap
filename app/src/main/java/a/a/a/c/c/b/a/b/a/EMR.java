@@ -4,7 +4,7 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.f.c.a.CustomAnchorPane;
-import a.a.a.c.g.FCV;
+import a.a.a.c.g.MainForm;
 import com.github.bademux.emk.app.FXApp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -50,7 +50,7 @@ public class EMR extends BaseFxController {
     protected void fxml_handleButton_home_button(ActionEvent var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [home] clicked");
-        this.getApplication().initController(this.getFxmlName(), FCV.MAIN.getFxmlFileName(), null);
+        this.getApplication().initController(this.getFxmlName(), MainForm.MAIN.getFxmlFileName(), null);
 
     }
 

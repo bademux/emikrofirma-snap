@@ -9,8 +9,8 @@ import java.util.function.Consumer;
 import a.a.a.c.c.b.a.a.BaseSceneFxController;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.c.ENG;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.c.QVH;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.c.AnchorContext;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.b.UserData;
@@ -44,7 +44,7 @@ public class EMJ extends BaseSceneFxController {
     private Text fxml_textVersions;
     @FXML
     private Label fxml_label_startMessage;
-    private final Map<Integer, Map<Integer, ValueContainer2<QVH, ContextMenu>>> RHH = new HashMap();
+    private final Map<Integer, Map<Integer, ValueContainer2<AnchorContext, ContextMenu>>> RHH = new HashMap();
     private final List<ValueContainer2<Boolean, Button>> FHE = new ArrayList();
     @FXML
     private EMR fxml_include_top_menuController;
@@ -69,7 +69,7 @@ public class EMJ extends BaseSceneFxController {
 
     private void HJF() throws FFK {
 
-        Iterator var1 = ENG.getInstance().getGlobalAnchorDefinition(ENH.MAIN).entrySet().iterator();
+        Iterator var1 = ENG.getInstance().getGlobalAnchorDefinition(Anchor.MAIN).entrySet().iterator();
 
         Map var4;
         String var7;
@@ -104,7 +104,7 @@ public class EMJ extends BaseSceneFxController {
             });
             this.FHE.add(new ValueContainer2(var10, var11));
             this.HJG(var11, var5, var6, var8);
-            this.setAnchorDisplayTypeByLocation(var5, var6, new ValueContainer2(QVH.valueOf(var9), var12));
+            this.setAnchorDisplayTypeByLocation(var5, var6, new ValueContainer2(AnchorContext.valueOf(var9), var12));
         }
 
         var1 = ENG.getInstance().HNI().iterator();
@@ -114,23 +114,23 @@ public class EMJ extends BaseSceneFxController {
             if (var28 != null) {
                 Map var29 = ENG.getInstance().getProcessDefinition(var28);
                 var4 = (Map) var29.get("anchors");
-                Map var30 = (Map) var4.get(ENH.MAIN);
+                Map var30 = (Map) var4.get(Anchor.MAIN);
                 if (var30 != null) {
                     ProcessDefinitionBase var31 = (ProcessDefinitionBase) var29.get("definition");
-                    var7 = var31.getTitle(ENH.MAIN);
+                    var7 = var31.getTitle(Anchor.MAIN);
                     var8 = var31.getFXML();
                     Boolean var32 = (Boolean) var29.get("lock.config");
                     String var33 = (String) var30.get("class.style");
                     String var34 = (String) var30.get("view.row");
                     String var35 = (String) var30.get("view.col");
                     String var13 = (String) var30.get("display.type");
-                    QVH var14 = QVH.valueOf(var13);
+                    AnchorContext var14 = AnchorContext.valueOf(var13);
                     String var15 = (String) var30.get("context.position");
                     int var16 = Integer.parseInt(var15);
                     ValueContainer2 var17 = this.getAnchorDisplayTypeByLocation(var34, var35);
-                    QVH var18 = null;
+                    AnchorContext var18 = null;
                     if (var17 != null) {
-                        var18 = (QVH) var17.getFirstValue();
+                        var18 = (AnchorContext) var17.getFirstValue();
                     }
 
                     if (var18 != null && !var18.equals(var14)) {
@@ -161,7 +161,7 @@ public class EMJ extends BaseSceneFxController {
                                 break;
                             }
 
-                            throw new FFI("Missing location for process [" + var28 + "] anchor [" + ENH.MAIN + "]");
+                            throw new FFI("Missing location for process [" + var28 + "] anchor [" + Anchor.MAIN + "]");
                         case CONTEXT:
                             ContextMenu var19 = (ContextMenu) var17.getSecondValue();
                             MenuItem var20 = new MenuItem(var7);
@@ -202,11 +202,11 @@ public class EMJ extends BaseSceneFxController {
 
     }
 
-    private ValueContainer2<QVH, ContextMenu> getAnchorDisplayTypeByLocation(String var1, String var2) {
+    private ValueContainer2<AnchorContext, ContextMenu> getAnchorDisplayTypeByLocation(String var1, String var2) {
         return this.HJH(var1) && this.HJH(var2) ? this.getAnchorDisplayTypeByLocation(Integer.parseInt(var1), Integer.parseInt(var2)) : null;
     }
 
-    private ValueContainer2<QVH, ContextMenu> getAnchorDisplayTypeByLocation(int var1, int var2) {
+    private ValueContainer2<AnchorContext, ContextMenu> getAnchorDisplayTypeByLocation(int var1, int var2) {
         if (!this.RHH.containsKey(var2)) {
             this.RHH.put(var2, new HashMap());
         }
@@ -214,14 +214,14 @@ public class EMJ extends BaseSceneFxController {
         return (ValueContainer2) ((Map) this.RHH.get(var2)).get(var1);
     }
 
-    private void setAnchorDisplayTypeByLocation(String var1, String var2, ValueContainer2<QVH, ContextMenu> var3) {
+    private void setAnchorDisplayTypeByLocation(String var1, String var2, ValueContainer2<AnchorContext, ContextMenu> var3) {
         if (this.HJH(var1) && this.HJH(var2)) {
             this.setAnchorDisplayTypeByLocation(Integer.parseInt(var1), Integer.parseInt(var2), var3);
         }
 
     }
 
-    private void setAnchorDisplayTypeByLocation(int var1, int var2, ValueContainer2<QVH, ContextMenu> var3) {
+    private void setAnchorDisplayTypeByLocation(int var1, int var2, ValueContainer2<AnchorContext, ContextMenu> var3) {
         if (!this.RHH.containsKey(var2)) {
             this.RHH.put(var2, new HashMap());
         }

@@ -3,7 +3,7 @@ package a.a.a.c.d.e.b;
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.d.e.QRX;
 import a.a.a.c.f.a.n.InvoiceOtherElement;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 
 import java.math.BigDecimal;
 
@@ -61,7 +61,7 @@ public class QSC implements QRX<InvoiceOtherElement> {
             var2.RJG().setValue(var6);
         }
 
-        var2.RJI().setValue(QSV.NET);
+        var2.RJI().setValue(CalculationMethodType.NET);
         return var2;
     }
 }

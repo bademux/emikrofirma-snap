@@ -3,7 +3,7 @@ package a.a.a.c.f.a.c.a.a;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.b.CustomActionClass;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.ConfigurationBaseAbstract;
 import a.a.a.c.f.a.c.a.c.BaseField;
@@ -23,7 +23,7 @@ public class ConditionOnFieldAndCustomAction extends ConditionOnFieldAndCustomAc
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
@@ -34,16 +34,16 @@ public class ConditionOnFieldAndCustomAction extends ConditionOnFieldAndCustomAc
             var2 = this.getCustomAction();
             var4 = var2.AIBY(var3);
             if (var4) {
-                ValueContainer2 var11 = new ValueContainer2(AHCI.SUCCESS, null);
+                ValueContainer2 var11 = new ValueContainer2(ActionResult.SUCCESS, null);
                 return var11;
             } else {
-                AHCI var5 = null;
+                ActionResult var5 = null;
                 switch (this.AHTY) {
                     case WARNING:
-                        var5 = AHCI.WARNING;
+                        var5 = ActionResult.WARNING;
                         break;
                     case ERROR:
-                        var5 = AHCI.ERROR;
+                        var5 = ActionResult.ERROR;
                         break;
                     default:
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");

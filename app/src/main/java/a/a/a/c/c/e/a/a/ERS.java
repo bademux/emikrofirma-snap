@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.a.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.b.EMB;
@@ -12,7 +12,7 @@ import a.a.a.c.c.e.a.a.b.ERH;
 import a.a.a.c.c.e.a.a.b.ERK;
 import a.a.a.c.c.e.a.a.b.ERL;
 import a.a.a.c.c.e.a.a.b.ERM;
-import a.a.a.c.c.e.a.a.c.ERP;
+import a.a.a.c.c.e.a.a.c.ElementType;
 import a.a.a.c.c.e.a.a.c.ERQ;
 import a.a.a.c.c.e.a.a.c.ERR;
 import com.github.bademux.emk.Application;
@@ -77,7 +77,7 @@ public class ERS extends BaseFxController {
     private Integer QZX = null;
     private QTC QZY;
     @FXML
-    private ListView<ERP> fxml_listview_sequence_names_list;
+    private ListView<ElementType> fxml_listview_sequence_names_list;
     @FXML
     private ListView<Period> fxml_listview_sequence_periods_list;
     @FXML
@@ -200,30 +200,30 @@ public class ERS extends BaseFxController {
 
         this.GAV = new TextFieldValidated_RefIdPattern();
         this.GAW = new TextFieldValidated_RefIdPattern();
-        ERQ.setupNode(this.fxml_config_base_text, this.GAU, ERP.text);
-        ERQ.setupNode(this.fxml_config_base_year, this.GAU, ERP.year);
-        ERQ.setupNode(this.fxml_config_base_month, this.GAU, ERP.month);
-        ERQ.setupNode(this.fxml_config_base_day, this.GAU, ERP.day);
-        ERQ.setupNode(this.fxml_config_base_sequence_month_1, this.GAU, ERP.sequence1);
-        ERQ.setupNode(this.fxml_config_base_sequence_month_2, this.GAU, ERP.sequence2);
-        ERQ.setupNode(this.fxml_config_base_sequence_month_3, this.GAU, ERP.sequence3);
-        ERQ.setupNode(this.fxml_config_base_sequence_year_1, this.GAU, ERP.ysequence1);
-        ERQ.setupNode(this.fxml_config_base_sequence_year_2, this.GAU, ERP.ysequence2);
-        ERQ.setupNode(this.fxml_config_base_sequence_halfyear_1, this.GAU, ERP.hsequence1);
-        ERQ.setupNode(this.fxml_config_base_sequence_halfyear_2, this.GAU, ERP.hsequence2);
-        ERQ.setupNode(this.fxml_config_base_sequence_quarter_1, this.GAU, ERP.qsequence1);
-        ERQ.setupNode(this.fxml_config_base_sequence_quarter_2, this.GAU, ERP.qsequence2);
-        ERQ.setupNode(this.fxml_config_base_separator_slash, this.GAU, ERP.separator_slash);
-        ERQ.setupNode(this.fxml_config_base_separator_backslash, this.GAU, ERP.separator_backslash);
-        ERQ.setupNode(this.fxml_config_base_separator_underscore, this.GAU, ERP.separator_underscore);
-        ERQ.setupNode(this.fxml_config_base_separator_minus, this.GAU, ERP.separator_minus);
-        ERQ.setupNode(this.fxml_config_base_const_F, this.GAU, ERP.const_F);
-        ERQ.setupNode(this.fxml_config_base_const_FVAT, this.GAU, ERP.const_FVAT);
-        ERQ.setupNode(this.fxml_config_base_const_F_VAT, this.GAU, ERP.const_F_VAT);
-        ERQ.setupNode(this.fxml_config_base_const_FV, this.GAU, ERP.const_FV);
-        ERQ.setupNode(this.fxml_config_base_const_FA, this.GAU, ERP.const_FA);
-        ERQ.setupNode(this.fxml_config_base_const_FK, this.GAU, ERP.const_FK);
-        ERQ.setupNode(this.fxml_config_base_const_KOR, this.GAU, ERP.const_KOR);
+        ERQ.setupNode(this.fxml_config_base_text, this.GAU, ElementType.text);
+        ERQ.setupNode(this.fxml_config_base_year, this.GAU, ElementType.year);
+        ERQ.setupNode(this.fxml_config_base_month, this.GAU, ElementType.month);
+        ERQ.setupNode(this.fxml_config_base_day, this.GAU, ElementType.day);
+        ERQ.setupNode(this.fxml_config_base_sequence_month_1, this.GAU, ElementType.sequence1);
+        ERQ.setupNode(this.fxml_config_base_sequence_month_2, this.GAU, ElementType.sequence2);
+        ERQ.setupNode(this.fxml_config_base_sequence_month_3, this.GAU, ElementType.sequence3);
+        ERQ.setupNode(this.fxml_config_base_sequence_year_1, this.GAU, ElementType.ysequence1);
+        ERQ.setupNode(this.fxml_config_base_sequence_year_2, this.GAU, ElementType.ysequence2);
+        ERQ.setupNode(this.fxml_config_base_sequence_halfyear_1, this.GAU, ElementType.hsequence1);
+        ERQ.setupNode(this.fxml_config_base_sequence_halfyear_2, this.GAU, ElementType.hsequence2);
+        ERQ.setupNode(this.fxml_config_base_sequence_quarter_1, this.GAU, ElementType.qsequence1);
+        ERQ.setupNode(this.fxml_config_base_sequence_quarter_2, this.GAU, ElementType.qsequence2);
+        ERQ.setupNode(this.fxml_config_base_separator_slash, this.GAU, ElementType.separator_slash);
+        ERQ.setupNode(this.fxml_config_base_separator_backslash, this.GAU, ElementType.separator_backslash);
+        ERQ.setupNode(this.fxml_config_base_separator_underscore, this.GAU, ElementType.separator_underscore);
+        ERQ.setupNode(this.fxml_config_base_separator_minus, this.GAU, ElementType.separator_minus);
+        ERQ.setupNode(this.fxml_config_base_const_F, this.GAU, ElementType.const_F);
+        ERQ.setupNode(this.fxml_config_base_const_FVAT, this.GAU, ElementType.const_FVAT);
+        ERQ.setupNode(this.fxml_config_base_const_F_VAT, this.GAU, ElementType.const_F_VAT);
+        ERQ.setupNode(this.fxml_config_base_const_FV, this.GAU, ElementType.const_FV);
+        ERQ.setupNode(this.fxml_config_base_const_FA, this.GAU, ElementType.const_FA);
+        ERQ.setupNode(this.fxml_config_base_const_FK, this.GAU, ElementType.const_FK);
+        ERQ.setupNode(this.fxml_config_base_const_KOR, this.GAU, ElementType.const_KOR);
         this.fxml_config_f_container.setOnDragEntered(new ERH(this.GAU, this.fxml_config_f_scroll_pane));
         this.fxml_config_f_container.setOnDragOver(new ERK(this.GAU));
         this.fxml_config_f_container.setOnDragDropped(new ERL(this.GAU, this.GAV.textProperty()));
@@ -233,10 +233,10 @@ public class ERS extends BaseFxController {
         this.fxml_config_c_container.setOnDragDropped(new ERL(this.GAU, this.GAW.textProperty()));
         this.fxml_config_c_container.setOnDragExited(new ERM(this.GAU, this.GAW.textProperty(), this.fxml_config_c_scroll_pane));
         this.fxml_listview_sequence_names_list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        this.fxml_listview_sequence_names_list.setCellFactory(new Callback<ListView<ERP>, ListCell<ERP>>() {
-            public ListCell<ERP> call(ListView<ERP> var1) {
-                return new ListCell<ERP>() {
-                    protected void updateItem(ERP var1, boolean var2) {
+        this.fxml_listview_sequence_names_list.setCellFactory(new Callback<ListView<ElementType>, ListCell<ElementType>>() {
+            public ListCell<ElementType> call(ListView<ElementType> var1) {
+                return new ListCell<ElementType>() {
+                    protected void updateItem(ElementType var1, boolean var2) {
                         super.updateItem(var1, var2);
                         if (var1 != null) {
                             this.setText(var1.getListDescription());
@@ -273,8 +273,8 @@ public class ERS extends BaseFxController {
                 };
             }
         });
-        this.fxml_listview_sequence_names_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ERP>() {
-            public void changed(ObservableValue<? extends ERP> var1, ERP var2, ERP var3) {
+        this.fxml_listview_sequence_names_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ElementType>() {
+            public void changed(ObservableValue<? extends ElementType> var1, ElementType var2, ElementType var3) {
                 ERS.this.QZT = null;
                 ERS.this.QZU = null;
                 ERS.this.fxml_listview_sequence_periods_list.getItems().clear();
@@ -343,7 +343,7 @@ public class ERS extends BaseFxController {
         String var4 = var1.getText();
         if (var4 != null && var4.length() > 0) {
             ArrayList var5 = new ArrayList();
-            Pattern var6 = Pattern.compile("(" + ERP.GAO + ")|((?<=#%)[^#]+(?=%#))");
+            Pattern var6 = Pattern.compile("(" + ElementType.GAO + ")|((?<=#%)[^#]+(?=%#))");
             Matcher var7 = var6.matcher(var4);
             int var8 = 0;
 
@@ -382,37 +382,37 @@ public class ERS extends BaseFxController {
 
             while (var16.hasNext()) {
                 ValueContainer2 var17 = (ValueContainer2) var16.next();
-                ERP var18 = null;
+                ElementType var18 = null;
                 if ("A".equals(var17.getFirstValue())) {
-                    var18 = ERP.text;
+                    var18 = ElementType.text;
                 } else if ("B".equals(var17.getFirstValue())) {
-                    var18 = ERP.HSD((String) var17.getSecondValue());
+                    var18 = ElementType.HSD((String) var17.getSecondValue());
                 } else if ("C".equals(var17.getFirstValue())) {
                     switch ((String) var17.getSecondValue()) {
                         case "yyyy":
-                            var18 = ERP.year;
+                            var18 = ElementType.year;
                             break;
                         case "MM":
-                            var18 = ERP.month;
+                            var18 = ElementType.month;
                             break;
                         case "dd":
-                            var18 = ERP.day;
+                            var18 = ElementType.day;
                             break;
                         default:
                             try {
                                 if (((String) var17.getSecondValue()).startsWith("string")) {
-                                    var18 = ERP.text;
+                                    var18 = ElementType.text;
                                     if (var17.getSecondValue().equals("stringstring")) {
                                         var17.setSecondValue("");
                                     } else {
                                         var17.setSecondValue(((String) var17.getSecondValue()).split("string")[1]);
                                     }
                                 } else {
-                                    var18 = ERP.valueOf((String) var17.getSecondValue());
+                                    var18 = ElementType.valueOf((String) var17.getSecondValue());
                                 }
                             } catch (Exception var15) {
                                 org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var15);
-                                var18 = ERP.text;
+                                var18 = ElementType.text;
                             }
                     }
                 }
@@ -530,8 +530,8 @@ public class ERS extends BaseFxController {
     @FXML
     protected void fxml_handleButton_create_backup(ActionEvent var1) {
 
-        FEN var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.config.controll.createBackupTitle"), this.resources.getString("micro.config.controll.createBackupHeader"), this.resources.getString("micro.config.controll.createBackupConfirm"), this.resources.getString("micro.config.controll.createBackupDeny"), 400.0, 100.0, this.resources.getString("micro.config.controll.createBackupDescription"));
-        if (var2.equals(FEN.Confirm)) {
+        DialogButton var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.config.controll.createBackupTitle"), this.resources.getString("micro.config.controll.createBackupHeader"), this.resources.getString("micro.config.controll.createBackupConfirm"), this.resources.getString("micro.config.controll.createBackupDeny"), 400.0, 100.0, this.resources.getString("micro.config.controll.createBackupDescription"));
+        if (var2.equals(DialogButton.Confirm)) {
             try {
                 DirectoryChooser var3 = new DirectoryChooser();
                 var3.setTitle("Tworzenie kopii zapasowej");
@@ -562,8 +562,8 @@ public class ERS extends BaseFxController {
     protected void fxml_handleButton_load_backup(ActionEvent var1) {
 
         FileChooser var2 = new FileChooser();
-        FEN var3 = FCR.getConfirmDataDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseHeader"), this.resources.getString("micro.config.controll.createBackupConfirm"), this.resources.getString("micro.config.controll.createBackupDeny"), 650.0, 200.0, this.resources.getString("micro.config.controll.restoreDatabaseDescription"));
-        if (var3.equals(FEN.Confirm)) {
+        DialogButton var3 = FCR.getConfirmDataDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseHeader"), this.resources.getString("micro.config.controll.createBackupConfirm"), this.resources.getString("micro.config.controll.createBackupDeny"), 650.0, 200.0, this.resources.getString("micro.config.controll.restoreDatabaseDescription"));
+        if (var3.equals(DialogButton.Confirm)) {
             var2.setTitle("Wczytywanie kopii zapasowej");
             org.slf4j.LoggerFactory.getLogger(getClass()).info("loading backup ...");
             File var4 = Application.getHomeDir().toFile();
@@ -790,12 +790,12 @@ public class ERS extends BaseFxController {
 
             while (var7.hasNext()) {
                 String var3 = (String) var7.next();
-                ERP var4 = ERP.RKJ(var3);
+                ElementType var4 = ElementType.RKJ(var3);
                 this.fxml_listview_sequence_names_list.getItems().add(var4);
             }
 
-            this.fxml_listview_sequence_names_list.getItems().sort(new Comparator<ERP>() {
-                public int compare(ERP var1, ERP var2) {
+            this.fxml_listview_sequence_names_list.getItems().sort(new Comparator<ElementType>() {
+                public int compare(ElementType var1, ElementType var2) {
                     if (var1 != null && var2 != null) {
                         return var1.compareTo(var2);
                     } else if (var1 != null && var2 == null) {

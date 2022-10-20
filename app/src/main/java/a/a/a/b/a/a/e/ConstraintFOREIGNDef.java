@@ -12,13 +12,13 @@ public class ConstraintFOREIGNDef extends ConstraintBase {
     protected final List<String> HEO;
 
     public ConstraintFOREIGNDef(String var1) {
-        super(FEG.FOREIGN);
+        super(SqlColumnKeyword.FOREIGN);
         this.HEN = var1;
         this.HEO = new ArrayList();
     }
 
     public ConstraintFOREIGNDef(String var1, CellNamed[] var2, CellNamed[] var3) {
-        super(FEG.FOREIGN, var2);
+        super(SqlColumnKeyword.FOREIGN, var2);
         this.HEN = var1;
         this.HEO = new ArrayList();
         CellNamed[] var4 = var3;
@@ -37,7 +37,7 @@ public class ConstraintFOREIGNDef extends ConstraintBase {
     }
 
     public ConstraintFOREIGNDef(String var1, List<String> var2, List<String> var3) {
-        super(FEG.FOREIGN, var2);
+        super(SqlColumnKeyword.FOREIGN, var2);
         this.HEN = var1;
         this.HEO = var3;
     }

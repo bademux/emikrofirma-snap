@@ -4,7 +4,7 @@ import a.a.a.c.c.e.e.a.ETB;
 import a.a.a.c.f.a.a.EYN;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EZF;
-import a.a.a.c.f.b.c.a.KN;
+import a.a.a.c.f.b.c.a.Voivodeship;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
@@ -16,9 +16,9 @@ public class QTE implements ChangeListener<String> {
     private final CheckBox RAD;
     private final EYQ RAE;
     private final EZF RAF;
-    private final EYN<KN> RAG;
+    private final EYN<Voivodeship> RAG;
 
-    public QTE(ETB var1, Label var2, CheckBox var3, EYQ var4, EZF var5, EYN<KN> var6) {
+    public QTE(ETB var1, Label var2, CheckBox var3, EYQ var4, EZF var5, EYN<Voivodeship> var6) {
         this.RAB = var1;
         this.RAC = var2;
         this.RAD = var3;

@@ -34,7 +34,7 @@ public abstract class ActionOnVariable<_T> extends ActionOnObject {
         return this.AHUA;
     }
 
-    public abstract ValueContainer2<AHCI, String> AICZ();
+    public abstract ValueContainer2<ActionResult, String> AICZ();
 
     public String toString() {
         return "ActionOnVariable [actionType=" + this.AHTY + ", variable=" + this.AHUA + "]";

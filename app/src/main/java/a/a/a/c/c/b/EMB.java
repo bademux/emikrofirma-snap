@@ -1,7 +1,7 @@
 package a.a.a.c.c.b;
 
 import a.a.a.b.a.a.OrderType;
-import a.a.a.b.a.a.FDO;
+import a.a.a.b.a.a.SqlOperation;
 import a.a.a.b.e.FEY;
 import a.a.a.b.e.FFF;
 import a.a.a.b.f.FFI;
@@ -14,27 +14,27 @@ import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.e.a.e.EWF;
 import a.a.a.c.f.a.a.Dictionary;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.d.AGWW;
+import a.a.a.c.f.a.d.DeclarationSubtype;
 import a.a.a.c.f.a.d.Declaration;
-import a.a.a.c.f.a.d.HM;
+import a.a.a.c.f.a.d.DeclarationType;
 import a.a.a.c.f.a.e.Invoice;
-import a.a.a.c.f.a.e.IA;
-import a.a.a.c.f.a.e.IB;
+import a.a.a.c.f.a.e.InvoiceSubtype;
+import a.a.a.c.f.a.e.InvoiceType;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
-import a.a.a.c.f.a.e.a.IH;
+import a.a.a.c.f.a.e.a.InvoiceRecordType;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
-import a.a.a.c.f.a.f.a.IQ;
+import a.a.a.c.f.a.f.a.RecordType;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.a.n.InvoiceOther;
-import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.a.n.QSR;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
+import a.a.a.c.f.a.n.InvoiceOtherType;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.*;
-import a.a.a.c.f.b.c.a.KG;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.LoginType;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.f.c.LW;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.b.SimpleUserData;
@@ -203,16 +203,16 @@ public class EMB {
                 throw FCZ.getInstance().IHC();
             }
 
-            JT var18 = null;
-            JT var19 = null;
+            Bytes var18 = null;
+            Bytes var19 = null;
             if (var2) {
                 byte[] var20 = FEY.getInstance().ILB();
                 byte[] var22 = FEY.getInstance().ILC(var3.toCharArray(), var20);
-                var18 = new JT(var20);
-                var19 = new JT(var22);
+                var18 = new Bytes(var20);
+                var19 = new Bytes(var22);
             }
 
-            SimpleUserData var21 = new SimpleUserData(new KO(var16), new JZ(KG.NIP), new JS(var2), var18, var19, false);
+            SimpleUserData var21 = new SimpleUserData(new Text(var16), new JZ(LoginType.NIP), new PrivtePerson(var2), var18, var19, false);
             this.FGN.HLI(var21);
             this.FGR.put(var16, var21);
             this.FGN.HLD();
@@ -349,7 +349,7 @@ public class EMB {
         ConfigurationProperties var1 = this.FGN.HLM(this.FGO, this.FGQ, ConfigurationProperties.class);
         if (var1 == null) {
             var1 = new ConfigurationProperties();
-            this.FGN.HME(FDO.insert, this.FGO, this.FGQ, var1);
+            this.FGN.HME(SqlOperation.insert, this.FGO, this.FGQ, var1);
         }
 
         var2 = var1;
@@ -374,7 +374,7 @@ public class EMB {
         return var3;
     }
 
-    public void ROK(FDO var1, ConfigurationProperties var2, boolean var3) throws FFK {
+    public void ROK(SqlOperation var1, ConfigurationProperties var2, boolean var3) throws FFK {
 
         this.HHZ(var1, var2);
         if (var3) {
@@ -383,28 +383,28 @@ public class EMB {
 
     }
 
-    public void HHY(FDO var1, UserData var2) throws FFK {
+    public void HHY(SqlOperation var1, UserData var2) throws FFK {
 
         this.HHZ(var1, var2);
 
     }
 
-    private void HHZ(FDO var1, LW var2) throws FFK {
+    private void HHZ(SqlOperation var1, LW var2) throws FFK {
 
         this.FGN.HME(var1, this.FGO, this.FGQ, var2);
 
     }
 
-    public void HIA(FDO var1, Invoice<?> var2) throws FFK, FFO {
+    public void HIA(SqlOperation var1, Invoice<?> var2) throws FFK, FFO {
 
         this.HIB(var1, var2);
 
     }
 
-    private void HIB(FDO var1, Invoice<?> var2) throws FFK, FFO {
+    private void HIB(SqlOperation var1, Invoice<?> var2) throws FFK, FFO {
 
         Period var3 = var2.getPeriod();
-        JH var4 = JH.VAT;
+        SettlementType var4 = SettlementType.VAT;
         if (var3 == null || var3.getYear() == null || var3.getYear().getValue() == null || var3.getMonth() == null || var3.getMonth().getValue() == null) {
             throw new FFO("Period cannot be NULL!");
         }
@@ -423,7 +423,7 @@ public class EMB {
 
         Invoice var2 = (Invoice) var1.getModelBaseElementWithIdObject();
         Period var3 = var2.getPeriod();
-        JH var4 = JH.VAT;
+        SettlementType var4 = SettlementType.VAT;
         if (var3 == null || var3.getYear() == null || var3.getYear().getValue() == null || var3.getMonth() == null || var3.getMonth().getValue() == null) {
             throw new FFO("Period cannot be NULL!");
         }
@@ -438,7 +438,7 @@ public class EMB {
 
     }
 
-    private void HIC(Period var1, JH var2) throws FFK, FFO {
+    private void HIC(Period var1, SettlementType var2) throws FFK, FFO {
 
         ValueContainer2 var3 = this.FGN.HLQ(this.FGO, null, null, null, var1.DDN(), var2);
         SettlementVat var4;
@@ -448,7 +448,7 @@ public class EMB {
             }
 
             var4 = (SettlementVat) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
-            JG var5 = var4.getSettlementStatus();
+            SettlementStatus var5 = var4.getSettlementStatus();
             switch (var5) {
                 case NEW:
                     break;
@@ -456,7 +456,7 @@ public class EMB {
                 case CANCELED_UNCHANGED:
                     SettlementVat var6 = new SettlementVat();
                     var6.setPeriod(var1.DDN());
-                    this.HII(FDO.insert, var6, var4);
+                    this.HII(SqlOperation.insert, var6, var4);
                     break;
                 case SETTLED:
                     throw new FFO("Settlement closed! [" + var1 + "] [SettlementType " + var4.getSettlementType().name() + "] [SettlementStatus " + var5.name() + "]");
@@ -466,12 +466,12 @@ public class EMB {
         } else {
             var4 = new SettlementVat();
             var4.setPeriod(var1.DDN());
-            this.HII(FDO.insert, var4, null);
+            this.HII(SqlOperation.insert, var4, null);
         }
 
     }
 
-    public ValueContainer2<Integer, List<EDF<Invoice<?>>>> ROM(QSW var1, OrderType var2, Integer var3, Integer var4, Period var5, IB var6, IA var7, RefId var8, KA var9, KA var10, ValueContainer2<Date, Date> var11, ValueContainer2<Date, Date> var12, String var13) throws FFK, FFO {
+    public ValueContainer2<Integer, List<EDF<Invoice<?>>>> ROM(InvoiceState var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceType var6, InvoiceSubtype var7, RefId var8, Nip var9, Nip var10, ValueContainer2<Date, Date> var11, ValueContainer2<Date, Date> var12, String var13) throws FFK, FFO {
 
         ValueContainer2 var14;
         var14 = this.FGN.ROB(this.FGO, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
@@ -479,16 +479,16 @@ public class EMB {
         return var14;
     }
 
-    public void RON(FDO var1, InvoiceOther<?> var2) throws FFK, FFO {
+    public void RON(SqlOperation var1, InvoiceOther<?> var2) throws FFK, FFO {
 
         this.ROO(var1, var2);
 
     }
 
-    private void ROO(FDO var1, InvoiceOther<?> var2) throws FFK, FFO {
+    private void ROO(SqlOperation var1, InvoiceOther<?> var2) throws FFK, FFO {
 
         Period var3 = var2.getPeriod();
-        JH var4 = JH.VAT;
+        SettlementType var4 = SettlementType.VAT;
         if (var3 == null || var3.getYear() == null || var3.getYear().getValue() == null || var3.getMonth() == null || var3.getMonth().getValue() == null) {
             throw new FFO("Period cannot be NULL!");
         }
@@ -507,7 +507,7 @@ public class EMB {
 
         InvoiceOther var2 = (InvoiceOther) var1.getModelBaseElementWithIdObject();
         Period var3 = var2.getPeriod();
-        JH var4 = JH.VAT;
+        SettlementType var4 = SettlementType.VAT;
         if (var3 == null || var3.getYear() == null || var3.getYear().getValue() == null || var3.getMonth() == null || var3.getMonth().getValue() == null) {
             throw new FFO("Period cannot be NULL!");
         }
@@ -522,7 +522,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<InvoiceOther<?>>>> ROQ(QSW var1, OrderType var2, Integer var3, Integer var4, Period var5, QSR var6, QSQ var7, RefId var8, KA var9, KA var10, ValueContainer2<Date, Date> var11, ValueContainer2<Date, Date> var12, String var13) throws FFK, FFO {
+    public ValueContainer2<Integer, List<EDF<InvoiceOther<?>>>> ROQ(InvoiceState var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceOtherType var6, InvoiceOtherSubtype var7, RefId var8, Nip var9, Nip var10, ValueContainer2<Date, Date> var11, ValueContainer2<Date, Date> var12, String var13) throws FFK, FFO {
 
         ValueContainer2 var14;
         var14 = this.FGN.ROC(this.FGO, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
@@ -530,21 +530,21 @@ public class EMB {
         return var14;
     }
 
-    public void HIE(FDO var1, ReceiptRecord var2) throws FFK, FFO {
+    public void HIE(SqlOperation var1, ReceiptRecord var2) throws FFK, FFO {
 
         this.HIF(var1, var2);
 
     }
 
-    private void HIF(FDO var1, ReceiptRecord var2) throws FFK, FFO {
+    private void HIF(SqlOperation var1, ReceiptRecord var2) throws FFK, FFO {
 
-        JH var3 = JH.VAT;
+        SettlementType var3 = SettlementType.VAT;
         Period var4 = var2.getPeriod();
         if (var4 == null || var4.getYear() == null || var4.getYear().getValue() == null || var4.getMonth() == null || var4.getMonth().getValue() == null) {
             throw new FFO("Period cannot be NULL!");
         }
 
-        this.HIC(var4, JH.VAT);
+        this.HIC(var4, SettlementType.VAT);
         Period var5 = var2.getPreviousPeriod();
         if (var5 != null && var5.getYear() != null && var5.getYear().getValue() != null && var5.getMonth() != null && var5.getMonth().getValue() != null && !var5.equals(var4)) {
             this.HIC(var5, var3);
@@ -554,7 +554,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<ReceiptRecord>>> HIG(OrderType var1, Integer var2, Integer var3, Period var4, IQ var5) throws FFK, FFO {
+    public ValueContainer2<Integer, List<EDF<ReceiptRecord>>> HIG(OrderType var1, Integer var2, Integer var3, Period var4, RecordType var5) throws FFK, FFO {
 
         ValueContainer2 var6;
         var6 = this.FGN.HLP(this.FGO, var1, var2, var3, var4, var5);
@@ -562,16 +562,16 @@ public class EMB {
         return var6;
     }
 
-    public void HIH(FDO var1, Settlement var2) throws FFK {
+    public void HIH(SqlOperation var1, Settlement var2) throws FFK {
 
         this.HII(var1, var2, null);
 
     }
 
-    private void HII(FDO var1, Settlement var2, Settlement var3) throws FFK {
+    private void HII(SqlOperation var1, Settlement var2, Settlement var3) throws FFK {
 
         Period var4 = var2.getPeriod();
-        JH var5 = var2.getSettlementType();
+        SettlementType var5 = var2.getSettlementType();
         ValueContainer2 var8;
         switch (var1) {
             case insert:
@@ -582,9 +582,9 @@ public class EMB {
                 var2.DCQ();
                 this.FGN.HMH(var1, this.FGO, var2, var3);
                 if (var7) {
-                    var8 = this.FGN.ROB(this.FGO, QSW.ACTIVE, null, null, null, var4, null, null, null, null, null, null, null, null);
+                    var8 = this.FGN.ROB(this.FGO, InvoiceState.ACTIVE, null, null, null, var4, null, null, null, null, null, null, null, null);
                     ValueContainer2 var20 = this.FGN.HLP(this.FGO, null, null, null, var4, null);
-                    ValueContainer2 var19 = this.FGN.ROC(this.FGO, QSW.ACTIVE, null, null, null, var4, null, null, null, null, null, null, null, null);
+                    ValueContainer2 var19 = this.FGN.ROC(this.FGO, InvoiceState.ACTIVE, null, null, null, var4, null, null, null, null, null, null, null, null);
                     UserData var11 = this.HHV();
                     Set var12 = EQQ.RHZ(var4, var11, (List) var8.getSecondValue(), (List) var20.getSecondValue(), (List) var19.getSecondValue());
                     Iterator var13 = var12.iterator();
@@ -593,7 +593,7 @@ public class EMB {
                         InvoiceRecord var14 = (InvoiceRecord) var13.next();
                         Integer var15 = this.FGN.getMaxDocumentIndex_InvoiceRecords(var4, var14.getInvoiceRecordType());
                         var14.FJI().setValue(var15);
-                        this.HIS(FDO.insert, var14, var2);
+                        this.HIS(SqlOperation.insert, var14, var2);
                     }
                 }
                 break;
@@ -603,7 +603,7 @@ public class EMB {
 
                 while (var9.hasNext()) {
                     EDF var10 = (EDF) var9.next();
-                    this.HIS(FDO.delete, (InvoiceRecord) var10.getModelBaseElementWithIdObject(), var2);
+                    this.HIS(SqlOperation.delete, (InvoiceRecord) var10.getModelBaseElementWithIdObject(), var2);
                 }
 
                 this.FGN.HMH(var1, this.FGO, var2, null);
@@ -614,7 +614,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<Settlement>>> HIJ(OrderType var1, Integer var2, Integer var3, Period var4, JH var5) throws FFK, FFO {
+    public ValueContainer2<Integer, List<EDF<Settlement>>> HIJ(OrderType var1, Integer var2, Integer var3, Period var4, SettlementType var5) throws FFK, FFO {
 
         ValueContainer2 var6;
         var6 = this.FGN.HLQ(this.FGO, var1, var2, var3, var4, var5);
@@ -622,19 +622,19 @@ public class EMB {
         return var6;
     }
 
-    public void HIK(FDO var1, Declaration var2, Settlement var3) throws FFK {
+    public void HIK(SqlOperation var1, Declaration var2, Settlement var3) throws FFK {
 
         this.HIL(var1, var2, var3);
 
     }
 
-    private void HIL(FDO var1, Declaration var2, Settlement var3) throws FFK {
+    private void HIL(SqlOperation var1, Declaration var2, Settlement var3) throws FFK {
 
         this.FGN.HMI(var1, this.FGO, var2, var3);
 
     }
 
-    public ValueContainer2<Integer, List<EDF<Declaration>>> HIM(OrderType var1, Integer var2, Integer var3, Period var4, HM var5, AGWW var6) throws FFK, FFO {
+    public ValueContainer2<Integer, List<EDF<Declaration>>> HIM(OrderType var1, Integer var2, Integer var3, Period var4, DeclarationType var5, DeclarationSubtype var6) throws FFK, FFO {
 
         ValueContainer2 var7;
         var7 = this.FGN.HLR(this.FGO, var1, var2, var3, var4, var5, var6);
@@ -642,7 +642,7 @@ public class EMB {
         return var7;
     }
 
-    public ValueContainer2<Integer, List<EDF<Declaration>>> QQI(OrderType var1, Integer var2, Integer var3, Settlement var4, Period var5, HM var6, AGWW var7) throws FFK, FFO {
+    public ValueContainer2<Integer, List<EDF<Declaration>>> QQI(OrderType var1, Integer var2, Integer var3, Settlement var4, Period var5, DeclarationType var6, DeclarationSubtype var7) throws FFK, FFO {
 
         ValueContainer2 var8;
         var8 = this.FGN.QPW(this.FGO, var1, var2, var3, var4, var5, var6, var7);
@@ -650,7 +650,7 @@ public class EMB {
         return var8;
     }
 
-    public Integer getMaxDocumentIndexForDeclarations(Period var1, HM var2, AGWW var3) throws FFK {
+    public Integer getMaxDocumentIndexForDeclarations(Period var1, DeclarationType var2, DeclarationSubtype var3) throws FFK {
 
         Integer var4;
         var4 = this.FGN.getMaxDocumentIndex_Declarations(var1, var2, var3);
@@ -658,13 +658,13 @@ public class EMB {
         return var4;
     }
 
-    public void HIO(FDO var1, Contractor var2) throws FFK {
+    public void HIO(SqlOperation var1, Contractor var2) throws FFK {
 
         this.HIP(var1, var2);
 
     }
 
-    private void HIP(FDO var1, Contractor var2) throws FFK {
+    private void HIP(SqlOperation var1, Contractor var2) throws FFK {
 
         this.FGN.HMK(var1, this.FGO, var2);
 
@@ -678,19 +678,19 @@ public class EMB {
         return var4;
     }
 
-    public void HIR(FDO var1, InvoiceRecord var2, Settlement var3) throws FFK {
+    public void HIR(SqlOperation var1, InvoiceRecord var2, Settlement var3) throws FFK {
 
-        this.HIS(FDO.insert, var2, var3);
+        this.HIS(SqlOperation.insert, var2, var3);
 
     }
 
-    private void HIS(FDO var1, InvoiceRecord var2, Settlement var3) throws FFK {
+    private void HIS(SqlOperation var1, InvoiceRecord var2, Settlement var3) throws FFK {
 
         this.FGN.HMJ(var1, this.FGO, var2, var3);
 
     }
 
-    public ValueContainer2<Integer, List<EDF<InvoiceRecord>>> HIT(OrderType var1, Integer var2, Integer var3, Period var4, IH var5) throws FFK, FFO {
+    public ValueContainer2<Integer, List<EDF<InvoiceRecord>>> HIT(OrderType var1, Integer var2, Integer var3, Period var4, InvoiceRecordType var5) throws FFK, FFO {
 
         ValueContainer2 var6;
         var6 = this.FGN.HLV(this.FGO, var1, var2, var3, var4, var5);
@@ -698,7 +698,7 @@ public class EMB {
         return var6;
     }
 
-    public ValueContainer2<Integer, List<EDF<InvoiceRecord>>> QQK(OrderType var1, Integer var2, Integer var3, Settlement var4, Period var5, IH var6) throws FFK, FFO {
+    public ValueContainer2<Integer, List<EDF<InvoiceRecord>>> QQK(OrderType var1, Integer var2, Integer var3, Settlement var4, Period var5, InvoiceRecordType var6) throws FFK, FFO {
 
         ValueContainer2 var7;
         var7 = this.FGN.QPY(this.FGO, var1, var2, var3, var4, var5, var6);
@@ -706,7 +706,7 @@ public class EMB {
         return var7;
     }
 
-    public Integer getMaxDocumentIndexForInvoiceRecords(Period var1, IH var2) throws FFK {
+    public Integer getMaxDocumentIndexForInvoiceRecords(Period var1, InvoiceRecordType var2) throws FFK {
 
         Integer var3;
         var3 = this.FGN.getMaxDocumentIndex_InvoiceRecords(var1, var2);
@@ -714,13 +714,13 @@ public class EMB {
         return var3;
     }
 
-    public void HIV(FDO var1, Dictionary var2) throws FFK {
+    public void HIV(SqlOperation var1, Dictionary var2) throws FFK {
 
         this.HIW(var1, var2);
 
     }
 
-    private void HIW(FDO var1, Dictionary var2) throws FFK {
+    private void HIW(SqlOperation var1, Dictionary var2) throws FFK {
 
         this.FGN.HMP(var1, var2);
 
@@ -918,7 +918,7 @@ public class EMB {
 
                 byte[] var14 = FEY.getInstance().ILB();
                 byte[] var15 = FEY.getInstance().ILC(var2.toCharArray(), var14);
-                var9 = new SimpleUserData(this.FGP.getUsername(), this.FGP.getLoginType(), new JS(true), new JT(var14), new JT(var15), true);
+                var9 = new SimpleUserData(this.FGP.getUsername(), this.FGP.getLoginType(), new PrivtePerson(true), new Bytes(var14), new Bytes(var15), true);
             } catch (Exception var12) {
                 org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
                 throw new FFI(var12.getMessage());
@@ -947,7 +947,7 @@ public class EMB {
                     return 3;
                 }
 
-                var5 = new SimpleUserData(this.FGP.getUsername(), this.FGP.getLoginType(), new JS(false), null, null, true);
+                var5 = new SimpleUserData(this.FGP.getUsername(), this.FGP.getLoginType(), new PrivtePerson(false), null, null, true);
             } catch (Exception var10) {
                 org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var10);
                 throw new FFI(var10.getMessage());
@@ -1075,7 +1075,7 @@ public class EMB {
                         File var5 = var4[0];
                         File var6 = var4[1];
                         if (var5 != null && var5.isFile() && var5.getName().endsWith(".db") && var6 != null && var6.isFile() && var6.getName().endsWith(".db")) {
-                            SimpleUserData var7 = new SimpleUserData(this.FGP.getUsername(), this.FGP.getLoginType(), new JS(false), null, null, true);
+                            SimpleUserData var7 = new SimpleUserData(this.FGP.getUsername(), this.FGP.getLoginType(), new PrivtePerson(false), null, null, true);
                             boolean var8 = this.FGN.QQC(var2, this.FGO, this.FGQ);
                             if (var8) {
                                 if (var5.getName().startsWith("profiles")) {

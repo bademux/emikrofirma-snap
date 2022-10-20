@@ -7,7 +7,7 @@ import a.a.a.c.f.a.e.InvoiceElementPurchase;
 import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.InvoiceOtherPurchase;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -58,15 +58,15 @@ public class EQZ extends ERC {
         this.getForAll().setGrossPrice(var2.RIT().getValue());
         this.getForAll().setNetPrice(var2.RIU().getValue());
         this.getForAll().setVatPrice(var2.RIV().getValue());
-        this.getForAll().setVat23Amount((BigDecimal) var3.get(KL.RATE_23));
-        this.getForAll().setVat8Amount((BigDecimal) var3.get(KL.RATE_8));
-        this.getForAll().setVat5Amount((BigDecimal) var3.get(KL.RATE_5));
-        this.getForAll().setVat4Amount((BigDecimal) var3.get(KL.RATE_4));
-        this.getForAll().setVat0Amount((BigDecimal) var3.get(KL.RATE_0));
-        this.getForAll().setVatZwAmount((BigDecimal) var3.get(KL.ZW));
-        this.getForAll().setVatNpAmount((BigDecimal) var3.get(KL.NP));
-        this.getForAll().setVatOo23Amount((BigDecimal) var3.get(KL.OO_23));
-        this.getForAll().setVatOo8Amount((BigDecimal) var3.get(KL.OO_8));
+        this.getForAll().setVat23Amount((BigDecimal) var3.get(TaxRate.RATE_23));
+        this.getForAll().setVat8Amount((BigDecimal) var3.get(TaxRate.RATE_8));
+        this.getForAll().setVat5Amount((BigDecimal) var3.get(TaxRate.RATE_5));
+        this.getForAll().setVat4Amount((BigDecimal) var3.get(TaxRate.RATE_4));
+        this.getForAll().setVat0Amount((BigDecimal) var3.get(TaxRate.RATE_0));
+        this.getForAll().setVatZwAmount((BigDecimal) var3.get(TaxRate.ZW));
+        this.getForAll().setVatNpAmount((BigDecimal) var3.get(TaxRate.NP));
+        this.getForAll().setVatOo23Amount((BigDecimal) var3.get(TaxRate.OO_23));
+        this.getForAll().setVatOo8Amount((BigDecimal) var3.get(TaxRate.OO_8));
         HashMap var8 = new HashMap();
         Iterator var7 = var2.getAmountOfTaxDividedByTaxRate().iterator();
 
@@ -75,15 +75,15 @@ public class EQZ extends ERC {
             var8.put(var6.getFirstValue(), var6.getSecondValue());
         }
 
-        this.getForAll().setVat23Tax((BigDecimal) var8.get(KL.RATE_23));
-        this.getForAll().setVat8Tax((BigDecimal) var8.get(KL.RATE_8));
-        this.getForAll().setVat5Tax((BigDecimal) var8.get(KL.RATE_5));
-        this.getForAll().setVat4Tax((BigDecimal) var8.get(KL.RATE_4));
-        this.getForAll().setVat0Tax((BigDecimal) var8.get(KL.RATE_0));
-        this.getForAll().setVatZwTax((BigDecimal) var8.get(KL.ZW));
-        this.getForAll().setVatNpTax((BigDecimal) var8.get(KL.NP));
-        this.getForAll().setVatOo23Tax((BigDecimal) var8.get(KL.OO_23));
-        this.getForAll().setVatOo8Tax((BigDecimal) var8.get(KL.OO_8));
+        this.getForAll().setVat23Tax((BigDecimal) var8.get(TaxRate.RATE_23));
+        this.getForAll().setVat8Tax((BigDecimal) var8.get(TaxRate.RATE_8));
+        this.getForAll().setVat5Tax((BigDecimal) var8.get(TaxRate.RATE_5));
+        this.getForAll().setVat4Tax((BigDecimal) var8.get(TaxRate.RATE_4));
+        this.getForAll().setVat0Tax((BigDecimal) var8.get(TaxRate.RATE_0));
+        this.getForAll().setVatZwTax((BigDecimal) var8.get(TaxRate.ZW));
+        this.getForAll().setVatNpTax((BigDecimal) var8.get(TaxRate.NP));
+        this.getForAll().setVatOo23Tax((BigDecimal) var8.get(TaxRate.OO_23));
+        this.getForAll().setVatOo8Tax((BigDecimal) var8.get(TaxRate.OO_8));
     }
 
     public void HRK(InvoiceElement var1) {

@@ -7,19 +7,19 @@ import java.util.List;
 
 public class ConstraintUNIQUEDef extends ConstraintBase {
     public ConstraintUNIQUEDef() {
-        super(FEG.UNIQUE);
+        super(SqlColumnKeyword.UNIQUE);
     }
 
     public ConstraintUNIQUEDef(CellNamed... var1) {
-        super(FEG.UNIQUE, var1);
+        super(SqlColumnKeyword.UNIQUE, var1);
     }
 
     public ConstraintUNIQUEDef(List<String> var1) {
-        super(FEG.UNIQUE, var1);
+        super(SqlColumnKeyword.UNIQUE, var1);
     }
 
     public ConstraintUNIQUEDef(String... var1) {
-        super(FEG.UNIQUE, var1);
+        super(SqlColumnKeyword.UNIQUE, var1);
     }
 
     public String toString() {

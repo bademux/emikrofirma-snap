@@ -6,30 +6,29 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.QVI;
-import a.a.a.c.c.d.b.ENP;
+import a.a.a.c.c.d.b.InvoiceFilteringType;
 import a.a.a.c.c.d.g.EPA;
 import a.a.a.c.c.e.l.b.EVI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.InvoiceSellCorrection;
-import a.a.a.c.f.a.e.HY;
-import a.a.a.c.f.a.e.IB;
-import a.a.a.c.f.a.g.IU;
-import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.g.JB;
+import a.a.a.c.f.a.e.BaseInvoiceSell;
+import a.a.a.c.f.a.e.InvoiceType;
+import a.a.a.c.f.a.g.InvoiceCriteria;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
+import a.a.a.c.f.a.g.ModelTechnicalElementCriteria;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.b.EZT;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.RefId;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.f.c.a.ConfigurationProperties;
-import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.a.QJZ;
 import a.a.a.c.f.c.b.UserData;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 import a.a.a.c.g.c.FCZ;
 
 import java.io.File;
@@ -54,13 +53,13 @@ public class EVJ extends QVI {
 
         try {
             if (this.GPG == null) {
-                JB var1 = new JB(ConfigurationProperties.class);
+                ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(ConfigurationProperties.class);
                 this.GPG = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.GPG.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
-                    if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
+                    a.a.a.c.f.c.a.ConfigurationProperty var3 = (a.a.a.c.f.c.a.ConfigurationProperty) var2.next();
+                    if (ConfigurationProperty.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GPH = (PropertyString) var3;
                     }
                 }
@@ -89,23 +88,23 @@ public class EVJ extends QVI {
 
     }
 
-    public List<EPA<HY>> getInvoices(ENP var1, Integer var2, Integer var3, String var4, String var5) throws FFK, FFO {
+    public List<EPA<BaseInvoiceSell>> getInvoices(InvoiceFilteringType var1, Integer var2, Integer var3, String var4, String var5) throws FFK, FFO {
 
         ArrayList var15;
-        IU var6;
+        InvoiceCriteria var6;
         switch (var1) {
             case ONLY_EMPTY:
-                var6 = new IU(HY.class, QSW.ACTIVE, Period.AOE, IB.SELL, null, null, null, OrderType.DESC);
+                var6 = new InvoiceCriteria(BaseInvoiceSell.class, InvoiceState.ACTIVE, Period.AOE, InvoiceType.SELL, null, null, null, OrderType.DESC);
                 break;
             case ONLY_CANCELED:
-                var6 = new IU(HY.class, QSW.CANCELED, null, IB.SELL, null, null, null, OrderType.DESC);
+                var6 = new InvoiceCriteria(BaseInvoiceSell.class, InvoiceState.CANCELED, null, InvoiceType.SELL, null, null, null, OrderType.DESC);
                 break;
             case WITHOUT_EMPTY:
-                var6 = new IU(HY.class, QSW.ACTIVE, new Period(var2, var3), IB.SELL, null, null, var4, OrderType.DESC);
+                var6 = new InvoiceCriteria(BaseInvoiceSell.class, InvoiceState.ACTIVE, new Period(var2, var3), InvoiceType.SELL, null, null, var4, OrderType.DESC);
                 break;
             case ALL:
             default:
-                var6 = new IU(HY.class, null, null, IB.SELL, null, null, var4, OrderType.DESC);
+                var6 = new InvoiceCriteria(BaseInvoiceSell.class, null, null, InvoiceType.SELL, null, null, var4, OrderType.DESC);
         }
 
         ValueContainer2 var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
@@ -126,13 +125,13 @@ public class EVJ extends QVI {
         return var15;
     }
 
-    public void RKY(EDF<HY> var1) throws FFK, FFO {
+    public void RKY(EDF<BaseInvoiceSell> var1) throws FFK, FFO {
 
         if (this.RKI(var1.getPeriod())) {
             throw FCZ.getInstance().createMicroBusinessException_cant_cancel_settled_invoice();
         }
 
-        if (var1.getState().equals(QSW.CANCELED)) {
+        if (var1.getState().equals(InvoiceState.CANCELED)) {
             throw FCZ.getInstance().QOB();
         }
 
@@ -140,8 +139,8 @@ public class EVJ extends QVI {
             throw FCZ.getInstance().QOC();
         }
 
-        var1.setValue("business_state", QSW.CANCELED.getKey());
-        this.getModelManager().ROH(var1, HY.class);
+        var1.setValue("business_state", InvoiceState.CANCELED.getKey());
+        this.getModelManager().ROH(var1, BaseInvoiceSell.class);
         this.getModelManager().HKL(this.getParentDefinition());
 
     }
@@ -156,7 +155,7 @@ public class EVJ extends QVI {
     public UserData getUserDataForInvoice(Invoice<?> var1) throws FFK {
 
         UserData var4;
-        JB var2 = new JB(UserData.class, var1.DBC().getValue());
+        ModelTechnicalElementCriteria var2 = new ModelTechnicalElementCriteria(UserData.class, var1.DBC().getValue());
         UserData var3 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var2);
         var4 = var3;
 
@@ -169,7 +168,7 @@ public class EVJ extends QVI {
         File var1 = new File(this.GPH.DEY().getValue());
         boolean var2 = var1.mkdirs();
         if (!var2) {
-            PropertyString var3 = (PropertyString) QJZ.getDefaultConfigurationProperty(FCQ.WorkingDir);
+            PropertyString var3 = (PropertyString) QJZ.getDefaultConfigurationProperty(ConfigurationProperty.WorkingDir);
             var1 = new File(var3.DEY().getValue());
         }
 
@@ -194,14 +193,14 @@ public class EVJ extends QVI {
 
         ArrayList var4;
         try {
-            IY var3 = new IY(Settlement.class, null, JH.VAT, null);
+            ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, null, SettlementType.VAT, null);
             ValueContainer2 var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
                 EDF var6 = (EDF) var5.next();
                 Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
-                if (var7.getSettlementStatus().equals(JG.SETTLED)) {
+                if (var7.getSettlementStatus().equals(SettlementStatus.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
                     LocalDate var9 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), var8.lengthOfMonth());
                     EZT var10 = new EZT(var8, var9, var1, false);
@@ -226,7 +225,7 @@ public class EVJ extends QVI {
     public boolean RKZ(Period var1, String var2) throws FFK, FFO {
 
         boolean var5;
-        IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new RefId(var2), null);
+        InvoiceCriteria var3 = new InvoiceCriteria(BaseInvoiceSell.class, null, var1, InvoiceType.SELL, null, new RefId(var2), null);
         ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() <= 0) {
             var5 = true;

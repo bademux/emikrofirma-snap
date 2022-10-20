@@ -8,16 +8,16 @@ import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.e.k.b.EVB;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.f.a.IP;
-import a.a.a.c.f.a.f.a.IQ;
+import a.a.a.c.f.a.f.a.RecordElementVat;
+import a.a.a.c.f.a.f.a.RecordType;
 import a.a.a.c.f.a.f.a.ReceiptRecordVat;
-import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.g.JD;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
+import a.a.a.c.f.a.g.ReceiptRecordCriteria;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JR;
+import a.a.a.c.f.b.c.Amount;
 import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.g.b.FCW;
 
@@ -28,7 +28,7 @@ import java.util.List;
 
 public class EVC extends ELV {
     private ReceiptRecordVat GNP;
-    private ENL.ENM GNQ;
+    private ENL.Mode GNQ;
 
     public EVC() {
         super(EVB.GNN.getProcessName());
@@ -39,9 +39,9 @@ public class EVC extends ELV {
 
         this.GNP = new ReceiptRecordVat();
         this.GNP.setRefId(new RefId(FCW.getInstance().getMessageForKey("micro.process.cash_register_new.RefId_value")));
-        this.GNP.setNet(new JR(BigDecimal.ZERO));
-        this.GNP.setGross(new JR(BigDecimal.ZERO));
-        this.GNP.setVat(new JR(BigDecimal.ZERO));
+        this.GNP.setNet(new Amount(BigDecimal.ZERO));
+        this.GNP.setGross(new Amount(BigDecimal.ZERO));
+        this.GNP.setVat(new Amount(BigDecimal.ZERO));
         LocalDate var1 = LocalDate.now().minusMonths(1L);
         this.GNP.setPeriod(new Period(var1.getYear(), var1.getMonthValue()));
 
@@ -52,9 +52,9 @@ public class EVC extends ELV {
         BigDecimal var2 = BigDecimal.ZERO;
         BigDecimal var3 = BigDecimal.ZERO;
 
-        IP var5;
+        RecordElementVat var5;
         for (Iterator var4 = this.GNP.getReceiptRecordElements().iterator(); var4.hasNext(); var3 = var3.add(var5.DCH().getValue())) {
-            var5 = (IP) var4.next();
+            var5 = (RecordElementVat) var4.next();
             BigDecimal var6 = var5.DCF().getValue();
             BigDecimal var7 = var5.DCG().getValue();
             var1 = var1.add(var6);
@@ -69,9 +69,9 @@ public class EVC extends ELV {
     protected void HHJ() {
 
         try {
-            if (ENL.ENM.NEW.equals(this.GNQ)) {
+            if (ENL.Mode.NEW.equals(this.GNQ)) {
                 this.getModelManager().HJZ(this.getParentDefinition(), this.GNP);
-            } else if (ENL.ENM.EDIT.equals(this.GNQ)) {
+            } else if (ENL.Mode.EDIT.equals(this.GNQ)) {
                 this.getModelManager().HKB(this.getParentDefinition(), this.GNP);
             }
 
@@ -90,7 +90,7 @@ public class EVC extends ELV {
 
     public ReceiptRecordVat getReceiptRecord(Period var1) {
         try {
-            JD var2 = new JD(ReceiptRecordVat.class, var1, IQ.VAT, null, null, null);
+            ReceiptRecordCriteria var2 = new ReceiptRecordCriteria(ReceiptRecordVat.class, var1, RecordType.VAT, null, null, null);
             ValueContainer2 var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
             if (((List) var3.getSecondValue()).size() > 1) {
                 throw new FFO("More than one ReceiptRecord per one period!");
@@ -106,7 +106,7 @@ public class EVC extends ELV {
     public boolean HYK(Period var1) throws FFK, FFO {
 
         boolean var10;
-        IY var2 = new IY(Settlement.class, var1, JH.VAT, null);
+        ModelBusinessPeriodElementTypedCriteria var2 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, var1, SettlementType.VAT, null);
         ValueContainer2 var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
@@ -115,7 +115,7 @@ public class EVC extends ELV {
         Iterator var4 = ((List) var3.getSecondValue()).iterator();
         if (var4.hasNext()) {
             EDF var5 = (EDF) var4.next();
-            boolean var6 = JG.SETTLED.equals(((Settlement) var5.getModelBaseElementWithIdObject()).getSettlementStatus());
+            boolean var6 = SettlementStatus.SETTLED.equals(((Settlement) var5.getModelBaseElementWithIdObject()).getSettlementStatus());
             return var6;
         }
 
@@ -132,22 +132,22 @@ public class EVC extends ELV {
         this.GNP = var1;
     }
 
-    public void HYL(IP var1) {
-        var1.setGross(new JR(var1.getNet().getValue().add(var1.getVat().getValue())));
+    public void HYL(RecordElementVat var1) {
+        var1.setGross(new Amount(var1.getNet().getValue().add(var1.getVat().getValue())));
         this.GNP.DCM().add(var1);
         this.HYJ();
     }
 
-    public void HYM(IP var1) {
+    public void HYM(RecordElementVat var1) {
         this.GNP.DCM().remove(var1);
         this.HYJ();
     }
 
-    public ENL.ENM getMode() {
+    public ENL.Mode getMode() {
         return this.GNQ;
     }
 
-    public void setMode(ENL.ENM var1) {
+    public void setMode(ENL.Mode var1) {
         this.GNQ = var1;
     }
 }

@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.n.a.QTG;
 import a.a.a.c.c.e.n.c.QTI;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QTH extends ProcessDefinitionBase {
-    public static final EOS RAJ;
+    public static final Stage RAJ;
 
     public QTH() {
     }
@@ -24,7 +24,7 @@ public class QTH extends ProcessDefinitionBase {
         return RAJ.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
+    public String getTitle(Anchor var1) throws FFK {
         switch (var1) {
             case MAIN:
                 return FCW.getInstance().getMessageForKey("micro.infoProgram.title");
@@ -53,6 +53,6 @@ public class QTH extends ProcessDefinitionBase {
     }
 
     static {
-        RAJ = EOS.INFO_PROGRAM;
+        RAJ = Stage.INFO_PROGRAM;
     }
 }

@@ -2,12 +2,12 @@ package a.a.a.c.f.a.e.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.IJ;
+import a.a.a.c.f.a.ModelBaseAbstract;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.JS;
-import a.a.a.c.f.b.c.JV;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
+import a.a.a.c.f.b.c.Amount;
+import a.a.a.c.f.b.c.PrivtePerson;
+import a.a.a.c.f.b.c.InvoicingDate;
 import a.a.a.c.f.b.c.RefId;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -16,263 +16,263 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class InvoiceRecordElement extends IJ implements Comparable<InvoiceRecordElement> {
-    private JV AHTN;
-    private JV AHTO;
-    private JV AHTP;
-    private JV ALP;
+public class InvoiceRecordElement extends ModelBaseAbstract implements Comparable<InvoiceRecordElement> {
+    private InvoicingDate AHTN;
+    private InvoicingDate AHTO;
+    private InvoicingDate AHTP;
+    private InvoicingDate ALP;
     private RefId ALQ;
     private Contractor ALR;
-    private JR ALS;
-    private JR ALT;
-    private JR ALU;
-    private ValueContainer2<JR, JR> ALV;
-    private ValueContainer2<JR, JR> ALW;
-    private ValueContainer2<JR, JR> ALX;
-    private ValueContainer2<JR, JR> QLU;
-    private ValueContainer2<JR, JR> ALY;
-    private ValueContainer2<JR, JR> ALZ;
-    private ValueContainer2<JR, JR> AMA;
-    private ValueContainer2<JR, JR> AMB;
-    private ValueContainer2<JR, JR> AMC;
-    private ValueContainer2<JR, JR> AMD;
-    private JS FGB;
-    private JS QWR;
-    private JS QWS;
-    private JS QWT;
-    private JS QWU;
-    private JS QWV;
-    private JS QWW;
-    private JS QWX;
-    private JS QWY;
-    private QSQ QWZ;
+    private Amount ALS;
+    private Amount ALT;
+    private Amount ALU;
+    private ValueContainer2<Amount, Amount> ALV;
+    private ValueContainer2<Amount, Amount> ALW;
+    private ValueContainer2<Amount, Amount> ALX;
+    private ValueContainer2<Amount, Amount> QLU;
+    private ValueContainer2<Amount, Amount> ALY;
+    private ValueContainer2<Amount, Amount> ALZ;
+    private ValueContainer2<Amount, Amount> AMA;
+    private ValueContainer2<Amount, Amount> AMB;
+    private ValueContainer2<Amount, Amount> AMC;
+    private ValueContainer2<Amount, Amount> AMD;
+    private PrivtePerson FGB;
+    private PrivtePerson QWR;
+    private PrivtePerson QWS;
+    private PrivtePerson QWT;
+    private PrivtePerson QWU;
+    private PrivtePerson QWV;
+    private PrivtePerson QWW;
+    private PrivtePerson QWX;
+    private PrivtePerson QWY;
+    private InvoiceOtherSubtype QWZ;
     private Boolean QXA;
 
     public InvoiceRecordElement() {
 
     }
 
-    public JV getDate() {
+    public InvoicingDate getDate() {
         return this.ALP;
     }
 
-    public JV QRF() {
+    public InvoicingDate QRF() {
         if (this.ALP == null) {
-            this.ALP = new JV();
+            this.ALP = new InvoicingDate();
         }
 
         return this.ALP;
     }
 
-    public void setDate(JV var1) {
+    public void setDate(InvoicingDate var1) {
         this.ALP = var1;
     }
 
-    public JR getGross() {
+    public Amount getGross() {
         return this.ALS;
     }
 
-    public JR QRG() {
+    public Amount QRG() {
         if (this.ALS == null) {
-            this.ALS = new JR();
+            this.ALS = new Amount();
         }
 
         return this.ALS;
     }
 
-    public void setGross(JR var1) {
+    public void setGross(Amount var1) {
         this.ALS = var1;
     }
 
-    public JR getNet() {
+    public Amount getNet() {
         return this.ALT;
     }
 
-    public JR QRH() {
+    public Amount QRH() {
         if (this.ALT == null) {
-            this.ALT = new JR();
+            this.ALT = new Amount();
         }
 
         return this.ALT;
     }
 
-    public void setNet(JR var1) {
+    public void setNet(Amount var1) {
         this.ALT = var1;
     }
 
-    public JR getVat() {
+    public Amount getVat() {
         return this.ALU;
     }
 
-    public JR QRI() {
+    public Amount QRI() {
         if (this.ALU == null) {
-            this.ALU = new JR();
+            this.ALU = new Amount();
         }
 
         return this.ALU;
     }
 
-    public void setVat(JR var1) {
+    public void setVat(Amount var1) {
         this.ALU = var1;
     }
 
-    public ValueContainer2<JR, JR> getVat23() {
+    public ValueContainer2<Amount, Amount> getVat23() {
         return this.ALV;
     }
 
-    public ValueContainer2<JR, JR> QRJ() {
+    public ValueContainer2<Amount, Amount> QRJ() {
         if (this.ALV == null) {
-            this.ALV = new ValueContainer2(new JR(), new JR());
+            this.ALV = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.ALV;
     }
 
-    public void setVat23(ValueContainer2<JR, JR> var1) {
+    public void setVat23(ValueContainer2<Amount, Amount> var1) {
         this.ALV = var1;
     }
 
-    public ValueContainer2<JR, JR> getVat8() {
+    public ValueContainer2<Amount, Amount> getVat8() {
         return this.ALW;
     }
 
-    public ValueContainer2<JR, JR> QRK() {
+    public ValueContainer2<Amount, Amount> QRK() {
         if (this.ALW == null) {
-            this.ALW = new ValueContainer2(new JR(), new JR());
+            this.ALW = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.ALW;
     }
 
-    public void setVat8(ValueContainer2<JR, JR> var1) {
+    public void setVat8(ValueContainer2<Amount, Amount> var1) {
         this.ALW = var1;
     }
 
-    public ValueContainer2<JR, JR> getVat5() {
+    public ValueContainer2<Amount, Amount> getVat5() {
         return this.ALX;
     }
 
-    public ValueContainer2<JR, JR> QRL() {
+    public ValueContainer2<Amount, Amount> QRL() {
         if (this.ALX == null) {
-            this.ALX = new ValueContainer2(new JR(), new JR());
+            this.ALX = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.ALX;
     }
 
-    public void setVat5(ValueContainer2<JR, JR> var1) {
+    public void setVat5(ValueContainer2<Amount, Amount> var1) {
         this.ALX = var1;
     }
 
-    public ValueContainer2<JR, JR> getVat4() {
+    public ValueContainer2<Amount, Amount> getVat4() {
         return this.QLU;
     }
 
-    public ValueContainer2<JR, JR> QRM() {
+    public ValueContainer2<Amount, Amount> QRM() {
         if (this.QLU == null) {
-            this.QLU = new ValueContainer2(new JR(), new JR());
+            this.QLU = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.QLU;
     }
 
-    public void setVat4(ValueContainer2<JR, JR> var1) {
+    public void setVat4(ValueContainer2<Amount, Amount> var1) {
         this.QLU = var1;
     }
 
-    public ValueContainer2<JR, JR> getVat0() {
+    public ValueContainer2<Amount, Amount> getVat0() {
         return this.ALY;
     }
 
-    public ValueContainer2<JR, JR> QRN() {
+    public ValueContainer2<Amount, Amount> QRN() {
         if (this.ALY == null) {
-            this.ALY = new ValueContainer2(new JR(), new JR());
+            this.ALY = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.ALY;
     }
 
-    public void setVat0(ValueContainer2<JR, JR> var1) {
+    public void setVat0(ValueContainer2<Amount, Amount> var1) {
         this.ALY = var1;
     }
 
-    public ValueContainer2<JR, JR> getVatZw() {
+    public ValueContainer2<Amount, Amount> getVatZw() {
         return this.ALZ;
     }
 
-    public ValueContainer2<JR, JR> QRO() {
+    public ValueContainer2<Amount, Amount> QRO() {
         if (this.ALZ == null) {
-            this.ALZ = new ValueContainer2(new JR(), new JR());
+            this.ALZ = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.ALZ;
     }
 
-    public void setVatZw(ValueContainer2<JR, JR> var1) {
+    public void setVatZw(ValueContainer2<Amount, Amount> var1) {
         this.ALZ = var1;
     }
 
-    public ValueContainer2<JR, JR> getVatNp() {
+    public ValueContainer2<Amount, Amount> getVatNp() {
         return this.AMA;
     }
 
-    public ValueContainer2<JR, JR> QRP() {
+    public ValueContainer2<Amount, Amount> QRP() {
         if (this.AMA == null) {
-            this.AMA = new ValueContainer2(new JR(), new JR());
+            this.AMA = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.AMA;
     }
 
-    public void setVatNp(ValueContainer2<JR, JR> var1) {
+    public void setVatNp(ValueContainer2<Amount, Amount> var1) {
         this.AMA = var1;
     }
 
-    public ValueContainer2<JR, JR> getVatOo23() {
+    public ValueContainer2<Amount, Amount> getVatOo23() {
         return this.AMB;
     }
 
-    public ValueContainer2<JR, JR> QRQ() {
+    public ValueContainer2<Amount, Amount> QRQ() {
         if (this.AMB == null) {
-            this.AMB = new ValueContainer2(new JR(), new JR());
+            this.AMB = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.AMB;
     }
 
-    public void setVatOo23(ValueContainer2<JR, JR> var1) {
+    public void setVatOo23(ValueContainer2<Amount, Amount> var1) {
         this.AMB = var1;
     }
 
-    public ValueContainer2<JR, JR> getVatOo8() {
+    public ValueContainer2<Amount, Amount> getVatOo8() {
         return this.AMC;
     }
 
-    public ValueContainer2<JR, JR> QRR() {
+    public ValueContainer2<Amount, Amount> QRR() {
         if (this.AMC == null) {
-            this.AMC = new ValueContainer2(new JR(), new JR());
+            this.AMC = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.AMC;
     }
 
-    public void setVatOo8(ValueContainer2<JR, JR> var1) {
+    public void setVatOo8(ValueContainer2<Amount, Amount> var1) {
         this.AMC = var1;
     }
 
-    public ValueContainer2<JR, JR> getVatOo5() {
+    public ValueContainer2<Amount, Amount> getVatOo5() {
         return this.AMD;
     }
 
-    public ValueContainer2<JR, JR> QRS() {
+    public ValueContainer2<Amount, Amount> QRS() {
         if (this.AMD == null) {
-            this.AMD = new ValueContainer2(new JR(), new JR());
+            this.AMD = new ValueContainer2(new Amount(), new Amount());
         }
 
         return this.AMD;
     }
 
-    public void setVatOo5(ValueContainer2<JR, JR> var1) {
+    public void setVatOo5(ValueContainer2<Amount, Amount> var1) {
         this.AMD = var1;
     }
 
@@ -320,71 +320,71 @@ public class InvoiceRecordElement extends IJ implements Comparable<InvoiceRecord
         return var2;
     }
 
-    public JV AICN() {
+    public InvoicingDate AICN() {
         if (this.AHTN == null) {
             if (this.ALP != null) {
                 this.AHTN = this.ALP.DEF();
             } else {
-                this.AHTN = new JV(new Date());
+                this.AHTN = new InvoicingDate(new Date());
             }
         }
 
         return this.AHTN;
     }
 
-    public JV AICO() {
+    public InvoicingDate AICO() {
         if (this.AHTO == null) {
             if (this.ALP != null) {
                 this.AHTO = this.ALP.DEF();
             } else {
-                this.AHTO = new JV(new Date());
+                this.AHTO = new InvoicingDate(new Date());
             }
         }
 
         return this.AHTO;
     }
 
-    public JV AICP() {
+    public InvoicingDate AICP() {
         if (this.AHTP == null) {
             if (this.ALP != null) {
                 this.AHTP = this.ALP.DEF();
             } else {
-                this.AHTP = new JV(new Date());
+                this.AHTP = new InvoicingDate(new Date());
             }
         }
 
         return this.AHTP;
     }
 
-    public void setCreationDate(JV var1) {
+    public void setCreationDate(InvoicingDate var1) {
         this.AHTN = var1;
     }
 
-    public void setTransactionDate(JV var1) {
+    public void setTransactionDate(InvoicingDate var1) {
         this.AHTO = var1;
     }
 
-    public void setReceiveDate(JV var1) {
+    public void setReceiveDate(InvoicingDate var1) {
         this.AHTP = var1;
     }
 
-    public JS getFromPurchase() {
+    public PrivtePerson getFromPurchase() {
         return this.FGB;
     }
 
-    public void setFromPurchase(JS var1) {
+    public void setFromPurchase(PrivtePerson var1) {
         this.FGB = var1;
     }
 
-    public JS HGZ() {
+    public PrivtePerson HGZ() {
         if (this.FGB == null) {
-            this.FGB = new JS();
+            this.FGB = new PrivtePerson();
         }
 
         return this.FGB;
     }
 
-    public ValueContainer2<JR, JR> getVat4and8() {
+    public ValueContainer2<Amount, Amount> getVat4and8() {
         BigDecimal var1 = BigDecimal.ZERO;
         BigDecimal var2 = BigDecimal.ZERO;
         if (this.QLU != null && this.QLU.getFirstValue() != null && this.QLU.getFirstValue().getValue() != null) {
@@ -403,140 +403,140 @@ public class InvoiceRecordElement extends IJ implements Comparable<InvoiceRecord
             var2 = var2.add(this.ALW.getSecondValue().getValue());
         }
 
-        return new ValueContainer2(new JR(var1), new JR(var2));
+        return new ValueContainer2(new Amount(var1), new Amount(var2));
     }
 
-    public ValueContainer2<JR, JR> QRT() {
+    public ValueContainer2<Amount, Amount> QRT() {
         return this.getVat4and8();
     }
 
-    public void setVat4and8(ValueContainer2<JR, JR> var1) {
+    public void setVat4and8(ValueContainer2<Amount, Amount> var1) {
         throw new FFI("This method should not be used");
     }
 
-    public JS getOtherSellReason1() {
+    public PrivtePerson getOtherSellReason1() {
         return this.QWR;
     }
 
-    public void setOtherSellReason1(JS var1) {
+    public void setOtherSellReason1(PrivtePerson var1) {
         this.QWR = var1;
     }
 
-    public JS RII() {
+    public PrivtePerson RII() {
         if (this.QWR == null) {
-            this.QWR = new JS();
+            this.QWR = new PrivtePerson();
         }
 
         return this.QWR;
     }
 
-    public JS getOtherSellReason2() {
+    public PrivtePerson getOtherSellReason2() {
         return this.QWS;
     }
 
-    public void setOtherSellReason2(JS var1) {
+    public void setOtherSellReason2(PrivtePerson var1) {
         this.QWS = var1;
     }
 
-    public JS RIJ() {
+    public PrivtePerson RIJ() {
         if (this.QWS == null) {
-            this.QWS = new JS();
+            this.QWS = new PrivtePerson();
         }
 
         return this.QWS;
     }
 
-    public JS getOtherSellReason3() {
+    public PrivtePerson getOtherSellReason3() {
         return this.QWT;
     }
 
-    public void setOtherSellReason3(JS var1) {
+    public void setOtherSellReason3(PrivtePerson var1) {
         this.QWT = var1;
     }
 
-    public JS RIK() {
+    public PrivtePerson RIK() {
         if (this.QWT == null) {
-            this.QWT = new JS();
+            this.QWT = new PrivtePerson();
         }
 
         return this.QWT;
     }
 
-    public JS getOtherSellReason4() {
+    public PrivtePerson getOtherSellReason4() {
         return this.QWU;
     }
 
-    public void setOtherSellReason4(JS var1) {
+    public void setOtherSellReason4(PrivtePerson var1) {
         this.QWU = var1;
     }
 
-    public JS RIL() {
+    public PrivtePerson RIL() {
         if (this.QWU == null) {
-            this.QWU = new JS();
+            this.QWU = new PrivtePerson();
         }
 
         return this.QWU;
     }
 
-    public JS getOtherPurchaseReason1() {
+    public PrivtePerson getOtherPurchaseReason1() {
         return this.QWV;
     }
 
-    public void setOtherPurchaseReason1(JS var1) {
+    public void setOtherPurchaseReason1(PrivtePerson var1) {
         this.QWV = var1;
     }
 
-    public JS RIM() {
+    public PrivtePerson RIM() {
         if (this.QWV == null) {
-            this.QWV = new JS();
+            this.QWV = new PrivtePerson();
         }
 
         return this.QWV;
     }
 
-    public JS getOtherPurchaseReason2() {
+    public PrivtePerson getOtherPurchaseReason2() {
         return this.QWW;
     }
 
-    public void setOtherPurchaseReason2(JS var1) {
+    public void setOtherPurchaseReason2(PrivtePerson var1) {
         this.QWW = var1;
     }
 
-    public JS RIN() {
+    public PrivtePerson RIN() {
         if (this.QWW == null) {
-            this.QWW = new JS();
+            this.QWW = new PrivtePerson();
         }
 
         return this.QWW;
     }
 
-    public JS getOtherPurchaseReason3() {
+    public PrivtePerson getOtherPurchaseReason3() {
         return this.QWX;
     }
 
-    public void setOtherPurchaseReason3(JS var1) {
+    public void setOtherPurchaseReason3(PrivtePerson var1) {
         this.QWX = var1;
     }
 
-    public JS RIO() {
+    public PrivtePerson RIO() {
         if (this.QWX == null) {
-            this.QWX = new JS();
+            this.QWX = new PrivtePerson();
         }
 
         return this.QWX;
     }
 
-    public JS getOtherPurchaseReason4() {
+    public PrivtePerson getOtherPurchaseReason4() {
         return this.QWY;
     }
 
-    public void setOtherPurchaseReason4(JS var1) {
+    public void setOtherPurchaseReason4(PrivtePerson var1) {
         this.QWY = var1;
     }
 
-    public JS RIP() {
+    public PrivtePerson RIP() {
         if (this.QWY == null) {
-            this.QWY = new JS();
+            this.QWY = new PrivtePerson();
         }
 
         return this.QWY;
@@ -550,11 +550,11 @@ public class InvoiceRecordElement extends IJ implements Comparable<InvoiceRecord
         return this.QXA;
     }
 
-    public QSQ getInvoiceOtherSubType() {
+    public InvoiceOtherSubtype getInvoiceOtherSubType() {
         return this.QWZ;
     }
 
-    public void setInvoiceOtherSubType(QSQ var1) {
+    public void setInvoiceOtherSubType(InvoiceOtherSubtype var1) {
         this.QWZ = var1;
     }
 }

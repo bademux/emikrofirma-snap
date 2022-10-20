@@ -10,20 +10,20 @@ import java.time.LocalDate;
 
 @XmlTransient
 public abstract class Declaration extends ModelBusinessPeriodAndDocIndexElement {
-    private HM AJB;
-    private AGWW AHRN;
-    private HL AJC;
+    private DeclarationType AJB;
+    private DeclarationSubtype AHRN;
+    private DeclarationStatus AJC;
     private JY AHRO;
-    private EHK FFZ;
+    private SignatureType FFZ;
     private transient ValueContainer7<Boolean, String, String, String, LocalDate, BigDecimal, String> MWA;
 
     public Declaration() {
 
-        this.AJC = HL.NEW;
+        this.AJC = DeclarationStatus.NEW;
 
     }
 
-    public Declaration(HM var1, AGWW var2, Integer var3) {
+    public Declaration(DeclarationType var1, DeclarationSubtype var2, Integer var3) {
         this();
 
         this.AJB = var1;
@@ -32,19 +32,19 @@ public abstract class Declaration extends ModelBusinessPeriodAndDocIndexElement 
 
     }
 
-    public HM getDeclarationType() {
+    public DeclarationType getDeclarationType() {
         return this.AJB;
     }
 
-    public AGWW getDeclarationSubType() {
+    public DeclarationSubtype getDeclarationSubType() {
         return this.AHRN;
     }
 
-    public HL getDeclarationStatus() {
+    public DeclarationStatus getDeclarationStatus() {
         return this.AJC;
     }
 
-    public void setDeclarationStatus(HL var1) {
+    public void setDeclarationStatus(DeclarationStatus var1) {
         this.AJC = var1;
     }
 
@@ -56,19 +56,19 @@ public abstract class Declaration extends ModelBusinessPeriodAndDocIndexElement 
         this.AHRO = var1;
     }
 
-    public EHK getSignatureType() {
+    public SignatureType getSignatureType() {
         return this.FFZ;
     }
 
-    public EHK MWX() {
+    public SignatureType MWX() {
         if (this.FFZ == null) {
-            this.FFZ = EHK.Unknown;
+            this.FFZ = SignatureType.Unknown;
         }
 
         return this.FFZ;
     }
 
-    public void setSignatureType(EHK var1) {
+    public void setSignatureType(SignatureType var1) {
         this.FFZ = var1;
     }
 

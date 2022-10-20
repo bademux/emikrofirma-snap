@@ -14,7 +14,7 @@ public class DeclarationJPK_VAT extends DeclarationJPK {
     private transient boolean AHSS;
 
     public DeclarationJPK_VAT() {
-        super(AGWW.VAT, 0);
+        super(DeclarationSubtype.VAT, 0);
 
     }
 
@@ -24,7 +24,7 @@ public class DeclarationJPK_VAT extends DeclarationJPK {
     }
 
     public DeclarationJPK_VAT(Integer var1, File var2, JPKSchemaType var3, boolean var4) {
-        super(AGWW.VAT, var1, var2, var3);
+        super(DeclarationSubtype.VAT, var1, var2, var3);
 
         this.AHSS = var4;
 

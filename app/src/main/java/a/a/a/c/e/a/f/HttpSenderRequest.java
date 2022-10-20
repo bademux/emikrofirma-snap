@@ -7,18 +7,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HttpSenderRequest<_PAYLOAD_TYPE> {
-    private final EWP GQK;
+    private final HttpMethod GQK;
     private final URL GQL;
-    private final EWQ GQM;
+    private final Mime GQM;
     private final _PAYLOAD_TYPE GQN;
     private final Map<String, String> GQO;
     InputStream GQP;
 
-    public HttpSenderRequest(EWP var1, EWS var2, String var3, int var4, String var5, EWQ var6, _PAYLOAD_TYPE var7) throws MalformedURLException {
+    public HttpSenderRequest(HttpMethod var1, Schema var2, String var3, int var4, String var5, Mime var6, _PAYLOAD_TYPE var7) throws MalformedURLException {
         this(var1, var2, var3, var4, var5, var6, var7, new HashMap());
     }
 
-    public HttpSenderRequest(EWP var1, EWS var2, String var3, int var4, String var5, EWQ var6, _PAYLOAD_TYPE var7, Map<String, String> var8) throws MalformedURLException {
+    public HttpSenderRequest(HttpMethod var1, Schema var2, String var3, int var4, String var5, Mime var6, _PAYLOAD_TYPE var7, Map<String, String> var8) throws MalformedURLException {
         this.GQP = null;
         this.GQK = var1;
         this.GQL = new URL(var2.name(), var3, var4, var5);
@@ -27,11 +27,11 @@ public class HttpSenderRequest<_PAYLOAD_TYPE> {
         this.GQO = var8;
     }
 
-    public HttpSenderRequest(EWP var1, URL var2, EWQ var3, _PAYLOAD_TYPE var4) {
+    public HttpSenderRequest(HttpMethod var1, URL var2, Mime var3, _PAYLOAD_TYPE var4) {
         this(var1, var2, var3, var4, new HashMap());
     }
 
-    public HttpSenderRequest(EWP var1, URL var2, EWQ var3, _PAYLOAD_TYPE var4, Map<String, String> var5) {
+    public HttpSenderRequest(HttpMethod var1, URL var2, Mime var3, _PAYLOAD_TYPE var4, Map<String, String> var5) {
         this.GQP = null;
         this.GQK = var1;
         this.GQM = var3;
@@ -40,11 +40,11 @@ public class HttpSenderRequest<_PAYLOAD_TYPE> {
         this.GQL = var2;
     }
 
-    public EWP getMethod() {
+    public HttpMethod getMethod() {
         return this.GQK;
     }
 
-    public EWQ getContentType() {
+    public Mime getContentType() {
         return this.GQM;
     }
 
@@ -90,8 +90,8 @@ public class HttpSenderRequest<_PAYLOAD_TYPE> {
         return this.GQL;
     }
 
-    public EWS getProtocol() {
-        return EWS.valueOf(this.GQL.getProtocol());
+    public Schema getProtocol() {
+        return Schema.valueOf(this.GQL.getProtocol());
     }
 
     public String getHost() {

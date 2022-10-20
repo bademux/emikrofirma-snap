@@ -1,10 +1,10 @@
 package a.a.a.c.f.c.c;
 
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.b.FAJ;
 import javafx.collections.FXCollections;
 
-public class ComboBoxValidated_NIP extends ComboBoxRequiredText<QST> {
+public class ComboBoxValidated_NIP extends ComboBoxRequiredText<ObjectWithTitle> {
     public ComboBoxValidated_NIP() {
         super(FXCollections.observableArrayList());
         this.IGA();

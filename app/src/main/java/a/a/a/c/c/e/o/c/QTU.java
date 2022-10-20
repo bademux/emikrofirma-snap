@@ -9,11 +9,11 @@ import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.n.QVB;
 import a.a.a.c.c.e.o.b.QTT;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.g.QSS;
+import a.a.a.c.f.a.g.InvoiceOtherCriteria;
 import a.a.a.c.f.a.n.InvoiceOtherPurchase;
-import a.a.a.c.f.a.n.QSR;
+import a.a.a.c.f.a.n.InvoiceOtherType;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.g.c.FCZ;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class QTU extends QVI {
 
     }
 
-    public List<QVB<InvoiceOtherPurchase>> getInvoicesOtherPurchase(Integer var1, Integer var2, String var3, QSW var4) throws FFK, FFO {
+    public List<QVB<InvoiceOtherPurchase>> getInvoicesOtherPurchase(Integer var1, Integer var2, String var3, InvoiceState var4) throws FFK, FFO {
 
         ArrayList var15;
         Period var5 = null;
@@ -57,7 +57,7 @@ public class QTU extends QVI {
             var5 = new Period(var1, null);
         }
 
-        QSS var6 = new QSS(InvoiceOtherPurchase.class, var4, var5, QSR.PURCHASE, null, null, var3, OrderType.DESC);
+        InvoiceOtherCriteria var6 = new InvoiceOtherCriteria(InvoiceOtherPurchase.class, var4, var5, InvoiceOtherType.PURCHASE, null, null, var3, OrderType.DESC);
         ValueContainer2 var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         ArrayList var8 = new ArrayList();
         if (var7 != null) {

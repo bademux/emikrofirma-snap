@@ -2,7 +2,7 @@ package a.a.a.c.g.a;
 
 import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.ValueContainer4;
@@ -69,18 +69,18 @@ public class FCR {
                 var2x.setPrefHeight(var9);
                 var2x.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<_T>() {
                     public void changed(ObservableValue<? extends _T> var1xx, _T var2x, _T var3x) {
-                        var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(var3x == null);
+                        var1x.getDialogPane().lookupButton(javafx.scene.control.ButtonType.OK).setDisable(var3x == null);
 
                     }
                 });
                 var1x.setTitle(var0);
                 var1x.setHeaderText(var1);
                 var1x.getDialogPane().setContent(var2x);
-                var1x.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                var1x.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+                var1x.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.OK);
+                var1x.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.CANCEL);
                 FCR.IGV(var1x.getDialogPane());
-                var1x.setResultConverter(new Callback<ButtonType, _T>() {
-                    public _T call(ButtonType var1x) {
+                var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, _T>() {
+                    public _T call(javafx.scene.control.ButtonType var1x) {
                         switch (var1x.getButtonData()) {
                             case OK_DONE:
                                 return (_T) var2x.getSelectionModel().getSelectedItem();
@@ -90,7 +90,7 @@ public class FCR {
                         }
                     }
                 });
-                var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(true);
+                var1x.getDialogPane().lookupButton(javafx.scene.control.ButtonType.OK).setDisable(true);
                 FCR.QGR(var1x.getDialogPane());
                 Optional var3x = var1x.showAndWait();
                 return var3x.isPresent() ? (_T) var3x.get() : null;
@@ -112,7 +112,7 @@ public class FCR {
                 final PasswordField var3 = new PasswordField();
                 var3.textProperty().addListener(new ChangeListener<String>() {
                     public void changed(ObservableValue<? extends String> var1xx, String var2x, String var3) {
-                        var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(var3 == null || var3.length() <= 0);
+                        var1x.getDialogPane().lookupButton(javafx.scene.control.ButtonType.OK).setDisable(var3 == null || var3.length() <= 0);
 
                     }
                 });
@@ -124,10 +124,10 @@ public class FCR {
                 var1x.setTitle(var0);
                 var1x.setHeaderText(var1);
                 var1x.getDialogPane().setContent(var2x);
-                var1x.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                var1x.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-                var1x.setResultConverter(new Callback<ButtonType, String>() {
-                    public String call(ButtonType var1x) {
+                var1x.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.OK);
+                var1x.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.CANCEL);
+                var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, String>() {
+                    public String call(javafx.scene.control.ButtonType var1x) {
                         switch (var1x.getButtonData()) {
                             case OK_DONE:
                                 return var3.getText();
@@ -138,7 +138,7 @@ public class FCR {
                         }
                     }
                 });
-                var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(true);
+                var1x.getDialogPane().lookupButton(javafx.scene.control.ButtonType.OK).setDisable(true);
                 var3.requestFocus();
                 FCR.IGV(var1x.getDialogPane());
                 FCR.QGR(var1x.getDialogPane());
@@ -164,7 +164,7 @@ public class FCR {
                     var3.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         public void handle(MouseEvent var1xx) {
                             if (var1xx.getButton() == MouseButton.PRIMARY) {
-                                var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
+                                var1x.getDialogPane().lookupButton(javafx.scene.control.ButtonType.OK).setDisable(false);
                             }
                         }
                     });
@@ -176,7 +176,7 @@ public class FCR {
                             ClipboardContent var3 = new ClipboardContent();
                             var3.putString(var7);
                             var2x.setContent(var3);
-                            var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
+                            var1x.getDialogPane().lookupButton(javafx.scene.control.ButtonType.OK).setDisable(false);
                         }
                     });
                     var4x.getItems().add(var5);
@@ -193,10 +193,10 @@ public class FCR {
                     var1x.setTitle(var0);
                     var1x.setHeaderText(var1);
                     var1x.getDialogPane().setContent(var2x);
-                    var1x.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                    var1x.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-                    var1x.setResultConverter(new Callback<ButtonType, Boolean>() {
-                        public Boolean call(ButtonType var1x) {
+                    var1x.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.OK);
+                    var1x.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.CANCEL);
+                    var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, Boolean>() {
+                        public Boolean call(javafx.scene.control.ButtonType var1x) {
                             switch (var1x.getButtonData()) {
                                 case OK_DONE:
                                     return true;
@@ -206,7 +206,7 @@ public class FCR {
                             }
                         }
                     });
-                    var1x.getDialogPane().lookupButton(ButtonType.OK).setDisable(true);
+                    var1x.getDialogPane().lookupButton(javafx.scene.control.ButtonType.OK).setDisable(true);
                     var3.requestFocus();
                     FCR.IGV(var1x.getDialogPane());
                     FCR.QGR(var1x.getDialogPane());
@@ -222,9 +222,9 @@ public class FCR {
         return var9;
     }
 
-    public static FEN getUnsavedDataDialog(String var0, String var1, String var2, String var3, String var4, boolean var5, double var6, double var8, String var10) {
+    public static DialogButton getUnsavedDataDialog(String var0, String var1, String var2, String var3, String var4, boolean var5, double var6, double var8, String var10) {
 
-        FEN var16;
+        DialogButton var16;
         Dialog var11 = new Dialog();
         var11.getDialogPane().setMinWidth(var6);
         var11.getDialogPane().setMinHeight(var8);
@@ -234,30 +234,30 @@ public class FCR {
         }
 
         var11.setContentText(var10);
-        ButtonType var12 = new ButtonType(var2, ButtonData.YES);
-        ButtonType var13 = new ButtonType(var3, ButtonData.NO);
-        ButtonType var14 = new ButtonType(var4, ButtonData.APPLY);
+        javafx.scene.control.ButtonType var12 = new javafx.scene.control.ButtonType(var2, ButtonData.YES);
+        javafx.scene.control.ButtonType var13 = new javafx.scene.control.ButtonType(var3, ButtonData.NO);
+        javafx.scene.control.ButtonType var14 = new javafx.scene.control.ButtonType(var4, ButtonData.APPLY);
         var11.getDialogPane().getButtonTypes().add(var12);
         var11.getDialogPane().getButtonTypes().add(var13);
         var11.getDialogPane().getButtonTypes().add(var14);
-        var11.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-        var11.getDialogPane().lookupButton(ButtonType.CANCEL).setManaged(false);
+        var11.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.CANCEL);
+        var11.getDialogPane().lookupButton(javafx.scene.control.ButtonType.CANCEL).setManaged(false);
         if (var5) {
             var11.getDialogPane().lookupButton(var12).setDisable(true);
         }
 
-        var11.setResultConverter(new Callback<ButtonType, FEN>() {
-            public FEN call(ButtonType var1) {
+        var11.setResultConverter(new Callback<javafx.scene.control.ButtonType, DialogButton>() {
+            public DialogButton call(javafx.scene.control.ButtonType var1) {
                 switch (var1.getButtonData()) {
                     case CANCEL_CLOSE:
                     case APPLY:
-                        return FEN.CancelExit;
+                        return DialogButton.CancelExit;
                     case YES:
-                        return FEN.ExitAndSave;
+                        return DialogButton.ExitAndSave;
                     case NO:
-                        return FEN.ExitWithoutSave;
+                        return DialogButton.ExitWithoutSave;
                     default:
-                        return FEN.Unspecified;
+                        return DialogButton.Unspecified;
                 }
             }
         });
@@ -265,20 +265,20 @@ public class FCR {
         QGR(var11.getDialogPane());
         Optional var15 = var11.showAndWait();
         if (var15.isPresent()) {
-            var16 = (FEN) var15.get();
+            var16 = (DialogButton) var15.get();
             return var16;
         }
 
-        var16 = FEN.Unspecified;
+        var16 = DialogButton.Unspecified;
 
         return var16;
     }
 
-    public static FEN getConfirmDataDialog(final String var0, final String var1, final String var2, final String var3, final double var4, final double var6, final String var8) {
+    public static DialogButton getConfirmDataDialog(final String var0, final String var1, final String var2, final String var3, final double var4, final double var6, final String var8) {
 
-        FEN var9;
-        var9 = FEL.IKS(new FEM<FEN>() {
-            public FEN IKT() {
+        DialogButton var9;
+        var9 = FEL.IKS(new FEM<DialogButton>() {
+            public DialogButton IKT() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var4);
                 var1x.getDialogPane().setMinHeight(var6);
@@ -288,41 +288,41 @@ public class FCR {
                 }
 
                 var1x.setContentText(var8);
-                ButtonType var2x = new ButtonType(var2, ButtonData.YES);
-                ButtonType var3x = new ButtonType(var3, ButtonData.CANCEL_CLOSE);
+                javafx.scene.control.ButtonType var2x = new javafx.scene.control.ButtonType(var2, ButtonData.YES);
+                javafx.scene.control.ButtonType var3x = new javafx.scene.control.ButtonType(var3, ButtonData.CANCEL_CLOSE);
                 var1x.getDialogPane().getButtonTypes().add(var2x);
                 var1x.getDialogPane().getButtonTypes().add(var3x);
-                var1x.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-                var1x.getDialogPane().lookupButton(ButtonType.CANCEL).setManaged(false);
-                var1x.setResultConverter(new Callback<ButtonType, FEN>() {
-                    public FEN call(ButtonType var1x) {
+                var1x.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.CANCEL);
+                var1x.getDialogPane().lookupButton(javafx.scene.control.ButtonType.CANCEL).setManaged(false);
+                var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, DialogButton>() {
+                    public DialogButton call(javafx.scene.control.ButtonType var1x) {
                         switch (var1x.getButtonData()) {
                             case CANCEL_CLOSE:
                             case APPLY:
-                                return FEN.Reject;
+                                return DialogButton.Reject;
                             case YES:
-                                return FEN.Confirm;
+                                return DialogButton.Confirm;
                             case NO:
                             default:
-                                return FEN.Unspecified;
+                                return DialogButton.Unspecified;
                         }
                     }
                 });
                 FCR.IGV(var1x.getDialogPane());
                 FCR.QGR(var1x.getDialogPane());
                 Optional var4x = var1x.showAndWait();
-                return var4x.isPresent() ? (FEN) var4x.get() : FEN.Unspecified;
+                return var4x.isPresent() ? (DialogButton) var4x.get() : DialogButton.Unspecified;
             }
         });
 
         return var9;
     }
 
-    public static FCS getSignatureMethodSelector(final String var0, final String var1, final double var2, final double var4, final String var6, final boolean var7) {
+    public static SignType getSignatureMethodSelector(final String var0, final String var1, final double var2, final double var4, final String var6, final boolean var7) {
 
-        FCS var8;
-        var8 = FEL.IKS(new FEM<FCS>() {
-            public FCS IKT() {
+        SignType var8;
+        var8 = FEL.IKS(new FEM<SignType>() {
+            public SignType IKT() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -333,27 +333,27 @@ public class FCR {
 
                 var1x.setContentText(var6);
                 final HashMap var2x = new HashMap();
-                FCS var3 = FCS.CryptCard;
-                ButtonType var4x = new ButtonType(var3.getDescription(), ButtonData.APPLY);
+                SignType var3 = SignType.CryptCard;
+                javafx.scene.control.ButtonType var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.APPLY);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
-                var3 = FCS.PZ;
-                var4x = new ButtonType(var3.getDescription(), ButtonData.APPLY);
+                var3 = SignType.PZ;
+                var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.APPLY);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
-                var3 = FCS.KD;
-                var4x = new ButtonType(var3.getDescription(), ButtonData.APPLY);
+                var3 = SignType.KD;
+                var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.APPLY);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
                 var1x.getDialogPane().lookupButton(var4x).setDisable(!var7);
-                var1x.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-                var1x.setResultConverter(new Callback<ButtonType, FCS>() {
-                    public FCS call(ButtonType var1x) {
+                var1x.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.CANCEL);
+                var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, SignType>() {
+                    public SignType call(javafx.scene.control.ButtonType var1x) {
                         switch (var1x.getButtonData()) {
                             case CANCEL_CLOSE:
-                                return FCS.Cancel;
+                                return SignType.Cancel;
                             case APPLY:
-                                return (FCS) var2x.get(var1x);
+                                return (SignType) var2x.get(var1x);
                             default:
                                 throw new FFI("Unknown buttonType " + var1x.getButtonData());
                         }
@@ -362,18 +362,18 @@ public class FCR {
                 FCR.IGV(var1x.getDialogPane());
                 FCR.QGR(var1x.getDialogPane());
                 Optional var5 = var1x.showAndWait();
-                return var5.isPresent() ? (FCS) var5.get() : null;
+                return var5.isPresent() ? (SignType) var5.get() : null;
             }
         });
 
         return var8;
     }
 
-    public static QGV getJpkStatusDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6, final boolean var7) {
+    public static CloseButtonType getJpkStatusDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6, final boolean var7) {
 
-        QGV var8;
-        var8 = FEL.IKS(new FEM<QGV>() {
-            public QGV IKT() {
+        CloseButtonType var8;
+        var8 = FEL.IKS(new FEM<CloseButtonType>() {
+            public CloseButtonType IKT() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -384,22 +384,22 @@ public class FCR {
 
                 var1x.setContentText(var6);
                 final HashMap var2x = new HashMap();
-                QGV var3 = QGV.PRINT_UPO;
-                ButtonType var4x = new ButtonType(var3.getDescription(), ButtonData.YES);
+                CloseButtonType var3 = CloseButtonType.PRINT_UPO;
+                javafx.scene.control.ButtonType var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.YES);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
                 var1x.getDialogPane().lookupButton(var4x).setDisable(!var7);
-                var3 = QGV.CLOSE;
-                var4x = new ButtonType(var3.getDescription(), ButtonData.CANCEL_CLOSE);
+                var3 = CloseButtonType.CLOSE;
+                var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.CANCEL_CLOSE);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
-                var1x.setResultConverter(new Callback<ButtonType, QGV>() {
-                    public QGV call(ButtonType var1x) {
+                var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, CloseButtonType>() {
+                    public CloseButtonType call(javafx.scene.control.ButtonType var1x) {
                         switch (var1x.getButtonData()) {
                             case CANCEL_CLOSE:
-                                return QGV.CLOSE;
+                                return CloseButtonType.CLOSE;
                             case YES:
-                                return (QGV) var2x.get(var1x);
+                                return (CloseButtonType) var2x.get(var1x);
                             default:
                                 throw new FFI("Unknown buttonType " + var1x.getButtonData());
                         }
@@ -408,18 +408,18 @@ public class FCR {
                 FCR.IGV(var1x.getDialogPane());
                 FCR.QGR(var1x.getDialogPane());
                 Optional var5 = var1x.showAndWait();
-                return var5.isPresent() ? (QGV) var5.get() : null;
+                return var5.isPresent() ? (CloseButtonType) var5.get() : null;
             }
         });
 
         return var8;
     }
 
-    public static QGW getNoCryptCardDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6) {
+    public static ButtonType getNoCryptCardDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6) {
 
-        QGW var7;
-        var7 = FEL.IKS(new FEM<QGW>() {
-            public QGW IKT() {
+        ButtonType var7;
+        var7 = FEL.IKS(new FEM<ButtonType>() {
+            public ButtonType IKT() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -430,22 +430,22 @@ public class FCR {
 
                 var1x.setContentText(var6);
                 final HashMap var2x = new HashMap();
-                QGW var3 = QGW.GO_TO_SETTINGS;
-                ButtonType var4x = new ButtonType(var3.getDescription(), ButtonData.BACK_PREVIOUS);
+                ButtonType var3 = ButtonType.GO_TO_SETTINGS;
+                javafx.scene.control.ButtonType var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.BACK_PREVIOUS);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
-                var3 = QGW.OK;
-                var4x = new ButtonType(var3.getDescription(), ButtonData.FINISH);
+                var3 = ButtonType.OK;
+                var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.FINISH);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
-                var1x.setResultConverter(new Callback<ButtonType, QGW>() {
-                    public QGW call(ButtonType var1x) {
+                var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, ButtonType>() {
+                    public ButtonType call(javafx.scene.control.ButtonType var1x) {
                         switch (var1x.getButtonData()) {
                             case CANCEL_CLOSE:
-                                return QGW.OK;
+                                return ButtonType.OK;
                             case BACK_PREVIOUS:
                             case FINISH:
-                                return (QGW) var2x.get(var1x);
+                                return (ButtonType) var2x.get(var1x);
                             default:
                                 throw new FFI("Unknown buttonType " + var1x.getButtonData());
                         }
@@ -454,18 +454,18 @@ public class FCR {
                 FCR.IGV(var1x.getDialogPane());
                 FCR.QGR(var1x.getDialogPane());
                 Optional var5 = var1x.showAndWait();
-                return var5.isPresent() ? (QGW) var5.get() : null;
+                return var5.isPresent() ? (ButtonType) var5.get() : null;
             }
         });
 
         return var7;
     }
 
-    public static QJU getAreYouSureDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6) {
+    public static ApproveButton getAreYouSureDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6) {
 
-        QJU var7;
-        var7 = FEL.IKS(new FEM<QJU>() {
-            public QJU IKT() {
+        ApproveButton var7;
+        var7 = FEL.IKS(new FEM<ApproveButton>() {
+            public ApproveButton IKT() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -476,22 +476,22 @@ public class FCR {
 
                 var1x.setContentText(var6);
                 final HashMap var2x = new HashMap();
-                QJU var3 = QJU.YES;
-                ButtonType var4x = new ButtonType(var3.getDescription(), ButtonData.FINISH);
+                ApproveButton var3 = ApproveButton.YES;
+                javafx.scene.control.ButtonType var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.FINISH);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
-                var3 = QJU.NO;
-                var4x = new ButtonType(var3.getDescription(), ButtonData.FINISH);
+                var3 = ApproveButton.NO;
+                var4x = new javafx.scene.control.ButtonType(var3.getDescription(), ButtonData.FINISH);
                 var1x.getDialogPane().getButtonTypes().add(var4x);
                 var2x.put(var4x, var3);
-                var1x.setResultConverter(new Callback<ButtonType, QJU>() {
-                    public QJU call(ButtonType var1x) {
+                var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, ApproveButton>() {
+                    public ApproveButton call(javafx.scene.control.ButtonType var1x) {
                         switch (var1x.getButtonData()) {
                             case CANCEL_CLOSE:
-                                return QJU.Cancel;
+                                return ApproveButton.Cancel;
                             case BACK_PREVIOUS:
                             case FINISH:
-                                return (QJU) var2x.get(var1x);
+                                return (ApproveButton) var2x.get(var1x);
                             default:
                                 throw new FFI("Unknown buttonType " + var1x.getButtonData());
                         }
@@ -500,7 +500,7 @@ public class FCR {
                 FCR.IGV(var1x.getDialogPane());
                 FCR.QGR(var1x.getDialogPane());
                 Optional var5 = var1x.showAndWait();
-                return var5.isPresent() ? (QJU) var5.get() : null;
+                return var5.isPresent() ? (ApproveButton) var5.get() : null;
             }
         });
 
@@ -518,7 +518,7 @@ public class FCR {
             var7.setContentText(var1);
         }
 
-        var7.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        var7.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.OK);
         IGV(var7.getDialogPane());
         QGR(var7.getDialogPane());
         var7.showAndWait();
@@ -776,10 +776,10 @@ public class FCR {
                     var1x.setContentText(var6);
                 }
 
-                ButtonType var8 = new ButtonType(FCW.getInstance().getMessageForKey("micro.dialog.message.button.report"), ButtonData.OTHER);
+                javafx.scene.control.ButtonType var8 = new javafx.scene.control.ButtonType(FCW.getInstance().getMessageForKey("micro.dialog.message.button.report"), ButtonData.OTHER);
                 var1x.getButtonTypes().add(var8);
-                var1x.setResultConverter(new Callback<ButtonType, ButtonType>() {
-                    public ButtonType call(ButtonType var1x) {
+                var1x.setResultConverter(new Callback<javafx.scene.control.ButtonType, javafx.scene.control.ButtonType>() {
+                    public javafx.scene.control.ButtonType call(javafx.scene.control.ButtonType var1x) {
                         if (ButtonData.OTHER.equals(var1x.getButtonData())) {
                             if (Desktop.isDesktopSupported()) {
                                 EVN var2x = new EVN() {
@@ -791,10 +791,10 @@ public class FCR {
                                 return null;
                             } else {
                                 log.error("Desktop is NOT Supported");
-                                return ButtonType.NO;
+                                return javafx.scene.control.ButtonType.NO;
                             }
                         } else {
-                            return ButtonType.OK;
+                            return javafx.scene.control.ButtonType.OK;
                         }
                     }
                 });
@@ -887,14 +887,14 @@ public class FCR {
         var1.getIcons().add(QGK);
     }
 
-    public enum QJU {
+    public enum ApproveButton {
         YES(FCW.getInstance().getMessageForKey("micro.dialog.areyousure.button.yes")),
         NO(FCW.getInstance().getMessageForKey("micro.dialog.areyousure.button.no")),
         Cancel("");
 
         private final String QKX;
 
-        QJU(String var3) {
+        ApproveButton(String var3) {
 
             this.QKX = var3;
 
@@ -905,13 +905,13 @@ public class FCR {
         }
     }
 
-    public enum QGW {
+    public enum ButtonType {
         GO_TO_SETTINGS(FCW.getInstance().getMessageForKey("micro.dialog.sign.no_cryptcard.description.button.goToSettings")),
         OK(FCW.getInstance().getMessageForKey("micro.dialog.sign.no_cryptcard.description.button.ok"));
 
         private final String QHK;
 
-        QGW(String var3) {
+        ButtonType(String var3) {
 
             this.QHK = var3;
 
@@ -922,13 +922,13 @@ public class FCR {
         }
     }
 
-    public enum QGV {
+    public enum CloseButtonType {
         PRINT_UPO(FCW.getInstance().getMessageForKey("micro.process.jpk_list.button.printUPO")),
         CLOSE(FCW.getInstance().getMessageForKey("micro.process.jpk_list.checkstatusdialog.Close"));
 
         private final String QHJ;
 
-        QGV(String var3) {
+        CloseButtonType(String var3) {
 
             this.QHJ = var3;
 
@@ -939,7 +939,7 @@ public class FCR {
         }
     }
 
-    public enum FCS {
+    public enum SignType {
         CryptCard(FCW.getInstance().getMessageForKey("micro.dialog.sign.button.sign.all.cryptcard")),
         PZ(FCW.getInstance().getMessageForKey("micro.dialog.sign.button.sign.all.pz")),
         KD(FCW.getInstance().getMessageForKey("micro.dialog.sign.button.sign.all.kd")),
@@ -947,7 +947,7 @@ public class FCR {
 
         private final String HBC;
 
-        FCS(String var3) {
+        SignType(String var3) {
 
             this.HBC = var3;
 

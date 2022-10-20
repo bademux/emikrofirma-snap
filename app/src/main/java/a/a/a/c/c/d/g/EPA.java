@@ -4,7 +4,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
 import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.InvoiceState;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -21,7 +21,7 @@ public class EPA<_T extends Invoice<?>> {
     private String FPD;
     private String FPE;
     private String FPF;
-    private QSW RFH;
+    private InvoiceState RFH;
     private String RFI;
 
     public EPA(EDF<_T> var1, int var2) {
@@ -97,7 +97,7 @@ public class EPA<_T extends Invoice<?>> {
         return this.FPA;
     }
 
-    public QSW getState() {
+    public InvoiceState getState() {
         if (this.RFH == null) {
             this.RFH = this.FOV.getValue("business_state");
         }

@@ -15,10 +15,10 @@ import a.a.a.c.f.a.e.a.InvoiceRecordElementPurchase;
 import a.a.a.c.f.a.e.a.InvoiceRecordPurchase;
 import a.a.a.c.f.a.e.a.InvoiceRecordSell;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.c.Amount;
+import a.a.a.c.f.b.c.InvoicingDate;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCZ;
@@ -60,7 +60,7 @@ public class EQF {
     public EQF() {
     }
 
-    public static byte[] RPC(EWX var0, String var1, File var2, LocalDate var3, LocalDate var4, UserData var5, List<HY> var6) throws FFO {
+    public static byte[] RPC(EWX var0, String var1, File var2, LocalDate var3, LocalDate var4, UserData var5, List<BaseInvoiceSell> var6) throws FFO {
         byte var7 = 0;
         FileOutputStream var8 = null;
 
@@ -112,7 +112,7 @@ public class EQF {
             BigDecimal var15 = BigDecimal.ZERO;
 
             for (Iterator var16 = var6.iterator(); var16.hasNext(); var12.writeEndElement()) {
-                HY var17 = (HY) var16.next();
+                BaseInvoiceSell var17 = (BaseInvoiceSell) var16.next();
                 var12.writeStartElement("http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "Faktura");
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "KodWaluty", "PLN");
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_1", var17.DAT().DDZ());
@@ -126,8 +126,8 @@ public class EQF {
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_5B", getContractorFromInvoiceSellType(var17).DAJ().getValue());
                 }
 
-                JV var18 = null;
-                if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
+                InvoicingDate var18 = null;
+                if (var17.getInvoiceSubType().equals(InvoiceSubtype.CORRECTION)) {
                     var18 = getOriginalInvoice((InvoiceSellCorrection) var17).DAU();
                 } else {
                     var18 = var17.DAU();
@@ -146,74 +146,74 @@ public class EQF {
                 ValueContainer2 var25;
                 ValueContainer2 var26;
                 ValueContainer2 var27;
-                if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
+                if (var17.getInvoiceSubType().equals(InvoiceSubtype.CORRECTION)) {
                     Map var28 = getTaxRateSummaryDiffForCorrection((InvoiceSellCorrection) var17);
-                    if (var28.get(KL.RATE_23) != null) {
-                        var19 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_23)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_23)).getSecondValue());
+                    if (var28.get(TaxRate.RATE_23) != null) {
+                        var19 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.RATE_23)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.RATE_23)).getSecondValue());
                     } else {
                         var19 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
-                    if (var28.get(KL.RATE_8) != null) {
-                        var20 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_8)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_8)).getSecondValue());
+                    if (var28.get(TaxRate.RATE_8) != null) {
+                        var20 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.RATE_8)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.RATE_8)).getSecondValue());
                     } else {
                         var20 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
-                    if (var28.get(KL.RATE_5) != null) {
-                        var21 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_5)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_5)).getSecondValue());
+                    if (var28.get(TaxRate.RATE_5) != null) {
+                        var21 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.RATE_5)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.RATE_5)).getSecondValue());
                     } else {
                         var21 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
-                    if (var28.get(KL.RATE_4) != null) {
-                        var22 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_4)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_4)).getSecondValue());
+                    if (var28.get(TaxRate.RATE_4) != null) {
+                        var22 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.RATE_4)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.RATE_4)).getSecondValue());
                     } else {
                         var22 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
-                    if (var28.get(KL.RATE_0) != null) {
-                        var23 = new ValueContainer2(((ValueContainer3) var28.get(KL.RATE_0)).getFirstValue(), ((ValueContainer3) var28.get(KL.RATE_0)).getSecondValue());
+                    if (var28.get(TaxRate.RATE_0) != null) {
+                        var23 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.RATE_0)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.RATE_0)).getSecondValue());
                     } else {
                         var23 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
-                    if (var28.get(KL.ZW) != null) {
-                        var24 = new ValueContainer2(((ValueContainer3) var28.get(KL.ZW)).getFirstValue(), ((ValueContainer3) var28.get(KL.ZW)).getSecondValue());
+                    if (var28.get(TaxRate.ZW) != null) {
+                        var24 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.ZW)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.ZW)).getSecondValue());
                     } else {
                         var24 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
-                    if (var28.get(KL.OO_23) != null) {
-                        var25 = new ValueContainer2(((ValueContainer3) var28.get(KL.OO_23)).getFirstValue(), ((ValueContainer3) var28.get(KL.OO_23)).getSecondValue());
+                    if (var28.get(TaxRate.OO_23) != null) {
+                        var25 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.OO_23)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.OO_23)).getSecondValue());
                     } else {
                         var25 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
-                    if (var28.get(KL.OO_8) != null) {
-                        var26 = new ValueContainer2(((ValueContainer3) var28.get(KL.OO_8)).getFirstValue(), ((ValueContainer3) var28.get(KL.OO_8)).getSecondValue());
+                    if (var28.get(TaxRate.OO_8) != null) {
+                        var26 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.OO_8)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.OO_8)).getSecondValue());
                     } else {
                         var26 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
-                    if (var28.get(KL.NP) != null) {
-                        var27 = new ValueContainer2(((ValueContainer3) var28.get(KL.NP)).getFirstValue(), ((ValueContainer3) var28.get(KL.NP)).getSecondValue());
+                    if (var28.get(TaxRate.NP) != null) {
+                        var27 = new ValueContainer2(((ValueContainer3) var28.get(TaxRate.NP)).getFirstValue(), ((ValueContainer3) var28.get(TaxRate.NP)).getSecondValue());
                     } else {
                         var27 = new ValueContainer2(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
                 } else {
-                    var19 = var17.getNetAndTaxForTaxRate(KL.RATE_23);
-                    var20 = var17.getNetAndTaxForTaxRate(KL.RATE_8);
-                    var21 = var17.getNetAndTaxForTaxRate(KL.RATE_5);
-                    var22 = var17.getNetAndTaxForTaxRate(KL.RATE_4);
-                    var23 = var17.getNetAndTaxForTaxRate(KL.RATE_0);
-                    var24 = var17.getNetAndTaxForTaxRate(KL.ZW);
-                    var25 = var17.getNetAndTaxForTaxRate(KL.OO_23);
-                    var26 = var17.getNetAndTaxForTaxRate(KL.OO_8);
-                    var27 = var17.getNetAndTaxForTaxRate(KL.NP);
+                    var19 = var17.getNetAndTaxForTaxRate(TaxRate.RATE_23);
+                    var20 = var17.getNetAndTaxForTaxRate(TaxRate.RATE_8);
+                    var21 = var17.getNetAndTaxForTaxRate(TaxRate.RATE_5);
+                    var22 = var17.getNetAndTaxForTaxRate(TaxRate.RATE_4);
+                    var23 = var17.getNetAndTaxForTaxRate(TaxRate.RATE_0);
+                    var24 = var17.getNetAndTaxForTaxRate(TaxRate.ZW);
+                    var25 = var17.getNetAndTaxForTaxRate(TaxRate.OO_23);
+                    var26 = var17.getNetAndTaxForTaxRate(TaxRate.OO_8);
+                    var27 = var17.getNetAndTaxForTaxRate(TaxRate.NP);
                 }
 
-                if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
+                if (var17.getInvoiceSubType().equals(InvoiceSubtype.CORRECTION)) {
                     var15 = var15.add(((InvoiceSellCorrection) var17).DBZ().getValue());
                 } else {
                     var15 = var15.add(var17.DAV().getValue());
@@ -278,7 +278,7 @@ public class EQF {
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_106E_2", QLF, false);
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_106E_3", QLF, false);
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "RodzajFaktury", var17.getInvoiceSubType().getJpkName());
-                if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
+                if (var17.getInvoiceSubType().equals(InvoiceSubtype.CORRECTION)) {
                     InvoiceSellCorrection var32 = (InvoiceSellCorrection) var17;
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "PrzyczynaKorekty", var32.DBX().getValue());
                     InvoiceSell var33 = getOriginalInvoice(var32);
@@ -296,11 +296,11 @@ public class EQF {
             Iterator var45 = var6.iterator();
 
             while (var45.hasNext()) {
-                HY var47 = (HY) var45.next();
-                if (var47.getInvoiceSubType().equals(IA.CORRECTION)) {
+                BaseInvoiceSell var47 = (BaseInvoiceSell) var45.next();
+                if (var47.getInvoiceSubType().equals(InvoiceSubtype.CORRECTION)) {
                     Invoice var48 = var47.getParentInvoiceOnlyActive();
 
-                    for (Iterator var50 = ((HY) var48).getInvoiceElements().iterator(); var50.hasNext(); var12.writeEndElement()) {
+                    for (Iterator var50 = ((BaseInvoiceSell) var48).getInvoiceElements().iterator(); var50.hasNext(); var12.writeEndElement()) {
                         InvoiceElementSell var52 = (InvoiceElementSell) var50.next();
                         ++var43;
                         var12.writeStartElement("http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "FakturaWiersz");
@@ -310,9 +310,9 @@ public class EQF {
                         HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_8B", FWE, var52.DBG().getValue());
                         if (var52.RIG().getValue() == null) {
                             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_9A", FWE, BigDecimal.ZERO.subtract(var52.DBI().getValue()));
-                        } else if (var52.RIG().getValue().equals(QSV.NET)) {
+                        } else if (var52.RIG().getValue().equals(CalculationMethodType.NET)) {
                             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_9A", FWE, BigDecimal.ZERO.subtract(var52.DBI().getValue()));
-                        } else if (var52.RIG().getValue().equals(QSV.GROSS)) {
+                        } else if (var52.RIG().getValue().equals(CalculationMethodType.GROSS)) {
                             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_9B", FWE, BigDecimal.ZERO.subtract(var52.RIF().getValue()));
                         }
 
@@ -337,9 +337,9 @@ public class EQF {
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_8B", FWE, var51.DBG().getValue());
                     if (var51.RIG().getValue() == null) {
                         HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_9A", FWE, var51.DBI().getValue());
-                    } else if (var51.RIG().getValue().equals(QSV.NET)) {
+                    } else if (var51.RIG().getValue().equals(CalculationMethodType.NET)) {
                         HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_9A", FWE, var51.DBI().getValue());
-                    } else if (var51.RIG().getValue().equals(QSV.GROSS)) {
+                    } else if (var51.RIG().getValue().equals(CalculationMethodType.GROSS)) {
                         HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_9B", FWE, var51.RIF().getValue());
                     }
 
@@ -378,7 +378,7 @@ public class EQF {
         }
     }
 
-    public static Map<KL, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(InvoiceSellCorrection var0) {
+    public static Map<TaxRate, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(InvoiceSellCorrection var0) {
 
         Invoice var1 = var0.getParentInvoiceOnlyActive();
         HashMap var2 = new HashMap();
@@ -417,7 +417,7 @@ public class EQF {
         return var12;
     }
 
-    public static Contractor getContractorFromInvoiceSellType(HY var0) {
+    public static Contractor getContractorFromInvoiceSellType(BaseInvoiceSell var0) {
 
         Contractor var1;
         switch (var0.getInvoiceSubType()) {
@@ -499,8 +499,8 @@ public class EQF {
                 String var24 = "BRAK";
                 String var25 = "BRAK";
                 String var26 = "Sprzedaż na rzecz osoby prywatnej";
-                JV var27 = new JV("2006-01-01");
-                JV var28 = new JV("2006-01-01");
+                InvoicingDate var27 = new InvoicingDate("2006-01-01");
+                InvoicingDate var28 = new InvoicingDate("2006-01-01");
                 var29 = null;
                 var30 = null;
                 var31 = null;
@@ -753,7 +753,7 @@ public class EQF {
                                         }
 
                                         var13.writeEndElement();
-                                        var77 = getBigDecimalValueSum(var77, var79.QRL().getSecondValue(), var79.QRT().getSecondValue(), var79.QRJ().getSecondValue(), new JR(var46), new JR(var47), new JR(var85));
+                                        var77 = getBigDecimalValueSum(var77, var79.QRL().getSecondValue(), var79.QRT().getSecondValue(), var79.QRJ().getSecondValue(), new Amount(var46), new Amount(var47), new Amount(var85));
                                     }
                                 }
 
@@ -890,7 +890,7 @@ public class EQF {
                         }
                     }
 
-                    var40 = getBigDecimalValueSum(var40, var42.QRM().getSecondValue(), var42.QRL().getSecondValue(), var42.QRK().getSecondValue(), var42.QRJ().getSecondValue(), new JR(var43));
+                    var40 = getBigDecimalValueSum(var40, var42.QRM().getSecondValue(), var42.QRL().getSecondValue(), var42.QRK().getSecondValue(), var42.QRJ().getSecondValue(), new Amount(var43));
                 }
             }
 
@@ -1026,15 +1026,15 @@ public class EQF {
         return var67;
     }
 
-    private static BigDecimal getBigDecimalValue(JR var0) {
+    private static BigDecimal getBigDecimalValue(Amount var0) {
         return var0 != null ? var0.getValue() : null;
     }
 
-    private static BigDecimal getBigDecimalValueSum(JR... var0) {
+    private static BigDecimal getBigDecimalValueSum(Amount... var0) {
         return getBigDecimalValueSum(BigDecimal.ZERO, var0);
     }
 
-    private static BigDecimal getBigDecimalValueSum(BigDecimal var0, JR... var1) {
+    private static BigDecimal getBigDecimalValueSum(BigDecimal var0, Amount... var1) {
         BigDecimal var2;
         if (var0 != null) {
             var2 = var0;
@@ -1043,11 +1043,11 @@ public class EQF {
         }
 
         if (var1 != null) {
-            JR[] var3 = var1;
+            Amount[] var3 = var1;
             int var4 = var1.length;
 
             for (int var5 = 0; var5 < var4; ++var5) {
-                JR var6 = var3[var5];
+                Amount var6 = var3[var5];
                 if (var6 != null && var6.getValue() != null) {
                     var2 = var2.add(var6.getValue()).setScale(EQY.FYD, EQY.FYE);
                 }
@@ -1111,11 +1111,11 @@ public class EQF {
         }
     }
 
-    private static BigDecimal getBigDecimalValueOrZero(JR var0) {
+    private static BigDecimal getBigDecimalValueOrZero(Amount var0) {
         return var0 != null && var0.getValue() != null ? var0.getValue() : BigDecimal.ZERO;
     }
 
-    private static int QQP(BigDecimal var0, JR var1) {
+    private static int QQP(BigDecimal var0, Amount var1) {
         BigDecimal var2 = null;
         if (var1 != null) {
             var2 = var1.getValue();

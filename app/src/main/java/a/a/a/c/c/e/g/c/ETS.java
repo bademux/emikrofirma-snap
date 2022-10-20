@@ -6,19 +6,19 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.QVI;
-import a.a.a.c.c.d.b.ENP;
+import a.a.a.c.c.d.b.InvoiceFilteringType;
 import a.a.a.c.c.d.g.EPA;
 import a.a.a.c.c.e.g.b.ETR;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.e.InvoicePurchase;
-import a.a.a.c.f.a.e.IB;
-import a.a.a.c.f.a.g.IU;
-import a.a.a.c.f.a.g.IY;
+import a.a.a.c.f.a.e.InvoiceType;
+import a.a.a.c.f.a.g.InvoiceCriteria;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.g.c.FCZ;
 
 import java.time.LocalDate;
@@ -55,11 +55,11 @@ public class ETS extends QVI {
 
     }
 
-    public JG getSettlementStatus(LocalDate var1) throws FFK, FFO {
+    public SettlementStatus getSettlementStatus(LocalDate var1) throws FFK, FFO {
 
         Iterator var5;
         Period var2 = new Period(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        IY var3 = new IY(Settlement.class, var2, JH.VAT, null);
+        ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, var2, SettlementType.VAT, null);
         ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
@@ -68,17 +68,17 @@ public class ETS extends QVI {
         var5 = ((List) var4.getSecondValue()).iterator();
         if (var5.hasNext()) {
             EDF var6 = (EDF) var5.next();
-            JG var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
+            SettlementStatus var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
             return var7;
         }
 
         return null;
     }
 
-    public JG getSettlementStatus(Period var1) throws FFK, FFO {
+    public SettlementStatus getSettlementStatus(Period var1) throws FFK, FFO {
 
-        JG var6;
-        IY var2 = new IY(Settlement.class, var1, JH.VAT, null);
+        SettlementStatus var6;
+        ModelBusinessPeriodElementTypedCriteria var2 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, var1, SettlementType.VAT, null);
         ValueContainer2 var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
@@ -95,10 +95,10 @@ public class ETS extends QVI {
         return var6;
     }
 
-    public List<EPA<InvoicePurchase>> getInvoices(ENP var1, Integer var2, Integer var3, String var4, String var5) throws FFK, FFO {
+    public List<EPA<InvoicePurchase>> getInvoices(InvoiceFilteringType var1, Integer var2, Integer var3, String var4, String var5) throws FFK, FFO {
 
         ArrayList var15;
-        IU var6 = new IU(InvoicePurchase.class, QSW.ACTIVE, new Period(var2, var3), IB.PURCHASE, null, null, var4, OrderType.DESC);
+        InvoiceCriteria var6 = new InvoiceCriteria(InvoicePurchase.class, InvoiceState.ACTIVE, new Period(var2, var3), InvoiceType.PURCHASE, null, null, var4, OrderType.DESC);
         ValueContainer2 var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         ArrayList var8 = new ArrayList();
         if (var7 != null) {

@@ -1,14 +1,14 @@
 package a.a.a.c.f.c.c;
 
 import a.a.a.c.f.a.EYF;
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.b.ObjectWithTitle;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ComboBoxValidatedText<_T extends QST> extends ComboBoxChanged<_T> implements EYF {
+public class ComboBoxValidatedText<_T extends ObjectWithTitle> extends ComboBoxChanged<_T> implements EYF {
     protected BooleanProperty QVU;
     protected BooleanProperty QVV;
     protected BooleanProperty QVW;

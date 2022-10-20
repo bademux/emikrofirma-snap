@@ -14,14 +14,14 @@ import a.a.a.c.d.e.b.QSC;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.c.QJW;
+import a.a.a.c.f.a.c.TitledContractor;
 import a.a.a.c.f.a.n.InvoiceOtherElementPurchase;
 import a.a.a.c.f.a.n.InvoiceOtherPurchase;
-import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.b.a.JJ;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
+import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
@@ -75,7 +75,7 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
     @FXML
     private EZG fxml_purchase_contractor_cityController;
     @FXML
-    private EZP<QSQ> fxml_other_purchase_new_other_element_typeController;
+    private EZP<InvoiceOtherSubtype> fxml_other_purchase_new_other_element_typeController;
     @FXML
     private Label fxml_other_purchase_other_elements_name;
     @FXML
@@ -142,10 +142,10 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
         this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element.disableProperty().bind(this.RBY.not().or(this.RCD));
         this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getCellFactory().call(null));
-        ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.PURCHASE_REASON_1);
-        ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.PURCHASE_REASON_2);
-        ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.PURCHASE_REASON_3);
-        ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.PURCHASE_REASON_4);
+        ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getItems().add(InvoiceOtherSubtype.PURCHASE_REASON_1);
+        ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getItems().add(InvoiceOtherSubtype.PURCHASE_REASON_2);
+        ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getItems().add(InvoiceOtherSubtype.PURCHASE_REASON_3);
+        ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getItems().add(InvoiceOtherSubtype.PURCHASE_REASON_4);
         this.fxml_other_purchase_button_add_new_other_position.disableProperty().bind(((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).valueProperty().isNull().or(this.RBY.not()));
         this.fxml_other_purchase_button_add_delete_other_position.disableProperty().bind(this.fxml_other_purchase_elements_table.getSelectionModel().selectedItemProperty().isNull().or(this.RBY.not()));
         this.fxml_other_purchase_elements_table_column_tax_type.setCellValueFactory(new PropertyValueFactory("taxRate"));
@@ -153,10 +153,10 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
         this.fxml_other_purchase_elements_table_column_sum_tax.setCellValueFactory(new PropertyValueFactory("taxValueForAll"));
         this.fxml_other_purchase_elements_table_column_sum_brut_price.setCellValueFactory(new PropertyValueFactory("grossValueForAll"));
         LinkedHashSet var1 = new LinkedHashSet();
-        var1.add(KL.RATE_23);
-        var1.add(KL.RATE_8);
-        var1.add(KL.RATE_5);
-        var1.add(KL.RATE_4);
+        var1.add(TaxRate.RATE_23);
+        var1.add(TaxRate.RATE_8);
+        var1.add(TaxRate.RATE_5);
+        var1.add(TaxRate.RATE_4);
         EOT var2 = new EOT(this, true, var1);
         this.fxml_other_purchase_elements_table_column_tax_type.setCellFactory(var2);
         this.fxml_other_purchase_elements_table_column_sum_net_price.setCellFactory(new EOT(this, true));
@@ -230,7 +230,7 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
         Contractor var1 = this.RBW.RJM();
         this.fxml_purchase_contractor_nameController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAI().DDG());
         this.fxml_purchase_contractor_nipController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAJ().DDG());
-        JJ var2 = var1.DAM();
+        Address var2 = var1.DAM();
         this.fxml_purchase_contractor_streetController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDA().DDG());
         this.fxml_purchase_contractor_house_numberController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDB().DDG());
         this.fxml_purchase_contractor_apartment_numberController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDC().DDG());
@@ -244,7 +244,7 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
         Contractor var1 = this.RBW.RJM();
         this.fxml_purchase_contractor_nameController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAI().DDG());
         this.fxml_purchase_contractor_nipController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAJ().DDG());
-        JJ var2 = var1.DAM();
+        Address var2 = var1.DAM();
         this.fxml_purchase_contractor_streetController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDA().DDG());
         this.fxml_purchase_contractor_house_numberController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDB().DDG());
         this.fxml_purchase_contractor_apartment_numberController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDC().DDG());
@@ -326,7 +326,7 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
         this.RBW = var1;
     }
 
-    public void setContractorFromAutocomplete(QJW var1) {
+    public void setContractorFromAutocomplete(TitledContractor var1) {
 
         if (var1 != null) {
             Contractor var2 = var1.getContractor().AICD();
@@ -340,7 +340,7 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
 
             this.fxml_purchase_contractor_nameController.fxml_component_main_element.getEditor().setText(var2.getName().getValue());
             this.fxml_purchase_contractor_nameController.fxml_component_main_element.getEditor().positionCaret(this.fxml_purchase_contractor_nameController.fxml_component_main_element.getEditor().getText().length());
-            JJ var4 = var2.DAM();
+            Address var4 = var2.DAM();
             this.fxml_purchase_contractor_streetController.fxml_component_main_element.setText(var4.getStreet().getValue());
             this.fxml_purchase_contractor_house_numberController.fxml_component_main_element.setText(var4.getHouseNumber().getValue());
             this.fxml_purchase_contractor_apartment_numberController.fxml_component_main_element.setText(var4.getApartmentNumber().getValue());
@@ -368,7 +368,7 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
 
     }
 
-    public void RJV(InvoiceOtherElementPurchase var1, InvoiceOtherElementPurchase var2, QSV var3) {
+    public void RJV(InvoiceOtherElementPurchase var1, InvoiceOtherElementPurchase var2, CalculationMethodType var3) {
         if (var2.getNetPriceForAll().getValue() != null && var2.getTaxRate().getValue() != null) {
             QSC var4 = new QSC();
             var4.RIB(var1, var2);
@@ -428,7 +428,7 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
             var4.setScene(var5);
             QTX var6 = var2.getController();
             var6.setDialogStage(var4);
-            var6.setOtherType((QSQ) ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getValue());
+            var6.setOtherType((InvoiceOtherSubtype) ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getValue());
             var6.RMM();
             var6.getDialogStage().getIcons().add(new Image("/img/app/e_logo.png"));
             var6.getDialogStage().showAndWait();
@@ -484,13 +484,13 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
             var2.RJE().setAllowOnlyNegative(var1.fxml_other_purchase_new_add_other_element_netController.fxml_component_main_element.RHT());
             var2.RJE().setScale(var1.fxml_other_purchase_new_add_other_element_netController.fxml_component_main_element.getMaxLength());
             var2.RJE().setPresicion(var1.fxml_other_purchase_new_add_other_element_netController.fxml_component_main_element.getMaximumFractionDigits());
-            var2.RJH().setValue((KL) ((ComboBoxRequired) var1.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_main_element).getValue());
+            var2.RJH().setValue((TaxRate) ((ComboBoxRequired) var1.fxml_other_purchase_new_add_other_element_tax_typeController.fxml_component_main_element).getValue());
             var2.RJF().setValue(var1.fxml_other_purchase_new_add_other_element_taxController.fxml_component_main_element.getNumber());
             var2.RJF().setAllowOnlyNegative(var1.fxml_other_purchase_new_add_other_element_taxController.fxml_component_main_element.RHT());
             var2.RJF().setAllowNegative(var1.fxml_other_purchase_new_add_other_element_taxController.fxml_component_main_element.IFG());
             var2.RJF().setScale(var1.fxml_other_purchase_new_add_other_element_taxController.fxml_component_main_element.getMaxLength());
             var2.RJF().setPresicion(var1.fxml_other_purchase_new_add_other_element_taxController.fxml_component_main_element.getMaximumFractionDigits());
-            this.RJV(null, var2, QSV.NET);
+            this.RJV(null, var2, CalculationMethodType.NET);
             this.fxml_other_purchase_elements_table.getItems().add(var2);
             this.fxml_other_purchase_elements_table.refresh();
             this.HJJ();
@@ -508,7 +508,7 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
     public void RMK() {
 
         if (((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getValue() != null) {
-            switch ((QSQ) ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getValue()) {
+            switch ((InvoiceOtherSubtype) ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getValue()) {
                 case PURCHASE_REASON_1:
                 case PURCHASE_REASON_2:
                     this.fxml_include_issueDate_boxController.fxml_component_root_element.setRequired(true);
@@ -529,11 +529,11 @@ public class QTW extends BaseFxController implements EMO<InvoiceOtherElementPurc
 
     }
 
-    public QSQ RML() {
-        return (QSQ) ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getValue();
+    public InvoiceOtherSubtype RML() {
+        return (InvoiceOtherSubtype) ((ComboBoxRequired) this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element).getValue();
     }
 
-    public void setInvoiceOtherSubType(QSQ var1) {
+    public void setInvoiceOtherSubType(InvoiceOtherSubtype var1) {
         this.fxml_other_purchase_new_other_element_typeController.fxml_component_main_element.setValue(var1);
     }
 }

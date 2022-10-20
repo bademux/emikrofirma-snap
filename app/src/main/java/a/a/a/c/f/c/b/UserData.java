@@ -1,6 +1,6 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.f.b.a.JJ;
+import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.c.LW;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -12,17 +12,17 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class UserData extends LW {
-    private KA AQP;
-    private KF AQQ;
-    private KO AQR;
-    private KO AQS;
-    private KO AQT;
-    private KS AQU;
-    private JU AQV;
-    private JT AQW;
-    private JJ AQX;
-    private JQ AQY;
-    private JV AQZ;
+    private Nip AQP;
+    private Regon AQQ;
+    private Text AQR;
+    private Text AQS;
+    private Text AQT;
+    private Telephone AQU;
+    private Email AQV;
+    private Bytes AQW;
+    private Address AQX;
+    private AccountNumber AQY;
+    private InvoicingDate AQZ;
     private KP ARA;
     private KC ARB;
 
@@ -55,179 +55,179 @@ public class UserData extends LW {
         return var2;
     }
 
-    public KA getNip() {
+    public Nip getNip() {
         return this.AQP;
     }
 
-    public KA DFF() {
+    public Nip DFF() {
         if (this.AQP == null) {
-            this.AQP = new KA();
+            this.AQP = new Nip();
         }
 
         return this.AQP;
     }
 
-    public void setNip(KA var1) {
+    public void setNip(Nip var1) {
         this.AQP = var1;
     }
 
-    public KF getRegon() {
+    public Regon getRegon() {
         return this.AQQ;
     }
 
-    public KF DFG() {
+    public Regon DFG() {
         if (this.AQQ == null) {
-            this.AQQ = new KF();
+            this.AQQ = new Regon();
         }
 
         return this.AQQ;
     }
 
-    public void setRegon(KF var1) {
+    public void setRegon(Regon var1) {
         this.AQQ = var1;
     }
 
-    public KO getCompanyName() {
+    public Text getCompanyName() {
         return this.AQR;
     }
 
-    public KO DFH() {
+    public Text DFH() {
         if (this.AQR == null) {
-            this.AQR = new KO();
+            this.AQR = new Text();
         }
 
         return this.AQR;
     }
 
-    public void setCompanyName(KO var1) {
+    public void setCompanyName(Text var1) {
         this.AQR = var1;
     }
 
-    public KO getFirstName() {
+    public Text getFirstName() {
         return this.AQS;
     }
 
-    public KO DFI() {
+    public Text DFI() {
         if (this.AQS == null) {
-            this.AQS = new KO();
+            this.AQS = new Text();
         }
 
         return this.AQS;
     }
 
-    public void setFirstName(KO var1) {
+    public void setFirstName(Text var1) {
         this.AQS = var1;
     }
 
-    public KO getSurname() {
+    public Text getSurname() {
         return this.AQT;
     }
 
-    public KO DFJ() {
+    public Text DFJ() {
         if (this.AQT == null) {
-            this.AQT = new KO();
+            this.AQT = new Text();
         }
 
         return this.AQT;
     }
 
-    public void setSurname(KO var1) {
+    public void setSurname(Text var1) {
         this.AQT = var1;
     }
 
-    public KS getTelephone() {
+    public Telephone getTelephone() {
         return this.AQU;
     }
 
-    public KS DFK() {
+    public Telephone DFK() {
         if (this.AQU == null) {
-            this.AQU = new KS();
+            this.AQU = new Telephone();
         }
 
         return this.AQU;
     }
 
-    public void setTelephone(KS var1) {
+    public void setTelephone(Telephone var1) {
         this.AQU = var1;
     }
 
-    public JU getEmail() {
+    public Email getEmail() {
         return this.AQV;
     }
 
-    public JU DFL() {
+    public Email DFL() {
         if (this.AQV == null) {
-            this.AQV = new JU();
+            this.AQV = new Email();
         }
 
         return this.AQV;
     }
 
-    public void setEmail(JU var1) {
+    public void setEmail(Email var1) {
         this.AQV = var1;
     }
 
-    public JT getLogoImg() {
+    public Bytes getLogoImg() {
         return this.AQW;
     }
 
-    public JT DFM() {
+    public Bytes DFM() {
         if (this.AQW == null) {
-            this.AQW = new JT();
+            this.AQW = new Bytes();
         }
 
         return this.AQW;
     }
 
-    public void setLogoImg(JT var1) {
+    public void setLogoImg(Bytes var1) {
         this.AQW = var1;
     }
 
-    public JJ getAddress() {
+    public Address getAddress() {
         return this.AQX;
     }
 
-    public JJ DFN() {
+    public Address DFN() {
         if (this.AQX == null) {
-            this.AQX = new JJ();
+            this.AQX = new Address();
         }
 
         return this.AQX;
     }
 
-    public void setAddress(JJ var1) {
+    public void setAddress(Address var1) {
         this.AQX = var1;
     }
 
-    public JQ getAccountNumber() {
+    public AccountNumber getAccountNumber() {
         return this.AQY;
     }
 
-    public JQ DFO() {
+    public AccountNumber DFO() {
         if (this.AQY == null) {
-            this.AQY = new JQ();
+            this.AQY = new AccountNumber();
         }
 
         return this.AQY;
     }
 
-    public void setAccountNumber(JQ var1) {
+    public void setAccountNumber(AccountNumber var1) {
         this.AQY = var1;
     }
 
-    public JV getStartDate() {
+    public InvoicingDate getStartDate() {
         return this.AQZ;
     }
 
-    public JV DFP() {
+    public InvoicingDate DFP() {
         if (this.AQZ == null) {
-            this.AQZ = new JV();
+            this.AQZ = new InvoicingDate();
         }
 
         return this.AQZ;
     }
 
-    public void setStartDate(JV var1) {
+    public void setStartDate(InvoicingDate var1) {
         this.AQZ = var1;
     }
 

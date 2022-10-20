@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.h.a.ETT;
 import a.a.a.c.c.e.h.c.ETV;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ETU extends ProcessDefinitionBase {
-    public static final EOS GJJ;
+    public static final Stage GJJ;
 
     public ETU() {
     }
@@ -24,7 +24,7 @@ public class ETU extends ProcessDefinitionBase {
         return GJJ.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
+    public String getTitle(Anchor var1) throws FFK {
         switch (var1) {
             case MAIN:
                 return FCW.getInstance().getMessageForKey("micro.process.cash_register_list.Title");
@@ -49,12 +49,12 @@ public class ETU extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.RECEIPTRECORD));
-        var1.add(new LN(LN.LO.SETTLEMENT));
+        var1.add(new LN(LN.StageType.RECEIPTRECORD));
+        var1.add(new LN(LN.StageType.SETTLEMENT));
         return var1;
     }
 
     static {
-        GJJ = EOS.CASH_REGISTER_LIST;
+        GJJ = Stage.CASH_REGISTER_LIST;
     }
 }

@@ -5,9 +5,9 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.b.b.ESB;
-import a.a.a.c.f.a.g.JB;
-import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.a.KG;
+import a.a.a.c.f.a.g.ModelTechnicalElementCriteria;
+import a.a.a.c.f.b.c.Nip;
+import a.a.a.c.f.b.c.a.LoginType;
 import a.a.a.c.f.c.b.SimpleUserData;
 import a.a.a.c.f.c.b.UserData;
 
@@ -25,7 +25,7 @@ public class ESC extends ELV {
 
         try {
             if (this.GBS == null) {
-                JB var1 = new JB(UserData.class);
+                ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(UserData.class);
                 this.GBS = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 if (this.GBS == null) {
                     String var2 = EMB.getInstance().getCurrentUser().getUsername().getValue();
@@ -34,10 +34,10 @@ public class ESC extends ELV {
                     }
 
                     SimpleUserData var3 = EMB.getInstance().getSimpleUserDataForUserName(var2);
-                    if (var3.DFA().getValue() == KG.NIP) {
+                    if (var3.DFA().getValue() == LoginType.NIP) {
                         this.GBS = new UserData();
                         this.GBS.DEW().setValue(1);
-                        this.GBS.setNip(new KA(var3.getUsername().getValue()));
+                        this.GBS.setNip(new Nip(var3.getUsername().getValue()));
                     } else {
                         throw new FFK("Not implemented type [" + var3.getLoginType() + "]!");
                     }

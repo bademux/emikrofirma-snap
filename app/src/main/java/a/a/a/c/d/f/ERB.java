@@ -4,7 +4,7 @@ import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.ValueContainer3;
 import a.a.a.c.f.a.e.InvoiceElement;
 import a.a.a.c.f.a.e.InvoiceElementPurchase;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 
 import java.math.BigDecimal;
 
@@ -69,7 +69,7 @@ public class ERB {
             var5 = ((InvoiceElementPurchase) var1).getTaxDeduction50P().getValue();
         }
 
-        KL var6 = var1.DBN().getValue();
+        TaxRate var6 = var1.DBN().getValue();
         ValueContainer3 var7 = null;
         switch (var6) {
             case RATE_23:

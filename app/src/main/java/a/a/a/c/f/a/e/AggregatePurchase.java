@@ -10,7 +10,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AggregatePurchase extends InvoicePurchase {
     public AggregatePurchase() {
-        super(IA.AGGREGATE);
+        super(InvoiceSubtype.AGGREGATE);
 
     }
 }

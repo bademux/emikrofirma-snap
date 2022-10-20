@@ -1,9 +1,9 @@
 package a.a.a.c.f.a.e;
 
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.b.c.JS;
-import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.b.c.PrivtePerson;
+import a.a.a.c.f.b.c.InvoicingDate;
+import a.a.a.c.f.b.c.Text;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -12,9 +12,9 @@ import jakarta.xml.bind.annotation.XmlRootElement;
         name = "invoiceSell"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class InvoiceSell extends HX {
+public class InvoiceSell extends BaseInvoiceSellInvoice {
     private Contractor AKP;
-    private KO AKQ;
+    private Text AKQ;
 
     public InvoiceSell() {
 
@@ -36,28 +36,28 @@ public class InvoiceSell extends HX {
         return this.AKP;
     }
 
-    public KO getCreationPlace() {
+    public Text getCreationPlace() {
         return this.AKQ;
     }
 
-    public void setCreationPlace(KO var1) {
+    public void setCreationPlace(Text var1) {
         this.AKQ = var1;
     }
 
-    public KO DBW() {
+    public Text DBW() {
         if (this.AKQ == null) {
-            this.AKQ = new KO();
+            this.AKQ = new Text();
         }
 
         return this.AKQ;
     }
 
-    public JV getInvoicingDate() {
+    public InvoicingDate getInvoicingDate() {
         if (this.getUsingInvoicingDate() != null && this.getUsingInvoicingDate().getValue() != null && this.getUsingInvoicingDate().getValue()) {
             return this.IVO;
         } else {
             this.IVO = this.getCreationDate().DEF();
-            this.setUsingInvoicingDate(new JS(true));
+            this.setUsingInvoicingDate(new PrivtePerson(true));
             return this.IVO;
         }
     }

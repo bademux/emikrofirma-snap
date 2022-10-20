@@ -1,12 +1,12 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.f.b.JM;
+import a.a.a.c.f.b.EnumTypeValue;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.Tooltip;
 import javafx.util.Callback;
 
-public class EOG<_S, _T extends JM> implements Callback<TableColumn<_S, _T>, TableCell<_S, _T>> {
+public class EOG<_S, _T extends EnumTypeValue> implements Callback<TableColumn<_S, _T>, TableCell<_S, _T>> {
     public EOG() {
     }
 

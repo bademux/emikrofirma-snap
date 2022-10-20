@@ -2,7 +2,7 @@ package a.a.a.c.f.b.b;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.IJ;
+import a.a.a.c.f.a.ModelBaseAbstract;
 import a.a.a.c.f.b.c.JY;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Period extends IJ implements Comparable<Period> {
+public class Period extends ModelBaseAbstract implements Comparable<Period> {
     public static final Period AOE = new Period(0, 0);
     private JY AOF;
     private JY AOG;

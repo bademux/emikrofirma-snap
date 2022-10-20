@@ -1,6 +1,6 @@
 package a.a.a.c.d.g;
 
-import a.a.a.c.f.b.c.JR;
+import a.a.a.c.f.b.c.Amount;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -69,7 +69,7 @@ public class ERF {
         return this.FZI.getDecimalFormatSymbols().getGroupingSeparator();
     }
 
-    public static boolean HSA(JR var0, JR var1) {
+    public static boolean HSA(Amount var0, Amount var1) {
         if (var0 != null && var1 == null) {
             return false;
         } else if (var0 == null && var1 != null) {

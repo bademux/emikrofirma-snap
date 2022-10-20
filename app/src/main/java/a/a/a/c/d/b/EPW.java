@@ -22,17 +22,17 @@ import a.a.a.c.d.d.EQX;
 import a.a.a.c.e.a.d.ValueContainer1;
 import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ConfigurationPackage;
 import a.a.a.c.f.a.c.a.MainConfiguration;
 import a.a.a.c.f.a.d.*;
-import a.a.a.c.f.a.e.HY;
+import a.a.a.c.f.a.e.BaseInvoiceSell;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.InvoiceRecordPurchase;
 import a.a.a.c.f.a.e.a.InvoiceRecordSell;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JT;
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.b.c.Bytes;
+import a.a.a.c.f.b.c.Text;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.b.FCW;
@@ -141,7 +141,7 @@ public class EPW {
         }
     }
 
-    public static byte[] QOL(EWX var0, File var1, LocalDate var2, LocalDate var3, UserData var4, List<HY> var5) throws FFK {
+    public static byte[] QOL(EWX var0, File var1, LocalDate var2, LocalDate var3, UserData var4, List<BaseInvoiceSell> var5) throws FFK {
 
         byte[] var7;
         try {
@@ -188,7 +188,7 @@ public class EPW {
 
                 var6.close();
                 byte[] var18 = var4.digest();
-                log.info("File [" + var1 + "] checksum calculated. " + (new JT(var18)).getValueHexString());
+                log.info("File [" + var1 + "] checksum calculated. " + (new Bytes(var18)).getValueHexString());
                 byte[] var19 = var18;
                 return var19;
             }
@@ -218,10 +218,10 @@ public class EPW {
             byte[] var2 = new byte[16];
             var1.nextBytes(var2);
             AGXC var3 = new AGXC();
-            var3.setInitialisationVector(new JT(var2));
-            var3.setSecretKeyBytes(new JT(var0.getEncoded()));
-            var3.setSecretKeyAlgorithm(new KO(var0.getAlgorithm()));
-            var3.setSecretKeyFormat(new KO(var0.getFormat()));
+            var3.setInitialisationVector(new Bytes(var2));
+            var3.setSecretKeyBytes(new Bytes(var0.getEncoded()));
+            var3.setSecretKeyAlgorithm(new Text(var0.getAlgorithm()));
+            var3.setSecretKeyFormat(new Text(var0.getFormat()));
             log.info("AES256 key and InitialisationVector generated");
             var4 = var3;
         } catch (Exception var8) {
@@ -265,18 +265,18 @@ public class EPW {
                 Validator var18 = var17.newValidator();
                 var18.setErrorHandler(new ErrorHandler() {
                     public void warning(SAXParseException var1) throws SAXException {
-                        this.handle(FCX.FCY.WARNING, var1);
+                        this.handle(FCX.ExceptionType.WARNING, var1);
                     }
 
                     public void fatalError(SAXParseException var1) throws SAXException {
-                        this.handle(FCX.FCY.FATALERROR, var1);
+                        this.handle(FCX.ExceptionType.FATALERROR, var1);
                     }
 
                     public void error(SAXParseException var1) throws SAXException {
-                        this.handle(FCX.FCY.ERROR, var1);
+                        this.handle(FCX.ExceptionType.ERROR, var1);
                     }
 
-                    private void handle(FCX.FCY var1, SAXParseException var2) {
+                    private void handle(FCX.ExceptionType var1, SAXParseException var2) {
 
                         try {
                             var9.setFirstValue((Integer) var9.getFirstValue() + 1);
@@ -317,7 +317,7 @@ public class EPW {
                 log.error("Something bad happened", var51);
 
                 try {
-                    FCX.FCY var11 = FCX.FCY.ERROR;
+                    FCX.ExceptionType var11 = FCX.ExceptionType.ERROR;
                     var9.setFirstValue((Integer) var9.getFirstValue() + 1);
                     String var12 = var9.getFirstValue() + "," + var11.name() + "," + var11.getDescription() + "," + var10.getLocalizedMessage() + System.lineSeparator();
                     var8.write(var12.getBytes(StandardCharsets.UTF_8));
@@ -395,18 +395,18 @@ public class EPW {
                         var20.setContentHandler(var21);
                         var20.setErrorHandler(new ErrorHandler() {
                             public void warning(SAXParseException var1) throws SAXException {
-                                this.handle(FCX.FCY.WARNING, var1);
+                                this.handle(FCX.ExceptionType.WARNING, var1);
                             }
 
                             public void fatalError(SAXParseException var1) throws SAXException {
-                                this.handle(FCX.FCY.FATALERROR, var1);
+                                this.handle(FCX.ExceptionType.FATALERROR, var1);
                             }
 
                             public void error(SAXParseException var1) throws SAXException {
-                                this.handle(FCX.FCY.ERROR, var1);
+                                this.handle(FCX.ExceptionType.ERROR, var1);
                             }
 
-                            private void handle(FCX.FCY var1, SAXParseException var2) {
+                            private void handle(FCX.ExceptionType var1, SAXParseException var2) {
 
                                 try {
                                     var11.setFirstValue((Integer) var11.getFirstValue() + 1);
@@ -432,20 +432,20 @@ public class EPW {
                         byte[] var59 = var56.digest();
                         boolean var60 = Arrays.equals(var59, var1.getDeclarationFileCheckSumMD5().getValue());
                         FFL var25 = new FFL(var9, (Integer) var11.getFirstValue(), var3);
-                        AHCI var26;
+                        ActionResult var26;
                         if (var60 && (Integer) var11.getFirstValue() == 0) {
                             log.info("Input file [" + var1.getDeclarationFile() + "] validation successful");
                             var26 = var17.getFinalActionResult();
                             switch (var26) {
                                 case SUCCESS:
-                                    var1.setDeclarationFileVerificationResult(AHCI.SUCCESS);
+                                    var1.setDeclarationFileVerificationResult(ActionResult.SUCCESS);
                                     break;
                                 case WARNING:
-                                    var1.setDeclarationFileVerificationResult(AHCI.WARNING);
+                                    var1.setDeclarationFileVerificationResult(ActionResult.WARNING);
                                     var1.setDeclarationFileVerificationReportFileContainer(var25);
                                     break;
                                 case ERROR:
-                                    var1.setDeclarationFileVerificationResult(AHCI.ERROR);
+                                    var1.setDeclarationFileVerificationResult(ActionResult.ERROR);
                                     var1.setDeclarationFileVerificationReportFileContainer(var25);
                                     break;
                                 default:
@@ -464,7 +464,7 @@ public class EPW {
                                     throw new EPP("Invalid actionResult [" + var26 + "]!");
                             }
                         } else {
-                            var1.setDeclarationFileVerificationResult(AHCI.ERROR);
+                            var1.setDeclarationFileVerificationResult(ActionResult.ERROR);
                             if (!var60) {
                                 FCR.IGL(FCW.getInstance().getMessageForKey("micro.jpk.sendout.dialog.processing.exception.title"), FCW.getInstance().getMessageForKey("micro.jpk.sendout.dialog.processing.exception.inputfilediffer"), var4, false);
                             }
@@ -479,7 +479,7 @@ public class EPW {
                         Exception var12 = var50;
                         log.error("Something bad happened id {}", var1.getId(), var50);
                         try {
-                            FCX.FCY var13 = FCX.FCY.ERROR;
+                            FCX.ExceptionType var13 = FCX.ExceptionType.ERROR;
                             var11.setFirstValue((Integer) var11.getFirstValue() + 1);
                             String var14 = var11.getFirstValue() + "," + var13.name() + "," + var13.getDescription() + "," + var12.getLocalizedMessage() + System.lineSeparator();
                             var10.write(var14.getBytes(StandardCharsets.UTF_8));
@@ -488,7 +488,7 @@ public class EPW {
                             log.error("Something bad happened", var50);
                         }
 
-                        var1.setDeclarationFileVerificationResult(AHCI.ERROR);
+                        var1.setDeclarationFileVerificationResult(ActionResult.ERROR);
                         throw new FFK(var50);
                     } finally {
                         EWX.IBJ(var0, 1.0, 0L, 0L);
@@ -547,7 +547,7 @@ public class EPW {
 
             byte[] var11 = var4.digest();
             byte[] var12 = var5.digest();
-            var1.setDeclarationFileSHA256CheckSum(new JT(var12));
+            var1.setDeclarationFileSHA256CheckSum(new Bytes(var12));
             boolean var13 = Arrays.equals(var11, var1.getDeclarationFileCheckSumMD5().getValue());
             if (!var13) {
                 FCR.IGL(FCW.getInstance().getMessageForKey("micro.jpk.sendout.dialog.processing.exception.title"), FCW.getInstance().getMessageForKey("micro.jpk.sendout.dialog.processing.exception.inputfilediffer"), var3, false);
@@ -711,7 +711,7 @@ public class EPW {
 
     }
 
-    private static void HPH(String var0, JT var1, DeclarationJPK var2) throws FFK {
+    private static void HPH(String var0, Bytes var1, DeclarationJPK var2) throws FFK {
 
         try {
             log.info("About to create InitUpload file for input file [" + var2.getDeclarationFile() + "]");
@@ -719,7 +719,7 @@ public class EPW {
             File var4 = var2.getDeclarationFile();
             JPKSchemaType var5 = var2.getDeclarationFileSchema();
             List var6 = var2.getZipFileList();
-            JT var7 = new JT();
+            Bytes var7 = new Bytes();
             InitUploadType var8 = var3.createInitUploadType();
             var8.setDocumentType(var2.getInitUploadDocumentType().name());
             var8.setVersion("01.02.01.20160617");
@@ -804,7 +804,7 @@ public class EPW {
         boolean var24;
         try {
             log.info("About to valida InitUploadFile of input file [" + var1.getDeclarationFile() + "]");
-            JT var2 = var1.getInitUploadSignedFile();
+            Bytes var2 = var1.getInitUploadSignedFile();
             boolean var3 = false;
 
             final FFM var5;
@@ -819,15 +819,15 @@ public class EPW {
                 Validator var11 = var10.newValidator();
                 var11.setErrorHandler(new ErrorHandler() {
                     public void warning(SAXParseException var1) throws SAXException {
-                        var5.ILJ(new FCX(FCX.FCY.WARNING, var1));
+                        var5.ILJ(new FCX(FCX.ExceptionType.WARNING, var1));
                     }
 
                     public void fatalError(SAXParseException var1) throws SAXException {
-                        var5.ILJ(new FCX(FCX.FCY.FATALERROR, var1));
+                        var5.ILJ(new FCX(FCX.ExceptionType.FATALERROR, var1));
                     }
 
                     public void error(SAXParseException var1) throws SAXException {
-                        var5.ILJ(new FCX(FCX.FCY.ERROR, var1));
+                        var5.ILJ(new FCX(FCX.ExceptionType.ERROR, var1));
                     }
                 });
                 var11.validate(var8);
@@ -989,7 +989,7 @@ public class EPW {
                 DeclarationJPK var11 = (DeclarationJPK) var48.next();
 
                 try {
-                    var11.setSignatureType(EHK.CC);
+                    var11.setSignatureType(SignatureType.CC);
                     HPM(var11, var1, var2);
                 } catch (FFD var42) {
                     if (!"CKR_USER_NOT_LOGGED_IN".equals(var42.getErrorName())) {
@@ -1059,7 +1059,7 @@ public class EPW {
 
         while (var5.hasNext()) {
             DeclarationJPK var6 = (DeclarationJPK) var5.next();
-            JT var7 = var6.getInitUploadSignedFile();
+            Bytes var7 = var6.getInitUploadSignedFile();
             var3 += var7.getValue().length;
             if ((long) var7.getValue().length > 5248000L) {
                 throw FCZ.getInstance().IHS(String.valueOf(5248000L), String.valueOf(var7.getValue().length), var6.getDeclarationFileName());
@@ -1095,8 +1095,8 @@ public class EPW {
                 Object var20;
                 for (int var16 = 0; var16 < var0.size(); ++var16) {
                     DeclarationJPK var17 = var0.get(var16);
-                    var17.setSignatureType(EHK.PZ);
-                    JT var18 = var17.getInitUploadSignedFile();
+                    var17.setSignatureType(SignatureType.PZ);
+                    Bytes var18 = var17.getInitUploadSignedFile();
                     var19 = var17.getDeclarationFileName();
                     log.info("inputFileName " + var19);
                     log.info("documentId " + var16);
@@ -1192,7 +1192,7 @@ public class EPW {
                                     for (var26 = 0; var26 < var0.size(); ++var26) {
                                         if ((long) var26 == var64.getIdDokumentu()) {
                                             DeclarationJPK var27 = var0.get(var26);
-                                            var27.setInitUploadSignedEnvelopedFile(new JT(var64.getPodpisanaZawartosc()));
+                                            var27.setInitUploadSignedEnvelopedFile(new Bytes(var64.getPodpisanaZawartosc()));
                                             break;
                                         }
                                     }
@@ -1296,8 +1296,8 @@ public class EPW {
 
         try {
             log.info("About to sign InitUpload file for input file [" + var0.getDeclarationFile() + "]");
-            JT var3 = var0.getInitUploadSignedFile();
-            JT var4 = new JT();
+            Bytes var3 = var0.getInitUploadSignedFile();
+            Bytes var4 = new Bytes();
             String var5 = "sigId_" + System.nanoTime();
             String var6 = "sigValId_" + System.nanoTime();
             String var7 = "mainRefId_" + System.nanoTime();
@@ -1316,7 +1316,7 @@ public class EPW {
 
         try {
             log.info("About to validate signature of the InitUpload file of the input file [" + var0.getDeclarationFile() + "]");
-            JT var1 = var0.getInitUploadSignedEnvelopedFile();
+            Bytes var1 = var0.getInitUploadSignedEnvelopedFile();
             log.debug("signedEnvelopedFile " + var1);
             if (var1 != null) {
                 FEQ.IKY(var1.getValue());
@@ -1336,7 +1336,7 @@ public class EPW {
         try {
             log.info("About to load externally signed file as signed InitUpload file for input file [" + var0.getDeclarationFile() + "]");
             byte[] var2 = FEJ.IKP(var1);
-            var0.setInitUploadSignedEnvelopedFile(new JT(var2));
+            var0.setInitUploadSignedEnvelopedFile(new Bytes(var2));
             log.info("Externally signed file loaded as signed InitUpload file for input file [" + var0.getDeclarationFile() + "]");
         } catch (IOException var6) {
             throw new FFK(var6);
@@ -1344,9 +1344,9 @@ public class EPW {
 
     }
 
-    public static EQB.EQC HPO(EWX var0, DeclarationJPK var1) {
+    public static EQB.SendoutStatus HPO(EWX var0, DeclarationJPK var1) {
 
-        EQB.EQC var3;
+        EQB.SendoutStatus var3;
         try {
             log.info("About to start sendout for declaration [" + var1.getId() + "]");
             EQB var2 = new EQB(var0, var1);
@@ -1359,9 +1359,9 @@ public class EPW {
         return var3;
     }
 
-    public static EQB.EQC MWZ(EWX var0, DeclarationJPK var1) {
+    public static EQB.SendoutStatus MWZ(EWX var0, DeclarationJPK var1) {
 
-        EQB.EQC var3;
+        EQB.SendoutStatus var3;
         try {
             log.info("About to start KD sendout for declaration [" + var1.getId() + "]");
             EQB var2 = new EQB(var0, var1);

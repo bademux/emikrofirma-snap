@@ -4,7 +4,7 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.a.b.ERT;
-import a.a.a.c.f.a.g.JB;
+import a.a.a.c.f.a.g.ModelTechnicalElementCriteria;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 
 public class ERU extends ELV {
@@ -22,7 +22,7 @@ public class ERU extends ELV {
 
         try {
             if (this.GBI == null) {
-                JB var1 = new JB(ConfigurationProperties.class);
+                ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(ConfigurationProperties.class);
                 this.GBI = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 if (this.GBI != null) {
                     this.GBJ = false;

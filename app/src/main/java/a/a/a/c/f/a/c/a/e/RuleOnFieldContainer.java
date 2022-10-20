@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.c.a.e;
 
-import a.a.a.c.f.a.c.a.AHCE;
+import a.a.a.c.f.a.c.a.BaseConition;
 import a.a.a.c.f.a.c.a.AHDI;
 import a.a.a.c.f.a.c.a.a.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -56,7 +56,7 @@ public class RuleOnFieldContainer extends AHDI {
             name = "ruleOnField",
             type = RuleOnField.class
     )})
-    protected final AHCE AHWT;
+    protected final BaseConition AHWT;
 
     private RuleOnFieldContainer() {
 
@@ -64,13 +64,13 @@ public class RuleOnFieldContainer extends AHDI {
 
     }
 
-    public RuleOnFieldContainer(AHCE var1) {
+    public RuleOnFieldContainer(BaseConition var1) {
 
         this.AHWT = var1;
 
     }
 
-    public AHCE getActionOnField() {
+    public BaseConition getActionOnField() {
         return this.AHWT;
     }
 

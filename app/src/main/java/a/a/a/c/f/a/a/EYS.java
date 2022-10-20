@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.f.a.c.QJW;
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.a.c.TitledContractor;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.c.ComboBoxValidated_ContractorName;
 import a.a.a.c.f.d.FCL;
 
@@ -28,14 +28,14 @@ public class EYS extends FCL<ComboBoxValidated_ContractorName> {
         this.GVW = var1;
     }
 
-    protected void set(QST var1) {
+    protected void set(ObjectWithTitle var1) {
         if (this.GVV != null) {
-            this.GVV.setContractorFromAutocomplete((QJW) var1);
+            this.GVV.setContractorFromAutocomplete((TitledContractor) var1);
         }
 
     }
 
-    protected List<QJW> getByString(String var1) {
+    protected List<TitledContractor> getByString(String var1) {
         return this.GVW != null ? this.GVW.getContractorsByText(var1) : new ArrayList();
     }
 

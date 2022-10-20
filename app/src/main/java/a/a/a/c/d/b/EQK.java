@@ -131,7 +131,7 @@ public abstract class EQK {
                         } else {
                             this.setProgress(FCW.getInstance().getMessageForKey("micro.jpk.sendout.initupload.validate.success"));
                             boolean var11 = false;
-                            FCR.FCS var12 = null;
+                            FCR.SignType var12 = null;
 
                             label338:
                             while (true) {
@@ -181,7 +181,7 @@ public abstract class EQK {
                                         ValueContainer7 var14 = this.getSignatureValuesForKD();
                                         if (var14 != null) {
                                             this.setProgress(FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.method.selected.kd"));
-                                            var1.setSignatureType(EHK.KD);
+                                            var1.setSignatureType(SignatureType.KD);
                                             var1.setKdSignatureData(var14);
                                             var11 = true;
                                         } else {
@@ -195,13 +195,13 @@ public abstract class EQK {
 
                                 if (var12 != null) {
                                     if (var11) {
-                                        EQB.EQC var35;
+                                        EQB.SendoutStatus var35;
                                         DeclarationJPK var36;
                                         switch (var1.MWX()) {
                                             case KD:
                                                 this.FWJ.setFirstValue(this.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.send.start")));
                                                 var35 = EPW.MWZ(this.FWK, var1);
-                                                if (EQB.EQC.SUCCESS.equals(var35)) {
+                                                if (EQB.SendoutStatus.SUCCESS.equals(var35)) {
                                                     this.setProgressAndAlertInfo(FCW.getInstance().getMessageForKey("micro.jpk.sendout.send.title"), FCW.getInstance().getMessageForKey("micro.jpk.sendout.send.status.success"));
                                                     var36 = var1;
                                                     return var36;
@@ -218,7 +218,7 @@ public abstract class EQK {
                                                     this.setProgress(FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.validate.success"));
                                                     this.FWJ.setFirstValue(this.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.send.start")));
                                                     var35 = EPW.HPO(this.FWK, var1);
-                                                    if (EQB.EQC.SUCCESS.equals(var35)) {
+                                                    if (EQB.SendoutStatus.SUCCESS.equals(var35)) {
                                                         this.setProgressAndAlertInfo(FCW.getInstance().getMessageForKey("micro.jpk.sendout.send.title"), FCW.getInstance().getMessageForKey("micro.jpk.sendout.send.status.success"));
                                                         var36 = var1;
                                                         return var36;
@@ -287,7 +287,7 @@ public abstract class EQK {
     }
 
     private ValueContainer2<NewPrivateKey, X509Certificate> getPrivateKeyAndCertificateFromSmartCard() throws FFO, FFK {
-        FCR.QGW var1;
+        FCR.ButtonType var1;
         try {
             if (this.FWI != null && this.FWI.length() > 0) {
                 PKCS11 var39 = PKCS11.getInstance(this.FWI, "C_GetFunctionList", null, false);
@@ -443,7 +443,7 @@ public abstract class EQK {
                 }
             } else {
                 var1 = FCR.getNoCryptCardDialogResult(FCW.getInstance().getMessageForKey("micro.dialog.sign.no_cryptcard.title"), FCW.getInstance().getMessageForKey("micro.dialog.sign.no_cryptcard.header"), 800.0, 150.0, FCW.getInstance().getMessageForKey("micro.dialog.sign.no_cryptcard.description"));
-                if (var1 == FCR.QGW.GO_TO_SETTINGS) {
+                if (var1 == FCR.ButtonType.GO_TO_SETTINGS) {
                     throw new QGU("go to setting", 1);
                 }
             }

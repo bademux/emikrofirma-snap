@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -22,7 +22,7 @@ public class ConditionOnFieldAndConstantRegEx extends ConditionOnFieldAndConstan
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
@@ -35,13 +35,13 @@ public class ConditionOnFieldAndConstantRegEx extends ConditionOnFieldAndConstan
             var3 = var5.matches();
             if (!var3) {
                 var4 = null;
-                AHCI var10;
+                ActionResult var10;
                 switch (this.AHTY) {
                     case WARNING:
-                        var10 = AHCI.WARNING;
+                        var10 = ActionResult.WARNING;
                         break;
                     case ERROR:
-                        var10 = AHCI.ERROR;
+                        var10 = ActionResult.ERROR;
                         break;
                     default:
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");
@@ -51,7 +51,7 @@ public class ConditionOnFieldAndConstantRegEx extends ConditionOnFieldAndConstan
                 return var11;
             }
 
-            ValueContainer2 var9 = new ValueContainer2(AHCI.SUCCESS, null);
+            ValueContainer2 var9 = new ValueContainer2(ActionResult.SUCCESS, null);
             return var9;
         }
         throw new FFI("Invalid conditionType [" + this.AHUF + "]!");

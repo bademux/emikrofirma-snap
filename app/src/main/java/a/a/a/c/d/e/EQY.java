@@ -1,6 +1,6 @@
 package a.a.a.c.d.e;
 
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 
 import java.math.BigDecimal;
 
@@ -11,7 +11,7 @@ public class EQY {
     public EQY() {
     }
 
-    public static BigDecimal getBrutValue(BigDecimal var0, KL var1, boolean var2) {
+    public static BigDecimal getBrutValue(BigDecimal var0, TaxRate var1, boolean var2) {
         if (var0 != null && var1 != null) {
             BigDecimal var3 = BigDecimal.ZERO;
             if (!var1.DEQ() || var2) {
@@ -24,11 +24,11 @@ public class EQY {
         }
     }
 
-    public static BigDecimal getBrutValue(BigDecimal var0, KL var1) {
+    public static BigDecimal getBrutValue(BigDecimal var0, TaxRate var1) {
         return getBrutValue(var0, var1, false);
     }
 
-    public static BigDecimal getTaxValue(BigDecimal var0, KL var1, boolean var2) {
+    public static BigDecimal getTaxValue(BigDecimal var0, TaxRate var1, boolean var2) {
         if (var0 != null && var1 != null) {
             BigDecimal var3 = BigDecimal.ZERO;
             if (!var1.DEQ() || var2) {
@@ -41,7 +41,7 @@ public class EQY {
         }
     }
 
-    public static BigDecimal getTaxValue(BigDecimal var0, KL var1) {
+    public static BigDecimal getTaxValue(BigDecimal var0, TaxRate var1) {
         return getTaxValue(var0, var1, false);
     }
 

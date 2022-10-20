@@ -29,8 +29,8 @@ public class MainConfiguration {
         return this.AHWH;
     }
 
-    public AHCI getFinalActionResult() {
-        AHCI var1 = AHCI.SUCCESS;
+    public ActionResult getFinalActionResult() {
+        ActionResult var1 = ActionResult.SUCCESS;
 
         ConfigurationPackage var3;
         for (Iterator var2 = this.AHWH.iterator(); var2.hasNext(); var1 = this.AIDQ(var1, var3.getFinalActionResult())) {
@@ -40,7 +40,7 @@ public class MainConfiguration {
         return var1;
     }
 
-    private AHCI AIDQ(AHCI var1, AHCI var2) {
+    private ActionResult AIDQ(ActionResult var1, ActionResult var2) {
         boolean var3 = true;
         int var4;
         if (var1.getLevel() >= var2.getLevel()) {
@@ -49,7 +49,7 @@ public class MainConfiguration {
             var4 = var2.getLevel();
         }
 
-        return AHCI.getByLevel(var4);
+        return ActionResult.getByLevel(var4);
     }
 
     public String toString() {

@@ -11,22 +11,21 @@ import a.a.a.c.c.e.c.b.ESI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.InvoiceSellCorrection;
-import a.a.a.c.f.a.e.HY;
-import a.a.a.c.f.a.e.IA;
-import a.a.a.c.f.a.e.IB;
+import a.a.a.c.f.a.e.BaseInvoiceSell;
+import a.a.a.c.f.a.e.InvoiceSubtype;
+import a.a.a.c.f.a.e.InvoiceType;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.g.*;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.f.c.a.PropertyBoolean;
 import a.a.a.c.f.c.a.ConfigurationProperties;
-import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,17 +51,17 @@ public class ESJ extends ELW {
 
         try {
             if (this.GCU == null) {
-                JB var1 = new JB(ConfigurationProperties.class);
+                ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(ConfigurationProperties.class);
                 this.GCU = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.GCU.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
-                    if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
+                    a.a.a.c.f.c.a.ConfigurationProperty var3 = (a.a.a.c.f.c.a.ConfigurationProperty) var2.next();
+                    if (ConfigurationProperty.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GCV = (PropertyString) var3;
-                    } else if (FCQ.Pkcs11LibraryFile.getPropertyName().equals(var3.DEX().getValue())) {
+                    } else if (ConfigurationProperty.Pkcs11LibraryFile.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GCW = (PropertyString) var3;
-                    } else if (FCQ.PerformVerification.getPropertyName().equals(var3.DEX().getValue())) {
+                    } else if (ConfigurationProperty.PerformVerification.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GCX = (PropertyBoolean) var3;
                     }
                 }
@@ -131,7 +130,7 @@ public class ESJ extends ELW {
 
         DeclarationJPK_VAT var4;
         try {
-            EYD var2 = new EYD(DeclarationJPK_VAT.class, var1, null, HM.JPK, AGWW.VAT);
+            PeriodModelCriteria var2 = new PeriodModelCriteria(DeclarationJPK_VAT.class, var1, null, DeclarationType.JPK, DeclarationSubtype.VAT);
             ValueContainer2 var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() <= 0) {
                 var4 = null;
@@ -151,7 +150,7 @@ public class ESJ extends ELW {
 
         DeclarationJPK_FA var4;
         try {
-            EYD var2 = new EYD(DeclarationJPK_FA.class, var1, null, HM.JPK, AGWW.FA);
+            PeriodModelCriteria var2 = new PeriodModelCriteria(DeclarationJPK_FA.class, var1, null, DeclarationType.JPK, DeclarationSubtype.FA);
             ValueContainer2 var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() <= 0) {
                 var4 = null;
@@ -171,7 +170,7 @@ public class ESJ extends ELW {
 
         List var3;
         try {
-            IY var1 = new IY(Settlement.class, null, JH.VAT, null, OrderType.DESC);
+            ModelBusinessPeriodElementTypedCriteria var1 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, null, SettlementType.VAT, null, OrderType.DESC);
             ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             var3 = (List) var2.getSecondValue();
         } catch (FFO | FFK var7) {
@@ -186,7 +185,7 @@ public class ESJ extends ELW {
 
         boolean var3;
         try {
-            IU var1 = new IU(InvoiceSellCorrection.class, QSW.ACTIVE, Period.AOE, IB.SELL, IA.CORRECTION, null, null, OrderType.DESC);
+            InvoiceCriteria var1 = new InvoiceCriteria(InvoiceSellCorrection.class, InvoiceState.ACTIVE, Period.AOE, InvoiceType.SELL, InvoiceSubtype.CORRECTION, null, null, OrderType.DESC);
             ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             if (((List) var2.getSecondValue()).size() <= 0) {
                 var3 = false;
@@ -268,10 +267,10 @@ public class ESJ extends ELW {
 
     }
 
-    public JG getSettlementStatus(Period var1) throws FFK, FFO {
+    public SettlementStatus getSettlementStatus(Period var1) throws FFK, FFO {
 
-        JG var6;
-        IY var2 = new IY(Settlement.class, var1, JH.VAT, null);
+        SettlementStatus var6;
+        ModelBusinessPeriodElementTypedCriteria var2 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, var1, SettlementType.VAT, null);
         ValueContainer2 var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
@@ -291,10 +290,10 @@ public class ESJ extends ELW {
 
     public List<EDF<InvoiceRecord>> HTO(Period var1) {
 
-        IV var2;
+        InvoiceRecordCriteria var2;
         try {
             if (var1 != null && var1.getMonth() != null && var1.getMonth().getValue() != null && var1.getYear() != null && var1.getYear().getValue() != null) {
-                var2 = new IV(InvoiceRecord.class, var1, null);
+                var2 = new InvoiceRecordCriteria(InvoiceRecord.class, var1, null);
                 return (List) this.getModelManager().HJY(this.getParentDefinition(), var2).getSecondValue();
             }
 
@@ -305,11 +304,11 @@ public class ESJ extends ELW {
         }
     }
 
-    public List<EDF<HY>> QPE(Period var1) {
+    public List<EDF<BaseInvoiceSell>> QPE(Period var1) {
         try {
-            IU var2;
+            InvoiceCriteria var2;
             if (var1 != null && var1.getMonth() != null && var1.getMonth().getValue() != null && var1.getYear() != null && var1.getYear().getValue() != null) {
-                var2 = new IU(HY.class, QSW.ACTIVE, var1, IB.SELL, null, null, null, OrderType.DESC);
+                var2 = new InvoiceCriteria(BaseInvoiceSell.class, InvoiceState.ACTIVE, var1, InvoiceType.SELL, null, null, null, OrderType.DESC);
                 return (List) this.getModelManager().HJY(this.getParentDefinition(), var2).getSecondValue();
             }
 
@@ -321,7 +320,7 @@ public class ESJ extends ELW {
         return null;
     }
 
-    public Integer HTQ(Period var1, HM var2, AGWW var3) {
+    public Integer HTQ(Period var1, DeclarationType var2, DeclarationSubtype var3) {
 
         Object var5;
         try {

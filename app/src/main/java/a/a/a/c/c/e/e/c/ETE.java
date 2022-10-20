@@ -5,11 +5,11 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.e.e.a.ETC;
+import a.a.a.c.c.e.e.a.Mode;
 import a.a.a.c.c.e.e.b.ETD;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.g.AGYN;
+import a.a.a.c.f.a.g.ContractorModelCriteria;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ETE extends ELV {
     private Contractor GFY;
-    private ETC GFZ;
+    private Mode GFZ;
 
     public ETE() {
         super(ETD.GFW.getProcessName());
@@ -36,7 +36,7 @@ public class ETE extends ELV {
         return this.GFY;
     }
 
-    public void setMode(ETC var1) {
+    public void setMode(Mode var1) {
         this.GFZ = var1;
     }
 
@@ -89,7 +89,7 @@ public class ETE extends ELV {
 
         ArrayList var11;
         try {
-            AGYN var1 = new AGYN(Contractor.class, null);
+            ContractorModelCriteria var1 = new ContractorModelCriteria(Contractor.class, null);
             ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             ArrayList var3 = new ArrayList();
             if (var2 != null) {
@@ -115,7 +115,7 @@ public class ETE extends ELV {
     public boolean HUR(String var1) {
         boolean var2 = false;
         if (var1 != null) {
-            AGYN var3 = new AGYN(Contractor.class, var1);
+            ContractorModelCriteria var3 = new ContractorModelCriteria(Contractor.class, var1);
 
             try {
                 ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
@@ -133,7 +133,7 @@ public class ETE extends ELV {
     public boolean RKN(Contractor var1) {
         boolean var2 = false;
         if (var1 != null) {
-            AGYN var3 = new AGYN(Contractor.class, var1.QON(), null);
+            ContractorModelCriteria var3 = new ContractorModelCriteria(Contractor.class, var1.QON(), null);
 
             try {
                 ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);

@@ -5,17 +5,17 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELX;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.p.b.QUC;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.a.EYL;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.c.QJW;
-import a.a.a.c.f.a.g.AGYN;
-import a.a.a.c.f.a.g.IY;
+import a.a.a.c.f.a.c.TitledContractor;
+import a.a.a.c.f.a.g.ContractorModelCriteria;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.a.n.InvoiceOtherPurchase;
 import a.a.a.c.f.b.b.Period;
 
@@ -28,7 +28,7 @@ import java.util.List;
 
 public class QUD extends ELX implements EYL {
     private InvoiceOtherPurchase RCT;
-    private EPB RCU;
+    private Mode RCU;
 
     public QUD() {
         super(QUC.RCR.getProcessName());
@@ -71,11 +71,11 @@ public class QUD extends ELX implements EYL {
 
     }
 
-    public JG getSettlementStatus(LocalDate var1) throws FFK, FFO {
+    public SettlementStatus getSettlementStatus(LocalDate var1) throws FFK, FFO {
 
-        JG var7;
+        SettlementStatus var7;
         Period var2 = new Period(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        IY var3 = new IY(Settlement.class, var2, JH.VAT, null);
+        ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, var2, SettlementType.VAT, null);
         ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
@@ -92,13 +92,13 @@ public class QUD extends ELX implements EYL {
         return var7;
     }
 
-    public List<QJW> getContractorsByText(String var1) {
+    public List<TitledContractor> getContractorsByText(String var1) {
 
         ArrayList var2 = new ArrayList();
 
         ArrayList var4;
         try {
-            AGYN var3 = new AGYN(Contractor.class, var1);
+            ContractorModelCriteria var3 = new ContractorModelCriteria(Contractor.class, var1);
             ValueContainer2 var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
@@ -106,7 +106,7 @@ public class QUD extends ELX implements EYL {
                 while (var5.hasNext()) {
                     EDF var6 = (EDF) var5.next();
                     if (var6 != null) {
-                        var2.add(new QJW(var6));
+                        var2.add(new TitledContractor(var6));
                     }
                 }
             }
@@ -121,7 +121,7 @@ public class QUD extends ELX implements EYL {
         return var4;
     }
 
-    public void setMode(EPB var1) {
+    public void setMode(Mode var1) {
         this.RCU = var1;
         this.HHI();
     }

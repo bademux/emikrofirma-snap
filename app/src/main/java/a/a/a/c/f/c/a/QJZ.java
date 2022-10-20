@@ -1,7 +1,7 @@
 package a.a.a.c.f.c.a;
 
 import com.github.bademux.emk.Application;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 
 import java.io.File;
 
@@ -9,29 +9,29 @@ public class QJZ {
     public QJZ() {
     }
 
-    public static ConfigurationProperty<?, ?> getDefaultConfigurationProperty(FCQ var0) {
-        if (var0 == FCQ.WorkingDir) {
+    public static a.a.a.c.f.c.a.ConfigurationProperty<?, ?> getDefaultConfigurationProperty(ConfigurationProperty var0) {
+        if (var0 == ConfigurationProperty.WorkingDir) {
             File var5 = Application.getHomeDir().toFile();
             File var2 = new File(var5, "emikrofirma");
             var2.mkdirs();
-            PropertyString var3 = new PropertyString(FCQ.WorkingDir.getPropertyName(), var2.getAbsolutePath());
+            PropertyString var3 = new PropertyString(ConfigurationProperty.WorkingDir.getPropertyName(), var2.getAbsolutePath());
             return var3;
-        } else if (var0 == FCQ.PerformVerification) {
-            PropertyBoolean var4 = new PropertyBoolean(FCQ.PerformVerification.getPropertyName(), true);
+        } else if (var0 == ConfigurationProperty.PerformVerification) {
+            PropertyBoolean var4 = new PropertyBoolean(ConfigurationProperty.PerformVerification.getPropertyName(), true);
             return var4;
         } else {
             PropertyString var1;
-            if (var0 == FCQ.Pkcs11LibraryFile) {
-                var1 = new PropertyString(FCQ.Pkcs11LibraryFile.getPropertyName(), null);
+            if (var0 == ConfigurationProperty.Pkcs11LibraryFile) {
+                var1 = new PropertyString(ConfigurationProperty.Pkcs11LibraryFile.getPropertyName(), null);
                 return var1;
-            } else if (var0 == FCQ.SellRefIdPattern) {
-                var1 = new PropertyString(FCQ.SellRefIdPattern.getPropertyName(), "FA/#%yyyy%#/#%MM%#/#%dd%#/#%sequence1%#");
+            } else if (var0 == ConfigurationProperty.SellRefIdPattern) {
+                var1 = new PropertyString(ConfigurationProperty.SellRefIdPattern.getPropertyName(), "FA/#%yyyy%#/#%MM%#/#%dd%#/#%sequence1%#");
                 return var1;
-            } else if (var0 == FCQ.SellCorrectionRefIdPattern) {
-                var1 = new PropertyString(FCQ.SellCorrectionRefIdPattern.getPropertyName(), "FK/#%yyyy%#/#%MM%#/#%dd%#/#%sequence2%#");
+            } else if (var0 == ConfigurationProperty.SellCorrectionRefIdPattern) {
+                var1 = new PropertyString(ConfigurationProperty.SellCorrectionRefIdPattern.getPropertyName(), "FK/#%yyyy%#/#%MM%#/#%dd%#/#%sequence2%#");
                 return var1;
-            } else if (var0 == FCQ.CalculationMethod) {
-                var1 = new PropertyString(FCQ.CalculationMethod.getPropertyName(), "NET");
+            } else if (var0 == ConfigurationProperty.CalculationMethod) {
+                var1 = new PropertyString(ConfigurationProperty.CalculationMethod.getPropertyName(), "NET");
                 return var1;
             } else {
                 return null;

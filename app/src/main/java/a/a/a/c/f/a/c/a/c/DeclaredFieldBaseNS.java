@@ -1,13 +1,13 @@
 package a.a.a.c.f.a.c.a.c;
 
-import a.a.a.c.f.a.c.AHEQ;
+import a.a.a.c.f.a.c.XmlSchemaNamespace;
 
 public class DeclaredFieldBaseNS {
-    protected final AHEQ AHVQ;
+    protected final XmlSchemaNamespace AHVQ;
     protected final String AHVR;
     protected String AHVS;
 
-    public DeclaredFieldBaseNS(AHEQ var1, String var2, String var3) {
+    public DeclaredFieldBaseNS(XmlSchemaNamespace var1, String var2, String var3) {
 
         this.AHVQ = var1;
         this.AHVR = var2;
@@ -15,12 +15,12 @@ public class DeclaredFieldBaseNS {
 
     }
 
-    public DeclaredFieldBaseNS(AHEQ var1, String var2) {
+    public DeclaredFieldBaseNS(XmlSchemaNamespace var1, String var2) {
         this(var1, var2, null);
 
     }
 
-    public AHEQ getElementNamespace() {
+    public XmlSchemaNamespace getElementNamespace() {
         return this.AHVQ;
     }
 

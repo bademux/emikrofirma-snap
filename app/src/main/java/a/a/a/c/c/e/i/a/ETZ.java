@@ -50,15 +50,15 @@ public class ETZ extends BaseFxController {
     @FXML
     private TableColumn<DeclarationJPK, Date> fxml_declaration_list_declaration_table_declaration_send_date;
     @FXML
-    private TableColumn<DeclarationJPK, AGWW> fxml_declaration_list_declaration_table_declaration_subtype;
+    private TableColumn<DeclarationJPK, DeclarationSubtype> fxml_declaration_list_declaration_table_declaration_subtype;
     @FXML
     private TableColumn<DeclarationJPK, JY> fxml_declaration_list_declaration_table_declaration_purpose;
     @FXML
     private TableColumn<DeclarationJPK, Period> fxml_declaration_list_declaration_table_declaration_source;
     @FXML
-    private TableColumn<DeclarationJPK, HL> fxml_declaration_list_declaration_table_declaration_status;
+    private TableColumn<DeclarationJPK, DeclarationStatus> fxml_declaration_list_declaration_table_declaration_status;
     @FXML
-    private TableColumn<DeclarationJPK, EHK> fxml_declaration_list_declaration_table_declaration_sign_type;
+    private TableColumn<DeclarationJPK, SignatureType> fxml_declaration_list_declaration_table_declaration_sign_type;
     @FXML
     private EYQ fxml_declaration_list_jpk_ref_idController;
     @FXML
@@ -197,7 +197,7 @@ public class ETZ extends BaseFxController {
 
         try {
             final DeclarationJPK_StatusTracker var2 = new DeclarationJPK_StatusTracker(this.fxml_declaration_list_jpk_ref_idController.fxml_component_main_element.getText());
-            Integer var3 = this.QHT.HXA(Period.AOE, HM.JPK, AGWW.STATUS_TRACKER);
+            Integer var3 = this.QHT.HXA(Period.AOE, DeclarationType.JPK, DeclarationSubtype.STATUS_TRACKER);
             var2.FJI().setValue(var3);
             final MTI var4 = new MTI(null);
             final MTI var5 = new MTI(Boolean.FALSE);
@@ -225,8 +225,8 @@ public class ETZ extends BaseFxController {
                                 JSONObject var2x = var1.getValueAsJSONObject();
                                 Long var3 = (Long) var2x.get("Code");
                                 String var4x = (String) var2x.get("Description");
-                                FCR.QGV var5x = FCR.getJpkStatusDialogResult(FCW.getInstance().getMessageForKey("micro.process.jpk_list.checkstatusdialog.title"), FCW.getInstance().getMessageForKey("micro.process.jpk_list.checkstatusdialog.header"), 800.0, 150.0, var3 + ",  " + var4x, var3 == 200L);
-                                if (var5x == FCR.QGV.PRINT_UPO) {
+                                FCR.CloseButtonType var5x = FCR.getJpkStatusDialogResult(FCW.getInstance().getMessageForKey("micro.process.jpk_list.checkstatusdialog.title"), FCW.getInstance().getMessageForKey("micro.process.jpk_list.checkstatusdialog.header"), 800.0, 150.0, var3 + ",  " + var4x, var3 == 200L);
+                                if (var5x == FCR.CloseButtonType.PRINT_UPO) {
                                     ETZ.this.QHU.HWM(var2);
                                 }
 

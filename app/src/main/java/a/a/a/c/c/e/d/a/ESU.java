@@ -11,13 +11,13 @@ import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.e.InvoiceElement;
 import a.a.a.c.f.a.e.InvoiceElementPurchase;
 import a.a.a.c.f.a.e.InvoicePurchase;
-import a.a.a.c.f.b.a.JJ;
+import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.KM;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.TaxReason;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import com.github.bademux.emk.app.FXApp;
 import javafx.beans.value.ChangeListener;
@@ -98,7 +98,7 @@ public class ESU extends QUW {
             public void changed(ObservableValue<? extends Toggle> var1, Toggle var2, Toggle var3) {
                 if (ESU.this.calculation_method_radio_group.getSelectedToggle() != null) {
                     String var4 = ESU.this.calculation_method_radio_group.getSelectedToggle().getUserData().toString();
-                    ESU.this.REZ.RIE().setValue(QSV.valueOf(var4));
+                    ESU.this.REZ.RIE().setValue(CalculationMethodType.valueOf(var4));
                     ESU.this.RKR(var4);
                 }
 
@@ -122,7 +122,7 @@ public class ESU extends QUW {
             this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAI().DDG());
             this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAR().DDG());
             this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAJ().DDG());
-            JJ var3 = var2.DAM();
+            Address var3 = var2.DAM();
             this.fxml_include_Street_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDA().DDG());
             this.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDB().DDG());
             this.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDC().DDG());
@@ -134,7 +134,7 @@ public class ESU extends QUW {
             this.fxml_registry_invoicePositionTable_tableView.getItems().addListener(this.RFG);
             this.RFD.bind(this.fxml_registry_invoicePositionTable_tableView.itemsProperty());
             if (var1.RIE().getValue() == null) {
-                var1.RIE().setValue(QSV.NET);
+                var1.RIE().setValue(CalculationMethodType.NET);
             }
 
             String var4 = var1.RIE().getValue().toString();
@@ -239,7 +239,7 @@ public class ESU extends QUW {
                     var7.DBG().setPresicion(var6.fxml_include_quantityNumberBox_boxController.fxml_component_main_element.getMaximumFractionDigits());
                     var7.DBH().setValue(var6.fxml_include_measurementUnitRequiredTextBox_boxController.fxml_component_main_element.getText());
                     var7.DBH().setMaxLength(var6.fxml_include_measurementUnitRequiredTextBox_boxController.fxml_component_root_element.getMaxLength());
-                    var7.DBN().setValue((KL) ((ComboBoxRequired) var6.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getValue());
+                    var7.DBN().setValue((TaxRate) ((ComboBoxRequired) var6.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getValue());
                     var7.DBI().setValue(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getNumber());
                     var7.DBI().setAllowNegative(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.IFG());
                     var7.DBI().setScale(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getMaxLength());
@@ -249,7 +249,7 @@ public class ESU extends QUW {
                     var7.RIF().setScale(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getMaxLength());
                     var7.RIF().setPresicion(var6.fxml_include_netUnitValueNumberBox_boxController.fxml_component_main_element.getMaximumFractionDigits());
                     var7.DBO().setValue(var6.fxml_include_deductHalfLabeledCheckBox_boxController.fxml_component_main_element.isSelected());
-                    var7.DBP().setValue((KM) ((ComboBoxRequired) var6.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getValue());
+                    var7.DBP().setValue((TaxReason) ((ComboBoxRequired) var6.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getValue());
                     this.RJV(null, var7, null);
                     this.fxml_registry_invoicePositionTable_tableView.getItems().add(var7);
                     this.fxml_registry_invoicePositionTable_tableView.refresh();
@@ -294,7 +294,7 @@ public class ESU extends QUW {
 
     }
 
-    public boolean RJW(Period var1, RefId var2, KA var3) {
+    public boolean RJW(Period var1, RefId var2, Nip var3) {
 
         boolean var4;
         if (this.GFB == null) {
@@ -320,9 +320,9 @@ public class ESU extends QUW {
         return var2;
     }
 
-    public void RJV(InvoiceElement var1, InvoiceElement var2, QSV var3) {
+    public void RJV(InvoiceElement var1, InvoiceElement var2, CalculationMethodType var3) {
 
-        var3 = QSV.valueOf(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
+        var3 = CalculationMethodType.valueOf(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
         QRX var4 = QRY.getInvoiceCalculationMethod(var3, false);
         var4.RIB(var1, var2);
         this.RFE.set(true);

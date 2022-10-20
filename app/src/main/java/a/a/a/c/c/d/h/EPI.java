@@ -9,9 +9,9 @@ import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.InvoiceElementSell;
 import a.a.a.c.f.a.e.InvoiceSell;
 import a.a.a.c.f.a.e.InvoiceSellCorrection;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.QSV;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.c.FCZ;
 import com.github.bademux.emk.utils.FopUtils;
@@ -119,7 +119,7 @@ public class EPI extends EPL {
             transformer.setParameter("sum_net", this.HOI(this.FQF.getAmountSummaryWithoutTax().getValue()));
             transformer.setParameter("sum_tax", this.HOI(this.FQF.getAmountTax().getValue()));
             transformer.setParameter("sum_brut", this.HOI(this.FQF.getAmountSummaryWithTax().getValue()));
-            transformer.setParameter("is_cancelled", this.FQF.getState() != null && this.FQF.getState().equals(QSW.CANCELED));
+            transformer.setParameter("is_cancelled", this.FQF.getState() != null && this.FQF.getState().equals(InvoiceState.CANCELED));
             boolean var23 = false;
             if (this.FQF.DBA().getValue() != null) {
                 var23 = this.FQF.DBA().getValue();
@@ -160,13 +160,13 @@ public class EPI extends EPL {
             transformer.setParameter("diff_sum_net", this.FQJ.format(EQY.HRJ(this.FQF.DAW().getValue(), this.FQH.DAW().getValue())));
             transformer.setParameter("diff_sum_tax", this.FQJ.format(EQY.HRJ(this.FQF.DAX().getValue(), this.FQH.DAX().getValue())));
             transformer.setParameter("diff_sum_brut", this.FQJ.format(EQY.HRJ(this.FQF.DAV().getValue(), this.FQH.DAV().getValue())));
-            if (this.FQH.getInvoiceElements() != null && this.FQH.getInvoiceElements().size() != 0 && this.FQH.getInvoiceElements().get(0).RIG().getValue() != null && this.FQH.getInvoiceElements().get(0).RIG().getValue().equals(QSV.GROSS)) {
+            if (this.FQH.getInvoiceElements() != null && this.FQH.getInvoiceElements().size() != 0 && this.FQH.getInvoiceElements().get(0).RIG().getValue() != null && this.FQH.getInvoiceElements().get(0).RIG().getValue().equals(CalculationMethodType.GROSS)) {
                 transformer.setParameter("unit_price_before_correction", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementBrutPrice"));
             } else {
                 transformer.setParameter("unit_price_before_correction", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementNetPrice"));
             }
 
-            if (this.FQF.getInvoiceElements() != null && this.FQF.getInvoiceElements().size() != 0 && this.FQF.getInvoiceElements().get(0).RIG().getValue() != null && this.FQF.getInvoiceElements().get(0).RIG().getValue().equals(QSV.GROSS)) {
+            if (this.FQF.getInvoiceElements() != null && this.FQF.getInvoiceElements().size() != 0 && this.FQF.getInvoiceElements().get(0).RIG().getValue() != null && this.FQF.getInvoiceElements().get(0).RIG().getValue().equals(CalculationMethodType.GROSS)) {
                 transformer.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementBrutPrice"));
             } else {
                 transformer.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementNetPrice"));
@@ -201,7 +201,7 @@ public class EPI extends EPL {
             var1.HOR("nr", String.valueOf(var3), var2);
             var1.HOR("name", this.HOL(var5.getName().getValue(), 20), var2);
             var1.HOR("unit", this.HOL(var5.getUnit().getValue(), 5), var2);
-            if (var5.RIG().getValue() != null && var5.RIG().getValue().equals(QSV.GROSS)) {
+            if (var5.RIG().getValue() != null && var5.RIG().getValue().equals(CalculationMethodType.GROSS)) {
                 var1.HOR("unitPrice", this.HOI(var5.getGrossPriceForUnit().getValue()), var2);
             } else {
                 var1.HOR("unitPrice", this.HOI(var5.getNetPriceForUnit().getValue()), var2);
@@ -226,7 +226,7 @@ public class EPI extends EPL {
             var1.HOR("nr", String.valueOf(var3), var2);
             var1.HOR("name", this.HOL(var5.getName().getValue(), 20), var2);
             var1.HOR("unit", this.HOL(var5.getUnit().getValue(), 5), var2);
-            if (var5.RIG().getValue() != null && var5.RIG().getValue().equals(QSV.GROSS)) {
+            if (var5.RIG().getValue() != null && var5.RIG().getValue().equals(CalculationMethodType.GROSS)) {
                 var1.HOR("unitPrice", this.HOI(var5.getGrossPriceForUnit().getValue()), var2);
             } else {
                 var1.HOR("unitPrice", this.HOI(var5.getNetPriceForUnit().getValue()), var2);
@@ -247,7 +247,7 @@ public class EPI extends EPL {
         while (var8.hasNext()) {
             Map.Entry var6 = (Map.Entry) var8.next();
             var2 = var1.getDocument().createElement("summaryTable");
-            var1.HOR("taxRate", ((KL) var6.getKey()).getDescription(), var2);
+            var1.HOR("taxRate", ((TaxRate) var6.getKey()).getDescription(), var2);
             var1.HOR("netSum", this.HOI((BigDecimal) ((ValueContainer3) var6.getValue()).getFirstValue()), var2);
             var1.HOR("taxSum", this.HOI((BigDecimal) ((ValueContainer3) var6.getValue()).getSecondValue()), var2);
             var1.HOR("brutSum", this.HOI((BigDecimal) ((ValueContainer3) var6.getValue()).getThirdValue()), var2);

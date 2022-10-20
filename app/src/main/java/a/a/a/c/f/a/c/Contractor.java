@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c;
 
 import a.a.a.c.f.a.ModelBusinessTopElement;
-import a.a.a.c.f.b.a.JJ;
+import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.g.b.FCW;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -13,145 +13,145 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Contractor extends ModelBusinessTopElement implements Comparable<Contractor> {
-    private KO AIT;
-    private KA AIU;
-    private KF AIV;
-    private JQ AIW;
-    private JJ AIX;
-    private KS AIY;
-    private JU AIZ;
-    private KO AJA;
-    private JS AHRM = new JS(false);
+    private Text AIT;
+    private Nip AIU;
+    private Regon AIV;
+    private AccountNumber AIW;
+    private Address AIX;
+    private Telephone AIY;
+    private Email AIZ;
+    private Text AJA;
+    private PrivtePerson AHRM = new PrivtePerson(false);
 
     public Contractor() {
 
     }
 
-    public KO getName() {
+    public Text getName() {
         return this.AIT;
     }
 
-    public KO DAI() {
+    public Text DAI() {
         if (this.AIT == null) {
-            this.AIT = new KO();
+            this.AIT = new Text();
         }
 
         return this.AIT;
     }
 
-    public void setName(KO var1) {
+    public void setName(Text var1) {
         this.AIT = var1;
     }
 
-    public KA getNip() {
+    public Nip getNip() {
         return this.AIU;
     }
 
-    public KA DAJ() {
+    public Nip DAJ() {
         if (this.AIU == null) {
-            this.AIU = new KA();
+            this.AIU = new Nip();
         }
 
         return this.AIU;
     }
 
-    public void setNip(KA var1) {
+    public void setNip(Nip var1) {
         this.AIU = var1;
     }
 
-    public KF getRegon() {
+    public Regon getRegon() {
         return this.AIV;
     }
 
-    public KF DAK() {
+    public Regon DAK() {
         if (this.AIV == null) {
-            this.AIV = new KF();
+            this.AIV = new Regon();
         }
 
         return this.AIV;
     }
 
-    public void setRegon(KF var1) {
+    public void setRegon(Regon var1) {
         this.AIV = var1;
     }
 
-    public JQ getAccountNumber() {
+    public AccountNumber getAccountNumber() {
         return this.AIW;
     }
 
-    public JQ DAL() {
+    public AccountNumber DAL() {
         if (this.AIW == null) {
-            this.AIW = new JQ();
+            this.AIW = new AccountNumber();
         }
 
         return this.AIW;
     }
 
-    public void setAccountNumber(JQ var1) {
+    public void setAccountNumber(AccountNumber var1) {
         this.AIW = var1;
     }
 
-    public JJ getAddress() {
+    public Address getAddress() {
         return this.AIX;
     }
 
-    public JJ DAM() {
+    public Address DAM() {
         if (this.AIX == null) {
-            this.AIX = new JJ();
+            this.AIX = new Address();
         }
 
         return this.AIX;
     }
 
-    public void setAddress(JJ var1) {
+    public void setAddress(Address var1) {
         this.AIX = var1;
     }
 
-    public void setTelephone(KS var1) {
+    public void setTelephone(Telephone var1) {
         this.AIY = var1;
     }
 
-    public KS DAN() {
+    public Telephone DAN() {
         if (this.AIY == null) {
-            this.AIY = new KS();
+            this.AIY = new Telephone();
         }
 
         return this.AIY;
     }
 
-    public KS getTelephone() {
+    public Telephone getTelephone() {
         return this.AIY;
     }
 
-    public void setEmail(JU var1) {
+    public void setEmail(Email var1) {
         this.AIZ = var1;
     }
 
-    public JU DAO() {
+    public Email DAO() {
         if (this.AIZ == null) {
-            this.AIZ = new JU();
+            this.AIZ = new Email();
         }
 
         return this.AIZ;
     }
 
-    public JU getEmail() {
+    public Email getEmail() {
         return this.AIZ;
     }
 
-    public KO getRemarks() {
+    public Text getRemarks() {
         return this.AJA;
     }
 
-    public KO DAP() {
+    public Text DAP() {
         if (this.AJA == null) {
-            this.AJA = new KO();
+            this.AJA = new Text();
         }
 
         return this.AJA;
     }
 
-    public void setRemarks(KO var1) {
+    public void setRemarks(Text var1) {
         this.AJA = var1;
     }
 
@@ -175,7 +175,7 @@ public class Contractor extends ModelBusinessTopElement implements Comparable<Co
         var1.AIZ = this.AIZ != null ? this.AIZ.DDY() : null;
         var1.AIY = this.AIY != null ? this.AIY.DET() : null;
         var1.AJA = this.AJA != null ? this.AJA.DER() : null;
-        var1.AHRM = new JS(this.AICE());
+        var1.AHRM = new PrivtePerson(this.AICE());
         var2 = var1;
 
         return var2;
@@ -189,7 +189,7 @@ public class Contractor extends ModelBusinessTopElement implements Comparable<Co
         this.AHRM.setValue(var1);
     }
 
-    public JS getPrivatePerson() {
+    public PrivtePerson getPrivatePerson() {
         return this.AHRM;
     }
 

@@ -1,14 +1,14 @@
 package a.a.a.c.f.c.c;
 
 import a.a.a.c.f.a.EXW;
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.b.QRV;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ComboBoxRequiredText<_T extends QST> extends ComboBoxValidatedText<_T> implements EXW<_T> {
+public class ComboBoxRequiredText<_T extends ObjectWithTitle> extends ComboBoxValidatedText<_T> implements EXW<_T> {
     protected QRV<_T, ComboBoxRequiredText<_T>> QVR;
     protected BooleanProperty QVS;
     protected BooleanProperty QVT;

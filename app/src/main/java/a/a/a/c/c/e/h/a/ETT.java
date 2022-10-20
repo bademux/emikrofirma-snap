@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.h.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.d.d.ENZ;
 import a.a.a.c.c.d.d.b.EOB;
@@ -17,9 +17,9 @@ import a.a.a.c.c.e.h.c.ETV;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JR;
+import a.a.a.c.f.b.c.Amount;
 import a.a.a.c.f.b.c.RefId;
-import a.a.a.c.f.b.c.a.KH;
+import a.a.a.c.f.b.c.a.MonthType;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import com.github.bademux.emk.app.FXApp;
@@ -55,11 +55,11 @@ public class ETT extends BaseProgressFxController<ETV> {
     @FXML
     TableColumn<ReceiptRecordVat, RefId> fxml_cash_register_list_ref_id;
     @FXML
-    TableColumn<ReceiptRecordVat, JR> fxml_cash_register_list_net;
+    TableColumn<ReceiptRecordVat, Amount> fxml_cash_register_list_net;
     @FXML
-    TableColumn<ReceiptRecordVat, JR> fxml_cash_register_list_vat_amount;
+    TableColumn<ReceiptRecordVat, Amount> fxml_cash_register_list_vat_amount;
     @FXML
-    TableColumn<ReceiptRecordVat, JR> fxml_cash_register_list_gross;
+    TableColumn<ReceiptRecordVat, Amount> fxml_cash_register_list_gross;
     @FXML
     Button fxml_cash_register_list_button_view;
     @FXML
@@ -82,7 +82,7 @@ public class ETT extends BaseProgressFxController<ETV> {
     private final BooleanProperty GJA = new SimpleBooleanProperty(false);
     ObservableList<ReceiptRecordVat> GJB;
     private int GJC = 0;
-    private SortedMap<String, SortedSet<KH>> GJD;
+    private SortedMap<String, SortedSet<MonthType>> GJD;
     private Period GJF;
     private final ChangeListener<String> GJG = new ChangeListener<String>() {
         public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
@@ -259,11 +259,11 @@ public class ETT extends BaseProgressFxController<ETV> {
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [view] clicked");
         final ReceiptRecordVat var2 = this.fxml_cash_register_list.getSelectionModel().getSelectedItem();
         this.HHB();
-        this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
             public void accept(ENL<?> var1) {
 
                 try {
-                    var1.setMode(ENL.ENM.VIEW);
+                    var1.setMode(ENL.Mode.VIEW);
                     var1.setReceiptRecordVat(var2);
                 } catch (FFK var6) {
                     FCT.IGX("", var6);
@@ -280,11 +280,11 @@ public class ETT extends BaseProgressFxController<ETV> {
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
         final ReceiptRecordVat var2 = this.fxml_cash_register_list.getSelectionModel().getSelectedItem();
         this.HHB();
-        this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
             public void accept(ENL<?> var1) {
 
                 try {
-                    var1.setMode(ENL.ENM.EDIT);
+                    var1.setMode(ENL.Mode.EDIT);
                     var1.setReceiptRecordVat(var2);
                 } catch (FFK var6) {
                     FCT.IGX("", var6);
@@ -300,7 +300,7 @@ public class ETT extends BaseProgressFxController<ETV> {
 
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [remove] clicked");
-            FEN var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.cash_register_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.cash_register_list.Dialog.deleteAreYouSure.header"));
+            DialogButton var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.cash_register_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.cash_register_list.Dialog.deleteAreYouSure.header"));
             switch (var2) {
                 case Confirm:
                     this.getProcess().QOS(this.fxml_cash_register_list.getSelectionModel().getSelectedItem());
@@ -322,10 +322,10 @@ public class ETT extends BaseProgressFxController<ETV> {
     protected void fxml_cash_register_list_button_new_register(ActionEvent var1) {
 
         this.HHB();
-        this.getApplication().initController(this.getFxmlName(), EOS.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.CASH_REGISTER_NEW.getProcessFxmlFileName(), new Consumer<ENL<?>>() {
             public void accept(ENL<?> var1) {
 
-                var1.setMode(ENL.ENM.NEW);
+                var1.setMode(ENL.Mode.NEW);
 
             }
         });
@@ -387,7 +387,7 @@ public class ETT extends BaseProgressFxController<ETV> {
             Iterator var2 = ((SortedSet) this.GJD.get(var1)).iterator();
 
             while (var2.hasNext()) {
-                KH var3 = (KH) var2.next();
+                MonthType var3 = (MonthType) var2.next();
                 this.fxml_invoice_sale_list_month.getItems().add(var3.getNumber());
             }
         }

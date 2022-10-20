@@ -4,7 +4,7 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.p.a.QTW;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
@@ -37,8 +37,8 @@ public class QUA implements ChangeListener<LocalDate> {
                     boolean var4 = false;
 
                     try {
-                        JG var5 = this.RCP.RBV.getSettlementStatus(var3);
-                        if (var5 == JG.SETTLED) {
+                        SettlementStatus var5 = this.RCP.RBV.getSettlementStatus(var3);
+                        if (var5 == SettlementStatus.SETTLED) {
                             var4 = true;
                         }
                     } catch (FFO | FFK var10) {

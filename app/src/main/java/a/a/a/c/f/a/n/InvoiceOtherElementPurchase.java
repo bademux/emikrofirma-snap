@@ -1,32 +1,32 @@
 package a.a.a.c.f.a.n;
 
 import a.a.a.c.f.b.c.*;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class InvoiceOtherElementPurchase extends InvoiceOtherElement {
-    private JS QYA;
+    private PrivtePerson QYA;
     private KR QYB;
 
     public InvoiceOtherElementPurchase() {
 
     }
 
-    public JS getTaxDeduction50P() {
+    public PrivtePerson getTaxDeduction50P() {
         return this.QYA;
     }
 
-    public JS RJK() {
+    public PrivtePerson RJK() {
         if (this.QYA == null) {
-            this.QYA = new JS();
+            this.QYA = new PrivtePerson();
         }
 
         return this.QYA;
     }
 
-    public void setTaxDeduction50P(JS var1) {
+    public void setTaxDeduction50P(PrivtePerson var1) {
         this.QYA = var1;
     }
 
@@ -57,15 +57,15 @@ public class InvoiceOtherElementPurchase extends InvoiceOtherElement {
         }
 
         if (this.getNetPriceForAll() != null && this.getNetPriceForAll().getValue() != null) {
-            var1.QXV = (JR) this.getNetPriceForAll().clone();
+            var1.QXV = (Amount) this.getNetPriceForAll().clone();
         }
 
         if (this.getTaxValueForAll() != null && this.getTaxValueForAll().getValue() != null) {
-            var1.QXW = (JR) this.getTaxValueForAll().clone();
+            var1.QXW = (Amount) this.getTaxValueForAll().clone();
         }
 
         if (this.getGrossValueForAll() != null && this.getGrossValueForAll().getValue() != null) {
-            var1.QXX = (JR) this.getGrossValueForAll().clone();
+            var1.QXX = (Amount) this.getGrossValueForAll().clone();
         }
 
         if (this.getLastCalculationMethod() != null && this.getLastCalculationMethod().getValue() != null) {
@@ -73,7 +73,7 @@ public class InvoiceOtherElementPurchase extends InvoiceOtherElement {
         }
 
         if (this.getTaxDeduction50P() != null && this.getTaxDeduction50P().getValue() != null) {
-            var1.QYA = new JS(this.getTaxDeduction50P().getValue());
+            var1.QYA = new PrivtePerson(this.getTaxDeduction50P().getValue());
         }
 
         if (this.getTaxReason() != null && this.getTaxReason().getValue() != null) {
@@ -81,13 +81,13 @@ public class InvoiceOtherElementPurchase extends InvoiceOtherElement {
         }
 
         if (this.getTaxRate() != null && this.getTaxRate().getValue() != null) {
-            KL[] var2 = KL.values();
+            TaxRate[] var2 = TaxRate.values();
             int var3 = var2.length;
 
             for (int var4 = 0; var4 < var3; ++var4) {
-                KL var5 = var2[var4];
+                TaxRate var5 = var2[var4];
                 if (var5.equals(this.getTaxRate().getValue())) {
-                    var1.QXY = new KQ(var5);
+                    var1.QXY = new TaxRateModel(var5);
                 }
             }
         }

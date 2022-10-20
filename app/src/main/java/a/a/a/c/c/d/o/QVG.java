@@ -6,7 +6,7 @@ import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZO;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -39,7 +39,7 @@ public class QVG implements ChangeListener<String> {
             }
 
             if (this.RGM.not().get() && this.RGP.fxml_component_main_element.IET()) {
-                KA var5 = new KA(this.RGP.fxml_component_main_element.getEditor().getText());
+                Nip var5 = new Nip(this.RGP.fxml_component_main_element.getEditor().getText());
                 if (!this.RGL.RJW(var4, new RefId(var3), var5)) {
                     this.RGN.fxml_component_main_element.IEW().set(false);
                 }

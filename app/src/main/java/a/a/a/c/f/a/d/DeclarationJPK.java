@@ -7,9 +7,9 @@ import a.a.a.b.e.a.a.FEU;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.a.FFL;
 import a.a.a.b.f.a.FFM;
-import a.a.a.c.f.a.c.a.AHCI;
-import a.a.a.c.f.b.c.JT;
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.a.c.a.ActionResult;
+import a.a.a.c.f.b.c.Bytes;
+import a.a.a.c.f.b.c.Text;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.annotation.XmlTransient;
 import org.json.simple.JSONObject;
@@ -23,29 +23,29 @@ import java.util.List;
 
 @XmlTransient
 public abstract class DeclarationJPK extends Declaration {
-    private AGWZ AHRP;
+    private InitUploadDocumentType AHRP;
     private JPKSchemaType AHRQ;
     private transient File AHRR;
     private Boolean AHRS;
-    private KO AHRT;
+    private Text AHRT;
     private String AHRU;
     private transient File AHRV;
     private transient FFL AHRW;
     private transient FFL AHRX;
-    private AHCI AHRY;
-    private JT AHRZ;
-    private JT AHSA;
+    private ActionResult AHRY;
+    private Bytes AHRZ;
+    private Bytes AHSA;
     private transient File AHSB;
     private String AHSC;
     private List<ZipFileEntry> AHSD;
-    private JT AHSE;
+    private Bytes AHSE;
     private Boolean AHSF;
-    private JT AHSG;
+    private Bytes AHSG;
     private Boolean AHSH;
     private String AHSI;
     private transient JSONObject AHSJ;
     private JSONString AHSK;
-    private AGWY AHSL;
+    private FinishUploadResponseStatus AHSL;
     private JSONString AHSM;
     private transient JSONObject AHSN;
     private JSONString AHSO;
@@ -55,8 +55,8 @@ public abstract class DeclarationJPK extends Declaration {
     private JSONString MWC;
     private FFM AHSR;
 
-    public DeclarationJPK(AGWW var1, Integer var2) {
-        super(HM.JPK, var1, var2);
+    public DeclarationJPK(DeclarationSubtype var1, Integer var2) {
+        super(DeclarationType.JPK, var1, var2);
 
     }
 
@@ -65,7 +65,7 @@ public abstract class DeclarationJPK extends Declaration {
 
     }
 
-    public DeclarationJPK(AGWW var1, Integer var2, File var3, JPKSchemaType var4) {
+    public DeclarationJPK(DeclarationSubtype var1, Integer var2, File var3, JPKSchemaType var4) {
         this(var1, var2);
 
         this.AHRR = var3;
@@ -74,7 +74,7 @@ public abstract class DeclarationJPK extends Declaration {
         }
 
         this.AHRU = this.AHRR.getName();
-        this.AHRT = new KO(this.AHRR.getAbsolutePath());
+        this.AHRT = new Text(this.AHRR.getAbsolutePath());
         this.AHRQ = var4;
         this.AHSD = new ArrayList();
         if (this.AHRQ == null) {
@@ -82,14 +82,14 @@ public abstract class DeclarationJPK extends Declaration {
         }
 
         if (!"JPK_VAT".equals(this.AHRQ.getKodFormularza()) && !"JPK_PKPIR".equals(this.AHRQ.getKodFormularza())) {
-            this.AHRP = AGWZ.JPKAH;
+            this.AHRP = InitUploadDocumentType.JPKAH;
         } else {
-            this.AHRP = AGWZ.JPK;
+            this.AHRP = InitUploadDocumentType.JPK;
         }
 
     }
 
-    public AGWZ getInitUploadDocumentType() {
+    public InitUploadDocumentType getInitUploadDocumentType() {
         return this.AHRP;
     }
 
@@ -113,7 +113,7 @@ public abstract class DeclarationJPK extends Declaration {
         return this.AHRU;
     }
 
-    public KO getDeclarationFilePath() {
+    public Text getDeclarationFilePath() {
         return this.AHRT;
     }
 
@@ -141,27 +141,27 @@ public abstract class DeclarationJPK extends Declaration {
         this.AHRX = var1;
     }
 
-    public AHCI getDeclarationFileVerificationResult() {
+    public ActionResult getDeclarationFileVerificationResult() {
         return this.AHRY;
     }
 
-    public void setDeclarationFileVerificationResult(AHCI var1) {
+    public void setDeclarationFileVerificationResult(ActionResult var1) {
         this.AHRY = var1;
     }
 
-    public JT getDeclarationFileCheckSumMD5() {
+    public Bytes getDeclarationFileCheckSumMD5() {
         return this.AHRZ;
     }
 
-    public void setDeclarationFileCheckSumMD5(JT var1) {
+    public void setDeclarationFileCheckSumMD5(Bytes var1) {
         this.AHRZ = var1;
     }
 
-    public JT getDeclarationFileSHA256CheckSum() {
+    public Bytes getDeclarationFileSHA256CheckSum() {
         return this.AHSA;
     }
 
-    public void setDeclarationFileSHA256CheckSum(JT var1) {
+    public void setDeclarationFileSHA256CheckSum(Bytes var1) {
         this.AHSA = var1;
     }
 
@@ -185,11 +185,11 @@ public abstract class DeclarationJPK extends Declaration {
         return this.AHSD;
     }
 
-    public JT getInitUploadSignedFile() {
+    public Bytes getInitUploadSignedFile() {
         return this.AHSE;
     }
 
-    public void setInitUploadSignedFile(JT var1) {
+    public void setInitUploadSignedFile(Bytes var1) {
         this.AHSE = var1;
     }
 
@@ -201,11 +201,11 @@ public abstract class DeclarationJPK extends Declaration {
         this.AHSF = var1;
     }
 
-    public JT getInitUploadSignedEnvelopedFile() {
+    public Bytes getInitUploadSignedEnvelopedFile() {
         return this.AHSG;
     }
 
-    public void setInitUploadSignedEnvelopedFile(JT var1) {
+    public void setInitUploadSignedEnvelopedFile(Bytes var1) {
         this.AHSG = var1;
     }
 
@@ -238,11 +238,11 @@ public abstract class DeclarationJPK extends Declaration {
         return this.AHSJ;
     }
 
-    public AGWY getFinishUploadResponseStatus() {
+    public FinishUploadResponseStatus getFinishUploadResponseStatus() {
         return this.AHSL;
     }
 
-    public void setFinishUploadResponseStatus(AGWY var1) {
+    public void setFinishUploadResponseStatus(FinishUploadResponseStatus var1) {
         this.AHSL = var1;
     }
 

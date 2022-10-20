@@ -2,8 +2,8 @@ package a.a.a.c.f.a.c.a.e;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCE;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.BaseConition;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -13,7 +13,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import java.util.regex.Matcher;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class RuleOnField extends AHCE {
+public class RuleOnField extends BaseConition {
     @XmlElement(
             name = "conditionLeft"
     )
@@ -56,7 +56,7 @@ public class RuleOnField extends AHCE {
         return this.AHWS;
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         ValueContainer2 var5;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
@@ -73,7 +73,7 @@ public class RuleOnField extends AHCE {
                 break;
             case NOT:
                 var2 = this.AHWQ.getActionOnField().AICX(var1);
-                var3 = new ValueContainer2(AHCI.SUCCESS, "");
+                var3 = new ValueContainer2(ActionResult.SUCCESS, "");
                 break;
             default:
                 throw new FFI("Invalid logicalOperator [" + this.AHWR + "]!");
@@ -82,13 +82,13 @@ public class RuleOnField extends AHCE {
         boolean var4 = false;
         switch (this.AHWR) {
             case AND:
-                var4 = var2.getFirstValue().equals(AHCI.SUCCESS) & var3.getFirstValue().equals(AHCI.SUCCESS);
+                var4 = var2.getFirstValue().equals(ActionResult.SUCCESS) & var3.getFirstValue().equals(ActionResult.SUCCESS);
                 break;
             case OR:
-                var4 = var2.getFirstValue().equals(AHCI.SUCCESS) | var3.getFirstValue().equals(AHCI.SUCCESS);
+                var4 = var2.getFirstValue().equals(ActionResult.SUCCESS) | var3.getFirstValue().equals(ActionResult.SUCCESS);
                 break;
             case NOT:
-                var4 = !var2.getFirstValue().equals(AHCI.SUCCESS);
+                var4 = !var2.getFirstValue().equals(ActionResult.SUCCESS);
                 break;
             default:
                 throw new FFI("Invalid logicalOperator [" + this.AHWR + "]!");
@@ -96,13 +96,13 @@ public class RuleOnField extends AHCE {
 
         if (!var4) {
             var5 = null;
-            AHCI var10;
+            ActionResult var10;
             switch (this.AHTY) {
                 case WARNING:
-                    var10 = AHCI.WARNING;
+                    var10 = ActionResult.WARNING;
                     break;
                 case ERROR:
-                    var10 = AHCI.ERROR;
+                    var10 = ActionResult.ERROR;
                     break;
                 default:
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");
@@ -112,7 +112,7 @@ public class RuleOnField extends AHCE {
             return var6;
         }
 
-        var5 = new ValueContainer2(AHCI.SUCCESS, null);
+        var5 = new ValueContainer2(ActionResult.SUCCESS, null);
 
         return var5;
     }

@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.e.a.ETA;
 import a.a.a.c.c.e.e.c.ETE;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ETD extends ProcessDefinitionBase {
-    public static final EOS GFW;
+    public static final Stage GFW;
     public static final String GFX = "new_contact.fxml";
 
     public ETD() {
@@ -25,7 +25,7 @@ public class ETD extends ProcessDefinitionBase {
         return GFW.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
+    public String getTitle(Anchor var1) throws FFK {
         switch (var1) {
             case MAIN:
                 return FCW.getInstance().getMessageForKey("micro.process.contacts_list.menu.title");
@@ -54,11 +54,11 @@ public class ETD extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.CONTRACTOR));
+        var1.add(new LN(LN.StageType.CONTRACTOR));
         return var1;
     }
 
     static {
-        GFW = EOS.CONTACTS_LIST;
+        GFW = Stage.CONTACTS_LIST;
     }
 }

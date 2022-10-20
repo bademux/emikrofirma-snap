@@ -8,8 +8,8 @@ import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.InvoiceRecordElement;
 import a.a.a.c.f.a.e.a.InvoiceRecordElementPurchase;
-import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.JV;
+import a.a.a.c.f.b.c.Amount;
+import a.a.a.c.f.b.c.InvoicingDate;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.b.FCW;
 import com.github.bademux.emk.utils.FopUtils;
@@ -158,7 +158,7 @@ public class ETK {
             if (var8.QRF().getValue() != null) {
                 this.HVM(var5, "date", var8.QRF().DDZ(), var12);
             } else {
-                this.HVM(var5, "date", (new JV(new Date())).DDZ(), var12);
+                this.HVM(var5, "date", (new InvoicingDate(new Date())).DDZ(), var12);
             }
 
             if (var8.HGX().getValue() != null) {
@@ -265,7 +265,7 @@ public class ETK {
 
     }
 
-    private String getValue(ValueContainer2<JR, JR> var1, boolean var2) {
+    private String getValue(ValueContainer2<Amount, Amount> var1, boolean var2) {
         if (var1 != null) {
             if (var2 && var1.getFirstValue() != null && var1.getFirstValue().getValue() != null) {
                 return EOC.HNN(var1.getFirstValue().getValue());

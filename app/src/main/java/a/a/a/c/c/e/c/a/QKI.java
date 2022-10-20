@@ -5,7 +5,7 @@ import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.QGU;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.l.MDP;
 import a.a.a.c.c.e.c.c.ESJ;
 import a.a.a.c.d.b.EPW;
@@ -14,8 +14,8 @@ import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JT;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Bytes;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
@@ -28,7 +28,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
@@ -36,10 +35,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class QKI {
-    private AGWW QMU;
+    private DeclarationSubtype QMU;
     @FXML
     private ResourceBundle resources;
-    private Stage QMV;
+    private javafx.stage.Stage QMV;
     private ESJ QMW;
     private Settlement QMX;
     private FXApp QMY;
@@ -56,11 +55,11 @@ public class QKI {
 
     }
 
-    public void setDeclarationSubType(AGWW var1) {
+    public void setDeclarationSubType(DeclarationSubtype var1) {
         this.QMU = var1;
     }
 
-    public void setDialogStage(Stage var1) {
+    public void setDialogStage(javafx.stage.Stage var1) {
 
         this.QMV = var1;
         this.QMV.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -102,7 +101,7 @@ public class QKI {
             String var2 = this.QMW.getPkcs11LibraryFilePath();
             var1 = new MDP(this.resources, this.fxml_textArea_log, this.fxml_vBox_progress, var2);
             Period var3 = this.QMX.getPeriod();
-            Integer var4 = this.QMW.HTQ(var3, HM.JPK, AGWW.VAT);
+            Integer var4 = this.QMW.HTQ(var3, DeclarationType.JPK, DeclarationSubtype.VAT);
             if (var4 == null) {
                 var4 = 0;
             }
@@ -115,7 +114,7 @@ public class QKI {
                     UserData var8 = this.QMW.getUserData();
                     var1.getProgressBarContainer().setFirstValue(var1.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.generate.init_JPK_VAT")));
                     byte[] var9 = EPW.HOW(var1.getProgressReporter(), var5, var3, var4, var8, var6);
-                    String var10 = HM.JPK.name() + "_" + AGWW.VAT.name();
+                    String var10 = DeclarationType.JPK.name() + "_" + DeclarationSubtype.VAT.name();
                     List var11 = (new EQM()).HQP(var10);
                     if (var11.size() != 1) {
                         throw new FFK("Invalid number of schema types for [" + var10 + "]");
@@ -123,16 +122,16 @@ public class QKI {
 
                     JPKSchemaType var12 = (JPKSchemaType) var11.get(0);
                     DeclarationJPK_VAT var13 = new DeclarationJPK_VAT(var4, var5, var12);
-                    var13.setDeclarationFileCheckSumMD5(new JT(var9));
+                    var13.setDeclarationFileCheckSumMD5(new Bytes(var9));
                     File var14 = new File(var7, "tmp_" + System.nanoTime());
                     var14.mkdirs();
                     var13.setContextDir(var14);
                     var13.FJI().setValue(var4);
-                    var13.setDeclarationStatus(HL.NEW);
+                    var13.setDeclarationStatus(DeclarationStatus.NEW);
                     var13.setPeriod(var3);
                     DeclarationJPK var15 = var1.HQF(var13);
                     if (var15 != null) {
-                        var15.setDeclarationStatus(HL.SENT);
+                        var15.setDeclarationStatus(DeclarationStatus.SENT);
                         this.QMW.HTR(var15, this.QMX);
                     }
                 } else {
@@ -146,7 +145,7 @@ public class QKI {
                 Platform.runLater(new Runnable() {
                     public void run() {
                         QKI.this.QMV.close();
-                        QKI.this.QMY.initController(QKI.this.QMZ, EOS.CONFIG.getProcessFxmlFileName(), null);
+                        QKI.this.QMY.initController(QKI.this.QMZ, Stage.CONFIG.getProcessFxmlFileName(), null);
                     }
                 });
             } else {
@@ -166,7 +165,7 @@ public class QKI {
             public void HZI() {
 
                 try {
-                    if (QKI.this.QMU == AGWW.VAT) {
+                    if (QKI.this.QMU == DeclarationSubtype.VAT) {
                         QKI.this.QPB();
                     } else {
                         throw new FFI("JPK subtype not supported");
@@ -194,7 +193,7 @@ public class QKI {
                     File var3x = QKI.this.QMW.getWorkingDir(QKI.this.QMV);
                     var1x.setInitialDirectory(var3x);
                     String var4 = null;
-                    KA var5 = QKI.this.QMW.QOX();
+                    Nip var5 = QKI.this.QMW.QOX();
                     if (var5 != null && var5.getValue() != null) {
                         var4 = var5.getValue() + "_";
                     } else {

@@ -4,7 +4,7 @@ import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.QGU;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.l.MDP;
 import a.a.a.c.c.e.i.d.EUF;
 import a.a.a.c.d.b.EPW;
@@ -13,8 +13,8 @@ import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JT;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Bytes;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
@@ -27,7 +27,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +39,7 @@ import java.util.ResourceBundle;
 public class EUC {
     @FXML
     private ResourceBundle resources;
-    private Stage GKD;
+    private javafx.stage.Stage GKD;
     private EUF GKE;
     private FXApp QHW;
     private String QHX;
@@ -48,7 +47,7 @@ public class EUC {
     private TextArea fxml_textArea_log;
     @FXML
     private VBox fxml_vBox_progress;
-    private QJX QMC;
+    private JpkFaGenerateSettings QMC;
     private boolean QMD = false;
     private EVN GKF;
     @FXML
@@ -58,7 +57,7 @@ public class EUC {
 
     }
 
-    public void setDialogStage(Stage var1) {
+    public void setDialogStage(javafx.stage.Stage var1) {
 
         this.GKD = var1;
         this.GKD.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -108,14 +107,14 @@ public class EUC {
                     }
 
                     String[] var8 = var6.getKodFormularza().split("_");
-                    HM var9 = HM.valueOf(var8[0]);
-                    AGWW var10 = AGWW.valueOf(var8[1]);
+                    DeclarationType var9 = DeclarationType.valueOf(var8[0]);
+                    DeclarationSubtype var10 = DeclarationSubtype.valueOf(var8[1]);
                     Period var11 = Period.AOE;
                     Integer var12 = this.GKE.HXA(var11, var9, var10);
                     File var13 = this.GKE.getWorkingDir(this.GKD);
                     var1.getProgressBarContainer().setFirstValue(var1.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.md5.checksum")));
                     boolean var14 = this.GKE.MXD();
-                    if (var9 == HM.JPK) {
+                    if (var9 == DeclarationType.JPK) {
                         Object var15 = null;
                         switch (var10) {
                             case VAT:
@@ -145,16 +144,16 @@ public class EUC {
 
                         if (var15 != null) {
                             byte[] var16 = EPW.HOX(var1.getProgressReporter(), var3);
-                            ((DeclarationJPK) var15).setDeclarationFileCheckSumMD5(new JT(var16));
+                            ((DeclarationJPK) var15).setDeclarationFileCheckSumMD5(new Bytes(var16));
                             File var17 = new File(var13, "tmp_" + System.nanoTime());
                             var17.mkdirs();
                             ((DeclarationJPK) var15).setContextDir(var17);
                             ((DeclarationJPK) var15).FJI().setValue(var12);
-                            ((DeclarationJPK) var15).setDeclarationStatus(HL.NEW);
+                            ((DeclarationJPK) var15).setDeclarationStatus(DeclarationStatus.NEW);
                             ((DeclarationJPK) var15).setPeriod(var11);
                             DeclarationJPK var18 = var1.HQF((DeclarationJPK) var15);
                             if (var18 != null) {
-                                var18.setDeclarationStatus(HL.SENT);
+                                var18.setDeclarationStatus(DeclarationStatus.SENT);
                                 this.GKE.HXB(var18);
                             }
                         }
@@ -172,7 +171,7 @@ public class EUC {
                 Platform.runLater(new Runnable() {
                     public void run() {
                         EUC.this.GKD.close();
-                        EUC.this.QHW.initController(EUC.this.QHX, EOS.CONFIG.getProcessFxmlFileName(), null);
+                        EUC.this.QHW.initController(EUC.this.QHX, Stage.CONFIG.getProcessFxmlFileName(), null);
                     }
                 });
             } else {
@@ -199,7 +198,7 @@ public class EUC {
                     File var3x = EUC.this.GKE.getWorkingDir(EUC.this.GKD);
                     var1x.setInitialDirectory(var3x);
                     String var4x = null;
-                    KA var5 = EUC.this.GKE.QOX();
+                    Nip var5 = EUC.this.GKE.QOX();
                     if (var5 != null && var5.getValue() != null) {
                         var4x = var5.getValue() + "_";
                     } else {
@@ -220,7 +219,7 @@ public class EUC {
         return var5;
     }
 
-    public void setjJkFaGenerateSettings(QJX var1) {
+    public void setjJkFaGenerateSettings(JpkFaGenerateSettings var1) {
         this.QMC = var1;
     }
 
@@ -239,7 +238,7 @@ public class EUC {
                     UserData var6 = this.GKE.getUserData();
                     var1.getProgressBarContainer().setFirstValue(var1.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.generate.init_JPK_FA")));
                     byte[] var7 = EPW.QOL(var1.getProgressReporter(), var3, this.QMC.getDateFrom(), this.QMC.getDateTo(), var6, var4);
-                    String var8 = HM.JPK.name() + "_" + AGWW.FA.name();
+                    String var8 = DeclarationType.JPK.name() + "_" + DeclarationSubtype.FA.name();
                     List var9 = (new EQM()).HQP(var8);
                     if (var9.size() != 1) {
                         throw new FFK("Invalid number of schema types for [" + var8 + "]");
@@ -247,18 +246,18 @@ public class EUC {
 
                     JPKSchemaType var10 = (JPKSchemaType) var9.get(0);
                     DeclarationJPK_FA var11 = new DeclarationJPK_FA(1, var3, var10);
-                    var11.setDeclarationFileCheckSumMD5(new JT(var7));
+                    var11.setDeclarationFileCheckSumMD5(new Bytes(var7));
                     File var12 = new File(var5, "tmp_" + System.nanoTime());
                     var12.mkdirs();
                     var11.setContextDir(var12);
                     Period var13 = Period.AOE;
-                    Integer var14 = this.GKE.HXA(var13, HM.JPK, AGWW.FA);
+                    Integer var14 = this.GKE.HXA(var13, DeclarationType.JPK, DeclarationSubtype.FA);
                     var11.setPeriod(var13);
                     var11.FJI().setValue(var14);
-                    var11.setDeclarationStatus(HL.NEW);
+                    var11.setDeclarationStatus(DeclarationStatus.NEW);
                     DeclarationJPK var15 = var1.HQF(var11);
                     if (var15 != null) {
-                        var15.setDeclarationStatus(HL.SENT);
+                        var15.setDeclarationStatus(DeclarationStatus.SENT);
                         this.GKE.HXB(var15);
                     }
                 } else {
@@ -272,7 +271,7 @@ public class EUC {
                 Platform.runLater(new Runnable() {
                     public void run() {
                         EUC.this.GKD.close();
-                        EUC.this.QHW.initController(EUC.this.QHX, EOS.CONFIG.getProcessFxmlFileName(), null);
+                        EUC.this.QHW.initController(EUC.this.QHX, Stage.CONFIG.getProcessFxmlFileName(), null);
                     }
                 });
             } else {

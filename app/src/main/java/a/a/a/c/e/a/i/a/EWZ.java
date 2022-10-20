@@ -16,9 +16,9 @@ public class EWZ {
     private final Integer GSH;
     private final SecretKeyFactory GSI;
     private final SecureRandom GSJ;
-    private final EXA GSK;
+    private final EncType GSK;
 
-    public EWZ(EXA var1, String var2) throws NoSuchAlgorithmException {
+    public EWZ(EncType var1, String var2) throws NoSuchAlgorithmException {
         this.GSH = 65536;
 
         this.GSK = var1;
@@ -27,12 +27,12 @@ public class EWZ {
 
     }
 
-    public EWZ(EXA var1) throws NoSuchAlgorithmException {
+    public EWZ(EncType var1) throws NoSuchAlgorithmException {
         this(var1, "SHA1PRNG");
     }
 
     public EWZ() throws NoSuchAlgorithmException {
-        this(EWZ.EXA.AES_CBC_PKCS5Padding_AES, "SHA1PRNG");
+        this(EncType.AES_CBC_PKCS5Padding_AES, "SHA1PRNG");
     }
 
     public SecretKey getKey(char[] var1, byte[] var2, Integer var3, Integer var4, String var5) throws NoSuchAlgorithmException, InvalidKeySpecException {
@@ -89,7 +89,7 @@ public class EWZ {
         return var1;
     }
 
-    public enum EXA {
+    public enum EncType {
         AES_CBC_PKCS5Padding_AES("PBKDF2WithHmacSHA256", "AES/CBC/PKCS5Padding", "AES", 256, 16),
         AES_CBC_PKCS5Padding_Rijndael("PBKDF2WithHmacSHA256", "AES/CBC/PKCS5Padding", "Rijndael", 256, 16),
         DES_CBC_PKCS5Padding_DES("PBKDF2WithHmacSHA256", "DES/CBC/PKCS5Padding", "DES", 64, 8),
@@ -102,7 +102,7 @@ public class EWZ {
         private final int GSE;
         private final int GSF;
 
-        EXA(String var3, String var4, String var5, int var6, int var7) {
+        EncType(String var3, String var4, String var5, int var6, int var7) {
             this.GSB = var3;
             this.GSC = var4;
             this.GSD = var5;

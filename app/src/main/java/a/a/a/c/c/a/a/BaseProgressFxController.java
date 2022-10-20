@@ -2,7 +2,7 @@ package a.a.a.c.c.a.a;
 
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.c.a.EMA;
+import a.a.a.c.c.a.Status;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.a.a.BaseSceneFxController;
@@ -53,7 +53,7 @@ public abstract class BaseProgressFxController<_PROCESS extends ELV> extends Bas
 
     }
 
-    protected EMA getCurrentProcessMainStatus() throws FFK, FFO {
+    protected Status getCurrentProcessMainStatus() throws FFK, FFO {
         return this.FGE.getMainStatus(this.FGD);
     }
 

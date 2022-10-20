@@ -6,8 +6,8 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.f.a.a.EZI;
 import a.a.a.c.f.a.a.EZP;
-import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
+import a.a.a.c.f.b.c.a.TaxRate;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,10 +25,10 @@ public class QTX {
     @FXML
     public EZI fxml_other_purchase_new_add_other_element_taxController;
     @FXML
-    public EZP<KL> fxml_other_purchase_new_add_other_element_tax_typeController;
+    public EZP<TaxRate> fxml_other_purchase_new_add_other_element_tax_typeController;
     boolean RCK = false;
     private Stage RCL;
-    private QSQ RCM;
+    private InvoiceOtherSubtype RCM;
 
     public QTX() {
     }
@@ -97,7 +97,7 @@ public class QTX {
         return this.RCL;
     }
 
-    public void setOtherType(QSQ var1) {
+    public void setOtherType(InvoiceOtherSubtype var1) {
         this.RCM = var1;
     }
 

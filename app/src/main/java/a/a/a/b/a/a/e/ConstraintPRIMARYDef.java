@@ -7,19 +7,19 @@ import java.util.List;
 
 public class ConstraintPRIMARYDef extends ConstraintBase {
     public ConstraintPRIMARYDef() {
-        super(FEG.PRIMARY);
+        super(SqlColumnKeyword.PRIMARY);
     }
 
     public ConstraintPRIMARYDef(CellNamed... var1) {
-        super(FEG.PRIMARY, var1);
+        super(SqlColumnKeyword.PRIMARY, var1);
     }
 
     public ConstraintPRIMARYDef(List<String> var1) {
-        super(FEG.PRIMARY, var1);
+        super(SqlColumnKeyword.PRIMARY, var1);
     }
 
     public ConstraintPRIMARYDef(String... var1) {
-        super(FEG.PRIMARY, var1);
+        super(SqlColumnKeyword.PRIMARY, var1);
     }
 
     public String toString() {

@@ -1,9 +1,9 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.f.a.IJ;
+import a.a.a.c.f.a.ModelBaseAbstract;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.JV;
+import a.a.a.c.f.b.c.Amount;
+import a.a.a.c.f.b.c.InvoicingDate;
 import a.a.a.c.f.b.c.RefId;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -13,39 +13,39 @@ import java.util.HashSet;
 import java.util.Set;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class HF extends IJ {
+public class HF extends ModelBaseAbstract {
     private Period AII;
-    private JV AIJ;
+    private InvoicingDate AIJ;
     private RefId AIK;
-    private JR AIL;
-    private JR AIM;
-    private JR AIN;
-    private final Set<HG> AIO;
+    private Amount AIL;
+    private Amount AIM;
+    private Amount AIN;
+    private final Set<AmountItem> AIO;
 
     public HF() {
 
-        this.AIL = new JR(BigDecimal.ZERO);
-        this.AIM = new JR(BigDecimal.ZERO);
-        this.AIN = new JR(BigDecimal.ZERO);
+        this.AIL = new Amount(BigDecimal.ZERO);
+        this.AIM = new Amount(BigDecimal.ZERO);
+        this.AIN = new Amount(BigDecimal.ZERO);
         this.AIO = new HashSet();
 
     }
 
-    public void DAG(HG var1) {
+    public void DAG(AmountItem var1) {
         this.AIO.add(var1);
-        this.AIL = new JR(this.AIL.getValue().add(var1.getNet().getValue()));
-        this.AIM = new JR(this.AIM.getValue().add(var1.getVatAmount().getValue()));
-        this.AIN = new JR(this.AIN.getValue().add(var1.getGross().getValue()));
+        this.AIL = new Amount(this.AIL.getValue().add(var1.getNet().getValue()));
+        this.AIM = new Amount(this.AIM.getValue().add(var1.getVatAmount().getValue()));
+        this.AIN = new Amount(this.AIN.getValue().add(var1.getGross().getValue()));
     }
 
-    public void DAH(HG var1) {
+    public void DAH(AmountItem var1) {
         this.AIO.remove(var1);
-        this.AIL = new JR(this.AIL.getValue().subtract(var1.getNet().getValue()));
-        this.AIM = new JR(this.AIM.getValue().subtract(var1.getVatAmount().getValue()));
-        this.AIN = new JR(this.AIN.getValue().subtract(var1.getGross().getValue()));
+        this.AIL = new Amount(this.AIL.getValue().subtract(var1.getNet().getValue()));
+        this.AIM = new Amount(this.AIM.getValue().subtract(var1.getVatAmount().getValue()));
+        this.AIN = new Amount(this.AIN.getValue().subtract(var1.getGross().getValue()));
     }
 
-    public Set<HG> getItems() {
+    public Set<AmountItem> getItems() {
         return this.AIO;
     }
 
@@ -57,11 +57,11 @@ public class HF extends IJ {
         this.AII = var1;
     }
 
-    public JV getDate() {
+    public InvoicingDate getDate() {
         return this.AIJ;
     }
 
-    public void setDate(JV var1) {
+    public void setDate(InvoicingDate var1) {
         this.AIJ = var1;
     }
 
@@ -73,27 +73,27 @@ public class HF extends IJ {
         this.AIK = var1;
     }
 
-    public JR getNet() {
+    public Amount getNet() {
         return this.AIL;
     }
 
-    public void setNet(JR var1) {
+    public void setNet(Amount var1) {
         this.AIL = var1;
     }
 
-    public JR getVat() {
+    public Amount getVat() {
         return this.AIM;
     }
 
-    public void setVat(JR var1) {
+    public void setVat(Amount var1) {
         this.AIM = var1;
     }
 
-    public JR getGross() {
+    public Amount getGross() {
         return this.AIN;
     }
 
-    public void setGross(JR var1) {
+    public void setGross(Amount var1) {
         this.AIN = var1;
     }
 }

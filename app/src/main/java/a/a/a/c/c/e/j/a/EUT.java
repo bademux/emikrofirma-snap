@@ -7,7 +7,7 @@ import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.e.EOT;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.j.a.a.*;
 import a.a.a.c.c.e.j.c.EUY;
 import a.a.a.c.d.e.EQY;
@@ -16,15 +16,15 @@ import a.a.a.c.d.e.QRY;
 import a.a.a.c.d.g.ERF;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.c.QJW;
+import a.a.a.c.f.a.c.TitledContractor;
 import a.a.a.c.f.a.e.*;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.f.b.EZT;
-import a.a.a.c.f.b.a.JJ;
+import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.KI;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.c.a.PaymentMethod;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.b.FCW;
 import com.github.bademux.emk.app.FXApp;
@@ -57,10 +57,10 @@ import java.util.Iterator;
 
 public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
     public EUY GLL;
-    public EPB GLM;
-    public HY GLN;
+    public Mode GLM;
+    public BaseInvoiceSell GLN;
     public InvoiceSell GLO;
-    public HY GLP;
+    public BaseInvoiceSell GLP;
     ERF GLQ = new ERF(false, 2, 2);
     public BooleanProperty GLR = new SimpleBooleanProperty(false);
     public BooleanProperty GLS = new SimpleBooleanProperty(false);
@@ -152,19 +152,19 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
     private EUU GMD;
     private ChangeListener<Toggle> RAT;
     @FXML
-    TableView<HY> fxml_invoice_sale_summary_summary_table;
+    TableView<BaseInvoiceSell> fxml_invoice_sale_summary_summary_table;
     @FXML
-    TableColumn<HY, Object> fxml_invoice_sale_summary_summary_table_column_sum_netto;
+    TableColumn<BaseInvoiceSell, Object> fxml_invoice_sale_summary_summary_table_column_sum_netto;
     @FXML
-    TableColumn<HY, Object> fxml_invoice_sale_summary_summary_table_column_sum_tax;
+    TableColumn<BaseInvoiceSell, Object> fxml_invoice_sale_summary_summary_table_column_sum_tax;
     @FXML
-    TableColumn<HY, Object> fxml_invoice_sale_summary_summary_table_column_sum_brut;
+    TableColumn<BaseInvoiceSell, Object> fxml_invoice_sale_summary_summary_table_column_sum_brut;
     @FXML
     Label fxml_invoice_sale_to_pay_name_label;
     @FXML
     Label fxml_invoice_sale_to_pay;
     @FXML
-    public EZP<KI> fxml_invoice_sale_payment_typeController;
+    public EZP<PaymentMethod> fxml_invoice_sale_payment_typeController;
     @FXML
     public EZI fxml_invoice_sale_paymentdatedaysController;
     @FXML
@@ -204,13 +204,13 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
     @FXML
     public TableColumn<InvoiceElementSell, Object> fxml_invoice_sale_elements_table_column_sum_brut_price_before_correct;
     @FXML
-    TableView<HY> fxml_invoice_sale_elements_table_before_correct_summary;
+    TableView<BaseInvoiceSell> fxml_invoice_sale_elements_table_before_correct_summary;
     @FXML
-    TableColumn<HY, Object> fxml_invoice_sale_elements_table_column_sum_net_price_before_correct_summary;
+    TableColumn<BaseInvoiceSell, Object> fxml_invoice_sale_elements_table_column_sum_net_price_before_correct_summary;
     @FXML
-    TableColumn<HY, Object> fxml_invoice_sale_elements_table_column_sum_tax_before_correct_summary;
+    TableColumn<BaseInvoiceSell, Object> fxml_invoice_sale_elements_table_column_sum_tax_before_correct_summary;
     @FXML
-    TableColumn<HY, Object> fxml_invoice_sale_elements_table_column_sum_brut_price_before_correct_summary;
+    TableColumn<BaseInvoiceSell, Object> fxml_invoice_sale_elements_table_column_sum_brut_price_before_correct_summary;
     @FXML
     TableView<InvoiceSellCorrection> fxml_invoice_sale_table_correct_difference_summary;
     @FXML
@@ -380,7 +380,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
         this.fxml_invoice_sale_summary_summary_table.refresh();
         this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_invoice_sale_payment_typeController.fxml_component_main_element).getCellFactory().call(null));
-        this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.getItems().addAll(KI.values());
+        this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.getItems().addAll(PaymentMethod.values());
         this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.setEditable(false);
         this.GLX.addListener(new EUK(this));
         this.fxml_invoice_sale_creation_dateController.fxml_component_main_element.valueProperty().addListener(new EUM(this, this.resources));
@@ -433,7 +433,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
             this.fxml_invoice_sale_elements_table_before_correct.itemsProperty().bindBidirectional(this.GLP.DBU());
             this.GLZ.bind(this.fxml_invoice_sale_elements_table_before_correct.itemsProperty());
             this.fxml_invoice_sale_elements_table_before_correct_summary.getItems().add(this.GLP);
-            if (this.GLM == EPB.CORRECT) {
+            if (this.GLM == Mode.CORRECT) {
                 this.GLN.setMpp(this.GLP.getMpp().getValue());
                 org.slf4j.LoggerFactory.getLogger(getClass()).info(this.GLN.getMpp().getValueAsString());
                 var1 = this.GLP.getInvoiceElements().iterator();
@@ -462,7 +462,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
 
         this.fxml_invoice_sale_is_mpp.selectedProperty().bindBidirectional(this.GLN.getMpp().DDS());
         Toggle var9;
-        if (this.GLM != EPB.CORRECT && this.GLM != EPB.EDIT_CORRECTION && this.GLM != EPB.VIEW_CORRECTION) {
+        if (this.GLM != Mode.CORRECT && this.GLM != Mode.EDIT_CORRECTION && this.GLM != Mode.VIEW_CORRECTION) {
             var1 = this.calculation_method_radio_group.getToggles().iterator();
 
             while (var1.hasNext()) {
@@ -488,15 +488,15 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
     }
 
     private void initializeCalculationMethod() {
-        if (this.GLM == EPB.NEW) {
+        if (this.GLM == Mode.NEW) {
             this.RLB("NET");
             this.RLA(this.calculation_method_radio_group, "NET");
             this.RLA(this.calculation_method_correction_radio_group, "NET");
         } else {
             String var1;
-            if (this.GLM != EPB.CORRECT && this.GLM != EPB.EDIT_CORRECTION && this.GLM != EPB.VIEW_CORRECTION) {
+            if (this.GLM != Mode.CORRECT && this.GLM != Mode.EDIT_CORRECTION && this.GLM != Mode.VIEW_CORRECTION) {
                 if (this.GLN.RIE().getValue() == null) {
-                    this.GLN.RIE().setValue(QSV.NET);
+                    this.GLN.RIE().setValue(CalculationMethodType.NET);
                 }
 
                 var1 = this.GLN.RIE().getValue().toString();
@@ -514,7 +514,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
                 this.RLA(this.calculation_method_correction_radio_group, var1);
             } else {
                 if (this.GLO.RIE().getValue() == null) {
-                    this.GLO.RIE().setValue(QSV.NET);
+                    this.GLO.RIE().setValue(CalculationMethodType.NET);
                 }
 
                 var1 = this.GLO.RIE().getValue().toString();
@@ -527,7 +527,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
                 this.fxml_invoice_sale_elements_table_column_price_before_correct.setText(this.resources.getString("micro.process.invoice_sale_new.InvoiceElementPrice_" + var1));
                 this.RLA(this.calculation_method_correction_radio_group, var1);
                 if (this.GLN.RIE().getValue() == null) {
-                    this.GLN.RIE().setValue(QSV.NET);
+                    this.GLN.RIE().setValue(CalculationMethodType.NET);
                 }
 
                 var1 = this.GLN.RIE().getValue().toString();
@@ -639,7 +639,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
 
         this.HHD(this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty(), var1.DAI().DDG());
         this.HHD(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty(), var1.DAJ().DDG());
-        JJ var6 = var1.DAM();
+        Address var6 = var1.DAM();
         this.HHD(this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty(), var6.DDA().DDG());
         this.HHD(this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty(), var6.DDB().DDG());
         this.HHD(this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty(), var6.DDC().DDG());
@@ -661,7 +661,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
 
         this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAI().DDG());
         this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAJ().DDG());
-        JJ var6 = var1.DAM();
+        Address var6 = var1.DAM();
         this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().bindBidirectional(var6.DDA().DDG());
         this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().bindBidirectional(var6.DDB().DDG());
         this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().bindBidirectional(var6.DDC().DDG());
@@ -716,7 +716,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
         this.fxml_sale_contractor_nipController.setContractorSetter(this);
         this.fxml_sale_contractor_nameController.setContractorGetter(this.GLL);
         this.fxml_sale_contractor_nameController.setContractorSetter(this);
-        if (this.GLM == EPB.EDIT || this.GLM == EPB.EDIT_CORRECTION) {
+        if (this.GLM == Mode.EDIT || this.GLM == Mode.EDIT_CORRECTION) {
             this.GMG = this.GLN.DAS().getValueAsString();
             this.GMH = this.GLN.DAT().getValueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             this.QGI = this.GLN.DAF().DDN();
@@ -731,7 +731,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
             this.HXI();
         }
 
-        if (this.GLM == EPB.NEW) {
+        if (this.GLM == Mode.NEW) {
             InvoiceSell var1 = (InvoiceSell) this.GLN;
             if (var1.getContractor() != null && this.GMI.equals(var1.getContractor().DAJ().getValue())) {
                 this.fxml_sale_contractor_private_person.setSelected(true);
@@ -740,7 +740,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
             this.setDefault();
         }
 
-        if (this.GLM == EPB.CORRECT) {
+        if (this.GLM == Mode.CORRECT) {
             this.setDefaultCorrection();
         }
 
@@ -754,8 +754,8 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
         boolean var1 = false;
 
         try {
-            JG var2 = this.GLL.getSettlementStatus(LocalDate.now());
-            if (var2 != null && var2.equals(JG.SETTLED)) {
+            SettlementStatus var2 = this.GLL.getSettlementStatus(LocalDate.now());
+            if (var2 != null && var2.equals(SettlementStatus.SETTLED)) {
                 var1 = true;
             }
         } catch (FFO | FFK var6) {
@@ -778,8 +778,8 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
         boolean var1 = false;
 
         try {
-            JG var2 = this.GLL.getSettlementStatus(LocalDate.now());
-            if (var2 != null && var2.equals(JG.SETTLED)) {
+            SettlementStatus var2 = this.GLL.getSettlementStatus(LocalDate.now());
+            if (var2 != null && var2.equals(SettlementStatus.SETTLED)) {
                 var1 = true;
             }
         } catch (FFO | FFK var8) {
@@ -801,7 +801,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
             }
 
             InvoiceElementSell var4 = (InvoiceElementSell) var3.next();
-            if (var4.getTaxRate().getValue().equals(KL.ZW)) {
+            if (var4.getTaxRate().getValue().equals(TaxRate.ZW)) {
                 var10 = true;
             }
         }
@@ -876,17 +876,17 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
 
     }
 
-    public void setMode(EPB var1) {
+    public void setMode(Mode var1) {
 
         this.GLM = var1;
 
     }
 
-    public void setInvoiceMain(HY var1) {
+    public void setInvoiceMain(BaseInvoiceSell var1) {
         this.GLN = var1;
     }
 
-    public void setInvoicePrevoiusParent(HY var1) {
+    public void setInvoicePrevoiusParent(BaseInvoiceSell var1) {
         this.GLP = var1;
     }
 
@@ -930,7 +930,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
             var2.DBI().setAllowNegative(var1.fxml_invoice_sale_new_add_invoice_element_netpriceController.fxml_component_main_element.IFG());
             var2.DBI().setScale(var1.fxml_invoice_sale_new_add_invoice_element_netpriceController.fxml_component_main_element.getMaxLength());
             var2.DBI().setPresicion(var1.fxml_invoice_sale_new_add_invoice_element_netpriceController.fxml_component_main_element.getMaximumFractionDigits());
-            var2.DBN().setValue((KL) ((ComboBoxRequired) var1.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element).getValue());
+            var2.DBN().setValue((TaxRate) ((ComboBoxRequired) var1.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element).getValue());
             var2.RIF().setValue(var1.fxml_invoice_sale_new_add_invoice_element_netpriceController.fxml_component_main_element.getNumber());
             var2.RIF().setAllowNegative(var1.fxml_invoice_sale_new_add_invoice_element_netpriceController.fxml_component_main_element.IFG());
             var2.RIF().setScale(var1.fxml_invoice_sale_new_add_invoice_element_netpriceController.fxml_component_main_element.getMaxLength());
@@ -980,9 +980,9 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
 
     }
 
-    public void RJV(InvoiceElement var1, InvoiceElement var2, QSV var3) {
+    public void RJV(InvoiceElement var1, InvoiceElement var2, CalculationMethodType var3) {
 
-        var3 = QSV.valueOf(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
+        var3 = CalculationMethodType.valueOf(this.calculation_method_radio_group.getSelectedToggle().getUserData().toString());
         QRX var4 = QRY.getInvoiceCalculationMethod(var3, true);
         var4.RIB(var1, var2);
         this.GMA.set(true);
@@ -997,7 +997,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
 
         while (var2.hasNext()) {
             InvoiceElementSell var3 = (InvoiceElementSell) var2.next();
-            if (var3.getTaxRate().getValue().equals(KL.ZW)) {
+            if (var3.getTaxRate().getValue().equals(TaxRate.ZW)) {
                 var1 = true;
             }
         }
@@ -1279,7 +1279,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
         this.GMJ = var1;
     }
 
-    public void setContractorFromAutocomplete(QJW var1) {
+    public void setContractorFromAutocomplete(TitledContractor var1) {
 
         if (var1 != null) {
             Contractor var2 = var1.getContractor().AICD();
@@ -1287,7 +1287,7 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
             this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().getText().length());
             this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().setText(var2.getName().getValue());
             this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().getText().length());
-            JJ var3 = var2.DAM();
+            Address var3 = var2.DAM();
             this.fxml_sale_contractor_streetController.fxml_component_main_element.setText(var3.getStreet().getValue());
             this.fxml_sale_contractor_house_numberController.fxml_component_main_element.setText(var3.getHouseNumber().getValue());
             this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.setText(var3.getApartmentNumber().getValue());
@@ -1314,9 +1314,9 @@ public class EUT extends BaseFxController implements EMO<InvoiceElement>, EYR {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
         }
 
-        if (this.GLM != EPB.EDIT && this.GLM != EPB.EDIT_CORRECTION && !var3) {
+        if (this.GLM != Mode.EDIT && this.GLM != Mode.EDIT_CORRECTION && !var3) {
             this.fxml_invoice_sale_ref_idController.fxml_component_main_element.IEW().set(false);
-        } else if ((this.GLM == EPB.EDIT || this.GLM == EPB.EDIT_CORRECTION) && !var3 && this.GMG != null && (this.GMG.compareTo(var1) != 0 || var2)) {
+        } else if ((this.GLM == Mode.EDIT || this.GLM == Mode.EDIT_CORRECTION) && !var3 && this.GMG != null && (this.GMG.compareTo(var1) != 0 || var2)) {
             this.fxml_invoice_sale_ref_idController.fxml_component_main_element.IEW().set(false);
         }
 

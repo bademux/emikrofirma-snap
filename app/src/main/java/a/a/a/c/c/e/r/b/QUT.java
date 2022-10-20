@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.r.a.QUM;
 import a.a.a.c.c.e.r.c.QUU;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QUT extends ProcessDefinitionBase {
-    public static final EOS RES;
+    public static final Stage RES;
     public static final String RET = "sale_new_add_element.fxml";
 
     public QUT() {
@@ -25,7 +25,7 @@ public class QUT extends ProcessDefinitionBase {
         return RES.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
+    public String getTitle(Anchor var1) throws FFK {
         switch (var1) {
             case MAIN:
             case LEFT_BAR:
@@ -49,17 +49,17 @@ public class QUT extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.CONFIGURATION_PROPERTIES));
-        var1.add(new LN(LN.LO.USER_DATA));
-        var1.add(new LN(LN.LO.INVOICE));
-        var1.add(new LN(LN.LO.SETTLEMENT));
-        var1.add(new LN(LN.LO.DICTIONARY));
-        var1.add(new LN(LN.LO.CONTRACTOR));
-        var1.add(new LN(LN.LO.INVOICE_OTHER_SELL));
+        var1.add(new LN(LN.StageType.CONFIGURATION_PROPERTIES));
+        var1.add(new LN(LN.StageType.USER_DATA));
+        var1.add(new LN(LN.StageType.INVOICE));
+        var1.add(new LN(LN.StageType.SETTLEMENT));
+        var1.add(new LN(LN.StageType.DICTIONARY));
+        var1.add(new LN(LN.StageType.CONTRACTOR));
+        var1.add(new LN(LN.StageType.INVOICE_OTHER_SELL));
         return var1;
     }
 
     static {
-        RES = EOS.SALE_NEW;
+        RES = Stage.SALE_NEW;
     }
 }

@@ -2,9 +2,9 @@ package a.a.a.c.c.e.c.c;
 
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.d.d.ENW;
-import a.a.a.c.f.a.d.HL;
+import a.a.a.c.f.a.d.DeclarationStatus;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JX;
 import javafx.beans.property.BooleanProperty;
@@ -18,9 +18,9 @@ import java.util.List;
 public class ESL extends ESK implements ENW, Comparable<ESL> {
     private final ObjectProperty<Period> GDE;
     private final ObjectProperty<JX> GDF;
-    private final ObjectProperty<JG> GDG;
+    private final ObjectProperty<SettlementStatus> GDG;
     private final ObjectProperty<Date> QNC;
-    private final ObjectProperty<HL> QND;
+    private final ObjectProperty<DeclarationStatus> QND;
     private final List<ESL> GDJ;
     private final boolean GDK;
     private final BooleanProperty GDL;
@@ -72,7 +72,7 @@ public class ESL extends ESK implements ENW, Comparable<ESL> {
         return this.GDF;
     }
 
-    public ObjectProperty<JG> getSettlementStatus() {
+    public ObjectProperty<SettlementStatus> getSettlementStatus() {
         if (this.getSettlement() != null) {
             this.GDG.set(this.getSettlement().getSettlementStatus());
         } else {
@@ -92,7 +92,7 @@ public class ESL extends ESK implements ENW, Comparable<ESL> {
         return this.QNC;
     }
 
-    public ObjectProperty<HL> getDeclarationJPKVATStatus() {
+    public ObjectProperty<DeclarationStatus> getDeclarationJPKVATStatus() {
         if (this.getDeclarationJPKVAT() != null) {
             this.QND.set(this.getDeclarationJPKVAT().getDeclarationStatus());
         } else {

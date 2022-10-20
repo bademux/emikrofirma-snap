@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.c.a.e;
 
-import a.a.a.c.f.a.c.a.AHCE;
+import a.a.a.c.f.a.c.a.BaseConition;
 import a.a.a.c.f.a.c.a.AHDI;
 import a.a.a.c.f.a.c.a.a.*;
 import a.a.a.c.f.a.c.a.c.FieldType;
@@ -56,7 +56,7 @@ public class RuleOnFieldsContainer extends AHDI {
             name = "ruleOnField",
             type = RuleOnField.class
     )})
-    protected final AHCE AHWY;
+    protected final BaseConition AHWY;
 
     private RuleOnFieldsContainer() {
 
@@ -65,7 +65,7 @@ public class RuleOnFieldsContainer extends AHDI {
 
     }
 
-    public RuleOnFieldsContainer(FieldType var1, AHCE var2) {
+    public RuleOnFieldsContainer(FieldType var1, BaseConition var2) {
 
         this.AHWX = var1;
         this.AHWY = var2;
@@ -76,7 +76,7 @@ public class RuleOnFieldsContainer extends AHDI {
         return this.AHWX;
     }
 
-    public AHCE getActionOnField() {
+    public BaseConition getActionOnField() {
         return this.AHWY;
     }
 

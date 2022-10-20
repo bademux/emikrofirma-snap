@@ -3,7 +3,7 @@ package a.a.a.c.c.b.b.a;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.a.ProcessDefinitionBase;
-import a.a.a.c.c.a.EMA;
+import a.a.a.c.c.a.Status;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.b.EMU;
 import a.a.a.c.c.c.ENG;
@@ -71,9 +71,9 @@ public class EMW {
 
     }
 
-    public EMA getMainStatus(String var1) throws FFK, FFO {
+    public Status getMainStatus(String var1) throws FFK, FFO {
 
-        EMA var4;
+        Status var4;
         synchronized (this.FIF) {
             ELV var3 = this.HKN(var1, true);
             var4 = var3.getMainStatus();

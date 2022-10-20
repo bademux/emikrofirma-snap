@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.k.a.EUZ;
 import a.a.a.c.c.e.k.c.EVC;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EVB extends ProcessDefinitionBase {
-    public static final EOS GNN;
+    public static final Stage GNN;
     public static final String GNO = "cash_register_new_item.fxml";
 
     public EVB() {
@@ -25,8 +25,8 @@ public class EVB extends ProcessDefinitionBase {
         return GNN.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
-        if (var1 == ENH.MAIN) {
+    public String getTitle(Anchor var1) throws FFK {
+        if (var1 == Anchor.MAIN) {
             return FCW.getInstance().getMessageForKey("micro.process.cash_register_new.Title");
         }
         throw new FFK("Invalid anchor type [" + var1 + "]!");
@@ -46,12 +46,12 @@ public class EVB extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.RECEIPTRECORD));
-        var1.add(new LN(LN.LO.SETTLEMENT));
+        var1.add(new LN(LN.StageType.RECEIPTRECORD));
+        var1.add(new LN(LN.StageType.SETTLEMENT));
         return var1;
     }
 
     static {
-        GNN = EOS.CASH_REGISTER_NEW;
+        GNN = Stage.CASH_REGISTER_NEW;
     }
 }

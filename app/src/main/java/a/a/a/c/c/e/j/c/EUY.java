@@ -5,29 +5,28 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELX;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.j.b.EUX;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.a.EYL;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.c.QJW;
+import a.a.a.c.f.a.c.TitledContractor;
 import a.a.a.c.f.a.e.*;
-import a.a.a.c.f.a.g.AGYN;
-import a.a.a.c.f.a.g.IU;
-import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.g.JB;
+import a.a.a.c.f.a.g.ContractorModelCriteria;
+import a.a.a.c.f.a.g.InvoiceCriteria;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
+import a.a.a.c.f.a.g.ModelTechnicalElementCriteria;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.b.EZT;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JS;
+import a.a.a.c.f.b.c.PrivtePerson;
 import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.c.a.ConfigurationProperties;
-import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 
 import java.io.File;
 import java.sql.Date;
@@ -44,7 +43,7 @@ public class EUY extends ELX implements EYL {
     private PropertyString GMV;
     private InvoiceSell GMW;
     private InvoiceSellCorrection GMX;
-    private EPB GMY;
+    private Mode GMY;
 
     public EUY() {
         super(EUX.GMQ.getProcessName());
@@ -57,7 +56,7 @@ public class EUY extends ELX implements EYL {
 
     }
 
-    public void setMode(EPB var1) {
+    public void setMode(Mode var1) {
         this.GMY = var1;
         this.HHI();
     }
@@ -74,17 +73,17 @@ public class EUY extends ELX implements EYL {
 
         try {
             if (this.GMS == null) {
-                JB var1 = new JB(ConfigurationProperties.class);
+                ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(ConfigurationProperties.class);
                 this.GMS = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.GMS.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
-                    if (FCQ.SellRefIdPattern.getPropertyName().equals(var3.DEX().getValue())) {
+                    a.a.a.c.f.c.a.ConfigurationProperty var3 = (a.a.a.c.f.c.a.ConfigurationProperty) var2.next();
+                    if (ConfigurationProperty.SellRefIdPattern.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GMT = (PropertyString) var3;
-                    } else if (FCQ.SellCorrectionRefIdPattern.getPropertyName().equals(var3.DEX().getValue())) {
+                    } else if (ConfigurationProperty.SellCorrectionRefIdPattern.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GMU = (PropertyString) var3;
-                    } else if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
+                    } else if (ConfigurationProperty.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.GMV = (PropertyString) var3;
                     }
                 }
@@ -127,7 +126,7 @@ public class EUY extends ELX implements EYL {
 
         String var4;
         String var2 = null;
-        if (this.GMY != EPB.CORRECT && this.GMY != EPB.EDIT_CORRECTION) {
+        if (this.GMY != Mode.CORRECT && this.GMY != Mode.EDIT_CORRECTION) {
             var2 = this.GMT.DEY().getValue();
         } else {
             var2 = this.GMU.DEY().getValue();
@@ -139,11 +138,11 @@ public class EUY extends ELX implements EYL {
         return var4;
     }
 
-    public JG getSettlementStatus(LocalDate var1) throws FFK, FFO {
+    public SettlementStatus getSettlementStatus(LocalDate var1) throws FFK, FFO {
 
         Iterator var5;
         Period var2 = new Period(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        IY var3 = new IY(Settlement.class, var2, JH.VAT, null);
+        ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, var2, SettlementType.VAT, null);
         ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
@@ -152,7 +151,7 @@ public class EUY extends ELX implements EYL {
         var5 = ((List) var4.getSecondValue()).iterator();
         if (var5.hasNext()) {
             EDF var6 = (EDF) var5.next();
-            JG var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
+            SettlementStatus var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
             return var7;
         }
 
@@ -164,7 +163,7 @@ public class EUY extends ELX implements EYL {
 
         UserData var3;
         try {
-            JB var1 = new JB(UserData.class);
+            ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(UserData.class);
             UserData var2 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
             var3 = var2;
         } catch (FFK var7) {
@@ -179,23 +178,23 @@ public class EUY extends ELX implements EYL {
         try {
             switch (this.GMY) {
                 case EDIT:
-                    this.GMW.setUsingInvoicingDate(new JS(true));
+                    this.GMW.setUsingInvoicingDate(new PrivtePerson(true));
                     this.getModelManager().HKB(this.getParentDefinition(), this.GMW);
                     this.GMW = null;
                     break;
                 case NEW:
-                    this.GMW.setUsingInvoicingDate(new JS(true));
+                    this.GMW.setUsingInvoicingDate(new PrivtePerson(true));
                     this.getModelManager().HJZ(this.getParentDefinition(), this.GMW);
                     this.GMW = null;
                     break;
                 case CORRECT:
-                    this.GMX.setUsingInvoicingDate(new JS(true));
+                    this.GMX.setUsingInvoicingDate(new PrivtePerson(true));
                     this.getModelManager().HJZ(this.getParentDefinition(), this.GMX);
                     this.GMX = null;
                     this.GMW = null;
                     break;
                 case EDIT_CORRECTION:
-                    this.GMX.setUsingInvoicingDate(new JS(true));
+                    this.GMX.setUsingInvoicingDate(new PrivtePerson(true));
                     this.getModelManager().HKB(this.getParentDefinition(), this.GMX);
                     this.GMX = null;
                     this.GMW = null;
@@ -242,7 +241,7 @@ public class EUY extends ELX implements EYL {
     public boolean HYB(Period var1, String var2) throws FFK, FFO {
 
         boolean var5;
-        IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new RefId(var2), null);
+        InvoiceCriteria var3 = new InvoiceCriteria(BaseInvoiceSell.class, null, var1, InvoiceType.SELL, null, new RefId(var2), null);
         ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 0) {
             var5 = false;
@@ -260,14 +259,14 @@ public class EUY extends ELX implements EYL {
 
         ArrayList var4;
         try {
-            IY var3 = new IY(Settlement.class, null, JH.VAT, null);
+            ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, null, SettlementType.VAT, null);
             ValueContainer2 var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
                 EDF var6 = (EDF) var5.next();
                 Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
-                if (var7.getSettlementStatus().equals(JG.SETTLED)) {
+                if (var7.getSettlementStatus().equals(SettlementStatus.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
                     LocalDate var9 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), var8.lengthOfMonth());
                     EZT var10 = new EZT(var8, var9, var1, false);
@@ -292,7 +291,7 @@ public class EUY extends ELX implements EYL {
     public UserData getUserDataForInvoice(Invoice<?> var1) throws FFK {
 
         UserData var4;
-        JB var2 = new JB(UserData.class, var1.DBC().getValue());
+        ModelTechnicalElementCriteria var2 = new ModelTechnicalElementCriteria(UserData.class, var1.DBC().getValue());
         UserData var3 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var2);
         var4 = var3;
 
@@ -319,13 +318,13 @@ public class EUY extends ELX implements EYL {
         return var4;
     }
 
-    public List<QJW> getContractorsByText(String var1) {
+    public List<TitledContractor> getContractorsByText(String var1) {
 
         ArrayList var2 = new ArrayList();
 
         ArrayList var4;
         try {
-            AGYN var3 = new AGYN(Contractor.class, var1);
+            ContractorModelCriteria var3 = new ContractorModelCriteria(Contractor.class, var1);
             ValueContainer2 var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
@@ -333,7 +332,7 @@ public class EUY extends ELX implements EYL {
                 while (var5.hasNext()) {
                     EDF var6 = (EDF) var5.next();
                     if (var6 != null) {
-                        QJW var7 = new QJW(var6);
+                        TitledContractor var7 = new TitledContractor(var6);
                         var2.add(var7);
                     }
                 }

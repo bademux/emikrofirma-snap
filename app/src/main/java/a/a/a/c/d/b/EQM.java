@@ -164,15 +164,15 @@ public class EQM {
             final FFM var7 = new FFM();
             var5.setErrorHandler(new ErrorHandler() {
                 public void warning(SAXParseException var1) throws SAXException {
-                    var7.ILJ(new FCX(FCX.FCY.WARNING, var1));
+                    var7.ILJ(new FCX(FCX.ExceptionType.WARNING, var1));
                 }
 
                 public void fatalError(SAXParseException var1) throws SAXException {
-                    var7.ILJ(new FCX(FCX.FCY.FATALERROR, var1));
+                    var7.ILJ(new FCX(FCX.ExceptionType.FATALERROR, var1));
                 }
 
                 public void error(SAXParseException var1) throws SAXException {
-                    var7.ILJ(new FCX(FCX.FCY.ERROR, var1));
+                    var7.ILJ(new FCX(FCX.ExceptionType.ERROR, var1));
                 }
             });
             var2 = new FileInputStream(var1);

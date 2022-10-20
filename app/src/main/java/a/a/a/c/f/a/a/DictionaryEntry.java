@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.f.b.c.KQ;
+import a.a.a.c.f.b.c.TaxRateModel;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -11,26 +11,26 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DictionaryEntry extends Dictionary {
     public static final String IVM = "commodity";
-    private KQ IVN;
+    private TaxRateModel IVN;
 
     public DictionaryEntry() {
         super("commodity");
 
     }
 
-    public KQ getTaxRateValue() {
+    public TaxRateModel getTaxRateValue() {
         return this.IVN;
     }
 
-    public KQ IYY() {
+    public TaxRateModel IYY() {
         if (this.IVN == null) {
-            this.IVN = new KQ();
+            this.IVN = new TaxRateModel();
         }
 
         return this.IVN;
     }
 
-    public void setTaxRateValue(KQ var1) {
+    public void setTaxRateValue(TaxRateModel var1) {
         this.IVN = var1;
     }
 }

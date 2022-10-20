@@ -7,15 +7,15 @@ import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.d.g.ERF;
 import a.a.a.c.f.*;
 import a.a.a.c.f.a.e.InvoiceElement;
-import a.a.a.c.f.a.f.a.IP;
+import a.a.a.c.f.a.f.a.RecordElementVat;
 import a.a.a.c.f.a.n.InvoiceOtherElement;
-import a.a.a.c.f.b.JM;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.EnumTypeValue;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.QJZ;
 import a.a.a.c.f.c.c.TextFieldRequired;
 import a.a.a.c.f.c.c.TextFieldValidated_Number;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -30,13 +30,13 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
     private final EMO FNX;
     private final boolean FNY;
     _T QGF;
-    private final Set<JM> REY;
+    private final Set<EnumTypeValue> REY;
 
     public EOT(EMO var1, boolean var2) {
         this(var1, var2, null);
     }
 
-    public EOT(EMO var1, boolean var2, Set<JM> var3) {
+    public EOT(EMO var1, boolean var2, Set<EnumTypeValue> var3) {
         this.FNX = var1;
         this.FNY = var2;
         this.REY = var3;
@@ -53,23 +53,23 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
                     TableRow var2 = this.getTableRow();
                     if (var2.getItem() instanceof InvoiceElement) {
                         EOT.this.QGF = (_T) ((InvoiceElement) var2.getItem()).RIH();
-                    } else if (var2.getItem() instanceof IP) {
-                        EOT.this.QGF = (_T) ((IP) var2.getItem()).RJT();
+                    } else if (var2.getItem() instanceof RecordElementVat) {
+                        EOT.this.QGF = (_T) ((RecordElementVat) var2.getItem()).RJT();
                     } else if (var2.getItem() instanceof InvoiceOtherElement) {
                         EOT.this.QGF = (_T) ((InvoiceOtherElement) var2.getItem()).RJJ();
                     }
 
                     if (var1 instanceof final LH var3) {
-                        var var4 = new ComboBox<JM>();
+                        var var4 = new ComboBox<EnumTypeValue>();
                         var4.setCellFactory(new EOQ());
                         var4.setButtonCell((ListCell) var4.getCellFactory().call(null));
                         if (EOT.this.REY == null) {
-                            var4.getItems().addAll(((JM) var3.getValue()).getEnumTypeValues());
+                            var4.getItems().addAll(((EnumTypeValue) var3.getValue()).getEnumTypeValues());
                         } else {
                             var4.getItems().addAll(EOT.this.REY);
                         }
 
-                        var4.getSelectionModel().select((JM) var3.getValue());
+                        var4.getSelectionModel().select((EnumTypeValue) var3.getValue());
                         final ChangeListenerFocus var5 = new ChangeListenerFocus() {
                             @Override
                             public Object updateAndReturnObject() {
@@ -241,12 +241,12 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
                 String var7;
                 try {
                     ConfigurationProperties var5 = EMB.getInstance().HHU();
-                    var7 = (String) var5.getConfigurationPropertyOrDefault(FCQ.CalculationMethod).DEY().getValue();
+                    var7 = (String) var5.getConfigurationPropertyOrDefault(ConfigurationProperty.CalculationMethod).DEY().getValue();
                 } catch (FFK var6) {
-                    var7 = (String) QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod).DEY().getValue();
+                    var7 = (String) QJZ.getDefaultConfigurationProperty(ConfigurationProperty.CalculationMethod).DEY().getValue();
                 }
 
-                EOT.this.FNX.RJV(EOT.this.QGF, var3, QSV.valueOf(var7));
+                EOT.this.FNX.RJV(EOT.this.QGF, var3, CalculationMethodType.valueOf(var7));
                 EOT.this.FNX.HJJ();
                 this.getTableView().refresh();
             }

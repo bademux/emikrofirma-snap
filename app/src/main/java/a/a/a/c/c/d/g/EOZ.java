@@ -6,7 +6,7 @@ import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.e.a.d.ValueContainer3;
 import a.a.a.c.f.a.e.*;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 import a.a.a.c.g.c.FCZ;
 
 import java.math.BigDecimal;
@@ -18,15 +18,15 @@ public class EOZ {
     private EOZ() {
     }
 
-    public static boolean HOD(EDF<HY> var0) {
+    public static boolean HOD(EDF<BaseInvoiceSell> var0) {
         return var0.getParentWrapperWithCanceledState() != null;
     }
 
     public static boolean HOD(Invoice<?> var0) {
-        return var0.getInvoiceSubType().equals(IA.CORRECTION);
+        return var0.getInvoiceSubType().equals(InvoiceSubtype.CORRECTION);
     }
 
-    public static boolean HOD(EPA<HY> var0) {
+    public static boolean HOD(EPA<BaseInvoiceSell> var0) {
         return HOD(var0.getInvoiceWrapper());
     }
 
@@ -42,7 +42,7 @@ public class EOZ {
         }
     }
 
-    public static Map<KL, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(InvoiceSellCorrection var0) {
+    public static Map<TaxRate, ValueContainer3<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(InvoiceSellCorrection var0) {
 
         Invoice var1 = var0.getParentInvoiceOnlyActive();
         HashMap var2 = new HashMap();

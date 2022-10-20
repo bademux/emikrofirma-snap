@@ -4,9 +4,9 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.e.InvoiceElementSell;
 import a.a.a.c.f.a.e.InvoiceSell;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.QSV;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.c.FCZ;
 import com.github.bademux.emk.utils.FopUtils;
@@ -104,7 +104,7 @@ public class EPE extends EPL {
             transformer.setParameter("sum_net", this.HOI(this.FPN.getAmountSummaryWithoutTax().getValue()));
             transformer.setParameter("sum_tax", this.HOI(this.FPN.getAmountTax().getValue()));
             transformer.setParameter("sum_brut", this.HOI(this.FPN.getAmountSummaryWithTax().getValue()));
-            transformer.setParameter("is_cancelled", this.FPN.getState() != null && this.FPN.getState().equals(QSW.CANCELED));
+            transformer.setParameter("is_cancelled", this.FPN.getState() != null && this.FPN.getState().equals(InvoiceState.CANCELED));
             boolean var22 = false;
             if (this.FPN.DBA().getValue() != null) {
                 var22 = this.FPN.DBA().getValue();
@@ -140,7 +140,7 @@ public class EPE extends EPL {
                 transformer.setParameter("remarks", this.HOL(var25, 63));
             }
 
-            if (this.FPN.getInvoiceElements() != null && this.FPN.getInvoiceElements().size() != 0 && this.FPN.getInvoiceElements().get(0).RIG().getValue() != null && this.FPN.getInvoiceElements().get(0).RIG().getValue().equals(QSV.GROSS)) {
+            if (this.FPN.getInvoiceElements() != null && this.FPN.getInvoiceElements().size() != 0 && this.FPN.getInvoiceElements().get(0).RIG().getValue() != null && this.FPN.getInvoiceElements().get(0).RIG().getValue().equals(CalculationMethodType.GROSS)) {
                 transformer.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementBrutPrice"));
             } else {
                 transformer.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementNetPrice"));
@@ -173,7 +173,7 @@ public class EPE extends EPL {
             var1.HOR("nr", String.valueOf(var3), var2);
             var1.HOR("name", this.HOL(var5.getName().getValue(), 20), var2);
             var1.HOR("unit", this.HOL(var5.getUnit().getValue(), 5), var2);
-            if (var5.RIG().getValue() != null && var5.RIG().getValue().equals(QSV.GROSS)) {
+            if (var5.RIG().getValue() != null && var5.RIG().getValue().equals(CalculationMethodType.GROSS)) {
                 var1.HOR("unitPrice", this.HOI(var5.getGrossPriceForUnit().getValue()), var2);
             } else {
                 var1.HOR("unitPrice", this.HOI(var5.getNetPriceForUnit().getValue()), var2);
@@ -197,7 +197,7 @@ public class EPE extends EPL {
             ValueContainer2 var8 = (ValueContainer2) var10.next();
             ValueContainer2 var9 = (ValueContainer2) var6.next();
             var2 = var1.getDocument().createElement("summaryTable");
-            var1.HOR("taxRate", ((KL) var7.getFirstValue()).getDescription(), var2);
+            var1.HOR("taxRate", ((TaxRate) var7.getFirstValue()).getDescription(), var2);
             var1.HOR("netSum", this.HOI((BigDecimal) var7.getSecondValue()), var2);
             var1.HOR("taxSum", this.HOI((BigDecimal) var8.getSecondValue()), var2);
             var1.HOR("brutSum", this.HOI((BigDecimal) var9.getSecondValue()), var2);

@@ -1,11 +1,11 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.f.b.JM;
+import a.a.a.c.f.b.EnumTypeValue;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
-public class EOQ<_X extends JM> implements Callback<ListView<_X>, ListCell<_X>> {
+public class EOQ<_X extends EnumTypeValue> implements Callback<ListView<_X>, ListCell<_X>> {
     public EOQ() {
     }
 

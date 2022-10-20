@@ -1,11 +1,11 @@
 package a.a.a.b;
 
-import a.a.a.c.e.a.f.EWS;
+import a.a.a.c.e.a.f.Schema;
 
 public interface FEK {
-    EWS HEV = EWS.https;
+    Schema HEV = Schema.https;
     int HEW = -1;
-    EWS MWU = EWS.https;
+    Schema MWU = Schema.https;
     int MWV = 5064;
     String QKS = "/cert/mf_pz.pem";
     String QKT = "/cert/mf_kd.cer";

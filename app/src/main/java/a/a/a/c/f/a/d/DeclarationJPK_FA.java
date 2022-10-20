@@ -11,15 +11,15 @@ import java.io.File;
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DeclarationJPK_FA extends DeclarationJPK {
-    private QJX QLI;
+    private JpkFaGenerateSettings QLI;
 
     public DeclarationJPK_FA() {
-        super(AGWW.FA, 0);
+        super(DeclarationSubtype.FA, 0);
 
     }
 
     public DeclarationJPK_FA(Integer var1, File var2, JPKSchemaType var3) {
-        super(AGWW.FA, var1, var2, var3);
+        super(DeclarationSubtype.FA, var1, var2, var3);
 
     }
 }

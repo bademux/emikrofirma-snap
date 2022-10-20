@@ -2,7 +2,7 @@ package a.a.a.c.c.e.d.a;
 
 import a.a.a.c.c.d.f.EOV;
 import a.a.a.c.c.d.f.EOW;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 
 public class ESR extends EOV {
@@ -13,11 +13,11 @@ public class ESR extends EOV {
         this.GEK = var2;
     }
 
-    public KL HNU() {
-        return (KL) ((ComboBoxRequired) this.GEK.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getValue();
+    public TaxRate HNU() {
+        return (TaxRate) ((ComboBoxRequired) this.GEK.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element).getValue();
     }
 
-    public void HNV(KL var1) {
+    public void HNV(TaxRate var1) {
         this.GEK.fxml_include_taxRateRequiredComboBox_boxController.fxml_component_main_element.setValue(var1);
     }
 }

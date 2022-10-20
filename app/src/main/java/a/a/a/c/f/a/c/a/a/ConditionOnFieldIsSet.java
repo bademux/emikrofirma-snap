@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -19,7 +19,7 @@ public class ConditionOnFieldIsSet extends ConditionOnFieldAbstract {
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
@@ -27,16 +27,16 @@ public class ConditionOnFieldIsSet extends ConditionOnFieldAbstract {
         if (this.AHUF == ConditionType.ISSET) {
             var2 = var1.AIDH();
             if (var2) {
-                ValueContainer2 var8 = new ValueContainer2(AHCI.SUCCESS, null);
+                ValueContainer2 var8 = new ValueContainer2(ActionResult.SUCCESS, null);
                 return var8;
             } else {
-                AHCI var3 = null;
+                ActionResult var3 = null;
                 switch (this.AHTY) {
                     case WARNING:
-                        var3 = AHCI.WARNING;
+                        var3 = ActionResult.WARNING;
                         break;
                     case ERROR:
-                        var3 = AHCI.ERROR;
+                        var3 = ActionResult.ERROR;
                         break;
                     default:
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");

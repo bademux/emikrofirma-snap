@@ -11,15 +11,15 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DeclarationJPK_StatusTracker extends DeclarationJPK {
     public DeclarationJPK_StatusTracker() {
-        super(AGWW.STATUS_TRACKER, 0);
+        super(DeclarationSubtype.STATUS_TRACKER, 0);
 
     }
 
     public DeclarationJPK_StatusTracker(String var1) {
-        super(AGWW.STATUS_TRACKER, 0);
+        super(DeclarationSubtype.STATUS_TRACKER, 0);
         this.setReferenceId(var1);
         this.setPeriod(Period.AOE);
-        this.setDeclarationStatus(HL.NEW);
+        this.setDeclarationStatus(DeclarationStatus.NEW);
 
     }
 }

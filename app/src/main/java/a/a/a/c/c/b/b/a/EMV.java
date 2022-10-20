@@ -1,7 +1,7 @@
 package a.a.a.c.c.b.b.a;
 
 import a.a.a.b.a.a.OrderType;
-import a.a.a.b.a.a.FDO;
+import a.a.a.b.a.a.SqlOperation;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -12,32 +12,32 @@ import a.a.a.c.c.b.b.EMU;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.ModelBase;
 import a.a.a.c.f.LN;
-import a.a.a.c.f.a.II;
+import a.a.a.c.f.a.EntityTypes;
 import a.a.a.c.f.a.ModelBusinessPeriodElement;
 import a.a.a.c.f.a.ModelBusinessTopElement;
-import a.a.a.c.f.a.IM;
+import a.a.a.c.f.a.ModelElementCriteria;
 import a.a.a.c.f.a.a.Dictionary;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.d.AGWW;
+import a.a.a.c.f.a.d.DeclarationSubtype;
 import a.a.a.c.f.a.d.Declaration;
-import a.a.a.c.f.a.d.HM;
+import a.a.a.c.f.a.d.DeclarationType;
 import a.a.a.c.f.a.e.*;
-import a.a.a.c.f.a.e.a.IH;
+import a.a.a.c.f.a.e.a.InvoiceRecordType;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
-import a.a.a.c.f.a.f.a.IQ;
+import a.a.a.c.f.a.f.a.RecordType;
 import a.a.a.c.f.a.g.*;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.InvoiceOtherElement;
-import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.a.n.QSR;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
+import a.a.a.c.f.a.n.InvoiceOtherType;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JS;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.PrivtePerson;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
-import a.a.a.c.f.b.c.a.QSW;
-import a.a.a.c.f.c.LU;
+import a.a.a.c.f.b.c.a.InvoiceState;
+import a.a.a.c.f.c.UserModel;
 import a.a.a.c.f.c.LW;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.b.UserData;
@@ -56,7 +56,7 @@ public class EMV implements EMU {
 
         Iterator var3 = var1.getObjectClasses().iterator();
 
-        LN.LO var5;
+        LN.StageType var5;
         do {
             if (!var3.hasNext()) {
                 throw new FFI("Element [" + var2 + "] not registered for process [" + var1.getName() + "]!");
@@ -68,7 +68,7 @@ public class EMV implements EMU {
 
     }
 
-    private boolean HKM(LN.LO var1, Class<? extends ModelBase> var2) {
+    private boolean HKM(LN.StageType var1, Class<? extends ModelBase> var2) {
 
         boolean var5;
         boolean var9;
@@ -79,14 +79,14 @@ public class EMV implements EMU {
 
         Iterator var3 = var1.getChildren().iterator();
 
-        LN.LO var4;
+        LN.StageType var4;
         do {
             if (!var3.hasNext()) {
                 var9 = false;
                 return var9;
             }
 
-            var4 = (LN.LO) var3.next();
+            var4 = (LN.StageType) var3.next();
         } while (!this.HKM(var4, var2));
 
         var5 = true;
@@ -94,11 +94,11 @@ public class EMV implements EMU {
         return var5;
     }
 
-    public <_T extends LW, _Q extends JB<_T>> _T HJT(ProcessDefinitionBase var1, _Q var2) throws FFK {
+    public <_T extends LW, _Q extends ModelTechnicalElementCriteria<_T>> _T HJT(ProcessDefinitionBase var1, _Q var2) throws FFK {
 
         this.HKM(var1, var2.getTypeClass());
-        IM var3 = IM.getByType(var2.getClass());
-        LU var4 = LU.getByType(var2.getTypeClass());
+        ModelElementCriteria var3 = ModelElementCriteria.getByType(var2.getClass());
+        UserModel var4 = UserModel.getByType(var2.getTypeClass());
         Integer var5 = null;
         switch (var3) {
             case ModelTechnicalElementCriteria:
@@ -125,7 +125,7 @@ public class EMV implements EMU {
 
         try {
             this.HKM(var1, var2);
-            II var3 = II.getByType(var2);
+            EntityTypes var3 = EntityTypes.getByType(var2);
             Invoice var4;
             UserData var5;
             Invoice var6;
@@ -135,7 +135,7 @@ public class EMV implements EMU {
                     var5 = EMB.getInstance().HHV();
                     var4.DAR().setValue(var5.DFF().getValue());
                     var4.DBC().setValue(var5.DEW().getValue());
-                    ((HY) var4).setUsingInvoicingDate(new JS(true));
+                    ((BaseInvoiceSell) var4).setUsingInvoicingDate(new PrivtePerson(true));
                     var6 = var4;
                     return (_A) var6;
                 case InvoiceSellCorrection:
@@ -143,7 +143,7 @@ public class EMV implements EMU {
                     var5 = EMB.getInstance().HHV();
                     var4.DAR().setValue(var5.DFF().getValue());
                     var4.DBC().setValue(var5.DEW().getValue());
-                    ((HY) var4).setUsingInvoicingDate(new JS(true));
+                    ((BaseInvoiceSell) var4).setUsingInvoicingDate(new PrivtePerson(true));
                     var6 = var4;
                     return (_A) var6;
                 case InvoicePurchase:
@@ -166,7 +166,7 @@ public class EMV implements EMU {
 
         try {
             this.HKM(var1, var2);
-            II var3 = II.getByType(var2);
+            EntityTypes var3 = EntityTypes.getByType(var2);
             InvoiceOther var4;
             UserData var5;
             InvoiceOther var6;
@@ -196,7 +196,7 @@ public class EMV implements EMU {
 
     public <_T extends ModelBusinessTopElement> void ROH(EDF<_T> var1, Class<_T> var2) throws FFK, FFO {
 
-        II var3 = II.getByType(var2);
+        EntityTypes var3 = EntityTypes.getByType(var2);
         switch (var3) {
             case InvoiceSell:
             case InvoiceSellCorrection:
@@ -237,10 +237,10 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends ModelBusinessTopElement, _Q extends IW<_T>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HJY(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
+    public <_T extends ModelBusinessTopElement, _Q extends ModelBusinessElementCriteria<_T>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HJY(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getTypeClass());
-        II var3 = II.getByType(var2.getTypeClass());
+        EntityTypes var3 = EntityTypes.getByType(var2.getTypeClass());
         OrderType var4 = null;
         Integer var5 = null;
         Integer var6 = null;
@@ -248,37 +248,37 @@ public class EMV implements EMU {
         Enum var8 = null;
         Enum var9 = null;
         RefId var10 = null;
-        KA var11 = null;
-        KA var12 = null;
+        Nip var11 = null;
+        Nip var12 = null;
         ValueContainer2 var13 = null;
         ValueContainer2 var14 = null;
         Integer var15 = null;
         String var16 = null;
-        QSW var17 = null;
-        if (JA.class.isAssignableFrom(var2.getClass())) {
+        InvoiceState var17 = null;
+        if (a.a.a.c.f.a.g.ModelElementCriteria.class.isAssignableFrom(var2.getClass())) {
             var4 = var2.getOrderType();
             var5 = var2.getPageSize();
             var6 = var2.getPageOffset();
         }
 
-        if (IX.class.isAssignableFrom(var2.getClass())) {
-            IX var18 = (IX) var2;
+        if (ModelBusinessPeriodElementCriteria.class.isAssignableFrom(var2.getClass())) {
+            ModelBusinessPeriodElementCriteria var18 = (ModelBusinessPeriodElementCriteria) var2;
             var7 = var18.getPeriod();
         }
 
-        if (IY.class.isAssignableFrom(var2.getClass())) {
-            IY var22 = (IY) var2;
+        if (ModelBusinessPeriodElementTypedCriteria.class.isAssignableFrom(var2.getClass())) {
+            ModelBusinessPeriodElementTypedCriteria var22 = (ModelBusinessPeriodElementTypedCriteria) var2;
             var8 = var22.getType();
             var9 = var22.getSubType();
         }
 
-        if (IZ.class.isAssignableFrom(var2.getClass())) {
-            IZ var23 = (IZ) var2;
+        if (ModelBusinessPeriodElementTypedIdCriteria.class.isAssignableFrom(var2.getClass())) {
+            ModelBusinessPeriodElementTypedIdCriteria var23 = (ModelBusinessPeriodElementTypedIdCriteria) var2;
             var10 = var23.getRefId();
         }
 
-        if (IU.class.isAssignableFrom(var2.getClass())) {
-            IU var24 = (IU) var2;
+        if (InvoiceCriteria.class.isAssignableFrom(var2.getClass())) {
+            InvoiceCriteria var24 = (InvoiceCriteria) var2;
             var11 = var24.getIssuerNumber();
             var12 = var24.getContractorNIP();
             var13 = var24.getCreationDate();
@@ -289,8 +289,8 @@ public class EMV implements EMU {
             }
         }
 
-        if (QSS.class.isAssignableFrom(var2.getClass())) {
-            QSS var25 = (QSS) var2;
+        if (InvoiceOtherCriteria.class.isAssignableFrom(var2.getClass())) {
+            InvoiceOtherCriteria var25 = (InvoiceOtherCriteria) var2;
             var11 = var25.getIssuerNumber();
             var12 = var25.getContractorNIP();
             var13 = var25.getCreationDate();
@@ -301,8 +301,8 @@ public class EMV implements EMU {
             }
         }
 
-        if (AGYN.class.isAssignableFrom(var2.getClass())) {
-            AGYN var26 = (AGYN) var2;
+        if (ContractorModelCriteria.class.isAssignableFrom(var2.getClass())) {
+            ContractorModelCriteria var26 = (ContractorModelCriteria) var2;
             var15 = var26.getHash();
             var16 = var26.getSearch();
         }
@@ -316,7 +316,7 @@ public class EMV implements EMU {
             case InvoiceSellType:
             case InvoiceSellCorrectionType:
             case InvoicePurchaseInvoiceType:
-                var27 = EMB.getInstance().ROM(var17, var4, var5, var6, var7, (IB) var8, (IA) var9, var10, var11, var12, var13, var14, var16);
+                var27 = EMB.getInstance().ROM(var17, var4, var5, var6, var7, (InvoiceType) var8, (InvoiceSubtype) var9, var10, var11, var12, var13, var14, var16);
                 return var27;
             case AggregatePurchase:
             default:
@@ -326,15 +326,15 @@ public class EMV implements EMU {
             case InvoiceOther:
             case InvoiceOtherPurchaseInvoiceType:
             case InvoiceOtherSellInvoiceType:
-                var27 = EMB.getInstance().ROQ(var17, var4, var5, var6, var7, (QSR) var8, (QSQ) var9, var10, var11, var12, var13, var14, var16);
+                var27 = EMB.getInstance().ROQ(var17, var4, var5, var6, var7, (InvoiceOtherType) var8, (InvoiceOtherSubtype) var9, var10, var11, var12, var13, var14, var16);
                 return var27;
             case ReceiptRecord:
             case ReceiptRecordVat:
-                var27 = EMB.getInstance().HIG(var4, var5, var6, var7, (IQ) var8);
+                var27 = EMB.getInstance().HIG(var4, var5, var6, var7, (RecordType) var8);
                 return var27;
             case Settlement:
             case SettlementVat:
-                var27 = EMB.getInstance().HIJ(var4, var5, var6, var7, (JH) var8);
+                var27 = EMB.getInstance().HIJ(var4, var5, var6, var7, (SettlementType) var8);
                 return var27;
             case Declaration:
             case DeclarationJPK:
@@ -345,12 +345,12 @@ public class EMV implements EMU {
             case DeclarationJPK_PKPIR:
             case DeclarationJPK_VAT:
             case DeclarationJPK_WB:
-                var27 = EMB.getInstance().HIM(var4, var5, var6, var7, (HM) var8, (AGWW) var9);
+                var27 = EMB.getInstance().HIM(var4, var5, var6, var7, (DeclarationType) var8, (DeclarationSubtype) var9);
                 return var27;
             case InvoiceRecord:
             case InvoiceRecordSell:
             case InvoiceRecordPurchase:
-                var27 = EMB.getInstance().HIT(var4, var5, var6, var7, (IH) var8);
+                var27 = EMB.getInstance().HIT(var4, var5, var6, var7, (InvoiceRecordType) var8);
                 return var27;
             case Contractor:
                 var27 = EMB.getInstance().QQJ(var4, var15, var16);
@@ -358,10 +358,10 @@ public class EMV implements EMU {
         }
     }
 
-    public <_T extends ModelBusinessPeriodElement, _I extends Enum<_I>, _L extends Enum<_L>, _Q extends EYD<_T, _I, _L>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HKD(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
+    public <_T extends ModelBusinessPeriodElement, _I extends Enum<_I>, _L extends Enum<_L>, _Q extends PeriodModelCriteria<_T, _I, _L>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HKD(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getTypeClass());
-        II var3 = II.getByType(var2.getTypeClass());
+        EntityTypes var3 = EntityTypes.getByType(var2.getTypeClass());
         OrderType var4 = null;
         Integer var5 = null;
         Integer var6 = null;
@@ -369,22 +369,22 @@ public class EMV implements EMU {
         Enum var8 = null;
         Period var9 = null;
         Settlement var10 = null;
-        if (JA.class.isAssignableFrom(var2.getClass())) {
+        if (a.a.a.c.f.a.g.ModelElementCriteria.class.isAssignableFrom(var2.getClass())) {
             var4 = var2.getOrderType();
             var5 = var2.getPageSize();
             var6 = var2.getPageOffset();
         }
 
-        if (IX.class.isAssignableFrom(var2.getClass())) {
+        if (ModelBusinessPeriodElementCriteria.class.isAssignableFrom(var2.getClass())) {
             var9 = var2.getPeriod();
         }
 
-        if (IY.class.isAssignableFrom(var2.getClass())) {
+        if (ModelBusinessPeriodElementTypedCriteria.class.isAssignableFrom(var2.getClass())) {
             var7 = var2.getType();
             var8 = var2.getSubType();
         }
 
-        if (EYD.class.isAssignableFrom(var2.getClass())) {
+        if (PeriodModelCriteria.class.isAssignableFrom(var2.getClass())) {
             var10 = var2.getSettlement();
         }
 
@@ -399,12 +399,12 @@ public class EMV implements EMU {
             case DeclarationJPK_PKPIR:
             case DeclarationJPK_VAT:
             case DeclarationJPK_WB:
-                var11 = EMB.getInstance().QQI(var4, var5, var6, var10, var9, (HM) var7, (AGWW) var8);
+                var11 = EMB.getInstance().QQI(var4, var5, var6, var10, var9, (DeclarationType) var7, (DeclarationSubtype) var8);
                 return var11;
             case InvoiceRecord:
             case InvoiceRecordSell:
             case InvoiceRecordPurchase:
-                var11 = EMB.getInstance().QQK(var4, var5, var6, var10, var9, (IH) var7);
+                var11 = EMB.getInstance().QQK(var4, var5, var6, var10, var9, (InvoiceRecordType) var7);
                 return var11;
             default:
                 throw new FFI("Unexpected type [" + var3 + "]!");
@@ -420,17 +420,17 @@ public class EMV implements EMU {
     public <_T extends ModelBusinessTopElement> void HKA(ProcessDefinitionBase var1, _T var2, Settlement var3) throws FFK, FFO {
 
         this.HKM(var1, var2.getClass());
-        II var4 = II.getByType(var2.getClass());
+        EntityTypes var4 = EntityTypes.getByType(var2.getClass());
         switch (var4) {
             case InvoiceSell:
             case InvoiceSellCorrection:
             case InvoicePurchase:
             case AggregatePurchase:
-                EMB.getInstance().HIA(FDO.insert, (Invoice) var2);
+                EMB.getInstance().HIA(SqlOperation.insert, (Invoice) var2);
                 break;
             case InvoiceOtherSell:
             case InvoiceOtherPurchase:
-                EMB.getInstance().RON(FDO.insert, (InvoiceOther) var2);
+                EMB.getInstance().RON(SqlOperation.insert, (InvoiceOther) var2);
                 break;
             case Invoice:
             case InvoiceSellType:
@@ -449,10 +449,10 @@ public class EMV implements EMU {
             default:
                 throw new FFI("Unexpected type [" + var4 + "]!");
             case ReceiptRecordVat:
-                EMB.getInstance().HIE(FDO.insert, (ReceiptRecord) var2);
+                EMB.getInstance().HIE(SqlOperation.insert, (ReceiptRecord) var2);
                 break;
             case SettlementVat:
-                EMB.getInstance().HIH(FDO.insert, (Settlement) var2);
+                EMB.getInstance().HIH(SqlOperation.insert, (Settlement) var2);
                 break;
             case DeclarationJPK_EWP:
             case DeclarationJPK_FA:
@@ -462,10 +462,10 @@ public class EMV implements EMU {
             case DeclarationJPK_VAT:
             case DeclarationJPK_WB:
             case DeclarationJPK_STATUSTRACKER:
-                EMB.getInstance().HIK(FDO.insert, (Declaration) var2, var3);
+                EMB.getInstance().HIK(SqlOperation.insert, (Declaration) var2, var3);
                 break;
             case Contractor:
-                EMB.getInstance().HIO(FDO.insert, (Contractor) var2);
+                EMB.getInstance().HIO(SqlOperation.insert, (Contractor) var2);
         }
 
     }
@@ -473,13 +473,13 @@ public class EMV implements EMU {
     public <_T extends LW> void HJU(ProcessDefinitionBase var1, _T var2) throws FFK {
 
         this.HKM(var1, var2.getClass());
-        LU var3 = LU.getByType(var2.getClass());
+        UserModel var3 = UserModel.getByType(var2.getClass());
         switch (var3) {
             case UserData:
-                EMB.getInstance().HHY(FDO.insert, (UserData) var2);
+                EMB.getInstance().HHY(SqlOperation.insert, (UserData) var2);
                 break;
             case ConfigurationProperties:
-                EMB.getInstance().ROK(FDO.insert, (ConfigurationProperties) var2, false);
+                EMB.getInstance().ROK(SqlOperation.insert, (ConfigurationProperties) var2, false);
                 break;
             default:
                 throw new FFI("Unexpected type [" + var3 + "]!");
@@ -490,17 +490,17 @@ public class EMV implements EMU {
     public <_T extends ModelBusinessTopElement> void HKB(ProcessDefinitionBase var1, _T var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getClass());
-        II var3 = II.getByType(var2.getClass());
+        EntityTypes var3 = EntityTypes.getByType(var2.getClass());
         switch (var3) {
             case InvoiceSell:
             case InvoiceSellCorrection:
             case InvoicePurchase:
             case AggregatePurchase:
-                EMB.getInstance().HIA(FDO.update, (Invoice) var2);
+                EMB.getInstance().HIA(SqlOperation.update, (Invoice) var2);
                 break;
             case InvoiceOtherSell:
             case InvoiceOtherPurchase:
-                EMB.getInstance().RON(FDO.update, (InvoiceOther) var2);
+                EMB.getInstance().RON(SqlOperation.update, (InvoiceOther) var2);
                 break;
             case Invoice:
             case InvoiceSellType:
@@ -519,10 +519,10 @@ public class EMV implements EMU {
             default:
                 throw new FFI("Unexpected type [" + var3 + "]!");
             case ReceiptRecordVat:
-                EMB.getInstance().HIE(FDO.update, (ReceiptRecord) var2);
+                EMB.getInstance().HIE(SqlOperation.update, (ReceiptRecord) var2);
                 break;
             case SettlementVat:
-                EMB.getInstance().HIH(FDO.update, (Settlement) var2);
+                EMB.getInstance().HIH(SqlOperation.update, (Settlement) var2);
                 break;
             case DeclarationJPK_EWP:
             case DeclarationJPK_FA:
@@ -532,10 +532,10 @@ public class EMV implements EMU {
             case DeclarationJPK_VAT:
             case DeclarationJPK_WB:
             case DeclarationJPK_STATUSTRACKER:
-                EMB.getInstance().HIK(FDO.update, (Declaration) var2, null);
+                EMB.getInstance().HIK(SqlOperation.update, (Declaration) var2, null);
                 break;
             case Contractor:
-                EMB.getInstance().HIO(FDO.update, (Contractor) var2);
+                EMB.getInstance().HIO(SqlOperation.update, (Contractor) var2);
         }
 
     }
@@ -543,13 +543,13 @@ public class EMV implements EMU {
     public <_T extends LW> void HJV(ProcessDefinitionBase var1, _T var2) throws FFK {
 
         this.HKM(var1, var2.getClass());
-        LU var3 = LU.getByType(var2.getClass());
+        UserModel var3 = UserModel.getByType(var2.getClass());
         switch (var3) {
             case UserData:
-                EMB.getInstance().HHY(FDO.update, (UserData) var2);
+                EMB.getInstance().HHY(SqlOperation.update, (UserData) var2);
                 break;
             case ConfigurationProperties:
-                EMB.getInstance().ROK(FDO.update, (ConfigurationProperties) var2, false);
+                EMB.getInstance().ROK(SqlOperation.update, (ConfigurationProperties) var2, false);
                 break;
             default:
                 throw new FFI("Unexpected type [" + var3 + "]!");
@@ -560,17 +560,17 @@ public class EMV implements EMU {
     public <_T extends ModelBusinessTopElement> void HKC(ProcessDefinitionBase var1, _T var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getClass());
-        II var3 = II.getByType(var2.getClass());
+        EntityTypes var3 = EntityTypes.getByType(var2.getClass());
         switch (var3) {
             case InvoiceSell:
             case InvoiceSellCorrection:
             case InvoicePurchase:
             case AggregatePurchase:
-                EMB.getInstance().HIA(FDO.delete, (Invoice) var2);
+                EMB.getInstance().HIA(SqlOperation.delete, (Invoice) var2);
                 break;
             case InvoiceOtherSell:
             case InvoiceOtherPurchase:
-                EMB.getInstance().RON(FDO.delete, (InvoiceOther) var2);
+                EMB.getInstance().RON(SqlOperation.delete, (InvoiceOther) var2);
                 break;
             case Invoice:
             case InvoiceSellType:
@@ -589,10 +589,10 @@ public class EMV implements EMU {
             default:
                 throw new FFI("Unexpected type [" + var3 + "]!");
             case ReceiptRecordVat:
-                EMB.getInstance().HIE(FDO.delete, (ReceiptRecord) var2);
+                EMB.getInstance().HIE(SqlOperation.delete, (ReceiptRecord) var2);
                 break;
             case SettlementVat:
-                EMB.getInstance().HIH(FDO.delete, (Settlement) var2);
+                EMB.getInstance().HIH(SqlOperation.delete, (Settlement) var2);
                 break;
             case DeclarationJPK_EWP:
             case DeclarationJPK_FA:
@@ -602,10 +602,10 @@ public class EMV implements EMU {
             case DeclarationJPK_VAT:
             case DeclarationJPK_WB:
             case DeclarationJPK_STATUSTRACKER:
-                EMB.getInstance().HIK(FDO.delete, (Declaration) var2, null);
+                EMB.getInstance().HIK(SqlOperation.delete, (Declaration) var2, null);
                 break;
             case Contractor:
-                EMB.getInstance().HIO(FDO.delete, (Contractor) var2);
+                EMB.getInstance().HIO(SqlOperation.delete, (Contractor) var2);
         }
 
     }
@@ -613,13 +613,13 @@ public class EMV implements EMU {
     public <_T extends LW> void HJW(ProcessDefinitionBase var1, _T var2) throws FFK {
 
         this.HKM(var1, var2.getClass());
-        LU var3 = LU.getByType(var2.getClass());
+        UserModel var3 = UserModel.getByType(var2.getClass());
         switch (var3) {
             case UserData:
-                EMB.getInstance().HHY(FDO.delete, (UserData) var2);
+                EMB.getInstance().HHY(SqlOperation.delete, (UserData) var2);
                 break;
             case ConfigurationProperties:
-                EMB.getInstance().ROK(FDO.delete, (ConfigurationProperties) var2, false);
+                EMB.getInstance().ROK(SqlOperation.delete, (ConfigurationProperties) var2, false);
                 break;
             default:
                 throw new FFI("Unexpected type [" + var3 + "]!");
@@ -630,7 +630,7 @@ public class EMV implements EMU {
     public <_T extends ModelBusinessTopElement> Integer getMaxDocumentIndex(ProcessDefinitionBase var1, Class<_T> var2, Period var3, Enum<?> var4, Enum<?> var5) throws FFK, FFO {
 
         this.HKM(var1, var2);
-        II var6 = II.getByType(var2);
+        EntityTypes var6 = EntityTypes.getByType(var2);
         Integer var7;
         switch (var6) {
             case Declaration:
@@ -642,12 +642,12 @@ public class EMV implements EMU {
             case DeclarationJPK_PKPIR:
             case DeclarationJPK_VAT:
             case DeclarationJPK_WB:
-                var7 = EMB.getInstance().getMaxDocumentIndexForDeclarations(var3, (HM) var4, (AGWW) var5);
+                var7 = EMB.getInstance().getMaxDocumentIndexForDeclarations(var3, (DeclarationType) var4, (DeclarationSubtype) var5);
                 return var7;
             case InvoiceRecord:
             case InvoiceRecordSell:
             case InvoiceRecordPurchase:
-                var7 = EMB.getInstance().getMaxDocumentIndexForInvoiceRecords(var3, (IH) var4);
+                var7 = EMB.getInstance().getMaxDocumentIndexForInvoiceRecords(var3, (InvoiceRecordType) var4);
                 return var7;
             default:
                 throw new FFI("Unexpected type [" + var6 + "]!");
@@ -657,21 +657,21 @@ public class EMV implements EMU {
     public <_T extends Dictionary> void HKF(ProcessDefinitionBase var1, _T var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getClass());
-        EMB.getInstance().HIV(FDO.insert, var2);
+        EMB.getInstance().HIV(SqlOperation.insert, var2);
 
     }
 
     public <_T extends Dictionary> void HKG(ProcessDefinitionBase var1, _T var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getClass());
-        EMB.getInstance().HIV(FDO.update, var2);
+        EMB.getInstance().HIV(SqlOperation.update, var2);
 
     }
 
     public <_T extends Dictionary> void HKH(ProcessDefinitionBase var1, _T var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getClass());
-        EMB.getInstance().HIV(FDO.delete, var2);
+        EMB.getInstance().HIV(SqlOperation.delete, var2);
 
     }
 
@@ -726,7 +726,7 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends ModelBusinessTopElement, _Q extends IW<_T>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HKE(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
+    public <_T extends ModelBusinessTopElement, _Q extends ModelBusinessElementCriteria<_T>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HKE(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
         return null;
     }
 }

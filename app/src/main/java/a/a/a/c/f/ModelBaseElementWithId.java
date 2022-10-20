@@ -1,6 +1,6 @@
 package a.a.a.c.f;
 
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlID;
 import jakarta.xml.bind.annotation.XmlTransient;
@@ -16,13 +16,13 @@ public abstract class ModelBaseElementWithId extends ModelBase {
     private ModelBaseElementWithId APC;
     @XmlTransient
     private ModelBaseElementWithId APD;
-    private transient QSW QYZ;
+    private transient InvoiceState QYZ;
 
-    public QSW getState() {
+    public InvoiceState getState() {
         return this.QYZ;
     }
 
-    public void setState(QSW var1) {
+    public void setState(InvoiceState var1) {
         this.QYZ = var1;
     }
 
@@ -51,7 +51,7 @@ public abstract class ModelBaseElementWithId extends ModelBase {
 
     protected ModelBaseElementWithId getParentOnlyActiveState() {
         ModelBaseElementWithId var1;
-        for (var1 = this.APC; var1 != null && !var1.getState().equals(QSW.ACTIVE); var1 = var1.getParent()) {
+        for (var1 = this.APC; var1 != null && !var1.getState().equals(InvoiceState.ACTIVE); var1 = var1.getParent()) {
         }
 
         return var1;
@@ -67,7 +67,7 @@ public abstract class ModelBaseElementWithId extends ModelBase {
 
     protected ModelBaseElementWithId getChildOnlyActiveState() {
         ModelBaseElementWithId var1;
-        for (var1 = this.APD; var1 != null && !var1.getState().equals(QSW.ACTIVE); var1 = var1.getChild()) {
+        for (var1 = this.APD; var1 != null && !var1.getState().equals(InvoiceState.ACTIVE); var1 = var1.getChild()) {
         }
 
         return var1;

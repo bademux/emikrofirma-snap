@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.f.a.c.QJW;
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.a.c.TitledContractor;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.c.ComboBoxValidated_NIP;
 import a.a.a.c.f.d.FCL;
 import a.a.a.c.g.b.FCW;
@@ -31,14 +31,14 @@ public class EZO extends FCL<ComboBoxValidated_NIP> {
         this.GWI = var1;
     }
 
-    protected void set(QST var1) {
+    protected void set(ObjectWithTitle var1) {
         if (this.GWH != null) {
-            this.GWH.setContractorFromAutocomplete((QJW) var1);
+            this.GWH.setContractorFromAutocomplete((TitledContractor) var1);
         }
 
     }
 
-    protected List<QJW> getByString(String var1) {
+    protected List<TitledContractor> getByString(String var1) {
         return this.GWI != null ? this.GWI.getContractorsByText(var1) : new ArrayList();
     }
 

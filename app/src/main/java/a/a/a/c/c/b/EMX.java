@@ -16,6 +16,8 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDE;
 import a.a.a.c.b.EDF;
+import a.a.a.c.f.a.n.BaseInvoiceSell;
+import a.a.a.c.f.b.c.a.TaxRate;
 import com.github.bademux.emk.Application;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.e.a.d.ValueContainer3;
@@ -33,12 +35,12 @@ import a.a.a.c.f.a.e.*;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
 import a.a.a.c.f.a.e.a.InvoiceRecordPurchase;
 import a.a.a.c.f.a.e.a.InvoiceRecordSell;
-import a.a.a.c.f.a.e.a.IH;
+import a.a.a.c.f.a.e.a.InvoiceRecordType;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
-import a.a.a.c.f.a.f.a.IQ;
+import a.a.a.c.f.a.f.a.RecordType;
 import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.a.n.*;
 import a.a.a.c.f.b.b.Period;
@@ -96,7 +98,7 @@ public class EMX implements ENC {
 
         try {
             this.initProfilesConnection();
-            Class[] jaxbClasses = new Class[]{ConfigurationProperties.class, UserData.class, InvoiceSell.class, InvoiceSellCorrection.class, InvoicePurchase.class, AggregatePurchase.class, InvoiceOtherSell.class, InvoiceOtherPurchase.class, InvoiceRecordSell.class, InvoiceRecordPurchase.class, ReceiptRecordVat.class, SettlementVat.class, DeclarationJPK_EWP.class, DeclarationJPK_FA.class, DeclarationJPK_KR.class, DeclarationJPK_MAG.class, DeclarationJPK_PKPIR.class, DeclarationJPK_VAT.class, DeclarationJPK_WB.class, DeclarationJPK_StatusTracker.class, Dictionary.class, DictionaryEntry.class, KJ.class, KN.class, KL.class, KM.class, KI.class, KK.class, QSV.class};
+            Class[] jaxbClasses = new Class[]{ConfigurationProperties.class, UserData.class, InvoiceSell.class, InvoiceSellCorrection.class, InvoicePurchase.class, AggregatePurchase.class, InvoiceOtherSell.class, InvoiceOtherPurchase.class, InvoiceRecordSell.class, InvoiceRecordPurchase.class, ReceiptRecordVat.class, SettlementVat.class, DeclarationJPK_EWP.class, DeclarationJPK_FA.class, DeclarationJPK_KR.class, DeclarationJPK_MAG.class, DeclarationJPK_PKPIR.class, DeclarationJPK_VAT.class, DeclarationJPK_WB.class, DeclarationJPK_StatusTracker.class, Dictionary.class, DictionaryEntry.class, PeriodType.class, Voivodeship.class, TaxRate.class, TaxReason.class, PaymentMethod.class, TaxOffice.class, CalculationMethodType.class};
             this.FIU = new FEO(false, true, StandardCharsets.UTF_8, jaxbClasses);
             this.FIV = new FEP(jaxbClasses);
             this.FIV.setListener(new Unmarshaller.Listener() {
@@ -426,7 +428,7 @@ public class EMX implements ENC {
             var8 = this.profilesConnection;
             this.profilesConnection = var6;
             SimpleUserData var9 = EMB.getInstance().getCurrentUser();
-            this.HLJ(new SimpleUserData(var9.getUsername(), var9.getLoginType(), new JS(false), null, null, true));
+            this.HLJ(new SimpleUserData(var9.getUsername(), var9.getLoginType(), new PrivtePerson(false), null, null, true));
             this.profilesConnection = var8;
         }
 
@@ -563,7 +565,7 @@ public class EMX implements ENC {
             invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
             invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
             invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(RHL, false, false, QSW.ACTIVE.getKey()));
+            invoicesTableDef.getColumns().add(new CellDef(RHL, false, false, InvoiceState.ACTIVE.getKey()));
             invoicesTableDef.getColumns().add(new CellDef(FLT, false, false));
             invoicesTableDef.getColumns().add(new CellDef(FLU, false, false));
             invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
@@ -647,7 +649,7 @@ public class EMX implements ENC {
             invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
             invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
             invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(RHL, false, false, QSW.ACTIVE.getKey()));
+            invoicesTableDef.getColumns().add(new CellDef(RHL, false, false, InvoiceState.ACTIVE.getKey()));
             invoicesTableDef.getColumns().add(new CellDef(FLT, false, false));
             invoicesTableDef.getColumns().add(new CellDef(FLU, false, false));
             invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
@@ -1058,11 +1060,11 @@ public class EMX implements ENC {
             ArrayList var3 = new ArrayList();
             ValueContainer2 var4 = this.HMB(this.profilesConnection, "users", var1, var2, var3, null, null, new ENC.ENE<ValueContainer1<SimpleUserData>, SimpleUserData>() {
                 public ValueContainer1<SimpleUserData> HNF(List<CellValue<?>> var1) throws Exception {
-                    KO var2 = null;
+                    Text var2 = null;
                     JZ var3 = null;
-                    JS var4 = null;
-                    JT var5 = null;
-                    JT var6 = null;
+                    PrivtePerson var4 = null;
+                    Bytes var5 = null;
+                    Bytes var6 = null;
                     Boolean var7 = null;
                     Iterator var8 = var1.iterator();
 
@@ -1070,13 +1072,13 @@ public class EMX implements ENC {
                         while (var8.hasNext()) {
                             CellValue var9 = (CellValue) var8.next();
                             if (ENC.FLJ.getName().equals(var9.getName())) {
-                                var2 = new KO((String) var9.getValue());
+                                var2 = new Text((String) var9.getValue());
                             } else if (ENC.FLN.getName().equals(var9.getName())) {
-                                var3 = new JZ(KG.valueOf((String) var9.getValue()));
+                                var3 = new JZ(LoginType.valueOf((String) var9.getValue()));
                             } else if (ENC.FLK.getName().equals(var9.getName())) {
-                                var5 = new JT((byte[]) var9.getValue());
+                                var5 = new Bytes((byte[]) var9.getValue());
                             } else if (ENC.FLL.getName().equals(var9.getName())) {
-                                var6 = new JT((byte[]) var9.getValue());
+                                var6 = new Bytes((byte[]) var9.getValue());
                             } else if (ENC.FLM.getName().equals(var9.getName())) {
                                 Integer var10 = (Integer) var9.getValue();
                                 var7 = var10 != null && var10 > 0;
@@ -1084,9 +1086,9 @@ public class EMX implements ENC {
                         }
 
                         if (var5 != null && var5.getValue() != null && var6 != null && var6.getValue() != null) {
-                            var4 = new JS(true);
+                            var4 = new PrivtePerson(true);
                         } else {
-                            var4 = new JS(false);
+                            var4 = new PrivtePerson(false);
                         }
 
                         return new ValueContainer1(new SimpleUserData(var2, var3, var4, var5, var6, var7));
@@ -1113,7 +1115,7 @@ public class EMX implements ENC {
 
         String var2 = "users";
         synchronized ("users") {
-            this.HLL(FDO.insert, var1);
+            this.HLL(SqlOperation.insert, var1);
         }
 
     }
@@ -1122,7 +1124,7 @@ public class EMX implements ENC {
 
         String var2 = "users";
         synchronized ("users") {
-            this.HLL(FDO.update, var1);
+            this.HLL(SqlOperation.update, var1);
         }
 
     }
@@ -1131,12 +1133,12 @@ public class EMX implements ENC {
 
         String var2 = "users";
         synchronized ("users") {
-            this.HLL(FDO.delete, var1);
+            this.HLL(SqlOperation.delete, var1);
         }
 
     }
 
-    private <_T extends LW> void HLL(FDO var1, SimpleUserData var2) throws FFK {
+    private <_T extends LW> void HLL(SqlOperation var1, SimpleUserData var2) throws FFK {
 
         if (var2 == null) {
             throw FCZ.getInstance().IHG();
@@ -1202,21 +1204,21 @@ public class EMX implements ENC {
         return (_T) var5;
     }
 
-    public <_T extends Invoice<?>> ValueContainer2<Integer, List<EDF<_T>>> ROB(FFF var1, QSW var2, OrderType var3, Integer var4, Integer var5, Period var6, IB var7, IA var8, RefId var9, KA var10, KA var11, ValueContainer2<Date, Date> var12, ValueContainer2<Date, Date> var13, String var14) throws FFK {
+    public <_T extends Invoice<?>> ValueContainer2<Integer, List<EDF<_T>>> ROB(FFF var1, InvoiceState var2, OrderType var3, Integer var4, Integer var5, Period var6, InvoiceType var7, InvoiceSubtype var8, RefId var9, Nip var10, Nip var11, ValueContainer2<Date, Date> var12, ValueContainer2<Date, Date> var13, String var14) throws FFK {
 
         ValueContainer2 var25;
         ArrayList var15 = new ArrayList();
-        var15.add(ENC.END.cell_business_refid);
-        var15.add(ENC.END.cell_business_issuer_number);
-        var15.add(ENC.END.cell_business_invoicingDate);
-        var15.add(ENC.END.cell_business_contractorName);
-        var15.add(ENC.END.cell_business_contractorNIP);
-        var15.add(ENC.END.cell_business_netValue);
-        var15.add(ENC.END.cell_business_grossValue);
-        var15.add(ENC.END.cell_business_taxValue);
-        var15.add(ENC.END.cell_business_creationDate);
-        var15.add(ENC.END.cell_business_transactionDate);
-        var15.add(ENC.END.cell_business_state);
+        var15.add(CellType.cell_business_refid);
+        var15.add(CellType.cell_business_issuer_number);
+        var15.add(CellType.cell_business_invoicingDate);
+        var15.add(CellType.cell_business_contractorName);
+        var15.add(CellType.cell_business_contractorNIP);
+        var15.add(CellType.cell_business_netValue);
+        var15.add(CellType.cell_business_grossValue);
+        var15.add(CellType.cell_business_taxValue);
+        var15.add(CellType.cell_business_creationDate);
+        var15.add(CellType.cell_business_transactionDate);
+        var15.add(CellType.cell_business_state);
         ArrayList var16 = new ArrayList();
         String var17 = var9 != null ? var9.getValue() : null;
         if (var17 != null) {
@@ -1249,7 +1251,7 @@ public class EMX implements ENC {
 
         ArrayList var20 = new ArrayList();
         if (var14 != null && var14.length() >= 3) {
-            Expression var21 = new Expression(FEB.OR);
+            Expression var21 = new Expression(SqlOperator.OR);
             var21.IJR(new CellValue(FLU, "%" + var14 + "%", Condition.LIKE));
             var21.IJR(new CellValue(FME, "%" + var14 + "%", Condition.LIKE));
             var21.IJR(new CellValue(FMF, "%" + var14 + "%", Condition.LIKE));
@@ -1264,20 +1266,20 @@ public class EMX implements ENC {
         return var25;
     }
 
-    public <_T extends InvoiceOther<?>> ValueContainer2<Integer, List<EDF<_T>>> ROC(FFF var1, QSW var2, OrderType var3, Integer var4, Integer var5, Period var6, QSR var7, QSQ var8, RefId var9, KA var10, KA var11, ValueContainer2<Date, Date> var12, ValueContainer2<Date, Date> var13, String var14) throws FFK {
+    public <_T extends InvoiceOther<?>> ValueContainer2<Integer, List<EDF<_T>>> ROC(FFF var1, InvoiceState var2, OrderType var3, Integer var4, Integer var5, Period var6, InvoiceOtherType var7, InvoiceOtherSubtype var8, RefId var9, Nip var10, Nip var11, ValueContainer2<Date, Date> var12, ValueContainer2<Date, Date> var13, String var14) throws FFK {
 
         ValueContainer2 var25;
         ArrayList var15 = new ArrayList();
-        var15.add(ENC.END.cell_business_refid);
-        var15.add(ENC.END.cell_business_issuer_number);
-        var15.add(ENC.END.cell_business_invoicingDate);
-        var15.add(ENC.END.cell_business_contractorName);
-        var15.add(ENC.END.cell_business_contractorNIP);
-        var15.add(ENC.END.cell_business_netValue);
-        var15.add(ENC.END.cell_business_grossValue);
-        var15.add(ENC.END.cell_business_taxValue);
-        var15.add(ENC.END.cell_business_creationDate);
-        var15.add(ENC.END.cell_business_state);
+        var15.add(CellType.cell_business_refid);
+        var15.add(CellType.cell_business_issuer_number);
+        var15.add(CellType.cell_business_invoicingDate);
+        var15.add(CellType.cell_business_contractorName);
+        var15.add(CellType.cell_business_contractorNIP);
+        var15.add(CellType.cell_business_netValue);
+        var15.add(CellType.cell_business_grossValue);
+        var15.add(CellType.cell_business_taxValue);
+        var15.add(CellType.cell_business_creationDate);
+        var15.add(CellType.cell_business_state);
         ArrayList var16 = new ArrayList();
         String var17 = var9 != null ? var9.getValue() : null;
         if (var17 != null) {
@@ -1305,7 +1307,7 @@ public class EMX implements ENC {
 
         ArrayList var20 = new ArrayList();
         if (var14 != null && var14.length() >= 3) {
-            Expression var21 = new Expression(FEB.OR);
+            Expression var21 = new Expression(SqlOperator.OR);
             var21.IJR(new CellValue(FLU, "%" + var14 + "%", Condition.LIKE));
             var21.IJR(new CellValue(FME, "%" + var14 + "%", Condition.LIKE));
             var21.IJR(new CellValue(FMF, "%" + var14 + "%", Condition.LIKE));
@@ -1320,7 +1322,7 @@ public class EMX implements ENC {
         return var25;
     }
 
-    public <_T extends ReceiptRecord> ValueContainer2<Integer, List<EDF<_T>>> HLP(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, IQ var6) throws FFK {
+    public <_T extends ReceiptRecord> ValueContainer2<Integer, List<EDF<_T>>> HLP(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, RecordType var6) throws FFK {
 
         ValueContainer2 var7;
         var7 = this.HLX(var1, "receiptrecords", "receiptrecordsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
@@ -1328,7 +1330,7 @@ public class EMX implements ENC {
         return var7;
     }
 
-    public <_T extends Settlement> ValueContainer2<Integer, List<EDF<_T>>> HLQ(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, JH var6) throws FFK {
+    public <_T extends Settlement> ValueContainer2<Integer, List<EDF<_T>>> HLQ(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, SettlementType var6) throws FFK {
 
         ValueContainer2 var7;
         var7 = this.HLX(var1, "settlementsLastChildIdFull", "settlementsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
@@ -1336,7 +1338,7 @@ public class EMX implements ENC {
         return var7;
     }
 
-    public <_T extends Declaration> ValueContainer2<Integer, List<EDF<_T>>> HLR(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, HM var6, AGWW var7) throws FFK {
+    public <_T extends Declaration> ValueContainer2<Integer, List<EDF<_T>>> HLR(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, DeclarationType var6, DeclarationSubtype var7) throws FFK {
 
         ValueContainer2 var8;
         var8 = this.HLX(var1, "declarations", "declarationsTreeFull", null, null, null, var2, var3, var4, var5, var6, var7);
@@ -1344,7 +1346,7 @@ public class EMX implements ENC {
         return var8;
     }
 
-    public <_T extends Declaration> ValueContainer2<Integer, List<EDF<_T>>> QPW(FFF var1, OrderType var2, Integer var3, Integer var4, Settlement var5, Period var6, HM var7, AGWW var8) throws FFK {
+    public <_T extends Declaration> ValueContainer2<Integer, List<EDF<_T>>> QPW(FFF var1, OrderType var2, Integer var3, Integer var4, Settlement var5, Period var6, DeclarationType var7, DeclarationSubtype var8) throws FFK {
 
         ValueContainer2 var10;
         if (var5 == null) {
@@ -1362,8 +1364,8 @@ public class EMX implements ENC {
 
         ValueContainer2 var4;
         ArrayList var3 = new ArrayList();
-        var3.add(ENC.END.cell_business_contractorName);
-        var3.add(ENC.END.cell_business_contractorNIP);
+        var3.add(CellType.cell_business_contractorName);
+        var3.add(CellType.cell_business_contractorNIP);
         var4 = this.HLY(var1, "contacts", "contactsTreeFull", var3, null, null, var2, null, null, null, null, null);
 
         return var4;
@@ -1373,8 +1375,8 @@ public class EMX implements ENC {
 
         ValueContainer2 var12;
         ArrayList var5 = new ArrayList();
-        var5.add(ENC.END.cell_business_contractorName);
-        var5.add(ENC.END.cell_business_contractorNIP);
+        var5.add(CellType.cell_business_contractorName);
+        var5.add(CellType.cell_business_contractorNIP);
         ArrayList var6 = new ArrayList();
         if (var3 != null) {
             var6.add(new CellValue(QNS, var3));
@@ -1382,7 +1384,7 @@ public class EMX implements ENC {
 
         ArrayList var7 = new ArrayList();
         if (var4 != null && var4.length() >= 3) {
-            Expression var8 = new Expression(FEB.OR);
+            Expression var8 = new Expression(SqlOperator.OR);
             var8.IJR(new CellValue(FME, "%" + var4 + "%", Condition.LIKE));
             var8.IJR(new CellValue(FMF, "%" + var4 + "%", Condition.LIKE));
             var7.add(var8);
@@ -1393,7 +1395,7 @@ public class EMX implements ENC {
         return var12;
     }
 
-    public <_T extends InvoiceRecord> ValueContainer2<Integer, List<EDF<_T>>> HLV(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, IH var6) throws FFK {
+    public <_T extends InvoiceRecord> ValueContainer2<Integer, List<EDF<_T>>> HLV(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceRecordType var6) throws FFK {
 
         ValueContainer2 var7;
         var7 = this.HLX(var1, "invoicerecordsLatestTypeForPeriod", "invoicerecordsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
@@ -1401,7 +1403,7 @@ public class EMX implements ENC {
         return var7;
     }
 
-    public <_T extends InvoiceRecord> ValueContainer2<Integer, List<EDF<_T>>> QPY(FFF var1, OrderType var2, Integer var3, Integer var4, Settlement var5, Period var6, IH var7) throws FFK {
+    public <_T extends InvoiceRecord> ValueContainer2<Integer, List<EDF<_T>>> QPY(FFF var1, OrderType var2, Integer var3, Integer var4, Settlement var5, Period var6, InvoiceRecordType var7) throws FFK {
 
         ValueContainer2 var9;
         if (var5 == null) {
@@ -1415,7 +1417,7 @@ public class EMX implements ENC {
         return var9;
     }
 
-    private <_T extends ModelBusinessPeriodElement> ValueContainer2<Integer, List<EDF<_T>>> HLX(FFF var1, String var2, String var3, List<ENC.END> var4, List<CellValue<?>> var5, List<Expression> var6, OrderType var7, Integer var8, Integer var9, Period var10, Enum<?> var11, Enum<?> var12) throws FFK {
+    private <_T extends ModelBusinessPeriodElement> ValueContainer2<Integer, List<EDF<_T>>> HLX(FFF var1, String var2, String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, OrderType var7, Integer var8, Integer var9, Period var10, Enum<?> var11, Enum<?> var12) throws FFK {
 
         ValueContainer2 var17;
         if (var4 == null) {
@@ -1430,8 +1432,8 @@ public class EMX implements ENC {
             var6 = new ArrayList();
         }
 
-        var4.add(ENC.END.cell_business_periodYear);
-        var4.add(ENC.END.cell_business_periodMonth);
+        var4.add(CellType.cell_business_periodYear);
+        var4.add(CellType.cell_business_periodMonth);
         String var13 = var11 != null ? var11.name() : null;
         if (var13 != null) {
             var5.add(new CellValue(FLN, var13));
@@ -1476,7 +1478,7 @@ public class EMX implements ENC {
         return var17;
     }
 
-    private <_T extends ModelBaseElementWithId> ValueContainer2<Integer, List<EDF<_T>>> HLY(FFF var1, String var2, String var3, List<ENC.END> var4, List<CellValue<?>> var5, List<Expression> var6, OrderType var7, Integer var8, Integer var9, Period var10, Enum<?> var11, Enum<?> var12) throws FFK {
+    private <_T extends ModelBaseElementWithId> ValueContainer2<Integer, List<EDF<_T>>> HLY(FFF var1, String var2, String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, OrderType var7, Integer var8, Integer var9, Period var10, Enum<?> var11, Enum<?> var12) throws FFK {
 
         ValueContainer2 var17;
         if (var4 == null) {
@@ -1534,7 +1536,7 @@ public class EMX implements ENC {
         return var17;
     }
 
-    private <_T extends ModelBaseElementWithId> ValueContainer2<Integer, List<EDF<_T>>> HLZ(final FFF var1, String var2, final String var3, List<ENC.END> var4, List<CellValue<?>> var5, List<Expression> var6, List<CellOrder> var7, Integer var8, Integer var9) throws FFK {
+    private <_T extends ModelBaseElementWithId> ValueContainer2<Integer, List<EDF<_T>>> HLZ(final FFF var1, String var2, final String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, List<CellOrder> var7, Integer var8, Integer var9) throws FFK {
 
         try {
             final Connection var10 = this.connection;
@@ -1548,7 +1550,7 @@ public class EMX implements ENC {
                 Iterator var12 = var4.iterator();
 
                 while (var12.hasNext()) {
-                    ENC.END var13 = (ENC.END) var12.next();
+                    CellType var13 = (CellType) var12.next();
                     var11.add(new CellQuery(var13.getDefinition()));
                 }
             }
@@ -1570,7 +1572,7 @@ public class EMX implements ENC {
             ValueContainer2 var14 = this.HMC(var10, var2, var3, var4, var11, var23, var6, var24, var8, var9, new ENC.ENF<ValueContainer1<EDF<_T>>, EDF<_T>>() {
                 private final String TCL = "topElementDef";
 
-                public ValueContainer1<EDF<_T>> HNG(List<ENC.END> var1x, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3x) throws Exception {
+                public ValueContainer1<EDF<_T>> HNG(List<CellType> var1x, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3x) throws Exception {
 
                     HashMap var4 = new HashMap();
                     HashMap var5 = new HashMap();
@@ -1612,7 +1614,7 @@ public class EMX implements ENC {
                     return var18;
                 }
 
-                private ValueContainer3<String, String, EDF<_T>> createWrapper(List<ENC.END> var1x, List<CellValue<?>> var2) {
+                private ValueContainer3<String, String, EDF<_T>> createWrapper(List<CellType> var1x, List<CellValue<?>> var2) {
 
                     String var3x = null;
                     String var4 = null;
@@ -1622,7 +1624,7 @@ public class EMX implements ENC {
                     while (var6.hasNext()) {
                         CellValue var7 = (CellValue) var6.next();
                         String var8 = var7.getName();
-                        ENC.END var9 = ENC.END.getDefinedCellByName(var8);
+                        CellType var9 = CellType.getDefinedCellByName(var8);
                         Object var10x = var7.getValue();
                         switch (var9) {
                             case cell_technical_id:
@@ -1645,7 +1647,7 @@ public class EMX implements ENC {
                             default:
                                 if (var1x != null && var1x.contains(var9)) {
                                     CellTyped var11 = var9.getDefinition();
-                                    CellType var12 = var11.getType();
+                                    a.a.a.b.a.a.d.CellType var12 = var11.getType();
                                     switch (var12) {
                                         case TEXT:
                                             var5.put(var8, var10x);
@@ -1694,7 +1696,7 @@ public class EMX implements ENC {
                             ValueContainer1 var3xx = EMX.this.HMD(var10, var3, var1x, var2, new ENC.ENF<ValueContainer1<_T>, _T>() {
                                 private final FFF RUA = var1;
 
-                                public ValueContainer1<_T> HNG(List<ENC.END> var1x, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3xx) throws Exception {
+                                public ValueContainer1<_T> HNG(List<CellType> var1x, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3xx) throws Exception {
 
                                     HashMap var4 = new HashMap();
                                     HashMap var5 = new HashMap();
@@ -1798,7 +1800,7 @@ public class EMX implements ENC {
                                     }
 
                                     if (var9 != null && var21 instanceof ModelBaseElementWithId) {
-                                        var21.setState(QSW.getByKey(var9));
+                                        var21.setState(InvoiceState.getByKey(var9));
                                     }
 
                                     var22 = new ValueContainer3(var2, var19, var21);
@@ -1989,7 +1991,7 @@ public class EMX implements ENC {
         }
     }
 
-    private <_A extends ValueContainer1<_T>, _T extends ModelBase> ValueContainer2<Integer, List<_A>> HMC(Connection var1, String var2, String var3, List<ENC.END> var4, List<CellQuery> var5, List<CellValue<?>> var6, List<Expression> var7, List<CellOrder> var8, Integer var9, Integer var10, ENC.ENF<_A, _T> var11) throws FFK {
+    private <_A extends ValueContainer1<_T>, _T extends ModelBase> ValueContainer2<Integer, List<_A>> HMC(Connection var1, String var2, String var3, List<CellType> var4, List<CellQuery> var5, List<CellValue<?>> var6, List<Expression> var7, List<CellOrder> var8, Integer var9, Integer var10, ENC.ENF<_A, _T> var11) throws FFK {
 
         try {
             if (var11 == null) {
@@ -2179,7 +2181,7 @@ public class EMX implements ENC {
         }
     }
 
-    public <_T extends LW> void HME(FDO var1, FFF var2, String var3, _T var4) throws FFK {
+    public <_T extends LW> void HME(SqlOperation var1, FFF var2, String var3, _T var4) throws FFK {
 
         this.HML(var1, var2, var3, "preferences", var4);
 
@@ -2205,13 +2207,13 @@ public class EMX implements ENC {
 
         while (var6.hasNext()) {
             Map.Entry var7 = (Map.Entry) var6.next();
-            var3.add(new CellValue(END.getDefinedCellByName((String) var7.getKey()).getDefinition(), var7.getValue()));
+            var3.add(new CellValue(CellType.getDefinedCellByName((String) var7.getKey()).getDefinition(), var7.getValue()));
         }
 
         this.HMT(this.connection, var1, var4, var3);
     }
 
-    public <_T extends Invoice<?>> void HMF(FDO var1, FFF var2, _T var3) throws FFK {
+    public <_T extends Invoice<?>> void HMF(SqlOperation var1, FFF var2, _T var3) throws FFK {
 
         ArrayList var4 = new ArrayList();
         if (var3.getIssuerNumber() != null && var3.getIssuerNumber().getValue() != null) {
@@ -2230,8 +2232,8 @@ public class EMX implements ENC {
         label319:
         switch (var3.getInvoiceType()) {
             case SELL:
-                if (((HY) var3).getInvoicingDate() != null && ((HY) var3).getInvoicingDate().getValue() != null) {
-                    var4.add(new CellValue(FMC, ((HY) var3).getInvoicingDate().getValueDate()));
+                if (((a.a.a.c.f.a.e.BaseInvoiceSell) var3).getInvoicingDate() != null && ((a.a.a.c.f.a.e.BaseInvoiceSell) var3).getInvoicingDate().getValue() != null) {
+                    var4.add(new CellValue(FMC, ((a.a.a.c.f.a.e.BaseInvoiceSell) var3).getInvoicingDate().getValueDate()));
                 }
 
                 switch (var3.getInvoiceSubType()) {
@@ -2335,7 +2337,7 @@ public class EMX implements ENC {
 
     }
 
-    public <_T extends InvoiceOther<?>> void ROE(FDO var1, FFF var2, _T var3) throws FFK {
+    public <_T extends InvoiceOther<?>> void ROE(SqlOperation var1, FFF var2, _T var3) throws FFK {
 
         ArrayList var4 = new ArrayList();
         if (var3.getIssuerNumber() != null && var3.getIssuerNumber().getValue() != null) {
@@ -2354,8 +2356,8 @@ public class EMX implements ENC {
         label201:
         switch (var3.getInvoiceOtherType()) {
             case SELL:
-                if (((QSO) var3).getInvoicingDate() != null && ((QSO) var3).getInvoicingDate().getValue() != null) {
-                    var4.add(new CellValue(FMC, ((QSO) var3).getInvoicingDate().getValueDate()));
+                if (((BaseInvoiceSell) var3).getInvoicingDate() != null && ((BaseInvoiceSell) var3).getInvoicingDate().getValue() != null) {
+                    var4.add(new CellValue(FMC, ((BaseInvoiceSell) var3).getInvoicingDate().getValueDate()));
                 }
 
                 switch (var3.getInvoiceOtherSubType()) {
@@ -2425,13 +2427,13 @@ public class EMX implements ENC {
 
     }
 
-    public <_T extends ReceiptRecord> void HMG(FDO var1, FFF var2, _T var3) throws FFK {
+    public <_T extends ReceiptRecord> void HMG(SqlOperation var1, FFF var2, _T var3) throws FFK {
 
         this.HMN(var1, var2, "receiptrecords", var3, (ModelBusinessPeriodElement) null, var3.getReceiptRecordType().name(), null, null);
 
     }
 
-    public <_T extends Settlement> void HMH(FDO var1, FFF var2, _T var3, _T var4) throws FFK {
+    public <_T extends Settlement> void HMH(SqlOperation var1, FFF var2, _T var3, _T var4) throws FFK {
 
         ArrayList var5 = new ArrayList();
         var5.add(new CellValue(FLX, var3.FJI().getValue()));
@@ -2439,7 +2441,7 @@ public class EMX implements ENC {
 
     }
 
-    public <_T extends Declaration, _Q extends Settlement> void HMI(FDO var1, FFF var2, _T var3, _Q var4) throws FFK {
+    public <_T extends Declaration, _Q extends Settlement> void HMI(SqlOperation var1, FFF var2, _T var3, _Q var4) throws FFK {
 
         ArrayList var5 = new ArrayList();
         var5.add(new CellValue(FLX, var3.FJI().getValue()));
@@ -2452,7 +2454,7 @@ public class EMX implements ENC {
 
     }
 
-    public <_T extends InvoiceRecord, _Q extends Settlement> void HMJ(FDO var1, FFF var2, _T var3, _Q var4) throws FFK {
+    public <_T extends InvoiceRecord, _Q extends Settlement> void HMJ(SqlOperation var1, FFF var2, _T var3, _Q var4) throws FFK {
 
         ArrayList var5 = new ArrayList();
         var5.add(new CellValue(FLX, var3.FJI().getValue()));
@@ -2464,14 +2466,14 @@ public class EMX implements ENC {
 
     }
 
-    public <_T extends Contractor> void HMK(FDO var1, FFF var2, Contractor var3) throws FFK {
+    public <_T extends Contractor> void HMK(SqlOperation var1, FFF var2, Contractor var3) throws FFK {
 
         ArrayList var4 = new ArrayList();
         this.HMM(var1, var2, "contacts", var3, null, var3.getType(), null, var4);
 
     }
 
-    private <_T extends LW> void HML(FDO var1, FFF var2, String var3, String var4, _T var5) throws FFK {
+    private <_T extends LW> void HML(SqlOperation var1, FFF var2, String var3, String var4, _T var5) throws FFK {
 
         if (var5 == null) {
             throw FCZ.getInstance().IHG();
@@ -2504,7 +2506,7 @@ public class EMX implements ENC {
 
     }
 
-    private <_T extends ModelBusinessTopElement> void HMM(FDO var1, FFF var2, String var3, Contractor var4, _T var5, String var6, String var7, List<CellValue<?>> var8) throws FFK {
+    private <_T extends ModelBusinessTopElement> void HMM(SqlOperation var1, FFF var2, String var3, Contractor var4, _T var5, String var6, String var7, List<CellValue<?>> var8) throws FFK {
 
         if (var4 == null) {
             throw new FFK("Contractor cannot be NULL!");
@@ -2541,7 +2543,7 @@ public class EMX implements ENC {
 
     }
 
-    private <_T extends ModelBusinessPeriodElement> void HMN(FDO var1, FFF var2, String var3, _T var4, _T var5, String var6, String var7, List<CellValue<?>> var8) throws FFK {
+    private <_T extends ModelBusinessPeriodElement> void HMN(SqlOperation var1, FFF var2, String var3, _T var4, _T var5, String var6, String var7, List<CellValue<?>> var8) throws FFK {
 
         ArrayList var9 = new ArrayList();
         var9.add(new CellValue(FLD, var4.getId()));
@@ -2575,7 +2577,7 @@ public class EMX implements ENC {
         }
     }
 
-    private void HMO(Connection var1, FDO var2, FFF var3, String var4, List<CellValue<?>> var5, List<CellValue<?>> var6, byte[] var7) throws FFK {
+    private void HMO(Connection var1, SqlOperation var2, FFF var3, String var4, List<CellValue<?>> var5, List<CellValue<?>> var6, byte[] var7) throws FFK {
 
         try {
             ArrayList var12 = null;
@@ -2628,7 +2630,7 @@ public class EMX implements ENC {
         }
     }
 
-    public <_T extends Dictionary> void HMP(FDO var1, _T var2) throws FFK {
+    public <_T extends Dictionary> void HMP(SqlOperation var1, _T var2) throws FFK {
 
         if (var2.IYW().getValue() == null || var2.IYX().getValue() == null) {
             throw new FFK("DictionaryName and dictionaryEntryName must be set!");
@@ -2963,7 +2965,7 @@ public class EMX implements ENC {
 
     }
 
-    public Integer getMaxDocumentIndex_Settlements(Period var1, JH var2) throws FFK {
+    public Integer getMaxDocumentIndex_Settlements(Period var1, SettlementType var2) throws FFK {
 
         Integer var3;
         var3 = this.getMaxDocumentIndex(var1, var2, null, "settlements");
@@ -2971,7 +2973,7 @@ public class EMX implements ENC {
         return var3;
     }
 
-    public Integer getMaxDocumentIndex_InvoiceRecords(Period var1, IH var2) throws FFK {
+    public Integer getMaxDocumentIndex_InvoiceRecords(Period var1, InvoiceRecordType var2) throws FFK {
 
         Integer var3;
         var3 = this.getMaxDocumentIndex(var1, var2, null, "invoicerecords");
@@ -2979,7 +2981,7 @@ public class EMX implements ENC {
         return var3;
     }
 
-    public Integer getMaxDocumentIndex_Declarations(Period var1, HM var2, AGWW var3) throws FFK {
+    public Integer getMaxDocumentIndex_Declarations(Period var1, DeclarationType var2, DeclarationSubtype var3) throws FFK {
 
         Integer var4;
         var4 = this.getMaxDocumentIndex(var1, var2, var3, "declarations");

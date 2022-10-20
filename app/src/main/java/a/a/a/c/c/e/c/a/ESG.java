@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.a.ENJ;
 import a.a.a.c.c.d.a.ENO;
 import a.a.a.c.c.d.d.*;
@@ -20,11 +20,11 @@ import a.a.a.c.c.e.c.c.ESL;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.JX;
-import a.a.a.c.f.b.c.a.KH;
+import a.a.a.c.f.b.c.a.MonthType;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
@@ -43,7 +43,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
@@ -79,11 +78,11 @@ public class ESG extends BaseProgressFxController<ESJ> {
     @FXML
     public TreeTableColumn<ESL, JX> fxml_settelmentTable_settlement_date;
     @FXML
-    public TreeTableColumn<ESL, JG> fxml_settelmentTable_settlement_status;
+    public TreeTableColumn<ESL, SettlementStatus> fxml_settelmentTable_settlement_status;
     @FXML
     public TreeTableColumn<ESL, Date> fxml_settelmentTable_declaration_jpk_vat_sent_date;
     @FXML
-    public TreeTableColumn<ESL, HL> fxml_settelmentTable_declaration_jpk_vat_status;
+    public TreeTableColumn<ESL, DeclarationStatus> fxml_settelmentTable_declaration_jpk_vat_status;
     @FXML
     public Hyperlink fxml_generalHyperlinkNextPeriods;
     @FXML
@@ -146,8 +145,8 @@ public class ESG extends BaseProgressFxController<ESJ> {
                 return var1.getValue().getValue().getSettlementDate();
             }
         });
-        this.fxml_settelmentTable_settlement_status.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ESL, JG>, ObservableValue<JG>>() {
-            public ObservableValue<JG> call(TreeTableColumn.CellDataFeatures<ESL, JG> var1) {
+        this.fxml_settelmentTable_settlement_status.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ESL, SettlementStatus>, ObservableValue<SettlementStatus>>() {
+            public ObservableValue<SettlementStatus> call(TreeTableColumn.CellDataFeatures<ESL, SettlementStatus> var1) {
                 return var1.getValue().getValue().getSettlementStatus();
             }
         });
@@ -156,8 +155,8 @@ public class ESG extends BaseProgressFxController<ESJ> {
                 return var1.getValue().getValue().getDeclarationJPKVATDate();
             }
         });
-        this.fxml_settelmentTable_declaration_jpk_vat_status.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ESL, HL>, ObservableValue<HL>>() {
-            public ObservableValue<HL> call(TreeTableColumn.CellDataFeatures<ESL, HL> var1) {
+        this.fxml_settelmentTable_declaration_jpk_vat_status.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ESL, DeclarationStatus>, ObservableValue<DeclarationStatus>>() {
+            public ObservableValue<DeclarationStatus> call(TreeTableColumn.CellDataFeatures<ESL, DeclarationStatus> var1) {
                 return var1.getValue().getValue().getDeclarationJPKVATStatus();
             }
         });
@@ -290,7 +289,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
         Integer var1 = this.fxml_settelmentTable.getSelectionModel().getSelectedIndex();
         DeclarationJPK_VAT var2 = ((ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue()).getDeclarationJPKVAT();
         ESL var3 = (ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue();
-        HL var4 = null;
+        DeclarationStatus var4 = null;
         if (var2 != null) {
             var4 = var2.getDeclarationStatus();
         }
@@ -298,7 +297,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
         if (var4 != null) {
             switch (var4) {
                 case NONE:
-                    this.QOZ(AGWW.VAT);
+                    this.QOZ(DeclarationSubtype.VAT);
                     this.resetSettlement(var3);
                     this.HTA();
                     break;
@@ -319,7 +318,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
                     throw new FFI("unknown declaration status");
             }
         } else {
-            this.QOZ(AGWW.VAT);
+            this.QOZ(DeclarationSubtype.VAT);
             this.resetSettlement(var3);
             this.HTA();
             this.HTF(var1);
@@ -334,16 +333,16 @@ public class ESG extends BaseProgressFxController<ESJ> {
 
     }
 
-    private void QOZ(AGWW var1) {
+    private void QOZ(DeclarationSubtype var1) {
 
         try {
             Settlement var2 = ((ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue()).getSettlement();
-            if (var2 != null && JG.SETTLED.equals(var2.getSettlementStatus())) {
+            if (var2 != null && SettlementStatus.SETTLED.equals(var2.getSettlementStatus())) {
                 FXMLLoader var3 = new FXMLLoader();
                 var3.setLocation(ESG.class.getResource("/fxml/invoicesSettlements_generateAndSend_JPK.fxml"));
                 var3.setResources(this.resources);
                 AnchorPane var4 = var3.load();
-                Stage var5 = new Stage();
+                javafx.stage.Stage var5 = new javafx.stage.Stage();
                 var5.setTitle(this.resources.getString("micro.process.invoices_settlements.generateandsend_jpk_vat.dialog.header"));
                 var5.initModality(Modality.WINDOW_MODAL);
                 var5.initOwner(this.primaryStage);
@@ -448,7 +447,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
 
         try {
             EPD var2 = null;
-            if (var1.getDeclarationType() == HM.JPK) {
+            if (var1.getDeclarationType() == DeclarationType.JPK) {
                 DeclarationJPK var3 = (DeclarationJPK) var1;
                 if (var3.getUpo() != null) {
                     var2 = new EPD(this.resources, this.getProcess().getTempFile(this.getStageToHandle(), "pdf"), var3);
@@ -479,7 +478,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
     @FXML
     protected void fxml_handleButton_goto_jpk_list(ActionEvent var1) {
 
-        this.getApplication().initController(this.getFxmlName(), EOS.DECLARATION_LIST.getProcessFxmlFileName(), null);
+        this.getApplication().initController(this.getFxmlName(), Stage.DECLARATION_LIST.getProcessFxmlFileName(), null);
 
     }
 
@@ -495,8 +494,8 @@ public class ESG extends BaseProgressFxController<ESJ> {
             final ESL var2 = (ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue();
             final Settlement var3 = ((ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue()).getSettlement();
             final Integer var4 = this.fxml_settelmentTable.getSelectionModel().getSelectedIndex();
-            if (var3 != null && !JG.SETTLED.equals(var3.getSettlementStatus())) {
-                var3.setSettlementStatus(JG.SETTLED);
+            if (var3 != null && !SettlementStatus.SETTLED.equals(var3.getSettlementStatus())) {
+                var3.setSettlementStatus(SettlementStatus.SETTLED);
                 log.info("Period is going to be settled.");
                 final ESJ var5 = this.getProcess();
                 final MTI var6 = new MTI(null);
@@ -531,7 +530,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
                     FCR.IGM(this.resources.getString("micro.process.invoices_settlements.Error"), this.resources.getString("micro.process.invoices_settlements.Error.Selection"), this.resources.getString("micro.process.invoices_settlements.Error.NoSelectionToSettle"), false);
                 }
 
-                if (JG.SETTLED.equals(var3.getSettlementStatus())) {
+                if (SettlementStatus.SETTLED.equals(var3.getSettlementStatus())) {
                     FCR.IGK(this.resources.getString("micro.process.invoices_settlements.Error"), this.resources.getString("micro.process.invoices_settlements.Error.Settle"), false);
                 }
             }
@@ -568,8 +567,8 @@ public class ESG extends BaseProgressFxController<ESJ> {
             Settlement var2 = ((ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue()).getSettlement();
             ESL var3 = (ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue();
             Integer var4 = this.fxml_settelmentTable.getSelectionModel().getSelectedIndex();
-            if (var2 != null && JG.SETTLED.equals(var2.getSettlementStatus())) {
-                var2.setSettlementStatus(JG.CANCELED_UNCHANGED);
+            if (var2 != null && SettlementStatus.SETTLED.equals(var2.getSettlementStatus())) {
+                var2.setSettlementStatus(SettlementStatus.CANCELED_UNCHANGED);
                 log.info("Period was canceled.");
                 ESJ var5 = this.getProcess();
                 var5.HTN(var2);
@@ -579,7 +578,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
                     FCR.IGM(this.resources.getString("micro.process.invoices_settlements.Error"), this.resources.getString("micro.process.invoices_settlements.Error.Selection"), this.resources.getString("micro.process.invoices_settlements.Error.NoSelectionToCancel"), false);
                 }
 
-                if (!JG.SETTLED.equals(var2.getSettlementStatus())) {
+                if (!SettlementStatus.SETTLED.equals(var2.getSettlementStatus())) {
                     FCR.IGK(this.resources.getString("micro.process.invoices_settlements.Error"), this.resources.getString("micro.process.invoices_settlements.Error.Cancel"), false);
                 }
             }
@@ -605,7 +604,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
 
         final Settlement var2 = ((ESL) ((TreeItem) this.fxml_settelmentTable.getSelectionModel().getSelectedItem()).getValue()).getSettlement();
         if (var2 != null) {
-            this.getApplication().initController(this.getFxmlName(), EOS.INVOICES_RECORDS.getProcessFxmlFileName(), new Consumer<ENJ<?>>() {
+            this.getApplication().initController(this.getFxmlName(), Stage.INVOICES_RECORDS.getProcessFxmlFileName(), new Consumer<ENJ<?>>() {
                 public void accept(ENJ<?> var1) {
 
                     try {
@@ -627,7 +626,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
     protected void fxml_handleButton_NotSettledInvoices(ActionEvent var1) {
 
         log.info("Button [No Settle Invoice Sell] clicked");
-        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_LIST.getProcessFxmlFileName(), new Consumer<ENO<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_SALE_LIST.getProcessFxmlFileName(), new Consumer<ENO<?>>() {
             public void accept(ENO<?> var1) {
 
                 var1.setOnlyEmptyPeriod();
@@ -699,7 +698,7 @@ public class ESG extends BaseProgressFxController<ESJ> {
             var2.setResources(this.resources);
             AnchorPane var3 = null;
             var3 = var2.load();
-            Stage var4 = new Stage();
+            javafx.stage.Stage var4 = new javafx.stage.Stage();
             var4.setTitle(this.resources.getString("micro.process.invoices_settlements.dialogEmpty.Title"));
             var4.initModality(Modality.WINDOW_MODAL);
             var4.initOwner(this.primaryStage);
@@ -714,8 +713,8 @@ public class ESG extends BaseProgressFxController<ESJ> {
             var4.showAndWait();
             if (var6.HSV() && ((ComboBoxRequired) var6.fxml_invoice_settlements_yearController.fxml_component_main_element).getValue() != null && ((ComboBoxRequired) var6.fxml_invoice_settlements_monthController.fxml_component_main_element).getValue() != null) {
                 ESJ var7 = this.getProcess();
-                Period var8 = new Period((Integer) ((ComboBoxRequired) var6.fxml_invoice_settlements_yearController.fxml_component_main_element).getValue(), ((KH) ((ComboBoxRequired) var6.fxml_invoice_settlements_monthController.fxml_component_main_element).getValue()).getNumber());
-                JG var9 = var7.getSettlementStatus(var8);
+                Period var8 = new Period((Integer) ((ComboBoxRequired) var6.fxml_invoice_settlements_yearController.fxml_component_main_element).getValue(), ((MonthType) ((ComboBoxRequired) var6.fxml_invoice_settlements_monthController.fxml_component_main_element).getValue()).getNumber());
+                SettlementStatus var9 = var7.getSettlementStatus(var8);
                 if (var9 == null) {
                     SettlementVat var10 = new SettlementVat();
                     var10.setPeriod(var8.DDN());

@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.b.a.ERY;
 import a.a.a.c.c.e.b.c.ESC;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ESB extends ProcessDefinitionBase {
-    public static final EOS GBR;
+    public static final Stage GBR;
 
     public ESB() {
     }
@@ -24,7 +24,7 @@ public class ESB extends ProcessDefinitionBase {
         return GBR.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
+    public String getTitle(Anchor var1) throws FFK {
         switch (var1) {
             case MAIN:
                 return FCW.getInstance().getMessageForKey("micro.user.button.main.title");
@@ -51,11 +51,11 @@ public class ESB extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.USER_DATA));
+        var1.add(new LN(LN.StageType.USER_DATA));
         return var1;
     }
 
     static {
-        GBR = EOS.USER;
+        GBR = Stage.USER;
     }
 }

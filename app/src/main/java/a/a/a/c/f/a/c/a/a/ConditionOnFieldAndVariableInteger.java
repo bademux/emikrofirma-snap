@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import a.a.a.c.f.a.c.a.f.VariableInteger;
@@ -20,7 +20,7 @@ public class ConditionOnFieldAndVariableInteger extends ConditionOnFieldAndVaria
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         ValueContainer2 var8;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
@@ -54,17 +54,17 @@ public class ConditionOnFieldAndVariableInteger extends ConditionOnFieldAndVaria
         }
 
         if (var6) {
-            ValueContainer2 var12 = new ValueContainer2(AHCI.SUCCESS, null);
+            ValueContainer2 var12 = new ValueContainer2(ActionResult.SUCCESS, null);
             return var12;
         }
 
-        AHCI var7 = null;
+        ActionResult var7 = null;
         switch (this.AHTY) {
             case WARNING:
-                var7 = AHCI.WARNING;
+                var7 = ActionResult.WARNING;
                 break;
             case ERROR:
-                var7 = AHCI.ERROR;
+                var7 = ActionResult.ERROR;
                 break;
             default:
                 throw new FFI("Invalid actionType [" + this.AHTY + "]!");

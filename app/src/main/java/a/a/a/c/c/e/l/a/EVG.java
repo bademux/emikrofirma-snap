@@ -2,8 +2,8 @@ package a.a.a.c.c.e.l.a;
 
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.d.d.ENW;
-import a.a.a.c.f.a.e.HY;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.a.e.BaseInvoiceSell;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.property.*;
 
@@ -23,12 +23,12 @@ public class EVG implements ENW {
     private final ObjectProperty<BigDecimal> GOT;
     private final ObjectProperty<BigDecimal> GOU;
     private final StringProperty RAS;
-    private final EDF<HY> GOV;
+    private final EDF<BaseInvoiceSell> GOV;
     private final StringProperty GOW;
     private final BooleanProperty GOX;
     private final BooleanProperty GOY;
 
-    public EVG(Integer var1, LocalDate var2, String var3, String var4, String var5, String var6, BigDecimal var7, BigDecimal var8, BigDecimal var9, EDF<HY> var10, String var11, boolean var12, boolean var13) {
+    public EVG(Integer var1, LocalDate var2, String var3, String var4, String var5, String var6, BigDecimal var7, BigDecimal var8, BigDecimal var9, EDF<BaseInvoiceSell> var10, String var11, boolean var12, boolean var13) {
         this.GOM = new SimpleObjectProperty(var1);
         this.GON = new SimpleObjectProperty(var2);
         this.GOO = new SimpleStringProperty(var3);
@@ -42,7 +42,7 @@ public class EVG implements ENW {
         this.GOW = new SimpleStringProperty(var11);
         this.GOX = new SimpleBooleanProperty(var12);
         this.GOY = new SimpleBooleanProperty(var13);
-        if (var10 != null && var10.getState().equals(QSW.CANCELED)) {
+        if (var10 != null && var10.getState().equals(InvoiceState.CANCELED)) {
             this.RAS = new SimpleStringProperty(RAQ);
         } else {
             this.RAS = new SimpleStringProperty(RAR);
@@ -90,7 +90,7 @@ public class EVG implements ENW {
         return this.RAS;
     }
 
-    public EDF<HY> getInvoice() {
+    public EDF<BaseInvoiceSell> getInvoice() {
         return this.GOV;
     }
 

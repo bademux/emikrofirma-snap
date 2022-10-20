@@ -98,8 +98,8 @@ public class ConfigurationPackage extends AHDI {
 
     }
 
-    public AHCI getFinalActionResult() {
-        AHCI var1 = AHCI.SUCCESS;
+    public ActionResult getFinalActionResult() {
+        ActionResult var1 = ActionResult.SUCCESS;
 
         Iterator var2;
         SelectedField var3;
@@ -115,7 +115,7 @@ public class ConfigurationPackage extends AHDI {
         return var1;
     }
 
-    private AHCI AIDE(AHCI var1, AHCI var2) {
+    private ActionResult AIDE(ActionResult var1, ActionResult var2) {
         boolean var3 = true;
         int var4;
         if (var1.getLevel() >= var2.getLevel()) {
@@ -124,7 +124,7 @@ public class ConfigurationPackage extends AHDI {
             var4 = var2.getLevel();
         }
 
-        return AHCI.getByLevel(var4);
+        return ActionResult.getByLevel(var4);
     }
 
     public static String AIDF(String var0, boolean var1) {

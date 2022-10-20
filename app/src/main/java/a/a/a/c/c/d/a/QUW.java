@@ -6,13 +6,13 @@ import a.a.a.c.c.d.o.*;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.c.QJW;
+import a.a.a.c.f.a.c.TitledContractor;
 import a.a.a.c.f.a.e.InvoiceElement;
 import a.a.a.c.f.a.e.InvoiceElementPurchase;
 import a.a.a.c.f.a.e.InvoicePurchase;
-import a.a.a.c.f.b.a.JJ;
+import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
 import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
@@ -103,7 +103,7 @@ public abstract class QUW extends BaseFxController implements EMO<InvoiceElement
         super(var1, var2);
     }
 
-    public abstract boolean RJW(Period var1, RefId var2, KA var3);
+    public abstract boolean RJW(Period var1, RefId var2, Nip var3);
 
     public abstract boolean RJX(Period var1);
 
@@ -119,7 +119,7 @@ public abstract class QUW extends BaseFxController implements EMO<InvoiceElement
         this.fxml_inner_parent.requestFocus();
     }
 
-    public void setContractorFromAutocomplete(QJW var1) {
+    public void setContractorFromAutocomplete(TitledContractor var1) {
 
         if (var1 != null) {
             Contractor var2 = var1.getContractor().AICD();
@@ -133,7 +133,7 @@ public abstract class QUW extends BaseFxController implements EMO<InvoiceElement
 
             this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().setText(var2.getName().getValue());
             this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().positionCaret(this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().getText().length());
-            JJ var4 = var2.DAM();
+            Address var4 = var2.DAM();
             this.fxml_include_Street_boxController.fxml_component_main_element.setText(var4.getStreet().getValue());
             this.fxml_include_HouseNumber_boxController.fxml_component_main_element.setText(var4.getHouseNumber().getValue());
             this.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.setText(var4.getApartmentNumber().getValue());
@@ -282,7 +282,7 @@ public abstract class QUW extends BaseFxController implements EMO<InvoiceElement
             this.HHD(this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().textProperty(), var2.DAI().DDG());
             this.HHD(this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty(), var2.DAJ().DDG());
             this.HHD(this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty(), var1.DAR().DDG());
-            JJ var3 = var2.DAM();
+            Address var3 = var2.DAM();
             this.HHD(this.fxml_include_Street_boxController.fxml_component_main_element.textProperty(), var3.DDA().DDG());
             this.HHD(this.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty(), var3.DDB().DDG());
             this.HHD(this.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty(), var3.DDC().DDG());

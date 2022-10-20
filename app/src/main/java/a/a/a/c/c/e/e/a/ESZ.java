@@ -4,17 +4,17 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import java.util.function.Consumer;
 import a.a.a.c.c.b.a.BaseFxController;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.e.EOU;
 import a.a.a.c.c.e.e.c.ETE;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.KO;
-import a.a.a.c.f.b.c.a.KN;
+import a.a.a.c.f.b.a.Address;
+import a.a.a.c.f.b.c.Nip;
+import a.a.a.c.f.b.c.Text;
+import a.a.a.c.f.b.c.a.Voivodeship;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.b.FCW;
 import com.github.bademux.emk.app.FXApp;
@@ -32,7 +32,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.*;
@@ -41,9 +40,9 @@ public class ESZ extends BaseFxController {
     @FXML
     public TableView<Contractor> fxml_contractorsTable;
     @FXML
-    public TableColumn<Contractor, KO> fxml_contact_name;
+    public TableColumn<Contractor, Text> fxml_contact_name;
     @FXML
-    public TableColumn<Contractor, KA> fxml_contact_nip;
+    public TableColumn<Contractor, Nip> fxml_contact_nip;
     @FXML
     private TextField fxml_contractor_search;
     @FXML
@@ -55,7 +54,7 @@ public class ESZ extends BaseFxController {
     @FXML
     public EYM fxml_include_AccountNumber_boxController;
     @FXML
-    public EYN<KN> fxml_include_address_boxController;
+    public EYN<Voivodeship> fxml_include_address_boxController;
     @FXML
     public EZK fxml_include_remarks_boxController;
     @FXML
@@ -94,7 +93,7 @@ public class ESZ extends BaseFxController {
         this.fxml_contact_nip.setCellFactory(new EOU());
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getCellFactory().call(null));
-        this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.getItems().addAll(KN.values());
+        this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.getItems().addAll(Voivodeship.values());
         this.fxml_contractor_private_person.disableProperty().set(true);
         this.fxml_include_ContractorName_boxController.fxml_component_main_element.editableProperty().set(false);
         this.fxml_include_nip_boxController.fxml_component_main_element.editableProperty().set(false);
@@ -163,12 +162,12 @@ public class ESZ extends BaseFxController {
 
     }
 
-    public Stage QGO() throws IOException {
+    public javafx.stage.Stage QGO() throws IOException {
         FXMLLoader var1 = new FXMLLoader();
         var1.setLocation(ESZ.class.getResource("/fxml/new_contact.fxml"));
         var1.setResources(this.resources);
         AnchorPane var2 = var1.load();
-        Stage var3 = new Stage();
+        javafx.stage.Stage var3 = new javafx.stage.Stage();
         var3.setTitle(this.resources.getString("micro.process.contacts_new.NewContact"));
         var3.initModality(Modality.WINDOW_MODAL);
         var3.initOwner(this.primaryStage);
@@ -202,13 +201,13 @@ public class ESZ extends BaseFxController {
             var1.DAM().DCX().setValue(this.QGG.fxml_include_address_boxController.fxml_include_District_boxController.fxml_component_main_element.getText());
             var1.DAM().DCY().setValue(this.QGG.fxml_include_address_boxController.fxml_include_Community_boxController.fxml_component_main_element.getText());
             var1.DAM().DCV().setValue(this.QGG.fxml_include_address_boxController.fxml_include_CountryCode_boxController.fxml_component_main_element.getText());
-            var1.DAM().DCW().setValue((KN) ((ComboBoxRequired) this.QGG.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getValue());
+            var1.DAM().DCW().setValue((Voivodeship) ((ComboBoxRequired) this.QGG.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getValue());
             var1.DAN().setValue(this.QGG.fxml_include_address_boxController.fxml_include_telephone_boxController.fxml_component_main_element.getText());
             var1.DAO().setValue(this.QGG.fxml_include_address_boxController.fxml_include_email_boxController.fxml_component_main_element.getText());
             var1.DAP().setValue(this.QGG.fxml_include_remarks_boxController.fxml_component_main_element.getText());
             this.GFL.HHK();
             this.GFL.setContractor(var1);
-            this.GFL.setMode(ETC.NEW);
+            this.GFL.setMode(Mode.NEW);
             this.GFL.HHL();
             this.fxml_contractorsTable.getItems().clear();
             this.GFJ.add(var1);
@@ -225,7 +224,7 @@ public class ESZ extends BaseFxController {
 
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [new Contractor] clicked");
-            Stage var2 = this.QGO();
+            javafx.stage.Stage var2 = this.QGO();
             var2.showAndWait();
             this.QGP();
         } catch (FFK | FFO | IOException var6) {
@@ -274,7 +273,7 @@ public class ESZ extends BaseFxController {
             this.fxml_include_ContractorName_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAI().DDG());
             this.fxml_include_regon_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAK().DDG());
             this.fxml_include_AccountNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAL().DDG());
-            JJ var2 = var1.DAM();
+            Address var2 = var1.DAM();
             this.fxml_include_address_boxController.fxml_include_Street_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDA().DDG());
             this.fxml_include_address_boxController.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDB().DDG());
             this.fxml_include_address_boxController.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDC().DDG());
@@ -299,7 +298,7 @@ public class ESZ extends BaseFxController {
             this.fxml_include_nip_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DAJ().DDG());
             this.fxml_include_regon_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DAK().DDG());
             this.fxml_include_AccountNumber_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DAL().DDG());
-            JJ var2 = var1.DAM();
+            Address var2 = var1.DAM();
             this.fxml_include_address_boxController.fxml_include_Street_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDA().DDG());
             this.fxml_include_address_boxController.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDB().DDG());
             this.fxml_include_address_boxController.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDC().DDG());
@@ -341,7 +340,7 @@ public class ESZ extends BaseFxController {
     @FXML
     protected void fxml_handleButton_newInvoiceSell(ActionEvent var1) {
 
-        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_SALE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
             public void accept(ENN<?> var1) {
 
                 Contractor var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
@@ -355,7 +354,7 @@ public class ESZ extends BaseFxController {
     @FXML
     protected void fxml_handleButton_newInvoicePurchase(ActionEvent var1) {
 
-        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
             public void accept(ENN<?> var1) {
 
                 Contractor var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();

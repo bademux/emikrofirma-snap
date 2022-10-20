@@ -1,7 +1,7 @@
 package a.a.a.c.f.d;
 
 import a.a.a.c.f.a.EYD;
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.a.RequiredGridPane;
 import a.a.a.c.f.c.c.ComboBoxRequiredText;
 import javafx.beans.value.ChangeListener;
@@ -20,8 +20,8 @@ import javafx.util.StringConverter;
 
 import java.util.List;
 
-public abstract class FCL<_T extends ComboBoxRequiredText<QST>> extends EYD<QST, RequiredGridPane, _T> {
-    public QST QVK;
+public abstract class FCL<_T extends ComboBoxRequiredText<ObjectWithTitle>> extends EYD<ObjectWithTitle, RequiredGridPane, _T> {
+    public ObjectWithTitle QVK;
     public String HAQ;
     public String HAR;
     public boolean HAS;
@@ -34,7 +34,7 @@ public abstract class FCL<_T extends ComboBoxRequiredText<QST>> extends EYD<QST,
 
     public FCL(String var1, Integer var2, int var3) {
         super(var1);
-        this.QVK = new QST() {
+        this.QVK = new ObjectWithTitle() {
             private String RPC;
 
             public String getTitle(int var1) {
@@ -63,10 +63,10 @@ public abstract class FCL<_T extends ComboBoxRequiredText<QST>> extends EYD<QST,
 
     public void initialize() {
         super.initialize();
-        this.fxml_component_main_element.setCellFactory(new Callback<ListView<QST>, ListCell<QST>>() {
-            public ListCell<QST> call(ListView<QST> var1) {
-                return new ListCell<QST>() {
-                    protected void updateItem(QST var1, boolean var2) {
+        this.fxml_component_main_element.setCellFactory(new Callback<ListView<ObjectWithTitle>, ListCell<ObjectWithTitle>>() {
+            public ListCell<ObjectWithTitle> call(ListView<ObjectWithTitle> var1) {
+                return new ListCell<ObjectWithTitle>() {
+                    protected void updateItem(ObjectWithTitle var1, boolean var2) {
                         if (var1 != null) {
                             super.updateItem(var1, var2);
                             this.setText(var1.getTitle(FCL.this.getTitleType()));
@@ -98,13 +98,13 @@ public abstract class FCL<_T extends ComboBoxRequiredText<QST>> extends EYD<QST,
 
             }
         });
-        this.fxml_component_main_element.setConverter(new StringConverter<QST>() {
-            public String toString(QST var1) {
+        this.fxml_component_main_element.setConverter(new StringConverter<ObjectWithTitle>() {
+            public String toString(ObjectWithTitle var1) {
                 return var1 != null ? var1.getTitle(FCL.this.getTitleType()) : null;
             }
 
-            public QST fromString(String var1) {
-                return (QST) ((ComboBoxRequiredText) FCL.this.fxml_component_main_element).getValue();
+            public ObjectWithTitle fromString(String var1) {
+                return (ObjectWithTitle) ((ComboBoxRequiredText) FCL.this.fxml_component_main_element).getValue();
             }
         });
         final KeyCodeCombination var1 = new KeyCodeCombination(KeyCode.Z, KeyCombination.SHORTCUT_DOWN);
@@ -127,7 +127,7 @@ public abstract class FCL<_T extends ComboBoxRequiredText<QST>> extends EYD<QST,
         this.fxml_component_main_element.hide();
         if (this.fxml_component_main_element.isFocused()) {
             this.HAS = true;
-            this.set((QST) ((ComboBoxRequiredText) this.fxml_component_main_element).getValue());
+            this.set((ObjectWithTitle) ((ComboBoxRequiredText) this.fxml_component_main_element).getValue());
         }
 
     }
@@ -138,9 +138,9 @@ public abstract class FCL<_T extends ComboBoxRequiredText<QST>> extends EYD<QST,
 
     protected abstract int getTitleType();
 
-    protected abstract void set(QST var1);
+    protected abstract void set(ObjectWithTitle var1);
 
-    protected abstract List<? extends QST> getByString(String var1);
+    protected abstract List<? extends ObjectWithTitle> getByString(String var1);
 
     public abstract boolean isAllowed(String var1);
 }

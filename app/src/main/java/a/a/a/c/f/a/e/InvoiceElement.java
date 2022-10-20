@@ -1,25 +1,25 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.f.a.IJ;
+import a.a.a.c.f.a.ModelBaseAbstract;
 import a.a.a.c.f.b.c.*;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 import java.math.BigDecimal;
 
 @XmlTransient
-public abstract class InvoiceElement extends IJ implements Cloneable {
+public abstract class InvoiceElement extends ModelBaseAbstract implements Cloneable {
     protected JY AJX;
-    protected KO AJY;
-    protected KO AJZ;
-    protected JR AKA;
-    protected KO AKB;
-    protected JR AKC;
-    protected JR QWO;
-    protected JR AKD;
-    protected JR AKE;
-    protected JR AKF;
-    protected JR AKG;
-    protected KQ AKH;
+    protected Text AJY;
+    protected Text AJZ;
+    protected Amount AKA;
+    protected Text AKB;
+    protected Amount AKC;
+    protected Amount QWO;
+    protected Amount AKD;
+    protected Amount AKE;
+    protected Amount AKF;
+    protected Amount AKG;
+    protected TaxRateModel AKH;
     protected QSU QWP;
 
     public InvoiceElement() {
@@ -42,89 +42,89 @@ public abstract class InvoiceElement extends IJ implements Cloneable {
         this.AJX = var1;
     }
 
-    public KO getName() {
+    public Text getName() {
         return this.AJY;
     }
 
-    public KO DBE() {
+    public Text DBE() {
         if (this.AJY == null) {
-            this.AJY = new KO();
+            this.AJY = new Text();
         }
 
         return this.AJY;
     }
 
-    public void setName(KO var1) {
+    public void setName(Text var1) {
         this.AJY = var1;
     }
 
-    public KO getDescription() {
+    public Text getDescription() {
         return this.AJZ;
     }
 
-    public KO DBF() {
+    public Text DBF() {
         if (this.AJZ == null) {
-            this.AJZ = new KO();
+            this.AJZ = new Text();
         }
 
         return this.AJZ;
     }
 
-    public void setDescription(KO var1) {
+    public void setDescription(Text var1) {
         this.AJZ = var1;
     }
 
-    public JR getQuantity() {
+    public Amount getQuantity() {
         return this.AKA;
     }
 
-    public JR DBG() {
+    public Amount DBG() {
         if (this.AKA == null) {
-            this.AKA = new JR();
+            this.AKA = new Amount();
         }
 
         return this.AKA;
     }
 
-    public void setQuantity(JR var1) {
+    public void setQuantity(Amount var1) {
         this.AKA = var1;
     }
 
-    public KO getUnit() {
+    public Text getUnit() {
         return this.AKB;
     }
 
-    public KO DBH() {
+    public Text DBH() {
         if (this.AKB == null) {
-            this.AKB = new KO();
+            this.AKB = new Text();
         }
 
         return this.AKB;
     }
 
-    public void setUnit(KO var1) {
+    public void setUnit(Text var1) {
         this.AKB = var1;
     }
 
-    public JR getNetPriceForUnit() {
+    public Amount getNetPriceForUnit() {
         return this.AKC;
     }
 
-    public JR DBI() {
+    public Amount DBI() {
         if (this.AKC == null) {
-            this.AKC = new JR();
+            this.AKC = new Amount();
         }
 
         return this.AKC;
     }
 
-    public void setNetPriceForUnit(JR var1) {
+    public void setNetPriceForUnit(Amount var1) {
         this.AKC = var1;
     }
 
-    public JR getGrossPriceForUnit() {
+    public Amount getGrossPriceForUnit() {
         if (this.QWO == null && this.AKC != null && this.AKH != null && this.AKH.getValue() != null) {
-            this.QWO = new JR();
+            this.QWO = new Amount();
             byte var1 = 2;
             byte var2 = 4;
             BigDecimal var3 = BigDecimal.ZERO;
@@ -139,9 +139,9 @@ public abstract class InvoiceElement extends IJ implements Cloneable {
         return this.QWO;
     }
 
-    public JR RIF() {
+    public Amount RIF() {
         if (this.QWO == null && this.AKC != null) {
-            this.QWO = new JR();
+            this.QWO = new Amount();
             if (this.AKH.getValue() == null) {
                 return this.QWO;
             }
@@ -156,93 +156,93 @@ public abstract class InvoiceElement extends IJ implements Cloneable {
             BigDecimal var4 = this.AKC.getValue().add(this.AKC.getValue().multiply(var3)).setScale(var1, var2);
             this.QWO.setValue(var4);
         } else if (this.QWO == null) {
-            this.QWO = new JR();
+            this.QWO = new Amount();
         }
 
         return this.QWO;
     }
 
-    public void setGrossPriceForUnit(JR var1) {
+    public void setGrossPriceForUnit(Amount var1) {
         this.QWO = var1;
     }
 
-    public JR getDiscountAmount() {
+    public Amount getDiscountAmount() {
         return this.AKD;
     }
 
-    public JR DBJ() {
+    public Amount DBJ() {
         if (this.AKD == null) {
-            this.AKD = new JR();
+            this.AKD = new Amount();
         }
 
         return this.AKD;
     }
 
-    public void setDiscountAmount(JR var1) {
+    public void setDiscountAmount(Amount var1) {
         this.AKD = var1;
     }
 
-    public JR getNetPriceForAll() {
+    public Amount getNetPriceForAll() {
         return this.AKE;
     }
 
-    public JR DBK() {
+    public Amount DBK() {
         if (this.AKE == null) {
-            this.AKE = new JR();
+            this.AKE = new Amount();
         }
 
         return this.AKE;
     }
 
-    public void setNetPriceForAll(JR var1) {
+    public void setNetPriceForAll(Amount var1) {
         this.AKE = var1;
     }
 
-    public JR getTaxValueForAll() {
+    public Amount getTaxValueForAll() {
         return this.AKF;
     }
 
-    public JR DBL() {
+    public Amount DBL() {
         if (this.AKF == null) {
-            this.AKF = new JR();
+            this.AKF = new Amount();
         }
 
         return this.AKF;
     }
 
-    public void setTaxValueForAll(JR var1) {
+    public void setTaxValueForAll(Amount var1) {
         this.AKF = var1;
     }
 
-    public JR getGrossValueForAll() {
+    public Amount getGrossValueForAll() {
         return this.AKG;
     }
 
-    public JR DBM() {
+    public Amount DBM() {
         if (this.AKG == null) {
-            this.AKG = new JR();
+            this.AKG = new Amount();
         }
 
         return this.AKG;
     }
 
-    public void setGrossValueForAll(JR var1) {
+    public void setGrossValueForAll(Amount var1) {
         this.AKG = var1;
     }
 
-    public KQ getTaxRate() {
+    public TaxRateModel getTaxRate() {
         return this.AKH;
     }
 
-    public KQ DBN() {
+    public TaxRateModel DBN() {
         if (this.AKH == null) {
-            this.AKH = new KQ();
+            this.AKH = new TaxRateModel();
         }
 
         return this.AKH;
     }
 
-    public void setTaxRate(KQ var1) {
+    public void setTaxRate(TaxRateModel var1) {
         this.AKH = var1;
     }
 

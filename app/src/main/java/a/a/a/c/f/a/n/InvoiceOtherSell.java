@@ -9,7 +9,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
         name = "invoiceSell"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class InvoiceOtherSell extends QSO {
+public class InvoiceOtherSell extends BaseInvoiceSell {
     private Contractor QYH;
 
     public InvoiceOtherSell() {

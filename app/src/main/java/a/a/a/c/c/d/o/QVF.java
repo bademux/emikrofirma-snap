@@ -6,7 +6,7 @@ import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZO;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -51,7 +51,7 @@ public class QVF implements ChangeListener<LocalDate> {
                 if (this.RGH.not().get() && this.RGI.fxml_component_main_element.getText() != null && this.RGI.fxml_component_main_element.getText().length() > 0) {
                     RefId var8 = new RefId(this.RGI.fxml_component_main_element.getText());
                     if (this.RGK.fxml_component_main_element.IET()) {
-                        KA var6 = new KA(this.RGK.fxml_component_main_element.getEditor().getText());
+                        Nip var6 = new Nip(this.RGK.fxml_component_main_element.getEditor().getText());
                         if (!this.RGG.RJW(var4, var8, var6)) {
                             this.RGI.fxml_component_main_element.IEW().set(false);
                         }

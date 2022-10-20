@@ -1,14 +1,14 @@
 package a.a.a.c.c.d.m;
 
-import a.a.a.c.f.b.c.a.KK;
+import a.a.a.c.f.b.c.a.TaxOffice;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ComboBox;
 
 public class QKO implements ChangeListener<Boolean> {
-    private final ComboBox<KK> QNP;
+    private final ComboBox<TaxOffice> QNP;
 
-    public QKO(ComboBox<KK> var1) {
+    public QKO(ComboBox<TaxOffice> var1) {
         this.QNP = var1;
     }
 

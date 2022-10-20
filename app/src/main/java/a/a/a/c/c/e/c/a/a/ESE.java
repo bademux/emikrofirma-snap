@@ -4,8 +4,8 @@ import a.a.a.b.f.FFI;
 import a.a.a.c.c.e.c.a.ESG;
 import a.a.a.c.c.e.c.c.ESL;
 import a.a.a.c.f.a.d.DeclarationJPK_VAT;
-import a.a.a.c.f.a.d.HL;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.d.DeclarationStatus;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,7 +26,7 @@ public class ESE implements ChangeListener<TreeItem<ESL>> {
         this.GBU.GCD.set(false);
         if (var3 != null) {
             this.GBU.GCE.set(var3.getValue().HTT());
-            JG var4 = var3.getValue().getSettlement().getSettlementStatus();
+            SettlementStatus var4 = var3.getValue().getSettlement().getSettlementStatus();
             switch (var4) {
                 case SETTLED:
                     this.GBU.GCA.set(true);
@@ -45,7 +45,7 @@ public class ESE implements ChangeListener<TreeItem<ESL>> {
             }
 
             DeclarationJPK_VAT var5 = var3.getValue().getDeclarationJPKVAT();
-            HL var6 = null;
+            DeclarationStatus var6 = null;
             this.GBU.QMS.set(false);
             if (var5 != null) {
                 var6 = var5.getDeclarationStatus();

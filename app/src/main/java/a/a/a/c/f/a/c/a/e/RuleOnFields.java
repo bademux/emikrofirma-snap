@@ -2,8 +2,8 @@ package a.a.a.c.f.a.c.a.e;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCF;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.BaseRule;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.a.ConditionType;
 import a.a.a.c.f.a.c.a.c.FieldType;
@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class RuleOnFields extends AHCF {
+public class RuleOnFields extends BaseRule {
     @XmlAttribute
     protected final LogicalOperator AHWU;
     protected final RuleOnFieldsContainer AHWV;
@@ -52,7 +52,7 @@ public class RuleOnFields extends AHCF {
         return this.AHWW;
     }
 
-    public ValueContainer2<AHCI, String> AICY(Map<FieldType, BaseField> var1) {
+    public ValueContainer2<ActionResult, String> AICY(Map<FieldType, BaseField> var1) {
 
         ValueContainer2 var14;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("fields " + var1);
@@ -70,21 +70,21 @@ public class RuleOnFields extends AHCF {
             var6 = this.AHWW.getActionOnField().AICX(var4);
             switch (this.AHWU) {
                 case AND:
-                    var2 = var5.getFirstValue().equals(AHCI.SUCCESS) & var6.getFirstValue().equals(AHCI.SUCCESS);
+                    var2 = var5.getFirstValue().equals(ActionResult.SUCCESS) & var6.getFirstValue().equals(ActionResult.SUCCESS);
                     break;
                 case OR:
-                    var2 = var5.getFirstValue().equals(AHCI.SUCCESS) | var6.getFirstValue().equals(AHCI.SUCCESS);
+                    var2 = var5.getFirstValue().equals(ActionResult.SUCCESS) | var6.getFirstValue().equals(ActionResult.SUCCESS);
                     break;
                 case XOR:
-                    var2 = var5.getFirstValue().equals(AHCI.SUCCESS) ^ var6.getFirstValue().equals(AHCI.SUCCESS);
+                    var2 = var5.getFirstValue().equals(ActionResult.SUCCESS) ^ var6.getFirstValue().equals(ActionResult.SUCCESS);
                     break;
                 case NXOR:
-                    var2 = var5.getFirstValue().equals(AHCI.SUCCESS) == var6.getFirstValue().equals(AHCI.SUCCESS);
+                    var2 = var5.getFirstValue().equals(ActionResult.SUCCESS) == var6.getFirstValue().equals(ActionResult.SUCCESS);
                     break;
                 case IMPLY:
-                    boolean var12 = var5.getFirstValue().equals(AHCI.SUCCESS);
+                    boolean var12 = var5.getFirstValue().equals(ActionResult.SUCCESS);
                     if (var12) {
-                        var2 = var6.getFirstValue().equals(AHCI.SUCCESS);
+                        var2 = var6.getFirstValue().equals(ActionResult.SUCCESS);
                     } else {
                         var2 = true;
                     }
@@ -100,18 +100,18 @@ public class RuleOnFields extends AHCF {
         }
 
         if (var2) {
-            ValueContainer2 var15 = new ValueContainer2(AHCI.SUCCESS, null);
+            ValueContainer2 var15 = new ValueContainer2(ActionResult.SUCCESS, null);
             return var15;
         }
 
         var7 = null;
-        AHCI var13;
+        ActionResult var13;
         switch (this.AHTY) {
             case WARNING:
-                var13 = AHCI.WARNING;
+                var13 = ActionResult.WARNING;
                 break;
             case ERROR:
-                var13 = AHCI.ERROR;
+                var13 = ActionResult.ERROR;
                 break;
             default:
                 throw new FFI("Invalid actionType [" + this.AHTY + "]!");

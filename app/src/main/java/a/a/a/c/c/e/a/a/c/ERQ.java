@@ -20,7 +20,7 @@ public class ERQ {
     public ERQ() {
     }
 
-    public static void setupNode(Region var0, ERR var1, ERP var2) {
+    public static void setupNode(Region var0, ERR var1, ElementType var2) {
         var0.setOnDragDetected(new ERJ(var1, var2, TransferMode.COPY));
         var0.setOnDragDone(new ERI(var1));
     }
@@ -31,7 +31,7 @@ public class ERQ {
 
         while (var2.hasNext()) {
             Node var3 = (Node) var2.next();
-            ERP var4 = ERP.valueOf(var3.getId());
+            ElementType var4 = ElementType.valueOf(var3.getId());
             switch (var4) {
                 case text:
                     TextField var5 = (TextField) var3;
@@ -81,7 +81,7 @@ public class ERQ {
         return var1.toString();
     }
 
-    public static void HSF(ERP var0, String var1, ERR var2, ObservableList<Node> var3, StringProperty var4, boolean var5) {
+    public static void HSF(ElementType var0, String var1, ERR var2, ObservableList<Node> var3, StringProperty var4, boolean var5) {
         if (var1 == null) {
             var1 = "";
         }

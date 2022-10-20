@@ -1,20 +1,19 @@
 package a.a.a.c.c.a.b;
 
-import a.a.a.b.a.a.FDO;
+import a.a.a.b.a.a.SqlOperation;
 import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.a.ProcessDefinitionBase;
-import a.a.a.c.c.a.EMA;
+import a.a.a.c.c.a.Status;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.b.EMU;
 import com.github.bademux.emk.Application;
 import a.a.a.c.f.c.a.ConfigurationProperties;
-import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.PropertyString;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 import a.a.a.c.g.b.FCW;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -25,7 +24,7 @@ import java.util.Iterator;
 
 public abstract class ELV {
     private final String FGG;
-    private EMA FGH;
+    private Status FGH;
     private EMU FGI;
     private ProcessDefinitionBase FGJ;
 
@@ -34,7 +33,7 @@ public abstract class ELV {
     }
 
     protected ELV(String var1) {
-        this.FGH = EMA.DESTROYED;
+        this.FGH = Status.DESTROYED;
         this.FGG = var1;
     }
 
@@ -42,7 +41,7 @@ public abstract class ELV {
         return this.FGG;
     }
 
-    public EMA getMainStatus() {
+    public Status getMainStatus() {
         return this.FGH;
     }
 
@@ -73,7 +72,7 @@ public abstract class ELV {
         switch (this.FGH) {
             case DESTROYED:
             case STARTED:
-                this.FGH = EMA.STARTED;
+                this.FGH = Status.STARTED;
                 this.HHI();
                 return;
             case BLOCKED:
@@ -94,9 +93,9 @@ public abstract class ELV {
                 throw new FFK("Process was destroyed or never initialised. Cannot finish!");
             case STARTED:
             case FINISHED:
-                this.FGH = EMA.FINISHED;
+                this.FGH = Status.FINISHED;
                 this.HHJ();
-                this.FGH = EMA.DESTROYED;
+                this.FGH = Status.DESTROYED;
                 return;
             case BLOCKED:
                 throw new FFO("Process is blocked!");
@@ -116,7 +115,7 @@ public abstract class ELV {
             case EXCEPTION:
             case FINISHED:
                 this.resetAndCleanUpProcessImpl();
-                this.FGH = EMA.DESTROYED;
+                this.FGH = Status.DESTROYED;
                 return;
             default:
                 throw new FFK("Such status [" + this.FGH + "] not supposed to happen!");
@@ -135,8 +134,8 @@ public abstract class ELV {
         Iterator var4 = var2.getConfigurationProperties().iterator();
 
         while (var4.hasNext()) {
-            ConfigurationProperty var5 = (ConfigurationProperty) var4.next();
-            if (FCQ.WorkingDir.getPropertyName().equals(var5.DEX().getValue())) {
+            a.a.a.c.f.c.a.ConfigurationProperty var5 = (a.a.a.c.f.c.a.ConfigurationProperty) var4.next();
+            if (ConfigurationProperty.WorkingDir.getPropertyName().equals(var5.DEX().getValue())) {
                 var3 = (PropertyString) var5;
             }
         }
@@ -171,13 +170,13 @@ public abstract class ELV {
             boolean var6 = this.RKD(var12);
             if (var6) {
                 if (var3 == null) {
-                    var3 = new PropertyString(FCQ.WorkingDir.getPropertyName(), var12.getAbsolutePath());
+                    var3 = new PropertyString(ConfigurationProperty.WorkingDir.getPropertyName(), var12.getAbsolutePath());
                     var2.getConfigurationProperties().add(var3);
                 } else {
                     var3.DEY().setValue(var12.getAbsolutePath());
                 }
 
-                EMB.getInstance().ROK(FDO.update, var2, true);
+                EMB.getInstance().ROK(SqlOperation.update, var2, true);
             } else {
                 var12 = new File(System.getProperty("java.io.tmpdir"));
                 if (!this.RKD(var12)) {

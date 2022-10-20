@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -45,7 +45,7 @@ public class ConditionOnFieldAndConstantDateTime extends ConditionOnFieldAndCons
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         ValueContainer2 var8;
         try {
@@ -108,13 +108,13 @@ public class ConditionOnFieldAndConstantDateTime extends ConditionOnFieldAndCons
 
             if (!var7) {
                 var8 = null;
-                AHCI var23;
+                ActionResult var23;
                 switch (this.AHTY) {
                     case WARNING:
-                        var23 = AHCI.WARNING;
+                        var23 = ActionResult.WARNING;
                         break;
                     case ERROR:
-                        var23 = AHCI.ERROR;
+                        var23 = ActionResult.ERROR;
                         break;
                     default:
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");
@@ -124,7 +124,7 @@ public class ConditionOnFieldAndConstantDateTime extends ConditionOnFieldAndCons
                 return var9;
             }
 
-            var8 = new ValueContainer2(AHCI.SUCCESS, null);
+            var8 = new ValueContainer2(ActionResult.SUCCESS, null);
         } catch (DatatypeConfigurationException | ParseException var21) {
             log.error("Something bad happened", var21);
             throw new FFI(var21);

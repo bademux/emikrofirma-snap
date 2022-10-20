@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.f.a;
 
-import a.a.a.c.f.b.c.JR;
+import a.a.a.c.f.b.c.Amount;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -18,71 +18,71 @@ import java.util.List;
 )
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ReceiptRecordVat extends ReceiptRecord {
-    private JR AMT;
-    private JR AMU;
-    private JR AMV;
-    private List<IP> AMW;
+    private Amount AMT;
+    private Amount AMU;
+    private Amount AMV;
+    private List<RecordElementVat> AMW;
     @XmlTransient
-    private final ObjectProperty<ObservableList<IP>> AMX = new IS(this);
+    private final ObjectProperty<ObservableList<RecordElementVat>> AMX = new IS(this);
 
     public ReceiptRecordVat() {
-        super(IQ.VAT);
+        super(RecordType.VAT);
 
     }
 
-    public JR getNet() {
+    public Amount getNet() {
         return this.AMT;
     }
 
-    public JR DCJ() {
+    public Amount DCJ() {
         if (this.AMT == null) {
-            this.AMT = new JR();
+            this.AMT = new Amount();
         }
 
         return this.AMT;
     }
 
-    public void setNet(JR var1) {
+    public void setNet(Amount var1) {
         this.AMT = var1;
     }
 
-    public JR getVat() {
+    public Amount getVat() {
         return this.AMU;
     }
 
-    public JR DCK() {
+    public Amount DCK() {
         if (this.AMU == null) {
-            this.AMU = new JR();
+            this.AMU = new Amount();
         }
 
         return this.AMU;
     }
 
-    public void setVat(JR var1) {
+    public void setVat(Amount var1) {
         this.AMU = var1;
     }
 
-    public JR getGross() {
+    public Amount getGross() {
         return this.AMV;
     }
 
-    public JR DCL() {
+    public Amount DCL() {
         if (this.AMV == null) {
-            this.AMV = new JR();
+            this.AMV = new Amount();
         }
 
         return this.AMV;
     }
 
-    public void setGross(JR var1) {
+    public void setGross(Amount var1) {
         this.AMV = var1;
     }
 
-    public List<IP> getReceiptRecordElements() {
+    public List<RecordElementVat> getReceiptRecordElements() {
         return this.AMW;
     }
 
-    public List<IP> DCM() {
+    public List<RecordElementVat> DCM() {
         if (this.AMW == null) {
             this.AMW = new ArrayList();
         }
@@ -90,22 +90,22 @@ public class ReceiptRecordVat extends ReceiptRecord {
         return this.AMW;
     }
 
-    public final ObjectProperty<ObservableList<IP>> DCN() {
+    public final ObjectProperty<ObservableList<RecordElementVat>> DCN() {
         return this.AMX;
     }
 
-    private class IS extends SimpleObjectProperty<ObservableList<IP>> {
+    private class IS extends SimpleObjectProperty<ObservableList<RecordElementVat>> {
         private final ReceiptRecordVat AMS;
 
         public IS(ReceiptRecordVat var2) {
             this.AMS = var2;
         }
 
-        public ObservableList<IP> get() {
+        public ObservableList<RecordElementVat> get() {
             return FXCollections.observableList(this.AMS.DCM());
         }
 
-        public void set(ObservableList<IP> var1) {
+        public void set(ObservableList<RecordElementVat> var1) {
             if (var1 != null) {
                 this.AMS.DCM().clear();
                 this.AMS.DCM().addAll(var1);

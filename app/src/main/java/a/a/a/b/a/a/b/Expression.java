@@ -1,6 +1,6 @@
 package a.a.a.b.a.a.b;
 
-import a.a.a.b.a.a.FEB;
+import a.a.a.b.a.a.SqlOperator;
 import a.a.a.b.a.a.d.CellValue;
 
 import java.util.ArrayList;
@@ -9,15 +9,15 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Expression {
-    protected final FEB HDN;
+    protected final SqlOperator HDN;
     private final List<CellValue<?>> HDO;
 
-    public Expression(FEB var1) {
+    public Expression(SqlOperator var1) {
         this.HDN = var1;
         this.HDO = new ArrayList();
     }
 
-    public FEB getOperator() {
+    public SqlOperator getOperator() {
         return this.HDN;
     }
 

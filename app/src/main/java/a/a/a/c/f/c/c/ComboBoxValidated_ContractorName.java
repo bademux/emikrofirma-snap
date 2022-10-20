@@ -1,10 +1,10 @@
 package a.a.a.c.f.c.c;
 
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.b.QRV;
 import javafx.collections.FXCollections;
 
-public class ComboBoxValidated_ContractorName extends ComboBoxRequiredText<QST> {
+public class ComboBoxValidated_ContractorName extends ComboBoxRequiredText<ObjectWithTitle> {
     public ComboBoxValidated_ContractorName() {
         super(FXCollections.observableArrayList());
         this.IGA();

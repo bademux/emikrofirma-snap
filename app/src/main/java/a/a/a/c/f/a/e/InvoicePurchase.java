@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.e;
 
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.b.c.JV;
+import a.a.a.c.f.b.c.InvoicingDate;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -15,20 +15,20 @@ import javafx.collections.ObservableList;
         name = "invoicePurchase"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class InvoicePurchase extends HT {
+public class InvoicePurchase extends BaseInvoicePurchase {
     private Contractor AKL;
-    private JV AKM;
-    private JV AKN;
+    private InvoicingDate AKM;
+    private InvoicingDate AKN;
     @XmlTransient
     private final ObjectProperty<ObservableList<InvoiceElementPurchase>> AKO;
     private Boolean QWQ;
 
     public InvoicePurchase() {
-        this(IA.INVOICE);
+        this(InvoiceSubtype.INVOICE);
 
     }
 
-    public InvoicePurchase(IA var1) {
+    public InvoicePurchase(InvoiceSubtype var1) {
         super(var1);
         this.AKO = new HS(this);
 
@@ -50,35 +50,35 @@ public class InvoicePurchase extends HT {
         this.AKL = var1;
     }
 
-    public JV getReceiveDate() {
+    public InvoicingDate getReceiveDate() {
         return this.AKM;
     }
 
-    public JV DBR() {
+    public InvoicingDate DBR() {
         if (this.AKM == null) {
-            this.AKM = new JV();
+            this.AKM = new InvoicingDate();
         }
 
         return this.AKM;
     }
 
-    public void setReceiveDate(JV var1) {
+    public void setReceiveDate(InvoicingDate var1) {
         this.AKM = var1;
     }
 
-    public JV getInvoicingDate() {
+    public InvoicingDate getInvoicingDate() {
         return this.AKN;
     }
 
-    public JV DBS() {
+    public InvoicingDate DBS() {
         if (this.AKN == null) {
-            this.AKN = new JV();
+            this.AKN = new InvoicingDate();
         }
 
         return this.AKN;
     }
 
-    public void setInvoicingDate(JV var1) {
+    public void setInvoicingDate(InvoicingDate var1) {
         this.AKN = var1;
     }
 

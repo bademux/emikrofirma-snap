@@ -6,8 +6,8 @@ import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.e.e.c.ETE;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.b.a.JJ;
-import a.a.a.c.f.b.c.a.KN;
+import a.a.a.c.f.b.a.Address;
+import a.a.a.c.f.b.c.a.Voivodeship;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.b.FCW;
 import a.a.b.a.a.a.a.ESY;
@@ -36,7 +36,7 @@ public class ETB {
     @FXML
     public EYM fxml_include_AccountNumber_boxController;
     @FXML
-    public EYN<KN> fxml_include_address_boxController;
+    public EYN<Voivodeship> fxml_include_address_boxController;
     @FXML
     public EZK fxml_include_remarks_boxController;
     @FXML
@@ -69,7 +69,7 @@ public class ETB {
 
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getCellFactory().call(null));
-        this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.getItems().addAll(KN.values());
+        this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.getItems().addAll(Voivodeship.values());
         this.GFN.bind(this.fxml_include_ContractorName_boxController.requiredAndValidProperty().and(this.fxml_include_nip_boxController.requiredAndValidProperty().and(this.fxml_include_AccountNumber_boxController.requiredAndValidProperty().and(this.fxml_include_regon_boxController.requiredAndValidProperty().and(this.fxml_include_address_boxController.requiredAndValidProperty().and(this.fxml_include_remarks_boxController.requiredAndValidProperty().and(this.fxml_contractor_private_person_exist.visibleProperty().not())))))));
         this.GFO.bind(this.fxml_include_ContractorName_boxController.changedProperty().or(this.fxml_include_nip_boxController.changedProperty().or(this.fxml_include_regon_boxController.changedProperty().or(this.fxml_include_AccountNumber_boxController.changedProperty().or(this.fxml_include_address_boxController.changedProperty().or(this.fxml_include_remarks_boxController.changedProperty()))))));
         this.fxml_include_nip_boxController.fxml_component_main_element.editableProperty().bind(this.fxml_contractor_private_person.selectedProperty().not());
@@ -198,7 +198,7 @@ public class ETB {
         this.fxml_include_nip_boxController.fxml_component_main_element.textProperty().bindBidirectional(this.GFS.DAJ().DDG());
         this.fxml_include_regon_boxController.fxml_component_main_element.textProperty().bindBidirectional(this.GFS.DAK().DDG());
         this.fxml_include_AccountNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(this.GFS.DAL().DDG());
-        JJ var1 = this.GFS.DAM();
+        Address var1 = this.GFS.DAM();
         this.fxml_include_address_boxController.fxml_include_Street_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DDA().DDG());
         this.fxml_include_address_boxController.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DDB().DDG());
         this.fxml_include_address_boxController.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DDC().DDG());
@@ -223,7 +223,7 @@ public class ETB {
             this.fxml_include_nip_boxController.fxml_component_main_element.textProperty().unbindBidirectional(this.GFS.DAJ().DDG());
             this.fxml_include_regon_boxController.fxml_component_main_element.textProperty().unbindBidirectional(this.GFS.DAK().DDG());
             this.fxml_include_AccountNumber_boxController.fxml_component_main_element.textProperty().unbindBidirectional(this.GFS.DAL().DDG());
-            JJ var1 = this.GFS.DAM();
+            Address var1 = this.GFS.DAM();
             this.fxml_include_address_boxController.fxml_include_Street_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DDA().DDG());
             this.fxml_include_address_boxController.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DDB().DDG());
             this.fxml_include_address_boxController.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DDC().DDG());

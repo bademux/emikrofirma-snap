@@ -9,8 +9,8 @@ import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.a.a.EMJ;
 import a.a.a.c.c.b.a.a.a.EMM;
 import a.a.a.c.c.c.ENG;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.c.QVH;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.c.AnchorContext;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.*;
 import a.a.a.c.f.c.a.ConfigurationProperties;
@@ -57,7 +57,7 @@ public class EMP extends BaseFxController {
     @FXML
     private Hyperlink fxml_left_bar_contact;
     private ContextMenu FHX;
-    private final Map<Integer, ValueContainer2<QVH, ContextMenu>> RHF = new HashMap();
+    private final Map<Integer, ValueContainer2<AnchorContext, ContextMenu>> RHF = new HashMap();
     private final List<ValueContainer2<Boolean, Button>> FHY = new ArrayList();
 
     public EMP(FXApp var1, String var2) {
@@ -146,7 +146,7 @@ public class EMP extends BaseFxController {
             }
         });
         this.HJO(this.fxml_left_bar.getChildren(), this.resources.getString("micro.leftBar.button.MainMenu"), "btn-navigation", EMJ.class.getSimpleName(), "main.fxml", false);
-        Iterator var6 = ENG.getInstance().getGlobalAnchorDefinition(ENH.LEFT_BAR).entrySet().iterator();
+        Iterator var6 = ENG.getInstance().getGlobalAnchorDefinition(Anchor.LEFT_BAR).entrySet().iterator();
 
         Map var9;
         String var11;
@@ -174,7 +174,7 @@ public class EMP extends BaseFxController {
                     return var1.getFirstValue().compareTo(var2.getFirstValue());
                 }
             }));
-            var4.add(new ValueContainer3(var10, QVH.valueOf(var13), var15));
+            var4.add(new ValueContainer3(var10, AnchorContext.valueOf(var13), var15));
             var2.put(var10, var15);
         }
 
@@ -186,25 +186,25 @@ public class EMP extends BaseFxController {
             if (var31 != null) {
                 Map var34 = ENG.getInstance().getProcessDefinition(var31);
                 var9 = (Map) var34.get("anchors");
-                Map var39 = (Map) var9.get(ENH.LEFT_BAR);
-                Map var42 = (Map) var9.get(ENH.TOP_MENU);
+                Map var39 = (Map) var9.get(Anchor.LEFT_BAR);
+                Map var42 = (Map) var9.get(Anchor.TOP_MENU);
                 ProcessDefinitionBase var43;
                 String var46;
                 if (var39 != null) {
                     var43 = (ProcessDefinitionBase) var34.get("definition");
-                    var13 = var43.getTitle(ENH.LEFT_BAR);
+                    var13 = var43.getTitle(Anchor.LEFT_BAR);
                     var46 = var43.getFXML();
                     Boolean var48 = (Boolean) var34.get("lock.config");
                     String var16 = (String) var39.get("class.style");
                     Integer var17 = Integer.parseInt(String.valueOf(var39.get("position")));
                     String var18 = (String) var39.get("display.type");
-                    QVH var19 = QVH.valueOf(var18);
+                    AnchorContext var19 = AnchorContext.valueOf(var18);
                     var20 = (String) var39.get("context.position");
                     int var21 = Integer.parseInt(var20);
                     ValueContainer2 var22 = this.getAnchorDisplayTypeByLocation(var17);
-                    QVH var23 = null;
+                    AnchorContext var23 = null;
                     if (var22 != null) {
-                        var23 = (QVH) var22.getFirstValue();
+                        var23 = (AnchorContext) var22.getFirstValue();
                     }
 
                     if (var23 != null && !var23.equals(var19)) {
@@ -231,7 +231,7 @@ public class EMP extends BaseFxController {
 
                 if (var42 != null) {
                     var43 = (ProcessDefinitionBase) var34.get("definition");
-                    var13 = var43.getTitle(ENH.TOP_MENU);
+                    var13 = var43.getTitle(Anchor.TOP_MENU);
                     var46 = var43.getFXML();
                     String var49 = (String) var42.get("class.style");
                     Integer var51 = Integer.parseInt(String.valueOf(var42.get("position")));
@@ -257,7 +257,7 @@ public class EMP extends BaseFxController {
         label230:
         while (var6.hasNext()) {
             ValueContainer3 var33 = (ValueContainer3) var6.next();
-            QVH var36 = (QVH) var33.getSecondValue();
+            AnchorContext var36 = (AnchorContext) var33.getSecondValue();
             switch (var36) {
                 case BUTTON:
                     ValueContainer5 var40 = (ValueContainer5) var33.getThirdValue();
@@ -336,11 +336,11 @@ public class EMP extends BaseFxController {
 
     }
 
-    private ValueContainer2<QVH, ContextMenu> getAnchorDisplayTypeByLocation(int var1) {
+    private ValueContainer2<AnchorContext, ContextMenu> getAnchorDisplayTypeByLocation(int var1) {
         return this.RHF.get(var1);
     }
 
-    private void setAnchorDisplayTypeByLocation(int var1, ValueContainer2<QVH, ContextMenu> var2) {
+    private void setAnchorDisplayTypeByLocation(int var1, ValueContainer2<AnchorContext, ContextMenu> var2) {
         this.RHF.put(var1, var2);
     }
 

@@ -1,18 +1,18 @@
 package a.a.a.c.f.c.a;
 
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.b.c.Text;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class PropertyString extends ConfigurationProperty<KO, String> {
-    public PropertyString(KO var1, KO var2) {
+public class PropertyString extends ConfigurationProperty<Text, String> {
+    public PropertyString(Text var1, Text var2) {
         super(var1, var2);
 
     }
 
     public PropertyString(String var1, String var2) {
-        this(new KO(var1), new KO(var2));
+        this(new Text(var1), new Text(var2));
 
     }
 
@@ -26,9 +26,9 @@ public class PropertyString extends ConfigurationProperty<KO, String> {
 
     }
 
-    public KO DEY() {
+    public Text DEY() {
         if (this.AQH == null) {
-            this.AQH = new KO();
+            this.AQH = new Text();
         }
 
         return this.AQH;

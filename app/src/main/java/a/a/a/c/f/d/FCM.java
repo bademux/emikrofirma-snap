@@ -1,6 +1,6 @@
 package a.a.a.c.f.d;
 
-import a.a.a.c.f.b.QST;
+import a.a.a.c.f.b.ObjectWithTitle;
 import a.a.a.c.f.c.c.ComboBoxRequiredText;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
@@ -36,7 +36,7 @@ public class FCM implements EventHandler<KeyEvent> {
                         }
                         break;
                     case ENTER:
-                        if (((ComboBoxRequiredText) this.HAV.fxml_component_main_element).getSelectionModel().getSelectedIndex() != -1 && !((QST) ((ComboBoxRequiredText) this.HAV.fxml_component_main_element).getValue()).getShadow()) {
+                        if (((ComboBoxRequiredText) this.HAV.fxml_component_main_element).getSelectionModel().getSelectedIndex() != -1 && !((ObjectWithTitle) ((ComboBoxRequiredText) this.HAV.fxml_component_main_element).getValue()).getShadow()) {
                             this.HAV.fxml_component_main_element.getEditor().setText(this.HAV.HAR);
                             this.HAV.IFQ();
                             this.HAV.IFR();

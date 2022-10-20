@@ -13,6 +13,8 @@ import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.a.h.SettlementVat;
 import a.a.a.c.f.a.n.*;
+import a.a.a.c.f.a.n.BaseInvoicePurchase;
+import a.a.a.c.f.a.n.BaseInvoiceSell;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.b.UserData;
 
@@ -20,32 +22,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class LN {
-    private final LO AQE;
+    private final StageType AQE;
 
-    public LN(LO var1) {
+    public LN(StageType var1) {
         this.AQE = var1;
     }
 
-    public LO getType() {
+    public StageType getType() {
         return this.AQE;
     }
 
-    public enum LO {
+    public enum StageType {
         CONFIGURATION_PROPERTIES(ConfigurationProperties.class),
         USER_DATA(UserData.class),
         INVOICE(Invoice.class),
-        INVOICE_SELL_TYPE(HY.class, INVOICE),
-        INVOICE_PURCHASE_INVOICE_TYPE(HT.class, INVOICE),
-        INVOICE_SELL_INVOICE_TYPE(HX.class, INVOICE_SELL_TYPE),
-        INVOICE_SELL_CORRECTION_TYPE(HW.class, INVOICE_SELL_TYPE),
+        INVOICE_SELL_TYPE(a.a.a.c.f.a.e.BaseInvoiceSell.class, INVOICE),
+        INVOICE_PURCHASE_INVOICE_TYPE(a.a.a.c.f.a.e.BaseInvoicePurchase.class, INVOICE),
+        INVOICE_SELL_INVOICE_TYPE(BaseInvoiceSellInvoice.class, INVOICE_SELL_TYPE),
+        INVOICE_SELL_CORRECTION_TYPE(BaseInvoiceSellCorrection.class, INVOICE_SELL_TYPE),
         INVOICE_SELL(InvoiceSell.class, INVOICE_SELL_INVOICE_TYPE),
         INVOICE_SELL_CORRECTION(InvoiceSellCorrection.class, INVOICE_SELL_CORRECTION_TYPE),
         INVOICE_PURCHASE(InvoicePurchase.class, INVOICE_PURCHASE_INVOICE_TYPE),
         AGGREGATE_PURCHASE(AggregatePurchase.class, INVOICE_PURCHASE),
         INVOICE_OTHER(InvoiceOther.class),
-        INVOICE_OTHER_PURCHASE_INVOICE_TYPE(QSM.class),
+        INVOICE_OTHER_PURCHASE_INVOICE_TYPE(BaseInvoicePurchase.class),
         INVOICE_OTHER_PURCHASE(InvoiceOtherPurchase.class),
-        INVOICE_OTHER_SELL_INVOICE_TYPE(QSO.class),
+        INVOICE_OTHER_SELL_INVOICE_TYPE(BaseInvoiceSell.class),
         INVOICE_OTHER_SELL(InvoiceOtherSell.class),
         RECEIPTRECORD(ReceiptRecord.class),
         RECEIPTRECORDVAT(ReceiptRecordVat.class, RECEIPTRECORD),
@@ -69,14 +71,14 @@ public final class LN {
         DICTIONARYCOMMODITY(DictionaryEntry.class, DICTIONARY);
 
         private final Class<? extends ModelBase> AQB;
-        private final LO AQC;
-        private final List<LO> AQD;
+        private final StageType AQC;
+        private final List<StageType> AQD;
 
-        LO(Class var3) {
+        StageType(Class var3) {
             this(var3, null);
         }
 
-        LO(Class var3, LO var4) {
+        StageType(Class var3, StageType var4) {
             this.AQB = var3;
             this.AQD = new ArrayList();
             this.AQC = var4;
@@ -90,11 +92,11 @@ public final class LN {
             return this.AQB;
         }
 
-        public LO getParent() {
+        public StageType getParent() {
             return this.AQC;
         }
 
-        public List<LO> getChildren() {
+        public List<StageType> getChildren() {
             return this.AQD;
         }
     }

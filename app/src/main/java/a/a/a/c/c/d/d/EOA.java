@@ -1,6 +1,6 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.h.SettlementStatus;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
-public class EOA<_T> implements Callback<TreeTableColumn<_T, JG>, TreeTableCell<_T, JG>> {
+public class EOA<_T> implements Callback<TreeTableColumn<_T, SettlementStatus>, TreeTableCell<_T, SettlementStatus>> {
     private final Image FNK;
     private final Image FNL;
 
@@ -17,15 +17,15 @@ public class EOA<_T> implements Callback<TreeTableColumn<_T, JG>, TreeTableCell<
         this.FNL = var2;
     }
 
-    public TreeTableCell<_T, JG> call(TreeTableColumn<_T, JG> var1) {
-        TreeTableCell var2 = new TreeTableCell<_T, JG>() {
+    public TreeTableCell<_T, SettlementStatus> call(TreeTableColumn<_T, SettlementStatus> var1) {
+        TreeTableCell var2 = new TreeTableCell<_T, SettlementStatus>() {
             final ImageView TVK = new ImageView();
 
-            protected void updateItem(JG var1, boolean var2) {
+            protected void updateItem(SettlementStatus var1, boolean var2) {
 
                 super.updateItem(var1, var2);
                 if (var1 != null) {
-                    if (var1.equals(JG.SETTLED)) {
+                    if (var1.equals(SettlementStatus.SETTLED)) {
                         this.TVK.setFitWidth(15.0);
                         this.TVK.setFitHeight(15.0);
                         this.TVK.setImage(EOA.this.FNK);

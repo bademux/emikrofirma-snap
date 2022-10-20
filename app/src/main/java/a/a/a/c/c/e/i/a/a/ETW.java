@@ -2,7 +2,7 @@ package a.a.a.c.c.e.i.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.c.e.i.a.ETZ;
-import a.a.a.c.f.a.d.AGWW;
+import a.a.a.c.f.a.d.DeclarationSubtype;
 import a.a.a.c.f.a.d.Declaration;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -38,7 +38,7 @@ public class ETW implements ChangeListener<Declaration> {
                     throw new FFI("Not known declaration status");
             }
 
-            if (AGWW.STATUS_TRACKER.equals(var3.getDeclarationSubType())) {
+            if (DeclarationSubtype.STATUS_TRACKER.equals(var3.getDeclarationSubType())) {
                 this.GJL.QHS.set(true);
             }
         }

@@ -10,7 +10,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SettlementVat extends Settlement {
     public SettlementVat() {
-        super(JH.VAT);
+        super(SettlementType.VAT);
 
     }
 }

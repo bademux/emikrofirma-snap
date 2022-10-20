@@ -1,7 +1,7 @@
 package a.a.a.c.c.d.g;
 
 import a.a.a.c.c.d.ENI;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,7 +17,7 @@ public class EOY {
     private final StringProperty FOH;
     private final StringProperty FOI;
     private final StringProperty FOJ;
-    private final ObjectProperty<KL> FOK;
+    private final ObjectProperty<TaxRate> FOK;
     private final StringProperty FOL;
     private final StringProperty FOM;
     private final StringProperty FON;
@@ -33,7 +33,7 @@ public class EOY {
         this.FOH = new SimpleStringProperty(var1);
         this.FOI = new SimpleStringProperty("");
         this.FOJ = new SimpleStringProperty("1.0");
-        this.FOK = new SimpleObjectProperty(KL.RATE_23);
+        this.FOK = new SimpleObjectProperty(TaxRate.RATE_23);
         this.FOL = new SimpleStringProperty("");
         this.FOM = new SimpleStringProperty("");
         this.FON = new SimpleStringProperty("");
@@ -87,7 +87,7 @@ public class EOY {
         return this.FOQ;
     }
 
-    public ObjectProperty<KL> getTaxType() {
+    public ObjectProperty<TaxRate> getTaxType() {
         return this.FOK;
     }
 

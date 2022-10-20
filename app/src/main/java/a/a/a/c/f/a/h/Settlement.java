@@ -13,18 +13,18 @@ import java.util.Date;
 public abstract class Settlement extends ModelBusinessPeriodAndDocIndexElement {
     @XmlAttribute
     private boolean ANK;
-    private JH ANM;
-    private JG ANN;
+    private SettlementType ANM;
+    private SettlementStatus ANN;
     private JX ANO;
 
     protected Settlement() {
 
         this.ANK = false;
-        this.ANN = JG.NEW;
+        this.ANN = SettlementStatus.NEW;
 
     }
 
-    protected Settlement(JH var1) {
+    protected Settlement(SettlementType var1) {
         this();
 
         this.ANM = var1;
@@ -39,15 +39,15 @@ public abstract class Settlement extends ModelBusinessPeriodAndDocIndexElement {
         this.ANK = false;
     }
 
-    public JH getSettlementType() {
+    public SettlementType getSettlementType() {
         return this.ANM;
     }
 
-    public JG getSettlementStatus() {
+    public SettlementStatus getSettlementStatus() {
         return this.ANN;
     }
 
-    public void setSettlementStatus(JG var1) throws FFO {
+    public void setSettlementStatus(SettlementStatus var1) throws FFO {
         Date var2 = new Date();
         switch (var1) {
             case SETTLED:
@@ -80,7 +80,7 @@ public abstract class Settlement extends ModelBusinessPeriodAndDocIndexElement {
                         throw new FFI("Unimplemented type " + var1 + "]!");
                 }
             case NEW:
-                throw new FFO("Cannot change status to " + JG.NEW.name() + "!");
+                throw new FFO("Cannot change status to " + SettlementStatus.NEW.name() + "!");
             case CANCELED_CHANGED:
                 switch (this.ANN) {
                     case SETTLED:

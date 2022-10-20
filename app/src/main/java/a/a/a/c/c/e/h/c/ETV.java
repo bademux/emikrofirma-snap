@@ -9,15 +9,15 @@ import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.e.h.b.ETU;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
-import a.a.a.c.f.a.f.a.IQ;
+import a.a.a.c.f.a.f.a.RecordType;
 import a.a.a.c.f.a.f.a.ReceiptRecordVat;
-import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.g.JD;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
+import a.a.a.c.f.a.g.ReceiptRecordCriteria;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.KH;
+import a.a.a.c.f.b.c.a.MonthType;
 import a.a.a.c.g.c.FCZ;
 
 import java.util.*;
@@ -44,7 +44,7 @@ public class ETV extends QVI {
 
     public ValueContainer2<Integer, List<EDF<ReceiptRecordVat>>> getReceiptRecords(int var1, int var2, Period var3) {
         try {
-            JD var4 = new JD(ReceiptRecordVat.class, var3, IQ.VAT, OrderType.DESC, var1, var2);
+            ReceiptRecordCriteria var4 = new ReceiptRecordCriteria(ReceiptRecordVat.class, var3, RecordType.VAT, OrderType.DESC, var1, var2);
             ValueContainer2 var5 = this.getModelManager().HJY(this.getParentDefinition(), var4);
             return var5;
         } catch (FFO | FFK var6) {
@@ -53,8 +53,8 @@ public class ETV extends QVI {
         }
     }
 
-    public SortedMap<String, SortedSet<KH>> getPossibleDates() throws FFK, FFO {
-        IY var1 = new IY(Settlement.class, null, JH.VAT, null);
+    public SortedMap<String, SortedSet<MonthType>> getPossibleDates() throws FFK, FFO {
+        ModelBusinessPeriodElementTypedCriteria var1 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, null, SettlementType.VAT, null);
         ValueContainer2 var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
         TreeMap var3 = new TreeMap();
         Iterator var6 = ((List) var2.getSecondValue()).iterator();
@@ -69,7 +69,7 @@ public class ETV extends QVI {
                     var3.put(var4, new TreeSet());
                 }
 
-                ((SortedSet) var3.get(var4)).add(KH.getMonthByIntValue(Integer.valueOf(var5)));
+                ((SortedSet) var3.get(var4)).add(MonthType.getMonthByIntValue(Integer.valueOf(var5)));
             }
         }
 
@@ -80,7 +80,7 @@ public class ETV extends QVI {
 
         boolean var7;
         Period var2 = new Period(var1);
-        IY var3 = new IY(Settlement.class, var2, JH.VAT, null);
+        ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, var2, SettlementType.VAT, null);
         ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
@@ -93,7 +93,7 @@ public class ETV extends QVI {
         }
 
         EDF var6 = (EDF) var5.next();
-        var7 = JG.SETTLED.equals(((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus());
+        var7 = SettlementStatus.SETTLED.equals(((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus());
 
         return var7;
     }

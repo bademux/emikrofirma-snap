@@ -12,12 +12,12 @@ import java.io.File;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DeclarationJPK_EWP extends DeclarationJPK {
     public DeclarationJPK_EWP() {
-        super(AGWW.EWP, 0);
+        super(DeclarationSubtype.EWP, 0);
 
     }
 
     public DeclarationJPK_EWP(Integer var1, File var2, JPKSchemaType var3) {
-        super(AGWW.EWP, var1, var2, var3);
+        super(DeclarationSubtype.EWP, var1, var2, var3);
 
     }
 }

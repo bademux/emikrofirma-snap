@@ -3,7 +3,7 @@ package a.a.a.c.d.e.b;
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.d.e.QRX;
 import a.a.a.c.f.a.e.InvoiceElement;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 
 import java.math.BigDecimal;
 
@@ -60,7 +60,7 @@ public class QSA implements QRX<InvoiceElement> {
             var2.DBK().setValue(var6);
         }
 
-        var2.RIG().setValue(QSV.GROSS);
+        var2.RIG().setValue(CalculationMethodType.GROSS);
         var2.DBI().setValue(EQY.QOK(var2.DBK().getValue(), var2.DBG().getValue()));
         return var2;
     }

@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.r.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -9,21 +9,21 @@ import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.a.ENK;
 import a.a.a.c.c.d.a.QUV;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.r.c.QUU;
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.e.a.d.ValueContainer3;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.g.AGYN;
+import a.a.a.c.f.a.g.ContractorModelCriteria;
 import a.a.a.c.f.a.n.InvoiceOther;
-import a.a.a.c.f.a.n.QSJ;
+import a.a.a.c.f.a.n.InvoiceOtherElementSell;
 import a.a.a.c.f.a.n.InvoiceOtherSell;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import a.a.a.c.g.b.FCW;
@@ -41,7 +41,7 @@ import java.util.List;
 
 public class QUM extends QUV<QUU> {
     private InvoiceOtherSell RDR;
-    private EPB RDS;
+    private Mode RDS;
     @FXML
     private ScrollPane fxml_include_container;
     @FXML
@@ -93,7 +93,7 @@ public class QUM extends QUV<QUU> {
             boolean var1 = true;
             if (!this.RDT) {
                 this.RDT = false;
-                FEN var8 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.isDisable(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
+                DialogButton var8 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.isDisable(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
                 switch (var8) {
                     case ExitAndSave:
                         var1 = true;
@@ -117,7 +117,7 @@ public class QUM extends QUV<QUU> {
             this.fxml_include_invoiceSaleLogicController.HHB();
             this.fxml_include_left_barController.HHB();
             this.fxml_include_top_menuController.HHB();
-            this.RDS = EPB.NEW;
+            this.RDS = Mode.NEW;
             this.RDR = null;
             this.getProcess().resetAndCleanUpProcess();
             var2 = true;
@@ -140,7 +140,7 @@ public class QUM extends QUV<QUU> {
             QUU var1 = this.HHG();
             this.fxml_include_invoiceSaleLogicController.setProcessImplementation(var1);
             if (this.RDS == null) {
-                this.RDS = EPB.NEW;
+                this.RDS = Mode.NEW;
             }
 
             this.fxml_include_invoiceSaleLogicController.setMode(this.RDS);
@@ -273,14 +273,14 @@ public class QUM extends QUV<QUU> {
         Object var2 = new ArrayList();
         QUU var3 = this.getProcess();
         if (var1 != null) {
-            AGYN var4;
+            ContractorModelCriteria var4;
             if (!var1.AICE()) {
                 if (var1.getNip() != null && var1.getNip().getValue() != null) {
-                    var4 = new AGYN(Contractor.class, var1.getNip().getValue());
+                    var4 = new ContractorModelCriteria(Contractor.class, var1.getNip().getValue());
                     var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
                 }
             } else if (var1.getName() != null && var1.getName().getValue() != null) {
-                var4 = new AGYN(Contractor.class, var1.QON(), null);
+                var4 = new ContractorModelCriteria(Contractor.class, var1.QON(), null);
                 var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
             }
         }
@@ -297,7 +297,7 @@ public class QUM extends QUV<QUU> {
         Iterator var3 = var2.iterator();
 
         while (var3.hasNext()) {
-            QSJ var4 = (QSJ) var3.next();
+            InvoiceOtherElementSell var4 = (InvoiceOtherElementSell) var3.next();
             if (var1.get(var4.getTaxRate().getValue()) == null) {
                 var1.put(var4.getTaxRate().getValue(), new ValueContainer3(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
             }
@@ -313,7 +313,7 @@ public class QUM extends QUV<QUU> {
         var3 = var1.keySet().iterator();
 
         while (var3.hasNext()) {
-            KL var8 = (KL) var3.next();
+            TaxRate var8 = (TaxRate) var3.next();
             this.RDR.getSumOfAmountsDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getFirstValue()));
             this.RDR.getAmountOfTaxDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getSecondValue()));
             this.RDR.getSumOfGrossAmountsDividedByTaxRate().add(new ValueContainer2(var8, ((ValueContainer3) var1.get(var8)).getThirdValue()));
@@ -329,7 +329,7 @@ public class QUM extends QUV<QUU> {
         }
 
         Period finalVar = var1;
-        this.getApplication().initController(this.getFxmlName(), EOS.OTHER_SALE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.OTHER_SALE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
             public void accept(ENK<?> var1x) {
 
                 try {
@@ -351,7 +351,7 @@ public class QUM extends QUV<QUU> {
     public void setContractor(Contractor var1) {
     }
 
-    public void setMode(EPB var1) {
+    public void setMode(Mode var1) {
         this.RDS = var1;
     }
 }

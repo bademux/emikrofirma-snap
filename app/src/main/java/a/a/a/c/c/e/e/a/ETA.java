@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.e.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.a.a.BaseProgressFxController;
@@ -9,7 +9,7 @@ import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.e.e.c.ETE;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.b.c.a.KN;
+import a.a.a.c.f.b.c.a.Voivodeship;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.a.FCR;
 import com.github.bademux.emk.app.FXApp;
@@ -119,13 +119,13 @@ public class ETA extends BaseProgressFxController<ETE> {
                 var7.DAM().DCX().setValue(var6.fxml_include_address_boxController.fxml_include_District_boxController.fxml_component_main_element.getText());
                 var7.DAM().DCY().setValue(var6.fxml_include_address_boxController.fxml_include_Community_boxController.fxml_component_main_element.getText());
                 var7.DAM().DCV().setValue(var6.fxml_include_address_boxController.fxml_include_CountryCode_boxController.fxml_component_main_element.getText());
-                var7.DAM().DCW().setValue((KN) ((ComboBoxRequired) var6.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getValue());
+                var7.DAM().DCW().setValue((Voivodeship) ((ComboBoxRequired) var6.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getValue());
                 var7.DAN().setValue(var6.fxml_include_address_boxController.fxml_include_telephone_boxController.fxml_component_main_element.getText());
                 var7.DAO().setValue(var6.fxml_include_address_boxController.fxml_include_email_boxController.fxml_component_main_element.getText());
                 var7.DAP().setValue(var6.fxml_include_remarks_boxController.fxml_component_main_element.getText());
                 this.GFM = this.HHG();
                 this.GFM.setContractor(var7);
-                this.GFM.setMode(ETC.EDIT);
+                this.GFM.setMode(Mode.EDIT);
                 this.GFM.HHL();
                 this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getItems().clear();
                 Collections.sort(this.fxml_include_ContactsListLogicController.GFJ);
@@ -151,7 +151,7 @@ public class ETA extends BaseProgressFxController<ETE> {
         int var2 = this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedIndex();
         boolean var3 = true;
         if (var2 >= 0) {
-            FEN var4 = FCR.getConfirmDataDialog(this.resources.getString("micro.dialog.remove.confirm.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.dialog.remove.confirm.message"));
+            DialogButton var4 = FCR.getConfirmDataDialog(this.resources.getString("micro.dialog.remove.confirm.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.dialog.remove.confirm.message"));
             switch (var4) {
                 case Confirm:
                     var3 = true;

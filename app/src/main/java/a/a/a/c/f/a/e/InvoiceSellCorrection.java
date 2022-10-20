@@ -1,9 +1,9 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.JS;
-import a.a.a.c.f.b.c.JV;
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.b.c.Amount;
+import a.a.a.c.f.b.c.PrivtePerson;
+import a.a.a.c.f.b.c.InvoicingDate;
+import a.a.a.c.f.b.c.Text;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -14,94 +14,94 @@ import java.math.BigDecimal;
         name = "invoiceSellCorrection"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class InvoiceSellCorrection extends HW {
-    private KO AKR;
-    private JV AKS;
-    private JR AKT;
-    private JR AKU;
-    private JR AKV;
+public class InvoiceSellCorrection extends BaseInvoiceSellCorrection {
+    private Text AKR;
+    private InvoicingDate AKS;
+    private Amount AKT;
+    private Amount AKU;
+    private Amount AKV;
 
     public InvoiceSellCorrection() {
 
     }
 
-    public KO getCorrectionReason() {
+    public Text getCorrectionReason() {
         return this.AKR;
     }
 
-    public void setCorrectionReason(KO var1) {
+    public void setCorrectionReason(Text var1) {
         this.AKR = var1;
     }
 
-    public KO DBX() {
+    public Text DBX() {
         if (this.AKR == null) {
-            this.AKR = new KO();
+            this.AKR = new Text();
         }
 
         return this.AKR;
     }
 
-    public JV getReceiveDate() {
+    public InvoicingDate getReceiveDate() {
         return this.AKS;
     }
 
-    public JV DBY() {
+    public InvoicingDate DBY() {
         if (this.AKS == null) {
-            this.AKS = new JV();
+            this.AKS = new InvoicingDate();
         }
 
         return this.AKS;
     }
 
-    public JR getDifferenceAmountSummaryWithTax() {
+    public Amount getDifferenceAmountSummaryWithTax() {
         return this.AKT;
     }
 
-    public JR DBZ() {
+    public Amount DBZ() {
         if (this.AKT == null) {
-            this.AKT = new JR();
+            this.AKT = new Amount();
         }
 
         return this.AKT;
     }
 
-    public void setDifferenceAmountSummaryWithTax(JR var1) {
+    public void setDifferenceAmountSummaryWithTax(Amount var1) {
         this.AKT = var1;
     }
 
-    public JR getDifferenceAmountSummaryWithoutTax() {
+    public Amount getDifferenceAmountSummaryWithoutTax() {
         return this.AKU;
     }
 
-    public JR DCA() {
+    public Amount DCA() {
         if (this.AKU == null) {
-            this.AKU = new JR();
+            this.AKU = new Amount();
         }
 
         return this.AKU;
     }
 
-    public void setDifferenceAmountSummaryWithoutTax(JR var1) {
+    public void setDifferenceAmountSummaryWithoutTax(Amount var1) {
         this.AKU = var1;
     }
 
-    public JR getDifferenceAmountTax() {
+    public Amount getDifferenceAmountTax() {
         return this.AKV;
     }
 
-    public JR DCB() {
+    public Amount DCB() {
         if (this.AKV == null) {
-            this.AKV = new JR();
+            this.AKV = new Amount();
         }
 
         return this.AKV;
     }
 
-    public void setDifferenceAmountTax(JR var1) {
+    public void setDifferenceAmountTax(Amount var1) {
         this.AKV = var1;
     }
 
-    public JV getInvoicingDate() {
+    public InvoicingDate getInvoicingDate() {
         if (this.getUsingInvoicingDate() != null && this.getUsingInvoicingDate().getValue() != null && this.getUsingInvoicingDate().getValue()) {
             return this.IVO;
         } else {
@@ -111,7 +111,7 @@ public class InvoiceSellCorrection extends HW {
                 this.IVO = this.AKS.DEF();
             }
 
-            this.setUsingInvoicingDate(new JS(true));
+            this.setUsingInvoicingDate(new PrivtePerson(true));
             return this.IVO;
         }
     }

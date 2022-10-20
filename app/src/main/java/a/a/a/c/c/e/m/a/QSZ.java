@@ -1,7 +1,7 @@
 package a.a.a.c.c.e.m.a;
 
-import a.a.a.b.a.a.FDO;
-import a.a.a.b.c.FEN;
+import a.a.a.b.a.a.SqlOperation;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -9,17 +9,17 @@ import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.a.ENK;
 import a.a.a.c.c.d.a.ENN;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.m.c.QTB;
 import a.a.a.c.e.a.d.ValueContainer3;
 import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
@@ -50,12 +50,12 @@ public class QSZ extends ENN<QTB> {
     @FXML
     protected EMR fxml_include_top_menuController;
     private InvoicePurchase QZJ = null;
-    private EPB QZK;
+    private Mode QZK;
     private Contractor QZL;
 
     public QSZ(FXApp var1, EMW var2, String var3, String var4) {
         super(var1, var2, var3, var4);
-        this.QZK = EPB.NEW;
+        this.QZK = Mode.NEW;
     }
 
     public void init() throws FFK {
@@ -81,7 +81,7 @@ public class QSZ extends ENN<QTB> {
             if (this.QZI) {
                 var1 = true;
             } else if (this.QZG.get()) {
-                FEN var9 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
+                DialogButton var9 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
                 QTB var3;
                 switch (var9) {
                     case ExitAndSave:
@@ -131,31 +131,31 @@ public class QSZ extends ENN<QTB> {
             this.fxml_include_container.setVvalue(0.0);
             this.QZI = false;
             QTB var1 = this.HHG();
-            if (this.QZK != null && !EPB.NEW.equals(this.QZK)) {
-                if (EPB.VIEW.equals(this.QZK)) {
+            if (this.QZK != null && !Mode.NEW.equals(this.QZK)) {
+                if (Mode.VIEW.equals(this.QZK)) {
                     this.QZH.set(true);
                     this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.View"));
-                    this.QZK = EPB.NEW;
+                    this.QZK = Mode.NEW;
                     this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Return_AlternateCancel"));
                     var1.setInvoicePurchase(this.QZJ);
-                    var1.setActionType(FDO.select);
+                    var1.setActionType(SqlOperation.select);
                     var1.setInvoicePurchaseEditKey(null);
                 } else {
-                    if (!EPB.EDIT.equals(this.QZK)) {
+                    if (!Mode.EDIT.equals(this.QZK)) {
                         throw new FFK("Invalid mode [" + this.QZK + "]!");
                     }
 
                     this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.Edit"));
                     this.QZH.set(false);
-                    this.QZK = EPB.NEW;
+                    this.QZK = Mode.NEW;
                     this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Cancel"));
                     this.fxml_include_aggregatePurchaseNewLogicController.fxml_include_invoicingDate_boxController.IFN(var1.getRangesWhereSettled(this.resources.getString("micro.process.invoice_purchase_new.Tooltip.SettledPeriod")));
                     this.QZJ.setPreviousPeriod(this.QZJ.getPeriod().DDN());
                     var1.setInvoicePurchase(this.QZJ);
-                    var1.setActionType(FDO.update);
+                    var1.setActionType(SqlOperation.update);
                     Period var2 = this.QZJ.getPeriod() != null ? this.QZJ.getPeriod().DDN() : null;
                     RefId var3 = this.QZJ.getRefId() != null ? this.QZJ.getRefId().DEL() : null;
-                    KA var4 = this.QZJ.getIssuerNumber() != null ? this.QZJ.getIssuerNumber().DEJ() : null;
+                    Nip var4 = this.QZJ.getIssuerNumber() != null ? this.QZJ.getIssuerNumber().DEJ() : null;
                     var1.setInvoicePurchaseEditKey(new ValueContainer3(var2, var3, var4));
                 }
             } else {
@@ -163,7 +163,7 @@ public class QSZ extends ENN<QTB> {
                 this.QZH.set(false);
                 this.fxml_generalButtonCancel.setText(FCW.getInstance().getMessageForKey("micro.process.button.Cancel"));
                 this.fxml_include_aggregatePurchaseNewLogicController.fxml_include_invoicingDate_boxController.IFN(var1.getRangesWhereSettled(this.resources.getString("micro.process.invoice_purchase_new.Tooltip.SettledPeriod")));
-                var1.setActionType(FDO.insert);
+                var1.setActionType(SqlOperation.insert);
                 var1.setInvoicePurchaseEditKey(null);
             }
 
@@ -199,7 +199,7 @@ public class QSZ extends ENN<QTB> {
         QTB var4 = this.getProcess();
         var4.resetAndCleanUpProcess();
         Period finalVar = var2;
-        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
             public void accept(ENK<?> var1) {
 
                 try {
@@ -229,7 +229,7 @@ public class QSZ extends ENN<QTB> {
             QTB var4 = this.getProcess();
             var4.HHL();
             Period finalVar = var2;
-            this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
+            this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new Consumer<ENK<?>>() {
                 public void accept(ENK<?> var1) {
 
                     try {
@@ -259,12 +259,12 @@ public class QSZ extends ENN<QTB> {
         this.QZJ = (InvoicePurchase) var1;
     }
 
-    public void setMode(EPB var1) {
+    public void setMode(Mode var1) {
         this.QZK = var1;
     }
 
     public void setContractor(Contractor var1) {
-        this.QZK = EPB.NEW;
+        this.QZK = Mode.NEW;
         this.QZL = var1;
     }
 }

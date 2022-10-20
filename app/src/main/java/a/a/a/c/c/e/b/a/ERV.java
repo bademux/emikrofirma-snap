@@ -6,8 +6,8 @@ import a.a.a.c.c.d.m.QKL;
 import a.a.a.c.c.d.m.QKN;
 import a.a.a.c.c.d.m.QKO;
 import a.a.a.c.f.a.a.*;
-import a.a.a.c.f.b.c.a.KK;
-import a.a.a.c.f.b.c.a.KN;
+import a.a.a.c.f.b.c.a.TaxOffice;
+import a.a.a.c.f.b.c.a.Voivodeship;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import com.github.bademux.emk.app.FXApp;
@@ -32,11 +32,11 @@ public class ERV extends BaseFxController {
     @FXML
     public EYY fxml_include_logoImg_boxController;
     @FXML
-    public EYN<KN> fxml_include_address_boxController;
+    public EYN<Voivodeship> fxml_include_address_boxController;
     @FXML
     public EYM fxml_include_accountNumber_boxController;
     @FXML
-    public EZP<KK> fxml_include_taxOffice_boxController;
+    public EZP<TaxOffice> fxml_include_taxOffice_boxController;
 
     public ERV(FXApp var1, String var2) {
         super(var1, var2);
@@ -49,9 +49,9 @@ public class ERV extends BaseFxController {
         this.fxml_include_nip_boxController.fxml_component_main_element.editableProperty().set(false);
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getCellFactory().call(null));
-        this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.getItems().addAll(KN.values());
+        this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.getItems().addAll(Voivodeship.values());
         this.fxml_include_taxOffice_boxController.fxml_component_main_element.setConverter(new QKL(this.fxml_include_taxOffice_boxController.fxml_component_main_element));
-        this.fxml_include_taxOffice_boxController.fxml_component_main_element.getItems().addAll(KK.DEN());
+        this.fxml_include_taxOffice_boxController.fxml_component_main_element.getItems().addAll(TaxOffice.DEN());
         this.fxml_include_taxOffice_boxController.fxml_component_main_element.editableProperty().set(true);
         this.fxml_include_taxOffice_boxController.fxml_component_main_element.setOnKeyReleased(new QKN());
         this.fxml_include_taxOffice_boxController.fxml_component_main_element.showingProperty().addListener(new QKO(this.fxml_include_taxOffice_boxController.fxml_component_main_element));

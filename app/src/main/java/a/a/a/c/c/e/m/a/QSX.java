@@ -9,13 +9,13 @@ import a.a.a.c.f.a.c.Contractor;
 import a.a.a.c.f.a.e.InvoiceElement;
 import a.a.a.c.f.a.e.InvoiceElementPurchase;
 import a.a.a.c.f.a.e.InvoicePurchase;
-import a.a.a.c.f.b.a.JJ;
+import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Amount;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
-import a.a.a.c.f.b.c.a.KM;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.c.a.TaxReason;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import com.github.bademux.emk.app.FXApp;
 import javafx.event.ActionEvent;
@@ -73,7 +73,7 @@ public class QSX extends QUW {
             this.fxml_include_ContractorName_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAI().DDG());
             this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAR().DDG());
             this.fxml_include_nip_boxController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var2.DAJ().DDG());
-            JJ var3 = var2.DAM();
+            Address var3 = var2.DAM();
             this.fxml_include_Street_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDA().DDG());
             this.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDB().DDG());
             this.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var3.DDC().DDG());
@@ -115,11 +115,11 @@ public class QSX extends QUW {
                 var4.showAndWait();
                 if (var6.getResult()) {
                     InvoiceElementPurchase var7 = new InvoiceElementPurchase();
-                    var7.setNetPriceForAll(new JR(var6.fxml_include_netValueNumberBox_boxController.fxml_component_main_element.getNumber()));
-                    var7.setTaxValueForAll(new JR(var6.fxml_include_taxValueNumberBox_boxController.fxml_component_main_element.getNumber()));
-                    var7.setGrossValueForAll(new JR(var6.fxml_include_netValueNumberBox_boxController.fxml_component_main_element.getNumber().add(var6.fxml_include_taxValueNumberBox_boxController.fxml_component_main_element.getNumber())));
+                    var7.setNetPriceForAll(new Amount(var6.fxml_include_netValueNumberBox_boxController.fxml_component_main_element.getNumber()));
+                    var7.setTaxValueForAll(new Amount(var6.fxml_include_taxValueNumberBox_boxController.fxml_component_main_element.getNumber()));
+                    var7.setGrossValueForAll(new Amount(var6.fxml_include_netValueNumberBox_boxController.fxml_component_main_element.getNumber().add(var6.fxml_include_taxValueNumberBox_boxController.fxml_component_main_element.getNumber())));
                     var7.DBO().setValue(var6.fxml_include_deductHalfLabeledCheckBox_boxController.fxml_component_main_element.isSelected());
-                    var7.DBP().setValue((KM) ((ComboBoxRequired) var6.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getValue());
+                    var7.DBP().setValue((TaxReason) ((ComboBoxRequired) var6.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getValue());
                     this.fxml_registry_invoicePositionTable_tableView.getItems().add(var7);
                     this.fxml_registry_invoicePositionTable_tableView.refresh();
                     org.slf4j.LoggerFactory.getLogger(getClass()).info("Added new invoice element, current number of elements: " + this.fxml_registry_invoicePositionTable_tableView.getItems().size());
@@ -147,7 +147,7 @@ public class QSX extends QUW {
 
     }
 
-    public boolean RJW(Period var1, RefId var2, KA var3) {
+    public boolean RJW(Period var1, RefId var2, Nip var3) {
 
         boolean var4;
         if (this.QZB == null) {
@@ -173,7 +173,7 @@ public class QSX extends QUW {
         return var2;
     }
 
-    public void RJV(InvoiceElement var1, InvoiceElement var2, QSV var3) {
+    public void RJV(InvoiceElement var1, InvoiceElement var2, CalculationMethodType var3) {
 
         QRZ var4 = new QRZ();
         var4.RIB(var1, var2);

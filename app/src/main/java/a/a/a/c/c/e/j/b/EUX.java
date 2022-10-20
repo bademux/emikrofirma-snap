@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.j.a.EUV;
 import a.a.a.c.c.e.j.c.EUY;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EUX extends ProcessDefinitionBase {
-    public static final EOS GMQ;
+    public static final Stage GMQ;
     public static final String GMR = "invoice_sale_new_add_invoice_element.fxml";
 
     public EUX() {
@@ -25,8 +25,8 @@ public class EUX extends ProcessDefinitionBase {
         return GMQ.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
-        if (var1 == ENH.MAIN) {
+    public String getTitle(Anchor var1) throws FFK {
+        if (var1 == Anchor.MAIN) {
             return FCW.getInstance().getMessageForKey("micro.process.invoice_sale_new.main.title");
         }
         throw new FFK("Invalid anchor type [" + var1 + "]!");
@@ -46,16 +46,16 @@ public class EUX extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.CONFIGURATION_PROPERTIES));
-        var1.add(new LN(LN.LO.USER_DATA));
-        var1.add(new LN(LN.LO.INVOICE));
-        var1.add(new LN(LN.LO.SETTLEMENT));
-        var1.add(new LN(LN.LO.DICTIONARY));
-        var1.add(new LN(LN.LO.CONTRACTOR));
+        var1.add(new LN(LN.StageType.CONFIGURATION_PROPERTIES));
+        var1.add(new LN(LN.StageType.USER_DATA));
+        var1.add(new LN(LN.StageType.INVOICE));
+        var1.add(new LN(LN.StageType.SETTLEMENT));
+        var1.add(new LN(LN.StageType.DICTIONARY));
+        var1.add(new LN(LN.StageType.CONTRACTOR));
         return var1;
     }
 
     static {
-        GMQ = EOS.INVOICE_SALE_NEW;
+        GMQ = Stage.INVOICE_SALE_NEW;
     }
 }

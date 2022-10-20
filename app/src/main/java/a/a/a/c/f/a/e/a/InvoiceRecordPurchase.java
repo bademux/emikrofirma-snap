@@ -10,7 +10,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class InvoiceRecordPurchase extends InvoiceRecord {
     public InvoiceRecordPurchase() {
-        super(IH.PURCHASE);
+        super(InvoiceRecordType.PURCHASE);
 
     }
 }

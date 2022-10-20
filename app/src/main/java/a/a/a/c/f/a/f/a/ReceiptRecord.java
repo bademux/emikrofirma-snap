@@ -1,46 +1,46 @@
 package a.a.a.c.f.a.f.a;
 
 import a.a.a.c.f.a.ModelBusinessPeriodElement;
-import a.a.a.c.f.b.c.JV;
+import a.a.a.c.f.b.c.InvoicingDate;
 import a.a.a.c.f.b.c.RefId;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class ReceiptRecord extends ModelBusinessPeriodElement {
-    public static final KL[] AMJ;
-    private IQ AMK;
-    private JV AML;
+    public static final TaxRate[] AMJ;
+    private RecordType AMK;
+    private InvoicingDate AML;
     private RefId AMM;
 
     public ReceiptRecord() {
 
     }
 
-    public ReceiptRecord(IQ var1) {
+    public ReceiptRecord(RecordType var1) {
         this();
 
         this.AMK = var1;
 
     }
 
-    public IQ getReceiptRecordType() {
+    public RecordType getReceiptRecordType() {
         return this.AMK;
     }
 
-    public JV getCreationDate() {
+    public InvoicingDate getCreationDate() {
         return this.AML;
     }
 
-    public JV DCE() {
+    public InvoicingDate DCE() {
         if (this.AML == null) {
-            this.AML = new JV();
+            this.AML = new InvoicingDate();
         }
 
         return this.AML;
     }
 
-    public void setCreationDate(JV var1) {
+    public void setCreationDate(InvoicingDate var1) {
         this.AML = var1;
     }
 
@@ -84,6 +84,6 @@ public abstract class ReceiptRecord extends ModelBusinessPeriodElement {
     }
 
     static {
-        AMJ = new KL[]{KL.RATE_23, KL.RATE_8, KL.RATE_5, KL.RATE_4, KL.RATE_0, KL.ZW, KL.NP};
+        AMJ = new TaxRate[]{TaxRate.RATE_23, TaxRate.RATE_8, TaxRate.RATE_5, TaxRate.RATE_4, TaxRate.RATE_0, TaxRate.ZW, TaxRate.NP};
     }
 }

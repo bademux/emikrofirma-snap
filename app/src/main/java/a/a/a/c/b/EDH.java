@@ -2,7 +2,7 @@ package a.a.a.c.b;
 
 import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.KA;
+import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
 
 public class EDH<_T extends Invoice<?>> {
@@ -31,11 +31,11 @@ public class EDH<_T extends Invoice<?>> {
         return var2;
     }
 
-    public KA getIssuerNumber() {
+    public Nip getIssuerNumber() {
 
-        KA var2;
+        Nip var2;
         String var1 = this.FFY.getValue("business_issuer_number");
-        var2 = new KA(var1);
+        var2 = new Nip(var1);
 
         return var2;
     }

@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.c.a.a;
 
-import a.a.a.c.f.a.c.a.AHCE;
+import a.a.a.c.f.a.c.a.BaseConition;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -10,7 +10,7 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import java.util.regex.Matcher;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class ConditionOnFieldAbstract extends AHCE {
+public abstract class ConditionOnFieldAbstract extends BaseConition {
     @XmlAttribute(
             name = "conditionType"
     )

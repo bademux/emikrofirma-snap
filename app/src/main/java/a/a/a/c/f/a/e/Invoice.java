@@ -3,7 +3,7 @@ package a.a.a.c.f.a.e;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.ModelBusinessPeriodElement;
 import a.a.a.c.f.b.c.*;
-import a.a.a.c.f.b.c.a.KL;
+import a.a.a.c.f.b.c.a.TaxRate;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElements;
 import jakarta.xml.bind.annotation.XmlTransient;
@@ -15,24 +15,24 @@ import java.util.List;
 
 @XmlTransient
 public abstract class Invoice<_T extends InvoiceElement> extends ModelBusinessPeriodElement {
-    private final IB AJF;
-    private final IA AJG;
-    private KA AJH;
+    private final InvoiceType AJF;
+    private final InvoiceSubtype AJG;
+    private Nip AJH;
     private RefId AJI;
-    private JV AJJ;
-    private JV AJK;
-    private final List<ValueContainer2<KL, BigDecimal>> AJL;
-    private final List<ValueContainer2<KL, BigDecimal>> AJM;
-    private final List<ValueContainer2<KL, BigDecimal>> AJN;
-    private JR AJO;
-    private JR AJP;
-    private JR AJQ;
+    private InvoicingDate AJJ;
+    private InvoicingDate AJK;
+    private final List<ValueContainer2<TaxRate, BigDecimal>> AJL;
+    private final List<ValueContainer2<TaxRate, BigDecimal>> AJM;
+    private final List<ValueContainer2<TaxRate, BigDecimal>> AJN;
+    private Amount AJO;
+    private Amount AJP;
+    private Amount AJQ;
     private KB AJR;
-    private JV AJS;
-    private JS AJT;
-    private JS QLQ;
-    private KO AJU;
-    private KO QLR;
+    private InvoicingDate AJS;
+    private PrivtePerson AJT;
+    private PrivtePerson QLQ;
+    private Text AJU;
+    private Text QLR;
     private QSU QWN;
     @XmlElements({@XmlElement(
             name = "invoiceElementSell",
@@ -44,7 +44,7 @@ public abstract class Invoice<_T extends InvoiceElement> extends ModelBusinessPe
     private List<_T> AJV;
     private JY AJW;
 
-    protected Invoice(IB var1, IA var2) {
+    protected Invoice(InvoiceType var1, InvoiceSubtype var2) {
 
         this.AJF = var1;
         this.AJG = var2;
@@ -60,27 +60,27 @@ public abstract class Invoice<_T extends InvoiceElement> extends ModelBusinessPe
 
     }
 
-    public IB getInvoiceType() {
+    public InvoiceType getInvoiceType() {
         return this.AJF;
     }
 
-    public IA getInvoiceSubType() {
+    public InvoiceSubtype getInvoiceSubType() {
         return this.AJG;
     }
 
-    public KA getIssuerNumber() {
+    public Nip getIssuerNumber() {
         return this.AJH;
     }
 
-    public KA DAR() {
+    public Nip DAR() {
         if (this.AJH == null) {
-            this.AJH = new KA();
+            this.AJH = new Nip();
         }
 
         return this.AJH;
     }
 
-    public void setIssuerNumber(KA var1) {
+    public void setIssuerNumber(Nip var1) {
         this.AJH = var1;
     }
 
@@ -100,95 +100,95 @@ public abstract class Invoice<_T extends InvoiceElement> extends ModelBusinessPe
         this.AJI = var1;
     }
 
-    public JV getCreationDate() {
+    public InvoicingDate getCreationDate() {
         return this.AJJ;
     }
 
-    public JV DAT() {
+    public InvoicingDate DAT() {
         if (this.AJJ == null) {
-            this.AJJ = new JV();
+            this.AJJ = new InvoicingDate();
         }
 
         return this.AJJ;
     }
 
-    public void setCreationDate(JV var1) {
+    public void setCreationDate(InvoicingDate var1) {
         this.AJJ = var1;
     }
 
-    public JV getTransactionDate() {
+    public InvoicingDate getTransactionDate() {
         return this.AJK;
     }
 
-    public JV DAU() {
+    public InvoicingDate DAU() {
         if (this.AJK == null) {
-            this.AJK = new JV();
+            this.AJK = new InvoicingDate();
         }
 
         return this.AJK;
     }
 
-    public void setTransactionDate(JV var1) {
+    public void setTransactionDate(InvoicingDate var1) {
         this.AJK = var1;
     }
 
-    public List<ValueContainer2<KL, BigDecimal>> getSumOfAmountsDividedByTaxRate() {
+    public List<ValueContainer2<TaxRate, BigDecimal>> getSumOfAmountsDividedByTaxRate() {
         return this.AJL;
     }
 
-    public List<ValueContainer2<KL, BigDecimal>> getAmountOfTaxDividedByTaxRate() {
+    public List<ValueContainer2<TaxRate, BigDecimal>> getAmountOfTaxDividedByTaxRate() {
         return this.AJM;
     }
 
-    public List<ValueContainer2<KL, BigDecimal>> getSumOfGrossAmountsDividedByTaxRate() {
+    public List<ValueContainer2<TaxRate, BigDecimal>> getSumOfGrossAmountsDividedByTaxRate() {
         return this.AJN;
     }
 
-    public JR getAmountSummaryWithTax() {
+    public Amount getAmountSummaryWithTax() {
         return this.AJO;
     }
 
-    public JR DAV() {
+    public Amount DAV() {
         if (this.AJO == null) {
-            this.AJO = new JR();
+            this.AJO = new Amount();
         }
 
         return this.AJO;
     }
 
-    public void setAmountSummaryWithTax(JR var1) {
+    public void setAmountSummaryWithTax(Amount var1) {
         this.AJO = var1;
     }
 
-    public JR getAmountSummaryWithoutTax() {
+    public Amount getAmountSummaryWithoutTax() {
         return this.AJP;
     }
 
-    public JR DAW() {
+    public Amount DAW() {
         if (this.AJP == null) {
-            this.AJP = new JR();
+            this.AJP = new Amount();
         }
 
         return this.AJP;
     }
 
-    public void setAmountSummaryWithoutTax(JR var1) {
+    public void setAmountSummaryWithoutTax(Amount var1) {
         this.AJP = var1;
     }
 
-    public JR getAmountTax() {
+    public Amount getAmountTax() {
         return this.AJQ;
     }
 
-    public JR DAX() {
+    public Amount DAX() {
         if (this.AJQ == null) {
-            this.AJQ = new JR();
+            this.AJQ = new Amount();
         }
 
         return this.AJQ;
     }
 
-    public void setAmountTax(JR var1) {
+    public void setAmountTax(Amount var1) {
         this.AJQ = var1;
     }
 
@@ -208,83 +208,83 @@ public abstract class Invoice<_T extends InvoiceElement> extends ModelBusinessPe
         this.AJR = var1;
     }
 
-    public JV getPaymentDate() {
+    public InvoicingDate getPaymentDate() {
         return this.AJS;
     }
 
-    public JV DAZ() {
+    public InvoicingDate DAZ() {
         if (this.AJS == null) {
-            this.AJS = new JV();
+            this.AJS = new InvoicingDate();
         }
 
         return this.AJS;
     }
 
-    public void setPaymentDate(JV var1) {
+    public void setPaymentDate(InvoicingDate var1) {
         this.AJS = var1;
     }
 
-    public JS getPayed() {
+    public PrivtePerson getPayed() {
         return this.AJT;
     }
 
-    public JS DBA() {
+    public PrivtePerson DBA() {
         if (this.AJT == null) {
-            this.AJT = new JS();
+            this.AJT = new PrivtePerson();
         }
 
         return this.AJT;
     }
 
-    public void setPayed(JS var1) {
+    public void setPayed(PrivtePerson var1) {
         this.AJT = var1;
     }
 
-    public JS getPaymentDateByDeal() {
+    public PrivtePerson getPaymentDateByDeal() {
         return this.QLQ;
     }
 
-    public JS QOP() {
+    public PrivtePerson QOP() {
         if (this.QLQ == null) {
-            this.QLQ = new JS(false);
+            this.QLQ = new PrivtePerson(false);
         }
 
         return this.QLQ;
     }
 
-    public void setPaymentDateByDeal(JS var1) {
+    public void setPaymentDateByDeal(PrivtePerson var1) {
         this.QLQ = var1;
     }
 
-    public KO getRemarks() {
+    public Text getRemarks() {
         return this.AJU;
     }
 
-    public KO DBB() {
+    public Text DBB() {
         if (this.AJU == null) {
-            this.AJU = new KO();
+            this.AJU = new Text();
         }
 
         return this.AJU;
     }
 
-    public void setRemarks(KO var1) {
+    public void setRemarks(Text var1) {
         this.AJU = var1;
     }
 
-    public KO getExemptionReason() {
+    public Text getExemptionReason() {
         return this.QLR;
     }
 
-    public KO QOQ() {
+    public Text QOQ() {
         if (this.QLR == null) {
-            this.QLR = new KO();
+            this.QLR = new Text();
         }
 
         return this.QLR;
     }
 
-    public void setExemptionReason(KO var1) {
+    public void setExemptionReason(Text var1) {
         this.QLR = var1;
     }
 
@@ -334,7 +334,7 @@ public abstract class Invoice<_T extends InvoiceElement> extends ModelBusinessPe
         return var1;
     }
 
-    public ValueContainer2<BigDecimal, BigDecimal> getNetAndTaxForTaxRate(KL var1) {
+    public ValueContainer2<BigDecimal, BigDecimal> getNetAndTaxForTaxRate(TaxRate var1) {
 
         BigDecimal var2 = BigDecimal.ZERO;
         BigDecimal var3 = BigDecimal.ZERO;

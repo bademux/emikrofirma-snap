@@ -5,23 +5,23 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
 import a.a.a.c.d.f.*;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.II;
+import a.a.a.c.f.a.EntityTypes;
 import a.a.a.c.f.a.e.Invoice;
 import a.a.a.c.f.a.e.InvoicePurchase;
 import a.a.a.c.f.a.e.InvoiceSell;
-import a.a.a.c.f.a.e.HY;
+import a.a.a.c.f.a.e.BaseInvoiceSell;
 import a.a.a.c.f.a.e.a.*;
 import a.a.a.c.f.a.f.a.ReceiptRecord;
-import a.a.a.c.f.a.f.a.IP;
+import a.a.a.c.f.a.f.a.RecordElementVat;
 import a.a.a.c.f.a.f.a.ReceiptRecordVat;
 import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.InvoiceOtherPurchase;
 import a.a.a.c.f.a.n.InvoiceOtherSell;
-import a.a.a.c.f.a.n.QSQ;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.KM;
+import a.a.a.c.f.b.c.Amount;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.TaxReason;
 import a.a.a.c.f.c.b.UserData;
 
 import java.math.BigDecimal;
@@ -81,26 +81,26 @@ public class EQQ {
             var2.setVat(var1.getVat());
             var2.setGross(var1.getGross());
             HashMap var3 = new HashMap();
-            KL[] var4 = ReceiptRecord.AMJ;
+            TaxRate[] var4 = ReceiptRecord.AMJ;
             int var5 = var4.length;
 
             for (int var6 = 0; var6 < var5; ++var6) {
-                KL var7 = var4[var6];
+                TaxRate var7 = var4[var6];
                 ValueContainer2 var8 = new ValueContainer2();
-                var8.setFirstValue(new JR());
-                var8.setSecondValue(new JR());
+                var8.setFirstValue(new Amount());
+                var8.setSecondValue(new Amount());
                 var3.put(var7, var8);
             }
 
             Iterator var11 = var1.getReceiptRecordElements().iterator();
 
             while (var11.hasNext()) {
-                IP var12 = (IP) var11.next();
+                RecordElementVat var12 = (RecordElementVat) var11.next();
                 ValueContainer2 var13 = (ValueContainer2) var3.get(var12.getTaxRate().getValue());
                 BigDecimal var14 = var12.DCF().getValue();
                 BigDecimal var15 = var12.DCG().getValue();
-                BigDecimal var9 = ((JR) var13.getFirstValue()).getValue();
-                BigDecimal var10 = ((JR) var13.getSecondValue()).getValue();
+                BigDecimal var9 = ((Amount) var13.getFirstValue()).getValue();
+                BigDecimal var10 = ((Amount) var13.getSecondValue()).getValue();
                 if (!BigDecimal.ZERO.equals(var14)) {
                     if (var9 == null) {
                         var9 = BigDecimal.ZERO;
@@ -111,23 +111,23 @@ public class EQQ {
                     var10 = var10.add(var15);
                 }
 
-                ((JR) var13.getFirstValue()).setValue(var9);
-                ((JR) var13.getSecondValue()).setValue(var10);
+                ((Amount) var13.getFirstValue()).setValue(var9);
+                ((Amount) var13.getSecondValue()).setValue(var10);
             }
 
-            var2.setVat23((ValueContainer2) var3.get(KL.RATE_23));
-            var2.setVat8((ValueContainer2) var3.get(KL.RATE_8));
-            var2.setVat5((ValueContainer2) var3.get(KL.RATE_5));
-            var2.setVat4((ValueContainer2) var3.get(KL.RATE_4));
-            var2.setVat0((ValueContainer2) var3.get(KL.RATE_0));
-            var2.setVatNp((ValueContainer2) var3.get(KL.NP));
-            var2.setVatZw((ValueContainer2) var3.get(KL.ZW));
+            var2.setVat23((ValueContainer2) var3.get(TaxRate.RATE_23));
+            var2.setVat8((ValueContainer2) var3.get(TaxRate.RATE_8));
+            var2.setVat5((ValueContainer2) var3.get(TaxRate.RATE_5));
+            var2.setVat4((ValueContainer2) var3.get(TaxRate.RATE_4));
+            var2.setVat0((ValueContainer2) var3.get(TaxRate.RATE_0));
+            var2.setVatNp((ValueContainer2) var3.get(TaxRate.NP));
+            var2.setVatZw((ValueContainer2) var3.get(TaxRate.ZW));
             return var2;
         }
     }
 
     private static void HQY(Invoice<?> var0, InvoiceRecord var1, InvoiceRecord var2) {
-        II var3 = II.getByType(var0.getClass());
+        EntityTypes var3 = EntityTypes.getByType(var0.getClass());
         EQZ var4 = null;
         InvoiceRecordElement var11;
         switch (var3) {
@@ -138,12 +138,12 @@ public class EQQ {
                 var11.setRefId(var0.getRefId());
                 var11.setCreationDate(var0.DAT().DEF());
                 var11.setTransactionDate(var0.DAU().DEF());
-                var11.setDate(((HY) var0).getInvoicingDate());
+                var11.setDate(((BaseInvoiceSell) var0).getInvoicingDate());
                 var11.setContractor(((InvoiceSell) var0).getContractor());
                 setBasicVatPricesForInvoiceRecordElement(var11, var10.getForAll());
                 if (var10.HRL()) {
-                    var11.setVatOo23(new ValueContainer2(new JR(var10.getForAll().getVatOo23Amount()), new JR(var10.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
-                    var11.setVatOo8(new ValueContainer2(new JR(var10.getForAll().getVatOo8Amount()), new JR(var10.getForAll().getVatOo8Amount() != null ? BigDecimal.ZERO : null)));
+                    var11.setVatOo23(new ValueContainer2(new Amount(var10.getForAll().getVatOo23Amount()), new Amount(var10.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
+                    var11.setVatOo8(new ValueContainer2(new Amount(var10.getForAll().getVatOo8Amount()), new Amount(var10.getForAll().getVatOo8Amount() != null ? BigDecimal.ZERO : null)));
                 }
 
                 HQZ(var1, var11);
@@ -160,12 +160,12 @@ public class EQQ {
 
                 var11.setCreationDate(var0.DAT().DEF());
                 var11.setTransactionDate(var12.DAU().DEF());
-                var11.setDate(((HY) var0).getInvoicingDate());
+                var11.setDate(((BaseInvoiceSell) var0).getInvoicingDate());
                 var11.setContractor(((InvoiceSell) var12).getContractor());
                 setBasicVatPricesForInvoiceRecordElement(var11, var9.getForAll());
                 if (var9.HRL()) {
-                    var11.setVatOo23(new ValueContainer2(new JR(var9.getForAll().getVatOo23Amount()), new JR(var9.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
-                    var11.setVatOo8(new ValueContainer2(new JR(var9.getForAll().getVatOo8Amount()), new JR(var9.getForAll().getVatOo8Amount() != null ? BigDecimal.ZERO : null)));
+                    var11.setVatOo23(new ValueContainer2(new Amount(var9.getForAll().getVatOo23Amount()), new Amount(var9.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
+                    var11.setVatOo8(new ValueContainer2(new Amount(var9.getForAll().getVatOo8Amount()), new Amount(var9.getForAll().getVatOo8Amount() != null ? BigDecimal.ZERO : null)));
                 }
 
                 HQZ(var1, var11);
@@ -195,7 +195,7 @@ public class EQQ {
 
                 EQZ var8 = var4;
                 if (!var8.HRN()) {
-                    HRB(var5, var4, var8.getForGeneralGoods(), var0, KM.acquisition_of_general_goods);
+                    HRB(var5, var4, var8.getForGeneralGoods(), var0, TaxReason.acquisition_of_general_goods);
                     HQZ(var2, var5);
                     if (var8.getForGeneralGoods().getInvoiceIsOo()) {
                         HQZ(var1, HRA(var5));
@@ -203,7 +203,7 @@ public class EQQ {
                 }
 
                 if (!var8.isForFixedAssetsEmpty()) {
-                    HRB(var7, var4, var8.getForFixedAssets(), var0, KM.acquisition_of_fixed_assets);
+                    HRB(var7, var4, var8.getForFixedAssets(), var0, TaxReason.acquisition_of_fixed_assets);
                     HQZ(var2, var7);
                     if (var8.getForFixedAssets().getInvoiceIsOo()) {
                         HQZ(var1, HRA(var7));
@@ -217,9 +217,9 @@ public class EQQ {
     }
 
     private static void HQZ(InvoiceRecord var0, InvoiceRecordElement var1) {
-        var0.setGross(new JR(var0.QQR().getValue().add(var1.QRG().getValue())));
-        var0.setNet(new JR(var0.QQS().getValue().add(var1.QRH().getValue())));
-        var0.setVat(new JR(var0.QQT().getValue().add(var1.QRI().getValue())));
+        var0.setGross(new Amount(var0.QQR().getValue().add(var1.QRG().getValue())));
+        var0.setNet(new Amount(var0.QQS().getValue().add(var1.QRH().getValue())));
+        var0.setVat(new Amount(var0.QQT().getValue().add(var1.QRI().getValue())));
         var0.setVat23(ERD.HRV(var0.QQU(), var1.QRJ()));
         var0.setVat8(ERD.HRV(var0.QQV(), var1.QRK()));
         var0.setVat5(ERD.HRV(var0.QQW(), var1.QRL()));
@@ -245,22 +245,22 @@ public class EQQ {
         BigDecimal var3 = Optional.ofNullable(var0.QRQ().getSecondValue().getValue()).orElse(BigDecimal.ZERO);
         var2 = var2.add(Optional.ofNullable(var0.QRR().getFirstValue().getValue()).orElse(BigDecimal.ZERO));
         var3 = var3.add(Optional.ofNullable(var0.QRR().getSecondValue().getValue()).orElse(BigDecimal.ZERO));
-        var1.setNet(new JR(var2));
-        var1.setGross(new JR(var2.add(var3)));
-        var1.setVat(new JR(var3));
-        var1.setVat23(new ValueContainer2(new JR(), new JR()));
-        var1.setVat8(new ValueContainer2(new JR(), new JR()));
-        var1.setVat5(new ValueContainer2(new JR(), new JR()));
-        var1.setVat4(new ValueContainer2(new JR(), new JR()));
-        var1.setVat0(new ValueContainer2(new JR(), new JR()));
-        var1.setVatZw(new ValueContainer2(new JR(), new JR()));
-        var1.setVatNp(new ValueContainer2(new JR(), new JR()));
+        var1.setNet(new Amount(var2));
+        var1.setGross(new Amount(var2.add(var3)));
+        var1.setVat(new Amount(var3));
+        var1.setVat23(new ValueContainer2(new Amount(), new Amount()));
+        var1.setVat8(new ValueContainer2(new Amount(), new Amount()));
+        var1.setVat5(new ValueContainer2(new Amount(), new Amount()));
+        var1.setVat4(new ValueContainer2(new Amount(), new Amount()));
+        var1.setVat0(new ValueContainer2(new Amount(), new Amount()));
+        var1.setVatZw(new ValueContainer2(new Amount(), new Amount()));
+        var1.setVatNp(new ValueContainer2(new Amount(), new Amount()));
         var1.setVatOo23(var0.QRQ());
         var1.setVatOo8(var0.QRR());
         return var1;
     }
 
-    private static void HRB(InvoiceRecordElement var0, EQZ var1, ERB var2, Invoice<?> var3, KM var4) {
+    private static void HRB(InvoiceRecordElement var0, EQZ var1, ERB var2, Invoice<?> var3, TaxReason var4) {
         setBasicVatPricesForInvoiceRecordElement(var0, var2);
         var0.setDate(((InvoicePurchase) var3).getInvoicingDate());
         if (var0 instanceof InvoiceRecordElementPurchase) {
@@ -271,7 +271,7 @@ public class EQQ {
         if (var1.HRL()) {
             BigDecimal var5 = null;
             BigDecimal var6 = null;
-            if (var1 instanceof EQZ && KM.acquisition_of_general_goods.equals(var4)) {
+            if (var1 instanceof EQZ && TaxReason.acquisition_of_general_goods.equals(var4)) {
                 var5 = var1.getForGeneralGoods().getVatOo23Amount();
                 var6 = var1.getForGeneralGoods().getVatOo8Amount();
             } else {
@@ -279,14 +279,14 @@ public class EQQ {
                 var6 = var1.getForFixedAssets().getVatOo8Amount();
             }
 
-            var0.setVatOo23(new ValueContainer2(new JR(var5), new JR(var2.getVatOo23Tax())));
-            var0.setVatOo8(new ValueContainer2(new JR(var6), new JR(var2.getVatOo8Tax())));
+            var0.setVatOo23(new ValueContainer2(new Amount(var5), new Amount(var2.getVatOo23Tax())));
+            var0.setVatOo8(new ValueContainer2(new Amount(var6), new Amount(var2.getVatOo8Tax())));
         }
 
     }
 
     private static void setBasicVatPricesForInvoiceRecordElement(InvoiceRecordElement var0, ERB var1) {
-        var0.setNet(new JR(var1.getNetPrice()));
+        var0.setNet(new Amount(var1.getNetPrice()));
         if (var1.getInvoiceIsOo() && !(var0 instanceof InvoiceRecordElementPurchase)) {
             BigDecimal var2 = BigDecimal.ZERO;
             BigDecimal var3 = BigDecimal.ZERO;
@@ -304,20 +304,20 @@ public class EQQ {
             }
 
             BigDecimal var5 = var3.add(var4);
-            var0.setGross(new JR(var1.getGrossPrice().subtract(var5)));
-            var0.setVat(new JR(var2.subtract(var5)));
+            var0.setGross(new Amount(var1.getGrossPrice().subtract(var5)));
+            var0.setVat(new Amount(var2.subtract(var5)));
         } else {
-            var0.setGross(new JR(var1.getGrossPrice()));
-            var0.setVat(new JR(var1.getVatPrice()));
+            var0.setGross(new Amount(var1.getGrossPrice()));
+            var0.setVat(new Amount(var1.getVatPrice()));
         }
 
-        var0.setVat23(new ValueContainer2(new JR(var1.getVat23Amount()), new JR(var1.getVat23Tax())));
-        var0.setVat8(new ValueContainer2(new JR(var1.getVat8Amount()), new JR(var1.getVat8Tax())));
-        var0.setVat5(new ValueContainer2(new JR(var1.getVat5Amount()), new JR(var1.getVat5Tax())));
-        var0.setVat4(new ValueContainer2(new JR(var1.getVat4Amount()), new JR(var1.getVat4Tax())));
-        var0.setVat0(new ValueContainer2(new JR(var1.getVat0Amount()), new JR(var1.getVat0Tax())));
-        var0.setVatZw(new ValueContainer2(new JR(var1.getVatZwAmount()), new JR(var1.getVatZwTax())));
-        var0.setVatNp(new ValueContainer2(new JR(var1.getVatNpAmount()), new JR(var1.getProperVatNpTax())));
+        var0.setVat23(new ValueContainer2(new Amount(var1.getVat23Amount()), new Amount(var1.getVat23Tax())));
+        var0.setVat8(new ValueContainer2(new Amount(var1.getVat8Amount()), new Amount(var1.getVat8Tax())));
+        var0.setVat5(new ValueContainer2(new Amount(var1.getVat5Amount()), new Amount(var1.getVat5Tax())));
+        var0.setVat4(new ValueContainer2(new Amount(var1.getVat4Amount()), new Amount(var1.getVat4Tax())));
+        var0.setVat0(new ValueContainer2(new Amount(var1.getVat0Amount()), new Amount(var1.getVat0Tax())));
+        var0.setVatZw(new ValueContainer2(new Amount(var1.getVatZwAmount()), new Amount(var1.getVatZwTax())));
+        var0.setVatNp(new ValueContainer2(new Amount(var1.getVatNpAmount()), new Amount(var1.getProperVatNpTax())));
     }
 
     private static void RIA(InvoiceOther<?> var0, InvoiceRecord var1, InvoiceRecord var2) {
@@ -333,13 +333,13 @@ public class EQQ {
                 var9.HGZ().setValue(false);
                 ERA var8 = new ERA(var0);
                 var9.setRefId(var0.getRefId());
-                if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_3)) {
+                if (var0.getInvoiceOtherSubType().equals(InvoiceOtherSubtype.SELL_REASON_3)) {
                     var9.RIK().setValue(true);
-                } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_4)) {
+                } else if (var0.getInvoiceOtherSubType().equals(InvoiceOtherSubtype.SELL_REASON_4)) {
                     var9.RIL().setValue(true);
-                } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_1)) {
+                } else if (var0.getInvoiceOtherSubType().equals(InvoiceOtherSubtype.SELL_REASON_1)) {
                     var9.RII().setValue(true);
-                } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_2)) {
+                } else if (var0.getInvoiceOtherSubType().equals(InvoiceOtherSubtype.SELL_REASON_2)) {
                     var9.RIJ().setValue(true);
                 }
 
@@ -359,13 +359,13 @@ public class EQQ {
                 var4.HGZ().setValue(false);
                 var3 = new EQZ(var0);
                 var4.setRefId(var0.getRefId());
-                if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_1)) {
+                if (var0.getInvoiceOtherSubType().equals(InvoiceOtherSubtype.PURCHASE_REASON_1)) {
                     var4.RIM().setValue(true);
-                } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_2)) {
+                } else if (var0.getInvoiceOtherSubType().equals(InvoiceOtherSubtype.PURCHASE_REASON_2)) {
                     var4.RIN().setValue(true);
-                } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_3)) {
+                } else if (var0.getInvoiceOtherSubType().equals(InvoiceOtherSubtype.PURCHASE_REASON_3)) {
                     var4.RIO().setValue(true);
-                } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_4)) {
+                } else if (var0.getInvoiceOtherSubType().equals(InvoiceOtherSubtype.PURCHASE_REASON_4)) {
                     var4.RIP().setValue(true);
                 }
 

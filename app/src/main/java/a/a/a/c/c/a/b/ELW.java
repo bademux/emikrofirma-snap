@@ -9,13 +9,13 @@ import a.a.a.c.c.b.EMB;
 import a.a.a.c.d.b.EQB;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.d.DeclarationJPK;
-import a.a.a.c.f.a.d.HL;
-import a.a.a.c.f.a.d.QJY;
-import a.a.a.c.f.a.e.HY;
-import a.a.a.c.f.a.e.IB;
-import a.a.a.c.f.a.g.IU;
-import a.a.a.c.f.b.c.KA;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.a.d.DeclarationStatus;
+import a.a.a.c.f.a.d.DateType;
+import a.a.a.c.f.a.e.BaseInvoiceSell;
+import a.a.a.c.f.a.e.InvoiceType;
+import a.a.a.c.f.a.g.InvoiceCriteria;
+import a.a.a.c.f.b.c.Nip;
+import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.f.c.b.UserData;
 import a.a.a.c.g.c.FCZ;
 
@@ -39,9 +39,9 @@ public abstract class ELW extends ELV {
 
         boolean var5;
         boolean var2 = false;
-        HL var3 = var1.getDeclarationStatus();
-        EQB.EQC var4 = EQB.HPX(var1);
-        if (var4 != EQB.EQC.SUCCESS) {
+        DeclarationStatus var3 = var1.getDeclarationStatus();
+        EQB.SendoutStatus var4 = EQB.HPX(var1);
+        if (var4 != EQB.SendoutStatus.SUCCESS) {
             throw FCZ.getInstance().QGS();
         }
 
@@ -56,16 +56,16 @@ public abstract class ELW extends ELV {
         return var5;
     }
 
-    public List<HY> getInvoicesByDateAndNip(QJY var1, LocalDate var2, LocalDate var3, KA var4) throws FFK, FFO {
+    public List<BaseInvoiceSell> getInvoicesByDateAndNip(DateType var1, LocalDate var2, LocalDate var3, Nip var4) throws FFK, FFO {
 
         ArrayList var5 = new ArrayList();
-        IU var6;
+        InvoiceCriteria var6;
         switch (var1) {
             case CREATION_DATE:
-                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, new ValueContainer2(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, null, OrderType.ASC, null, null);
+                var6 = new InvoiceCriteria(BaseInvoiceSell.class, InvoiceState.ACTIVE, null, InvoiceType.SELL, null, null, null, var4, new ValueContainer2(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, null, OrderType.ASC, null, null);
                 break;
             case TRANSACTION_DATE:
-                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, null, new ValueContainer2(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, OrderType.ASC, null, null);
+                var6 = new InvoiceCriteria(BaseInvoiceSell.class, InvoiceState.ACTIVE, null, InvoiceType.SELL, null, null, null, var4, null, new ValueContainer2(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, OrderType.ASC, null, null);
                 break;
             default:
                 throw new FFI("not known date search type");
@@ -83,9 +83,9 @@ public abstract class ELW extends ELV {
         return var13;
     }
 
-    public KA QOX() {
+    public Nip QOX() {
 
-        KA var2;
+        Nip var2;
         try {
             UserData var1 = EMB.getInstance().HHV();
             if (var1 == null || var1.getNip() == null) {

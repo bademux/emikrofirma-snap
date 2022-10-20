@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import a.a.a.c.f.a.c.a.f.VariableDateTime;
@@ -46,7 +46,7 @@ public class ConditionOnFieldAndVariableDateTime extends ConditionOnFieldAndVari
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         ValueContainer2 var10;
         try {
@@ -109,17 +109,17 @@ public class ConditionOnFieldAndVariableDateTime extends ConditionOnFieldAndVari
             }
 
             if (var8) {
-                ValueContainer2 var24 = new ValueContainer2(AHCI.SUCCESS, null);
+                ValueContainer2 var24 = new ValueContainer2(ActionResult.SUCCESS, null);
                 return var24;
             }
 
-            AHCI var9 = null;
+            ActionResult var9 = null;
             switch (this.AHTY) {
                 case WARNING:
-                    var9 = AHCI.WARNING;
+                    var9 = ActionResult.WARNING;
                     break;
                 case ERROR:
-                    var9 = AHCI.ERROR;
+                    var9 = ActionResult.ERROR;
                     break;
                 default:
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");

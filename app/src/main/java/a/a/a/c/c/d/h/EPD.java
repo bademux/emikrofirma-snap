@@ -2,7 +2,7 @@ package a.a.a.c.c.d.h;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.f.a.d.DeclarationJPK;
-import a.a.a.c.f.b.c.a.KK;
+import a.a.a.c.f.b.c.a.TaxOffice;
 import a.a.a.c.g.c.FCZ;
 import com.github.bademux.emk.utils.FopUtils;
 import org.apache.fop.configuration.ConfigurationException;
@@ -56,7 +56,7 @@ public class EPD extends EPJ {
                 transformer.setParameter("documentIdentifierSecond", this.FPL.getPESEL2());
             }
 
-            transformer.setParameter("documentTaxOffice", KK.getValueForKey(this.FPL.getKodUrzedu()));
+            transformer.setParameter("documentTaxOffice", TaxOffice.getValueForKey(this.FPL.getKodUrzedu()));
             transformer.setParameter("documentBase64Timestamp", this.FPL.getStempelCzasu());
             transformer.setParameter("documentFormSchema", this.FPL.getWersjaSchemy());
             transformer.setParameter("documentGenerationDateTime", this.FPM.getUpoSigningTime());

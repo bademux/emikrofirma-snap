@@ -6,9 +6,9 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.e.c.c.ESJ;
 import a.a.a.c.f.a.a.EZP;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.KH;
+import a.a.a.c.f.b.c.a.MonthType;
 import a.a.a.c.f.c.c.ComboBoxRequired;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,7 +24,7 @@ public class ESF {
     @FXML
     public EZP<Integer> fxml_invoice_settlements_yearController;
     @FXML
-    public EZP<KH> fxml_invoice_settlements_monthController;
+    public EZP<MonthType> fxml_invoice_settlements_monthController;
     @FXML
     public Button fxml_button_save;
     @FXML
@@ -100,13 +100,13 @@ public class ESF {
 
         try {
             ((ComboBoxRequired) this.fxml_invoice_settlements_monthController.fxml_component_main_element).getItems().clear();
-            KH[] var2 = KH.values();
+            MonthType[] var2 = MonthType.values();
             int var3 = var2.length;
 
             for (int var4 = 0; var4 < var3; ++var4) {
-                KH var5 = var2[var4];
+                MonthType var5 = var2[var4];
                 Period var6 = new Period(var1, var5.getNumber());
-                JG var7 = this.GBW.getSettlementStatus(var6);
+                SettlementStatus var7 = this.GBW.getSettlementStatus(var6);
                 if (var7 == null) {
                     ((ComboBoxRequired) this.fxml_invoice_settlements_monthController.fxml_component_main_element).getItems().add(var5);
                 }

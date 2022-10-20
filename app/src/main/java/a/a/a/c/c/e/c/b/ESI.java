@@ -4,8 +4,8 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import a.a.a.c.c.a.b.ELV;
-import a.a.a.c.c.c.ENH;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.c.Anchor;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.e.c.a.ESG;
 import a.a.a.c.c.e.c.c.ESJ;
 import a.a.a.c.f.LN;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ESI extends ProcessDefinitionBase {
-    public static final EOS GCR;
+    public static final Stage GCR;
     public static final String QNB = "invoicesSettlements_generateAndSend_JPK.fxml";
     public static final String GCT = "invoices_settlements_create_empty.fxml";
 
@@ -26,7 +26,7 @@ public class ESI extends ProcessDefinitionBase {
         return GCR.getProcessName();
     }
 
-    public String getTitle(ENH var1) throws FFK {
+    public String getTitle(Anchor var1) throws FFK {
         switch (var1) {
             case MAIN:
                 return FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.menu.title");
@@ -51,15 +51,15 @@ public class ESI extends ProcessDefinitionBase {
 
     public List<LN> getObjectClasses() {
         ArrayList var1 = new ArrayList();
-        var1.add(new LN(LN.LO.SETTLEMENT));
-        var1.add(new LN(LN.LO.INVOICE));
-        var1.add(new LN(LN.LO.INVOICERECORD));
-        var1.add(new LN(LN.LO.DECLARATION));
-        var1.add(new LN(LN.LO.CONFIGURATION_PROPERTIES));
+        var1.add(new LN(LN.StageType.SETTLEMENT));
+        var1.add(new LN(LN.StageType.INVOICE));
+        var1.add(new LN(LN.StageType.INVOICERECORD));
+        var1.add(new LN(LN.StageType.DECLARATION));
+        var1.add(new LN(LN.StageType.CONFIGURATION_PROPERTIES));
         return var1;
     }
 
     static {
-        GCR = EOS.INVOICES_SETTLEMENTS;
+        GCR = Stage.INVOICES_SETTLEMENTS;
     }
 }

@@ -4,7 +4,7 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.f.ModelBaseElementWithId;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.InvoiceState;
 
 import java.util.Map;
 
@@ -56,8 +56,8 @@ public class EDF<_A extends ModelBaseElementWithId> extends ModelBaseElementWith
         return (_B) var4;
     }
 
-    public QSW getState() {
-        return this.getEnumValue(QSW.class, "business_state");
+    public InvoiceState getState() {
+        return this.getEnumValue(InvoiceState.class, "business_state");
     }
 
     public Period getPeriod() {

@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.b.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -63,14 +63,14 @@ public class ERY extends BaseProgressFxController<ESC> {
             if (this.GBP) {
                 var1 = true;
             } else if (this.GBO.get()) {
-                FEN var9 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
+                DialogButton var9 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
                 switch (var9) {
                     case CancelExit:
                     default:
                         var1 = false;
                         break;
                     case ExitAndSave:
-                        FEN var3 = FCR.getConfirmDataDialog(this.resources.getString("micro.user.save.confirm.title"), null, this.resources.getString("micro.user.save.ok"), this.resources.getString("micro.user.save.cancel"), 500.0, 100.0, this.resources.getString("micro.user.save.info"));
+                        DialogButton var3 = FCR.getConfirmDataDialog(this.resources.getString("micro.user.save.confirm.title"), null, this.resources.getString("micro.user.save.ok"), this.resources.getString("micro.user.save.cancel"), 500.0, 100.0, this.resources.getString("micro.user.save.info"));
                         switch (var3) {
                             case Confirm:
                                 this.GBP = true;
@@ -167,7 +167,7 @@ public class ERY extends BaseProgressFxController<ESC> {
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.GBP = true;
-            FEN var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.user.save.confirm.title"), null, this.resources.getString("micro.user.save.ok"), this.resources.getString("micro.user.save.cancel"), 500.0, 100.0, this.resources.getString("micro.user.save.info"));
+            DialogButton var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.user.save.confirm.title"), null, this.resources.getString("micro.user.save.ok"), this.resources.getString("micro.user.save.cancel"), 500.0, 100.0, this.resources.getString("micro.user.save.info"));
             switch (var2) {
                 case Confirm:
                     this.GBP = true;

@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.a.a.b;
 
-import a.a.a.c.c.e.a.a.c.ERP;
+import a.a.a.c.c.e.a.a.c.ElementType;
 import a.a.a.c.c.e.a.a.c.ERQ;
 import a.a.a.c.c.e.a.a.c.ERR;
 import javafx.beans.property.StringProperty;
@@ -25,7 +25,7 @@ public class ERL implements EventHandler<DragEvent> {
         boolean var4 = false;
         if (var3.hasString()) {
             String var5 = var3.getString();
-            ERP var6 = ERP.valueOf(var5);
+            ElementType var6 = ElementType.valueOf(var5);
             var4 = true;
             if (var1.getTransferMode() == TransferMode.COPY) {
                 ERQ.HSF(var6, "", this.FZU, var2.getChildren(), this.FZV, true);

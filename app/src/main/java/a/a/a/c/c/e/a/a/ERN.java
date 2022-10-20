@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.a.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -15,7 +15,7 @@ import a.a.a.c.f.c.a.PropertyBoolean;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.c.TextFieldValidated_RefIdPattern;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import com.github.bademux.emk.app.FXApp;
@@ -122,7 +122,7 @@ public class ERN extends BaseProgressFxController<ERU> {
             boolean var1 = true;
             if (!this.GAN && (this.fxml_include_configurationLogicController == null || !this.fxml_include_configurationLogicController.QOT())) {
                 if (this.GAJ.get()) {
-                    FEN var8 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
+                    DialogButton var8 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_generalButtonSave.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
                     switch (var8) {
                         case ExitAndSave:
                             this.getProcessAndFinish();
@@ -176,11 +176,11 @@ public class ERN extends BaseProgressFxController<ERU> {
             this.RAA.set(false);
             final ERU var1 = this.HHG();
             this.GAD = var1.getConfigurationProperties();
-            this.GAE = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(FCQ.WorkingDir);
-            this.GAF = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(FCQ.Pkcs11LibraryFile);
-            this.GAG = (PropertyBoolean) this.GAD.getConfigurationPropertyOrDefault(FCQ.PerformVerification);
-            this.GAH = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(FCQ.SellRefIdPattern);
-            this.GAI = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(FCQ.SellCorrectionRefIdPattern);
+            this.GAE = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(ConfigurationProperty.WorkingDir);
+            this.GAF = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(ConfigurationProperty.Pkcs11LibraryFile);
+            this.GAG = (PropertyBoolean) this.GAD.getConfigurationPropertyOrDefault(ConfigurationProperty.PerformVerification);
+            this.GAH = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(ConfigurationProperty.SellRefIdPattern);
+            this.GAI = (PropertyString) this.GAD.getConfigurationPropertyOrDefault(ConfigurationProperty.SellCorrectionRefIdPattern);
             this.fxml_include_configurationLogicController.HSI(this.GAE, this.GAF, this.GAG, this.GAH, this.GAI);
             if (this.GAK == null) {
                 this.GAK = new ERO(var1.getModelManager(), this.fxml_include_configurationLogicController, this.fxml_include_configurationLogicController.GAV, this.fxml_include_configurationLogicController.fxml_config_f_preview);

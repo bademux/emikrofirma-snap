@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -19,7 +19,7 @@ public class ConditionOnFieldAndConstantString extends ConditionOnFieldAndConsta
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         ValueContainer2 var4;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
@@ -40,13 +40,13 @@ public class ConditionOnFieldAndConstantString extends ConditionOnFieldAndConsta
 
         if (!var3) {
             var4 = null;
-            AHCI var9;
+            ActionResult var9;
             switch (this.AHTY) {
                 case WARNING:
-                    var9 = AHCI.WARNING;
+                    var9 = ActionResult.WARNING;
                     break;
                 case ERROR:
-                    var9 = AHCI.ERROR;
+                    var9 = ActionResult.ERROR;
                     break;
                 default:
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");
@@ -56,7 +56,7 @@ public class ConditionOnFieldAndConstantString extends ConditionOnFieldAndConsta
             return var5;
         }
 
-        var4 = new ValueContainer2(AHCI.SUCCESS, null);
+        var4 = new ValueContainer2(ActionResult.SUCCESS, null);
 
         return var4;
     }

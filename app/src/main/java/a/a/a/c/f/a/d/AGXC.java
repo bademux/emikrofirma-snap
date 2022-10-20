@@ -1,46 +1,46 @@
 package a.a.a.c.f.a.d;
 
-import a.a.a.c.f.b.c.JT;
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.b.c.Bytes;
+import a.a.a.c.f.b.c.Text;
 
 public class AGXC {
-    private transient JT AHTE;
-    private transient JT AHTF;
-    private transient KO AHTG;
-    private transient KO AHTH;
+    private transient Bytes AHTE;
+    private transient Bytes AHTF;
+    private transient Text AHTG;
+    private transient Text AHTH;
 
     public AGXC() {
     }
 
-    public JT getInitialisationVector() {
+    public Bytes getInitialisationVector() {
         return this.AHTE;
     }
 
-    public void setInitialisationVector(JT var1) {
+    public void setInitialisationVector(Bytes var1) {
         this.AHTE = var1;
     }
 
-    public JT getSecretKeyBytes() {
+    public Bytes getSecretKeyBytes() {
         return this.AHTF;
     }
 
-    public void setSecretKeyBytes(JT var1) {
+    public void setSecretKeyBytes(Bytes var1) {
         this.AHTF = var1;
     }
 
-    public KO getSecretKeyAlgorithm() {
+    public Text getSecretKeyAlgorithm() {
         return this.AHTG;
     }
 
-    public void setSecretKeyAlgorithm(KO var1) {
+    public void setSecretKeyAlgorithm(Text var1) {
         this.AHTG = var1;
     }
 
-    public KO getSecretKeyFormat() {
+    public Text getSecretKeyFormat() {
         return this.AHTH;
     }
 
-    public void setSecretKeyFormat(KO var1) {
+    public void setSecretKeyFormat(Text var1) {
         this.AHTH = var1;
     }
 }

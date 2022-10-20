@@ -16,9 +16,9 @@ public class FEZ {
     private final Integer HFM;
     private final SecretKeyFactory HFN;
     private final SecureRandom HFO;
-    private final FFA HFP;
+    private final EncType HFP;
 
-    public FEZ(FFA var1, String var2) throws NoSuchAlgorithmException {
+    public FEZ(EncType var1, String var2) throws NoSuchAlgorithmException {
         this.HFM = 65536;
 
         this.HFP = var1;
@@ -27,12 +27,12 @@ public class FEZ {
 
     }
 
-    public FEZ(FFA var1) throws NoSuchAlgorithmException {
+    public FEZ(EncType var1) throws NoSuchAlgorithmException {
         this(var1, "SHA1PRNG");
     }
 
     public FEZ() throws NoSuchAlgorithmException {
-        this(FEZ.FFA.AES_CBC_PKCS5Padding_AES, "SHA1PRNG");
+        this(EncType.AES_CBC_PKCS5Padding_AES, "SHA1PRNG");
     }
 
     public SecretKey getKey(char[] var1, byte[] var2, Integer var3, Integer var4, String var5) throws NoSuchAlgorithmException, InvalidKeySpecException {
@@ -89,7 +89,7 @@ public class FEZ {
         return var1;
     }
 
-    public enum FFA {
+    public enum EncType {
         AES_CBC_PKCS5Padding_AES("PBKDF2WithHmacSHA256", "AES/CBC/PKCS5Padding", "AES", 256, 16),
         AES_CBC_PKCS5Padding_Rijndael("PBKDF2WithHmacSHA256", "AES/CBC/PKCS5Padding", "Rijndael", 256, 16),
         DES_CBC_PKCS5Padding_DES("PBKDF2WithHmacSHA256", "DES/CBC/PKCS5Padding", "DES", 64, 8),
@@ -102,7 +102,7 @@ public class FEZ {
         private final int HFJ;
         private final int HFK;
 
-        FFA(String var3, String var4, String var5, int var6, int var7) {
+        EncType(String var3, String var4, String var5, int var6, int var7) {
             this.HFG = var3;
             this.HFH = var4;
             this.HFI = var5;

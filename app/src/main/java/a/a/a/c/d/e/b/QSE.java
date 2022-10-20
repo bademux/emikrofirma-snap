@@ -2,16 +2,16 @@ package a.a.a.c.d.e.b;
 
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.d.e.QRX;
-import a.a.a.c.f.a.f.a.IP;
+import a.a.a.c.f.a.f.a.RecordElementVat;
 
-public class QSE implements QRX<IP> {
+public class QSE implements QRX<RecordElementVat> {
     public QSE() {
     }
 
-    public IP RIB(IP var1, IP var2) {
+    public RecordElementVat RIB(RecordElementVat var1, RecordElementVat var2) {
         boolean var3 = false;
         boolean var4 = false;
-        if (var1 != null && var1 instanceof IP) {
+        if (var1 != null && var1 instanceof RecordElementVat) {
             if (var2.getNet().compareTo(var1.getNet()) == 0 && var2.getTaxRate().compareTo(var1.getTaxRate()) == 0) {
                 if (var2.getVat().compareTo(var1.getVat()) != 0) {
                     var4 = true;

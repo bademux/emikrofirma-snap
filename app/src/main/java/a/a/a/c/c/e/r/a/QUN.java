@@ -6,7 +6,7 @@ import a.a.a.c.c.b.a.BaseFxController;
 import a.a.a.c.c.b.a.EMO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.e.EOT;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.r.a.a.QUP;
 import a.a.a.c.c.e.r.a.a.QUQ;
 import a.a.a.c.c.e.r.a.a.QUR;
@@ -16,18 +16,18 @@ import a.a.a.c.d.e.b.QSC;
 import a.a.a.c.d.g.ERF;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.c.QJW;
-import a.a.a.c.f.a.n.QSJ;
+import a.a.a.c.f.a.c.TitledContractor;
+import a.a.a.c.f.a.n.InvoiceOtherElementSell;
 import a.a.a.c.f.a.n.InvoiceOtherSell;
-import a.a.a.c.f.a.n.QSQ;
-import a.a.a.c.f.b.a.JJ;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
+import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.QSV;
+import a.a.a.c.f.b.c.a.TaxRate;
+import a.a.a.c.f.b.c.a.CalculationMethodType;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.a.QJZ;
 import a.a.a.c.f.c.c.ComboBoxRequired;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 import com.github.bademux.emk.app.FXApp;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -53,7 +53,7 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
+public class QUN extends BaseFxController implements EMO<InvoiceOtherElementSell>, EYR {
     public QUU RDU;
     ERF RDV = new ERF(false, 2, 2);
     private InvoiceOtherSell RDW;
@@ -78,17 +78,17 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
     @FXML
     private EZG fxml_sale_contractor_cityController;
     @FXML
-    private EZP<QSQ> fxml_other_sale_new_other_element_typeController;
+    private EZP<InvoiceOtherSubtype> fxml_other_sale_new_other_element_typeController;
     @FXML
-    public TableView<QSJ> fxml_other_sale_elements_table;
+    public TableView<InvoiceOtherElementSell> fxml_other_sale_elements_table;
     @FXML
-    public TableColumn<QSJ, Object> fxml_other_sale_elements_table_column_tax_type;
+    public TableColumn<InvoiceOtherElementSell, Object> fxml_other_sale_elements_table_column_tax_type;
     @FXML
-    public TableColumn<QSJ, Object> fxml_other_sale_elements_table_column_sum_net_price;
+    public TableColumn<InvoiceOtherElementSell, Object> fxml_other_sale_elements_table_column_sum_net_price;
     @FXML
-    public TableColumn<QSJ, Object> fxml_other_sale_elements_table_column_sum_tax;
+    public TableColumn<InvoiceOtherElementSell, Object> fxml_other_sale_elements_table_column_sum_tax;
     @FXML
-    public TableColumn<QSJ, Object> fxml_other_sale_elements_table_column_sum_brut_price;
+    public TableColumn<InvoiceOtherElementSell, Object> fxml_other_sale_elements_table_column_sum_brut_price;
     @FXML
     TableView<InvoiceOtherSell> fxml_other_sale_summary_summary_table;
     @FXML
@@ -117,8 +117,8 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
     public BooleanProperty REE = new SimpleBooleanProperty(false);
     public BooleanProperty REF = new SimpleBooleanProperty(false);
     public BooleanProperty REG = new SimpleBooleanProperty(false);
-    private EPB REH;
-    private final ListProperty<QSJ> REI = new SimpleListProperty();
+    private Mode REH;
+    private final ListProperty<InvoiceOtherElementSell> REI = new SimpleListProperty();
     private QUP REJ;
 
     public QUN(FXApp var1, String var2) {
@@ -145,19 +145,19 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
         this.fxml_other_sale_button_add_delete_other_position.disableProperty().bind(this.fxml_other_sale_elements_table.getSelectionModel().selectedItemProperty().isNull().or(this.REA.not()));
         this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getCellFactory().call(null));
-        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_1);
-        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_2);
-        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_3);
-        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_4);
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(InvoiceOtherSubtype.SELL_REASON_1);
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(InvoiceOtherSubtype.SELL_REASON_2);
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(InvoiceOtherSubtype.SELL_REASON_3);
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(InvoiceOtherSubtype.SELL_REASON_4);
         this.fxml_other_sale_elements_table_column_tax_type.setCellValueFactory(new PropertyValueFactory("taxRate"));
         this.fxml_other_sale_elements_table_column_sum_net_price.setCellValueFactory(new PropertyValueFactory("netPriceForAll"));
         this.fxml_other_sale_elements_table_column_sum_tax.setCellValueFactory(new PropertyValueFactory("taxValueForAll"));
         this.fxml_other_sale_elements_table_column_sum_brut_price.setCellValueFactory(new PropertyValueFactory("grossValueForAll"));
         LinkedHashSet var1 = new LinkedHashSet();
-        var1.add(KL.RATE_23);
-        var1.add(KL.RATE_8);
-        var1.add(KL.RATE_5);
-        var1.add(KL.RATE_4);
+        var1.add(TaxRate.RATE_23);
+        var1.add(TaxRate.RATE_8);
+        var1.add(TaxRate.RATE_5);
+        var1.add(TaxRate.RATE_4);
         EOT var2 = new EOT(this, true, var1);
         this.fxml_other_sale_elements_table_column_tax_type.setCellFactory(var2);
         this.fxml_other_sale_elements_table_column_sum_net_price.setCellFactory(new EOT(this, true));
@@ -231,7 +231,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
         Contractor var1 = this.RDW.RJS();
         this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAI().DDG());
         this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAJ().DDG());
-        JJ var2 = var1.DAM();
+        Address var2 = var1.DAM();
         this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDA().DDG());
         this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDB().DDG());
         this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDC().DDG());
@@ -245,7 +245,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
         Contractor var1 = this.RDW.RJS();
         this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAI().DDG());
         this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAJ().DDG());
-        JJ var2 = var1.DAM();
+        Address var2 = var1.DAM();
         this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDA().DDG());
         this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDB().DDG());
         this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDC().DDG());
@@ -290,7 +290,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
         this.fxml_sale_contractor_nameController.setContractorGetter(this.RDU);
         this.fxml_sale_contractor_nameController.setContractorSetter(this);
         this.RNL();
-        if (this.REH.equals(EPB.NEW)) {
+        if (this.REH.equals(Mode.NEW)) {
             this.setDefault();
         }
 
@@ -343,8 +343,8 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
 
     public void RNS(QUO var1) {
         if (var1.RNX()) {
-            QSJ var2 = new QSJ();
-            var2.RJH().setValue((KL) ((ComboBoxRequired) var1.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getValue());
+            InvoiceOtherElementSell var2 = new InvoiceOtherElementSell();
+            var2.RJH().setValue((TaxRate) ((ComboBoxRequired) var1.fxml_other_sale_new_add_other_element_tax_typeController.fxml_component_main_element).getValue());
             var2.RJE().setValue(var1.fxml_other_sale_new_add_other_element_netController.fxml_component_main_element.getNumber());
             var2.RJE().setAllowNegative(var1.fxml_other_sale_new_add_other_element_netController.fxml_component_main_element.IFG());
             var2.RJE().setAllowOnlyNegative(var1.fxml_other_sale_new_add_other_element_netController.fxml_component_main_element.RHT());
@@ -359,12 +359,12 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
 
             try {
                 ConfigurationProperties var4 = EMB.getInstance().HHU();
-                var3 = (String) var4.getConfigurationPropertyOrDefault(FCQ.CalculationMethod).DEY().getValue();
+                var3 = (String) var4.getConfigurationPropertyOrDefault(ConfigurationProperty.CalculationMethod).DEY().getValue();
             } catch (FFK var5) {
-                var3 = (String) QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod).DEY().getValue();
+                var3 = (String) QJZ.getDefaultConfigurationProperty(ConfigurationProperty.CalculationMethod).DEY().getValue();
             }
 
-            this.RJV(null, var2, QSV.valueOf(var3));
+            this.RJV(null, var2, CalculationMethodType.valueOf(var3));
             this.fxml_other_sale_elements_table.getItems().add(var2);
             this.fxml_other_sale_elements_table.refresh();
             this.HJJ();
@@ -391,7 +391,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
             QUO var6 = var2.getController();
             var6.setDialogStage(var4);
             var6.setResources(this.resources);
-            var6.setOtherType((QSQ) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue());
+            var6.setOtherType((InvoiceOtherSubtype) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue());
             var6.RNW();
             var6.getDialogStage().getIcons().add(new Image("/img/app/e_logo.png"));
             var6.getDialogStage().showAndWait();
@@ -424,7 +424,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
         Iterator var4 = this.RDW.getInvoiceOtherElements().iterator();
 
         while (var4.hasNext()) {
-            QSJ var5 = (QSJ) var4.next();
+            InvoiceOtherElementSell var5 = (InvoiceOtherElementSell) var4.next();
             if (var5.RJE().getValue() != null) {
                 var1 = var1.add(var5.RJE().getValue());
             }
@@ -444,7 +444,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
         this.fxml_other_sale_summary_summary_table.refresh();
     }
 
-    public void setContractorFromAutocomplete(QJW var1) {
+    public void setContractorFromAutocomplete(TitledContractor var1) {
 
         if (var1 != null) {
             Contractor var2 = var1.getContractor().AICD();
@@ -452,7 +452,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
             this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().getText().length());
             this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().setText(var2.getName().getValue());
             this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().getText().length());
-            JJ var3 = var2.DAM();
+            Address var3 = var2.DAM();
             this.fxml_sale_contractor_streetController.fxml_component_main_element.setText(var3.getStreet().getValue());
             this.fxml_sale_contractor_house_numberController.fxml_component_main_element.setText(var3.getHouseNumber().getValue());
             this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.setText(var3.getApartmentNumber().getValue());
@@ -474,7 +474,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
     public void RNT() {
 
         if (((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue() != null) {
-            switch ((QSQ) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue()) {
+            switch ((InvoiceOtherSubtype) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue()) {
                 case SELL_REASON_1:
                 case SELL_REASON_2:
                     this.fxml_other_sale_elements_table_column_tax_type.setEditable(true);
@@ -518,7 +518,7 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
 
     }
 
-    public void RJV(QSJ var1, QSJ var2, QSV var3) {
+    public void RJV(InvoiceOtherElementSell var1, InvoiceOtherElementSell var2, CalculationMethodType var3) {
 
         if (var2.getNetPriceForAll().getValue() != null && var2.getTaxRate().getValue() != null) {
             QSC var4 = new QSC();
@@ -530,15 +530,15 @@ public class QUN extends BaseFxController implements EMO<QSJ>, EYR {
 
     }
 
-    public QSQ RNV() {
-        return (QSQ) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue();
+    public InvoiceOtherSubtype RNV() {
+        return (InvoiceOtherSubtype) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue();
     }
 
-    public void setInvoiceOtherSubType(QSQ var1) {
+    public void setInvoiceOtherSubType(InvoiceOtherSubtype var1) {
         this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setValue(var1);
     }
 
-    public void setMode(EPB var1) {
+    public void setMode(Mode var1) {
         this.REH = var1;
     }
 }

@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.g.a;
 
-import a.a.a.b.c.FEN;
+import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -10,22 +10,22 @@ import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.a.EMW;
 import a.a.a.c.c.d.ENI;
-import a.a.a.c.c.d.EOS;
+import a.a.a.c.c.d.Stage;
 import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.a.ENO;
-import a.a.a.c.c.d.b.ENP;
+import a.a.a.c.c.d.b.InvoiceFilteringType;
 import a.a.a.c.c.d.d.EOK;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.g.EOX;
 import a.a.a.c.c.d.g.EPA;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.g.c.ETS;
 import a.a.a.c.f.a.a.EZG;
 import a.a.a.c.f.a.e.InvoicePurchase;
-import a.a.a.c.f.a.e.IA;
-import a.a.a.c.f.a.h.JG;
+import a.a.a.c.f.a.e.InvoiceSubtype;
+import a.a.a.c.f.a.h.SettlementStatus;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.KH;
+import a.a.a.c.f.b.c.a.MonthType;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
@@ -94,7 +94,7 @@ public class ETN extends ENO<ETS> {
     @FXML
     private TableColumn<ETQ, BigDecimal> fxml_invoice_purchase_list_tree_table_column_sum_brut;
     @FXML
-    private ComboBox<KH> fxml_invoice_purchase_list_month;
+    private ComboBox<MonthType> fxml_invoice_purchase_list_month;
     @FXML
     private ComboBox<String> fxml_invoice_purchase_list_year;
     @FXML
@@ -113,14 +113,14 @@ public class ETN extends ENO<ETS> {
     private TableColumn<EOX<String>, BigDecimal> fxml_invoice_purchase_list_summary_table_column_sum_brut;
     @FXML
     private ScrollPane fxml_invoice_purchase_list_scroll_pane;
-    private SortedMap<String, SortedSet<KH>> GHU;
+    private SortedMap<String, SortedSet<MonthType>> GHU;
     private final DecimalFormat GHV = ENI.get();
     private int GHW = 0;
     private boolean GHX = true;
     private String GHY;
     private final ListProperty<ETQ> GHZ = new SimpleListProperty(FXCollections.observableArrayList());
     private String GIA;
-    private KH GIB;
+    private MonthType GIB;
     protected final ListProperty<EOX<String>> GIC = new SimpleListProperty(FXCollections.observableArrayList());
     private List<EPA<InvoicePurchase>> GID;
     private final QGY GIE = new QGY();
@@ -271,7 +271,7 @@ public class ETN extends ENO<ETS> {
             Calendar var3 = Calendar.getInstance();
             int var4 = var3.get(1);
             int var5 = var3.get(2);
-            this.GIB = KH.getMonthByNumber(var5 + 1);
+            this.GIB = MonthType.getMonthByNumber(var5 + 1);
             this.GIA = String.valueOf(var4);
             log.info("Actual year: " + this.GIA + " Actual month: " + (var5 + 1));
             if (this.GHU.get(this.GIA) == null) {
@@ -314,7 +314,7 @@ public class ETN extends ENO<ETS> {
         if (this.GIA.equals(var1) && var2) {
             this.fxml_invoice_purchase_list_month.setValue(this.GIB);
         } else if (this.GHU.get(var1) != null && this.GHU.get(var1).size() > 0) {
-            this.fxml_invoice_purchase_list_month.setValue((KH) ((SortedSet) this.GHU.get(var1)).last());
+            this.fxml_invoice_purchase_list_month.setValue((MonthType) ((SortedSet) this.GHU.get(var1)).last());
         }
 
         if (!var3) {
@@ -342,9 +342,9 @@ public class ETN extends ENO<ETS> {
             this.GIE.QIZ();
             if (this.GIH != null && this.GIH.getYear() != null && this.GIH.getYear().getValue() != null && this.GIH.getMonth() != null && this.GIH.getMonth().getValue() != null) {
                 log.info("Initial period " + this.GIH);
-                if (this.GHU.get(String.valueOf(this.GIH.DDJ().getValue())) != null && this.GHU.get(String.valueOf(this.GIH.DDJ().getValue())).contains(KH.getMonthByNumber(this.GIH.DDK().getValue()))) {
+                if (this.GHU.get(String.valueOf(this.GIH.DDJ().getValue())) != null && this.GHU.get(String.valueOf(this.GIH.DDJ().getValue())).contains(MonthType.getMonthByNumber(this.GIH.DDK().getValue()))) {
                     this.fxml_invoice_purchase_list_year.getSelectionModel().select(String.valueOf(this.GIH.DDJ().getValue()));
-                    this.fxml_invoice_purchase_list_month.getSelectionModel().select(KH.getMonthByNumber(this.GIH.DDK().getValue()));
+                    this.fxml_invoice_purchase_list_month.getSelectionModel().select(MonthType.getMonthByNumber(this.GIH.DDK().getValue()));
                 } else {
                     this.fxml_invoice_purchase_list_year.getSelectionModel().select(this.GIA);
                     this.fxml_invoice_purchase_list_month.getSelectionModel().select(this.GIB);
@@ -397,7 +397,7 @@ public class ETN extends ENO<ETS> {
                 public void MXI() {
 
                     try {
-                        ETN.this.GID = var3.getInvoices(ENP.ALL, finalVar, finalVar1, null, null);
+                        ETN.this.GID = var3.getInvoices(InvoiceFilteringType.ALL, finalVar, finalVar1, null, null);
                     } catch (FFO | FFK var6) {
                         log.error("Something bad happened", var6);
                         var2.setObject(var6);
@@ -468,9 +468,9 @@ public class ETN extends ENO<ETS> {
                     try {
                         ETS var1 = ETN.this.getProcess();
                         if (ETN.this.fxml_invoice_purchase_list_year_search.getValue().equals(ETN.this.GHY)) {
-                            ETN.this.GID = var1.getInvoices(ENP.ALL, null, null, var2, null);
+                            ETN.this.GID = var1.getInvoices(InvoiceFilteringType.ALL, null, null, var2, null);
                         } else {
-                            ETN.this.GID = var1.getInvoices(ENP.ALL, Integer.valueOf(ETN.this.fxml_invoice_purchase_list_year_search.getValue()), null, var2, null);
+                            ETN.this.GID = var1.getInvoices(InvoiceFilteringType.ALL, Integer.valueOf(ETN.this.fxml_invoice_purchase_list_year_search.getValue()), null, var2, null);
                         }
                     } catch (FFO | FFK var6) {
                         log.error("Something bad happened", var6);
@@ -536,7 +536,7 @@ public class ETN extends ENO<ETS> {
             while (var4.hasNext()) {
                 EPA var5 = (EPA) var4.next();
                 String var6 = this.resources.getString("micro.process.common.invoices.InvoicePurchase");
-                if (var5.getSubType().equals(IA.AGGREGATE.toString())) {
+                if (var5.getSubType().equals(InvoiceSubtype.AGGREGATE.toString())) {
                     var6 = this.resources.getString("micro.process.common.invoices.AggregatePurchase");
                 }
 
@@ -570,7 +570,7 @@ public class ETN extends ENO<ETS> {
 
                 try {
                     var1.setInvoice(ETN.this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject());
-                    var1.setMode(EPB.EDIT);
+                    var1.setMode(Mode.EDIT);
                 } catch (FFK var6) {
                     log.error("Something bad happened", var6);
                     throw new FFI(var6);
@@ -582,11 +582,11 @@ public class ETN extends ENO<ETS> {
     }
 
     private String getFxmlForItem() {
-        String var1 = EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName();
+        String var1 = Stage.INVOICE_PURCHASE_NEW.getProcessFxmlFileName();
 
         try {
             if (this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject().getIsAggregatePurchase() != null && this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject().getIsAggregatePurchase()) {
-                var1 = EOS.AGGREGATE_PURCHASE_NEW.getProcessFxmlFileName();
+                var1 = Stage.AGGREGATE_PURCHASE_NEW.getProcessFxmlFileName();
             }
         } catch (FFK var3) {
             var3.printStackTrace();
@@ -606,7 +606,7 @@ public class ETN extends ENO<ETS> {
                 try {
                     InvoicePurchase var2 = ETN.this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject();
                     var1.setInvoice(var2);
-                    var1.setMode(EPB.VIEW);
+                    var1.setMode(Mode.VIEW);
                 } catch (FFK var6) {
                     log.error("Something bad happened", var6);
                     throw new FFI(var6);
@@ -622,10 +622,10 @@ public class ETN extends ENO<ETS> {
 
         log.info("Button [new_invoice] clicked");
         this.HHB();
-        this.getApplication().initController(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
             public void accept(ENN<?> var1) {
 
-                var1.setMode(EPB.NEW);
+                var1.setMode(Mode.NEW);
 
             }
         });
@@ -637,10 +637,10 @@ public class ETN extends ENO<ETS> {
 
         log.info("Button [new_aggregate_invoice] clicked");
         this.HHB();
-        this.getApplication().initController(this.getFxmlName(), EOS.AGGREGATE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
+        this.getApplication().initController(this.getFxmlName(), Stage.AGGREGATE_PURCHASE_NEW.getProcessFxmlFileName(), new Consumer<ENN<?>>() {
             public void accept(ENN<?> var1) {
 
-                var1.setMode(EPB.NEW);
+                var1.setMode(Mode.NEW);
 
             }
         });
@@ -651,7 +651,7 @@ public class ETN extends ENO<ETS> {
     protected void fxml_handleButton_invoice_purchase_list_delete(ActionEvent var1) {
 
         try {
-            FEN var2 = null;
+            DialogButton var2 = null;
             log.info("Button [delete] clicked");
             if (this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject().getIsAggregatePurchase() != null && this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice().getModelBaseElementWithIdObject().getIsAggregatePurchase()) {
                 var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.other_sale_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.invoice_purchase_listt.Dialog.deleteAreYouSure.header2"));
@@ -818,8 +818,8 @@ public class ETN extends ENO<ETS> {
             throw FCZ.getInstance().IHJ();
         }
 
-        JG var3 = var2.getSettlementStatus(var1);
-        if (var3 == JG.SETTLED) {
+        SettlementStatus var3 = var2.getSettlementStatus(var1);
+        if (var3 == SettlementStatus.SETTLED) {
             var4 = true;
             return var4;
         }
@@ -837,8 +837,8 @@ public class ETN extends ENO<ETS> {
             throw FCZ.getInstance().IHJ();
         }
 
-        JG var3 = var2.getSettlementStatus(var1);
-        if (var3 != JG.SETTLED) {
+        SettlementStatus var3 = var2.getSettlementStatus(var1);
+        if (var3 != SettlementStatus.SETTLED) {
             var4 = false;
             return var4;
         }
@@ -926,7 +926,7 @@ public class ETN extends ENO<ETS> {
         }
     }
 
-    private class QGY implements ChangeListener<KH> {
+    private class QGY implements ChangeListener<MonthType> {
         protected boolean QIB;
 
         private QGY() {
@@ -944,7 +944,7 @@ public class ETN extends ENO<ETS> {
             return this.QIB;
         }
 
-        public void changed(ObservableValue<? extends KH> var1, KH var2, KH var3) {
+        public void changed(ObservableValue<? extends MonthType> var1, MonthType var2, MonthType var3) {
 
             if (var3 != null && !this.QIB) {
                 ETN.this.getInvoicesByPeriod();

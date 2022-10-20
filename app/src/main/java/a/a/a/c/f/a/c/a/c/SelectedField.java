@@ -3,8 +3,8 @@ package a.a.a.c.f.a.c.a.c;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.e.a.d.ValueContainer1;
-import a.a.a.c.f.a.c.a.AHCE;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.BaseConition;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.a.*;
 import a.a.a.c.f.a.c.a.d.*;
 import a.a.a.c.f.a.c.a.e.RuleOnField;
@@ -22,7 +22,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SelectedField extends BaseField {
-    private transient AHCI AHWE;
+    private transient ActionResult AHWE;
     @XmlElements({@XmlElement(
             name = "operationOnFieldAndVariableDate",
             type = OperationOnFieldAndVariableDate.class
@@ -83,11 +83,11 @@ public class SelectedField extends BaseField {
             name = "ruleOnField",
             type = RuleOnField.class
     )})
-    protected final List<AHCE> AHWG;
+    protected final List<BaseConition> AHWG;
 
     private SelectedField() {
 
-        this.AHWE = AHCI.SUCCESS;
+        this.AHWE = ActionResult.SUCCESS;
         this.AHWF = new ArrayList();
         this.AHWG = new ArrayList();
 
@@ -98,16 +98,16 @@ public class SelectedField extends BaseField {
 
     }
 
-    public SelectedField(FieldType var1, List<OperationOnFieldAbstract> var2, List<AHCE> var3) {
+    public SelectedField(FieldType var1, List<OperationOnFieldAbstract> var2, List<BaseConition> var3) {
         super(var1);
 
-        this.AHWE = AHCI.SUCCESS;
+        this.AHWE = ActionResult.SUCCESS;
         this.AHWF = var2;
         this.AHWG = var3;
 
     }
 
-    public AHCI getGeneralResult() {
+    public ActionResult getGeneralResult() {
         return this.AHWE;
     }
 
@@ -115,7 +115,7 @@ public class SelectedField extends BaseField {
         return this.AHWF;
     }
 
-    public List<AHCE> getRules() {
+    public List<BaseConition> getRules() {
         return this.AHWG;
     }
 
@@ -137,17 +137,17 @@ public class SelectedField extends BaseField {
             Iterator var4 = this.AHWG.iterator();
 
             while (var4.hasNext()) {
-                AHCE var5 = (AHCE) var4.next();
+                BaseConition var5 = (BaseConition) var4.next();
                 org.slf4j.LoggerFactory.getLogger(getClass()).debug("rule " + var5);
                 ValueContainer2 var6 = var5.AICX(this);
-                switch ((AHCI) var6.getFirstValue()) {
+                switch ((ActionResult) var6.getFirstValue()) {
                     case SUCCESS:
                         break;
                     case WARNING:
                     case ERROR:
-                        this.AHWE = this.AIDP(this.AHWE, (AHCI) var6.getFirstValue());
+                        this.AHWE = this.AIDP(this.AHWE, (ActionResult) var6.getFirstValue());
                         var2.setFirstValue(var2.getFirstValue() + 1);
-                        String var7 = this.getFieldType() + var3 + var3 + var6.getFirstValue() + var3 + ((AHCI) var6.getFirstValue()).getDescription() + var3 + var6.getSecondValue() + System.lineSeparator();
+                        String var7 = this.getFieldType() + var3 + var3 + var6.getFirstValue() + var3 + ((ActionResult) var6.getFirstValue()).getDescription() + var3 + var6.getSecondValue() + System.lineSeparator();
                         org.slf4j.LoggerFactory.getLogger(getClass()).info(var7);
                         var1.write(var7.getBytes(StandardCharsets.UTF_8));
                         var1.flush();
@@ -162,7 +162,7 @@ public class SelectedField extends BaseField {
 
     }
 
-    private AHCI AIDP(AHCI var1, AHCI var2) {
+    private ActionResult AIDP(ActionResult var1, ActionResult var2) {
         boolean var3 = true;
         int var4;
         if (var1.getLevel() >= var2.getLevel()) {
@@ -171,7 +171,7 @@ public class SelectedField extends BaseField {
             var4 = var2.getLevel();
         }
 
-        return AHCI.getByLevel(var4);
+        return ActionResult.getByLevel(var4);
     }
 
     public String toString() {

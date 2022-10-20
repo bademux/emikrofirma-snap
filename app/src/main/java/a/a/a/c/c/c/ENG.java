@@ -35,7 +35,7 @@ public class ENG {
     public static final String RHB = "display.type";
     public static final String RHC = "lock.config";
     private Map<String, Map<String, Object>> FNB;
-    private Map<ENH, Map<ValueContainer1<?>, Map<String, Object>>> RHD;
+    private Map<Anchor, Map<ValueContainer1<?>, Map<String, Object>>> RHD;
 
     public ENG() {
 
@@ -74,7 +74,7 @@ public class ENG {
                 } else if (var3.startsWith("micro.global.anchor[")) {
                     var4 = var3.replaceFirst("micro.global.anchor\\[", "");
                     var4 = var4.substring(0, var4.indexOf(93));
-                    ENH var5 = ENH.valueOf(var4);
+                    Anchor var5 = Anchor.valueOf(var4);
                     if (!this.RHD.containsKey(var5)) {
                         this.RHD.put(var5, new HashMap<>());
                     }
@@ -129,7 +129,7 @@ public class ENG {
                     if (var11.startsWith(var25 + '[')) {
                         String var12 = var11.replaceFirst(var28 + "\\" + '[', "");
                         var12 = var12.substring(0, var12.indexOf(93));
-                        ENH var13 = ENH.valueOf(var12);
+                        Anchor var13 = Anchor.valueOf(var12);
                         if (!var22.containsKey(var13)) {
                             var22.put(var13, new HashMap<>());
                         }
@@ -147,7 +147,7 @@ public class ENG {
                 var23 = "micro.process[" + var19 + ']';
 
                 for (Object o : var22.keySet()) {
-                    ENH var27 = (ENH) o;
+                    Anchor var27 = (Anchor) o;
                     var32 = (Map) var22.get(var27);
                     var34 = var23 + ".anchor" + '[' + var27.name() + ']';
                     switch (var27) {
@@ -187,7 +187,7 @@ public class ENG {
             var1 = this.RHD.keySet().iterator();
 
             while (var1.hasNext()) {
-                ENH var20 = (ENH) var1.next();
+                Anchor var20 = (Anchor) var1.next();
                 var21 = this.RHD.get(var20);
                 var4 = "micro.global.anchor[" + var20 + ']';
 
@@ -235,7 +235,7 @@ public class ENG {
         return new HashMap<>(this.FNB.get(name));
     }
 
-    public Map<ValueContainer1<?>, Map<String, Object>> getGlobalAnchorDefinition(ENH name) {
+    public Map<ValueContainer1<?>, Map<String, Object>> getGlobalAnchorDefinition(Anchor name) {
 
         return new HashMap<>(this.RHD.get(name));
     }

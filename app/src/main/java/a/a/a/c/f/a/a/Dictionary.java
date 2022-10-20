@@ -1,13 +1,13 @@
 package a.a.a.c.f.a.a;
 
 import a.a.a.c.f.a.ModelBusinessTopElement;
-import a.a.a.c.f.b.c.KO;
+import a.a.a.c.f.b.c.Text;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class Dictionary extends ModelBusinessTopElement {
-    private KO IVK;
-    private KO IVL;
+    private Text IVK;
+    private Text IVL;
 
     public Dictionary() {
         this(null);
@@ -16,39 +16,39 @@ public abstract class Dictionary extends ModelBusinessTopElement {
 
     public Dictionary(String var1) {
 
-        this.IVK = new KO(var1);
+        this.IVK = new Text(var1);
 
     }
 
-    public KO getDictionaryName() {
+    public Text getDictionaryName() {
         return this.IVK;
     }
 
-    public KO IYW() {
+    public Text IYW() {
         if (this.IVK == null) {
-            this.IVK = new KO();
+            this.IVK = new Text();
         }
 
         return this.IVK;
     }
 
-    public void setDictionaryName(KO var1) {
+    public void setDictionaryName(Text var1) {
         this.IVK = var1;
     }
 
-    public KO getDictionaryEntryName() {
+    public Text getDictionaryEntryName() {
         return this.IVL;
     }
 
-    public KO IYX() {
+    public Text IYX() {
         if (this.IVL == null) {
-            this.IVL = new KO();
+            this.IVL = new Text();
         }
 
         return this.IVL;
     }
 
-    public void setDictionaryEntryName(KO var1) {
+    public void setDictionaryEntryName(Text var1) {
         this.IVL = var1;
     }
 

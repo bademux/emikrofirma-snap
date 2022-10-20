@@ -3,9 +3,9 @@ package a.a.a.c.c.d.n;
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
 import a.a.a.c.f.a.n.InvoiceOther;
-import a.a.a.c.f.a.n.QSQ;
+import a.a.a.c.f.a.n.InvoiceOtherSubtype;
 import a.a.a.c.f.b.b.Period;
-import a.a.a.c.f.b.c.a.QSW;
+import a.a.a.c.f.b.c.a.InvoiceState;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,8 +22,8 @@ public class QVB<_T extends InvoiceOther<?>> {
     private String RFR;
     private String RFS;
     private String RFT;
-    private QSW RFU;
-    private QSQ RFV;
+    private InvoiceState RFU;
+    private InvoiceOtherSubtype RFV;
 
     public QVB(EDF<_T> var1, int var2) {
         this.RFJ = var1;
@@ -98,7 +98,7 @@ public class QVB<_T extends InvoiceOther<?>> {
         return this.RFO;
     }
 
-    public QSW getState() {
+    public InvoiceState getState() {
         if (this.RFU == null) {
             this.RFU = this.RFJ.getState();
         }
@@ -106,9 +106,9 @@ public class QVB<_T extends InvoiceOther<?>> {
         return this.RFU;
     }
 
-    public QSQ getInvoiceOtherSubType() {
+    public InvoiceOtherSubtype getInvoiceOtherSubType() {
         if (this.RFV == null) {
-            this.RFV = this.RFJ.getEnumValue(QSQ.class, "technical_subType");
+            this.RFV = this.RFJ.getEnumValue(InvoiceOtherSubtype.class, "technical_subType");
         }
 
         return this.RFV;

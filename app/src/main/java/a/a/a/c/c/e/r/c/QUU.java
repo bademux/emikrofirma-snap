@@ -5,27 +5,26 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELX;
-import a.a.a.c.c.d.g.EPB;
+import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.r.b.QUT;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.a.EYL;
 import a.a.a.c.f.a.c.Contractor;
-import a.a.a.c.f.a.c.QJW;
+import a.a.a.c.f.a.c.TitledContractor;
 import a.a.a.c.f.a.e.Invoice;
-import a.a.a.c.f.a.g.AGYN;
-import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.g.JB;
+import a.a.a.c.f.a.g.ContractorModelCriteria;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
+import a.a.a.c.f.a.g.ModelTechnicalElementCriteria;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.a.n.InvoiceOtherSell;
 import a.a.a.c.f.b.EZT;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.ConfigurationProperties;
-import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 
 import java.io.File;
 import java.sql.Date;
@@ -39,7 +38,7 @@ public class QUU extends ELX implements EYL {
     private ConfigurationProperties REU;
     private PropertyString REV;
     private InvoiceOtherSell REW;
-    private EPB REX;
+    private Mode REX;
 
     public QUU() {
         super(QUT.RES.getProcessName());
@@ -49,7 +48,7 @@ public class QUU extends ELX implements EYL {
 
     }
 
-    public void setMode(EPB var1) {
+    public void setMode(Mode var1) {
         this.REX = var1;
         this.HHI();
     }
@@ -58,13 +57,13 @@ public class QUU extends ELX implements EYL {
 
         try {
             if (this.REU == null) {
-                JB var1 = new JB(ConfigurationProperties.class);
+                ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(ConfigurationProperties.class);
                 this.REU = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var1);
                 Iterator var2 = this.REU.getConfigurationProperties().iterator();
 
                 while (var2.hasNext()) {
-                    ConfigurationProperty var3 = (ConfigurationProperty) var2.next();
-                    if (FCQ.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
+                    a.a.a.c.f.c.a.ConfigurationProperty var3 = (a.a.a.c.f.c.a.ConfigurationProperty) var2.next();
+                    if (ConfigurationProperty.WorkingDir.getPropertyName().equals(var3.DEX().getValue())) {
                         this.REV = (PropertyString) var3;
                     }
                 }
@@ -76,11 +75,11 @@ public class QUU extends ELX implements EYL {
 
     }
 
-    public JG getSettlementStatus(LocalDate var1) throws FFK, FFO {
+    public SettlementStatus getSettlementStatus(LocalDate var1) throws FFK, FFO {
 
-        JG var7;
+        SettlementStatus var7;
         Period var2 = new Period(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        IY var3 = new IY(Settlement.class, var2, JH.VAT, null);
+        ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, var2, SettlementType.VAT, null);
         ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
@@ -101,7 +100,7 @@ public class QUU extends ELX implements EYL {
 
         UserData var3;
         try {
-            JB var1 = new JB(UserData.class);
+            ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(UserData.class);
             UserData var2 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
             var3 = var2;
         } catch (FFK var7) {
@@ -163,14 +162,14 @@ public class QUU extends ELX implements EYL {
 
         ArrayList var4;
         try {
-            IY var3 = new IY(Settlement.class, null, JH.VAT, null);
+            ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, null, SettlementType.VAT, null);
             ValueContainer2 var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
                 EDF var6 = (EDF) var5.next();
                 Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
-                if (var7.getSettlementStatus().equals(JG.SETTLED)) {
+                if (var7.getSettlementStatus().equals(SettlementStatus.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
                     LocalDate var9 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), var8.lengthOfMonth());
                     EZT var10 = new EZT(var8, var9, var1, false);
@@ -195,7 +194,7 @@ public class QUU extends ELX implements EYL {
     public UserData getUserDataForInvoice(Invoice<?> var1) throws FFK {
 
         UserData var4;
-        JB var2 = new JB(UserData.class, var1.DBC().getValue());
+        ModelTechnicalElementCriteria var2 = new ModelTechnicalElementCriteria(UserData.class, var1.DBC().getValue());
         UserData var3 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var2);
         var4 = var3;
 
@@ -222,13 +221,13 @@ public class QUU extends ELX implements EYL {
         return var4;
     }
 
-    public List<QJW> getContractorsByText(String var1) {
+    public List<TitledContractor> getContractorsByText(String var1) {
 
         ArrayList var2 = new ArrayList();
 
         ArrayList var4;
         try {
-            AGYN var3 = new AGYN(Contractor.class, var1);
+            ContractorModelCriteria var3 = new ContractorModelCriteria(Contractor.class, var1);
             ValueContainer2 var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
@@ -236,7 +235,7 @@ public class QUU extends ELX implements EYL {
                 while (var5.hasNext()) {
                     EDF var6 = (EDF) var5.next();
                     if (var6 != null) {
-                        var2.add(new QJW(var6));
+                        var2.add(new TitledContractor(var6));
                     }
                 }
             }

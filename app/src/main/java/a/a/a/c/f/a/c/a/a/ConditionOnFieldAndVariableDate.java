@@ -2,7 +2,7 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.c.a.AHCI;
+import a.a.a.c.f.a.c.a.ActionResult;
 import a.a.a.c.f.a.c.a.ActionType;
 import a.a.a.c.f.a.c.a.c.BaseField;
 import a.a.a.c.f.a.c.a.f.VariableDate;
@@ -30,7 +30,7 @@ public class ConditionOnFieldAndVariableDate extends ConditionOnFieldAndVariable
 
     }
 
-    public ValueContainer2<AHCI, String> AICX(BaseField var1) {
+    public ValueContainer2<ActionResult, String> AICX(BaseField var1) {
 
         ValueContainer2 var7;
         try {
@@ -66,13 +66,13 @@ public class ConditionOnFieldAndVariableDate extends ConditionOnFieldAndVariable
 
             if (!var6) {
                 var7 = null;
-                AHCI var14;
+                ActionResult var14;
                 switch (this.AHTY) {
                     case WARNING:
-                        var14 = AHCI.WARNING;
+                        var14 = ActionResult.WARNING;
                         break;
                     case ERROR:
-                        var14 = AHCI.ERROR;
+                        var14 = ActionResult.ERROR;
                         break;
                     default:
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");
@@ -82,7 +82,7 @@ public class ConditionOnFieldAndVariableDate extends ConditionOnFieldAndVariable
                 return var8;
             }
 
-            var7 = new ValueContainer2(AHCI.SUCCESS, null);
+            var7 = new ValueContainer2(ActionResult.SUCCESS, null);
         } catch (ParseException var12) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
             throw new FFI(var12);

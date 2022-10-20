@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class ConstraintBase implements FEF {
-    protected final FEG HEQ;
+    protected final SqlColumnKeyword HEQ;
     protected final List<String> HER;
 
-    public ConstraintBase(FEG var1, String... var2) {
+    public ConstraintBase(SqlColumnKeyword var1, String... var2) {
         this(var1);
         String[] var3 = var2;
         int var4 = var2.length;
@@ -20,7 +20,7 @@ public abstract class ConstraintBase implements FEF {
 
     }
 
-    public ConstraintBase(FEG var1, CellNamed... var2) {
+    public ConstraintBase(SqlColumnKeyword var1, CellNamed... var2) {
         this(var1);
         CellNamed[] var3 = var2;
         int var4 = var2.length;
@@ -37,17 +37,17 @@ public abstract class ConstraintBase implements FEF {
 
     }
 
-    public ConstraintBase(FEG var1, List<String> var2) {
+    public ConstraintBase(SqlColumnKeyword var1, List<String> var2) {
         this.HEQ = var1;
         this.HER = var2;
     }
 
-    public ConstraintBase(FEG var1) {
+    public ConstraintBase(SqlColumnKeyword var1) {
         this.HEQ = var1;
         this.HER = new ArrayList();
     }
 
-    public FEG getConstraintType() {
+    public SqlColumnKeyword getConstraintType() {
         return this.HEQ;
     }
 

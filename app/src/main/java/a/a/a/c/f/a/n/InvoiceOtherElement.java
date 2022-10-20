@@ -1,19 +1,19 @@
 package a.a.a.c.f.a.n;
 
-import a.a.a.c.f.a.IJ;
-import a.a.a.c.f.b.c.JR;
+import a.a.a.c.f.a.ModelBaseAbstract;
+import a.a.a.c.f.b.c.Amount;
 import a.a.a.c.f.b.c.JY;
-import a.a.a.c.f.b.c.KQ;
+import a.a.a.c.f.b.c.TaxRateModel;
 import a.a.a.c.f.b.c.QSU;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
-public abstract class InvoiceOtherElement extends IJ implements Cloneable {
+public abstract class InvoiceOtherElement extends ModelBaseAbstract implements Cloneable {
     protected JY QXU;
-    protected JR QXV;
-    protected JR QXW;
-    protected JR QXX;
-    protected KQ QXY;
+    protected Amount QXV;
+    protected Amount QXW;
+    protected Amount QXX;
+    protected TaxRateModel QXY;
     protected QSU QXZ;
 
     public InvoiceOtherElement() {
@@ -36,67 +36,67 @@ public abstract class InvoiceOtherElement extends IJ implements Cloneable {
         this.QXU = var1;
     }
 
-    public JR getNetPriceForAll() {
+    public Amount getNetPriceForAll() {
         return this.QXV;
     }
 
-    public JR RJE() {
+    public Amount RJE() {
         if (this.QXV == null) {
-            this.QXV = new JR();
+            this.QXV = new Amount();
         }
 
         return this.QXV;
     }
 
-    public void setNetPriceForAll(JR var1) {
+    public void setNetPriceForAll(Amount var1) {
         this.QXV = var1;
     }
 
-    public JR getTaxValueForAll() {
+    public Amount getTaxValueForAll() {
         return this.QXW;
     }
 
-    public JR RJF() {
+    public Amount RJF() {
         if (this.QXW == null) {
-            this.QXW = new JR();
+            this.QXW = new Amount();
         }
 
         return this.QXW;
     }
 
-    public void setTaxValueForAll(JR var1) {
+    public void setTaxValueForAll(Amount var1) {
         this.QXW = var1;
     }
 
-    public JR getGrossValueForAll() {
+    public Amount getGrossValueForAll() {
         return this.QXX;
     }
 
-    public JR RJG() {
+    public Amount RJG() {
         if (this.QXX == null) {
-            this.QXX = new JR();
+            this.QXX = new Amount();
         }
 
         return this.QXX;
     }
 
-    public void setGrossValueForAll(JR var1) {
+    public void setGrossValueForAll(Amount var1) {
         this.QXX = var1;
     }
 
-    public KQ getTaxRate() {
+    public TaxRateModel getTaxRate() {
         return this.QXY;
     }
 
-    public KQ RJH() {
+    public TaxRateModel RJH() {
         if (this.QXY == null) {
-            this.QXY = new KQ();
+            this.QXY = new TaxRateModel();
         }
 
         return this.QXY;
     }
 
-    public void setTaxRate(KQ var1) {
+    public void setTaxRate(TaxRateModel var1) {
         this.QXY = var1;
     }
 

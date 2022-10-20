@@ -1,7 +1,7 @@
 package a.a.a.c.f.c.a;
 
 import a.a.a.c.f.c.LW;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 import jakarta.xml.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,32 +23,32 @@ public class ConfigurationProperties extends LW {
             name = "propertyBoolean",
             type = PropertyBoolean.class
     )})
-    private final List<ConfigurationProperty<?, ?>> AQF;
+    private final List<a.a.a.c.f.c.a.ConfigurationProperty<?, ?>> AQF;
 
     public ConfigurationProperties() {
 
         this.AQF = new ArrayList();
-        ConfigurationProperty var1 = QJZ.getDefaultConfigurationProperty(FCQ.WorkingDir);
+        a.a.a.c.f.c.a.ConfigurationProperty var1 = QJZ.getDefaultConfigurationProperty(ConfigurationProperty.WorkingDir);
         this.AQF.add(var1);
-        ConfigurationProperty var2 = QJZ.getDefaultConfigurationProperty(FCQ.SellRefIdPattern);
+        a.a.a.c.f.c.a.ConfigurationProperty var2 = QJZ.getDefaultConfigurationProperty(ConfigurationProperty.SellRefIdPattern);
         this.AQF.add(var2);
-        ConfigurationProperty var3 = QJZ.getDefaultConfigurationProperty(FCQ.SellCorrectionRefIdPattern);
+        a.a.a.c.f.c.a.ConfigurationProperty var3 = QJZ.getDefaultConfigurationProperty(ConfigurationProperty.SellCorrectionRefIdPattern);
         this.AQF.add(var3);
-        ConfigurationProperty var4 = QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod);
+        a.a.a.c.f.c.a.ConfigurationProperty var4 = QJZ.getDefaultConfigurationProperty(ConfigurationProperty.CalculationMethod);
         this.AQF.add(var4);
 
     }
 
-    public List<ConfigurationProperty<?, ?>> getConfigurationProperties() {
+    public List<a.a.a.c.f.c.a.ConfigurationProperty<?, ?>> getConfigurationProperties() {
         return this.AQF;
     }
 
-    public ConfigurationProperty<?, ?> getConfigurationPropertyOrDefault(FCQ var1) {
-        ConfigurationProperty var2 = null;
+    public a.a.a.c.f.c.a.ConfigurationProperty<?, ?> getConfigurationPropertyOrDefault(ConfigurationProperty var1) {
+        a.a.a.c.f.c.a.ConfigurationProperty var2 = null;
         Iterator var3 = this.AQF.iterator();
 
         while (var3.hasNext()) {
-            ConfigurationProperty var4 = (ConfigurationProperty) var3.next();
+            a.a.a.c.f.c.a.ConfigurationProperty var4 = (a.a.a.c.f.c.a.ConfigurationProperty) var3.next();
             if (var4.DEX().getValue().equals(var1.getPropertyName())) {
                 var2 = var4;
                 break;

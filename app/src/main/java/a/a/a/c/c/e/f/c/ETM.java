@@ -8,16 +8,15 @@ import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.f.b.ETL;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.e.a.InvoiceRecord;
-import a.a.a.c.f.a.g.EYD;
-import a.a.a.c.f.a.g.IY;
-import a.a.a.c.f.a.g.JB;
+import a.a.a.c.f.a.g.PeriodModelCriteria;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
+import a.a.a.c.f.a.g.ModelTechnicalElementCriteria;
 import a.a.a.c.f.a.h.Settlement;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.c.a.ConfigurationProperties;
-import a.a.a.c.f.c.a.ConfigurationProperty;
 import a.a.a.c.f.c.a.PropertyString;
 import a.a.a.c.f.c.b.UserData;
-import a.a.a.c.g.FCQ;
+import a.a.a.c.g.ConfigurationProperty;
 
 import java.io.File;
 import java.util.HashSet;
@@ -41,16 +40,16 @@ public class ETM extends ELV {
     protected void HHI() {
 
         try {
-            JB var1 = new JB(UserData.class);
+            ModelTechnicalElementCriteria var1 = new ModelTechnicalElementCriteria(UserData.class);
             this.GHO = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var1);
             if (this.GHP == null) {
-                JB var2 = new JB(ConfigurationProperties.class);
+                ModelTechnicalElementCriteria var2 = new ModelTechnicalElementCriteria(ConfigurationProperties.class);
                 this.GHP = (ConfigurationProperties) this.getModelManager().HJT(this.getParentDefinition(), var2);
                 Iterator var3 = this.GHP.getConfigurationProperties().iterator();
 
                 while (var3.hasNext()) {
-                    ConfigurationProperty var4 = (ConfigurationProperty) var3.next();
-                    if (FCQ.WorkingDir.getPropertyName().equals(var4.DEX().getValue())) {
+                    a.a.a.c.f.c.a.ConfigurationProperty var4 = (a.a.a.c.f.c.a.ConfigurationProperty) var3.next();
+                    if (ConfigurationProperty.WorkingDir.getPropertyName().equals(var4.DEX().getValue())) {
                         this.GHQ = (PropertyString) var4;
                     }
                 }
@@ -78,7 +77,7 @@ public class ETM extends ELV {
     public Set<InvoiceRecord> getInvoiceRecords(Period var1) {
         try {
             HashSet var2 = new HashSet();
-            IY var3 = new IY(InvoiceRecord.class, var1, null, null);
+            ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(InvoiceRecord.class, var1, null, null);
             ValueContainer2 var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var4 != null) {
                 Iterator var5 = ((List) var4.getSecondValue()).iterator();
@@ -100,7 +99,7 @@ public class ETM extends ELV {
 
         HashSet var12;
         try {
-            EYD var2 = new EYD(InvoiceRecord.class, var1, null, null, null);
+            PeriodModelCriteria var2 = new PeriodModelCriteria(InvoiceRecord.class, var1, null, null, null);
             ValueContainer2 var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             HashSet var4 = new HashSet();
             if (var3 != null) {
@@ -126,7 +125,7 @@ public class ETM extends ELV {
     }
 
     public UserData getUserData(Integer var1) throws FFK {
-        JB var2 = new JB(UserData.class, var1);
+        ModelTechnicalElementCriteria var2 = new ModelTechnicalElementCriteria(UserData.class, var1);
         UserData var3 = (UserData) this.getModelManager().HJT(this.getParentDefinition(), var2);
         return var3;
     }

@@ -1,13 +1,13 @@
 package a.a.a.c.f;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.f.b.JM;
+import a.a.a.c.f.b.EnumTypeValue;
 import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 @XmlTransient
-public abstract class LH<_T extends JM> extends ModelBaseTypeElement<_T> {
+public abstract class LH<_T extends EnumTypeValue> extends ModelBaseTypeElement<_T> {
     @XmlTransient
     private final ObjectProperty<_T> APV;
 
@@ -31,7 +31,7 @@ public abstract class LH<_T extends JM> extends ModelBaseTypeElement<_T> {
     }
 
     public String getValueAsString() {
-        JM var1 = this.getValue();
+        EnumTypeValue var1 = this.getValue();
         return var1 != null ? var1.getDescription() : "";
     }
 

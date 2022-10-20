@@ -14,7 +14,7 @@ import a.a.a.c.c.e.i.d.EUF;
 import a.a.a.c.f.a.d.DeclarationJPK;
 import a.a.a.c.f.a.d.JSONString;
 import a.a.a.c.f.a.d.Declaration;
-import a.a.a.c.f.a.d.HM;
+import a.a.a.c.f.a.d.DeclarationType;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
@@ -196,7 +196,7 @@ public class EUA extends BaseProgressFxController<EUF> {
 
         try {
             EPD var2 = null;
-            if (var1.getDeclarationType() == HM.JPK) {
+            if (var1.getDeclarationType() == DeclarationType.JPK) {
                 DeclarationJPK var3 = (DeclarationJPK) var1;
                 if (var3.getUpo() != null) {
                     var2 = new EPD(this.resources, this.getProcess().getDeclarationTmpFile(this.getStageToHandle(), var3.getDeclarationType(), var3.getDeclarationSubType(), ".pdf"), var3);

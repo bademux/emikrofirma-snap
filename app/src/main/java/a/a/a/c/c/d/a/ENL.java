@@ -14,14 +14,14 @@ public abstract class ENL<_PROCESS extends ELV> extends BaseProgressFxController
 
     public abstract void setReceiptRecordVat(ReceiptRecordVat var1) throws FFK;
 
-    public abstract void setMode(ENM var1);
+    public abstract void setMode(Mode var1);
 
-    public enum ENM {
+    public enum Mode {
         NEW,
         EDIT,
         VIEW;
 
-        ENM() {
+        Mode() {
         }
     }
 }

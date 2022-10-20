@@ -5,10 +5,10 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.e.a.d.ValueContainer2;
-import a.a.a.c.f.a.g.IY;
+import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
 import a.a.a.c.f.a.h.Settlement;
-import a.a.a.c.f.a.h.JG;
-import a.a.a.c.f.a.h.JH;
+import a.a.a.c.f.a.h.SettlementStatus;
+import a.a.a.c.f.a.h.SettlementType;
 import a.a.a.c.f.b.EZT;
 
 import java.time.LocalDate;
@@ -31,14 +31,14 @@ public abstract class ELX extends ELV {
 
         ArrayList var4;
         try {
-            IY var3 = new IY(Settlement.class, null, JH.VAT, null);
+            ModelBusinessPeriodElementTypedCriteria var3 = new ModelBusinessPeriodElementTypedCriteria(Settlement.class, null, SettlementType.VAT, null);
             ValueContainer2 var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
                 EDF var6 = (EDF) var5.next();
                 Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
-                if (var7.getSettlementStatus().equals(JG.SETTLED)) {
+                if (var7.getSettlementStatus().equals(SettlementStatus.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
                     LocalDate var9 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), var8.lengthOfMonth());
                     EZT var10 = new EZT(var8, var9, var1, false);

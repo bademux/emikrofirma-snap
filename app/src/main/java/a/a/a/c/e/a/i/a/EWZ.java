@@ -1,7 +1,5 @@
 package a.a.a.c.e.a.i.a;
 
-import a.a.a.c.e.a.k.a.EXF;
-
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
@@ -22,15 +20,10 @@ public class EWZ {
 
     public EWZ(EXA var1, String var2) throws NoSuchAlgorithmException {
         this.GSH = 65536;
-        EXF.getInstance().ICO();
 
-        try {
-            this.GSK = var1;
-            this.GSI = SecretKeyFactory.getInstance(this.GSK.getSecretKeyAlgorithmName());
-            this.GSJ = SecureRandom.getInstance(var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GSK = var1;
+        this.GSI = SecretKeyFactory.getInstance(this.GSK.getSecretKeyAlgorithmName());
+        this.GSJ = SecureRandom.getInstance(var2);
 
     }
 
@@ -43,85 +36,55 @@ public class EWZ {
     }
 
     public SecretKey getKey(char[] var1, byte[] var2, Integer var3, Integer var4, String var5) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        EXF.getInstance().ICO();
 
         SecretKeySpec var8;
-        try {
-            PBEKeySpec var6 = new PBEKeySpec(var1, var2, var3, var4);
-            SecretKey var7 = this.GSI.generateSecret(var6);
-            var8 = new SecretKeySpec(var7.getEncoded(), var5);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        PBEKeySpec var6 = new PBEKeySpec(var1, var2, var3, var4);
+        SecretKey var7 = this.GSI.generateSecret(var6);
+        var8 = new SecretKeySpec(var7.getEncoded(), var5);
 
         return var8;
     }
 
     public SecretKey getKey(char[] var1, byte[] var2) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        EXF.getInstance().ICO();
 
         SecretKey var3;
-        try {
-            var3 = this.getKey(var1, var2, this.GSH, this.GSK.getKeyLength(), this.GSK.getKeyAlgorithmName());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var3 = this.getKey(var1, var2, this.GSH, this.GSK.getKeyLength(), this.GSK.getKeyAlgorithmName());
 
         return var3;
     }
 
     public Cipher getCipher() throws NoSuchAlgorithmException, NoSuchPaddingException {
-        EXF.getInstance().ICO();
 
         Cipher var1;
-        try {
-            var1 = Cipher.getInstance(this.GSK.getCipherAlgorithmName());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = Cipher.getInstance(this.GSK.getCipherAlgorithmName());
 
         return var1;
     }
 
     public byte[] IBO() throws NoSuchAlgorithmException {
-        EXF.getInstance().ICO();
 
         byte[] var2;
-        try {
-            byte[] var1 = new byte[256];
-            this.GSJ.nextBytes(var1);
-            var2 = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        byte[] var1 = new byte[256];
+        this.GSJ.nextBytes(var1);
+        var2 = var1;
 
         return var2;
     }
 
     public byte[] IBP() throws NoSuchAlgorithmException {
-        EXF.getInstance().ICO();
 
         byte[] var2;
-        try {
-            byte[] var1 = new byte[this.GSK.getInitialisationVectorSize()];
-            this.GSJ.nextBytes(var1);
-            var2 = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        byte[] var1 = new byte[this.GSK.getInitialisationVectorSize()];
+        this.GSJ.nextBytes(var1);
+        var2 = var1;
 
         return var2;
     }
 
     public IvParameterSpec IBQ() throws NoSuchAlgorithmException {
-        EXF.getInstance().ICO();
 
         IvParameterSpec var1;
-        try {
-            var1 = new IvParameterSpec(this.IBP());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = new IvParameterSpec(this.IBP());
 
         return var1;
     }

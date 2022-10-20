@@ -1,6 +1,5 @@
 package a.a.a.c.c.d.o;
 
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,7 +25,7 @@ public class QVD implements ChangeListener<LocalDate> {
             this.RFY.setValue(var3);
             this.RFZ.setValue(var3);
             this.RGA.setValue(var3);
-            EXF.getInstance().ICE("Issue date changed to " + var3);
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Issue date changed to " + var3);
         }
 
     }

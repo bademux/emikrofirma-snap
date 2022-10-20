@@ -13,7 +13,7 @@ open module emk {
     requires org.xerial.sqlitejdbc;
     requires com.sun.xml.bind;
     requires jakarta.xml.ws;
-    requires org.apache.logging.log4j;
+    requires org.slf4j;
     requires fopcore;
 
 }

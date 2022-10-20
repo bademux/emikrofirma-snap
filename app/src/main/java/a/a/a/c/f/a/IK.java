@@ -1,8 +1,6 @@
 package a.a.a.c.f.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.b.JN;
-
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
@@ -12,23 +10,18 @@ public abstract class IK extends IL {
 
     public IK() {
         this(DAE());
-        EXF.getInstance().ICQ();
+
     }
 
     public IK(String var1) {
         super(var1);
-        EXF.getInstance().ICQ();
+
     }
 
     public IK(String var1, JN var2) {
         super(var1);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AMH = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AMH = var2;
 
     }
 

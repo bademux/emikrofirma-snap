@@ -1,14 +1,12 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.JV;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class HY extends HN<HQ> {
@@ -21,13 +19,13 @@ public abstract class HY extends HN<HQ> {
     protected HY(IA var1) {
         super(IB.SELL, var1);
         this.AKX = new HZ(this);
-        EXF.getInstance().ICQ();
+
     }
 
     protected HY() {
         this(null);
         this.IVO = new JV();
-        EXF.getInstance().ICQ();
+
     }
 
     public abstract JV getInvoicingDate();

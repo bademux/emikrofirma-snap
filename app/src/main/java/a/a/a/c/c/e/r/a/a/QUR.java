@@ -4,10 +4,8 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.r.a.QUN;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.b.b.JN;
-import a.a.a.c.f.c.c.DatePickerRequired;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -22,7 +20,6 @@ public class QUR implements ChangeListener<LocalDate> {
     }
 
     public void changed(ObservableValue<? extends LocalDate> var1, LocalDate var2, LocalDate var3) {
-        EXF.getInstance().ICO();
 
         try {
             if (var3 != null) {
@@ -45,7 +42,7 @@ public class QUR implements ChangeListener<LocalDate> {
                             var4 = true;
                         }
                     } catch (FFO | FFK var10) {
-                        EXF.getInstance().ICA(var10);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var10);
                     }
 
                     if (var4) {
@@ -53,13 +50,11 @@ public class QUR implements ChangeListener<LocalDate> {
                         this.REQ.fxml_other_sale_invoicing_dateController.fxml_component_validation_element_external.setText(FCW.getInstance().getMessageForKey("micro.process.other_sale_new.Error.SettlementSetted"));
                     }
 
-                    EXF.getInstance().ICE("Invoicing date changed to " + var3);
+                    org.slf4j.LoggerFactory.getLogger(getClass()).info("Invoicing date changed to " + var3);
                 }
             }
         } catch (FFK var11) {
             throw new FFI(var11);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

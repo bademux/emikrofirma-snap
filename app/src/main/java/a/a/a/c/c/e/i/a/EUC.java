@@ -5,7 +5,6 @@ import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.QGU;
 import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.l.MDP;
 import a.a.a.c.c.e.i.d.EUF;
@@ -13,7 +12,6 @@ import a.a.a.c.d.b.EPW;
 import a.a.a.c.d.b.EQM;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.JT;
@@ -31,12 +29,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
+@Slf4j
 public class EUC {
     @FXML
     private ResourceBundle resources;
@@ -55,37 +55,26 @@ public class EUC {
     private Button fxml_button_close;
 
     public EUC() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public void setDialogStage(Stage var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GKD = var1;
-            this.GKD.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                public void handle(WindowEvent var1) {
-                    if (WindowEvent.WINDOW_CLOSE_REQUEST.equals(var1.getEventType())) {
-                        EUC.this.GKF.stop();
-                    }
-
+        this.GKD = var1;
+        this.GKD.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent var1) {
+                if (WindowEvent.WINDOW_CLOSE_REQUEST.equals(var1.getEventType())) {
+                    EUC.this.GKF.stop();
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        });
 
     }
 
     public void setImplementation(EUF var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GKE = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GKE = var1;
 
     }
 
@@ -98,7 +87,7 @@ public class EUC {
     }
 
     private void HWW() {
-        EXF.getInstance().ICO();
+
         MDP var1 = null;
 
         try {
@@ -114,8 +103,8 @@ public class EUC {
 
                     try {
                         var7 = Integer.parseInt((String) var5.getSecondValue());
-                    } catch (NumberFormatException | NullPointerException var24) {
-                        EXF.getInstance().ICI(var24);
+                    } catch (NumberFormatException | NullPointerException e) {
+                        log.warn("Something bad happened", e);
                     }
 
                     String[] var8 = var6.getKodFormularza().split("_");
@@ -187,53 +176,46 @@ public class EUC {
                     }
                 });
             } else {
-                EXF.getInstance().ICA(var25);
+                log.error("Something bad happened", var25);
                 FCT.IGX("", var25);
             }
         } catch (Exception var26) {
-            EXF.getInstance().ICA(var26);
+            log.error("Something bad happened", var26);
             FCT.IGX("", var26);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private File QOU(final LocalDate var1, final LocalDate var2, final int var3, final String var4) {
-        EXF.getInstance().ICO();
 
         File var5;
-        try {
-            var5 = FEL.IKS(new FEM<File>() {
-                public File IKT() {
-                    try {
-                        FileChooser var1x = new FileChooser();
-                        var1x.setTitle(EUC.this.resources.getString("micro.types.xml.fileselect"));
-                        FileChooser.ExtensionFilter var2x = new FileChooser.ExtensionFilter(EUC.this.resources.getString("micro.types.xml.filetype.xml") + " (*.xml)", "*.xml");
-                        var1x.getExtensionFilters().add(var2x);
-                        File var3x = EUC.this.GKE.getWorkingDir(EUC.this.GKD);
-                        var1x.setInitialDirectory(var3x);
-                        String var4x = null;
-                        KA var5 = EUC.this.GKE.QOX();
-                        if (var5 != null && var5.getValue() != null) {
-                            var4x = var5.getValue() + "_";
-                        } else {
-                            var4x = "";
-                        }
-
-                        String var6 = var4 + "_" + var4x + var1.toString() + "__" + var2.toString() + "_" + var3 + ".xml";
-                        var1x.setInitialFileName(var6);
-                        File var7 = var1x.showSaveDialog(EUC.this.GKD);
-                        return var7;
-                    } catch (FFK var8) {
-                        EXF.getInstance().ICA(var8);
-                        return null;
+        var5 = FEL.IKS(new FEM<File>() {
+            public File IKT() {
+                try {
+                    FileChooser var1x = new FileChooser();
+                    var1x.setTitle(EUC.this.resources.getString("micro.types.xml.fileselect"));
+                    FileChooser.ExtensionFilter var2x = new FileChooser.ExtensionFilter(EUC.this.resources.getString("micro.types.xml.filetype.xml") + " (*.xml)", "*.xml");
+                    var1x.getExtensionFilters().add(var2x);
+                    File var3x = EUC.this.GKE.getWorkingDir(EUC.this.GKD);
+                    var1x.setInitialDirectory(var3x);
+                    String var4x = null;
+                    KA var5 = EUC.this.GKE.QOX();
+                    if (var5 != null && var5.getValue() != null) {
+                        var4x = var5.getValue() + "_";
+                    } else {
+                        var4x = "";
                     }
+
+                    String var6 = var4 + "_" + var4x + var1.toString() + "__" + var2.toString() + "_" + var3 + ".xml";
+                    var1x.setInitialFileName(var6);
+                    File var7 = var1x.showSaveDialog(EUC.this.GKD);
+                    return var7;
+                } catch (FFK var8) {
+                    log.error("Something bad happened", var8);
+                    return null;
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+            }
+        });
 
         return var5;
     }
@@ -243,7 +225,7 @@ public class EUC {
     }
 
     private void QOV() {
-        EXF.getInstance().ICO();
+
         MDP var1 = null;
 
         try {
@@ -294,14 +276,12 @@ public class EUC {
                     }
                 });
             } else {
-                EXF.getInstance().ICA(var20);
+                log.error("Something bad happened", var20);
                 FCT.IGX("", var20);
             }
         } catch (Exception var21) {
-            EXF.getInstance().ICA(var21);
+            log.error("Something bad happened", var21);
             FCT.IGX("", var21);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -311,70 +291,50 @@ public class EUC {
     }
 
     public void HWX() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GKF = new EVN() {
-                public void HZI() {
-                    EXF.getInstance().ICO();
+        this.GKF = new EVN() {
+            public void HZI() {
 
-                    try {
-                        if (EUC.this.QMD) {
-                            EUC.this.QOV();
-                        } else {
-                            EUC.this.HWW();
-                        }
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
-
+                if (EUC.this.QMD) {
+                    EUC.this.QOV();
+                } else {
+                    EUC.this.HWW();
                 }
-            };
-            this.GKF.start();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        };
+        this.GKF.start();
 
     }
 
     private File HWY() {
-        EXF.getInstance().ICO();
 
         File var1;
-        try {
-            var1 = FEL.IKS(new FEM<File>() {
-                public File IKT() {
-                    try {
-                        FileChooser var1 = new FileChooser();
-                        var1.setTitle(EUC.this.resources.getString("micro.types.xml.fileselect"));
-                        FileChooser.ExtensionFilter var2 = new FileChooser.ExtensionFilter(EUC.this.resources.getString("micro.types.xml.filetype.xml") + " (*.xml)", "*.xml");
-                        var1.getExtensionFilters().add(var2);
-                        File var3 = EUC.this.GKE.getWorkingDir(EUC.this.GKD);
-                        var1.setInitialDirectory(var3);
-                        File var4 = var1.showOpenDialog(EUC.this.GKD);
-                        return var4;
-                    } catch (FFK var5) {
-                        EXF.getInstance().ICA(var5);
-                        return null;
-                    }
+        var1 = FEL.IKS(new FEM<File>() {
+            public File IKT() {
+                try {
+                    FileChooser var1 = new FileChooser();
+                    var1.setTitle(EUC.this.resources.getString("micro.types.xml.fileselect"));
+                    FileChooser.ExtensionFilter var2 = new FileChooser.ExtensionFilter(EUC.this.resources.getString("micro.types.xml.filetype.xml") + " (*.xml)", "*.xml");
+                    var1.getExtensionFilters().add(var2);
+                    File var3 = EUC.this.GKE.getWorkingDir(EUC.this.GKD);
+                    var1.setInitialDirectory(var3);
+                    File var4 = var1.showOpenDialog(EUC.this.GKD);
+                    return var4;
+                } catch (FFK var5) {
+                    log.error("Something bad happened", var5);
+                    return null;
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+            }
+        });
 
         return var1;
     }
 
     @FXML
     private void fxml_handleButton_close(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GKD.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GKD.close();
 
     }
 }

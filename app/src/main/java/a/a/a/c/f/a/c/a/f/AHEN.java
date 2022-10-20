@@ -1,9 +1,8 @@
 package a.a.a.c.f.a.c.a.f;
 
-import a.a.a.c.e.a.k.a.EXF;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,25 +11,15 @@ public class AHEN extends AHEL<Date> {
     private final transient SimpleDateFormat AHXB;
 
     private AHEN() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHXB = new SimpleDateFormat("yyyy-MM-dd");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHXB = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
     public AHEN(String var1, Date var2) {
         super(var1, var2);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHXB = new SimpleDateFormat("yyyy-MM-dd");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHXB = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 

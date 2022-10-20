@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.c.a.f;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHDH;
-
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlTransient;
@@ -17,27 +15,17 @@ public abstract class AHEL<_T> extends AHDH {
     protected _T AHXA;
 
     protected AHEL() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWZ = false;
-            this.AHXA = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWZ = false;
+        this.AHXA = null;
 
     }
 
     public AHEL(String var1, _T var2) {
         super(var1);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWZ = false;
-            this.AHXA = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWZ = false;
+        this.AHXA = var2;
 
     }
 
@@ -46,7 +34,7 @@ public abstract class AHEL<_T> extends AHDH {
     }
 
     public void setValue(_T var1) {
-        EXF.getInstance().ICK("value " + var1);
+        org.slf4j.LoggerFactory.getLogger(getClass()).debug("value " + var1);
         this.AHXA = var1;
         this.AHWZ = true;
     }

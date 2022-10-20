@@ -2,12 +2,11 @@ package a.a.a.c.f.a.h;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFO;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EXM;
 import a.a.a.c.f.b.c.JX;
-
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlTransient;
+
 import java.util.Date;
 
 @XmlTransient
@@ -19,26 +18,16 @@ public abstract class JF extends EXM {
     private JX ANO;
 
     protected JF() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.ANK = false;
-            this.ANN = JG.NEW;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.ANK = false;
+        this.ANN = JG.NEW;
 
     }
 
     protected JF(JH var1) {
         this();
-        EXF.getInstance().ICO();
 
-        try {
-            this.ANM = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.ANM = var1;
 
     }
 

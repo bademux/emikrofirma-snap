@@ -1,17 +1,15 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.b.c.JV;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 @XmlRootElement(
         name = "invoicePurchase"
@@ -27,13 +25,13 @@ public class HR extends HT {
 
     public HR() {
         this(IA.INVOICE);
-        EXF.getInstance().ICQ();
+
     }
 
     public HR(IA var1) {
         super(var1);
         this.AKO = new HS(this);
-        EXF.getInstance().ICQ();
+
     }
 
     public HI getContractor() {

@@ -3,10 +3,9 @@ package a.a.a.c.g.a;
 import a.a.a.b.f.*;
 import a.a.a.b.f.a.FFL;
 import a.a.a.b.f.a.FFM;
-import a.a.a.c.e.a.EXR;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.g.b.FCW;
+import com.github.bademux.emk.utils.Base64Utils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -39,81 +38,70 @@ public class FCT {
     }
 
     public static void IGX(String var0, Exception var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var1 instanceof FFO) {
-                FCR.IGO(var0, var1, false);
-            } else if (var1 instanceof FFK) {
-                FCR.IGP(var0, var1, false);
-            } else if (var1 instanceof FFI) {
-                FCR.IGP(var0, var1, false);
-            } else if (var1 instanceof FFN) {
-                FFN var2 = (FFN) var1;
-                FCR.IGP(var0, var2.getTechnicalExceptionList(), false);
-            } else {
-                FCR.IGP(var0, var1, false);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (var1 instanceof FFO) {
+            FCR.IGO(var0, var1, false);
+        } else if (var1 instanceof FFK) {
+            FCR.IGP(var0, var1, false);
+        } else if (var1 instanceof FFI) {
+            FCR.IGP(var0, var1, false);
+        } else if (var1 instanceof FFN var2) {
+            FCR.IGP(var0, var2.getTechnicalExceptionList(), false);
+        } else {
+            FCR.IGP(var0, var1, false);
         }
 
     }
 
     public static <_T> TableColumn<_T, Object> IGY(String var0, double var1, String var3) {
-        EXF.getInstance().ICO();
 
         TableColumn var5;
-        try {
-            TableColumn var4 = new TableColumn(var0);
-            var4.setPrefWidth(var1);
-            var4.setCellValueFactory(new PropertyValueFactory(var3));
-            var4.setCellFactory(new Callback<TableColumn<_T, Object>, TableCell<_T, Object>>() {
-                public TableCell<_T, Object> call(TableColumn<_T, Object> var1) {
-                    return new TableCell<_T, Object>() {
-                        protected void updateItem(Object var1, boolean var2) {
-                            super.updateItem(var1, var2);
-                            (new FCU<Object>() {
-                                Node getGraphicDelegate() {
-                                    return getGraphic();
-                                }
+        TableColumn var4 = new TableColumn(var0);
+        var4.setPrefWidth(var1);
+        var4.setCellValueFactory(new PropertyValueFactory(var3));
+        var4.setCellFactory(new Callback<TableColumn<_T, Object>, TableCell<_T, Object>>() {
+            public TableCell<_T, Object> call(TableColumn<_T, Object> var1) {
+                return new TableCell<_T, Object>() {
+                    protected void updateItem(Object var1, boolean var2) {
+                        super.updateItem(var1, var2);
+                        (new FCU<Object>() {
+                            Node getGraphicDelegate() {
+                                return getGraphic();
+                            }
 
-                                void setGraphicDelegate(Node var1) {
-                                    setGraphic(var1);
-                                }
+                            void setGraphicDelegate(Node var1) {
+                                setGraphic(var1);
+                            }
 
-                                void setTextDelegate(String var1) {
-                                    setText(var1);
-                                }
+                            void setTextDelegate(String var1) {
+                                setText(var1);
+                            }
 
-                                void setContextMenuDelegate(ContextMenu var1) {
-                                    setContextMenu(var1);
-                                }
+                            void setContextMenuDelegate(ContextMenu var1) {
+                                setContextMenu(var1);
+                            }
 
-                                void setTooltipDelegate(Tooltip var1) {
-                                    setTooltip(var1);
-                                }
+                            void setTooltipDelegate(Tooltip var1) {
+                                setTooltip(var1);
+                            }
 
-                                void setBackgroundDelegate(Background var1) {
-                                    setBackground(var1);
-                                }
+                            void setBackgroundDelegate(Background var1) {
+                                setBackground(var1);
+                            }
 
-                                Parent getParentDelegate() {
-                                    return getParent();
-                                }
+                            Parent getParentDelegate() {
+                                return getParent();
+                            }
 
-                                Scene getSceneDelegate() {
-                                    return getScene();
-                                }
-                            }).IGW(var1, var2);
-                        }
-                    };
-                }
-            });
-            var5 = var4;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+                            Scene getSceneDelegate() {
+                                return getScene();
+                            }
+                        }).IGW(var1, var2);
+                    }
+                };
+            }
+        });
+        var5 = var4;
 
         return var5;
     }
@@ -167,8 +155,7 @@ public class FCT {
                     double var8 = (Double) var1;
                     var6.setProgress(var8);
                     var7.setText(this.HBE.format(var8));
-                } else if (var1 instanceof Boolean) {
-                    Boolean var10 = (Boolean) var1;
+                } else if (var1 instanceof Boolean var10) {
                     if (var10) {
                         this.setBackgroundDelegate(new Background(new BackgroundFill(Color.CHARTREUSE, CornerRadii.EMPTY, Insets.EMPTY)));
                         this.setTextDelegate(FCW.getInstance().getMessageForKey("micro.tableview.true"));
@@ -179,8 +166,7 @@ public class FCT {
                 } else {
                     ContextMenu var16;
                     MenuItem var17;
-                    if (var1 instanceof File) {
-                        final File var11 = (File) var1;
+                    if (var1 instanceof final File var11) {
                         if (var11 != null) {
                             this.setTextDelegate(var11.getName());
                             var16 = new ContextMenu();
@@ -194,7 +180,7 @@ public class FCT {
                                                     try {
                                                         Desktop.getDesktop().open(var11);
                                                     } catch (IOException var2) {
-                                                        EXF.getInstance().ICA(var2);
+                                                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var2);
                                                     }
 
                                                 }
@@ -223,7 +209,7 @@ public class FCT {
                                                     try {
                                                         Desktop.getDesktop().open(var11.getParentFile());
                                                     } catch (IOException var2) {
-                                                        EXF.getInstance().ICA(var2);
+                                                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var2);
                                                     }
 
                                                 }
@@ -237,13 +223,11 @@ public class FCT {
 
                             this.setContextMenuDelegate(var16);
                         }
-                    } else if (var1 instanceof byte[]) {
-                        byte[] var12 = (byte[]) var1;
+                    } else if (var1 instanceof byte[] var12) {
                         if (var12 != null) {
-                            this.setTextDelegate(EXR.IEQ(var12));
+                            this.setTextDelegate(Base64Utils.encodeToString(var12));
                         }
-                    } else if (var1 instanceof Throwable) {
-                        final Throwable var13 = (Throwable) var1;
+                    } else if (var1 instanceof final Throwable var13) {
                         if (var13 != null) {
                             this.setTextDelegate(var13.getLocalizedMessage());
                             var16 = new ContextMenu();
@@ -255,14 +239,10 @@ public class FCT {
                                     } else {
                                         ByteArrayOutputStream var2 = new ByteArrayOutputStream();
 
-                                        try {
-                                            PrintStream var3 = new PrintStream(var2, true, StandardCharsets.UTF_8.name());
-                                            var13.printStackTrace(var3);
-                                        } catch (UnsupportedEncodingException var4) {
-                                            EXF.getInstance().ICA(var4);
-                                        }
+                                        PrintStream var3 = new PrintStream(var2, true, StandardCharsets.UTF_8);
+                                        var13.printStackTrace(var3);
 
-                                        FCR.IGE(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), var13.getLocalizedMessage(), new String(var2.toByteArray(), StandardCharsets.UTF_8), false);
+                                        FCR.IGE(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), var13.getLocalizedMessage(), var2.toString(StandardCharsets.UTF_8), false);
                                     }
 
                                 }
@@ -272,8 +252,7 @@ public class FCT {
                         }
                     } else {
                         MenuItem var21;
-                        if (var1 instanceof FFM) {
-                            final FFM var14 = (FFM) var1;
+                        if (var1 instanceof final FFM var14) {
                             if (var14 != null) {
                                 this.setTextDelegate(FCW.getInstance().getMessageForKey("micro.tableview.exception.list"));
                                 var16 = new ContextMenu();
@@ -326,14 +305,14 @@ public class FCT {
                                                 var4.close();
                                                 FCR.IGF(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.errorlist"), FCW.getInstance().getMessageForKey("micro.dialog.dialog.success"), false, 200.0, 200.0);
                                             } catch (IOException var19) {
-                                                EXF.getInstance().ICA(var19);
+                                                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var19);
                                                 FCR.IGP(FCW.getInstance().getMessageForKey("micro.dialog.error.title"), var19, false);
                                             } finally {
                                                 if (var4 != null) {
                                                     try {
                                                         var4.close();
                                                     } catch (IOException var18) {
-                                                        EXF.getInstance().ICA(var18);
+                                                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var18);
                                                     }
                                                 }
 
@@ -345,8 +324,7 @@ public class FCT {
                                 var16.getItems().addAll(var17, var21);
                                 this.setContextMenuDelegate(var16);
                             }
-                        } else if (var1 instanceof FFL) {
-                            final FFL var15 = (FFL) var1;
+                        } else if (var1 instanceof final FFL var15) {
                             if (var15 != null) {
                                 this.setTextDelegate(FCW.getInstance().getMessageForKey("micro.tableview.exception.list"));
                                 var16 = new ContextMenu();
@@ -383,13 +361,13 @@ public class FCT {
 
                                             FCR.IGE(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.exception.list"), var6.toString(), false);
                                         } catch (IOException var24) {
-                                            EXF.getInstance().ICA(var24);
+                                            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var24);
                                         } finally {
                                             if (var4 != null) {
                                                 try {
                                                     var4.close();
                                                 } catch (IOException var23) {
-                                                    EXF.getInstance().ICA(var23);
+                                                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var23);
                                                 }
                                             }
 
@@ -397,7 +375,7 @@ public class FCT {
                                                 try {
                                                     var3.close();
                                                 } catch (IOException var22) {
-                                                    EXF.getInstance().ICA(var22);
+                                                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var22);
                                                 }
                                             }
 
@@ -405,7 +383,7 @@ public class FCT {
                                                 try {
                                                     var2.close();
                                                 } catch (IOException var21) {
-                                                    EXF.getInstance().ICA(var21);
+                                                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var21);
                                                 }
                                             }
 
@@ -443,14 +421,14 @@ public class FCT {
 
                                                 FCR.IGF(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.errorlist"), FCW.getInstance().getMessageForKey("micro.dialog.dialog.success"), false, 200.0, 200.0);
                                             } catch (IOException var31) {
-                                                EXF.getInstance().ICA(var31);
+                                                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var31);
                                                 FCR.IGP(FCW.getInstance().getMessageForKey("micro.dialog.error.title"), var31, false);
                                             } finally {
                                                 if (var7 != null) {
                                                     try {
                                                         var7.close();
                                                     } catch (IOException var30) {
-                                                        EXF.getInstance().ICA(var30);
+                                                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var30);
                                                     }
                                                 }
 
@@ -458,7 +436,7 @@ public class FCT {
                                                     try {
                                                         var6.close();
                                                     } catch (IOException var29) {
-                                                        EXF.getInstance().ICA(var29);
+                                                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var29);
                                                     }
                                                 }
 
@@ -466,7 +444,7 @@ public class FCT {
                                                     try {
                                                         var5.close();
                                                     } catch (IOException var28) {
-                                                        EXF.getInstance().ICA(var28);
+                                                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var28);
                                                     }
                                                 }
 
@@ -474,7 +452,7 @@ public class FCT {
                                                     try {
                                                         var4.close();
                                                     } catch (IOException var27) {
-                                                        EXF.getInstance().ICA(var27);
+                                                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var27);
                                                     }
                                                 }
 
@@ -486,8 +464,7 @@ public class FCT {
                                 var16.getItems().addAll(var17, var21);
                                 this.setContextMenuDelegate(var16);
                             }
-                        } else if (var1 instanceof X509Certificate) {
-                            final X509Certificate var18 = (X509Certificate) var1;
+                        } else if (var1 instanceof final X509Certificate var18) {
                             if (var18 != null) {
                                 this.setTextDelegate(var18.getSubjectDN().getName());
                                 var16 = new ContextMenu();
@@ -500,14 +477,12 @@ public class FCT {
                                 var16.getItems().addAll(var17);
                                 this.setContextMenuDelegate(var16);
                             }
-                        } else if (var1 instanceof Date) {
-                            Date var19 = (Date) var1;
+                        } else if (var1 instanceof Date var19) {
                             if (var19 != null) {
                                 SimpleDateFormat var22 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
                                 this.setTextDelegate(var22.format(var19));
                             }
-                        } else if (var1 instanceof String) {
-                            final String var20 = (String) var1;
+                        } else if (var1 instanceof final String var20) {
                             if (var20 != null && var20.length() > 0) {
                                 this.setTextDelegate(var20);
                                 this.setTooltipDelegate(new Tooltip(var20));

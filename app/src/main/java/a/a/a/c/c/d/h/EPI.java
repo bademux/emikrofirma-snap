@@ -5,7 +5,6 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.g.EOZ;
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.EWC;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HQ;
 import a.a.a.c.f.a.e.HU;
@@ -29,7 +28,10 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.time.ZoneId;
@@ -53,7 +55,6 @@ public class EPI extends EPL {
     }
 
     public void HOF() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             Transformer transformer = TransformerFactory.newInstance().newTransformer(new StreamSource(EPE.class.getResourceAsStream("/fop/invoice_sale_correction.xsl")));
@@ -171,19 +172,17 @@ public class EPI extends EPL {
                 transformer.setParameter("unit_price", this.FPQ.getString("micro.process.invoice_sale_new.Print.InvoiceElementNetPrice"));
             }
 
-            try(var fos = new FileOutputStream(this.FPP)) {
+            try (var fos = new FileOutputStream(this.FPP)) {
                 transformer.transform(new DOMSource(this.HOP()), new SAXResult(FopUtils.createFopHandler(fos)));
                 fos.flush();
             }
         } catch (FileNotFoundException var32) {
-            EXF.getInstance().ICA(var32);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var32);
             throw FCZ.getInstance().IHI(this.FPP);
         } catch (TransformerException | TransformerFactoryConfigurationError | IOException | ConfigurationException |
                  SAXException | ParserConfigurationException var33) {
-            EXF.getInstance().ICA(var33);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var33);
             throw FCZ.getInstance().IHL();
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

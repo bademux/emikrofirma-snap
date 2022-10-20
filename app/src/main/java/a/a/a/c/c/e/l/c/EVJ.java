@@ -10,8 +10,10 @@ import a.a.a.c.c.d.b.ENP;
 import a.a.a.c.c.d.g.EPA;
 import a.a.a.c.c.e.l.b.EVI;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
-import a.a.a.c.f.a.e.*;
+import a.a.a.c.f.a.e.HN;
+import a.a.a.c.f.a.e.HV;
+import a.a.a.c.f.a.e.HY;
+import a.a.a.c.f.a.e.IB;
 import a.a.a.c.f.a.g.IU;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.g.JB;
@@ -42,19 +44,13 @@ public class EVJ extends QVI {
 
     public EVJ() {
         super(EVI.GPE.getProcessName());
-        EXF.getInstance().ICO();
 
-        try {
-            this.GPG = null;
-            this.GPH = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GPG = null;
+        this.GPH = null;
 
     }
 
     protected void HHI() {
-        EXF.getInstance().ICO();
 
         try {
             if (this.GPG == null) {
@@ -70,166 +66,130 @@ public class EVJ extends QVI {
                 }
             }
         } catch (FFK var7) {
-            EXF.getInstance().ICA(var7);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
             throw new FFI(var7);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void HHJ() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     protected void resetAndCleanUpProcessImpl() {
-        EXF.getInstance().ICO();
 
         try {
             this.getModelManager().resetData(this.getParentDefinition());
             this.GPG = null;
             this.GPH = null;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public List<EPA<HY>> getInvoices(ENP var1, Integer var2, Integer var3, String var4, String var5) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         ArrayList var15;
-        try {
-            IU var6;
-            switch (var1) {
-                case ONLY_EMPTY:
-                    var6 = new IU(HY.class, QSW.ACTIVE, JN.AOE, IB.SELL, null, null, null, FDL.DESC);
-                    break;
-                case ONLY_CANCELED:
-                    var6 = new IU(HY.class, QSW.CANCELED, null, IB.SELL, null, null, null, FDL.DESC);
-                    break;
-                case WITHOUT_EMPTY:
-                    var6 = new IU(HY.class, QSW.ACTIVE, new JN(var2, var3), IB.SELL, null, null, var4, FDL.DESC);
-                    break;
-                case ALL:
-                default:
-                    var6 = new IU(HY.class, null, null, IB.SELL, null, null, var4, FDL.DESC);
-            }
-
-            EVZ var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
-            ArrayList var8 = new ArrayList();
-            if (var7 != null) {
-                int var9 = 0;
-                Iterator var10 = ((List) var7.getSecondValue()).iterator();
-
-                while (var10.hasNext()) {
-                    EDF var11 = (EDF) var10.next();
-                    ++var9;
-                    var8.add(new EPA(var11, var9));
-                }
-            }
-
-            var15 = var8;
-        } finally {
-            EXF.getInstance().ICP();
+        IU var6;
+        switch (var1) {
+            case ONLY_EMPTY:
+                var6 = new IU(HY.class, QSW.ACTIVE, JN.AOE, IB.SELL, null, null, null, FDL.DESC);
+                break;
+            case ONLY_CANCELED:
+                var6 = new IU(HY.class, QSW.CANCELED, null, IB.SELL, null, null, null, FDL.DESC);
+                break;
+            case WITHOUT_EMPTY:
+                var6 = new IU(HY.class, QSW.ACTIVE, new JN(var2, var3), IB.SELL, null, null, var4, FDL.DESC);
+                break;
+            case ALL:
+            default:
+                var6 = new IU(HY.class, null, null, IB.SELL, null, null, var4, FDL.DESC);
         }
+
+        EVZ var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
+        ArrayList var8 = new ArrayList();
+        if (var7 != null) {
+            int var9 = 0;
+            Iterator var10 = ((List) var7.getSecondValue()).iterator();
+
+            while (var10.hasNext()) {
+                EDF var11 = (EDF) var10.next();
+                ++var9;
+                var8.add(new EPA(var11, var9));
+            }
+        }
+
+        var15 = var8;
 
         return var15;
     }
 
     public void RKY(EDF<HY> var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
-        try {
-            if (this.RKI(var1.getPeriod())) {
-                throw FCZ.getInstance().createMicroBusinessException_cant_cancel_settled_invoice();
-            }
-
-            if (var1.getState().equals(QSW.CANCELED)) {
-                throw FCZ.getInstance().QOB();
-            }
-
-            if (var1.getChildWrapperOnlyActiveState() != null) {
-                throw FCZ.getInstance().QOC();
-            }
-
-            var1.setValue("business_state", QSW.CANCELED.getKey());
-            this.getModelManager().ROH(var1, HY.class);
-            this.getModelManager().HKL(this.getParentDefinition());
-        } finally {
-            EXF.getInstance().ICP();
+        if (this.RKI(var1.getPeriod())) {
+            throw FCZ.getInstance().createMicroBusinessException_cant_cancel_settled_invoice();
         }
+
+        if (var1.getState().equals(QSW.CANCELED)) {
+            throw FCZ.getInstance().QOB();
+        }
+
+        if (var1.getChildWrapperOnlyActiveState() != null) {
+            throw FCZ.getInstance().QOC();
+        }
+
+        var1.setValue("business_state", QSW.CANCELED.getKey());
+        this.getModelManager().ROH(var1, HY.class);
+        this.getModelManager().HKL(this.getParentDefinition());
 
     }
 
     public void HZE(HV var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getModelManager().HKB(this.getParentDefinition(), var1);
-            this.getModelManager().HKL(this.getParentDefinition());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getModelManager().HKB(this.getParentDefinition(), var1);
+        this.getModelManager().HKL(this.getParentDefinition());
 
     }
 
     public LY getUserDataForInvoice(HN<?> var1) throws FFK {
-        EXF.getInstance().ICO();
 
         LY var4;
-        try {
-            JB var2 = new JB(LY.class, var1.DBC().getValue());
-            LY var3 = (LY) this.getModelManager().HJT(this.getParentDefinition(), var2);
-            var4 = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        JB var2 = new JB(LY.class, var1.DBC().getValue());
+        LY var3 = (LY) this.getModelManager().HJT(this.getParentDefinition(), var2);
+        var4 = var3;
 
         return var4;
     }
 
     public File getWorkingDir() {
-        EXF.getInstance().ICO();
 
         File var7;
-        try {
-            File var1 = new File(this.GPH.DEY().getValue());
-            boolean var2 = var1.mkdirs();
-            if (!var2) {
-                LS var3 = (LS) QJZ.getDefaultConfigurationProperty(FCQ.WorkingDir);
-                var1 = new File(var3.DEY().getValue());
-            }
-
-            var7 = var1;
-        } finally {
-            EXF.getInstance().ICP();
+        File var1 = new File(this.GPH.DEY().getValue());
+        boolean var2 = var1.mkdirs();
+        if (!var2) {
+            LS var3 = (LS) QJZ.getDefaultConfigurationProperty(FCQ.WorkingDir);
+            var1 = new File(var3.DEY().getValue());
         }
+
+        var7 = var1;
 
         return var7;
     }
 
     public File getTempFile(String var1) {
-        EXF.getInstance().ICO();
 
         File var4;
-        try {
-            File var2 = this.getWorkingDir();
-            File var3 = new File(var2, "temp_" + Thread.currentThread().getId() + "_" + System.nanoTime() + "." + var1);
-            var4 = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        File var2 = this.getWorkingDir();
+        File var3 = new File(var2, "temp_" + Thread.currentThread().getId() + "_" + System.nanoTime() + "." + var1);
+        var4 = var3;
 
         return var4;
     }
 
     public List<EZT> getRangesWhereSettled(String var1) {
-        EXF.getInstance().ICO();
+
         ArrayList var2 = new ArrayList();
 
         ArrayList var4;
@@ -252,35 +212,28 @@ public class EVJ extends QVI {
             ArrayList var19 = var2;
             return var19;
         } catch (FFK var15) {
-            EXF.getInstance().ICA(var15);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var15);
             var4 = var2;
         } catch (FFO var16) {
-            EXF.getInstance().ICA(var16);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var16);
             var4 = var2;
             return var4;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var4;
     }
 
     public boolean RKZ(JN var1, String var2) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         boolean var5;
-        try {
-            IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new KE(var2), null);
-            EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
-            if (((List) var4.getSecondValue()).size() <= 0) {
-                var5 = true;
-                return var5;
-            }
-
-            var5 = false;
-        } finally {
-            EXF.getInstance().ICP();
+        IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new KE(var2), null);
+        EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        if (((List) var4.getSecondValue()).size() <= 0) {
+            var5 = true;
+            return var5;
         }
+
+        var5 = false;
 
         return var5;
     }

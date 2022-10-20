@@ -1,14 +1,13 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.KO;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.math.BigDecimal;
 
 @XmlRootElement(
@@ -23,8 +22,7 @@ public class HV extends HW {
     private JR AKV;
 
     public HV() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public KO getCorrectionReason() {

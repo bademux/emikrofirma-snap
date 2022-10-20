@@ -9,7 +9,6 @@ import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.EMT;
 import a.a.a.c.c.e.n.c.QTI;
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -29,15 +28,12 @@ public class QTG extends ELU<QTI> {
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             super.HHE();
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -70,28 +66,18 @@ public class QTG extends ELU<QTI> {
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.infoProgram.label"));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.infoProgram.label"));
 
     }
 
     @FXML
     public void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [close] clicked");
-            QTI var2 = this.getProcess();
-            var2.resetAndCleanUpProcess();
-            this.getApplication().HJD(this.getFxmlName(), "main.fxml");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [close] clicked");
+        QTI var2 = this.getProcess();
+        var2.resetAndCleanUpProcess();
+        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
 
     }
 }

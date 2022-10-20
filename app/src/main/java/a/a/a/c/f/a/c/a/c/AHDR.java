@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.c.a.c;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.AHEQ;
 
 import java.util.ArrayList;
@@ -11,19 +10,14 @@ public class AHDR extends AHDQ {
 
     public AHDR(AHEQ var1, String var2, List<AHDP> var3) {
         super(var1, var2);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVT = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVT = var3;
 
     }
 
     public AHDR(AHEQ var1, String var2) {
         this(var1, var2, new ArrayList());
-        EXF.getInstance().ICQ();
+
     }
 
     public List<AHDP> getAttributes() {

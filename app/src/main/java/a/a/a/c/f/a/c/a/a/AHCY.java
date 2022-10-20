@@ -2,14 +2,13 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
 import a.a.a.c.f.a.c.a.f.AHEN;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,40 +18,29 @@ public class AHCY extends AHCT<Date> {
     private final transient SimpleDateFormat AHUY;
 
     private AHCY() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHUY = new SimpleDateFormat("yyyy-MM-dd");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHUY = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
     public AHCY(AHCJ var1, String var2, AHDG var3, AHEN var4) {
         super(var1, var2, var3, var4);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHUY = new SimpleDateFormat("yyyy-MM-dd");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHUY = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
     public EVZ<AHCI, String> AICX(AHDT var1) {
-        EXF.getInstance().ICO();
 
         EVZ var7;
         try {
-            EXF.getInstance().ICK("field " + var1);
-            EXF.getInstance().ICK("conditionType " + this.AHUF);
-            EXF.getInstance().ICK("variable " + this.AHUP);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("variable " + this.AHUP);
             String var2 = var1.getValue();
-            EXF.getInstance().ICK("fieldValue " + var2);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("fieldValue " + var2);
             String var3 = var2 != null ? var2.trim() : "";
-            EXF.getInstance().ICK("fieldValueTrimed " + var3);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("fieldValueTrimed " + var3);
             Date var4 = this.AHUY.parse(var3);
             Date var5 = this.AHUP.getValue();
             boolean var6 = false;
@@ -96,10 +84,8 @@ public class AHCY extends AHCT<Date> {
 
             var7 = new EVZ(AHCI.SUCCESS, null);
         } catch (ParseException var12) {
-            EXF.getInstance().ICA(var12);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
             throw new FFI(var12);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var7;

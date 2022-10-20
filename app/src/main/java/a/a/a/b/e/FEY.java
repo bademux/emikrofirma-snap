@@ -1,7 +1,6 @@
 package a.a.a.b.e;
 
 import a.a.a.c.e.a.i.a.EWZ;
-import a.a.a.c.e.a.k.a.EXF;
 
 import javax.crypto.SecretKey;
 import java.security.NoSuchAlgorithmException;
@@ -26,52 +25,32 @@ public class FEY {
     }
 
     private FEY() throws NoSuchAlgorithmException {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HFF = new EWZ();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HFF = new EWZ();
 
     }
 
     public boolean ILA(byte[] var1, char[] var2, byte[] var3) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        EXF.getInstance().ICO();
 
         boolean var5;
-        try {
-            SecretKey var4 = this.HFF.getKey(var2, var3);
-            var5 = Arrays.equals(var1, var4.getEncoded());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        SecretKey var4 = this.HFF.getKey(var2, var3);
+        var5 = Arrays.equals(var1, var4.getEncoded());
 
         return var5;
     }
 
     public byte[] ILB() throws NoSuchAlgorithmException {
-        EXF.getInstance().ICO();
 
         byte[] var1;
-        try {
-            var1 = this.HFF.IBO();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = this.HFF.IBO();
 
         return var1;
     }
 
     public byte[] ILC(char[] var1, byte[] var2) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        EXF.getInstance().ICO();
 
         byte[] var3;
-        try {
-            var3 = this.HFF.getKey(var1, var2).getEncoded();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var3 = this.HFF.getKey(var1, var2).getEncoded();
 
         return var3;
     }

@@ -1,20 +1,17 @@
 package a.a.a.c.f.a.n;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JY;
 import a.a.a.c.f.b.c.KQ;
 import a.a.a.c.f.b.c.QSU;
 import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.QSV;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class QSJ extends QSH {
     public QSJ() {
-        EXF.getInstance().ICQ();
+
     }
 
     public Object RJJ() {

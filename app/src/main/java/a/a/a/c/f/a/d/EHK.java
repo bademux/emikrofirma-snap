@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -13,13 +12,8 @@ public enum EHK implements JM {
     private final String FGA;
 
     EHK(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FGA = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FGA = var3;
 
     }
 

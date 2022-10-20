@@ -8,12 +8,10 @@ import a.a.a.c.c.d.d.*;
 import a.a.a.c.c.e.i.a.a.ETW;
 import a.a.a.c.c.e.i.c.EUE;
 import a.a.a.c.c.e.i.d.EUF;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.JY;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
@@ -31,12 +29,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 public class ETZ extends EMD {
     private static final int GJQ = 50;
     @FXML
@@ -118,72 +118,47 @@ public class ETZ extends EMD {
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            this.fxml_declaration_list_declaration_table.getItems().clear();
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_declaration_list_declaration_table.getItems().clear();
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HWK();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HWK();
 
     }
 
     private Node HWI(int var1) {
-        EXF.getInstance().ICO();
 
         VBox var2;
-        try {
-            this.GJR = var1;
-            this.HWJ();
-            this.setTableHeight();
-            var2 = new VBox(this.fxml_declaration_list_declaration_table);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GJR = var1;
+        this.HWJ();
+        this.setTableHeight();
+        var2 = new VBox(this.fxml_declaration_list_declaration_table);
 
         return var2;
     }
 
     private void setTableHeight() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_declaration_list_declaration_table.setPrefHeight(this.fxml_declaration_list_declaration_table.getFixedCellSize() * ((double) this.fxml_declaration_list_declaration_table.getItems().size() + 1.1));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_declaration_list_declaration_table.setPrefHeight(this.fxml_declaration_list_declaration_table.getFixedCellSize() * ((double) this.fxml_declaration_list_declaration_table.getItems().size() + 1.1));
 
     }
 
     private void HWJ() {
-        EXF.getInstance().ICO();
 
-        try {
-            if (this.GJS == null) {
-                return;
-            }
-
-            int var1 = this.GJR * 50;
-            int var2 = Math.min(var1 + 50, this.GJS.size());
-            List var3 = this.GJS.subList(var1, var2);
-            this.fxml_declaration_list_declaration_table.setItems(FXCollections.observableArrayList(var3));
-        } finally {
-            EXF.getInstance().ICP();
+        if (this.GJS == null) {
+            return;
         }
+
+        int var1 = this.GJR * 50;
+        int var2 = Math.min(var1 + 50, this.GJS.size());
+        List var3 = this.GJS.subList(var1, var2);
+        this.fxml_declaration_list_declaration_table.setItems(FXCollections.observableArrayList(var3));
 
     }
 
@@ -200,31 +175,25 @@ public class ETZ extends EMD {
     }
 
     public void HWK() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_declaration_list_declaration_table.getItems().clear();
-            this.fxml_declaration_list_pagination.setPageCount(1);
-            this.fxml_declaration_list_pagination.setPageFactory(this::HWI);
-            this.fxml_declaration_list_pagination.setCurrentPageIndex(0);
-            if (this.GJS != null) {
-                if (this.GJS.size() % 50 > 0) {
-                    this.fxml_declaration_list_pagination.setPageCount(this.GJS.size() / 50 + 1);
-                } else {
-                    this.fxml_declaration_list_pagination.setPageCount(this.GJS.size() / 50);
-                }
-
-                this.fxml_declaration_list_declaration_table.setItems(FXCollections.observableArrayList(this.GJS));
+        this.fxml_declaration_list_declaration_table.getItems().clear();
+        this.fxml_declaration_list_pagination.setPageCount(1);
+        this.fxml_declaration_list_pagination.setPageFactory(this::HWI);
+        this.fxml_declaration_list_pagination.setCurrentPageIndex(0);
+        if (this.GJS != null) {
+            if (this.GJS.size() % 50 > 0) {
+                this.fxml_declaration_list_pagination.setPageCount(this.GJS.size() / 50 + 1);
+            } else {
+                this.fxml_declaration_list_pagination.setPageCount(this.GJS.size() / 50);
             }
-        } finally {
-            EXF.getInstance().ICP();
+
+            this.fxml_declaration_list_declaration_table.setItems(FXCollections.observableArrayList(this.GJS));
         }
 
     }
 
     @FXML
     protected void fxml_handleButton_declaration_list_track_jpk_status(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
             final QGX var2 = new QGX(this.fxml_declaration_list_jpk_ref_idController.fxml_component_main_element.getText());
@@ -234,24 +203,20 @@ public class ETZ extends EMD {
             final MTI var5 = new MTI(Boolean.FALSE);
             MSX var6 = new MSX(this.FGW, this.QHV.disableProperty()) {
                 public void MXI() {
-                    EXF.getInstance().ICO();
 
                     try {
                         var5.setObject(ETZ.this.QHT.QIX(var2));
                     } catch (FFO | FFK var6) {
-                        EXF.getInstance().ICA(var6);
+                        log.error("Something bad happened", var6);
                         var4.setObject(var6);
                     } catch (Exception var7) {
-                        EXF.getInstance().ICA(var7);
+                        log.error("Something bad happened", var7);
                         var4.setObject(var7);
-                    } finally {
-                        EXF.getInstance().ICP();
                     }
 
                 }
 
                 public void MXJ() {
-                    EXF.getInstance().ICO();
 
                     try {
                         if (var4.getObject() == null) {
@@ -270,25 +235,23 @@ public class ETZ extends EMD {
                                 FCR.IGM(ETZ.this.resources.getString("micro.process.common.jpk.jpkobservererror.title"), ETZ.this.resources.getString("micro.process.common.jpk.jpkobservererror.header"), ETZ.this.resources.getString("micro.process.common.jpk.jpkobservererror.content"), false);
                             }
                         } else {
-                            EXF.getInstance().ICA((Throwable) var4.getObject());
+                            log.error("Something bad happened", (Throwable) var4.getObject());
                             FCT.IGX(ETZ.this.resources.getString("micro.process.common.jpk.error.checkState"), (Exception) var4.getObject());
                         }
                     } catch (ParseException var9) {
-                        EXF.getInstance().ICA(var9);
+                        log.error("Something bad happened", var9);
                         FCT.IGX(ETZ.this.resources.getString("micro.process.common.jpk.error.checkState"), var9);
                     } finally {
                         ETZ.this.QHV.requestFocus();
-                        EXF.getInstance().ICP();
+
                     }
 
                 }
             };
             var6.MXH();
         } catch (FFK var10) {
-            EXF.getInstance().ICA(var10);
+            log.error("Something bad happened", var10);
             FCT.IGX(this.resources.getString("micro.process.common.jpk.error.checkState"), var10);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

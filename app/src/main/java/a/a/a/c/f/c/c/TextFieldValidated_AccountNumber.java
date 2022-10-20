@@ -1,14 +1,15 @@
 package a.a.a.c.f.c.c;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.b.FAG;
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.text.MaskFormatter;
 import java.text.ParseException;
 
+@Slf4j
 public class TextFieldValidated_AccountNumber extends TextFieldRequired {
     public TextFieldValidated_AccountNumber() {
         this("");
@@ -32,7 +33,6 @@ public class TextFieldValidated_AccountNumber extends TextFieldRequired {
         private final MaskFormatter HAJ;
 
         public StringConverterAcc() {
-            EXF.getInstance().ICO();
 
             try {
                 this.HAI = new MaskFormatter("## #### #### #### #### #### ####");
@@ -40,16 +40,13 @@ public class TextFieldValidated_AccountNumber extends TextFieldRequired {
                 this.HAJ = new MaskFormatter("UU ## #### #### #### #### #### ####");
                 this.HAJ.setValueContainsLiteralCharacters(false);
             } catch (ParseException var6) {
-                EXF.getInstance().ICA(var6);
+                log.error("Something bad happened", var6);
                 throw new FFI(var6);
-            } finally {
-                EXF.getInstance().ICP();
             }
 
         }
 
         public String toString(String var1) {
-            EXF.getInstance().ICO();
 
             String var3;
             try {
@@ -63,39 +60,32 @@ public class TextFieldValidated_AccountNumber extends TextFieldRequired {
 
                 try {
                     var3 = this.HAI.valueToString(var2).trim();
-                } catch (ParseException var9) {
-                    EXF.getInstance().ICI(var9);
+                } catch (ParseException e) {
+                    log.warn("Something bad happened", e);
                     String var4 = this.HAJ.valueToString(var2).trim();
                     return var4;
                 }
-            } catch (ParseException var10) {
-                EXF.getInstance().ICA(var10);
-                throw new FFI(var10);
-            } finally {
-                EXF.getInstance().ICP();
+            } catch (ParseException e) {
+                log.error("Something bad happened", e);
+                throw new FFI(e);
             }
 
             return var3;
         }
 
         public String fromString(String var1) {
-            EXF.getInstance().ICO();
 
-            try {
-                String var2;
-                if (var1 != null) {
-                    var2 = var1.replaceAll("\\s", "");
-                    if (var2.length() > 0) {
-                        String var3 = var2;
-                        return var3;
-                    }
+            String var2;
+            if (var1 != null) {
+                var2 = var1.replaceAll("\\s", "");
+                if (var2.length() > 0) {
+                    String var3 = var2;
+                    return var3;
                 }
-
-                var2 = null;
-                return var2;
-            } finally {
-                EXF.getInstance().ICP();
             }
+
+            var2 = null;
+            return var2;
         }
     }
 }

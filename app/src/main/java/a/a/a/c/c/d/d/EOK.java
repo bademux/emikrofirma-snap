@@ -1,6 +1,5 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.util.StringConverter;
 
 import java.math.BigDecimal;
@@ -26,7 +25,7 @@ public class EOK extends StringConverter<BigDecimal> {
         try {
             return ((BigDecimal) this.FNN.parse(var1)).setScale(this.FNO, RoundingMode.HALF_UP);
         } catch (ParseException var3) {
-            EXF.getInstance().ICA(var3);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var3);
             return BigDecimal.ZERO;
         }
     }

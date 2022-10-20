@@ -3,7 +3,6 @@ package a.a.a.c.c.e.c.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.HK;
 import a.a.a.c.f.a.h.JF;
 
@@ -26,7 +25,6 @@ public abstract class ESK {
     }
 
     public JF getSettlement() {
-        EXF.getInstance().ICO();
 
         JF var1;
         try {
@@ -36,31 +34,24 @@ public abstract class ESK {
 
             var1 = this.GCZ;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var1;
     }
 
     public HK getDeclarationJPKVAT() {
-        EXF.getInstance().ICO();
 
         HK var1;
-        try {
-            if (this.QNE == null && !this.QNF) {
-                this.QNE = this.GDB.getDeclarationJPK_VAT(this.getSettlement());
-                if (this.QNE == null) {
-                    this.QNF = true;
-                }
+        if (this.QNE == null && !this.QNF) {
+            this.QNE = this.GDB.getDeclarationJPK_VAT(this.getSettlement());
+            if (this.QNE == null) {
+                this.QNF = true;
             }
-
-            var1 = this.QNE;
-        } finally {
-            EXF.getInstance().ICP();
         }
+
+        var1 = this.QNE;
 
         return var1;
     }

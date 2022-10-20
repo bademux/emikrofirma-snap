@@ -4,33 +4,32 @@ import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
 import a.a.a.b.e.c.FFC;
 import a.a.a.b.f.*;
-import a.a.a.c.e.a.d.*;
+import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.EWD;
+import a.a.a.c.e.a.d.MME;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.b.FCW;
-import a.a.a.c.g.c.FCZ;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import lombok.extern.slf4j.Slf4j;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
 import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Iterator;
+import java.util.ResourceBundle;
 
+@Slf4j
 public abstract class EQK {
     public static final int QHR = 1;
     protected final ResourceBundle MWM;
@@ -155,7 +154,7 @@ public abstract class EQK {
 
                                                 FCR.IGM(FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.header"), FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.cryptcard.problem"), var37.toString(), false);
                                             } catch (Throwable var26) {
-                                                EXF.getInstance().ICA(var26);
+                                                log.error("Something bad happened", var26);
                                                 var12 = null;
                                                 String var15 = null;
                                                 Throwable var16 = var26;
@@ -241,12 +240,12 @@ public abstract class EQK {
             } catch (QGU var27) {
                 throw var27;
             } catch (FFO var28) {
-                EXF.getInstance().ICA(var28);
+                log.error("Something bad happened", var28);
                 var3 = var28.getLocalizedMessage() != null ? var28.getLocalizedMessage() : "";
                 this.setProgress(FCW.getInstance().getMessageForKey("micro.jpk.sendout.error").replaceFirst("##ERROR##", var3));
                 throw var28;
             } catch (Exception var29) {
-                EXF.getInstance().ICA(var29);
+                log.error("Something bad happened", var29);
                 var3 = var29.getLocalizedMessage() != null ? var29.getLocalizedMessage() : "";
                 this.setProgress(FCW.getInstance().getMessageForKey("micro.jpk.sendout.error").replaceFirst("##ERROR##", var3));
                 throw new FFK(var29);
@@ -262,29 +261,24 @@ public abstract class EQK {
     }
 
     private void HQG(File var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var1 != null && var1.isDirectory()) {
-                File[] var2 = var1.listFiles();
-                if (var2 != null) {
-                    File[] var3 = var2;
-                    int var4 = var2.length;
+        if (var1 != null && var1.isDirectory()) {
+            File[] var2 = var1.listFiles();
+            if (var2 != null) {
+                File[] var3 = var2;
+                int var4 = var2.length;
 
-                    for (int var5 = 0; var5 < var4; ++var5) {
-                        File var6 = var3[var5];
-                        if (var6.isDirectory()) {
-                            this.HQG(var6);
-                        } else {
-                            EXF.getInstance().ICK("File " + var6 + " is deleted " + var6.delete());
-                        }
+                for (int var5 = 0; var5 < var4; ++var5) {
+                    File var6 = var3[var5];
+                    if (var6.isDirectory()) {
+                        this.HQG(var6);
+                    } else {
+                        log.debug("File " + var6 + " is deleted " + var6.delete());
                     }
                 }
-
-                EXF.getInstance().ICK("Dir " + var1 + " is deleted " + var1.delete());
             }
-        } finally {
-            EXF.getInstance().ICP();
+
+            log.debug("Dir " + var1 + " is deleted " + var1.delete());
         }
 
     }
@@ -296,157 +290,107 @@ public abstract class EQK {
     protected abstract MME<Boolean, String, String, String, LocalDate, BigDecimal, String> getSignatureValuesForKD() throws FFO, FFK;
 
     private void HQH(String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            String var2 = var1 + System.lineSeparator();
-            this.FWF.appendText(var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        String var2 = var1 + System.lineSeparator();
+        this.FWF.appendText(var2);
 
     }
 
     public ProgressBar HQI(final String var1) {
-        EXF.getInstance().ICO();
 
         ProgressBar var2;
-        try {
-            var2 = FEL.IKS(new FEM<ProgressBar>() {
-                public ProgressBar IKT() {
-                    return EQK.this.HQJ(var1);
-                }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var2 = FEL.IKS(new FEM<ProgressBar>() {
+            public ProgressBar IKT() {
+                return EQK.this.HQJ(var1);
+            }
+        });
 
         return var2;
     }
 
     private ProgressBar HQJ(String var1) {
-        EXF.getInstance().ICO();
 
         ProgressBar var6;
-        try {
-            this.HQH(var1);
-            ObservableList var2 = FXCollections.observableArrayList(this.FWG.getChildren());
-            VBox var3 = new VBox();
-            Text var4 = new Text(var1);
-            var3.getChildren().add(var4);
-            ProgressBar var5 = new ProgressBar();
-            if (this.FWH != null && this.FWH > 50.0) {
-                var5.setMinWidth(this.FWH);
-                var5.setPrefWidth(this.FWH);
-                var5.setMaxWidth(this.FWH);
-            }
-
-            var5.setProgress(-1.0);
-            var5.setStyle("progress-bar");
-            var3.getChildren().add(var5);
-            this.FWG.getChildren().clear();
-            this.FWG.getChildren().add(var3);
-            this.FWG.getChildren().addAll(var2);
-            var6 = var5;
-        } finally {
-            EXF.getInstance().ICP();
+        this.HQH(var1);
+        ObservableList var2 = FXCollections.observableArrayList(this.FWG.getChildren());
+        VBox var3 = new VBox();
+        Text var4 = new Text(var1);
+        var3.getChildren().add(var4);
+        ProgressBar var5 = new ProgressBar();
+        if (this.FWH != null && this.FWH > 50.0) {
+            var5.setMinWidth(this.FWH);
+            var5.setPrefWidth(this.FWH);
+            var5.setMaxWidth(this.FWH);
         }
+
+        var5.setProgress(-1.0);
+        var5.setStyle(":progress-bar");
+        var3.getChildren().add(var5);
+        this.FWG.getChildren().clear();
+        this.FWG.getChildren().add(var3);
+        this.FWG.getChildren().addAll(var2);
+        var6 = var5;
 
         return var6;
     }
 
     public void setProgressAndAlertError(String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.setProgressAndAlertError(FCW.getInstance().getMessageForKey("micro.jpk.sendout.dialog.processing.exception.title"), var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.setProgressAndAlertError(FCW.getInstance().getMessageForKey("micro.jpk.sendout.dialog.processing.exception.title"), var1);
 
     }
 
     public void setProgressAndAlertError(String var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.setProgress(null, var2, null);
-            FCR.IGK(var1, var2, false);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.setProgress(null, var2, null);
+        FCR.IGK(var1, var2, false);
 
     }
 
     public void setProgressAndAlertInfo(String var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.setProgress(null, var2, null);
-            FCR.IGF(var1, "", var2, false, 400.0, 100.0);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.setProgress(null, var2, null);
+        FCR.IGF(var1, "", var2, false, 400.0, 100.0);
 
     }
 
     public void setProgress(String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.setProgress(null, var1, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.setProgress(null, var1, null);
 
     }
 
     public void setProgress(ProgressBar var1, Double var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.setProgress(var1, null, var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.setProgress(var1, null, var2);
 
     }
 
     private void setProgress(final ProgressBar var1, final String var2, final Double var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            FEL.IKS(new FEM<Void>() {
-                public Void IKT() {
-                    EQK.this.setProgressInner(var1, var2, var3);
-                    return null;
-                }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        FEL.IKS(new FEM<Void>() {
+            public Void IKT() {
+                EQK.this.setProgressInner(var1, var2, var3);
+                return null;
+            }
+        });
 
     }
 
     private void setProgressInner(ProgressBar var1, String var2, Double var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2 != null) {
-                this.HQH(var2);
-            }
+        if (var2 != null) {
+            this.HQH(var2);
+        }
 
-            if (var1 != null && var3 != null) {
-                if (var3 < 0.0) {
-                    var1.setProgress(0.0);
-                    var1.setDisable(true);
-                } else {
-                    var1.setProgress(var3);
-                    var1.setDisable(false);
-                }
+        if (var1 != null && var3 != null) {
+            if (var3 < 0.0) {
+                var1.setProgress(0.0);
+                var1.setDisable(true);
+            } else {
+                var1.setProgress(var3);
+                var1.setDisable(false);
             }
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

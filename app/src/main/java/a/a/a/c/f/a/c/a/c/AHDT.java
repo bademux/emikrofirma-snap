@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.c.a.c;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHDI;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -17,24 +15,14 @@ public abstract class AHDT extends AHDI {
     protected transient String AHVX;
 
     protected AHDT() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVW = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVW = null;
 
     }
 
     public AHDT(AHDS var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVW = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVW = var1;
 
     }
 
@@ -56,14 +44,9 @@ public abstract class AHDT extends AHDI {
     }
 
     public void reset() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVV = false;
-            this.AHVX = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVV = false;
+        this.AHVX = null;
 
     }
 

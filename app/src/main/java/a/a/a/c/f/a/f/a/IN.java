@@ -1,11 +1,9 @@
 package a.a.a.c.f.a.f.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IK;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.KE;
 import a.a.a.c.f.b.c.a.KL;
-
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
@@ -16,18 +14,13 @@ public abstract class IN extends IK {
     private KE AMM;
 
     public IN() {
-        EXF.getInstance().ICQ();
+
     }
 
     public IN(IQ var1) {
         this();
-        EXF.getInstance().ICO();
 
-        try {
-            this.AMK = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AMK = var1;
 
     }
 

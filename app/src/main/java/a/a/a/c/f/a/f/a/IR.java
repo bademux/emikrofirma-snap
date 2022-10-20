@@ -1,16 +1,15 @@
 package a.a.a.c.f.a.f.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.JR;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +27,7 @@ public class IR extends IN {
 
     public IR() {
         super(IQ.VAT);
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public JR getNet() {

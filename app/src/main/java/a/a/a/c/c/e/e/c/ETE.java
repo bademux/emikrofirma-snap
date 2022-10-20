@@ -8,7 +8,6 @@ import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.e.a.ETC;
 import a.a.a.c.c.e.e.b.ETD;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.g.AGYN;
 
@@ -22,13 +21,11 @@ public class ETE extends ELV {
 
     public ETE() {
         super(ETD.GFW.getProcessName());
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     protected void HHI() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public void setContractor(HI var1) {
@@ -44,7 +41,6 @@ public class ETE extends ELV {
     }
 
     protected void HHJ() {
-        EXF.getInstance().ICO();
 
         try {
             switch (this.GFZ) {
@@ -59,46 +55,37 @@ public class ETE extends ELV {
 
             this.getModelManager().HKL(this.getParentDefinition());
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void resetAndCleanUpProcessImpl() {
-        EXF.getInstance().ICO();
 
         try {
             this.GFY = null;
             this.getModelManager().resetData(this.getParentDefinition());
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void HUQ() {
-        EXF.getInstance().ICO();
 
         try {
             this.getModelManager().HKC(this.getParentDefinition(), this.GFY);
             this.getModelManager().HKL(this.getParentDefinition());
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public List<HI> getContractors() {
-        EXF.getInstance().ICO();
 
         ArrayList var11;
         try {
@@ -118,10 +105,8 @@ public class ETE extends ELV {
 
             var11 = var3;
         } catch (FFO | FFK var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             throw new FFI(var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var11;
@@ -138,7 +123,7 @@ public class ETE extends ELV {
                     var2 = true;
                 }
             } catch (FFO | FFK var5) {
-                EXF.getInstance().ICA(var5);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             }
         }
 
@@ -156,7 +141,7 @@ public class ETE extends ELV {
                     var2 = true;
                 }
             } catch (FFO | FFK var5) {
-                EXF.getInstance().ICA(var5);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             }
         }
 

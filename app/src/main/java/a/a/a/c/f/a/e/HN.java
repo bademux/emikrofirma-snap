@@ -1,14 +1,13 @@
 package a.a.a.c.f.a.e;
 
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IK;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.b.c.a.KL;
-
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElements;
 import jakarta.xml.bind.annotation.XmlTransient;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,24 +45,19 @@ public abstract class HN<_T extends HO> extends IK {
     private JY AJW;
 
     protected HN(IB var1, IA var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AJF = var1;
-            this.AJG = var2;
-            this.AJL = new ArrayList();
-            this.AJM = new ArrayList();
-            this.AJN = new ArrayList();
-            this.AJV = new ArrayList();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AJF = var1;
+        this.AJG = var2;
+        this.AJL = new ArrayList();
+        this.AJM = new ArrayList();
+        this.AJN = new ArrayList();
+        this.AJV = new ArrayList();
 
     }
 
     protected HN() {
         this(null, null);
-        EXF.getInstance().ICQ();
+
     }
 
     public IB getInvoiceType() {
@@ -341,35 +335,30 @@ public abstract class HN<_T extends HO> extends IK {
     }
 
     public EVZ<BigDecimal, BigDecimal> getNetAndTaxForTaxRate(KL var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            BigDecimal var2 = BigDecimal.ZERO;
-            BigDecimal var3 = BigDecimal.ZERO;
-            Iterator var4 = this.getSumOfAmountsDividedByTaxRate().iterator();
+        BigDecimal var2 = BigDecimal.ZERO;
+        BigDecimal var3 = BigDecimal.ZERO;
+        Iterator var4 = this.getSumOfAmountsDividedByTaxRate().iterator();
 
-            EVZ var5;
-            while (var4.hasNext()) {
-                var5 = (EVZ) var4.next();
-                if (var5.getFirstValue().equals(var1)) {
-                    var2 = (BigDecimal) var5.getSecondValue();
-                }
+        EVZ var5;
+        while (var4.hasNext()) {
+            var5 = (EVZ) var4.next();
+            if (var5.getFirstValue().equals(var1)) {
+                var2 = (BigDecimal) var5.getSecondValue();
             }
-
-            var4 = this.getAmountOfTaxDividedByTaxRate().iterator();
-
-            while (var4.hasNext()) {
-                var5 = (EVZ) var4.next();
-                if (var5.getFirstValue().equals(var1)) {
-                    var3 = (BigDecimal) var5.getSecondValue();
-                }
-            }
-
-            EVZ var9 = new EVZ(var2, var3);
-            return var9;
-        } finally {
-            EXF.getInstance().ICP();
         }
+
+        var4 = this.getAmountOfTaxDividedByTaxRate().iterator();
+
+        while (var4.hasNext()) {
+            var5 = (EVZ) var4.next();
+            if (var5.getFirstValue().equals(var1)) {
+                var3 = (BigDecimal) var5.getSecondValue();
+            }
+        }
+
+        EVZ var9 = new EVZ(var2, var3);
+        return var9;
     }
 
     public QSU getLastCalculationMethod() {

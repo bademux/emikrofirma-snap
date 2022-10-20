@@ -2,7 +2,6 @@ package a.a.a.c.f.a.e.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IJ;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.n.QSQ;
@@ -10,9 +9,9 @@ import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.KE;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -50,7 +49,7 @@ public class ID extends IJ implements Comparable<ID> {
     private Boolean QXA;
 
     public ID() {
-        EXF.getInstance().ICQ();
+
     }
 
     public JV getDate() {

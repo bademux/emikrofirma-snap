@@ -1,11 +1,9 @@
 package a.a.a.c.f.a.c.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCE;
 import a.a.a.c.f.a.c.a.AHDI;
 import a.a.a.c.f.a.c.a.a.*;
 import a.a.a.c.f.a.c.a.c.AHDS;
-
 import jakarta.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -61,26 +59,16 @@ public class AHEK extends AHDI {
     protected final AHCE AHWY;
 
     private AHEK() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWX = null;
-            this.AHWY = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWX = null;
+        this.AHWY = null;
 
     }
 
     public AHEK(AHDS var1, AHCE var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWX = var1;
-            this.AHWY = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWX = var1;
+        this.AHWY = var2;
 
     }
 

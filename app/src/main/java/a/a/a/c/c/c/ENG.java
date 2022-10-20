@@ -4,12 +4,13 @@ import a.a.a.b.f.FFI;
 import a.a.a.c.c.a.ELZ;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWD;
-import a.a.a.c.e.a.k.a.EXF;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.*;
 
+@Slf4j
 public class ENG {
     @Getter(lazy = true)
     private static final ENG instance = new ENG();
@@ -37,22 +38,19 @@ public class ENG {
     private Map<ENH, Map<EWD<?>, Map<String, Object>>> RHD;
 
     public ENG() {
-        EXF.getInstance().ICO();
+
         try (var is = ENG.class.getResourceAsStream("/config/processes.properties")) {
             var props = new Properties();
             props.load(is);
             init(props);
         } catch (IOException e) {
-            EXF.getInstance().ICA(e);
+            log.error("Something bad happened", e);
             throw new FFI(e);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void init(Map<Object, Object> props) {
-        EXF.getInstance().ICO();
 
         try {
             this.FNB = new LinkedHashMap<>();
@@ -221,38 +219,24 @@ public class ENG {
                 }
             }
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException var17) {
-            EXF.getInstance().ICA(var17);
+            log.error("Something bad happened", var17);
             throw new FFI(var17);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public Set<String> HNI() {
-        EXF.getInstance().ICO();
-        try {
-            return this.FNB.keySet();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+        return this.FNB.keySet();
     }
 
     public Map<String, Object> getProcessDefinition(String name) {
-        EXF.getInstance().ICO();
-        try {
-            return new HashMap<>(this.FNB.get(name));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+        return new HashMap<>(this.FNB.get(name));
     }
 
     public Map<EWD<?>, Map<String, Object>> getGlobalAnchorDefinition(ENH name) {
-        EXF.getInstance().ICO();
-        try {
-            return new HashMap<>(this.RHD.get(name));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+        return new HashMap<>(this.RHD.get(name));
     }
 }

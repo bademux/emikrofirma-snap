@@ -1,9 +1,7 @@
 package a.a.a.b.e.c;
 
 import a.a.a.b.e.c.a.FFD;
-import a.a.a.c.e.a.k.a.EXF;
 
-import java.io.IOException;
 import java.security.*;
 
 public class FFB extends Signature {
@@ -12,13 +10,8 @@ public class FFB extends Signature {
 
     public FFB() throws NoSuchAlgorithmException {
         super("SHA256withRSA");
-        EXF.getInstance().ICO();
 
-        try {
-            this.HFQ = MessageDigest.getInstance("SHA-256");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HFQ = MessageDigest.getInstance("SHA-256");
 
     }
 
@@ -31,24 +24,14 @@ public class FFB extends Signature {
     }
 
     protected void engineUpdate(byte var1) throws SignatureException {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HFQ.update(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HFQ.update(var1);
 
     }
 
     protected void engineUpdate(byte[] var1, int var2, int var3) throws SignatureException {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HFQ.update(var1, var2, var3);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HFQ.update(var1, var2, var3);
 
     }
 

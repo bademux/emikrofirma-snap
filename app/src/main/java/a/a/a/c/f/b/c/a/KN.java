@@ -1,6 +1,5 @@
 package a.a.a.c.f.b.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -25,13 +24,8 @@ public enum KN implements JM {
     private final String APA;
 
     KN(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.APA = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.APA = var3;
 
     }
 

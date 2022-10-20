@@ -15,7 +15,6 @@ import a.a.a.c.c.e.r.a.a.ROT;
 import a.a.a.c.c.e.r.c.QUU;
 import a.a.a.c.d.e.b.QSC;
 import a.a.a.c.d.g.ERF;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.c.QJW;
@@ -28,7 +27,7 @@ import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.a.QJZ;
-import a.a.a.c.f.c.c.*;
+import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.FCQ;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -128,248 +127,198 @@ public class QUN extends EMD implements EMO<QSJ>, EYR {
 
     @FXML
     public void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_sale_ref_idController.fxml_component_main_element.editableProperty().bind(this.REA);
-            this.fxml_other_sale_creation_dateController.fxml_component_main_element.disableProperty().bind(this.REA.not());
-            this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.disableProperty().bind(this.REA.not());
-            this.fxml_sale_contractor_nameController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
-            this.fxml_sale_contractor_nipController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
-            this.fxml_sale_contractor_streetController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
-            this.fxml_sale_contractor_house_numberController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
-            this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
-            this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
-            this.fxml_sale_contractor_cityController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
-            this.fxml_other_sale_elements_table.disableProperty().bind(this.REA.not());
-            this.fxml_other_sale_remarksController.fxml_component_main_element.editableProperty().bind(this.REA);
-            this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REC));
-            this.fxml_other_sale_button_add_new_other_position.disableProperty().bind(((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).valueProperty().isNull().or(this.REA.not()));
-            this.fxml_other_sale_button_add_delete_other_position.disableProperty().bind(this.fxml_other_sale_elements_table.getSelectionModel().selectedItemProperty().isNull().or(this.REA.not()));
-            this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setCellFactory(new EOQ());
-            this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getCellFactory().call(null));
-            ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_1);
-            ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_2);
-            ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_3);
-            ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_4);
-            this.fxml_other_sale_elements_table_column_tax_type.setCellValueFactory(new PropertyValueFactory("taxRate"));
-            this.fxml_other_sale_elements_table_column_sum_net_price.setCellValueFactory(new PropertyValueFactory("netPriceForAll"));
-            this.fxml_other_sale_elements_table_column_sum_tax.setCellValueFactory(new PropertyValueFactory("taxValueForAll"));
-            this.fxml_other_sale_elements_table_column_sum_brut_price.setCellValueFactory(new PropertyValueFactory("grossValueForAll"));
-            LinkedHashSet var1 = new LinkedHashSet();
-            var1.add(KL.RATE_23);
-            var1.add(KL.RATE_8);
-            var1.add(KL.RATE_5);
-            var1.add(KL.RATE_4);
-            EOT var2 = new EOT(this, true, var1);
-            this.fxml_other_sale_elements_table_column_tax_type.setCellFactory(var2);
-            this.fxml_other_sale_elements_table_column_sum_net_price.setCellFactory(new EOT(this, true));
-            this.fxml_other_sale_elements_table_column_sum_tax.setCellFactory(new EOT(this, true));
-            this.fxml_other_sale_elements_table_column_sum_brut_price.setCellFactory(new EOT(this, true));
-            this.fxml_other_sale_summary_summary_table_column_sum_netto.setCellValueFactory(new PropertyValueFactory("amountSummaryWithoutTax"));
-            this.fxml_other_sale_summary_summary_table_column_sum_tax.setCellValueFactory(new PropertyValueFactory("amountTax"));
-            this.fxml_other_sale_summary_summary_table_column_sum_brut.setCellValueFactory(new PropertyValueFactory("amountSummaryWithTax"));
-            this.fxml_other_sale_summary_summary_table_column_sum_netto.setCellFactory(new EOT(this, false));
-            this.fxml_other_sale_summary_summary_table_column_sum_tax.setCellFactory(new EOT(this, false));
-            this.fxml_other_sale_summary_summary_table_column_sum_brut.setCellFactory(new EOT(this, false));
-            ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).valueProperty().addListener(new QUQ(this));
-            BooleanBinding var3 = this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().isNotNull().and(this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().isNotNull().and(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_cityController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_cityController.fxml_component_main_element.textProperty().isNotEqualTo(""))))))));
-            this.fxml_sale_contractor_nameController.fxml_component_root_element.requiredProperty().bind(var3);
-            this.fxml_sale_contractor_nipController.fxml_component_root_element.requiredProperty().bind(var3);
-            this.fxml_sale_contractor_streetController.fxml_component_root_element.requiredProperty().bind(var3);
-            this.fxml_sale_contractor_house_numberController.fxml_component_root_element.requiredProperty().bind(var3);
-            this.fxml_sale_contractor_postal_codeController.fxml_component_root_element.requiredProperty().bind(var3);
-            this.fxml_sale_contractor_cityController.fxml_component_root_element.requiredProperty().bind(var3);
-            BooleanBinding var4 = this.fxml_sale_contractor_nameController.validProperty().and(this.fxml_sale_contractor_nipController.validProperty().and(this.fxml_sale_contractor_streetController.validProperty().and(this.fxml_sale_contractor_house_numberController.validProperty().and(this.fxml_sale_contractor_postal_codeController.validProperty().and(this.fxml_sale_contractor_cityController.validProperty())))));
-            this.RDX.bind(var4.or(var3.not()).and(this.fxml_other_sale_invoicing_dateController.requiredAndValidProperty()).and(this.fxml_other_sale_creation_dateController.requiredAndValidProperty().and(this.fxml_other_sale_ref_idController.requiredAndValidProperty().and(this.RDY))));
-            this.RED.bind(this.fxml_other_sale_ref_idController.changedProperty().or(this.fxml_other_sale_creation_dateController.changedProperty().or(this.fxml_other_sale_invoicing_dateController.changedProperty().or(this.fxml_sale_contractor_nameController.changedProperty().or(this.fxml_sale_contractor_nipController.changedProperty().or(this.fxml_sale_contractor_streetController.changedProperty().or(this.fxml_sale_contractor_house_numberController.changedProperty().or(this.fxml_sale_contractor_apartment_numberController.changedProperty().or(this.fxml_sale_contractor_postal_codeController.changedProperty().or(this.fxml_sale_contractor_cityController.changedProperty().or(this.fxml_other_sale_new_other_element_typeController.changedProperty().or(this.fxml_other_sale_remarksController.changedProperty().or(this.REE)))))))))))));
-            this.REG.bind(this.fxml_sale_contractor_nameController.changedProperty().or(this.fxml_sale_contractor_nipController.changedProperty().or(this.fxml_sale_contractor_streetController.changedProperty().or(this.fxml_sale_contractor_house_numberController.changedProperty().or(this.fxml_sale_contractor_apartment_numberController.changedProperty().or(this.fxml_sale_contractor_postal_codeController.changedProperty().or(this.fxml_sale_contractor_cityController.changedProperty())))))));
-            this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.valueProperty().addListener(new QUR(this));
-            this.fxml_other_sale_creation_dateController.fxml_component_main_element.valueProperty().addListener(new ROT());
-            this.fxml_other_sale_elements_table.setFixedCellSize(32.0);
-            this.fxml_other_sale_elements_table.prefHeightProperty().bind(this.fxml_other_sale_elements_table.fixedCellSizeProperty().multiply(Bindings.size(this.REI).add(2.5)));
-            this.fxml_other_sale_elements_table.minHeightProperty().bind(this.fxml_other_sale_elements_table.prefHeightProperty());
-            this.fxml_other_sale_elements_table.maxHeightProperty().bind(this.fxml_other_sale_elements_table.prefHeightProperty());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_sale_ref_idController.fxml_component_main_element.editableProperty().bind(this.REA);
+        this.fxml_other_sale_creation_dateController.fxml_component_main_element.disableProperty().bind(this.REA.not());
+        this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.disableProperty().bind(this.REA.not());
+        this.fxml_sale_contractor_nameController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
+        this.fxml_sale_contractor_nipController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
+        this.fxml_sale_contractor_streetController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
+        this.fxml_sale_contractor_house_numberController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
+        this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
+        this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
+        this.fxml_sale_contractor_cityController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REF));
+        this.fxml_other_sale_elements_table.disableProperty().bind(this.REA.not());
+        this.fxml_other_sale_remarksController.fxml_component_main_element.editableProperty().bind(this.REA);
+        this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.disableProperty().bind(this.REA.not().or(this.REC));
+        this.fxml_other_sale_button_add_new_other_position.disableProperty().bind(((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).valueProperty().isNull().or(this.REA.not()));
+        this.fxml_other_sale_button_add_delete_other_position.disableProperty().bind(this.fxml_other_sale_elements_table.getSelectionModel().selectedItemProperty().isNull().or(this.REA.not()));
+        this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setCellFactory(new EOQ());
+        this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getCellFactory().call(null));
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_1);
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_2);
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_3);
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getItems().add(QSQ.SELL_REASON_4);
+        this.fxml_other_sale_elements_table_column_tax_type.setCellValueFactory(new PropertyValueFactory("taxRate"));
+        this.fxml_other_sale_elements_table_column_sum_net_price.setCellValueFactory(new PropertyValueFactory("netPriceForAll"));
+        this.fxml_other_sale_elements_table_column_sum_tax.setCellValueFactory(new PropertyValueFactory("taxValueForAll"));
+        this.fxml_other_sale_elements_table_column_sum_brut_price.setCellValueFactory(new PropertyValueFactory("grossValueForAll"));
+        LinkedHashSet var1 = new LinkedHashSet();
+        var1.add(KL.RATE_23);
+        var1.add(KL.RATE_8);
+        var1.add(KL.RATE_5);
+        var1.add(KL.RATE_4);
+        EOT var2 = new EOT(this, true, var1);
+        this.fxml_other_sale_elements_table_column_tax_type.setCellFactory(var2);
+        this.fxml_other_sale_elements_table_column_sum_net_price.setCellFactory(new EOT(this, true));
+        this.fxml_other_sale_elements_table_column_sum_tax.setCellFactory(new EOT(this, true));
+        this.fxml_other_sale_elements_table_column_sum_brut_price.setCellFactory(new EOT(this, true));
+        this.fxml_other_sale_summary_summary_table_column_sum_netto.setCellValueFactory(new PropertyValueFactory("amountSummaryWithoutTax"));
+        this.fxml_other_sale_summary_summary_table_column_sum_tax.setCellValueFactory(new PropertyValueFactory("amountTax"));
+        this.fxml_other_sale_summary_summary_table_column_sum_brut.setCellValueFactory(new PropertyValueFactory("amountSummaryWithTax"));
+        this.fxml_other_sale_summary_summary_table_column_sum_netto.setCellFactory(new EOT(this, false));
+        this.fxml_other_sale_summary_summary_table_column_sum_tax.setCellFactory(new EOT(this, false));
+        this.fxml_other_sale_summary_summary_table_column_sum_brut.setCellFactory(new EOT(this, false));
+        ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).valueProperty().addListener(new QUQ(this));
+        BooleanBinding var3 = this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().isNotNull().and(this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().isNotNull().and(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.textProperty().isNotEqualTo("")).or(this.fxml_sale_contractor_cityController.fxml_component_main_element.textProperty().isNotNull().and(this.fxml_sale_contractor_cityController.fxml_component_main_element.textProperty().isNotEqualTo(""))))))));
+        this.fxml_sale_contractor_nameController.fxml_component_root_element.requiredProperty().bind(var3);
+        this.fxml_sale_contractor_nipController.fxml_component_root_element.requiredProperty().bind(var3);
+        this.fxml_sale_contractor_streetController.fxml_component_root_element.requiredProperty().bind(var3);
+        this.fxml_sale_contractor_house_numberController.fxml_component_root_element.requiredProperty().bind(var3);
+        this.fxml_sale_contractor_postal_codeController.fxml_component_root_element.requiredProperty().bind(var3);
+        this.fxml_sale_contractor_cityController.fxml_component_root_element.requiredProperty().bind(var3);
+        BooleanBinding var4 = this.fxml_sale_contractor_nameController.validProperty().and(this.fxml_sale_contractor_nipController.validProperty().and(this.fxml_sale_contractor_streetController.validProperty().and(this.fxml_sale_contractor_house_numberController.validProperty().and(this.fxml_sale_contractor_postal_codeController.validProperty().and(this.fxml_sale_contractor_cityController.validProperty())))));
+        this.RDX.bind(var4.or(var3.not()).and(this.fxml_other_sale_invoicing_dateController.requiredAndValidProperty()).and(this.fxml_other_sale_creation_dateController.requiredAndValidProperty().and(this.fxml_other_sale_ref_idController.requiredAndValidProperty().and(this.RDY))));
+        this.RED.bind(this.fxml_other_sale_ref_idController.changedProperty().or(this.fxml_other_sale_creation_dateController.changedProperty().or(this.fxml_other_sale_invoicing_dateController.changedProperty().or(this.fxml_sale_contractor_nameController.changedProperty().or(this.fxml_sale_contractor_nipController.changedProperty().or(this.fxml_sale_contractor_streetController.changedProperty().or(this.fxml_sale_contractor_house_numberController.changedProperty().or(this.fxml_sale_contractor_apartment_numberController.changedProperty().or(this.fxml_sale_contractor_postal_codeController.changedProperty().or(this.fxml_sale_contractor_cityController.changedProperty().or(this.fxml_other_sale_new_other_element_typeController.changedProperty().or(this.fxml_other_sale_remarksController.changedProperty().or(this.REE)))))))))))));
+        this.REG.bind(this.fxml_sale_contractor_nameController.changedProperty().or(this.fxml_sale_contractor_nipController.changedProperty().or(this.fxml_sale_contractor_streetController.changedProperty().or(this.fxml_sale_contractor_house_numberController.changedProperty().or(this.fxml_sale_contractor_apartment_numberController.changedProperty().or(this.fxml_sale_contractor_postal_codeController.changedProperty().or(this.fxml_sale_contractor_cityController.changedProperty())))))));
+        this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.valueProperty().addListener(new QUR(this));
+        this.fxml_other_sale_creation_dateController.fxml_component_main_element.valueProperty().addListener(new ROT());
+        this.fxml_other_sale_elements_table.setFixedCellSize(32.0);
+        this.fxml_other_sale_elements_table.prefHeightProperty().bind(this.fxml_other_sale_elements_table.fixedCellSizeProperty().multiply(Bindings.size(this.REI).add(2.5)));
+        this.fxml_other_sale_elements_table.minHeightProperty().bind(this.fxml_other_sale_elements_table.prefHeightProperty());
+        this.fxml_other_sale_elements_table.maxHeightProperty().bind(this.fxml_other_sale_elements_table.prefHeightProperty());
 
     }
 
     private void RNL() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_sale_ref_idController.fxml_component_main_element.textProperty().bindBidirectional(this.RDW.RIR().DDG());
-            this.fxml_other_sale_elements_table.itemsProperty().bindBidirectional(this.RDW.RJR());
-            this.REJ = new QUP(this);
-            this.fxml_other_sale_elements_table.getItems().addListener(this.REJ);
-            this.fxml_other_sale_summary_summary_table.getItems().add(this.RDW);
-            this.fxml_other_sale_summary_summary_table.refresh();
-            this.fxml_other_sale_creation_dateController.fxml_component_main_element.valueProperty().bindBidirectional(this.RDW.RIS().DEC());
-            this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.valueProperty().bindBidirectional(this.RDW.RJQ().DEC());
-            this.RNO();
-            this.fxml_other_sale_remarksController.fxml_component_main_element.textProperty().bindBidirectional(this.RDW.RJA().DDG());
-            this.RDZ.bindBidirectional(this.RDW.DAF().DDM());
-            this.REI.bind(this.fxml_other_sale_elements_table.itemsProperty());
-            this.fxml_other_sale_summary_summary_table.refresh();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_sale_ref_idController.fxml_component_main_element.textProperty().bindBidirectional(this.RDW.RIR().DDG());
+        this.fxml_other_sale_elements_table.itemsProperty().bindBidirectional(this.RDW.RJR());
+        this.REJ = new QUP(this);
+        this.fxml_other_sale_elements_table.getItems().addListener(this.REJ);
+        this.fxml_other_sale_summary_summary_table.getItems().add(this.RDW);
+        this.fxml_other_sale_summary_summary_table.refresh();
+        this.fxml_other_sale_creation_dateController.fxml_component_main_element.valueProperty().bindBidirectional(this.RDW.RIS().DEC());
+        this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.valueProperty().bindBidirectional(this.RDW.RJQ().DEC());
+        this.RNO();
+        this.fxml_other_sale_remarksController.fxml_component_main_element.textProperty().bindBidirectional(this.RDW.RJA().DDG());
+        this.RDZ.bindBidirectional(this.RDW.DAF().DDM());
+        this.REI.bind(this.fxml_other_sale_elements_table.itemsProperty());
+        this.fxml_other_sale_summary_summary_table.refresh();
 
     }
 
     private void RNM() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HHD(this.fxml_other_sale_ref_idController.fxml_component_main_element.textProperty(), this.RDW.RIR().DDG());
-            this.fxml_other_sale_elements_table.getItems().removeListener(this.REJ);
-            this.REJ = null;
-            this.fxml_other_sale_elements_table.itemsProperty().unbindBidirectional(this.RDW.RJR());
-            this.fxml_other_sale_elements_table.getItems().clear();
-            this.fxml_other_sale_elements_table.refresh();
-            this.fxml_other_sale_summary_summary_table.getItems().clear();
-            this.fxml_other_sale_creation_dateController.fxml_component_main_element.valueProperty().unbindBidirectional(this.RDW.RIS().DEC());
-            this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.valueProperty().unbindBidirectional(this.RDW.RJQ().DEC());
-            this.RNN();
-            this.HHD(this.fxml_other_sale_remarksController.fxml_component_main_element.textProperty(), this.RDW.RJA().DDG());
-            this.RDZ.unbindBidirectional(this.RDW.DAF().DDM());
-            this.REI.unbind();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HHD(this.fxml_other_sale_ref_idController.fxml_component_main_element.textProperty(), this.RDW.RIR().DDG());
+        this.fxml_other_sale_elements_table.getItems().removeListener(this.REJ);
+        this.REJ = null;
+        this.fxml_other_sale_elements_table.itemsProperty().unbindBidirectional(this.RDW.RJR());
+        this.fxml_other_sale_elements_table.getItems().clear();
+        this.fxml_other_sale_elements_table.refresh();
+        this.fxml_other_sale_summary_summary_table.getItems().clear();
+        this.fxml_other_sale_creation_dateController.fxml_component_main_element.valueProperty().unbindBidirectional(this.RDW.RIS().DEC());
+        this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.valueProperty().unbindBidirectional(this.RDW.RJQ().DEC());
+        this.RNN();
+        this.HHD(this.fxml_other_sale_remarksController.fxml_component_main_element.textProperty(), this.RDW.RJA().DDG());
+        this.RDZ.unbindBidirectional(this.RDW.DAF().DDM());
+        this.REI.unbind();
 
     }
 
     private void RNN() {
-        EXF.getInstance().ICO();
 
-        try {
-            HI var1 = this.RDW.RJS();
-            this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAI().DDG());
-            this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAJ().DDG());
-            JJ var2 = var1.DAM();
-            this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDA().DDG());
-            this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDB().DDG());
-            this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDC().DDG());
-            this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDD().DDG());
-            this.fxml_sale_contractor_cityController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DCZ().DDG());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        HI var1 = this.RDW.RJS();
+        this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAI().DDG());
+        this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().unbindBidirectional(var1.DAJ().DDG());
+        JJ var2 = var1.DAM();
+        this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDA().DDG());
+        this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDB().DDG());
+        this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDC().DDG());
+        this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DDD().DDG());
+        this.fxml_sale_contractor_cityController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DCZ().DDG());
 
     }
 
     private void RNO() {
-        EXF.getInstance().ICO();
 
-        try {
-            HI var1 = this.RDW.RJS();
-            this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAI().DDG());
-            this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAJ().DDG());
-            JJ var2 = var1.DAM();
-            this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDA().DDG());
-            this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDB().DDG());
-            this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDC().DDG());
-            this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDD().DDG());
-            this.fxml_sale_contractor_cityController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCZ().DDG());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        HI var1 = this.RDW.RJS();
+        this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAI().DDG());
+        this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().textProperty().bindBidirectional(var1.DAJ().DDG());
+        JJ var2 = var1.DAM();
+        this.fxml_sale_contractor_streetController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDA().DDG());
+        this.fxml_sale_contractor_house_numberController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDB().DDG());
+        this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDC().DDG());
+        this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDD().DDG());
+        this.fxml_sale_contractor_cityController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCZ().DDG());
 
     }
 
     private void RNP() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_sale_ref_idController.clearChangedProperty();
-            this.fxml_other_sale_creation_dateController.clearChangedProperty();
-            this.fxml_other_sale_invoicing_dateController.clearChangedProperty();
-            this.fxml_sale_contractor_nameController.clearChangedProperty();
-            this.fxml_sale_contractor_nipController.clearChangedProperty();
-            this.fxml_sale_contractor_streetController.clearChangedProperty();
-            this.fxml_sale_contractor_house_numberController.clearChangedProperty();
-            this.fxml_sale_contractor_apartment_numberController.clearChangedProperty();
-            this.fxml_sale_contractor_postal_codeController.clearChangedProperty();
-            this.fxml_sale_contractor_cityController.clearChangedProperty();
-            this.fxml_other_sale_new_other_element_typeController.clearChangedProperty();
-            this.fxml_other_sale_remarksController.clearChangedProperty();
-            this.REE.set(false);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_sale_ref_idController.clearChangedProperty();
+        this.fxml_other_sale_creation_dateController.clearChangedProperty();
+        this.fxml_other_sale_invoicing_dateController.clearChangedProperty();
+        this.fxml_sale_contractor_nameController.clearChangedProperty();
+        this.fxml_sale_contractor_nipController.clearChangedProperty();
+        this.fxml_sale_contractor_streetController.clearChangedProperty();
+        this.fxml_sale_contractor_house_numberController.clearChangedProperty();
+        this.fxml_sale_contractor_apartment_numberController.clearChangedProperty();
+        this.fxml_sale_contractor_postal_codeController.clearChangedProperty();
+        this.fxml_sale_contractor_cityController.clearChangedProperty();
+        this.fxml_other_sale_new_other_element_typeController.clearChangedProperty();
+        this.fxml_other_sale_remarksController.clearChangedProperty();
+        this.REE.set(false);
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            this.RNM();
-            this.RNR();
-            this.RDW = null;
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.RNM();
+        this.RNR();
+        this.RDW = null;
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_sale_contractor_nipController.setContractorGetter(this.RDU);
-            this.fxml_sale_contractor_nipController.setContractorSetter(this);
-            this.fxml_sale_contractor_nameController.setContractorGetter(this.RDU);
-            this.fxml_sale_contractor_nameController.setContractorSetter(this);
-            this.RNL();
-            if (this.REH.equals(EPB.NEW)) {
-                this.setDefault();
-            }
-
-            if (this.REA.get()) {
-                this.RNQ();
-            }
-
-            this.RNU();
-            this.HJJ();
-            this.RNP();
-        } finally {
-            EXF.getInstance().ICP();
+        this.fxml_sale_contractor_nipController.setContractorGetter(this.RDU);
+        this.fxml_sale_contractor_nipController.setContractorSetter(this);
+        this.fxml_sale_contractor_nameController.setContractorGetter(this.RDU);
+        this.fxml_sale_contractor_nameController.setContractorSetter(this);
+        this.RNL();
+        if (this.REH.equals(EPB.NEW)) {
+            this.setDefault();
         }
+
+        if (this.REA.get()) {
+            this.RNQ();
+        }
+
+        this.RNU();
+        this.HJJ();
+        this.RNP();
 
     }
 
     private void RNQ() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_sale_invoicing_dateController.IFN(this.RDU.getRangesWhereSettled(this.resources.getString("micro.process.other_sale_new.Tooltip.SettledPeriod")));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_sale_invoicing_dateController.IFN(this.RDU.getRangesWhereSettled(this.resources.getString("micro.process.other_sale_new.Tooltip.SettledPeriod")));
 
     }
 
     private void RNR() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_sale_contractor_nipController.fxml_component_main_element.getItems().clear();
-            this.fxml_sale_contractor_nipController.fxml_component_main_element.setValue(null);
-            this.fxml_sale_contractor_nameController.fxml_component_main_element.getItems().clear();
-            this.fxml_sale_contractor_nameController.fxml_component_main_element.setValue(null);
-            this.fxml_sale_contractor_nameController.HAS = false;
-            this.fxml_sale_contractor_nipController.HAS = false;
-            this.fxml_other_sale_invoicing_dateController.IFP();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_sale_contractor_nipController.fxml_component_main_element.getItems().clear();
+        this.fxml_sale_contractor_nipController.fxml_component_main_element.setValue(null);
+        this.fxml_sale_contractor_nameController.fxml_component_main_element.getItems().clear();
+        this.fxml_sale_contractor_nameController.fxml_component_main_element.setValue(null);
+        this.fxml_sale_contractor_nameController.HAS = false;
+        this.fxml_sale_contractor_nipController.HAS = false;
+        this.fxml_other_sale_invoicing_dateController.IFP();
 
     }
 
@@ -378,27 +327,17 @@ public class QUN extends EMD implements EMO<QSJ>, EYR {
     }
 
     private void setDefault() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setValue(null);
-            this.fxml_other_sale_creation_dateController.fxml_component_main_element.setValue(LocalDate.now());
-            this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.setValue(LocalDate.now());
-            this.REF.set(false);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element.setValue(null);
+        this.fxml_other_sale_creation_dateController.fxml_component_main_element.setValue(LocalDate.now());
+        this.fxml_other_sale_invoicing_dateController.fxml_component_main_element.setValue(LocalDate.now());
+        this.REF.set(false);
 
     }
 
     public void setProcessImplementation(QUU var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.RDU = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.RDU = var1;
 
     }
 
@@ -429,14 +368,13 @@ public class QUN extends EMD implements EMO<QSJ>, EYR {
             this.fxml_other_sale_elements_table.getItems().add(var2);
             this.fxml_other_sale_elements_table.refresh();
             this.HJJ();
-            EXF.getInstance().ICE("Added new invoice element, current number of elements: " + this.fxml_other_sale_elements_table.getItems().size());
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Added new invoice element, current number of elements: " + this.fxml_other_sale_elements_table.getItems().size());
         }
 
     }
 
     @FXML
     public void fxml_handleButton_other_sale_new_add_new_element(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
             FXMLLoader var2 = new FXMLLoader();
@@ -460,83 +398,66 @@ public class QUN extends EMD implements EMO<QSJ>, EYR {
             this.RNS(var6);
         } catch (IOException var10) {
             var10.printStackTrace();
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     private void fxml_handleButton_other_sale_new_delete_element(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            int var2 = this.fxml_other_sale_elements_table.getSelectionModel().getSelectedIndex();
-            if (var2 >= 0) {
-                this.fxml_other_sale_elements_table.getItems().remove(var2);
-                this.fxml_other_sale_elements_table.refresh();
-                this.REE.set(true);
-                EXF.getInstance().ICE("Deleted invoice element, current number of elements: " + this.fxml_other_sale_elements_table.getItems().size());
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        int var2 = this.fxml_other_sale_elements_table.getSelectionModel().getSelectedIndex();
+        if (var2 >= 0) {
+            this.fxml_other_sale_elements_table.getItems().remove(var2);
+            this.fxml_other_sale_elements_table.refresh();
+            this.REE.set(true);
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Deleted invoice element, current number of elements: " + this.fxml_other_sale_elements_table.getItems().size());
         }
 
     }
 
     public void HJJ() {
-        EXF.getInstance().ICO();
 
-        try {
-            BigDecimal var1 = BigDecimal.ZERO;
-            BigDecimal var2 = BigDecimal.ZERO;
-            BigDecimal var3 = BigDecimal.ZERO;
-            this.REE.set(true);
-            Iterator var4 = this.RDW.getInvoiceOtherElements().iterator();
+        BigDecimal var1 = BigDecimal.ZERO;
+        BigDecimal var2 = BigDecimal.ZERO;
+        BigDecimal var3 = BigDecimal.ZERO;
+        this.REE.set(true);
+        Iterator var4 = this.RDW.getInvoiceOtherElements().iterator();
 
-            while (var4.hasNext()) {
-                QSJ var5 = (QSJ) var4.next();
-                if (var5.RJE().getValue() != null) {
-                    var1 = var1.add(var5.RJE().getValue());
-                }
-
-                if (var5.RJF().getValue() != null) {
-                    var2 = var2.add(var5.RJF().getValue());
-                }
-
-                if (var5.RJG().getValue() != null) {
-                    var3 = var3.add(var5.RJG().getValue());
-                }
+        while (var4.hasNext()) {
+            QSJ var5 = (QSJ) var4.next();
+            if (var5.RJE().getValue() != null) {
+                var1 = var1.add(var5.RJE().getValue());
             }
 
-            this.RDW.RIU().setValue(var1);
-            this.RDW.RIV().setValue(var2);
-            this.RDW.RIT().setValue(var3);
-            this.fxml_other_sale_summary_summary_table.refresh();
-        } finally {
-            EXF.getInstance().ICP();
+            if (var5.RJF().getValue() != null) {
+                var2 = var2.add(var5.RJF().getValue());
+            }
+
+            if (var5.RJG().getValue() != null) {
+                var3 = var3.add(var5.RJG().getValue());
+            }
         }
+
+        this.RDW.RIU().setValue(var1);
+        this.RDW.RIV().setValue(var2);
+        this.RDW.RIT().setValue(var3);
+        this.fxml_other_sale_summary_summary_table.refresh();
     }
 
     public void setContractorFromAutocomplete(QJW var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var1 != null) {
-                HI var2 = var1.getContractor().AICD();
-                this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().setText(var2.getNip().getValue());
-                this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().getText().length());
-                this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().setText(var2.getName().getValue());
-                this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().getText().length());
-                JJ var3 = var2.DAM();
-                this.fxml_sale_contractor_streetController.fxml_component_main_element.setText(var3.getStreet().getValue());
-                this.fxml_sale_contractor_house_numberController.fxml_component_main_element.setText(var3.getHouseNumber().getValue());
-                this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.setText(var3.getApartmentNumber().getValue());
-                this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.setText(var3.getPostalCode().getValue());
-                this.fxml_sale_contractor_cityController.fxml_component_main_element.setText(var3.getCity().getValue());
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (var1 != null) {
+            HI var2 = var1.getContractor().AICD();
+            this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().setText(var2.getNip().getValue());
+            this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().getText().length());
+            this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().setText(var2.getName().getValue());
+            this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().positionCaret(this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().getText().length());
+            JJ var3 = var2.DAM();
+            this.fxml_sale_contractor_streetController.fxml_component_main_element.setText(var3.getStreet().getValue());
+            this.fxml_sale_contractor_house_numberController.fxml_component_main_element.setText(var3.getHouseNumber().getValue());
+            this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.setText(var3.getApartmentNumber().getValue());
+            this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.setText(var3.getPostalCode().getValue());
+            this.fxml_sale_contractor_cityController.fxml_component_main_element.setText(var3.getCity().getValue());
         }
 
     }
@@ -545,87 +466,67 @@ public class QUN extends EMD implements EMO<QSJ>, EYR {
     }
 
     public void setModeChangeDisable(boolean var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.REC.set(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.REC.set(var1);
 
     }
 
     public void RNT() {
-        EXF.getInstance().ICO();
 
-        try {
-            if (((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue() != null) {
-                switch ((QSQ) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue()) {
-                    case SELL_REASON_1:
-                    case SELL_REASON_2:
-                        this.fxml_other_sale_elements_table_column_tax_type.setEditable(true);
-                        this.fxml_other_sale_elements_table_column_sum_net_price.setEditable(true);
-                        this.fxml_other_sale_elements_table_column_sum_tax.setEditable(true);
-                        this.fxml_other_sale_elements_table_column_sum_brut_price.setEditable(true);
-                        this.fxml_other_sale_creation_dateController.fxml_component_root_element.setRequired(true);
-                        this.REF.set(false);
-                        break;
-                    case SELL_REASON_3:
-                    case SELL_REASON_4:
-                        this.fxml_other_sale_elements_table_column_tax_type.setEditable(false);
-                        this.fxml_other_sale_elements_table_column_sum_net_price.setEditable(false);
-                        this.fxml_other_sale_elements_table_column_sum_tax.setEditable(true);
-                        this.fxml_other_sale_elements_table_column_sum_brut_price.setEditable(false);
-                        this.fxml_other_sale_creation_dateController.fxml_component_root_element.setRequired(false);
-                        this.fxml_sale_contractor_nipController.fxml_component_main_element.getItems().clear();
-                        this.fxml_sale_contractor_nameController.fxml_component_main_element.getItems().clear();
-                        this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().setText(null);
-                        this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().setText(null);
-                        this.fxml_sale_contractor_streetController.fxml_component_main_element.setText(null);
-                        this.fxml_sale_contractor_house_numberController.fxml_component_main_element.setText(null);
-                        this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.setText(null);
-                        this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.setText(null);
-                        this.fxml_sale_contractor_cityController.fxml_component_main_element.setText(null);
-                        this.REF.set(true);
-                }
+        if (((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue() != null) {
+            switch ((QSQ) ((ComboBoxRequired) this.fxml_other_sale_new_other_element_typeController.fxml_component_main_element).getValue()) {
+                case SELL_REASON_1:
+                case SELL_REASON_2:
+                    this.fxml_other_sale_elements_table_column_tax_type.setEditable(true);
+                    this.fxml_other_sale_elements_table_column_sum_net_price.setEditable(true);
+                    this.fxml_other_sale_elements_table_column_sum_tax.setEditable(true);
+                    this.fxml_other_sale_elements_table_column_sum_brut_price.setEditable(true);
+                    this.fxml_other_sale_creation_dateController.fxml_component_root_element.setRequired(true);
+                    this.REF.set(false);
+                    break;
+                case SELL_REASON_3:
+                case SELL_REASON_4:
+                    this.fxml_other_sale_elements_table_column_tax_type.setEditable(false);
+                    this.fxml_other_sale_elements_table_column_sum_net_price.setEditable(false);
+                    this.fxml_other_sale_elements_table_column_sum_tax.setEditable(true);
+                    this.fxml_other_sale_elements_table_column_sum_brut_price.setEditable(false);
+                    this.fxml_other_sale_creation_dateController.fxml_component_root_element.setRequired(false);
+                    this.fxml_sale_contractor_nipController.fxml_component_main_element.getItems().clear();
+                    this.fxml_sale_contractor_nameController.fxml_component_main_element.getItems().clear();
+                    this.fxml_sale_contractor_nipController.fxml_component_main_element.getEditor().setText(null);
+                    this.fxml_sale_contractor_nameController.fxml_component_main_element.getEditor().setText(null);
+                    this.fxml_sale_contractor_streetController.fxml_component_main_element.setText(null);
+                    this.fxml_sale_contractor_house_numberController.fxml_component_main_element.setText(null);
+                    this.fxml_sale_contractor_apartment_numberController.fxml_component_main_element.setText(null);
+                    this.fxml_sale_contractor_postal_codeController.fxml_component_main_element.setText(null);
+                    this.fxml_sale_contractor_cityController.fxml_component_main_element.setText(null);
+                    this.REF.set(true);
             }
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void RNU() {
-        EXF.getInstance().ICO();
 
-        try {
-            if (this.fxml_other_sale_elements_table.getItems().size() > 0) {
-                this.RDY.set(true);
-                this.setModeChangeDisable(true);
-            } else {
-                this.RDY.set(false);
-                this.setModeChangeDisable(false);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (this.fxml_other_sale_elements_table.getItems().size() > 0) {
+            this.RDY.set(true);
+            this.setModeChangeDisable(true);
+        } else {
+            this.RDY.set(false);
+            this.setModeChangeDisable(false);
         }
 
     }
 
     public void RJV(QSJ var1, QSJ var2, QSV var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2.getNetPriceForAll().getValue() != null && var2.getTaxRate().getValue() != null) {
-                QSC var4 = new QSC();
-                var4.RIB(var1, var2);
-            }
-
-            this.REE.set(true);
-            this.fxml_other_sale_elements_table.refresh();
-        } finally {
-            EXF.getInstance().ICP();
+        if (var2.getNetPriceForAll().getValue() != null && var2.getTaxRate().getValue() != null) {
+            QSC var4 = new QSC();
+            var4.RIB(var1, var2);
         }
+
+        this.REE.set(true);
+        this.fxml_other_sale_elements_table.refresh();
 
     }
 

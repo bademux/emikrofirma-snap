@@ -3,7 +3,6 @@ package a.a.a.c.c.e.c.a.a;
 import a.a.a.b.f.FFI;
 import a.a.a.c.c.e.c.a.ESG;
 import a.a.a.c.c.e.c.c.ESL;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.HK;
 import a.a.a.c.f.a.d.HL;
 import a.a.a.c.f.a.h.JG;
@@ -20,67 +19,62 @@ public class ESE implements ChangeListener<TreeItem<ESL>> {
     }
 
     public void changed(ObservableValue<? extends TreeItem<ESL>> var1, TreeItem<ESL> var2, TreeItem<ESL> var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GBU.GCA.set(false);
-            this.GBU.GCB.set(false);
-            this.GBU.GCC.set(false);
-            this.GBU.GCD.set(false);
-            if (var3 != null) {
-                this.GBU.GCE.set(var3.getValue().HTT());
-                JG var4 = var3.getValue().getSettlement().getSettlementStatus();
-                switch (var4) {
-                    case SETTLED:
-                        this.GBU.GCA.set(true);
+        this.GBU.GCA.set(false);
+        this.GBU.GCB.set(false);
+        this.GBU.GCC.set(false);
+        this.GBU.GCD.set(false);
+        if (var3 != null) {
+            this.GBU.GCE.set(var3.getValue().HTT());
+            JG var4 = var3.getValue().getSettlement().getSettlementStatus();
+            switch (var4) {
+                case SETTLED:
+                    this.GBU.GCA.set(true);
+                    break;
+                case NEW:
+                    this.GBU.GCB.set(true);
+                    break;
+                case CANCELED_CHANGED:
+                    this.GBU.GCC.set(true);
+                    break;
+                case CANCELED_UNCHANGED:
+                    this.GBU.GCD.set(true);
+                    break;
+                default:
+                    throw new FFI("wrong status");
+            }
+
+            HK var5 = var3.getValue().getDeclarationJPKVAT();
+            HL var6 = null;
+            this.GBU.QMS.set(false);
+            if (var5 != null) {
+                var6 = var5.getDeclarationStatus();
+            }
+
+            if (var6 != null) {
+                switch (var6) {
+                    case NONE:
+                        this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.GenereateAndSendJPKVAT"));
+                        this.GBU.QMS.set(true);
                         break;
                     case NEW:
-                        this.GBU.GCB.set(true);
+                    case SENT:
+                        this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.CheckStatusJPKVAT"));
                         break;
-                    case CANCELED_CHANGED:
-                        this.GBU.GCC.set(true);
+                    case SUCCESS:
+                        this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.PrintUPOJPKVAT"));
                         break;
-                    case CANCELED_UNCHANGED:
-                        this.GBU.GCD.set(true);
+                    case FAILURE:
+                    case RETRY:
+                        this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.DeleteJPKVAT"));
                         break;
                     default:
-                        throw new FFI("wrong status");
+                        throw new FFI("unknown declaration status");
                 }
-
-                HK var5 = var3.getValue().getDeclarationJPKVAT();
-                HL var6 = null;
-                this.GBU.QMS.set(false);
-                if (var5 != null) {
-                    var6 = var5.getDeclarationStatus();
-                }
-
-                if (var6 != null) {
-                    switch (var6) {
-                        case NONE:
-                            this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.GenereateAndSendJPKVAT"));
-                            this.GBU.QMS.set(true);
-                            break;
-                        case NEW:
-                        case SENT:
-                            this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.CheckStatusJPKVAT"));
-                            break;
-                        case SUCCESS:
-                            this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.PrintUPOJPKVAT"));
-                            break;
-                        case FAILURE:
-                        case RETRY:
-                            this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.DeleteJPKVAT"));
-                            break;
-                        default:
-                            throw new FFI("unknown declaration status");
-                    }
-                } else {
-                    this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.GenereateAndSendJPKVAT"));
-                    this.GBU.QMS.set(true);
-                }
+            } else {
+                this.GBU.fxml_generalButtonGenerateAndSendJPKVAT.setText(FCW.getInstance().getMessageForKey("micro.process.invoices_settlements.GenereateAndSendJPKVAT"));
+                this.GBU.QMS.set(true);
             }
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

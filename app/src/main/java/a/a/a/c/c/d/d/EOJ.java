@@ -1,6 +1,5 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.JY;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -13,17 +12,12 @@ public class EOJ<_T> implements Callback<TableColumn<_T, JY>, TableCell<_T, JY>>
     public TableCell<_T, JY> call(TableColumn<_T, JY> var1) {
         TableCell var2 = new TableCell<_T, JY>() {
             protected void updateItem(JY var1, boolean var2) {
-                EXF.getInstance().ICO();
 
-                try {
-                    super.updateItem(var1, var2);
-                    if (var1 != null && var1.getValue() != null) {
-                        this.setText(var1.getValueAsString());
-                    } else {
-                        this.setText("");
-                    }
-                } finally {
-                    EXF.getInstance().ICP();
+                super.updateItem(var1, var2);
+                if (var1 != null && var1.getValue() != null) {
+                    this.setText(var1.getValueAsString());
+                } else {
+                    this.setText("");
                 }
 
             }

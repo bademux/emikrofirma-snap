@@ -1,9 +1,7 @@
 package a.a.a.c.f.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.KX;
 import a.a.a.c.f.b.c.KO;
-
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
@@ -13,18 +11,13 @@ public abstract class LQ<_A extends KX<_B>, _B> extends LT {
 
     public LQ() {
         this(null, null);
-        EXF.getInstance().ICQ();
+
     }
 
     public LQ(KO var1, _A var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AQG = var1;
-            this.AQH = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AQG = var1;
+        this.AQH = var2;
 
     }
 

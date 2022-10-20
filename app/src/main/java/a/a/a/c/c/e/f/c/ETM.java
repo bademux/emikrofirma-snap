@@ -7,7 +7,6 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.f.b.ETL;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.e.a.IC;
 import a.a.a.c.f.a.g.EYD;
 import a.a.a.c.f.a.g.IY;
@@ -33,19 +32,13 @@ public class ETM extends ELV {
 
     public ETM() {
         super(ETL.GHN.getProcessName());
-        EXF.getInstance().ICO();
 
-        try {
-            this.GHO = null;
-            this.GHQ = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GHO = null;
+        this.GHQ = null;
 
     }
 
     protected void HHI() {
-        EXF.getInstance().ICO();
 
         try {
             JB var1 = new JB(LY.class);
@@ -63,34 +56,22 @@ public class ETM extends ELV {
                 }
             }
         } catch (FFK var8) {
-            EXF.getInstance().ICA(var8);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
         }
 
     }
 
     protected void HHJ() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GHO = null;
-            this.GHQ = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GHO = null;
+        this.GHQ = null;
 
     }
 
     protected void resetAndCleanUpProcessImpl() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GHO = null;
-            this.GHQ = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GHO = null;
+        this.GHQ = null;
 
     }
 
@@ -110,13 +91,12 @@ public class ETM extends ELV {
 
             return var2;
         } catch (FFO | FFK var7) {
-            EXF.getInstance().ICA(var7);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
             throw new FFI(var7);
         }
     }
 
     public Set<IC> getInvoiceRecords(JF var1) {
-        EXF.getInstance().ICO();
 
         HashSet var12;
         try {
@@ -134,10 +114,8 @@ public class ETM extends ELV {
 
             var12 = var4;
         } catch (FFO | FFK var10) {
-            EXF.getInstance().ICA(var10);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var10);
             throw new FFI(var10);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var12;
@@ -154,31 +132,21 @@ public class ETM extends ELV {
     }
 
     public File getWorkingDir() {
-        EXF.getInstance().ICO();
 
         File var2;
-        try {
-            File var1 = new File(this.GHQ.DEY().getValue());
-            var1.mkdirs();
-            var2 = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        File var1 = new File(this.GHQ.DEY().getValue());
+        var1.mkdirs();
+        var2 = var1;
 
         return var2;
     }
 
     public File getTempFile(String var1) {
-        EXF.getInstance().ICO();
 
         File var4;
-        try {
-            File var2 = this.getWorkingDir();
-            File var3 = new File(var2, "temp_" + Thread.currentThread().getId() + "_" + System.nanoTime() + "." + var1);
-            var4 = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        File var2 = this.getWorkingDir();
+        File var3 = new File(var2, "temp_" + Thread.currentThread().getId() + "_" + System.nanoTime() + "." + var1);
+        var4 = var3;
 
         return var4;
     }

@@ -1,7 +1,5 @@
 package a.a.a.b.g;
 
-import a.a.a.c.e.a.k.a.EXF;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,16 +8,11 @@ public class FFP {
     private final Character HGN;
 
     public FFP(Character var1, Character var2) throws FFQ {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HGM = var1;
-            this.HGN = var2;
-            if (this.HGM == null || this.HGN == null) {
-                throw new FFQ("quoteStringQualifier or quotedDelimiter null or empty!");
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        this.HGM = var1;
+        this.HGN = var2;
+        if (this.HGM == null || this.HGN == null) {
+            throw new FFQ("quoteStringQualifier or quotedDelimiter null or empty!");
         }
 
     }

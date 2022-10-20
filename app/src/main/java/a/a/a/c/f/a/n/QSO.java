@@ -1,13 +1,11 @@
 package a.a.a.c.f.a.n;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.JV;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class QSO extends QSG<QSJ> {
@@ -17,13 +15,8 @@ public abstract class QSO extends QSG<QSJ> {
 
     protected QSO() {
         super(QSR.SELL, null);
-        EXF.getInstance().ICO();
 
-        try {
-            this.QYJ = new JV();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QYJ = new JV();
 
     }
 

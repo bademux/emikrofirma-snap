@@ -1,16 +1,15 @@
 package a.a.a.c.c.d.k.a.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZJ;
-import a.a.a.c.f.c.c.DatePickerRequired;
-import a.a.a.c.f.c.c.TextFieldValidated_PESEL;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
+@Slf4j
 public class MDH implements ChangeListener<Boolean> {
     private final EZJ MWG;
     private final EZD MWH;
@@ -31,7 +30,6 @@ public class MDH implements ChangeListener<Boolean> {
     }
 
     public static LocalDate MWY(String var0) {
-        EXF.getInstance().ICO();
 
         String var2;
         try {
@@ -72,11 +70,9 @@ public class MDH implements ChangeListener<Boolean> {
             }
 
             return null;
-        } catch (DateTimeException | NumberFormatException var13) {
-            EXF.getInstance().ICA(var13);
+        } catch (DateTimeException | NumberFormatException e) {
+            log.error("Something bad happened", e);
             return null;
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 }

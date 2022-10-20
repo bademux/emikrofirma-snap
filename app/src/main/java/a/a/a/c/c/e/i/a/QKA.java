@@ -4,7 +4,6 @@ import a.a.a.c.c.d.m.QKL;
 import a.a.a.c.c.d.m.QKN;
 import a.a.a.c.c.d.m.QKO;
 import a.a.a.c.c.e.i.d.EUF;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZM;
 import a.a.a.c.f.a.a.EZP;
@@ -16,8 +15,6 @@ import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.a.KK;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.f.c.c.ComboBoxRequired;
-import a.a.a.c.f.c.c.DatePickerRequired;
-import a.a.a.c.f.c.c.TextFieldValidated_NIP;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -26,12 +23,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 import java.util.ResourceBundle;
 
 public class QKA {
@@ -127,31 +122,21 @@ public class QKA {
 
     @FXML
     public void fxml_jpk_dialog_fa_settings_button_generate_and_send_clicked(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            KA var2 = null;
-            if (this.fxml_jpk_dialog_fa_settings_checkbox_use_nip_filter.isSelected()) {
-                var2 = new KA(this.fxml_jpk_dialog_fa_settings_text_field_nipController.fxml_component_main_element.getText());
-            }
-
-            this.QMJ = new QJX(this.QMH, this.fxml_jpk_dialog_fa_settings_date_picker_date_fromController.fxml_component_main_element.getValue(), this.fxml_jpk_dialog_fa_settings_date_picker_date_toController.fxml_component_main_element.getValue(), this.fxml_jpk_dialog_fa_settings_checkbox_use_nip_filter.isSelected(), var2, (KK) ((ComboBoxRequired) this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element).getValue());
-            this.QMI.close();
-        } finally {
-            EXF.getInstance().ICP();
+        KA var2 = null;
+        if (this.fxml_jpk_dialog_fa_settings_checkbox_use_nip_filter.isSelected()) {
+            var2 = new KA(this.fxml_jpk_dialog_fa_settings_text_field_nipController.fxml_component_main_element.getText());
         }
+
+        this.QMJ = new QJX(this.QMH, this.fxml_jpk_dialog_fa_settings_date_picker_date_fromController.fxml_component_main_element.getValue(), this.fxml_jpk_dialog_fa_settings_date_picker_date_toController.fxml_component_main_element.getValue(), this.fxml_jpk_dialog_fa_settings_checkbox_use_nip_filter.isSelected(), var2, (KK) ((ComboBoxRequired) this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element).getValue());
+        this.QMI.close();
 
     }
 
     @FXML
     public void fxml_jpk_dialog_fa_settings_button_cancel_clicked(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QMI.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QMI.close();
 
     }
 

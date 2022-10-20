@@ -2,16 +2,12 @@ package a.a.a.c.c.d.o;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.d.a.QUW;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZO;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.KE;
-import a.a.a.c.f.c.c.ComboBoxValidated_NIP;
-import a.a.a.c.f.c.c.DatePickerRequired;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -62,7 +58,7 @@ public class QVF implements ChangeListener<LocalDate> {
                     }
                 }
 
-                EXF.getInstance().ICE("Period changed to " + var3);
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Period changed to " + var3);
             } catch (FFK var7) {
             }
         }

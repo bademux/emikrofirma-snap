@@ -8,7 +8,6 @@ import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.p.b.QUC;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EYL;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.c.QJW;
@@ -33,17 +32,14 @@ public class QUD extends ELX implements EYL {
 
     public QUD() {
         super(QUC.RCR.getProcessName());
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     protected void HHI() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     protected void HHJ() {
-        EXF.getInstance().ICO();
 
         try {
             switch (this.RCU) {
@@ -57,57 +53,47 @@ public class QUD extends ELX implements EYL {
             this.RCT = null;
             this.getModelManager().HKL(this.getParentDefinition());
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5.getMessage());
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void resetAndCleanUpProcessImpl() {
-        EXF.getInstance().ICO();
 
         try {
             this.getModelManager().resetData(this.getParentDefinition());
             this.RCT = null;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public JG getSettlementStatus(LocalDate var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         JG var7;
-        try {
-            JN var2 = new JN(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            IY var3 = new IY(JF.class, var2, JH.VAT, null);
-            EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
-            if (((List) var4.getSecondValue()).size() > 1) {
-                throw new FFO("More than one settlement per one period!");
-            }
-
-            Iterator var5 = ((List) var4.getSecondValue()).iterator();
-            if (!var5.hasNext()) {
-                return null;
-            }
-
-            EDF var6 = (EDF) var5.next();
-            var7 = ((JF) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
-        } finally {
-            EXF.getInstance().ICP();
+        JN var2 = new JN(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        IY var3 = new IY(JF.class, var2, JH.VAT, null);
+        EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        if (((List) var4.getSecondValue()).size() > 1) {
+            throw new FFO("More than one settlement per one period!");
         }
+
+        Iterator var5 = ((List) var4.getSecondValue()).iterator();
+        if (!var5.hasNext()) {
+            return null;
+        }
+
+        EDF var6 = (EDF) var5.next();
+        var7 = ((JF) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
 
         return var7;
     }
 
     public List<QJW> getContractorsByText(String var1) {
-        EXF.getInstance().ICO();
+
         ArrayList var2 = new ArrayList();
 
         ArrayList var4;
@@ -128,10 +114,8 @@ public class QUD extends ELX implements EYL {
             ArrayList var12 = var2;
             return var12;
         } catch (FFO | FFK var10) {
-            EXF.getInstance().ICA(var10);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var10);
             var4 = var2;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var4;
@@ -143,29 +127,19 @@ public class QUD extends ELX implements EYL {
     }
 
     public void setInvoiceOtherPurchase(QSK var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.RCT = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.RCT = var1;
 
     }
 
     public QSK getInvoiceOtherPurchase() throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         QSK var1;
-        try {
-            if (this.RCT == null) {
-                this.RCT = this.getModelManager().ROG(this.getParentDefinition(), QSK.class);
-            }
-
-            var1 = this.RCT;
-        } finally {
-            EXF.getInstance().ICP();
+        if (this.RCT == null) {
+            this.RCT = this.getModelManager().ROG(this.getParentDefinition(), QSK.class);
         }
+
+        var1 = this.RCT;
 
         return var1;
     }

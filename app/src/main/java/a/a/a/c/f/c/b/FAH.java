@@ -1,6 +1,5 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.TextFieldRequired;
 
 public class FAH extends FAO<TextFieldRequired> {
@@ -10,41 +9,31 @@ public class FAH extends FAO<TextFieldRequired> {
 
     public FAH(String var1, String var2, TextFieldRequired var3) {
         super(var3);
-        EXF.getInstance().ICO();
 
-        try {
-            this.GXK = var1;
-            this.GXL = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GXK = var1;
+        this.GXL = var2;
 
     }
 
     protected void IFV(String var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2 != null && var2.length() > 0) {
-                if ((this.GXU.IFF() == null || this.GXU.IFF().intValue() <= 0 || var2.length() <= this.GXU.IFF().intValue()) && var2.matches(this.GXL)) {
-                    if (this.GXM) {
-                        this.GXM = false;
-                    } else {
-                        this.GXU.IEU().set(var2.matches(this.GXK));
-                        super.IFV(var1, var2);
-                    }
+        if (var2 != null && var2.length() > 0) {
+            if ((this.GXU.IFF() == null || this.GXU.IFF().intValue() <= 0 || var2.length() <= this.GXU.IFF().intValue()) && var2.matches(this.GXL)) {
+                if (this.GXM) {
+                    this.GXM = false;
                 } else {
-                    this.GXM = true;
-                    this.GXU.textProperty().set(var1);
+                    this.GXU.IEU().set(var2.matches(this.GXK));
+                    super.IFV(var1, var2);
                 }
-            } else if (this.GXM) {
-                this.GXM = false;
             } else {
-                this.GXU.IEU().set(!this.GXU.IFB());
-                super.IFV(var1, var2);
+                this.GXM = true;
+                this.GXU.textProperty().set(var1);
             }
-        } finally {
-            EXF.getInstance().ICP();
+        } else if (this.GXM) {
+            this.GXM = false;
+        } else {
+            this.GXU.IEU().set(!this.GXU.IFB());
+            super.IFV(var1, var2);
         }
 
     }

@@ -1,6 +1,5 @@
 package a.a.a.c.f.c.c;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EYE;
 import a.a.a.c.f.c.c.a.UnaryOperator_Number;
 import a.a.a.c.f.c.c.b.StringConverter_Number;
@@ -125,16 +124,11 @@ public class TextFieldValidated_Number extends TextFieldRequired implements EYE 
     }
 
     private void IFW() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.setTextFormatter(new TextFormatter(new StringConverter_Number(this), "", new UnaryOperator_Number(this)));
-            this.IEU().set(false);
-            this.textProperty().removeListener(this.GYR);
-            this.textProperty().removeListener(this.GYY);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.setTextFormatter(new TextFormatter(new StringConverter_Number(this), "", new UnaryOperator_Number(this)));
+        this.IEU().set(false);
+        this.textProperty().removeListener(this.GYR);
+        this.textProperty().removeListener(this.GYY);
 
     }
 }

@@ -4,7 +4,6 @@ import a.a.a.c.f.b.c.a.KK;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 
 public class QKO implements ChangeListener<Boolean> {
     private final ComboBox<KK> QNP;

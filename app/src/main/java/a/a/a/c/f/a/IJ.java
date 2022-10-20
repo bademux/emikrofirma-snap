@@ -1,7 +1,6 @@
 package a.a.a.c.f.a;
 
 import a.a.a.c.f.KU;
-
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient

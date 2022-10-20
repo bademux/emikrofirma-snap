@@ -1,6 +1,6 @@
 package a.a.a.c.e.a.f;
 
-import a.a.a.c.e.a.k.a.EXF;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class EWK<_RESULT_TYPE> implements Serializable {
     private static final long serialVersionUID = 5810622504331436028L;
     private final Map<String, List<String>> GQQ;
@@ -36,19 +37,19 @@ public class EWK<_RESULT_TYPE> implements Serializable {
 
                         try {
                             return Integer.parseInt(var4);
-                        } catch (NumberFormatException var6) {
-                            EXF.getInstance().ICI(var6);
+                        } catch (NumberFormatException e) {
+                            log.warn("Something bad happened", e);
                         }
                     }
                 }
             }
 
             return -1;
-        } catch (RuntimeException var7) {
-            EXF.getInstance().ICA(var7);
+        } catch (RuntimeException e) {
+            log.error("Something bad happened", e);
             return -2;
-        } catch (Exception var8) {
-            EXF.getInstance().ICA(var8);
+        } catch (Exception e) {
+            log.error("Something bad happened", e);
             return -3;
         }
     }

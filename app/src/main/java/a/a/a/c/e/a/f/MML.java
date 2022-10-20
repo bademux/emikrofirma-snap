@@ -1,7 +1,6 @@
 package a.a.a.c.e.a.f;
 
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.k.a.EXF;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -17,7 +16,6 @@ public class MML implements EWG<JSONObject> {
     }
 
     public JSONObject IAP(InputStream var1, EWX var2, Long var3) throws IOException {
-        EXF.getInstance().ICO();
 
         JSONObject var10;
         try {
@@ -58,17 +56,15 @@ public class MML implements EWG<JSONObject> {
             try {
                 var10 = (JSONObject) (new JSONParser()).parse(new String(var9, StandardCharsets.UTF_8));
             } catch (ParseException var16) {
-                EXF.getInstance().ICA("resultString " + new String(var9, StandardCharsets.UTF_8));
-                EXF.getInstance().ICA(var16);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("resultString " + new String(var9, StandardCharsets.UTF_8));
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var16);
                 Object var11 = null;
                 return (JSONObject) var11;
             }
         } catch (Exception var17) {
-            EXF.getInstance().ICA(var17);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var17);
             Object var5 = null;
             return (JSONObject) var5;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var10;

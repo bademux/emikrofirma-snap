@@ -1,9 +1,7 @@
 package a.a.a.c.f.a.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -19,13 +17,8 @@ public enum HL implements JM {
     private final String AJD;
 
     HL(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AJD = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AJD = var3;
 
     }
 

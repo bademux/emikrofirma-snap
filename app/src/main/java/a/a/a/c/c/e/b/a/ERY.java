@@ -10,7 +10,6 @@ import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.EMT;
 import a.a.a.c.c.e.b.c.ESC;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
@@ -43,7 +42,6 @@ public class ERY extends ELU<ESC> {
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             super.HHE();
@@ -51,16 +49,13 @@ public class ERY extends ELU<ESC> {
             this.GBO.bind(this.fxml_include_userLogicController.GBK);
             this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_userLogicController.GBL.and(this.fxml_include_userLogicController.GBK).not());
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var2;
         try {
@@ -110,19 +105,16 @@ public class ERY extends ELU<ESC> {
 
             var2 = false;
         } catch (Exception var7) {
-            EXF.getInstance().ICA(var7);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
             FCT.IGX("", var7);
             var2 = true;
             return var2;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.fxml_include_container.setVvalue(0.0);
@@ -135,64 +127,45 @@ public class ERY extends ELU<ESC> {
             this.fxml_include_top_menuController.HHC();
             this.fxml_parent.requestFocus();
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     private void getProcessAndReset() throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            ESC var1 = this.getProcess();
-            var1.resetAndCleanUpProcess();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ESC var1 = this.getProcess();
+        var1.resetAndCleanUpProcess();
 
     }
 
     private void getProcessAndFinish() throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            ESC var1 = this.getProcess();
-            var1.HHL();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ESC var1 = this.getProcess();
+        var1.HHL();
 
     }
 
     @FXML
     public void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [cancel] clicked");
-            this.GBP = true;
-            this.getProcessAndReset();
-            this.getApplication().HJD(this.getFxmlName(), "main.fxml");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
+        this.GBP = true;
+        this.getProcessAndReset();
+        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
 
     }
 
     @FXML
     public void fxml_handleButton_generalButtonSave(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [save] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.GBP = true;
             FEN var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.user.save.confirm.title"), null, this.resources.getString("micro.user.save.ok"), this.resources.getString("micro.user.save.cancel"), 500.0, 100.0, this.resources.getString("micro.user.save.info"));
             switch (var2) {
@@ -209,23 +182,16 @@ public class ERY extends ELU<ESC> {
                     this.GBP = false;
             }
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void HSR() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_include_userLogicController.HSP(this.GBN);
-            this.GBN = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_userLogicController.HSP(this.GBN);
+        this.GBN = null;
 
     }
 }

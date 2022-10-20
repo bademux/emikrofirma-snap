@@ -1,7 +1,6 @@
 package a.a.a.c.f.a.c.a;
 
 import a.a.a.c.e.a.d.EWD;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.b.AHDK;
 import a.a.a.c.f.a.c.a.b.AHDL;
 import a.a.a.c.f.a.c.a.b.AHDM;
@@ -10,11 +9,11 @@ import a.a.a.c.f.a.c.a.c.AHDU;
 import a.a.a.c.f.a.c.a.c.AHDV;
 import a.a.a.c.f.a.c.a.f.*;
 import a.a.a.c.g.b.FCW;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElements;
+
 import java.io.OutputStream;
 import java.util.*;
 
@@ -59,17 +58,12 @@ public class AHDJ extends AHDI {
     private final List<AHCH<?>> AHVO;
 
     public AHDJ() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVK = new ArrayList();
-            this.AHVL = new ArrayList();
-            this.AHVM = new ArrayList();
-            this.AHVN = new HashSet();
-            this.AHVO = new ArrayList();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVK = new ArrayList();
+        this.AHVL = new ArrayList();
+        this.AHVM = new ArrayList();
+        this.AHVN = new HashSet();
+        this.AHVO = new ArrayList();
 
     }
 
@@ -94,17 +88,12 @@ public class AHDJ extends AHDI {
     }
 
     public void AIDD(OutputStream var1, EWD<Integer> var2, String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            Iterator var4 = this.AHVO.iterator();
+        Iterator var4 = this.AHVO.iterator();
 
-            while (var4.hasNext()) {
-                AHCH var5 = (AHCH) var4.next();
-                var5.AICZ();
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        while (var4.hasNext()) {
+            AHCH var5 = (AHCH) var4.next();
+            var5.AICZ();
         }
 
     }

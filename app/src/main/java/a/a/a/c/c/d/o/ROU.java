@@ -1,6 +1,5 @@
 package a.a.a.c.c.d.o;
 
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
@@ -11,14 +10,9 @@ public class ROU implements ChangeListener<LocalDate> {
     }
 
     public void changed(ObservableValue<? extends LocalDate> var1, LocalDate var2, LocalDate var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var3 != null) {
-                EXF.getInstance().ICE("Event date changed to " + var3);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (var3 != null) {
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Event date changed to " + var3);
         }
 
     }

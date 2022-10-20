@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.n;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -11,13 +10,8 @@ public enum QSR implements JM {
     private final String QYM;
 
     QSR(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QYM = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QYM = var3;
 
     }
 

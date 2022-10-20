@@ -3,11 +3,9 @@ package a.a.a.c.c.e.l.a;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.l.c.EVJ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.e.HV;
 import a.a.a.c.f.b.b.JN;
-import a.a.a.c.f.c.c.DatePickerRequired;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -38,53 +36,43 @@ public class EVH {
 
     @FXML
     private void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_button_save.disableProperty().bind(this.fxml_invoicing_date_dateController.requiredAndValidProperty().not());
-            this.fxml_invoicing_date_dateController.fxml_component_main_element.valueProperty().addListener(new ChangeListener<LocalDate>() {
-                public void changed(ObservableValue<? extends LocalDate> var1, LocalDate var2, LocalDate var3) {
-                    EXF.getInstance().ICO();
+        this.fxml_button_save.disableProperty().bind(this.fxml_invoicing_date_dateController.requiredAndValidProperty().not());
+        this.fxml_invoicing_date_dateController.fxml_component_main_element.valueProperty().addListener(new ChangeListener<LocalDate>() {
+            public void changed(ObservableValue<? extends LocalDate> var1, LocalDate var2, LocalDate var3) {
+
+                if (var3 != null) {
+                    EVH.this.fxml_invoicing_date_dateController.fxml_component_main_element.IEU().set(true);
+                    boolean var4 = false;
 
                     try {
-                        if (var3 != null) {
-                            EVH.this.fxml_invoicing_date_dateController.fxml_component_main_element.IEU().set(true);
-                            boolean var4 = false;
-
-                            try {
-                                var4 = EVH.this.GPD.HZA(var3);
-                            } catch (FFO | FFK var12) {
-                                EXF.getInstance().ICA(var12);
-                            }
-
-                            if (var4) {
-                                EVH.this.fxml_invoicing_date_dateController.fxml_component_validation_element.setText(EVH.this.GPA.getString("micro.process.invoice_sale_list.InvoicingDateDialog.InvoiceDateSettled"));
-                                EVH.this.fxml_invoicing_date_dateController.fxml_component_main_element.IEU().set(false);
-                                return;
-                            }
-
-                            boolean var5 = true;
-
-                            try {
-                                var5 = EVH.this.implemantation.RKZ(new JN(var3), EVH.this.GPB.DAS().getValue());
-                            } catch (FFO | FFK var11) {
-                                EXF.getInstance().ICA(var11);
-                            }
-
-                            if (!var5) {
-                                EVH.this.fxml_invoicing_date_dateController.fxml_component_validation_element.setText(EVH.this.GPA.getString("micro.process.invoice_sale_list.InvoicingDateDialog.RefIdDuplicated"));
-                                EVH.this.fxml_invoicing_date_dateController.fxml_component_main_element.IEU().set(false);
-                            }
-                        }
-                    } finally {
-                        EXF.getInstance().ICP();
+                        var4 = EVH.this.GPD.HZA(var3);
+                    } catch (FFO | FFK var12) {
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
                     }
 
+                    if (var4) {
+                        EVH.this.fxml_invoicing_date_dateController.fxml_component_validation_element.setText(EVH.this.GPA.getString("micro.process.invoice_sale_list.InvoicingDateDialog.InvoiceDateSettled"));
+                        EVH.this.fxml_invoicing_date_dateController.fxml_component_main_element.IEU().set(false);
+                        return;
+                    }
+
+                    boolean var5 = true;
+
+                    try {
+                        var5 = EVH.this.implemantation.RKZ(new JN(var3), EVH.this.GPB.DAS().getValue());
+                    } catch (FFO | FFK var11) {
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var11);
+                    }
+
+                    if (!var5) {
+                        EVH.this.fxml_invoicing_date_dateController.fxml_component_validation_element.setText(EVH.this.GPA.getString("micro.process.invoice_sale_list.InvoicingDateDialog.RefIdDuplicated"));
+                        EVH.this.fxml_invoicing_date_dateController.fxml_component_main_element.IEU().set(false);
+                    }
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        });
 
     }
 
@@ -114,29 +102,19 @@ public class EVH {
 
     @FXML
     protected void fxml_handleButton_save(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [save] clicked");
-            this.GPC = true;
-            this.GOZ.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
+        this.GPC = true;
+        this.GOZ.close();
 
     }
 
     @FXML
     protected void fxml_handleButton_cancel(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [cancel] clicked");
-            this.GPC = false;
-            this.GOZ.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
+        this.GPC = false;
+        this.GOZ.close();
 
     }
 

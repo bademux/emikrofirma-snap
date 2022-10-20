@@ -1,6 +1,5 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TreeItem;
@@ -66,13 +65,8 @@ public class EOM<_T extends ENW> implements Callback<TreeTableView<_T>, TreeTabl
         }
 
         public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
-            EXF.getInstance().ICO();
 
-            try {
-                EOM.HNR(this.FNQ, var3);
-            } finally {
-                EXF.getInstance().ICP();
-            }
+            EOM.HNR(this.FNQ, var3);
 
         }
     }
@@ -85,13 +79,8 @@ public class EOM<_T extends ENW> implements Callback<TreeTableView<_T>, TreeTabl
         }
 
         public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
-            EXF.getInstance().ICO();
 
-            try {
-                EOM.HNQ(this.FNP, var3);
-            } finally {
-                EXF.getInstance().ICP();
-            }
+            EOM.HNQ(this.FNP, var3);
 
         }
     }

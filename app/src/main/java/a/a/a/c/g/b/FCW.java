@@ -1,6 +1,5 @@
 package a.a.a.c.g.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import com.github.bademux.emk.utils.LocaleUtils;
 
 import java.util.ResourceBundle;
@@ -23,13 +22,8 @@ public class FCW {
     }
 
     public FCW() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HBH = ResourceBundle.getBundle("messages/messages", LocaleUtils.LOCALE);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HBH = ResourceBundle.getBundle("messages/messages", LocaleUtils.LOCALE);
 
     }
 

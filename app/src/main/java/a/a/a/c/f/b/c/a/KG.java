@@ -1,6 +1,5 @@
 package a.a.a.c.f.b.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -11,13 +10,8 @@ public enum KG implements JM {
     private final String AON;
 
     KG(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AON = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AON = var3;
 
     }
 

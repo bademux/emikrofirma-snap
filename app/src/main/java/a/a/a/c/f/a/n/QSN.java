@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.n;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -15,8 +13,7 @@ public class QSN extends QSO {
     private HI QYH;
 
     public QSN() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public HI getContractor() {

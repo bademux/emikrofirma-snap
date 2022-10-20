@@ -1,6 +1,6 @@
 package a.a.a.c.e.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
 import java.nio.file.*;
@@ -14,83 +14,67 @@ import java.util.zip.ZipOutputStream;
 
 import static java.util.zip.ZipOutputStream.DEFLATED;
 
+@Slf4j
 public class EWF {
     public EWF() {
     }
 
     public static void RHV(String var0, String var1) throws IOException {
-        EXF.getInstance().ICO();
 
-        try {
-            Path var2 = Paths.get(var0);
-            Path var3 = Paths.get(var1);
-            if (!Files.exists(var2, LinkOption.NOFOLLOW_LINKS) || Files.exists(var3, LinkOption.NOFOLLOW_LINKS)) {
-                throw new RuntimeException("Either source file does not exist or destination file exist!");
-            }
-
-            Path var4 = Files.move(var2, var3, StandardCopyOption.REPLACE_EXISTING);
-            EXF.getInstance().ICK("Result file is " + var4);
-        } finally {
-            EXF.getInstance().ICP();
+        Path var2 = Paths.get(var0);
+        Path var3 = Paths.get(var1);
+        if (!Files.exists(var2, LinkOption.NOFOLLOW_LINKS) || Files.exists(var3, LinkOption.NOFOLLOW_LINKS)) {
+            throw new RuntimeException("Either source file does not exist or destination file exist!");
         }
+
+        Path var4 = Files.move(var2, var3, StandardCopyOption.REPLACE_EXISTING);
+        log.debug("Result file is " + var4);
 
     }
 
     public static void HZZ(String var0, String var1) throws IOException {
-        EXF.getInstance().ICO();
 
-        try {
-            Path var2 = Paths.get(var0);
-            Path var3 = Paths.get(var1);
-            if (!Files.exists(var2, LinkOption.NOFOLLOW_LINKS)) {
-                throw new RuntimeException("Source file does not exist!");
-            }
-
-            Path var4 = Files.move(var2, var3, StandardCopyOption.REPLACE_EXISTING);
-            EXF.getInstance().ICK("Result file is " + var4);
-        } finally {
-            EXF.getInstance().ICP();
+        Path var2 = Paths.get(var0);
+        Path var3 = Paths.get(var1);
+        if (!Files.exists(var2, LinkOption.NOFOLLOW_LINKS)) {
+            throw new RuntimeException("Source file does not exist!");
         }
+
+        Path var4 = Files.move(var2, var3, StandardCopyOption.REPLACE_EXISTING);
+        log.debug("Result file is " + var4);
 
     }
 
     public static void RHW(String var0, String var1) throws IOException {
-        EXF.getInstance().ICO();
 
-        try {
-            Path var2 = Paths.get(var0);
-            Path var3 = Paths.get(var1);
-            if (!Files.exists(var2, LinkOption.NOFOLLOW_LINKS) || Files.exists(var3, LinkOption.NOFOLLOW_LINKS)) {
-                throw new RuntimeException("Either source file does not exist or destination file exist!");
-            }
-
-            Path var4 = Files.copy(var2, var3, StandardCopyOption.REPLACE_EXISTING);
-            EXF.getInstance().ICK("Result file is " + var4);
-        } finally {
-            EXF.getInstance().ICP();
+        Path var2 = Paths.get(var0);
+        Path var3 = Paths.get(var1);
+        if (!Files.exists(var2, LinkOption.NOFOLLOW_LINKS) || Files.exists(var3, LinkOption.NOFOLLOW_LINKS)) {
+            throw new RuntimeException("Either source file does not exist or destination file exist!");
         }
+
+        Path var4 = Files.copy(var2, var3, StandardCopyOption.REPLACE_EXISTING);
+        log.debug("Result file is " + var4);
 
     }
 
     public static void writeToZip(File outZipFile, File... files) throws IOException {
-        EXF.getInstance().ICO();
-        try(var os = new ZipOutputStream(new FileOutputStream(outZipFile))) {
+
+        try (var os = new ZipOutputStream(new FileOutputStream(outZipFile))) {
             os.setMethod(DEFLATED);
             for (File file : files) {
-                try(var fis = new FileInputStream(file)) {
+                try (var fis = new FileInputStream(file)) {
                     os.putNextEntry(new ZipEntry(file.getName()));
                     fis.transferTo(os);
                 }
             }
             os.flush();
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public static File[] QOF(File var0, File var1) throws IOException {
-        EXF.getInstance().ICO();
+
         FileInputStream var2 = null;
 
         File[] var21;
@@ -100,7 +84,7 @@ public class EWF {
             }
 
             boolean var3 = var1.mkdirs();
-            EXF.getInstance().ICK("mkdirs " + var3);
+            log.debug("mkdirs " + var3);
             ArrayList var4 = new ArrayList();
             var2 = new FileInputStream(var0);
             ZipInputStream var5 = new ZipInputStream(var2);
@@ -137,61 +121,50 @@ public class EWF {
                 var2.close();
             }
 
-            EXF.getInstance().ICP();
         }
 
         return var21;
     }
 
     public static void IAC(RandomAccessFile var0, RandomAccessFile var1) throws IOException {
-        EXF.getInstance().ICO();
 
-        try {
-            var1.getChannel().truncate(0L);
-            var1.seek(0L);
-            var0.seek(0L);
-            int var3 = 1048576;
-            byte[] var4 = new byte[var3];
+        var1.getChannel().truncate(0L);
+        var1.seek(0L);
+        var0.seek(0L);
+        int var3 = 1048576;
+        byte[] var4 = new byte[var3];
 
-            int var2;
-            while ((var2 = var0.read(var4)) != -1) {
-                var1.write(var4, 0, var2);
-            }
-
-            var1.getFD().sync();
-        } finally {
-            EXF.getInstance().ICP();
+        int var2;
+        while ((var2 = var0.read(var4)) != -1) {
+            var1.write(var4, 0, var2);
         }
+
+        var1.getFD().sync();
     }
 
     public static byte[] IAD(InputStream var0, boolean var1) throws IOException {
-        EXF.getInstance().ICO();
 
-        try {
-            ByteArrayOutputStream var2 = new ByteArrayOutputStream();
-            int var4 = 1048576;
-            byte[] var5 = new byte[var4];
+        ByteArrayOutputStream var2 = new ByteArrayOutputStream();
+        int var4 = 1048576;
+        byte[] var5 = new byte[var4];
 
-            int var3;
-            while ((var3 = var0.read(var5)) != -1) {
-                var2.write(var5, 0, var3);
-                var2.flush();
-            }
-
+        int var3;
+        while ((var3 = var0.read(var5)) != -1) {
+            var2.write(var5, 0, var3);
             var2.flush();
-            if (var1) {
-                var0.close();
-            }
-
-            byte[] var6 = var2.toByteArray();
-            return var6;
-        } finally {
-            EXF.getInstance().ICP();
         }
+
+        var2.flush();
+        if (var1) {
+            var0.close();
+        }
+
+        byte[] var6 = var2.toByteArray();
+        return var6;
     }
 
     public static byte[] IAE(File var0) throws IOException {
-        EXF.getInstance().ICO();
+
         FileInputStream var1 = null;
 
         try {
@@ -214,26 +187,20 @@ public class EWF {
                 var1.close();
             }
 
-            EXF.getInstance().ICP();
         }
     }
 
     public static String IAF(File var0) throws NoSuchAlgorithmException, IOException {
-        EXF.getInstance().ICO();
 
         String var2;
-        try {
-            byte[] var1 = IAG(var0);
-            var2 = IAM(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        byte[] var1 = IAG(var0);
+        var2 = IAM(var1);
 
         return var2;
     }
 
     public static byte[] IAG(File var0) throws NoSuchAlgorithmException, IOException {
-        EXF.getInstance().ICO();
+
         FileInputStream var1 = null;
 
         try {
@@ -253,114 +220,78 @@ public class EWF {
                 var1.close();
             }
 
-            EXF.getInstance().ICP();
         }
     }
 
     public static String IAH(byte[] var0) throws NoSuchAlgorithmException, IOException {
-        EXF.getInstance().ICO();
 
         String var2;
-        try {
-            byte[] var1 = IAI(var0);
-            var2 = IAM(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        byte[] var1 = IAI(var0);
+        var2 = IAM(var1);
 
         return var2;
     }
 
     public static byte[] IAI(byte[] var0) throws NoSuchAlgorithmException, IOException {
-        EXF.getInstance().ICO();
 
         byte[] var1;
-        try {
-            var1 = IAL("SHA-256", var0);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = IAL("SHA-256", var0);
 
         return var1;
     }
 
     public static String IAJ(byte[] var0) throws NoSuchAlgorithmException, IOException {
-        EXF.getInstance().ICO();
 
         String var2;
-        try {
-            byte[] var1 = IAK(var0);
-            var2 = IAM(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        byte[] var1 = IAK(var0);
+        var2 = IAM(var1);
 
         return var2;
     }
 
     public static byte[] IAK(byte[] var0) throws NoSuchAlgorithmException, IOException {
-        EXF.getInstance().ICO();
 
         byte[] var1;
-        try {
-            var1 = IAL("MD5", var0);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = IAL("MD5", var0);
 
         return var1;
     }
 
     public static byte[] IAL(String var0, byte[] var1) throws NoSuchAlgorithmException, IOException {
-        EXF.getInstance().ICO();
 
-        try {
-            MessageDigest var2 = MessageDigest.getInstance(var0);
-            ByteArrayInputStream var3 = new ByteArrayInputStream(var1);
-            DigestInputStream var4 = new DigestInputStream(var3, var2);
+        MessageDigest var2 = MessageDigest.getInstance(var0);
+        ByteArrayInputStream var3 = new ByteArrayInputStream(var1);
+        DigestInputStream var4 = new DigestInputStream(var3, var2);
 
-            while (var4.read() != -1) {
-            }
-
-            var4.close();
-            byte[] var5 = var2.digest();
-            byte[] var6 = var5;
-            return var6;
-        } finally {
-            EXF.getInstance().ICP();
+        while (var4.read() != -1) {
         }
+
+        var4.close();
+        byte[] var5 = var2.digest();
+        byte[] var6 = var5;
+        return var6;
     }
 
     public static String IAM(byte[] var0) {
-        EXF.getInstance().ICO();
 
         String var1;
-        try {
-            var1 = IAN(var0, "");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = IAN(var0, "");
 
         return var1;
     }
 
     public static String IAN(byte[] var0, String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            StringBuffer var2 = new StringBuffer();
-            byte[] var3 = var0;
-            int var4 = var0.length;
+        StringBuffer var2 = new StringBuffer();
+        byte[] var3 = var0;
+        int var4 = var0.length;
 
-            for (int var5 = 0; var5 < var4; ++var5) {
-                byte var6 = var3[var5];
-                var2.append(String.format("%02x", var6)).append(var1);
-            }
-
-            String var10 = var2.toString();
-            return var10;
-        } finally {
-            EXF.getInstance().ICP();
+        for (int var5 = 0; var5 < var4; ++var5) {
+            byte var6 = var3[var5];
+            var2.append(String.format("%02x", var6)).append(var1);
         }
+
+        String var10 = var2.toString();
+        return var10;
     }
 }

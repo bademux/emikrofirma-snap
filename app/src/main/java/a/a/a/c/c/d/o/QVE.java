@@ -5,19 +5,13 @@ import a.a.a.c.c.d.a.QUW;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EZD;
 import a.a.a.c.f.a.a.EZO;
-import a.a.a.c.f.b.QST;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.KE;
-import a.a.a.c.f.c.c.ComboBoxValidated_NIP;
-import a.a.a.c.f.c.c.DatePickerRequired;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-
-import java.time.LocalDate;
 
 public class QVE implements ChangeListener<Boolean> {
     private final QUW RGB;

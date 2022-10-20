@@ -2,9 +2,9 @@ package com.github.bademux.emk.utils;
 
 import a.a.a.c.e.EXK;
 import a.a.a.c.e.a.e.EWF;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.g.b.FCW;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +21,7 @@ import java.util.List;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+@Slf4j
 @UtilityClass
 public class ReportUtils {
     public static URI createEmailUri(File reportFile, List<Throwable> exceptions) throws URISyntaxException {
@@ -28,13 +29,12 @@ public class ReportUtils {
     }
 
     public static URI createEmailUri(File reportFile, String emailSubject, Throwable... throwables) throws URISyntaxException {
-        StringBuilder body = new StringBuilder(createMemoryUsage())
-                .append(createThrowableDesc(throwables))
-                .append(createReportFileRecord(reportFile));
-        String address = new StringBuilder(createAddressAndSubject(emailSubject))
-                .append(createBodyParam(body.toString()))
-                .append("&attachment=").append(reportFile.toURI().toString().replace("+", "%20"))
-                .toString();
+        String body = String.valueOf(createMemoryUsage()) +
+                createThrowableDesc(throwables) +
+                createReportFileRecord(reportFile);
+        String address = String.valueOf(createAddressAndSubject(emailSubject)) +
+                createBodyParam(body) +
+                "&attachment=" + reportFile.toURI().toString().replace("+", "%20");
         return new URI(address);
     }
 
@@ -88,8 +88,8 @@ public class ReportUtils {
             body.append("memory committed ").append(memoryUsage.getCommitted() / 1024L / 1024L).append(" MB").append(System.lineSeparator());
             body.append("memory used ").append(memoryUsage.getUsed() / 1024L / 1024L).append(" MB").append(System.lineSeparator());
             body.append(System.lineSeparator());
-        } catch (Exception var12) {
-            EXF.getInstance().ICA(var12);
+        } catch (Exception e) {
+            log.error("Something bad happened", e);
         }
         body.append(System.lineSeparator());
         body.append("#######");
@@ -99,20 +99,22 @@ public class ReportUtils {
 
     public static CharSequence createAddressAndSubject(String emailSubject) {
         StringBuilder address = new StringBuilder("mailto:").append("bademux+emk@gmail.com");
-        String subject = new StringBuilder(emailSubject)
-                .append(" [").append((new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz")).format(new Date())).append(" ]").toString();
+        String subject = emailSubject +
+                " [" + (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz")).format(new Date()) + " ]";
         address.append("&subject=").append(URLEncoder.encode(subject, UTF_8).replace("+", "%20"));
         return address;
     }
 
     public static File createReport() throws IOException {
         File reportDir = new File(EXK.GPW + "/reports");
-        EXF.getInstance().ICK("reportsDir " + reportDir);
+        log.debug("reportsDir " + reportDir);
         boolean isCreated = reportDir.mkdirs();
-        EXF.getInstance().ICK("mkdirs " + isCreated);
+        log.debug("mkdirs " + isCreated);
         File reportFile = new File(reportDir, "report_" + (new SimpleDateFormat("yyyyMMdd'T'HHmmssS")).format(new Date()) + ".zip");
-        EXF.getInstance().ICK("reportFile " + reportFile);
-        EWF.writeToZip(reportFile, EXF.getInstance().getDefaultOutputLoggerFile(), EXF.getInstance().getDefaultErrorLoggerFile());
+        log.debug("reportFile " + reportFile);
+        EWF.writeToZip(reportFile, new File(EXK.GPW + "/reports/emk.log"));
         return reportFile;
     }
+
+
 }

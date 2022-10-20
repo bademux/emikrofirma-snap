@@ -1,16 +1,15 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.b.AHCB;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.AHDH;
 import a.a.a.c.f.a.c.a.c.AHDT;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlIDREF;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
@@ -26,31 +25,21 @@ public abstract class AHCS<_T> extends AHCK {
     protected AHDH[] AHUO;
 
     protected AHCS() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHUN = null;
-            this.AHUO = new AHDH[0];
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHUN = null;
+        this.AHUO = new AHDH[0];
 
     }
 
     public AHCS(AHCJ var1, String var2, AHDG var3, Class<? extends AHCB<_T>> var4, AHDH... var5) {
         super(var1, var2, var3);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHUN = var4;
-            if (this.AHUN == null) {
-                throw new FFI("CustomActionClass cannot be null!");
-            }
-
-            this.AHUO = var5;
-        } finally {
-            EXF.getInstance().ICP();
+        this.AHUN = var4;
+        if (this.AHUN == null) {
+            throw new FFI("CustomActionClass cannot be null!");
         }
+
+        this.AHUO = var5;
 
     }
 
@@ -92,7 +81,7 @@ public abstract class AHCS<_T> extends AHCK {
             }
         } catch (InstantiationException | IllegalAccessException | SecurityException | IllegalArgumentException |
                  InvocationTargetException | NullPointerException var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             throw new FFI(var9);
         }
     }

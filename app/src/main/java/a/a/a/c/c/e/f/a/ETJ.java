@@ -9,7 +9,6 @@ import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.EMT;
 import a.a.a.c.c.d.a.ENJ;
 import a.a.a.c.c.e.f.c.ETM;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EYX;
 import a.a.a.c.f.a.e.a.IC;
 import a.a.a.c.f.a.e.a.ID;
@@ -28,7 +27,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.apache.fop.configuration.ConfigurationException;
 import org.xml.sax.SAXException;
 
 import java.util.Date;
@@ -78,56 +76,45 @@ public class ETJ extends ENJ<ETM> {
 
     public ETJ(EMC var1, EMT var2, String var3, String var4) {
         super(var1, var2, var3, var4);
-        EXF.getInstance().ICQ();
+
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            super.HHE();
-            this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoices_records.title"));
-            this.GHE = new Date();
-            this.GHF = new ETK(this.resources);
-            this.GHG = new ETF(this.fxml_vat_invoice_record_sales_table, false, this.resources, this.fxml_vat_invoice_record_sales_summary_table);
-            this.GHH = new ETF(this.fxml_vat_invoice_record_purchases_table, true, this.resources, this.fxml_vat_invoice_record_purchases_summary_table);
-            this.GHG.initialize();
-            this.GHH.initialize();
-            this.fxml_include_period_boxController.initialize(false);
-            this.setBackIfEmpty();
-            this.HVD();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        super.HHE();
+        this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoices_records.title"));
+        this.GHE = new Date();
+        this.GHF = new ETK(this.resources);
+        this.GHG = new ETF(this.fxml_vat_invoice_record_sales_table, false, this.resources, this.fxml_vat_invoice_record_sales_summary_table);
+        this.GHH = new ETF(this.fxml_vat_invoice_record_purchases_table, true, this.resources, this.fxml_vat_invoice_record_purchases_summary_table);
+        this.GHG.initialize();
+        this.GHH.initialize();
+        this.fxml_include_period_boxController.initialize(false);
+        this.setBackIfEmpty();
+        this.HVD();
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            this.fxml_include_period_boxController.setListener(null);
-            this.fxml_include_period_boxController.setPeriod(null);
-            this.GGZ = null;
-            this.GHA = null;
-            this.fxml_button_print.disableProperty().unbind();
-            this.fxml_include_top_menuController.HHB();
-            this.fxml_include_left_barController.HHB();
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_period_boxController.setListener(null);
+        this.fxml_include_period_boxController.setPeriod(null);
+        this.GGZ = null;
+        this.GHA = null;
+        this.fxml_button_print.disableProperty().unbind();
+        this.fxml_include_top_menuController.HHB();
+        this.fxml_include_left_barController.HHB();
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             ETM var1 = this.HHG();
-            EXF.getInstance().ICK("implementation " + var1);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("implementation " + var1);
             this.HVE();
             this.fxml_include_period_boxController.setListener(new ChangeListener<Integer>() {
                 public void changed(ObservableValue<? extends Integer> var1, Integer var2, Integer var3) {
@@ -141,31 +128,29 @@ public class ETJ extends ENJ<ETM> {
             this.fxml_include_left_barController.HHC();
             this.fxml_parent.requestFocus();
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             FCT.IGX("", var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void HVD() {
-        EXF.getInstance().ICO();
+
         String var1 = "%s - %s";
         this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatNpColAbbr"), this.resources.getString("micro.process.invoices_records.vatNpCol"))));
         this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatZwColAbbr"), this.resources.getString("micro.process.invoices_records.vatZwCol"))));
         this.fxml_vat_invoice_record_key.getChildren().add(new Text(String.format(var1, this.resources.getString("micro.process.invoices_records.vatOoColAbbr"), this.resources.getString("micro.process.invoices_records.vatOoCol"))));
-        EXF.getInstance().ICP();
+
     }
 
     private void HVE() {
-        EXF.getInstance().ICO();
+
         if (this.GGZ == null) {
             this.GGZ = this.getLastPeriod();
         }
 
         this.fxml_include_period_boxController.setPeriod(this.GGZ);
-        EXF.getInstance().ICP();
+
     }
 
     private void setBackIfEmpty() {
@@ -176,7 +161,7 @@ public class ETJ extends ENJ<ETM> {
     }
 
     private void HVF() throws FFK, FFO {
-        EXF.getInstance().ICO();
+
         if (this.GHA != null || this.GGZ != null) {
             Set var1 = null;
             if (this.GHA != null) {
@@ -213,11 +198,10 @@ public class ETJ extends ENJ<ETM> {
             this.GHH.HUT(this.GHD, var4);
         }
 
-        EXF.getInstance().ICP();
     }
 
     private void HVG() {
-        EXF.getInstance().ICO();
+
         JN var1;
         if (this.fxml_include_period_boxController.getPeriod() != null) {
             var1 = new JN(this.fxml_include_period_boxController.getPeriod());
@@ -231,44 +215,35 @@ public class ETJ extends ENJ<ETM> {
             try {
                 this.HVF();
             } catch (FFO | FFK var3) {
-                EXF.getInstance().ICA(var3);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var3);
                 throw new FFI(var3);
             }
         }
 
-        EXF.getInstance().ICP();
     }
 
     @FXML
     protected void fxml_handleButton_close(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [close] clicked");
-            this.getApplication().HJD(this.getFxmlName(), this.GHB);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [close] clicked");
+        this.getApplication().HJD(this.getFxmlName(), this.GHB);
 
     }
 
     @FXML
     protected void fxml_handleButton_print(ActionEvent var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         try {
             if (this.fxml_tab_pane.getSelectionModel().getSelectedIndex() == 0) {
-                EXF.getInstance().ICE("Button [print sales] clicked ");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [print sales] clicked ");
                 this.GHF.HVH(this.getProcess().getTempFile("pdf"));
             } else {
-                EXF.getInstance().ICE("Button [print purchases] clicked");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [print purchases] clicked");
                 this.GHF.HVI(this.getProcess().getTempFile("pdf"));
             }
         } catch (SAXException var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -294,16 +269,13 @@ public class ETJ extends ENJ<ETM> {
     }
 
     public JN getLastPeriod() {
-        EXF.getInstance().ICO();
 
         JN var1;
         try {
             var1 = new JN(this.GHE);
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var1;

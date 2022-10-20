@@ -5,7 +5,6 @@ import a.a.a.c.c.a.a.ELU;
 import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.a.EMI;
 import a.a.a.c.c.b.b.EMT;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EXU;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -20,22 +19,16 @@ public class EMF implements Callback<Class<?>, Object> {
     private final String FHB;
 
     public EMF(EMC var1, Stage var2, EMT var3, String var4, String var5) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FGX = var1;
-            this.FGY = var2;
-            this.FGZ = var3;
-            this.FHA = var4;
-            this.FHB = var5;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FGX = var1;
+        this.FGY = var2;
+        this.FGZ = var3;
+        this.FHA = var4;
+        this.FHB = var5;
 
     }
 
     public Object call(Class<?> var1) {
-        EXF.getInstance().ICO();
 
         EMI var4;
         try {
@@ -73,10 +66,8 @@ public class EMF implements Callback<Class<?>, Object> {
             var3.setPrimaryStage(this.FGY);
             var4 = var3;
         } catch (Exception var8) {
-            EXF.getInstance().ICA(var8);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
             throw new FFI(var8);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var4;

@@ -16,7 +16,6 @@ import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.d.c.ESX;
 import a.a.a.c.e.a.d.EWC;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HR;
@@ -60,7 +59,6 @@ public class EST extends ENN<ESX> {
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             super.HHE();
@@ -69,16 +67,13 @@ public class EST extends ENN<ESX> {
             this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_invoicePurchaseNewLogicController.RFC.and(this.fxml_include_invoicePurchaseNewLogicController.RFB.and(this.GEO.not())).not());
             this.fxml_include_invoicePurchaseNewLogicController.RFA.bind(this.GEO);
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var2;
         try {
@@ -122,18 +117,15 @@ public class EST extends ENN<ESX> {
             var2 = false;
             return var2;
         } catch (Exception var7) {
-            EXF.getInstance().ICA(var7);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
             FCT.IGX("", var7);
             var2 = true;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.fxml_include_container.setVvalue(0.0);
@@ -184,61 +176,49 @@ public class EST extends ENN<ESX> {
             this.fxml_include_top_menuController.HHC();
             this.fxml_parent.requestFocus();
         } catch (FFO | FFK var8) {
-            EXF.getInstance().ICA(var8);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
             throw new FFI(var8);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     @FXML
     protected void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [cancel] clicked");
-            this.GEP = true;
-            JN var2 = null;
-            if (this.GEM != null && this.GEM.getPeriod() != null) {
-                var2 = this.GEM.getPeriod();
-            }
-
-            ESX var4 = this.getProcess();
-            var4.resetAndCleanUpProcess();
-            JN finalVar = var2;
-            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
-                public void HNE(ENK<?> var1) {
-                    EXF.getInstance().ICO();
-
-                    try {
-                        var1.setPeriod(finalVar);
-                    } catch (FFK var6) {
-                        EXF.getInstance().ICA(var6);
-                        throw new FFI(var6);
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
-
-                }
-            });
-        } finally {
-            EXF.getInstance().ICP();
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
+        this.GEP = true;
+        JN var2 = null;
+        if (this.GEM != null && this.GEM.getPeriod() != null) {
+            var2 = this.GEM.getPeriod();
         }
+
+        ESX var4 = this.getProcess();
+        var4.resetAndCleanUpProcess();
+        JN finalVar = var2;
+        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
+            public void HNE(ENK<?> var1) {
+
+                try {
+                    var1.setPeriod(finalVar);
+                } catch (FFK var6) {
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
+                    throw new FFI(var6);
+                }
+
+            }
+        });
 
     }
 
     @FXML
     protected void fxml_handleButton_generalButtonSave(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [save] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.GEP = true;
             JN var2 = null;
             if (this.GEM != null && this.GEM.getPeriod() != null) {
@@ -250,37 +230,27 @@ public class EST extends ENN<ESX> {
             JN finalVar = var2;
             this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
                 public void HNE(ENK<?> var1) {
-                    EXF.getInstance().ICO();
 
                     try {
                         var1.setPeriod(finalVar);
                     } catch (FFK var6) {
-                        EXF.getInstance().ICA(var6);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
                         throw new FFI(var6);
-                    } finally {
-                        EXF.getInstance().ICP();
                     }
 
                 }
             });
         } catch (Exception var8) {
-            EXF.getInstance().ICA(var8);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
             FCT.IGX("", var8);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void HTU() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_include_invoicePurchaseNewLogicController.RJZ(this.GEM);
-            this.GEM = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_invoicePurchaseNewLogicController.RJZ(this.GEM);
+        this.GEM = null;
 
     }
 

@@ -15,7 +15,6 @@ import a.a.a.c.c.d.e.EOT;
 import a.a.a.c.c.e.k.c.EVC;
 import a.a.a.c.d.e.QRX;
 import a.a.a.c.d.e.QRY;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EYO;
 import a.a.a.c.f.a.a.EYQ;
 import a.a.a.c.f.a.a.EYV;
@@ -28,8 +27,6 @@ import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.KE;
 import a.a.a.c.f.b.c.a.QSV;
-import a.a.a.c.f.c.c.DatePickerRequired;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.a.FCT;
 import javafx.beans.binding.Bindings;
@@ -119,7 +116,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
         this.GNF = new SimpleBooleanProperty(true);
         this.GNG = new SimpleBooleanProperty(this, "changedPropertyHolder", false);
         this.GNH = new SimpleBooleanProperty(this, "itemsChangeProperty", false);
-        EXF.getInstance().ICQ();
+
     }
 
     public void setReceiptRecordVat(IR var1) throws FFK {
@@ -131,7 +128,6 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             super.HHE();
@@ -168,14 +164,11 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
             this.fxml_cash_register_items.maxHeightProperty().bind(this.fxml_cash_register_items.prefHeightProperty());
         } catch (FFO var5) {
             FCT.IGX("", var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var2;
         try {
@@ -183,7 +176,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
             if (!this.GNI && !ENL.ENM.VIEW.equals(this.GNA)) {
                 if (this.GNG.get()) {
                     FEN var8 = FCR.getUnsavedDataDialog(this.resources.getString("micro.dialog.changes.confirm.title"), null, this.resources.getString("micro.dialog.changes.confirm.button.exitSave"), this.resources.getString("micro.dialog.changes.confirm.button.exitWithoutSave"), this.resources.getString("micro.dialog.changes.confirm.button.cancel"), this.fxml_cashRegister_saveButton.disableProperty().get(), 500.0, 100.0, this.resources.getString("micro.dialog.changes.confirm.message"));
-                    EXF.getInstance().ICK("dialogResult " + var8);
+                    org.slf4j.LoggerFactory.getLogger(getClass()).debug("dialogResult " + var8);
                     switch (var8) {
                         case ExitAndSave:
                             this.HYC();
@@ -215,19 +208,16 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
 
             var2 = false;
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
             var2 = true;
             return var2;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.GNI = false;
@@ -273,35 +263,27 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
             this.fxml_include_top_menuController.HHC();
             this.fxml_include_left_barController.HHC();
             this.fxml_parent.requestFocus();
-            EXF.getInstance().ICK("implementation " + var1);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("implementation " + var1);
         } catch (FFO | FFK var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     protected void fxml_handleButton_back(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [back] clicked");
-            this.getApplication().HJD(this.getFxmlName(), "main.fxml");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [back] clicked");
+        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
 
     }
 
     @FXML
     protected void fxml_handleCash_register_addRowButton(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [Add new cash receiptRecordVat item] has been clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [Add new cash receiptRecordVat item] has been clicked");
             FXMLLoader var2 = new FXMLLoader();
             var2.setLocation(EUZ.class.getResource("/fxml/cash_register_new_item.fxml"));
             var2.setResources(this.resources);
@@ -322,7 +304,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
             var6.setRecordElementVat(var7);
             var4.showAndWait();
             if (var6.HYI()) {
-                EXF.getInstance().ICE("CashRegisterElement added");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("CashRegisterElement added");
                 this.GNJ.HYL(var7);
                 this.GND.add(var7);
                 this.fxml_cash_register_items.refresh();
@@ -330,20 +312,17 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
                 this.fxml_cash_register_summary.refresh();
             }
         } catch (Exception var11) {
-            EXF.getInstance().ICA(var11);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var11);
             FCT.IGX("", var11);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     protected void fxml_handleCash_register_RemoveRowButton(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [Delete selected cash receiptRecordVat item] has been clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [Delete selected cash receiptRecordVat item] has been clicked");
             IP var2 = this.fxml_cash_register_items.getSelectionModel().getSelectedItem();
             if (var2 != null) {
                 this.GNJ.HYM(var2);
@@ -355,10 +334,8 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
                 FCR.IGM(this.resources.getString("micro.process.cash_register_new.Error"), this.resources.getString("micro.process.cash_register_new.DeleteErrorTitle"), this.resources.getString("micro.process.cash_register_new.DeleteErrorMessage"), false);
             }
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -374,35 +351,27 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
 
     @FXML
     public void fxml_handleButton_generalButtonSave(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [save] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.HYC();
             this.GNJ.HHL();
             this.getApplication().HJD(this.getFxmlName(), EOS.CASH_REGISTER_LIST.getProcessFxmlFileName());
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     private void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [cancel] clicked");
-            this.GNI = true;
-            EVC var2 = this.getProcess();
-            var2.resetAndCleanUpProcess();
-            this.getApplication().HJD(this.getFxmlName(), EOS.CASH_REGISTER_LIST.getProcessFxmlFileName());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
+        this.GNI = true;
+        EVC var2 = this.getProcess();
+        var2.resetAndCleanUpProcess();
+        this.getApplication().HJD(this.getFxmlName(), EOS.CASH_REGISTER_LIST.getProcessFxmlFileName());
 
     }
 
@@ -429,7 +398,7 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
 
     private void HYF() {
         if (this.GNE) {
-            EXF.getInstance().ICE("Period changed");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Period changed");
             Integer var1 = this.fxml_include_period_boxController.getYear();
             Integer var2 = this.fxml_include_period_boxController.getMonth();
             if (var1 != null && var2 != null) {
@@ -479,39 +448,24 @@ public class EUZ extends ENL<EVC> implements EMO<IP> {
     }
 
     public void RJV(IP var1, IP var2, QSV var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            QRX var4 = QRY.getReceiptCalculationMethod(var3);
-            var4.RIB(var1, var2);
-            this.GNJ.HYJ();
-            this.GNH.setValue(true);
-            this.fxml_cash_register_items.refresh();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        QRX var4 = QRY.getReceiptCalculationMethod(var3);
+        var4.RIB(var1, var2);
+        this.GNJ.HYJ();
+        this.GNH.setValue(true);
+        this.fxml_cash_register_items.refresh();
 
     }
 
     public void HJJ() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_cash_register_summary.refresh();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_cash_register_summary.refresh();
 
     }
 
     public void HJK() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_inner_parent.requestFocus();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_inner_parent.requestFocus();
 
     }
 }

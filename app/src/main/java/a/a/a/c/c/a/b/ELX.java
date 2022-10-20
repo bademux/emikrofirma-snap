@@ -5,13 +5,11 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.h.JH;
 import a.a.a.c.f.b.EZT;
-import a.a.a.c.f.b.b.JN;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,7 +26,7 @@ public abstract class ELX extends ELV {
     }
 
     public List<EZT> getRangesWhereSettled(String var1) {
-        EXF.getInstance().ICO();
+
         ArrayList var2 = new ArrayList();
 
         ArrayList var4;
@@ -51,14 +49,12 @@ public abstract class ELX extends ELV {
             ArrayList var19 = var2;
             return var19;
         } catch (FFK var15) {
-            EXF.getInstance().ICA(var15);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var15);
             var4 = var2;
             return var4;
         } catch (FFO var16) {
-            EXF.getInstance().ICA(var16);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var16);
             var4 = var2;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var4;

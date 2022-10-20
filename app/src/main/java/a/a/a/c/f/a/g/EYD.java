@@ -1,7 +1,6 @@
 package a.a.a.c.f.a.g;
 
 import a.a.a.b.a.a.FDL;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IK;
 import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.b.b.JN;
@@ -11,13 +10,8 @@ public class EYD<_T extends IK, _R extends Enum<_R>, _Q extends Enum<_Q>> extend
 
     public EYD(Class<_T> var1, JF var2, FDL var3, Integer var4, Integer var5, JN var6, _R var7, _Q var8) {
         super(var1, var6, var7, var8, var3, var4, var5);
-        EXF.getInstance().ICO();
 
-        try {
-            this.FIK = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FIK = var2;
 
     }
 

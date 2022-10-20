@@ -18,7 +18,6 @@ import a.a.a.c.c.e.a.a.c.ERQ;
 import a.a.a.c.c.e.a.a.c.ERR;
 import a.a.a.c.e.EXK;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EZQ;
 import a.a.a.c.f.a.a.EZR;
 import a.a.a.c.f.a.a.EZS;
@@ -198,149 +197,144 @@ public class ERS extends EMD {
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GAV = new TextFieldValidated_RefIdPattern();
-            this.GAW = new TextFieldValidated_RefIdPattern();
-            ERQ.setupNode(this.fxml_config_base_text, this.GAU, ERP.text);
-            ERQ.setupNode(this.fxml_config_base_year, this.GAU, ERP.year);
-            ERQ.setupNode(this.fxml_config_base_month, this.GAU, ERP.month);
-            ERQ.setupNode(this.fxml_config_base_day, this.GAU, ERP.day);
-            ERQ.setupNode(this.fxml_config_base_sequence_month_1, this.GAU, ERP.sequence1);
-            ERQ.setupNode(this.fxml_config_base_sequence_month_2, this.GAU, ERP.sequence2);
-            ERQ.setupNode(this.fxml_config_base_sequence_month_3, this.GAU, ERP.sequence3);
-            ERQ.setupNode(this.fxml_config_base_sequence_year_1, this.GAU, ERP.ysequence1);
-            ERQ.setupNode(this.fxml_config_base_sequence_year_2, this.GAU, ERP.ysequence2);
-            ERQ.setupNode(this.fxml_config_base_sequence_halfyear_1, this.GAU, ERP.hsequence1);
-            ERQ.setupNode(this.fxml_config_base_sequence_halfyear_2, this.GAU, ERP.hsequence2);
-            ERQ.setupNode(this.fxml_config_base_sequence_quarter_1, this.GAU, ERP.qsequence1);
-            ERQ.setupNode(this.fxml_config_base_sequence_quarter_2, this.GAU, ERP.qsequence2);
-            ERQ.setupNode(this.fxml_config_base_separator_slash, this.GAU, ERP.separator_slash);
-            ERQ.setupNode(this.fxml_config_base_separator_backslash, this.GAU, ERP.separator_backslash);
-            ERQ.setupNode(this.fxml_config_base_separator_underscore, this.GAU, ERP.separator_underscore);
-            ERQ.setupNode(this.fxml_config_base_separator_minus, this.GAU, ERP.separator_minus);
-            ERQ.setupNode(this.fxml_config_base_const_F, this.GAU, ERP.const_F);
-            ERQ.setupNode(this.fxml_config_base_const_FVAT, this.GAU, ERP.const_FVAT);
-            ERQ.setupNode(this.fxml_config_base_const_F_VAT, this.GAU, ERP.const_F_VAT);
-            ERQ.setupNode(this.fxml_config_base_const_FV, this.GAU, ERP.const_FV);
-            ERQ.setupNode(this.fxml_config_base_const_FA, this.GAU, ERP.const_FA);
-            ERQ.setupNode(this.fxml_config_base_const_FK, this.GAU, ERP.const_FK);
-            ERQ.setupNode(this.fxml_config_base_const_KOR, this.GAU, ERP.const_KOR);
-            this.fxml_config_f_container.setOnDragEntered(new ERH(this.GAU, this.fxml_config_f_scroll_pane));
-            this.fxml_config_f_container.setOnDragOver(new ERK(this.GAU));
-            this.fxml_config_f_container.setOnDragDropped(new ERL(this.GAU, this.GAV.textProperty()));
-            this.fxml_config_f_container.setOnDragExited(new ERM(this.GAU, this.GAV.textProperty(), this.fxml_config_f_scroll_pane));
-            this.fxml_config_c_container.setOnDragEntered(new ERH(this.GAU, this.fxml_config_c_scroll_pane));
-            this.fxml_config_c_container.setOnDragOver(new ERK(this.GAU));
-            this.fxml_config_c_container.setOnDragDropped(new ERL(this.GAU, this.GAW.textProperty()));
-            this.fxml_config_c_container.setOnDragExited(new ERM(this.GAU, this.GAW.textProperty(), this.fxml_config_c_scroll_pane));
-            this.fxml_listview_sequence_names_list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-            this.fxml_listview_sequence_names_list.setCellFactory(new Callback<ListView<ERP>, ListCell<ERP>>() {
-                public ListCell<ERP> call(ListView<ERP> var1) {
-                    return new ListCell<ERP>() {
-                        protected void updateItem(ERP var1, boolean var2) {
-                            super.updateItem(var1, var2);
-                            if (var1 != null) {
-                                this.setText(var1.getListDescription());
-                            }
-
+        this.GAV = new TextFieldValidated_RefIdPattern();
+        this.GAW = new TextFieldValidated_RefIdPattern();
+        ERQ.setupNode(this.fxml_config_base_text, this.GAU, ERP.text);
+        ERQ.setupNode(this.fxml_config_base_year, this.GAU, ERP.year);
+        ERQ.setupNode(this.fxml_config_base_month, this.GAU, ERP.month);
+        ERQ.setupNode(this.fxml_config_base_day, this.GAU, ERP.day);
+        ERQ.setupNode(this.fxml_config_base_sequence_month_1, this.GAU, ERP.sequence1);
+        ERQ.setupNode(this.fxml_config_base_sequence_month_2, this.GAU, ERP.sequence2);
+        ERQ.setupNode(this.fxml_config_base_sequence_month_3, this.GAU, ERP.sequence3);
+        ERQ.setupNode(this.fxml_config_base_sequence_year_1, this.GAU, ERP.ysequence1);
+        ERQ.setupNode(this.fxml_config_base_sequence_year_2, this.GAU, ERP.ysequence2);
+        ERQ.setupNode(this.fxml_config_base_sequence_halfyear_1, this.GAU, ERP.hsequence1);
+        ERQ.setupNode(this.fxml_config_base_sequence_halfyear_2, this.GAU, ERP.hsequence2);
+        ERQ.setupNode(this.fxml_config_base_sequence_quarter_1, this.GAU, ERP.qsequence1);
+        ERQ.setupNode(this.fxml_config_base_sequence_quarter_2, this.GAU, ERP.qsequence2);
+        ERQ.setupNode(this.fxml_config_base_separator_slash, this.GAU, ERP.separator_slash);
+        ERQ.setupNode(this.fxml_config_base_separator_backslash, this.GAU, ERP.separator_backslash);
+        ERQ.setupNode(this.fxml_config_base_separator_underscore, this.GAU, ERP.separator_underscore);
+        ERQ.setupNode(this.fxml_config_base_separator_minus, this.GAU, ERP.separator_minus);
+        ERQ.setupNode(this.fxml_config_base_const_F, this.GAU, ERP.const_F);
+        ERQ.setupNode(this.fxml_config_base_const_FVAT, this.GAU, ERP.const_FVAT);
+        ERQ.setupNode(this.fxml_config_base_const_F_VAT, this.GAU, ERP.const_F_VAT);
+        ERQ.setupNode(this.fxml_config_base_const_FV, this.GAU, ERP.const_FV);
+        ERQ.setupNode(this.fxml_config_base_const_FA, this.GAU, ERP.const_FA);
+        ERQ.setupNode(this.fxml_config_base_const_FK, this.GAU, ERP.const_FK);
+        ERQ.setupNode(this.fxml_config_base_const_KOR, this.GAU, ERP.const_KOR);
+        this.fxml_config_f_container.setOnDragEntered(new ERH(this.GAU, this.fxml_config_f_scroll_pane));
+        this.fxml_config_f_container.setOnDragOver(new ERK(this.GAU));
+        this.fxml_config_f_container.setOnDragDropped(new ERL(this.GAU, this.GAV.textProperty()));
+        this.fxml_config_f_container.setOnDragExited(new ERM(this.GAU, this.GAV.textProperty(), this.fxml_config_f_scroll_pane));
+        this.fxml_config_c_container.setOnDragEntered(new ERH(this.GAU, this.fxml_config_c_scroll_pane));
+        this.fxml_config_c_container.setOnDragOver(new ERK(this.GAU));
+        this.fxml_config_c_container.setOnDragDropped(new ERL(this.GAU, this.GAW.textProperty()));
+        this.fxml_config_c_container.setOnDragExited(new ERM(this.GAU, this.GAW.textProperty(), this.fxml_config_c_scroll_pane));
+        this.fxml_listview_sequence_names_list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        this.fxml_listview_sequence_names_list.setCellFactory(new Callback<ListView<ERP>, ListCell<ERP>>() {
+            public ListCell<ERP> call(ListView<ERP> var1) {
+                return new ListCell<ERP>() {
+                    protected void updateItem(ERP var1, boolean var2) {
+                        super.updateItem(var1, var2);
+                        if (var1 != null) {
+                            this.setText(var1.getListDescription());
                         }
-                    };
-                }
-            });
-            this.fxml_listview_sequence_periods_list.setCellFactory(new Callback<ListView<JN>, ListCell<JN>>() {
-                public ListCell<JN> call(ListView<JN> var1) {
-                    return new ListCell<JN>() {
-                        protected void updateItem(JN var1, boolean var2) {
-                            super.updateItem(var1, var2);
-                            if (var1 != null) {
-                                Integer var3 = var1.DDJ().getValue();
-                                Integer var4 = var1.DDK().getValue();
-                                if (var4 > 0 && var4 <= 12) {
-                                    this.setText(var3 + "M" + var4);
-                                } else if (var4 > 12 && var4 <= 16) {
-                                    this.setText(var3 + "Q" + (var4 - 12));
-                                } else if (var4 > 16 && var4 <= 18) {
-                                    this.setText(var3 + "H" + (var4 - 12 - 4));
-                                } else if (var4 > 18 && var4 <= 19) {
-                                    this.setText(var3 + "Y");
-                                } else {
-                                    this.setText("error " + var1);
-                                }
+
+                    }
+                };
+            }
+        });
+        this.fxml_listview_sequence_periods_list.setCellFactory(new Callback<ListView<JN>, ListCell<JN>>() {
+            public ListCell<JN> call(ListView<JN> var1) {
+                return new ListCell<JN>() {
+                    protected void updateItem(JN var1, boolean var2) {
+                        super.updateItem(var1, var2);
+                        if (var1 != null) {
+                            Integer var3 = var1.DDJ().getValue();
+                            Integer var4 = var1.DDK().getValue();
+                            if (var4 > 0 && var4 <= 12) {
+                                this.setText(var3 + "M" + var4);
+                            } else if (var4 > 12 && var4 <= 16) {
+                                this.setText(var3 + "Q" + (var4 - 12));
+                            } else if (var4 > 16 && var4 <= 18) {
+                                this.setText(var3 + "H" + (var4 - 12 - 4));
+                            } else if (var4 > 18 && var4 <= 19) {
+                                this.setText(var3 + "Y");
                             } else {
-                                this.setText(null);
+                                this.setText("error " + var1);
                             }
-
+                        } else {
+                            this.setText(null);
                         }
-                    };
-                }
-            });
-            this.fxml_listview_sequence_names_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ERP>() {
-                public void changed(ObservableValue<? extends ERP> var1, ERP var2, ERP var3) {
-                    ERS.this.QZT = null;
-                    ERS.this.QZU = null;
-                    ERS.this.fxml_listview_sequence_periods_list.getItems().clear();
-                    if (var3 != null && ERS.this.QZS != null) {
-                        ERS.this.QZT = var3.name();
-                        ERS.this.QZU = ERS.this.QZS.get(ERS.this.QZT);
-                        ERS.this.fxml_listview_sequence_periods_list.getItems().addAll(ERS.this.QZU.keySet());
+
                     }
-
-                    ERS.this.fxml_listview_sequence_periods_list.getItems().sort(new Comparator<JN>() {
-                        public int compare(JN var1, JN var2) {
-                            if (var1 != null && var2 != null) {
-                                return var1.compareTo(var2);
-                            } else if (var1 != null && var2 == null) {
-                                return 1;
-                            } else {
-                                return var1 == null && var2 != null ? -1 : 0;
-                            }
-                        }
-                    });
+                };
+            }
+        });
+        this.fxml_listview_sequence_names_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ERP>() {
+            public void changed(ObservableValue<? extends ERP> var1, ERP var2, ERP var3) {
+                ERS.this.QZT = null;
+                ERS.this.QZU = null;
+                ERS.this.fxml_listview_sequence_periods_list.getItems().clear();
+                if (var3 != null && ERS.this.QZS != null) {
+                    ERS.this.QZT = var3.name();
+                    ERS.this.QZU = ERS.this.QZS.get(ERS.this.QZT);
+                    ERS.this.fxml_listview_sequence_periods_list.getItems().addAll(ERS.this.QZU.keySet());
                 }
-            });
-            this.fxml_listview_sequence_periods_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<JN>() {
-                public void changed(ObservableValue<? extends JN> var1, JN var2, JN var3) {
-                    ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setEditable(false);
-                    ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setText("");
-                    ERS.this.fxml_sequence_update.setDisable(true);
-                    ERS.this.QZV = null;
-                    ERS.this.QZW = null;
-                    if (var3 != null && ERS.this.QZU != null) {
-                        ERS.this.QZV = var3;
-                        ERS.this.QZW = ERS.this.QZU.get(ERS.this.QZV);
-                        if (ERS.this.QZW != null) {
-                            ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setText(ERS.this.QZW.toString());
-                            ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setEditable(true);
+
+                ERS.this.fxml_listview_sequence_periods_list.getItems().sort(new Comparator<JN>() {
+                    public int compare(JN var1, JN var2) {
+                        if (var1 != null && var2 != null) {
+                            return var1.compareTo(var2);
+                        } else if (var1 != null && var2 == null) {
+                            return 1;
+                        } else {
+                            return var1 == null && var2 != null ? -1 : 0;
                         }
                     }
-
-                }
-            });
-            this.fxml_include_sequence_valueController.fxml_component_main_element.textProperty().addListener(new ChangeListener<String>() {
-                public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-                    ERS.this.fxml_sequence_update.setDisable(true);
-                    ERS.this.QZX = null;
-                    if (var3 != null && var3.length() > 0 && ERS.this.QZW != null) {
-                        try {
-                            ERS.this.QZX = Integer.parseInt(var3);
-                            if (!ERS.this.QZX.equals(ERS.this.QZW)) {
-                                ERS.this.fxml_sequence_update.setDisable(false);
-                            }
-                        } catch (Exception var5) {
-                            EXF.getInstance().ICA(var5);
-                        }
+                });
+            }
+        });
+        this.fxml_listview_sequence_periods_list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<JN>() {
+            public void changed(ObservableValue<? extends JN> var1, JN var2, JN var3) {
+                ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setEditable(false);
+                ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setText("");
+                ERS.this.fxml_sequence_update.setDisable(true);
+                ERS.this.QZV = null;
+                ERS.this.QZW = null;
+                if (var3 != null && ERS.this.QZU != null) {
+                    ERS.this.QZV = var3;
+                    ERS.this.QZW = ERS.this.QZU.get(ERS.this.QZV);
+                    if (ERS.this.QZW != null) {
+                        ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setText(ERS.this.QZW.toString());
+                        ERS.this.fxml_include_sequence_valueController.fxml_component_main_element.setEditable(true);
                     }
-
                 }
-            });
-            this.fxml_include_sequence_valueController.RHQ(this.resources.getString("micro.config.sequence.counter.info"));
-            this.fxml_include_sequence_valueController.fxml_component_main_element.setEditable(false);
-            this.fxml_sequence_update.setDisable(true);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        });
+        this.fxml_include_sequence_valueController.fxml_component_main_element.textProperty().addListener(new ChangeListener<String>() {
+            public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
+                ERS.this.fxml_sequence_update.setDisable(true);
+                ERS.this.QZX = null;
+                if (var3 != null && var3.length() > 0 && ERS.this.QZW != null) {
+                    try {
+                        ERS.this.QZX = Integer.parseInt(var3);
+                        if (!ERS.this.QZX.equals(ERS.this.QZW)) {
+                            ERS.this.fxml_sequence_update.setDisable(false);
+                        }
+                    } catch (Exception var5) {
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
+                    }
+                }
+
+            }
+        });
+        this.fxml_include_sequence_valueController.RHQ(this.resources.getString("micro.config.sequence.counter.info"));
+        this.fxml_include_sequence_valueController.fxml_component_main_element.setEditable(false);
+        this.fxml_sequence_update.setDisable(true);
 
     }
 
@@ -417,7 +411,7 @@ public class ERS extends EMD {
                                     var18 = ERP.valueOf((String) var17.getSecondValue());
                                 }
                             } catch (Exception var15) {
-                                EXF.getInstance().ICA(var15);
+                                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var15);
                                 var18 = ERP.text;
                             }
                     }
@@ -432,63 +426,53 @@ public class ERS extends EMD {
     }
 
     public void HSI(LS var1, LS var2, AILX var3, LS var4, LS var5) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var1 != null) {
-                this.fxml_include_propertyWorkingDir_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DEY().DDG());
-            }
-
-            if (var2 != null) {
-                this.fxml_include_propertyPkcs11LibraryFile_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DEY().DDG());
-            }
-
-            if (var3 != null) {
-                this.fxml_include_performVerificationLabeledCheckBox_boxController.fxml_component_main_element.selectedProperty().bindBidirectional(var3.DEY().DDS());
-            }
-
-            if (var4 != null) {
-                this.GAV.textProperty().bindBidirectional(var4.DEY().DDG());
-            }
-
-            if (var5 != null) {
-                this.GAW.textProperty().bindBidirectional(var5.DEY().DDG());
-            }
-
-            this.HSH(this.GAV, this.fxml_config_f_container, this.GAU);
-            this.HSH(this.GAW, this.fxml_config_c_container, this.GAU);
-            this.HSK();
-        } finally {
-            EXF.getInstance().ICP();
+        if (var1 != null) {
+            this.fxml_include_propertyWorkingDir_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DEY().DDG());
         }
+
+        if (var2 != null) {
+            this.fxml_include_propertyPkcs11LibraryFile_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DEY().DDG());
+        }
+
+        if (var3 != null) {
+            this.fxml_include_performVerificationLabeledCheckBox_boxController.fxml_component_main_element.selectedProperty().bindBidirectional(var3.DEY().DDS());
+        }
+
+        if (var4 != null) {
+            this.GAV.textProperty().bindBidirectional(var4.DEY().DDG());
+        }
+
+        if (var5 != null) {
+            this.GAW.textProperty().bindBidirectional(var5.DEY().DDG());
+        }
+
+        this.HSH(this.GAV, this.fxml_config_f_container, this.GAU);
+        this.HSH(this.GAW, this.fxml_config_c_container, this.GAU);
+        this.HSK();
 
     }
 
     public void HSJ(LS var1, LS var2, AILX var3, LS var4, LS var5) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var1 != null) {
-                this.fxml_include_propertyWorkingDir_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DEY().DDG());
-            }
+        if (var1 != null) {
+            this.fxml_include_propertyWorkingDir_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var1.DEY().DDG());
+        }
 
-            if (var2 != null) {
-                this.fxml_include_propertyPkcs11LibraryFile_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DEY().DDG());
-            }
+        if (var2 != null) {
+            this.fxml_include_propertyPkcs11LibraryFile_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var2.DEY().DDG());
+        }
 
-            if (var3 != null) {
-                this.fxml_include_performVerificationLabeledCheckBox_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var3.DEY().DDS());
-            }
+        if (var3 != null) {
+            this.fxml_include_performVerificationLabeledCheckBox_boxController.fxml_component_main_element.textProperty().unbindBidirectional(var3.DEY().DDS());
+        }
 
-            if (var4 != null) {
-                this.GAV.textProperty().unbindBidirectional(var4.DEY().DDG());
-            }
+        if (var4 != null) {
+            this.GAV.textProperty().unbindBidirectional(var4.DEY().DDG());
+        }
 
-            if (var5 != null) {
-                this.GAW.textProperty().unbindBidirectional(var5.DEY().DDG());
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (var5 != null) {
+            this.GAW.textProperty().unbindBidirectional(var5.DEY().DDG());
         }
 
     }
@@ -511,14 +495,9 @@ public class ERS extends EMD {
 
     @FXML
     protected void fxml_handleButton_f_cleanup(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_config_f_container.getChildren().clear();
-            this.GAV.clear();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_config_f_container.getChildren().clear();
+        this.GAV.clear();
 
     }
 
@@ -528,7 +507,6 @@ public class ERS extends EMD {
 
     @FXML
     protected void fxml_handleButton_change_password(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
             EML var2 = this.HSL();
@@ -543,17 +521,15 @@ public class ERS extends EMD {
                 });
             }
         } catch (IOException var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             throw new FFI(var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     protected void fxml_handleButton_create_backup(ActionEvent var1) {
-        EXF.getInstance().ICO();
+
         FEN var2 = FCR.getConfirmDataDialog(this.resources.getString("micro.config.controll.createBackupTitle"), this.resources.getString("micro.config.controll.createBackupHeader"), this.resources.getString("micro.config.controll.createBackupConfirm"), this.resources.getString("micro.config.controll.createBackupDeny"), 400.0, 100.0, this.resources.getString("micro.config.controll.createBackupDescription"));
         if (var2.equals(FEN.Confirm)) {
             try {
@@ -568,14 +544,14 @@ public class ERS extends EMD {
 
                 File var6 = EMB.getInstance().QQM(var5.getAbsolutePath());
                 if (var6 != null) {
-                    EXF.getInstance().ICE("creating backup done");
+                    org.slf4j.LoggerFactory.getLogger(getClass()).info("creating backup done");
                     FCR.getMessageBoxDialogWithHyperLink(this.resources.getString("micro.config.controll.createBackupTitle"), this.resources.getString("micro.config.controll.createBackupSuccess"), var6, 400.0, 100.0);
                 } else {
-                    EXF.getInstance().ICI("creating backup error. backupResult is null");
+                    org.slf4j.LoggerFactory.getLogger(getClass()).warn("creating backup error. backupResult is null");
                     FCR.IGI("Błąd", this.resources.getString("micro.config.controll.createBackupFailure"), false);
                 }
             } catch (FFK var7) {
-                EXF.getInstance().ICA(var7);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
                 FCR.IGI("Błąd", this.resources.getString("micro.config.controll.createBackupFailure"), false);
             }
         }
@@ -584,23 +560,23 @@ public class ERS extends EMD {
 
     @FXML
     protected void fxml_handleButton_load_backup(ActionEvent var1) {
-        EXF.getInstance().ICO();
+
         FileChooser var2 = new FileChooser();
         FEN var3 = FCR.getConfirmDataDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseHeader"), this.resources.getString("micro.config.controll.createBackupConfirm"), this.resources.getString("micro.config.controll.createBackupDeny"), 650.0, 200.0, this.resources.getString("micro.config.controll.restoreDatabaseDescription"));
         if (var3.equals(FEN.Confirm)) {
             var2.setTitle("Wczytywanie kopii zapasowej");
-            EXF.getInstance().ICE("loading backup ...");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("loading backup ...");
             File var4 = new File(EXK.GPW);
             var2.setInitialDirectory(var4);
             File var5 = var2.showOpenDialog(this.FGW.getScene().getWindow());
             if (var5 == null) {
-                EXF.getInstance().ICE("loading backup cancelled");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("loading backup cancelled");
                 return;
             }
 
             try {
                 EMB.getInstance().QQN(var5);
-                EXF.getInstance().ICE("loading backup done");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("loading backup done");
                 FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseSuccess"), 550.0, 150.0, this.FGW);
                 this.getApplication().HJE(this.getFxmlName(), "login.fxml", new ENB<EMM>() {
                     public void HNE(EMM var1) {
@@ -608,10 +584,10 @@ public class ERS extends EMD {
                     }
                 });
             } catch (FFK var7) {
-                EXF.getInstance().ICA(var7);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
                 FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), this.resources.getString("micro.config.controll.restoreDatabaseFailure"), 550.0, 150.0, this.FGW);
             } catch (FFI var8) {
-                EXF.getInstance().ICA(var8);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
                 FCR.getMessageBoxDialog(this.resources.getString("micro.config.controll.restoreDatabaseTitle"), var8.getMessage(), 550.0, 150.0, this.FGW);
             }
         }
@@ -620,7 +596,6 @@ public class ERS extends EMD {
 
     @FXML
     protected void fxml_handleButton_delete_password(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
             EMB.getInstance().HJC();
@@ -631,238 +606,155 @@ public class ERS extends EMD {
                 }
             });
         } catch (FFK var6) {
-            EXF.getInstance().ICA(var6);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
         }
 
     }
 
     public EML HSL() throws IOException {
-        EXF.getInstance().ICO();
 
         EML var6;
-        try {
-            FXMLLoader var1 = new FXMLLoader();
-            var1.setLocation(EML.class.getResource("/fxml/changePassword.fxml"));
-            var1.setResources(this.resources);
-            AnchorPane var2 = var1.load();
-            Stage var3 = new Stage();
-            var3.setTitle(this.resources.getString("micro.changePassword.title"));
-            var3.initModality(Modality.WINDOW_MODAL);
-            var3.initOwner(this.FGW);
-            var3.setResizable(false);
-            Scene var4 = new Scene(var2);
-            var3.setScene(var4);
-            var3.getIcons().add(new Image("/img/app/e_logo.png"));
-            EML var5 = var1.getController();
-            var5.setDialogStage(var3);
-            var5.setResources(this.resources);
-            var5.setDefault();
-            var6 = var5;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        FXMLLoader var1 = new FXMLLoader();
+        var1.setLocation(EML.class.getResource("/fxml/changePassword.fxml"));
+        var1.setResources(this.resources);
+        AnchorPane var2 = var1.load();
+        Stage var3 = new Stage();
+        var3.setTitle(this.resources.getString("micro.changePassword.title"));
+        var3.initModality(Modality.WINDOW_MODAL);
+        var3.initOwner(this.FGW);
+        var3.setResizable(false);
+        Scene var4 = new Scene(var2);
+        var3.setScene(var4);
+        var3.getIcons().add(new Image("/img/app/e_logo.png"));
+        EML var5 = var1.getController();
+        var5.setDialogStage(var3);
+        var5.setResources(this.resources);
+        var5.setDefault();
+        var6 = var5;
 
         return var6;
     }
 
     @FXML
     protected void fxml_handleButton_c_cleanup(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_config_c_container.getChildren().clear();
-            this.GAW.clear();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_config_c_container.getChildren().clear();
+        this.GAW.clear();
 
     }
 
     private void HSM(String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GAV.setText(var1);
-            this.HSH(this.GAV, this.fxml_config_f_container, this.GAU);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GAV.setText(var1);
+        this.HSH(this.GAV, this.fxml_config_f_container, this.GAU);
 
     }
 
     private void HSN(String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GAW.setText(var1);
-            this.HSH(this.GAW, this.fxml_config_c_container, this.GAU);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GAW.setText(var1);
+        this.HSH(this.GAW, this.fxml_config_c_container, this.GAU);
 
     }
 
     @FXML
     protected void fxml_handleButton_f_default0(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSM("FA/#%yyyy%#/#%MM%#/#%dd%#/#%sequence1%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSM("FA/#%yyyy%#/#%MM%#/#%dd%#/#%sequence1%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_f_default1(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSM("FV/#%yyyy%#/#%MM%#/#%dd%#-#%sequence1%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSM("FV/#%yyyy%#/#%MM%#/#%dd%#-#%sequence1%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_f_default2(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSM("#%sequence1%#/F/#%yyyy%#/#%MM%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSM("#%sequence1%#/F/#%yyyy%#/#%MM%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_f_default3(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSM("FV_#%sequence1%#/#%MM%#/#%yyyy%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSM("FV_#%sequence1%#/#%MM%#/#%yyyy%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_f_default4(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSM("F_VAT-#%yyyy%#-#%MM%#-#%dd%#/#%sequence1%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSM("F_VAT-#%yyyy%#-#%MM%#-#%dd%#/#%sequence1%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_c_default0(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSN("FK/#%yyyy%#/#%MM%#/#%dd%#/#%sequence2%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSN("FK/#%yyyy%#/#%MM%#/#%dd%#/#%sequence2%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_c_default1(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSN("FK/#%yyyy%#/#%MM%#/#%dd%#-#%sequence2%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSN("FK/#%yyyy%#/#%MM%#/#%dd%#-#%sequence2%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_c_default2(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSN("#%sequence2%#/KOR/#%yyyy%#/#%MM%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSN("#%sequence2%#/KOR/#%yyyy%#/#%MM%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_c_default3(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSN("FK_#%sequence2%#/#%MM%#/#%yyyy%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSN("FK_#%sequence2%#/#%MM%#/#%yyyy%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_c_default4(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getClass();
-            this.HSN("F_KOR-#%yyyy%#-#%MM%#-#%dd%#/#%sequence2%#");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.getClass();
+        this.HSN("F_KOR-#%yyyy%#-#%MM%#-#%dd%#/#%sequence2%#");
 
     }
 
     @FXML
     protected void fxml_handleButton_sequence_update(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (this.QZY != null) {
-                this.QZY.RKK(this.QZT, this.QZV, this.QZW, this.QZX);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (this.QZY != null) {
+            this.QZY.RKK(this.QZT, this.QZV, this.QZW, this.QZX);
         }
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.QMB = false;
@@ -878,7 +770,7 @@ public class ERS extends EMD {
                         var2.open(new File(EXK.GPW));
                     }
                 } catch (Exception var5) {
-                    EXF.getInstance().ICA(var5);
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
                 }
             } else {
                 this.fxml_config_change_password.setDisable(false);
@@ -914,10 +806,9 @@ public class ERS extends EMD {
                 }
             });
         } catch (FFK var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
         }
 
-        EXF.getInstance().ICP();
     }
 
     public interface QTC {

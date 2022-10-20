@@ -9,10 +9,9 @@ import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.EMT;
 import a.a.a.c.c.e.e.c.ETE;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.b.c.a.KN;
-import a.a.a.c.f.c.c.*;
+import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.a.FCR;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -21,7 +20,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -50,17 +48,12 @@ public class ETA extends ELU<ETE> {
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            super.HHE();
-            this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.contacts_list.menu.title"));
-            this.fxml_generalbuttonEdit.disableProperty().bind(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().selectedItemProperty().isNull());
-            this.fxml_generalbuttonRemove.disableProperty().bind(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().selectedItemProperty().isNull());
-            this.fxml_include_ContactsListLogicController.setProcessController_ContactsList(this);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        super.HHE();
+        this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.contacts_list.menu.title"));
+        this.fxml_generalbuttonEdit.disableProperty().bind(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().selectedItemProperty().isNull());
+        this.fxml_generalbuttonRemove.disableProperty().bind(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().selectedItemProperty().isNull());
+        this.fxml_include_ContactsListLogicController.setProcessController_ContactsList(this);
 
     }
 
@@ -72,31 +65,24 @@ public class ETA extends ELU<ETE> {
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_include_container.setVvalue(0.0);
-            this.fxml_include_ContactsListLogicController.HHC();
-            this.fxml_include_left_barController.HHC();
-            this.fxml_include_top_menuController.HHC();
-            this.fxml_parent.requestFocus();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_container.setVvalue(0.0);
+        this.fxml_include_ContactsListLogicController.HHC();
+        this.fxml_include_left_barController.HHC();
+        this.fxml_include_top_menuController.HHC();
+        this.fxml_parent.requestFocus();
 
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     @FXML
     protected void fxml_handleButton_generalButtonEdit(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [edit] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
             FXMLLoader var2 = new FXMLLoader();
             var2.setLocation(ESZ.class.getResource("/fxml/new_contact.fxml"));
             var2.setResources(this.resources);
@@ -149,54 +135,47 @@ public class ETA extends ELU<ETE> {
 
             this.fxml_parent.requestFocus();
         } catch (IOException var13) {
-            EXF.getInstance().ICA(var13);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var13);
         } catch (FFK var14) {
-            EXF.getInstance().ICA(var14);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var14);
         } catch (FFO var15) {
-            EXF.getInstance().ICA(var15);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var15);
         }
 
     }
 
     @FXML
     protected void fxml_handleButton_generalButtonRemove(ActionEvent var1) throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [remove] clicked");
-            int var2 = this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedIndex();
-            boolean var3 = true;
-            if (var2 >= 0) {
-                FEN var4 = FCR.getConfirmDataDialog(this.resources.getString("micro.dialog.remove.confirm.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.dialog.remove.confirm.message"));
-                switch (var4) {
-                    case Confirm:
-                        var3 = true;
-                        this.GFM = this.HHG();
-                        this.GFM.setContractor(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedItem());
-                        this.GFM.HUQ();
-                        this.fxml_include_ContactsListLogicController.GFJ.remove(var2);
-                        this.fxml_include_ContactsListLogicController.HUG(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedItem());
-                        this.fxml_include_ContactsListLogicController.HUH();
-                        this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().clearSelection();
-                        this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getItems().clear();
-                        this.fxml_include_ContactsListLogicController.fxml_contractorsTable.setItems(FXCollections.observableArrayList(this.fxml_include_ContactsListLogicController.GFJ));
-                        EXF.getInstance().ICE("Contractor removed");
-                        break;
-                    case Reject:
-                        var3 = false;
-                        break;
-                    case CancelExit:
-                    default:
-                        var3 = false;
-                }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [remove] clicked");
+        int var2 = this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedIndex();
+        boolean var3 = true;
+        if (var2 >= 0) {
+            FEN var4 = FCR.getConfirmDataDialog(this.resources.getString("micro.dialog.remove.confirm.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.dialog.remove.confirm.message"));
+            switch (var4) {
+                case Confirm:
+                    var3 = true;
+                    this.GFM = this.HHG();
+                    this.GFM.setContractor(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedItem());
+                    this.GFM.HUQ();
+                    this.fxml_include_ContactsListLogicController.GFJ.remove(var2);
+                    this.fxml_include_ContactsListLogicController.HUG(this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().getSelectedItem());
+                    this.fxml_include_ContactsListLogicController.HUH();
+                    this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getSelectionModel().clearSelection();
+                    this.fxml_include_ContactsListLogicController.fxml_contractorsTable.getItems().clear();
+                    this.fxml_include_ContactsListLogicController.fxml_contractorsTable.setItems(FXCollections.observableArrayList(this.fxml_include_ContactsListLogicController.GFJ));
+                    org.slf4j.LoggerFactory.getLogger(getClass()).info("Contractor removed");
+                    break;
+                case Reject:
+                    var3 = false;
+                    break;
+                case CancelExit:
+                default:
+                    var3 = false;
             }
-
-            this.fxml_parent.requestFocus();
-        } finally {
-            EXF.getInstance().ICP();
         }
+
+        this.fxml_parent.requestFocus();
 
     }
 

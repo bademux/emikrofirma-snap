@@ -1,6 +1,5 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.DatePickerRequired;
 
 import java.time.LocalDate;
@@ -11,19 +10,14 @@ public class FAL<_T extends DatePickerRequired> extends FAM<_T> {
     }
 
     protected void IFV(LocalDate var1, LocalDate var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2 != null) {
-                this.GXS.IEU().set(true);
-            } else {
-                this.GXS.IEU().set(!this.GXS.IFB());
-            }
-
-            super.IFV(var1, var2);
-        } finally {
-            EXF.getInstance().ICP();
+        if (var2 != null) {
+            this.GXS.IEU().set(true);
+        } else {
+            this.GXS.IEU().set(!this.GXS.IFB());
         }
+
+        super.IFV(var1, var2);
 
     }
 }

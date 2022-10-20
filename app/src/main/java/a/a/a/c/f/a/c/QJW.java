@@ -3,7 +3,6 @@ package a.a.a.c.f.a.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.QST;
 
 public class QJW implements QST {
@@ -27,7 +26,6 @@ public class QJW implements QST {
     }
 
     public HI getContractor() {
-        EXF.getInstance().ICO();
 
         HI var1;
         try {
@@ -37,10 +35,8 @@ public class QJW implements QST {
 
             var1 = this.QLH;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var1;

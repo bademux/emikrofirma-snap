@@ -10,14 +10,13 @@ import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.e.EOU;
 import a.a.a.c.c.e.e.c.ETE;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.b.a.JJ;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.KO;
 import a.a.a.c.f.b.c.a.KN;
-import a.a.a.c.f.c.c.*;
+import a.a.a.c.f.c.c.ComboBoxRequired;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -140,20 +139,14 @@ public class ESZ extends EMD {
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.HUH();
@@ -165,9 +158,7 @@ public class ESZ extends EMD {
             Collections.sort(this.GFJ);
             this.fxml_contractorsTable.setItems(FXCollections.observableArrayList(this.GFJ));
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
         }
 
     }
@@ -231,17 +222,14 @@ public class ESZ extends EMD {
 
     @FXML
     protected void fxml_handleButton_newContractor(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [new Contractor] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [new Contractor] clicked");
             Stage var2 = this.QGO();
             var2.showAndWait();
             this.QGP();
         } catch (FFK | FFO | IOException var6) {
-            EXF.getInstance().ICA(var6);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
         }
 
     }
@@ -275,36 +263,31 @@ public class ESZ extends EMD {
     }
 
     public void HUF(HI var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var1 != null) {
-                if (var1.AICE()) {
-                    this.fxml_contractor_private_person.setSelected(true);
-                } else {
-                    this.fxml_include_nip_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAJ().DDG());
-                }
-
-                this.fxml_include_ContractorName_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAI().DDG());
-                this.fxml_include_regon_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAK().DDG());
-                this.fxml_include_AccountNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAL().DDG());
-                JJ var2 = var1.DAM();
-                this.fxml_include_address_boxController.fxml_include_Street_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDA().DDG());
-                this.fxml_include_address_boxController.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDB().DDG());
-                this.fxml_include_address_boxController.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDC().DDG());
-                this.fxml_include_address_boxController.fxml_include_PostalCode_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDD().DDG());
-                this.fxml_include_address_boxController.fxml_include_City_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCZ().DDG());
-                this.fxml_include_address_boxController.fxml_include_District_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCX().DDG());
-                this.fxml_include_address_boxController.fxml_include_Community_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCY().DDG());
-                ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).valueProperty().bindBidirectional(var2.DCW().DEI());
-                this.fxml_include_address_boxController.fxml_include_CountryCode_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCV().DDG());
-                this.fxml_include_address_boxController.fxml_include_PostOffice_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDE().DDG());
-                this.fxml_include_address_boxController.fxml_include_email_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAO().DDG());
-                this.fxml_include_address_boxController.fxml_include_telephone_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAN().DDG());
-                this.fxml_include_remarks_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAP().DDG());
+        if (var1 != null) {
+            if (var1.AICE()) {
+                this.fxml_contractor_private_person.setSelected(true);
+            } else {
+                this.fxml_include_nip_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAJ().DDG());
             }
-        } finally {
-            EXF.getInstance().ICP();
+
+            this.fxml_include_ContractorName_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAI().DDG());
+            this.fxml_include_regon_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAK().DDG());
+            this.fxml_include_AccountNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAL().DDG());
+            JJ var2 = var1.DAM();
+            this.fxml_include_address_boxController.fxml_include_Street_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDA().DDG());
+            this.fxml_include_address_boxController.fxml_include_HouseNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDB().DDG());
+            this.fxml_include_address_boxController.fxml_include_ApartmentNumber_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDC().DDG());
+            this.fxml_include_address_boxController.fxml_include_PostalCode_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDD().DDG());
+            this.fxml_include_address_boxController.fxml_include_City_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCZ().DDG());
+            this.fxml_include_address_boxController.fxml_include_District_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCX().DDG());
+            this.fxml_include_address_boxController.fxml_include_Community_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCY().DDG());
+            ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).valueProperty().bindBidirectional(var2.DCW().DEI());
+            this.fxml_include_address_boxController.fxml_include_CountryCode_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DCV().DDG());
+            this.fxml_include_address_boxController.fxml_include_PostOffice_boxController.fxml_component_main_element.textProperty().bindBidirectional(var2.DDE().DDG());
+            this.fxml_include_address_boxController.fxml_include_email_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAO().DDG());
+            this.fxml_include_address_boxController.fxml_include_telephone_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAN().DDG());
+            this.fxml_include_remarks_boxController.fxml_component_main_element.textProperty().bindBidirectional(var1.DAP().DDG());
         }
 
     }
@@ -357,49 +340,29 @@ public class ESZ extends EMD {
 
     @FXML
     protected void fxml_handleButton_newInvoiceSell(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-                public void HNE(ENN<?> var1) {
-                    EXF.getInstance().ICO();
+        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_SALE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
+            public void HNE(ENN<?> var1) {
 
-                    try {
-                        HI var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
-                        var1.setContractor(var2);
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
+                HI var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
+                var1.setContractor(var2);
 
-                }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+            }
+        });
 
     }
 
     @FXML
     protected void fxml_handleButton_newInvoicePurchase(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
-                public void HNE(ENN<?> var1) {
-                    EXF.getInstance().ICO();
+        this.getApplication().HJE(this.getFxmlName(), EOS.INVOICE_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<ENN<?>>() {
+            public void HNE(ENN<?> var1) {
 
-                    try {
-                        HI var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
-                        var1.setContractor(var2);
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
+                HI var2 = ESZ.this.fxml_contractorsTable.getSelectionModel().getSelectedItem();
+                var1.setContractor(var2);
 
-                }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+            }
+        });
 
     }
 

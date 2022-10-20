@@ -1,17 +1,17 @@
 package a.a.a.b.c;
 
 import a.a.a.c.e.a.d.EWD;
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.application.Platform;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.Semaphore;
 
+@Slf4j
 public class FEL {
     public FEL() {
     }
 
     public static <_A> _A IKS(final FEM<_A> var0) {
-        EXF.getInstance().ICO();
 
         final Semaphore var2;
         try {
@@ -32,11 +32,9 @@ public class FEL {
             var2.acquire();
             Object var3 = var1.getFirstValue();
             return (_A) var3;
-        } catch (InterruptedException var7) {
-            EXF.getInstance().ICA(var7);
+        } catch (InterruptedException e) {
+            log.error("Something bad happened", e);
             return null;
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 }

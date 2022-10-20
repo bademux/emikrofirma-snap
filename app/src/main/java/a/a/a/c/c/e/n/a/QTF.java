@@ -3,7 +3,6 @@ package a.a.a.c.c.e.n.a;
 import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.EMD;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.HyperlinkBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,36 +47,31 @@ public class QTF extends EMD {
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
+
+        StringBuilder var1 = new StringBuilder();
 
         try {
-            StringBuilder var1 = new StringBuilder();
-
-            try {
-                var1.append("System operacyjny: ").append(System.getProperty("os.name")).append(System.lineSeparator())
-                        .append("Archtektura: ").append(System.getProperty("os.arch")).append(System.lineSeparator())
-                        .append("Wersja oprogramowania Java: ").append(System.getProperty("java.version")).append(System.lineSeparator())
-                        .append("Nazwa producenta: ").append(System.getProperty("java.vendor")).append(System.lineSeparator())
-                        .append("Środowisko uruchomieniowe Java: ").append(System.getProperty("java.vm.name")).append(System.lineSeparator())
-                        .append("Kodowanie plików: ").append(System.getProperty("file.encoding")).append(System.lineSeparator())
-                        .append(System.lineSeparator());
-            } catch (Exception var10) {
-                EXF.getInstance().ICA(var10);
-            }
-
-            var1.append("Moduł uruchomieniowy: ").append(this.getClass().getPackage().getImplementationVersion()).append(System.lineSeparator());
-
-            this.fxml_Label_about.setText(var1.toString());
-            this.fxml_Label_about.setEditable(false);
-            this.fxml_history.setEditable(false);
-            this.fxml_history.setText(this.RKO());
-        } finally {
-            EXF.getInstance().ICP();
+            var1.append("System operacyjny: ").append(System.getProperty("os.name")).append(System.lineSeparator())
+                    .append("Archtektura: ").append(System.getProperty("os.arch")).append(System.lineSeparator())
+                    .append("Wersja oprogramowania Java: ").append(System.getProperty("java.version")).append(System.lineSeparator())
+                    .append("Nazwa producenta: ").append(System.getProperty("java.vendor")).append(System.lineSeparator())
+                    .append("Środowisko uruchomieniowe Java: ").append(System.getProperty("java.vm.name")).append(System.lineSeparator())
+                    .append("Kodowanie plików: ").append(System.getProperty("file.encoding")).append(System.lineSeparator())
+                    .append(System.lineSeparator());
+        } catch (Exception var10) {
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var10);
         }
+
+        var1.append("Moduł uruchomieniowy: ").append(this.getClass().getPackage().getImplementationVersion()).append(System.lineSeparator());
+
+        this.fxml_Label_about.setText(var1.toString());
+        this.fxml_Label_about.setEditable(false);
+        this.fxml_history.setEditable(false);
+        this.fxml_history.setText(this.RKO());
     }
 
     private String RKO() {
-        EXF.getInstance().ICO();
+
         StringBuilder var1 = new StringBuilder();
 
         try {
@@ -96,29 +90,22 @@ public class QTF extends EMD {
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     @FXML
     protected void fxml_handleHyperlink(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Hypelink clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Hypelink clicked");
             if (var1.getSource() instanceof HyperlinkBox) {
                 this.RAI = ((HyperlinkBox) var1.getSource()).getHref();
             } else if (var1.getSource() instanceof Hyperlink) {
@@ -129,26 +116,21 @@ public class QTF extends EMD {
 
             (new EVN() {
                 public void HZI() {
-                    EXF.getInstance().ICO();
 
                     try {
                         if (QTF.this.RAI != null) {
                             Desktop.getDesktop().browse(new URI(QTF.this.RAI));
                         }
                     } catch (IOException var6) {
-                        EXF.getInstance().ICA(var6);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
                     } catch (URISyntaxException var7) {
-                        EXF.getInstance().ICA(var7);
-                    } finally {
-                        EXF.getInstance().ICP();
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
                     }
 
                 }
             }).start();
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
         }
 
     }

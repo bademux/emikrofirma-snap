@@ -6,10 +6,10 @@ import a.a.a.b.f.FFO;
 import a.a.a.b.f.a.FFM;
 import a.a.a.b.g.FFP;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.AGXA;
 import a.a.a.c.g.c.FCX;
 import a.a.a.c.g.c.FCZ;
+import lombok.extern.slf4j.Slf4j;
 import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Slf4j
 public class EQM {
     public static final String FXD = "[a-zA-Z0-9_\\.\\-]{5,55}";
     public static final String FXE = "[a-zA-Z0-9_\\.\\-]{5,51}";
@@ -29,49 +30,39 @@ public class EQM {
     }
 
     public boolean HQL(File var1) {
-        EXF.getInstance().ICO();
 
         boolean var2;
-        try {
-            if (var1 != null) {
-                var2 = var1.getName().matches("[a-zA-Z0-9_\\.\\-]{5,55}");
-                return var2;
-            }
-
-            var2 = false;
-        } finally {
-            EXF.getInstance().ICP();
+        if (var1 != null) {
+            var2 = var1.getName().matches("[a-zA-Z0-9_\\.\\-]{5,55}");
+            return var2;
         }
+
+        var2 = false;
 
         return var2;
     }
 
     public boolean HQM(File var1) {
-        EXF.getInstance().ICO();
 
         boolean var2;
-        try {
-            if (var1 == null) {
-                var2 = false;
-                return var2;
-            }
-
-            var2 = var1.getName().matches("[a-zA-Z0-9_\\.\\-]{5,51}");
-        } finally {
-            EXF.getInstance().ICP();
+        if (var1 == null) {
+            var2 = false;
+            return var2;
         }
+
+        var2 = var1.getName().matches("[a-zA-Z0-9_\\.\\-]{5,51}");
 
         return var2;
     }
 
     public AGXA HQN(File var1) throws FFO, FFK {
-        EXF.getInstance().ICO();
+
         int var2 = 0;
         InputStream var3 = null;
         BufferedReader var4 = null;
 
         try {
-            EXF.getInstance().ICK("inputFile " + var1);
+            log.debug("inputFile " + var1);
             FFP var5 = new FFP(EPX.FVI, EPX.FVJ);
             var3 = FEJ.getFileInputStreamSkipBOM(var1);
             var4 = new BufferedReader(new InputStreamReader(var3, EPX.FVK));
@@ -82,7 +73,7 @@ public class EQM {
                 label219:
                 {
                     if ((var7 = var4.readLine()) != null) {
-                        EXF.getInstance().ICK("line " + var7);
+                        log.debug("line " + var7);
                         if (var7.length() <= 0) {
                             break label219;
                         }
@@ -97,13 +88,13 @@ public class EQM {
                         }
 
                         if (var2 == 1) {
-                            EXF.getInstance().ICK("KodFormularza " + var6.get(0) + " " + "KodFormularza".equals(var6.get(0)));
-                            EXF.getInstance().ICK(var6.get(0));
-                            EXF.getInstance().ICK(((String) var6.get(0)).length());
-                            EXF.getInstance().ICK("KodFormularza".length());
-                            EXF.getInstance().ICK("kodSystemowy " + var6.get(1) + " " + "kodSystemowy".equals(var6.get(1)));
-                            EXF.getInstance().ICK("wersjaSchemy " + var6.get(2) + " " + "wersjaSchemy".equals(var6.get(2)));
-                            EXF.getInstance().ICK("WariantFormularza " + var6.get(3) + " " + "WariantFormularza".equals(var6.get(3)));
+                            log.debug("KodFormularza " + var6.get(0) + " " + "KodFormularza".equals(var6.get(0)));
+                            log.debug(String.valueOf(var6.get(0)));
+                            log.debug(String.valueOf(((String) var6.get(0)).length()));
+                            log.debug(String.valueOf("KodFormularza".length()));
+                            log.debug("kodSystemowy " + var6.get(1) + " " + "kodSystemowy".equals(var6.get(1)));
+                            log.debug("wersjaSchemy " + var6.get(2) + " " + "wersjaSchemy".equals(var6.get(2)));
+                            log.debug("WariantFormularza " + var6.get(3) + " " + "WariantFormularza".equals(var6.get(3)));
                             if (!"KodFormularza".equals(var6.get(0)) || !"kodSystemowy".equals(var6.get(1)) || !"wersjaSchemy".equals(var6.get(2)) || !"WariantFormularza".equals(var6.get(3))) {
                                 throw FCZ.getInstance().IHV("KodFormularza, kodSystemowy, wersjaSchemy, WariantFormularza", var6.get(0) + ", " + var6.get(1) + ", " + var6.get(2) + ", " + var6.get(3));
                             }
@@ -138,14 +129,14 @@ public class EQM {
                 ++var2;
             }
         } catch (IOException | FFP.FFQ var23) {
-            EXF.getInstance().ICA(var23);
+            log.error("Something bad happened", var23);
             throw new FFO(var23);
         } finally {
             if (var4 != null) {
                 try {
                     var4.close();
                 } catch (IOException var22) {
-                    EXF.getInstance().ICA(var22);
+                    log.error("Something bad happened", var22);
                 }
             }
 
@@ -153,16 +144,15 @@ public class EQM {
                 try {
                     var3.close();
                 } catch (IOException var21) {
-                    EXF.getInstance().ICA(var21);
+                    log.error("Something bad happened", var21);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
     }
 
     public EVZ<AGXA, String> HQO(File var1) throws FFO, FFK {
-        EXF.getInstance().ICO();
+
         FileInputStream var2 = null;
 
         try {
@@ -205,13 +195,13 @@ public class EQM {
 
                 throw new FFO(var24.toString());
             } else {
-                EXF.getInstance().ICK("nodeCounter " + var6.getNodeCounter());
-                EXF.getInstance().ICK("xmlValue_tnsJPK " + var6.getXmlValue_tnsJPK());
-                EXF.getInstance().ICK("xmlValue_KodFormularza " + var6.getXmlValue_KodFormularza());
-                EXF.getInstance().ICK("xmlValue_kodSystemowy " + var6.getXmlValue_kodSystemowy());
-                EXF.getInstance().ICK("xmlValue_wersjaSchemy " + var6.getXmlValue_wersjaSchemy());
-                EXF.getInstance().ICK("xmlValue_wariantFormularza " + var6.getXmlValue_wariantFormularza());
-                EXF.getInstance().ICK("xmlValue_celZlozenia " + var6.getXmlValue_celZlozenia());
+                log.debug("nodeCounter " + var6.getNodeCounter());
+                log.debug("xmlValue_tnsJPK " + var6.getXmlValue_tnsJPK());
+                log.debug("xmlValue_KodFormularza " + var6.getXmlValue_KodFormularza());
+                log.debug("xmlValue_kodSystemowy " + var6.getXmlValue_kodSystemowy());
+                log.debug("xmlValue_wersjaSchemy " + var6.getXmlValue_wersjaSchemy());
+                log.debug("xmlValue_wariantFormularza " + var6.getXmlValue_wariantFormularza());
+                log.debug("xmlValue_celZlozenia " + var6.getXmlValue_celZlozenia());
                 Iterator var9 = EQL.getInstance().getJpkSchemaFilesMap().values().iterator();
 
                 AGXA var10;
@@ -227,40 +217,34 @@ public class EQM {
                 return var11;
             }
         } catch (IOException | ParserConfigurationException | SAXException var22) {
-            EXF.getInstance().ICA(var22);
+            log.error("Something bad happened", var22);
             throw new FFO(var22);
         } finally {
             if (var2 != null) {
                 try {
                     var2.close();
                 } catch (IOException var20) {
-                    EXF.getInstance().ICA(var20);
+                    log.error("Something bad happened", var20);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
     }
 
     public List<AGXA> HQP(String var1) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var2 = new ArrayList();
-            Iterator var3 = EQL.getInstance().getJpkSchemaFilesMap().values().iterator();
+        ArrayList var2 = new ArrayList();
+        Iterator var3 = EQL.getInstance().getJpkSchemaFilesMap().values().iterator();
 
-            while (var3.hasNext()) {
-                AGXA var4 = (AGXA) var3.next();
-                if (var4.getKodFormularza().equals(var1)) {
-                    var2.add(var4);
-                }
+        while (var3.hasNext()) {
+            AGXA var4 = (AGXA) var3.next();
+            if (var4.getKodFormularza().equals(var1)) {
+                var2.add(var4);
             }
-
-            ArrayList var8 = var2;
-            return var8;
-        } finally {
-            EXF.getInstance().ICP();
         }
+
+        ArrayList var8 = var2;
+        return var8;
     }
 
     private static class EQO extends RuntimeException {
@@ -319,7 +303,7 @@ public class EQM {
                                 AGXA var7 = (AGXA) var6.next();
                                 if (var7.getTns().equals(var4.getValue(var5))) {
                                     this.FWR = var4.getValue(var5);
-                                    EXF.getInstance().ICK("attributes.QName " + var4.getQName(var5));
+                                    log.debug("attributes.QName " + var4.getQName(var5));
                                     String[] var8 = var4.getQName(var5).split(":");
                                     if (var8.length == 1) {
                                         this.FWZ = "";
@@ -335,7 +319,7 @@ public class EQM {
                             }
                         }
 
-                        EXF.getInstance().ICK("tnsPrefixJPK " + this.FWZ);
+                        log.debug("tnsPrefixJPK " + this.FWZ);
                         if (this.FWZ == null) {
                             throw FCZ.getInstance().IID();
                         }

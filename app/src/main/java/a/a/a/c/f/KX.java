@@ -1,8 +1,6 @@
 package a.a.a.c.f;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.k.a.EXF;
-
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
@@ -11,25 +9,20 @@ public abstract class KX<_T> extends KU implements Comparable<KX<_T>> {
     private _T APG;
 
     public KX(boolean var1, _T var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.APF = var1;
-            this.APG = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.APF = var1;
+        this.APG = var2;
 
     }
 
     public KX() {
         this(false, null);
-        EXF.getInstance().ICQ();
+
     }
 
     public KX(_T var1) {
         this(false, var1);
-        EXF.getInstance().ICQ();
+
     }
 
     public boolean DDF() {

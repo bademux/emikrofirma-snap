@@ -11,7 +11,6 @@ import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.b.b.EMT;
 import a.a.a.c.c.b.b.EMU;
 import a.a.a.c.c.e.a.c.ERU;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.c.a.AILX;
 import a.a.a.c.f.c.a.LP;
@@ -103,7 +102,6 @@ public class ERN extends ELU<ERU> {
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             super.HHE();
@@ -111,16 +109,13 @@ public class ERN extends ELU<ERU> {
             this.GAJ.bind(this.fxml_include_configurationLogicController.fxml_include_propertyWorkingDir_boxController.changedProperty().or(this.fxml_include_configurationLogicController.fxml_include_propertyPkcs11LibraryFile_boxController.changedProperty().or(this.fxml_include_configurationLogicController.fxml_include_performVerificationLabeledCheckBox_boxController.changedProperty().or(this.fxml_include_configurationLogicController.GAV.changedProperty().or(this.fxml_include_configurationLogicController.GAW.changedProperty().or(this.RAA))))));
             this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_configurationLogicController.fxml_include_propertyWorkingDir_boxController.requiredAndValidProperty().and(this.fxml_include_configurationLogicController.fxml_include_propertyPkcs11LibraryFile_boxController.requiredAndValidProperty().and(this.fxml_include_configurationLogicController.GAV.IFE().and(this.fxml_include_configurationLogicController.GAW.IFE()))).and(this.fxml_include_configurationLogicController.fxml_include_propertyWorkingDir_boxController.changedProperty().or(this.fxml_include_configurationLogicController.fxml_include_propertyPkcs11LibraryFile_boxController.changedProperty().or(this.fxml_include_configurationLogicController.fxml_include_performVerificationLabeledCheckBox_boxController.changedProperty().or(this.fxml_include_configurationLogicController.GAV.changedProperty().or(this.fxml_include_configurationLogicController.GAW.changedProperty().or(this.RAA)))))).not());
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var2;
         try {
@@ -165,18 +160,15 @@ public class ERN extends ELU<ERU> {
             var2 = true;
             return var2;
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
             var2 = true;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.fxml_include_container.setVvalue(0.0);
@@ -217,7 +209,7 @@ public class ERN extends ELU<ERU> {
                             }
                         }
                     } catch (Exception var7) {
-                        EXF.getInstance().ICA(var7);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
                     }
 
                 }
@@ -229,90 +221,64 @@ public class ERN extends ELU<ERU> {
             this.HSB(var1.getModelManager(), this.fxml_include_configurationLogicController, this.fxml_include_configurationLogicController.GAW, this.fxml_include_configurationLogicController.fxml_config_c_preview);
             this.fxml_parent.requestFocus();
         } catch (FFO | FFK var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             throw new FFI(var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     private void getProcessAndReset() throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            ERU var1 = this.getProcess();
-            var1.resetAndCleanUpProcess();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ERU var1 = this.getProcess();
+        var1.resetAndCleanUpProcess();
 
     }
 
     private void getProcessAndFinish() throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            ERU var1 = this.getProcess();
-            var1.HHL();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ERU var1 = this.getProcess();
+        var1.HHL();
 
     }
 
     @FXML
     protected void fxml_handleButton_generalButtonCancel(ActionEvent var1) throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [cancel] clicked");
-            this.GAN = true;
-            this.getProcessAndReset();
-            this.getApplication().HJD(this.getFxmlName(), "main.fxml");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
+        this.GAN = true;
+        this.getProcessAndReset();
+        this.getApplication().HJD(this.getFxmlName(), "main.fxml");
 
     }
 
     @FXML
     protected void fxml_handleButton_generalButtonSave(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [save] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
             this.GAN = true;
             this.getProcessAndFinish();
             this.getApplication().HJD(this.getFxmlName(), "main.fxml");
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             FCT.IGX("", var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void HSC() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_include_configurationLogicController.HSJ(this.GAE, this.GAF, this.GAG, this.GAH, this.GAI);
-            this.GAD = null;
-            this.GAE = null;
-            this.GAF = null;
-            this.GAG = null;
-            this.GAH = null;
-            this.GAI = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_configurationLogicController.HSJ(this.GAE, this.GAF, this.GAG, this.GAH, this.GAI);
+        this.GAD = null;
+        this.GAE = null;
+        this.GAF = null;
+        this.GAG = null;
+        this.GAH = null;
+        this.GAI = null;
 
     }
 
@@ -323,29 +289,21 @@ public class ERN extends ELU<ERU> {
         private final TextField GAC;
 
         public ERO(EMU var2, ERS var3, TextFieldValidated_RefIdPattern var4, TextField var5) {
-            EXF.getInstance().ICO();
 
-            try {
-                this.FZZ = var2;
-                this.GAA = var3;
-                this.GAB = var4;
-                this.GAC = var5;
-            } finally {
-                EXF.getInstance().ICP();
-            }
+            this.FZZ = var2;
+            this.GAA = var3;
+            this.GAB = var4;
+            this.GAC = var5;
 
         }
 
         public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-            EXF.getInstance().ICO();
 
             try {
                 ERN.this.HSB(this.FZZ, this.GAA, this.GAB, this.GAC);
             } catch (FFK var8) {
-                EXF.getInstance().ICA(var8);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
                 throw new FFI(var8);
-            } finally {
-                EXF.getInstance().ICP();
             }
 
         }

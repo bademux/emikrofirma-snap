@@ -34,7 +34,7 @@ public class FopUtils {
 
     @SneakyThrows
     private static byte[] readFontConfig() {
-        try(var is = FopUtils.class.getResourceAsStream("/fop/jpkFont.xsl")){
+        try (var is = FopUtils.class.getResourceAsStream("/fop/jpkFont.xsl")) {
             return requireNonNull(is).readAllBytes();
         }
     }

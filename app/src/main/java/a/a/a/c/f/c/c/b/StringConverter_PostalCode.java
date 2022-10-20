@@ -1,7 +1,6 @@
 package a.a.a.c.f.c.c.b;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.util.StringConverter;
 
 import javax.swing.text.MaskFormatter;
@@ -11,22 +10,18 @@ public class StringConverter_PostalCode extends StringConverter<String> {
     private final MaskFormatter HAN;
 
     public StringConverter_PostalCode() {
-        EXF.getInstance().ICO();
 
         try {
             this.HAN = new MaskFormatter("##-###");
             this.HAN.setValueContainsLiteralCharacters(false);
         } catch (ParseException var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public String toString(String var1) {
-        EXF.getInstance().ICO();
 
         String var3;
         try {
@@ -44,32 +39,25 @@ public class StringConverter_PostalCode extends StringConverter<String> {
 
             var3 = this.HAN.valueToString(var2.trim());
         } catch (ParseException var7) {
-            EXF.getInstance().ICA(var7);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
             throw new FFI(var7);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var3;
     }
 
     public String fromString(String var1) {
-        EXF.getInstance().ICO();
 
         String var2;
-        try {
-            if (var1 != null) {
-                var2 = var1.replaceAll("-", "");
-                if (var2.length() > 0) {
-                    String var3 = var2;
-                    return var3;
-                }
+        if (var1 != null) {
+            var2 = var1.replaceAll("-", "");
+            if (var2.length() > 0) {
+                String var3 = var2;
+                return var3;
             }
-
-            var2 = "";
-        } finally {
-            EXF.getInstance().ICP();
         }
+
+        var2 = "";
 
         return var2;
     }

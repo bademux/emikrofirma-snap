@@ -1,11 +1,9 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IJ;
 import a.a.a.c.f.b.c.*;
-import a.a.a.c.f.b.c.a.KL;
-
 import jakarta.xml.bind.annotation.XmlTransient;
+
 import java.math.BigDecimal;
 
 @XmlTransient
@@ -25,8 +23,7 @@ public abstract class HO extends IJ implements Cloneable {
     protected QSU QWP;
 
     public HO() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public JY getPosition() {

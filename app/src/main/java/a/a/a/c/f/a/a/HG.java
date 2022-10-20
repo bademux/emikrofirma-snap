@@ -1,12 +1,11 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IJ;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.a.KL;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -17,8 +16,7 @@ public class HG extends IJ {
     private KL AIS;
 
     public HG() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public void setValues(BigDecimal var1, KL var2) {

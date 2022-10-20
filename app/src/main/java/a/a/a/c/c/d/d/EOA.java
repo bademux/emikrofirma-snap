@@ -1,6 +1,5 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.h.JG;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeTableCell;
@@ -23,28 +22,23 @@ public class EOA<_T> implements Callback<TreeTableColumn<_T, JG>, TreeTableCell<
             final ImageView TVK = new ImageView();
 
             protected void updateItem(JG var1, boolean var2) {
-                EXF.getInstance().ICO();
 
-                try {
-                    super.updateItem(var1, var2);
-                    if (var1 != null) {
-                        if (var1.equals(JG.SETTLED)) {
-                            this.TVK.setFitWidth(15.0);
-                            this.TVK.setFitHeight(15.0);
-                            this.TVK.setImage(EOA.this.FNK);
-                        } else {
-                            this.TVK.setFitWidth(13.0);
-                            this.TVK.setFitHeight(18.0);
-                            this.TVK.setImage(EOA.this.FNL);
-                        }
-
-                        this.setGraphic(this.TVK);
-                        this.setTooltip(new Tooltip(var1.getDescription()));
+                super.updateItem(var1, var2);
+                if (var1 != null) {
+                    if (var1.equals(JG.SETTLED)) {
+                        this.TVK.setFitWidth(15.0);
+                        this.TVK.setFitHeight(15.0);
+                        this.TVK.setImage(EOA.this.FNK);
                     } else {
-                        this.setText("");
+                        this.TVK.setFitWidth(13.0);
+                        this.TVK.setFitHeight(18.0);
+                        this.TVK.setImage(EOA.this.FNL);
                     }
-                } finally {
-                    EXF.getInstance().ICP();
+
+                    this.setGraphic(this.TVK);
+                    this.setTooltip(new Tooltip(var1.getDescription()));
+                } else {
+                    this.setText("");
                 }
 
             }

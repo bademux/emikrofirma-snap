@@ -20,7 +20,6 @@ import a.a.a.c.e.EXK;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWC;
 import a.a.a.c.e.a.d.EWD;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.KU;
 import a.a.a.c.f.KV;
 import a.a.a.c.f.a.EXM;
@@ -50,10 +49,10 @@ import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.b.LX;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.c.FCZ;
-import javafx.fxml.FXML;
-
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import javafx.fxml.FXML;
+
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.math.BigDecimal;
@@ -92,7 +91,6 @@ public class EMX implements ENC {
     protected ResourceBundle resources;
 
     public EMX() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             this.HKO();
@@ -109,16 +107,13 @@ public class EMX implements ENC {
                 }
             });
         } catch (JAXBException var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFK(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void HKO() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             File var1 = new File(EXK.GPW);
@@ -126,10 +121,8 @@ public class EMX implements ENC {
             this.FIS.setAutoCommit(false);
             this.QPO(this.FIS);
         } catch (ClassNotFoundException | SQLException var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFK(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -305,17 +298,17 @@ public class EMX implements ENC {
                 var6 = Paths.get(var5.getAbsolutePath(), var4 + ".db").toFile();
             }
 
-            EXF.getInstance().ICE("New db path: " + var6.getAbsolutePath());
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("New db path: " + var6.getAbsolutePath());
             if (var6.exists()) {
-                EXF.getInstance().ICE("New db exists");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("New db exists");
                 var6.delete();
             }
 
             Class var8 = EMX.class;
             synchronized (EMX.class) {
-                EXF.getInstance().ICE("Initiating connection to new db");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Initiating connection to new db");
                 Connection var9 = this.QPT(var1, var4, var5);
-                EXF.getInstance().ICE("Starting coping records to new db");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Starting coping records to new db");
                 String var10 = "invoices";
                 FDE var11 = new FDE(FJM, var10);
                 Integer var12 = 0;
@@ -326,7 +319,7 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                EXF.getInstance().ICE("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "invoices"));
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "invoices"));
                 var10 = "receiptrecords";
                 var11 = new FDE(FJM, var10);
                 var12 = 0;
@@ -337,7 +330,7 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                EXF.getInstance().ICE("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "receiptrecords"));
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "receiptrecords"));
                 var10 = "settlements";
                 var11 = new FDE(FJM, var10);
                 var12 = 0;
@@ -348,7 +341,7 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                EXF.getInstance().ICE("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "settlements"));
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "settlements"));
                 var10 = "invoicerecords";
                 var11 = new FDE(FJM, var10);
                 var12 = 0;
@@ -359,7 +352,7 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                EXF.getInstance().ICE("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "invoicerecords"));
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "invoicerecords"));
                 var10 = "declarations";
                 var11 = new FDE(FJM, var10);
                 var12 = 0;
@@ -370,7 +363,7 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                EXF.getInstance().ICE("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "declarations"));
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "declarations"));
                 var10 = "contacts";
                 var11 = new FDE(FJM, var10);
                 var12 = 0;
@@ -381,7 +374,7 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                EXF.getInstance().ICE("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "contacts"));
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "contacts"));
                 var10 = "sequences";
                 var11 = new FDE(FJM, var10);
                 var12 = 0;
@@ -392,7 +385,7 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                EXF.getInstance().ICE("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "sequences"));
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "sequences"));
                 var10 = "dictionaries";
                 var11 = new FDE(FJM, var10);
                 var12 = 0;
@@ -403,7 +396,7 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                EXF.getInstance().ICE("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "dictionaries"));
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "dictionaries"));
                 var10 = "preferences";
                 var11 = new FDE(FJM, var10);
                 if (var7) {
@@ -417,11 +410,11 @@ public class EMX implements ENC {
                     this.QPP(var1, var2, var10, var11, var3, null);
                 }
 
-                EXF.getInstance().ICE("Updated data in table: preferences");
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Updated data in table: preferences");
                 return var9;
             }
         } catch (Exception var17) {
-            EXF.getInstance().ICA(var17);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var17);
             if (var6 != null && var6.isFile() && var6.exists()) {
                 var6.delete();
             }
@@ -469,7 +462,7 @@ public class EMX implements ENC {
                 }
             }
         } catch (SQLException var10) {
-            EXF.getInstance().ICA(var10);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var10);
             return null;
         }
     }
@@ -489,7 +482,7 @@ public class EMX implements ENC {
                 return this.HKU(var2, var3, true);
             }
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             return false;
         }
     }
@@ -541,7 +534,7 @@ public class EMX implements ENC {
                 return var4.delete();
             }
         } catch (Exception var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
         }
 
         return false;
@@ -556,7 +549,6 @@ public class EMX implements ENC {
     }
 
     public Connection QPT(final FFF var1, String var2, File var3) throws FFK {
-        EXF.getInstance().ICO();
 
         Connection var20;
         try {
@@ -619,7 +611,6 @@ public class EMX implements ENC {
                 private final FFF RQC = var1;
 
                 public Date QNW(Set<FDU<?>> var1x) {
-                    EXF.getInstance().ICO();
 
                     Date var3;
                     try {
@@ -631,10 +622,8 @@ public class EMX implements ENC {
                         var3 = var2.DAT().getValueDate();
                         return var3;
                     } catch (Exception var7) {
-                        EXF.getInstance().ICA(var7);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
                         var3 = null;
-                    } finally {
-                        EXF.getInstance().ICP();
                     }
 
                     return var3;
@@ -644,7 +633,6 @@ public class EMX implements ENC {
                 private final FFF RQC = var1;
 
                 public Date QNW(Set<FDU<?>> var1x) {
-                    EXF.getInstance().ICO();
 
                     Date var3;
                     try {
@@ -657,36 +645,33 @@ public class EMX implements ENC {
                         var3 = var2.DAU().getValueDate();
                         return var3;
                     } catch (Exception var7) {
-                        EXF.getInstance().ICA(var7);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
                         var3 = null;
-                    } finally {
-                        EXF.getInstance().ICP();
                     }
 
                     return var3;
                 }
             }, new QJR.QJT() {
                 public void QNX() {
-                    EXF.getInstance().ICO();
+
                     PreparedStatement var1 = null;
 
                     try {
                         String var2 = "update invoices set business_transactionDate = (select c.business_transactionDate from invoicesTreeBase b inner join invoices c on c.technical_id = b.viewQueryId and c.technical_subType = 'INVOICE' where b.viewRefId = invoices.technical_id)";
                         var1 = var4.prepareStatement(var2);
                         int var3 = var1.executeUpdate();
-                        EXF.getInstance().ICK("result " + var3);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).debug("result " + var3);
                     } catch (Exception var12) {
-                        EXF.getInstance().ICA(var12);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
                     } finally {
                         if (var1 != null) {
                             try {
                                 var1.close();
                             } catch (SQLException var11) {
-                                EXF.getInstance().ICA(var11);
+                                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var11);
                             }
                         }
 
-                        EXF.getInstance().ICP();
                     }
 
                 }
@@ -895,7 +880,6 @@ public class EMX implements ENC {
                 private final FFF TWH = var1;
 
                 public Integer QNW(Set<FDU<?>> var1x) {
-                    EXF.getInstance().ICO();
 
                     Integer var3;
                     try {
@@ -908,10 +892,8 @@ public class EMX implements ENC {
                         var3 = var2.QON();
                         return var3;
                     } catch (Exception var7) {
-                        EXF.getInstance().ICA(var7);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
                         var3 = -3;
-                    } finally {
-                        EXF.getInstance().ICP();
                     }
 
                     return var3;
@@ -944,17 +926,14 @@ public class EMX implements ENC {
             this.FIW = true;
             var20 = var4;
         } catch (ClassNotFoundException | SQLException var16) {
-            EXF.getInstance().ICA(var16);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var16);
             throw new FFK(var16);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var20;
     }
 
     private <_T extends KU> _T QPU(FFF var1, Set<FDU<?>> var2) {
-        EXF.getInstance().ICO();
 
         Short var4;
         try {
@@ -1001,16 +980,13 @@ public class EMX implements ENC {
             KU var19 = var18;
             return (_T) var19;
         } catch (Exception var15) {
-            EXF.getInstance().ICA(var15);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var15);
             return null;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void HKY(String var1) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             if (var1 == null || var1.length() <= 0) {
@@ -1022,50 +998,41 @@ public class EMX implements ENC {
                 this.FIW = false;
             }
         } catch (SQLException var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             this.FIT = null;
             this.FIW = false;
             throw new FFK(var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public synchronized <_T extends KU> byte[] HKZ(_T var1) throws FFK {
-        EXF.getInstance().ICO();
 
         byte[] var2;
         try {
             var2 = this.FIU.IKU(var1);
         } catch (JAXBException var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             throw new FFK(var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     public synchronized <_T extends KU> _T HLA(byte[] var1, Class<_T> var2) throws FFK {
-        EXF.getInstance().ICO();
 
         KU var3;
         try {
             var3 = this.FIV.IKV(new ByteArrayInputStream(var1), var2);
         } catch (XMLStreamException | JAXBException var7) {
-            EXF.getInstance().ICA(var7);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
             throw new FFK(var7);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return (_T) var3;
     }
 
     private void HLB(Connection var1) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             if (var1 == null) {
@@ -1076,16 +1043,13 @@ public class EMX implements ENC {
                 var1.commit();
             }
         } catch (SQLException var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             throw new FFK(var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void HLC(Connection var1) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             if (var1 == null) {
@@ -1096,60 +1060,37 @@ public class EMX implements ENC {
                 var1.rollback();
             }
         } catch (SQLException var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             throw new FFK(var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void HLD() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HLB(this.FIS);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HLB(this.FIS);
 
     }
 
     public void HLE() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HLC(this.FIS);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HLC(this.FIS);
 
     }
 
     public void HLF() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HLB(this.FIT);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HLB(this.FIT);
 
     }
 
     public void HLG() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HLC(this.FIT);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HLC(this.FIT);
 
     }
 
     public Map<String, LX> HLH() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             ArrayList var1 = new ArrayList();
@@ -1208,530 +1149,437 @@ public class EMX implements ENC {
             HashMap var13 = var5;
             return var13;
         } catch (Exception var11) {
-            EXF.getInstance().ICA(var11);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var11);
             throw new FFK(var11);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     public <_T extends LW> void HLI(LX var1) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            String var2 = "users";
-            synchronized ("users") {
-                this.HLL(FDO.insert, var1);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        String var2 = "users";
+        synchronized ("users") {
+            this.HLL(FDO.insert, var1);
         }
 
     }
 
     public <_T extends LW> void HLJ(LX var1) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            String var2 = "users";
-            synchronized ("users") {
-                this.HLL(FDO.update, var1);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        String var2 = "users";
+        synchronized ("users") {
+            this.HLL(FDO.update, var1);
         }
 
     }
 
     public <_T extends LW> void HLK(LX var1) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            String var2 = "users";
-            synchronized ("users") {
-                this.HLL(FDO.delete, var1);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        String var2 = "users";
+        synchronized ("users") {
+            this.HLL(FDO.delete, var1);
         }
 
     }
 
     private <_T extends LW> void HLL(FDO var1, LX var2) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2 == null) {
-                throw FCZ.getInstance().IHG();
-            }
+        if (var2 == null) {
+            throw FCZ.getInstance().IHG();
+        }
 
-            String var3 = var2.DEZ().getValue().toLowerCase();
-            String var4 = var2.DFA().getValue().name();
-            boolean var5 = var2.DFB().getValue();
-            byte[] var6 = var5 ? var2.DFC().getValue() : null;
-            byte[] var7 = var5 ? var2.DFD().getValue() : null;
-            Integer var8 = var5 ? var2.HHA() : null;
-            ArrayList var9 = new ArrayList();
-            var9.add(new FDU(FLJ, var3));
-            ArrayList var10 = null;
-            switch (var1) {
-                case insert:
-                case update:
-                    var10 = new ArrayList();
-                    var10.add(new FDU(FLN, var4));
-                    var10.add(new FDU(FLK, var7));
-                    var10.add(new FDU(FLL, var6));
-                    var10.add(new FDU(FLM, var8));
-                case delete:
-                    break;
-                default:
-                    throw new FFK("Unsupported action type [" + var1 + "]!");
-            }
+        String var3 = var2.DEZ().getValue().toLowerCase();
+        String var4 = var2.DFA().getValue().name();
+        boolean var5 = var2.DFB().getValue();
+        byte[] var6 = var5 ? var2.DFC().getValue() : null;
+        byte[] var7 = var5 ? var2.DFD().getValue() : null;
+        Integer var8 = var5 ? var2.HHA() : null;
+        ArrayList var9 = new ArrayList();
+        var9.add(new FDU(FLJ, var3));
+        ArrayList var10 = null;
+        switch (var1) {
+            case insert:
+            case update:
+                var10 = new ArrayList();
+                var10.add(new FDU(FLN, var4));
+                var10.add(new FDU(FLK, var7));
+                var10.add(new FDU(FLL, var6));
+                var10.add(new FDU(FLM, var8));
+            case delete:
+                break;
+            default:
+                throw new FFK("Unsupported action type [" + var1 + "]!");
+        }
 
-            switch (var1) {
-                case insert:
-                    this.HMS(this.FIS, "users", var9, var10);
-                    break;
-                case update:
-                    this.HMT(this.FIS, "users", var9, var10);
-                    break;
-                case delete:
-                    this.HMU(this.FIS, "users", var9);
-                    break;
-                default:
-                    throw new FFK("Unsupported action type [" + var1 + "]!");
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        switch (var1) {
+            case insert:
+                this.HMS(this.FIS, "users", var9, var10);
+                break;
+            case update:
+                this.HMT(this.FIS, "users", var9, var10);
+                break;
+            case delete:
+                this.HMU(this.FIS, "users", var9);
+                break;
+            default:
+                throw new FFK("Unsupported action type [" + var1 + "]!");
         }
 
     }
 
     public <_T extends LW> _T HLM(FFF var1, String var2, Class<_T> var3) throws FFK {
-        EXF.getInstance().ICO();
 
         LW var4;
-        try {
-            var4 = this.HLN(var1, var2, var3, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var4 = this.HLN(var1, var2, var3, null);
 
         return (_T) var4;
     }
 
     public <_T extends LW> _T HLN(FFF var1, String var2, Class<_T> var3, Integer var4) throws FFK {
-        EXF.getInstance().ICO();
 
         LW var5;
-        try {
-            if (var4 == null) {
-                var5 = this.HMA(var1, "preferencesLatestVersion", var2, var3, null);
-                return (_T) var5;
-            }
-
-            var5 = this.HMA(var1, "preferences", var2, var3, var4);
-        } finally {
-            EXF.getInstance().ICP();
+        if (var4 == null) {
+            var5 = this.HMA(var1, "preferencesLatestVersion", var2, var3, null);
+            return (_T) var5;
         }
+
+        var5 = this.HMA(var1, "preferences", var2, var3, var4);
 
         return (_T) var5;
     }
 
     public <_T extends HN<?>> EVZ<Integer, List<EDF<_T>>> ROB(FFF var1, QSW var2, FDL var3, Integer var4, Integer var5, JN var6, IB var7, IA var8, KE var9, KA var10, KA var11, EVZ<Date, Date> var12, EVZ<Date, Date> var13, String var14) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var25;
-        try {
-            ArrayList var15 = new ArrayList();
-            var15.add(ENC.END.cell_business_refid);
-            var15.add(ENC.END.cell_business_issuer_number);
-            var15.add(ENC.END.cell_business_invoicingDate);
-            var15.add(ENC.END.cell_business_contractorName);
-            var15.add(ENC.END.cell_business_contractorNIP);
-            var15.add(ENC.END.cell_business_netValue);
-            var15.add(ENC.END.cell_business_grossValue);
-            var15.add(ENC.END.cell_business_taxValue);
-            var15.add(ENC.END.cell_business_creationDate);
-            var15.add(ENC.END.cell_business_transactionDate);
-            var15.add(ENC.END.cell_business_state);
-            ArrayList var16 = new ArrayList();
-            String var17 = var9 != null ? var9.getValue() : null;
-            if (var17 != null) {
-                var16.add(new FDU(FLU, var17));
-            }
-
-            String var18 = var10 != null ? var10.getValue() : null;
-            if (var18 != null) {
-                var16.add(new FDU(FLT, var18));
-            }
-
-            String var19 = var11 != null ? var11.getValue() : null;
-            if (var19 != null) {
-                var16.add(new FDU(FMF, var19));
-            }
-
-            if (var12 != null && var12.getFirstValue() != null && var12.getSecondValue() != null) {
-                var16.add(new FDU(FMD, var12.getFirstValue(), FDK.GREATER_THAN_OR_EQUALS));
-                var16.add(new FDU(FMD, var12.getSecondValue(), FDK.LESS_THAN_OR_EQUALS));
-            }
-
-            if (var13 != null && var13.getFirstValue() != null && var13.getSecondValue() != null) {
-                var16.add(new FDU(QNR, var13.getFirstValue(), FDK.GREATER_THAN_OR_EQUALS));
-                var16.add(new FDU(QNR, var13.getSecondValue(), FDK.LESS_THAN_OR_EQUALS));
-            }
-
-            if (var2 != null) {
-                var16.add(new FDU(RHL, var2.getKey(), FDK.EQUALS));
-            }
-
-            ArrayList var20 = new ArrayList();
-            if (var14 != null && var14.length() >= 3) {
-                FDJ var21 = new FDJ(FEB.OR);
-                var21.IJR(new FDU(FLU, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FME, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FMF, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FMG, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FMH, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FMI, "%" + var14 + "%", FDK.LIKE));
-                var20.add(var21);
-            }
-
-            var25 = this.HLX(var1, "invoices", "invoicesTreeFull", var15, var16, var20, var3, var4, var5, var6, var7, var8);
-        } finally {
-            EXF.getInstance().ICP();
+        ArrayList var15 = new ArrayList();
+        var15.add(ENC.END.cell_business_refid);
+        var15.add(ENC.END.cell_business_issuer_number);
+        var15.add(ENC.END.cell_business_invoicingDate);
+        var15.add(ENC.END.cell_business_contractorName);
+        var15.add(ENC.END.cell_business_contractorNIP);
+        var15.add(ENC.END.cell_business_netValue);
+        var15.add(ENC.END.cell_business_grossValue);
+        var15.add(ENC.END.cell_business_taxValue);
+        var15.add(ENC.END.cell_business_creationDate);
+        var15.add(ENC.END.cell_business_transactionDate);
+        var15.add(ENC.END.cell_business_state);
+        ArrayList var16 = new ArrayList();
+        String var17 = var9 != null ? var9.getValue() : null;
+        if (var17 != null) {
+            var16.add(new FDU(FLU, var17));
         }
+
+        String var18 = var10 != null ? var10.getValue() : null;
+        if (var18 != null) {
+            var16.add(new FDU(FLT, var18));
+        }
+
+        String var19 = var11 != null ? var11.getValue() : null;
+        if (var19 != null) {
+            var16.add(new FDU(FMF, var19));
+        }
+
+        if (var12 != null && var12.getFirstValue() != null && var12.getSecondValue() != null) {
+            var16.add(new FDU(FMD, var12.getFirstValue(), FDK.GREATER_THAN_OR_EQUALS));
+            var16.add(new FDU(FMD, var12.getSecondValue(), FDK.LESS_THAN_OR_EQUALS));
+        }
+
+        if (var13 != null && var13.getFirstValue() != null && var13.getSecondValue() != null) {
+            var16.add(new FDU(QNR, var13.getFirstValue(), FDK.GREATER_THAN_OR_EQUALS));
+            var16.add(new FDU(QNR, var13.getSecondValue(), FDK.LESS_THAN_OR_EQUALS));
+        }
+
+        if (var2 != null) {
+            var16.add(new FDU(RHL, var2.getKey(), FDK.EQUALS));
+        }
+
+        ArrayList var20 = new ArrayList();
+        if (var14 != null && var14.length() >= 3) {
+            FDJ var21 = new FDJ(FEB.OR);
+            var21.IJR(new FDU(FLU, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FME, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FMF, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FMG, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FMH, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FMI, "%" + var14 + "%", FDK.LIKE));
+            var20.add(var21);
+        }
+
+        var25 = this.HLX(var1, "invoices", "invoicesTreeFull", var15, var16, var20, var3, var4, var5, var6, var7, var8);
 
         return var25;
     }
 
     public <_T extends QSG<?>> EVZ<Integer, List<EDF<_T>>> ROC(FFF var1, QSW var2, FDL var3, Integer var4, Integer var5, JN var6, QSR var7, QSQ var8, KE var9, KA var10, KA var11, EVZ<Date, Date> var12, EVZ<Date, Date> var13, String var14) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var25;
-        try {
-            ArrayList var15 = new ArrayList();
-            var15.add(ENC.END.cell_business_refid);
-            var15.add(ENC.END.cell_business_issuer_number);
-            var15.add(ENC.END.cell_business_invoicingDate);
-            var15.add(ENC.END.cell_business_contractorName);
-            var15.add(ENC.END.cell_business_contractorNIP);
-            var15.add(ENC.END.cell_business_netValue);
-            var15.add(ENC.END.cell_business_grossValue);
-            var15.add(ENC.END.cell_business_taxValue);
-            var15.add(ENC.END.cell_business_creationDate);
-            var15.add(ENC.END.cell_business_state);
-            ArrayList var16 = new ArrayList();
-            String var17 = var9 != null ? var9.getValue() : null;
-            if (var17 != null) {
-                var16.add(new FDU(FLU, var17));
-            }
-
-            String var18 = var10 != null ? var10.getValue() : null;
-            if (var18 != null) {
-                var16.add(new FDU(FLT, var18));
-            }
-
-            String var19 = var11 != null ? var11.getValue() : null;
-            if (var19 != null) {
-                var16.add(new FDU(FMF, var19));
-            }
-
-            if (var12 != null && var12.getFirstValue() != null && var12.getSecondValue() != null) {
-                var16.add(new FDU(FMD, var12.getFirstValue(), FDK.GREATER_THAN_OR_EQUALS));
-                var16.add(new FDU(FMD, var12.getSecondValue(), FDK.LESS_THAN_OR_EQUALS));
-            }
-
-            if (var2 != null) {
-                var16.add(new FDU(RHL, var2, FDK.EQUALS));
-            }
-
-            ArrayList var20 = new ArrayList();
-            if (var14 != null && var14.length() >= 3) {
-                FDJ var21 = new FDJ(FEB.OR);
-                var21.IJR(new FDU(FLU, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FME, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FMF, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FMG, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FMH, "%" + var14 + "%", FDK.LIKE));
-                var21.IJR(new FDU(FMI, "%" + var14 + "%", FDK.LIKE));
-                var20.add(var21);
-            }
-
-            var25 = this.HLX(var1, "invoicesother", "invoicesotherTreeFull", var15, var16, var20, var3, var4, var5, var6, var7, var8);
-        } finally {
-            EXF.getInstance().ICP();
+        ArrayList var15 = new ArrayList();
+        var15.add(ENC.END.cell_business_refid);
+        var15.add(ENC.END.cell_business_issuer_number);
+        var15.add(ENC.END.cell_business_invoicingDate);
+        var15.add(ENC.END.cell_business_contractorName);
+        var15.add(ENC.END.cell_business_contractorNIP);
+        var15.add(ENC.END.cell_business_netValue);
+        var15.add(ENC.END.cell_business_grossValue);
+        var15.add(ENC.END.cell_business_taxValue);
+        var15.add(ENC.END.cell_business_creationDate);
+        var15.add(ENC.END.cell_business_state);
+        ArrayList var16 = new ArrayList();
+        String var17 = var9 != null ? var9.getValue() : null;
+        if (var17 != null) {
+            var16.add(new FDU(FLU, var17));
         }
+
+        String var18 = var10 != null ? var10.getValue() : null;
+        if (var18 != null) {
+            var16.add(new FDU(FLT, var18));
+        }
+
+        String var19 = var11 != null ? var11.getValue() : null;
+        if (var19 != null) {
+            var16.add(new FDU(FMF, var19));
+        }
+
+        if (var12 != null && var12.getFirstValue() != null && var12.getSecondValue() != null) {
+            var16.add(new FDU(FMD, var12.getFirstValue(), FDK.GREATER_THAN_OR_EQUALS));
+            var16.add(new FDU(FMD, var12.getSecondValue(), FDK.LESS_THAN_OR_EQUALS));
+        }
+
+        if (var2 != null) {
+            var16.add(new FDU(RHL, var2, FDK.EQUALS));
+        }
+
+        ArrayList var20 = new ArrayList();
+        if (var14 != null && var14.length() >= 3) {
+            FDJ var21 = new FDJ(FEB.OR);
+            var21.IJR(new FDU(FLU, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FME, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FMF, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FMG, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FMH, "%" + var14 + "%", FDK.LIKE));
+            var21.IJR(new FDU(FMI, "%" + var14 + "%", FDK.LIKE));
+            var20.add(var21);
+        }
+
+        var25 = this.HLX(var1, "invoicesother", "invoicesotherTreeFull", var15, var16, var20, var3, var4, var5, var6, var7, var8);
 
         return var25;
     }
 
     public <_T extends IN> EVZ<Integer, List<EDF<_T>>> HLP(FFF var1, FDL var2, Integer var3, Integer var4, JN var5, IQ var6) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var7;
-        try {
-            var7 = this.HLX(var1, "receiptrecords", "receiptrecordsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var7 = this.HLX(var1, "receiptrecords", "receiptrecordsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
 
         return var7;
     }
 
     public <_T extends JF> EVZ<Integer, List<EDF<_T>>> HLQ(FFF var1, FDL var2, Integer var3, Integer var4, JN var5, JH var6) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var7;
-        try {
-            var7 = this.HLX(var1, "settlementsLastChildIdFull", "settlementsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var7 = this.HLX(var1, "settlementsLastChildIdFull", "settlementsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
 
         return var7;
     }
 
     public <_T extends HJ> EVZ<Integer, List<EDF<_T>>> HLR(FFF var1, FDL var2, Integer var3, Integer var4, JN var5, HM var6, AGWW var7) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var8;
-        try {
-            var8 = this.HLX(var1, "declarations", "declarationsTreeFull", null, null, null, var2, var3, var4, var5, var6, var7);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var8 = this.HLX(var1, "declarations", "declarationsTreeFull", null, null, null, var2, var3, var4, var5, var6, var7);
 
         return var8;
     }
 
     public <_T extends HJ> EVZ<Integer, List<EDF<_T>>> QPW(FFF var1, FDL var2, Integer var3, Integer var4, JF var5, JN var6, HM var7, AGWW var8) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var10;
-        try {
-            if (var5 == null) {
-                throw new FFI("Missing Settlement Id!");
-            }
-
-            ArrayList var9 = new ArrayList();
-            var9.add(new FDU(FLF, var5.getId()));
-            var10 = this.HLX(var1, "declarations", "declarationsTreeFull", null, var9, null, var2, var3, var4, var6, var7, var8);
-        } finally {
-            EXF.getInstance().ICP();
+        if (var5 == null) {
+            throw new FFI("Missing Settlement Id!");
         }
+
+        ArrayList var9 = new ArrayList();
+        var9.add(new FDU(FLF, var5.getId()));
+        var10 = this.HLX(var1, "declarations", "declarationsTreeFull", null, var9, null, var2, var3, var4, var6, var7, var8);
 
         return var10;
     }
 
     public <_T extends HI> EVZ<Integer, List<EDF<_T>>> HLT(FFF var1, FDL var2) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var4;
-        try {
-            ArrayList var3 = new ArrayList();
-            var3.add(ENC.END.cell_business_contractorName);
-            var3.add(ENC.END.cell_business_contractorNIP);
-            var4 = this.HLY(var1, "contacts", "contactsTreeFull", var3, null, null, var2, null, null, null, null, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ArrayList var3 = new ArrayList();
+        var3.add(ENC.END.cell_business_contractorName);
+        var3.add(ENC.END.cell_business_contractorNIP);
+        var4 = this.HLY(var1, "contacts", "contactsTreeFull", var3, null, null, var2, null, null, null, null, null);
 
         return var4;
     }
 
     public <_T extends HI> EVZ<Integer, List<EDF<_T>>> QPX(FFF var1, FDL var2, Integer var3, String var4) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var12;
-        try {
-            ArrayList var5 = new ArrayList();
-            var5.add(ENC.END.cell_business_contractorName);
-            var5.add(ENC.END.cell_business_contractorNIP);
-            ArrayList var6 = new ArrayList();
-            if (var3 != null) {
-                var6.add(new FDU(QNS, var3));
-            }
-
-            ArrayList var7 = new ArrayList();
-            if (var4 != null && var4.length() >= 3) {
-                FDJ var8 = new FDJ(FEB.OR);
-                var8.IJR(new FDU(FME, "%" + var4 + "%", FDK.LIKE));
-                var8.IJR(new FDU(FMF, "%" + var4 + "%", FDK.LIKE));
-                var7.add(var8);
-            }
-
-            var12 = this.HLY(var1, "contacts", "contactsTreeFull", var5, var6, var7, var2, null, null, null, null, null);
-        } finally {
-            EXF.getInstance().ICP();
+        ArrayList var5 = new ArrayList();
+        var5.add(ENC.END.cell_business_contractorName);
+        var5.add(ENC.END.cell_business_contractorNIP);
+        ArrayList var6 = new ArrayList();
+        if (var3 != null) {
+            var6.add(new FDU(QNS, var3));
         }
+
+        ArrayList var7 = new ArrayList();
+        if (var4 != null && var4.length() >= 3) {
+            FDJ var8 = new FDJ(FEB.OR);
+            var8.IJR(new FDU(FME, "%" + var4 + "%", FDK.LIKE));
+            var8.IJR(new FDU(FMF, "%" + var4 + "%", FDK.LIKE));
+            var7.add(var8);
+        }
+
+        var12 = this.HLY(var1, "contacts", "contactsTreeFull", var5, var6, var7, var2, null, null, null, null, null);
 
         return var12;
     }
 
     public <_T extends IC> EVZ<Integer, List<EDF<_T>>> HLV(FFF var1, FDL var2, Integer var3, Integer var4, JN var5, IH var6) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var7;
-        try {
-            var7 = this.HLX(var1, "invoicerecordsLatestTypeForPeriod", "invoicerecordsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var7 = this.HLX(var1, "invoicerecordsLatestTypeForPeriod", "invoicerecordsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
 
         return var7;
     }
 
     public <_T extends IC> EVZ<Integer, List<EDF<_T>>> QPY(FFF var1, FDL var2, Integer var3, Integer var4, JF var5, JN var6, IH var7) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var9;
-        try {
-            if (var5 == null) {
-                throw new FFI("Missing Settlement Id!");
-            }
-
-            ArrayList var8 = new ArrayList();
-            var8.add(new FDU(FLF, var5.getId()));
-            var9 = this.HLX(var1, "invoicerecords", "invoicerecordsTreeFull", null, var8, null, var2, var3, var4, var6, var7, null);
-        } finally {
-            EXF.getInstance().ICP();
+        if (var5 == null) {
+            throw new FFI("Missing Settlement Id!");
         }
+
+        ArrayList var8 = new ArrayList();
+        var8.add(new FDU(FLF, var5.getId()));
+        var9 = this.HLX(var1, "invoicerecords", "invoicerecordsTreeFull", null, var8, null, var2, var3, var4, var6, var7, null);
 
         return var9;
     }
 
     private <_T extends IK> EVZ<Integer, List<EDF<_T>>> HLX(FFF var1, String var2, String var3, List<ENC.END> var4, List<FDU<?>> var5, List<FDJ> var6, FDL var7, Integer var8, Integer var9, JN var10, Enum<?> var11, Enum<?> var12) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var17;
-        try {
-            if (var4 == null) {
-                var4 = new ArrayList();
-            }
-
-            if (var5 == null) {
-                var5 = new ArrayList();
-            }
-
-            if (var6 == null) {
-                var6 = new ArrayList();
-            }
-
-            var4.add(ENC.END.cell_business_periodYear);
-            var4.add(ENC.END.cell_business_periodMonth);
-            String var13 = var11 != null ? var11.name() : null;
-            if (var13 != null) {
-                var5.add(new FDU(FLN, var13));
-            }
-
-            String var14 = var12 != null ? var12.name() : null;
-            if (var14 != null) {
-                var5.add(new FDU(FLO, var14));
-            }
-
-            if (var10 != null) {
-                JN var15 = var10.DDN();
-                if (var15.DDJ().getValue() != null) {
-                    var5.add(new FDU(FLV, var15.DDJ().getValue()));
-                }
-
-                if (var15.DDK().getValue() != null) {
-                    var5.add(new FDU(FLW, var15.DDK().getValue()));
-                }
-            }
-
-            if (var5.isEmpty()) {
-                EXF.getInstance().ICK("Query without any predicates.");
-            }
-
-            ArrayList var21 = new ArrayList();
-            FDL var16 = null;
-            if (var7 == null) {
-                var16 = FDL.ASC;
-            } else {
-                var16 = var7;
-            }
-
-            if (var16 != FDL.NONE) {
-                var21.add(new FEA(FLV, var16));
-                var21.add(new FEA(FLW, var16));
-                var21.add(new FEA(FLG, var16));
-            }
-
-            var17 = this.HLZ(var1, var2, var3, var4, var5, var6, var21, var8, var9);
-        } finally {
-            EXF.getInstance().ICP();
+        if (var4 == null) {
+            var4 = new ArrayList();
         }
+
+        if (var5 == null) {
+            var5 = new ArrayList();
+        }
+
+        if (var6 == null) {
+            var6 = new ArrayList();
+        }
+
+        var4.add(ENC.END.cell_business_periodYear);
+        var4.add(ENC.END.cell_business_periodMonth);
+        String var13 = var11 != null ? var11.name() : null;
+        if (var13 != null) {
+            var5.add(new FDU(FLN, var13));
+        }
+
+        String var14 = var12 != null ? var12.name() : null;
+        if (var14 != null) {
+            var5.add(new FDU(FLO, var14));
+        }
+
+        if (var10 != null) {
+            JN var15 = var10.DDN();
+            if (var15.DDJ().getValue() != null) {
+                var5.add(new FDU(FLV, var15.DDJ().getValue()));
+            }
+
+            if (var15.DDK().getValue() != null) {
+                var5.add(new FDU(FLW, var15.DDK().getValue()));
+            }
+        }
+
+        if (var5.isEmpty()) {
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("Query without any predicates.");
+        }
+
+        ArrayList var21 = new ArrayList();
+        FDL var16 = null;
+        if (var7 == null) {
+            var16 = FDL.ASC;
+        } else {
+            var16 = var7;
+        }
+
+        if (var16 != FDL.NONE) {
+            var21.add(new FEA(FLV, var16));
+            var21.add(new FEA(FLW, var16));
+            var21.add(new FEA(FLG, var16));
+        }
+
+        var17 = this.HLZ(var1, var2, var3, var4, var5, var6, var21, var8, var9);
 
         return var17;
     }
 
     private <_T extends KV> EVZ<Integer, List<EDF<_T>>> HLY(FFF var1, String var2, String var3, List<ENC.END> var4, List<FDU<?>> var5, List<FDJ> var6, FDL var7, Integer var8, Integer var9, JN var10, Enum<?> var11, Enum<?> var12) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var17;
-        try {
-            if (var4 == null) {
-                var4 = new ArrayList();
-            }
-
-            if (var5 == null) {
-                var5 = new ArrayList();
-            }
-
-            if (var6 == null) {
-                var6 = new ArrayList();
-            }
-
-            if (var10 != null) {
-                JN var13 = var10.DDN();
-                if (var13.DDJ().getValue() != null) {
-                    var5.add(new FDU(FLV, var13.DDJ().getValue()));
-                }
-
-                if (var13.DDK().getValue() != null) {
-                    var5.add(new FDU(FLW, var13.DDK().getValue()));
-                }
-            }
-
-            String var21 = var11 != null ? var11.name() : null;
-            if (var21 != null) {
-                var5.add(new FDU(FLN, var21));
-            }
-
-            String var14 = var12 != null ? var12.name() : null;
-            if (var14 != null) {
-                var5.add(new FDU(FLO, var14));
-            }
-
-            if (var5.isEmpty()) {
-                EXF.getInstance().ICK("Query without any predicates.");
-            }
-
-            ArrayList var15 = new ArrayList();
-            FDL var16 = null;
-            if (var7 == null) {
-                var16 = FDL.ASC;
-            } else {
-                var16 = var7;
-            }
-
-            if (var16 != FDL.NONE) {
-                var15.add(new FEA(FME, var16));
-                var15.add(new FEA(FMF, var16));
-            }
-
-            var17 = this.HLZ(var1, var2, var3, var4, var5, var6, var15, var8, var9);
-        } finally {
-            EXF.getInstance().ICP();
+        if (var4 == null) {
+            var4 = new ArrayList();
         }
+
+        if (var5 == null) {
+            var5 = new ArrayList();
+        }
+
+        if (var6 == null) {
+            var6 = new ArrayList();
+        }
+
+        if (var10 != null) {
+            JN var13 = var10.DDN();
+            if (var13.DDJ().getValue() != null) {
+                var5.add(new FDU(FLV, var13.DDJ().getValue()));
+            }
+
+            if (var13.DDK().getValue() != null) {
+                var5.add(new FDU(FLW, var13.DDK().getValue()));
+            }
+        }
+
+        String var21 = var11 != null ? var11.name() : null;
+        if (var21 != null) {
+            var5.add(new FDU(FLN, var21));
+        }
+
+        String var14 = var12 != null ? var12.name() : null;
+        if (var14 != null) {
+            var5.add(new FDU(FLO, var14));
+        }
+
+        if (var5.isEmpty()) {
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("Query without any predicates.");
+        }
+
+        ArrayList var15 = new ArrayList();
+        FDL var16 = null;
+        if (var7 == null) {
+            var16 = FDL.ASC;
+        } else {
+            var16 = var7;
+        }
+
+        if (var16 != FDL.NONE) {
+            var15.add(new FEA(FME, var16));
+            var15.add(new FEA(FMF, var16));
+        }
+
+        var17 = this.HLZ(var1, var2, var3, var4, var5, var6, var15, var8, var9);
 
         return var17;
     }
 
     private <_T extends KV> EVZ<Integer, List<EDF<_T>>> HLZ(final FFF var1, String var2, final String var3, List<ENC.END> var4, List<FDU<?>> var5, List<FDJ> var6, List<FEA> var7, Integer var8, Integer var9) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             final Connection var10 = this.FIT;
@@ -1754,279 +1602,259 @@ public class EMX implements ENC {
             if (var5 != null && var5.size() > 0) {
                 var23.addAll(var5);
             } else {
-                EXF.getInstance().ICK("Query without any predicates.");
+                org.slf4j.LoggerFactory.getLogger(getClass()).debug("Query without any predicates.");
             }
 
             ArrayList var24 = new ArrayList();
             if (var7 != null && var7.size() > 0) {
                 var24.addAll(var7);
             } else {
-                EXF.getInstance().ICK("Query without any order.");
+                org.slf4j.LoggerFactory.getLogger(getClass()).debug("Query without any order.");
             }
 
             EVZ var14 = this.HMC(var10, var2, var3, var4, var11, var23, var6, var24, var8, var9, new ENC.ENF<EWD<EDF<_T>>, EDF<_T>>() {
                 private final String TCL = "topElementDef";
 
                 public EWD<EDF<_T>> HNG(List<ENC.END> var1x, String var2, Map<String, Map<Integer, List<FDU<?>>>> var3x) throws Exception {
-                    EXF.getInstance().ICO();
 
-                    try {
-                        HashMap var4 = new HashMap();
-                        HashMap var5 = new HashMap();
-                        Iterator var6 = var3x.entrySet().iterator();
+                    HashMap var4 = new HashMap();
+                    HashMap var5 = new HashMap();
+                    Iterator var6 = var3x.entrySet().iterator();
 
-                        while (var6.hasNext()) {
-                            Map.Entry var7 = (Map.Entry) var6.next();
-                            Iterator var8 = ((Map) var7.getValue()).entrySet().iterator();
+                    while (var6.hasNext()) {
+                        Map.Entry var7 = (Map.Entry) var6.next();
+                        Iterator var8 = ((Map) var7.getValue()).entrySet().iterator();
 
-                            while (var8.hasNext()) {
-                                Map.Entry var9 = (Map.Entry) var8.next();
-                                EWC var10x = this.createWrapper(var1x, (List) var9.getValue());
-                                var4.put(var10x.getFirstValue(), var10x.getThirdValue());
-                                var5.put(var10x.getSecondValue(), var10x.getFirstValue());
-                            }
+                        while (var8.hasNext()) {
+                            Map.Entry var9 = (Map.Entry) var8.next();
+                            EWC var10x = this.createWrapper(var1x, (List) var9.getValue());
+                            var4.put(var10x.getFirstValue(), var10x.getThirdValue());
+                            var5.put(var10x.getSecondValue(), var10x.getFirstValue());
+                        }
+                    }
+
+                    EDF var14 = null;
+                    String var15 = "topElementDef";
+                    EDF var16 = null;
+
+                    do {
+                        var15 = (String) var5.get(var15);
+                        if (var16 == null) {
+                            var16 = (EDF) var4.get(var15);
+                        } else if (var15 != null) {
+                            EDF var17 = (EDF) var4.get(var15);
+                            var16.setChild(var17);
+                            var17.setParent(var16);
+                            var16 = var17;
                         }
 
-                        EDF var14 = null;
-                        String var15 = "topElementDef";
-                        EDF var16 = null;
+                        if (var2.equals(var15)) {
+                            var14 = var16;
+                        }
+                    } while (var15 != null);
 
-                        do {
-                            var15 = (String) var5.get(var15);
-                            if (var16 == null) {
-                                var16 = (EDF) var4.get(var15);
-                            } else if (var15 != null) {
-                                EDF var17 = (EDF) var4.get(var15);
-                                var16.setChild(var17);
-                                var17.setParent(var16);
-                                var16 = var17;
-                            }
-
-                            if (var2.equals(var15)) {
-                                var14 = var16;
-                            }
-                        } while (var15 != null);
-
-                        EWD var18 = new EWD(var14);
-                        return var18;
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
+                    EWD var18 = new EWD(var14);
+                    return var18;
                 }
 
                 private EWC<String, String, EDF<_T>> createWrapper(List<ENC.END> var1x, List<FDU<?>> var2) {
-                    EXF.getInstance().ICO();
 
-                    try {
-                        String var3x = null;
-                        String var4 = null;
-                        HashMap var5 = new HashMap();
-                        Iterator var6 = var2.iterator();
+                    String var3x = null;
+                    String var4 = null;
+                    HashMap var5 = new HashMap();
+                    Iterator var6 = var2.iterator();
 
-                        while (var6.hasNext()) {
-                            FDU var7 = (FDU) var6.next();
-                            String var8 = var7.getName();
-                            ENC.END var9 = ENC.END.getDefinedCellByName(var8);
-                            Object var10x = var7.getValue();
-                            switch (var9) {
-                                case cell_technical_id:
-                                    var3x = (String) var10x;
-                                    break;
-                                case cell_technical_parentid:
-                                    var4 = (String) var10x;
-                                    break;
-                                case cell_technical_type:
-                                case cell_technical_subType:
-                                case cell_technical_typeclass:
-                                    var5.put(var8, var10x);
-                                    break;
-                                case cell_business_periodYear:
-                                    var5.put(var8, var10x);
-                                    break;
-                                case cell_business_periodMonth:
-                                    var5.put(var8, var10x);
-                                    break;
-                                default:
-                                    if (var1x != null && var1x.contains(var9)) {
-                                        FDR var11 = var9.getDefinition();
-                                        FDV var12 = var11.getType();
-                                        switch (var12) {
-                                            case TEXT:
-                                                var5.put(var8, var10x);
-                                                break;
-                                            case INTEGER:
-                                                var5.put(var8, var10x);
-                                                break;
-                                            case TINYINT:
-                                                if (var10x instanceof Integer) {
-                                                    var5.put(var8, ((Integer) var10x).shortValue());
-                                                } else {
-                                                    if (!(var10x instanceof Short)) {
-                                                        throw new FFI("Invalid cell [" + var8 + "] type [" + var10x + "]!");
-                                                    }
-
-                                                    var5.put(var8, var10x);
-                                                }
-                                                break;
-                                            case REAL:
-                                                var5.put(var8, BigDecimal.valueOf((Double) var10x));
-                                                break;
-                                            case BLOB:
-                                                var5.put(var8, var10x);
-                                                break;
-                                            case DATE:
-                                                if (var10x != null) {
-                                                    var5.put(var8, new Date((Long) var10x));
-                                                } else {
-                                                    var5.put(var8, null);
-                                                }
-                                                break;
-                                            default:
-                                                throw new FFI("Unexpected type [" + var12 + "]!");
-                                        }
-                                    }
-                            }
-                        }
-
-                        String var16 = var4 == null ? "topElementDef" : var4;
-                        String finalVar3x = var3x;
-                        EWC var17 = new EWC(var3x, var16, new EDF(new EDE<_T>() {
-                            public _T HGW() throws FFK {
-                                ArrayList var1x = new ArrayList();
-                                ArrayList var2 = new ArrayList();
-                                var2.add(new FDU(ENC.FMJ, finalVar3x));
-                                EWD var3xx = EMX.this.HMD(var10, var3, var1x, var2, new ENC.ENF<EWD<_T>, _T>() {
-                                    private final FFF RUA = var1;
-
-                                    public EWD<_T> HNG(List<ENC.END> var1x, String var2, Map<String, Map<Integer, List<FDU<?>>>> var3xx) throws Exception {
-                                        EXF.getInstance().ICO();
-
-                                        try {
-                                            HashMap var4 = new HashMap();
-                                            HashMap var5 = new HashMap();
-                                            Iterator var6 = var3xx.entrySet().iterator();
-
-                                            while (var6.hasNext()) {
-                                                Map.Entry var7 = (Map.Entry) var6.next();
-                                                Iterator var8 = ((Map) var7.getValue()).entrySet().iterator();
-
-                                                while (var8.hasNext()) {
-                                                    Map.Entry var9 = (Map.Entry) var8.next();
-                                                    EWC var10x = this.createElement((List) var9.getValue());
-                                                    var4.put(var10x.getFirstValue(), var10x.getThirdValue());
-                                                    var5.put(var10x.getSecondValue(), var10x.getFirstValue());
-                                                }
-                                            }
-
-                                            KV var14 = null;
-                                            String var15 = "topElementDef";
-                                            KV var16 = null;
-
-                                            do {
-                                                var15 = (String) var5.get(var15);
-                                                if (var16 == null) {
-                                                    var16 = (KV) var4.get(var15);
-                                                } else if (var15 != null) {
-                                                    KV var17 = (KV) var4.get(var15);
-                                                    var16.setChild(var17);
-                                                    var17.setParent(var16);
-                                                    var16 = var17;
-                                                }
-
-                                                if (var2.equals(var15)) {
-                                                    var14 = var16;
-                                                }
-                                            } while (var15 != null);
-
-                                            EWD var18 = new EWD(var14);
-                                            return var18;
-                                        } finally {
-                                            EXF.getInstance().ICQ();
-                                        }
-                                    }
-
-                                    private EWC<String, String, _T> createElement(List<FDU<?>> var1x) throws Exception {
-                                        EXF.getInstance().ICO();
-
-                                        EWC var22;
-                                        try {
-                                            String var2 = null;
-                                            String var3xx = null;
-                                            Class var4 = null;
-                                            Short var5 = null;
-                                            byte[] var6 = null;
-                                            byte[] var7 = null;
-                                            byte[] var8 = null;
-                                            String var9 = null;
-                                            Integer var10x = null;
-                                            Iterator var11 = var1x.iterator();
-
-                                            while (var11.hasNext()) {
-                                                FDU var12 = (FDU) var11.next();
-                                                String var13 = var12.getName();
-                                                Object var14 = var12.getValue();
-                                                if (ENC.FLD.getName().equals(var13)) {
-                                                    var2 = (String) var14;
-                                                } else if (ENC.FLE.getName().equals(var13)) {
-                                                    var3xx = (String) var14;
-                                                } else if (ENC.FLP.getName().equals(var13)) {
-                                                    var4 = Class.forName((String) var14);
-                                                } else if (ENC.FLQ.getName().equals(var13)) {
-                                                    if (var14 instanceof Integer) {
-                                                        var5 = ((Integer) var14).shortValue();
-                                                    } else {
-                                                        if (!(var14 instanceof Short)) {
-                                                            throw new FFK("Invalid cell [" + var13 + "] type [" + var14 + "]!");
-                                                        }
-
-                                                        var5 = (Short) var14;
-                                                    }
-                                                } else if (ENC.FLK.getName().equals(var13)) {
-                                                    var6 = (byte[]) var14;
-                                                } else if (ENC.FLR.getName().equals(var13)) {
-                                                    var7 = (byte[]) var14;
-                                                } else if (ENC.FLS.getName().equals(var13)) {
-                                                    var8 = (byte[]) var14;
-                                                } else if (ENC.FLX.getName().equals(var13)) {
-                                                    var10x = (Integer) var14;
-                                                } else if (ENC.RHL.getName().equals(var13)) {
-                                                    var9 = (String) var14;
-                                                }
-                                            }
-
-                                            String var19 = var3xx == null ? "topElementDef" : var3xx;
-                                            byte[] var20;
-                                            if (var5 > 0) {
-                                                var20 = EMX.this.QJP(this.RUA, var6, var7, var8, var3, var2);
+                    while (var6.hasNext()) {
+                        FDU var7 = (FDU) var6.next();
+                        String var8 = var7.getName();
+                        ENC.END var9 = ENC.END.getDefinedCellByName(var8);
+                        Object var10x = var7.getValue();
+                        switch (var9) {
+                            case cell_technical_id:
+                                var3x = (String) var10x;
+                                break;
+                            case cell_technical_parentid:
+                                var4 = (String) var10x;
+                                break;
+                            case cell_technical_type:
+                            case cell_technical_subType:
+                            case cell_technical_typeclass:
+                                var5.put(var8, var10x);
+                                break;
+                            case cell_business_periodYear:
+                                var5.put(var8, var10x);
+                                break;
+                            case cell_business_periodMonth:
+                                var5.put(var8, var10x);
+                                break;
+                            default:
+                                if (var1x != null && var1x.contains(var9)) {
+                                    FDR var11 = var9.getDefinition();
+                                    FDV var12 = var11.getType();
+                                    switch (var12) {
+                                        case TEXT:
+                                            var5.put(var8, var10x);
+                                            break;
+                                        case INTEGER:
+                                            var5.put(var8, var10x);
+                                            break;
+                                        case TINYINT:
+                                            if (var10x instanceof Integer) {
+                                                var5.put(var8, ((Integer) var10x).shortValue());
                                             } else {
-                                                var20 = var8;
-                                            }
+                                                if (!(var10x instanceof Short)) {
+                                                    throw new FFI("Invalid cell [" + var8 + "] type [" + var10x + "]!");
+                                                }
 
-                                            KV var21 = EMX.this.QJQ(var20, var4, var3, var2);
-                                            if (var10x != null && var21 instanceof EXM) {
-                                                EXM var15 = (EXM) var21;
-                                                var15.FJI().setValue(var10x);
+                                                var5.put(var8, var10x);
                                             }
-
-                                            if (var9 != null && var21 instanceof KV) {
-                                                var21.setState(QSW.getByKey(var9));
+                                            break;
+                                        case REAL:
+                                            var5.put(var8, BigDecimal.valueOf((Double) var10x));
+                                            break;
+                                        case BLOB:
+                                            var5.put(var8, var10x);
+                                            break;
+                                        case DATE:
+                                            if (var10x != null) {
+                                                var5.put(var8, new Date((Long) var10x));
+                                            } else {
+                                                var5.put(var8, null);
                                             }
+                                            break;
+                                        default:
+                                            throw new FFI("Unexpected type [" + var12 + "]!");
+                                    }
+                                }
+                        }
+                    }
 
-                                            var22 = new EWC(var2, var19, var21);
-                                        } finally {
-                                            EXF.getInstance().ICQ();
+                    String var16 = var4 == null ? "topElementDef" : var4;
+                    String finalVar3x = var3x;
+                    EWC var17 = new EWC(var3x, var16, new EDF(new EDE<_T>() {
+                        public _T HGW() throws FFK {
+                            ArrayList var1x = new ArrayList();
+                            ArrayList var2 = new ArrayList();
+                            var2.add(new FDU(ENC.FMJ, finalVar3x));
+                            EWD var3xx = EMX.this.HMD(var10, var3, var1x, var2, new ENC.ENF<EWD<_T>, _T>() {
+                                private final FFF RUA = var1;
+
+                                public EWD<_T> HNG(List<ENC.END> var1x, String var2, Map<String, Map<Integer, List<FDU<?>>>> var3xx) throws Exception {
+
+                                    HashMap var4 = new HashMap();
+                                    HashMap var5 = new HashMap();
+                                    Iterator var6 = var3xx.entrySet().iterator();
+
+                                    while (var6.hasNext()) {
+                                        Map.Entry var7 = (Map.Entry) var6.next();
+                                        Iterator var8 = ((Map) var7.getValue()).entrySet().iterator();
+
+                                        while (var8.hasNext()) {
+                                            Map.Entry var9 = (Map.Entry) var8.next();
+                                            EWC var10x = this.createElement((List) var9.getValue());
+                                            var4.put(var10x.getFirstValue(), var10x.getThirdValue());
+                                            var5.put(var10x.getSecondValue(), var10x.getFirstValue());
+                                        }
+                                    }
+
+                                    KV var14 = null;
+                                    String var15 = "topElementDef";
+                                    KV var16 = null;
+
+                                    do {
+                                        var15 = (String) var5.get(var15);
+                                        if (var16 == null) {
+                                            var16 = (KV) var4.get(var15);
+                                        } else if (var15 != null) {
+                                            KV var17 = (KV) var4.get(var15);
+                                            var16.setChild(var17);
+                                            var17.setParent(var16);
+                                            var16 = var17;
                                         }
 
-                                        return var22;
+                                        if (var2.equals(var15)) {
+                                            var14 = var16;
+                                        }
+                                    } while (var15 != null);
+
+                                    EWD var18 = new EWD(var14);
+                                    return var18;
+                                }
+
+                                private EWC<String, String, _T> createElement(List<FDU<?>> var1x) throws Exception {
+
+                                    EWC var22;
+                                    String var2 = null;
+                                    String var3xx = null;
+                                    Class var4 = null;
+                                    Short var5 = null;
+                                    byte[] var6 = null;
+                                    byte[] var7 = null;
+                                    byte[] var8 = null;
+                                    String var9 = null;
+                                    Integer var10x = null;
+                                    Iterator var11 = var1x.iterator();
+
+                                    while (var11.hasNext()) {
+                                        FDU var12 = (FDU) var11.next();
+                                        String var13 = var12.getName();
+                                        Object var14 = var12.getValue();
+                                        if (ENC.FLD.getName().equals(var13)) {
+                                            var2 = (String) var14;
+                                        } else if (ENC.FLE.getName().equals(var13)) {
+                                            var3xx = (String) var14;
+                                        } else if (ENC.FLP.getName().equals(var13)) {
+                                            var4 = Class.forName((String) var14);
+                                        } else if (ENC.FLQ.getName().equals(var13)) {
+                                            if (var14 instanceof Integer) {
+                                                var5 = ((Integer) var14).shortValue();
+                                            } else {
+                                                if (!(var14 instanceof Short)) {
+                                                    throw new FFK("Invalid cell [" + var13 + "] type [" + var14 + "]!");
+                                                }
+
+                                                var5 = (Short) var14;
+                                            }
+                                        } else if (ENC.FLK.getName().equals(var13)) {
+                                            var6 = (byte[]) var14;
+                                        } else if (ENC.FLR.getName().equals(var13)) {
+                                            var7 = (byte[]) var14;
+                                        } else if (ENC.FLS.getName().equals(var13)) {
+                                            var8 = (byte[]) var14;
+                                        } else if (ENC.FLX.getName().equals(var13)) {
+                                            var10x = (Integer) var14;
+                                        } else if (ENC.RHL.getName().equals(var13)) {
+                                            var9 = (String) var14;
+                                        }
                                     }
-                                });
-                                return (_T) var3xx.getFirstValue();
-                            }
-                        }, var3x, var5));
-                        return var17;
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
+
+                                    String var19 = var3xx == null ? "topElementDef" : var3xx;
+                                    byte[] var20;
+                                    if (var5 > 0) {
+                                        var20 = EMX.this.QJP(this.RUA, var6, var7, var8, var3, var2);
+                                    } else {
+                                        var20 = var8;
+                                    }
+
+                                    KV var21 = EMX.this.QJQ(var20, var4, var3, var2);
+                                    if (var10x != null && var21 instanceof EXM) {
+                                        EXM var15 = (EXM) var21;
+                                        var15.FJI().setValue(var10x);
+                                    }
+
+                                    if (var9 != null && var21 instanceof KV) {
+                                        var21.setState(QSW.getByKey(var9));
+                                    }
+
+                                    var22 = new EWC(var2, var19, var21);
+
+                                    return var22;
+                                }
+                            });
+                            return (_T) var3xx.getFirstValue();
+                        }
+                    }, var3x, var5));
+                    return var17;
                 }
             });
             ArrayList var15 = new ArrayList();
@@ -2040,63 +1868,54 @@ public class EMX implements ENC {
             EVZ var25 = new EVZ(var14.getFirstValue(), var15);
             return var25;
         } catch (Exception var21) {
-            EXF.getInstance().ICA(var21);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var21);
             throw new FFK(var21);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     private byte[] QJP(FFF var1, byte[] var2, byte[] var3, byte[] var4, String var5, String var6) throws Exception {
-        EXF.getInstance().ICO();
 
         byte[] var7;
         try {
             var7 = var1.ILI(var3, var2, var4);
         } catch (Exception var14) {
-            EXF.getInstance().IBZ("About to move corrupted (encryption) data [" + var5 + " | " + var6 + "] to purgatory.", var14);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("About to move corrupted (encryption) data [" + var5 + " | " + var6 + "] to purgatory.", var14);
             ByteArrayOutputStream var8 = new ByteArrayOutputStream();
             var14.printStackTrace(new PrintStream(var8));
-            String var9 = new String(var8.toByteArray(), StandardCharsets.UTF_8);
+            String var9 = var8.toString(StandardCharsets.UTF_8);
             Connection var10 = this.FIT;
             this.HLG();
             FDB.QIR(var10, this.QIN.get(var5), FLD, var6, var9);
             this.HLF();
-            EXF.getInstance().ICE("Moving corrupted (encryption) data [" + var5 + " | " + var6 + "] to purgatory succeded");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Moving corrupted (encryption) data [" + var5 + " | " + var6 + "] to purgatory succeded");
             throw FCZ.getInstance().QIT(var5, var6, var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var7;
     }
 
     private <_T extends KV> _T QJQ(byte[] var1, Class<_T> var2, String var3, String var4) throws Exception {
-        EXF.getInstance().ICO();
 
         KV var5;
         try {
             var5 = this.HLA(var1, var2);
         } catch (Exception var12) {
-            EXF.getInstance().IBZ("About to move corrupted (unmarshal) data [" + var3 + " | " + var4 + "] to purgatory.", var12);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("About to move corrupted (unmarshal) data [" + var3 + " | " + var4 + "] to purgatory.", var12);
             ByteArrayOutputStream var6 = new ByteArrayOutputStream();
             var12.printStackTrace(new PrintStream(var6));
-            String var7 = new String(var6.toByteArray(), StandardCharsets.UTF_8);
+            String var7 = var6.toString(StandardCharsets.UTF_8);
             Connection var8 = this.FIT;
             this.HLG();
             FDB.QIR(var8, this.QIN.get(var3), FLD, var4, var7);
             this.HLF();
-            EXF.getInstance().ICE("Moving corrupted (unmarshal) data [" + var3 + " | " + var4 + "] to purgatory succeded");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Moving corrupted (unmarshal) data [" + var3 + " | " + var4 + "] to purgatory succeded");
             throw FCZ.getInstance().QIT(var3, var4, var7);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return (_T) var5;
     }
 
     private <_T extends LW> _T HMA(final FFF var1, final String var2, String var3, Class<_T> var4, Integer var5) throws FFK {
-        EXF.getInstance().ICO();
 
         LW var10;
         try {
@@ -2162,17 +1981,14 @@ public class EMX implements ENC {
 
             var10 = null;
         } catch (Exception var14) {
-            EXF.getInstance().ICA(var14);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var14);
             throw new FFK(var14);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return (_T) var10;
     }
 
     private <_A extends EWD<_T>, _T extends KU> EVZ<Integer, List<_A>> HMB(Connection var1, String var2, List<FDX> var3, List<FDU<?>> var4, List<FEA> var5, Integer var6, Integer var7, ENC.ENE<_A, _T> var8) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             if (var8 == null) {
@@ -2196,7 +2012,7 @@ public class EMX implements ENC {
                     var26.IJC(var4);
                     var26.IJK(var5);
                     FDB.IIO(var1, var6, var7, var26);
-                    EXF.getInstance().ICK("count " + var10);
+                    org.slf4j.LoggerFactory.getLogger(getClass()).debug("count " + var10);
                     ArrayList var13 = new ArrayList();
                     Iterator var14 = var26.getResults().iterator();
 
@@ -2213,15 +2029,12 @@ public class EMX implements ENC {
                 }
             }
         } catch (Exception var24) {
-            EXF.getInstance().ICA(var24);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var24);
             throw new FFK(var24);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     private <_A extends EWD<_T>, _T extends KU> EVZ<Integer, List<_A>> HMC(Connection var1, String var2, String var3, List<ENC.END> var4, List<FDX> var5, List<FDU<?>> var6, List<FDJ> var7, List<FEA> var8, Integer var9, Integer var10, ENC.ENF<_A, _T> var11) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             if (var11 == null) {
@@ -2246,7 +2059,7 @@ public class EMX implements ENC {
                         }
                     }
 
-                    EXF.getInstance().ICK("count " + var14);
+                    org.slf4j.LoggerFactory.getLogger(getClass()).debug("count " + var14);
                     FDE var37 = new FDE(FJM, "query_", var2);
                     var37.IJC(var6);
                     var37.IJD(var7);
@@ -2320,15 +2133,12 @@ public class EMX implements ENC {
                 }
             }
         } catch (Exception var35) {
-            EXF.getInstance().ICA(var35);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var35);
             throw new FFK(var35);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     private <_A extends EWD<_T>, _T extends KU> _A HMD(Connection var1, String var2, List<FDX> var3, List<FDU<?>> var4, ENC.ENF<_A, _T> var5) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             if (var5 == null) {
@@ -2342,7 +2152,7 @@ public class EMX implements ENC {
                     if (var3 != null && !var3.isEmpty()) {
                         var7.addAll(var3);
                     } else {
-                        EXF.getInstance().ICK("Query for all columns.");
+                        org.slf4j.LoggerFactory.getLogger(getClass()).debug("Query for all columns.");
                         var7.add(new FDX("*"));
                     }
 
@@ -2409,476 +2219,408 @@ public class EMX implements ENC {
                 }
             }
         } catch (Exception var26) {
-            EXF.getInstance().ICA(var26);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var26);
             throw new FFK(var26);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     public <_T extends LW> void HME(FDO var1, FFF var2, String var3, _T var4) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HML(var1, var2, var3, "preferences", var4);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HML(var1, var2, var3, "preferences", var4);
 
     }
 
     private static HU getInvoiceFirstParent(HN<?> var0) {
-        EXF.getInstance().ICO();
 
-        try {
-            HN var1;
-            for (var1 = var0; var1.getParentInvoiceOnlyActive() != null; var1 = var1.getParentInvoiceOnlyActive()) {
-            }
-
-            HU var2 = (HU) var1;
-            return var2;
-        } finally {
-            EXF.getInstance().ICP();
+        HN var1;
+        for (var1 = var0; var1.getParentInvoiceOnlyActive() != null; var1 = var1.getParentInvoiceOnlyActive()) {
         }
+
+        HU var2 = (HU) var1;
+        return var2;
     }
 
     public void ROD(String var1, EDF<?> var2) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var3 = new ArrayList();
-            ArrayList var4 = new ArrayList();
-            var4.add(new FDU(FLD, var2.getId()));
-            Map var5 = var2.getValuesMap();
-            Iterator var6 = var5.entrySet().iterator();
+        ArrayList var3 = new ArrayList();
+        ArrayList var4 = new ArrayList();
+        var4.add(new FDU(FLD, var2.getId()));
+        Map var5 = var2.getValuesMap();
+        Iterator var6 = var5.entrySet().iterator();
 
-            while (var6.hasNext()) {
-                Map.Entry var7 = (Map.Entry) var6.next();
-                var3.add(new FDU(END.getDefinedCellByName((String) var7.getKey()).getDefinition(), var7.getValue()));
-            }
-
-            this.HMT(this.FIT, var1, var4, var3);
-        } finally {
-            EXF.getInstance().ICP();
+        while (var6.hasNext()) {
+            Map.Entry var7 = (Map.Entry) var6.next();
+            var3.add(new FDU(END.getDefinedCellByName((String) var7.getKey()).getDefinition(), var7.getValue()));
         }
+
+        this.HMT(this.FIT, var1, var4, var3);
     }
 
     public <_T extends HN<?>> void HMF(FDO var1, FFF var2, _T var3) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var4 = new ArrayList();
-            if (var3.getIssuerNumber() != null && var3.getIssuerNumber().getValue() != null) {
-                var4.add(new FDU(FLT, var3.getIssuerNumber().getValue()));
-            }
-
-            if (var3.getRefId() != null && var3.getRefId().getValue() != null) {
-                var4.add(new FDU(FLU, var3.getRefId().getValue()));
-            }
-
-            if (var3.getCreationDate() != null && var3.getCreationDate().getValue() != null) {
-                var4.add(new FDU(FMD, var3.getCreationDate().getValueDate()));
-            }
-
-            HI var6;
-            label319:
-            switch (var3.getInvoiceType()) {
-                case SELL:
-                    if (((HY) var3).getInvoicingDate() != null && ((HY) var3).getInvoicingDate().getValue() != null) {
-                        var4.add(new FDU(FMC, ((HY) var3).getInvoicingDate().getValueDate()));
-                    }
-
-                    switch (var3.getInvoiceSubType()) {
-                        case INVOICE:
-                        case AGGREGATE:
-                            HU var14 = (HU) var3;
-                            if (var14.getAmountSummaryWithoutTax() != null && var14.getAmountSummaryWithoutTax().getValue() != null) {
-                                var4.add(new FDU(FMG, var14.getAmountSummaryWithoutTax().getValue()));
-                            }
-
-                            if (var14.getAmountSummaryWithTax() != null && var14.getAmountSummaryWithTax().getValue() != null) {
-                                var4.add(new FDU(FMH, var14.getAmountSummaryWithTax().getValue()));
-                            }
-
-                            if (var14.getAmountTax() != null && var14.getAmountTax().getValue() != null) {
-                                var4.add(new FDU(FMI, var14.getAmountTax().getValue()));
-                            }
-
-                            if (var3.getTransactionDate() != null && var3.getTransactionDate().getValue() != null) {
-                                var4.add(new FDU(QNR, var3.getTransactionDate().getValueDate()));
-                            }
-
-                            var6 = var14.getContractor();
-                            if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
-                                var4.add(new FDU(FME, var6.getName().getValue()));
-                                var4.add(new FDU(FMF, var6.getNip().getValue()));
-                            }
-                            break label319;
-                        case CORRECTION:
-                            HV var13 = (HV) var3;
-                            if (var13.getDifferenceAmountSummaryWithoutTax() != null && var13.getDifferenceAmountSummaryWithoutTax().getValue() != null) {
-                                var4.add(new FDU(FMG, var13.getDifferenceAmountSummaryWithoutTax().getValue()));
-                            }
-
-                            if (var13.getDifferenceAmountSummaryWithTax() != null && var13.getDifferenceAmountSummaryWithTax().getValue() != null) {
-                                var4.add(new FDU(FMH, var13.getDifferenceAmountSummaryWithTax().getValue()));
-                            }
-
-                            if (var13.getDifferenceAmountTax() != null && var13.getDifferenceAmountTax().getValue() != null) {
-                                var4.add(new FDU(FMI, var13.getDifferenceAmountTax().getValue()));
-                            }
-
-                            HU var15 = getInvoiceFirstParent(var3);
-                            if (var15.getTransactionDate() != null && var15.getTransactionDate().getValue() != null) {
-                                var4.add(new FDU(QNR, var15.getTransactionDate().getValueDate()));
-                            }
-
-                            Object var7;
-                            for (var7 = var13; ((HN) var7).getParentInvoiceOnlyActive() != null; var7 = ((HN) var7).getParentInvoiceOnlyActive()) {
-                            }
-
-                            HU var8 = (HU) var7;
-                            HI var9 = var8.getContractor();
-                            if (var9 != null && var9.getName() != null && var9.getName().getValue() != null) {
-                                var4.add(new FDU(FME, var9.getName().getValue()));
-                                var4.add(new FDU(FMF, var9.getNip().getValue()));
-                            }
-                            break label319;
-                        default:
-                            throw new FFK("Unexpected invoice subtype [" + var3.getInvoiceSubType() + "]!");
-                    }
-                case PURCHASE:
-                    switch (var3.getInvoiceSubType()) {
-                        case INVOICE:
-                        case AGGREGATE:
-                            HR var5 = (HR) var3;
-                            if (var5.getInvoicingDate() != null && var5.getInvoicingDate().getValue() != null) {
-                                var4.add(new FDU(FMC, var5.getInvoicingDate().getValueDate()));
-                            }
-
-                            if (var5.getAmountSummaryWithoutTax() != null && var5.getAmountSummaryWithoutTax().getValue() != null) {
-                                var4.add(new FDU(FMG, var5.getAmountSummaryWithoutTax().getValue()));
-                            }
-
-                            if (var5.getAmountSummaryWithTax() != null && var5.getAmountSummaryWithTax().getValue() != null) {
-                                var4.add(new FDU(FMH, var5.getAmountSummaryWithTax().getValue()));
-                            }
-
-                            if (var5.getAmountTax() != null && var5.getAmountTax().getValue() != null) {
-                                var4.add(new FDU(FMI, var5.getAmountTax().getValue()));
-                            }
-
-                            if (var3.getTransactionDate() != null && var3.getTransactionDate().getValue() != null) {
-                                var4.add(new FDU(QNR, var3.getTransactionDate().getValueDate()));
-                            }
-
-                            var6 = var5.getContractor();
-                            if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
-                                var4.add(new FDU(FME, var6.getName().getValue()));
-                                var4.add(new FDU(FMF, var6.getNip().getValue()));
-                            }
-                            break label319;
-                        default:
-                            throw new FFK("Unexpected invoice subtype [" + var3.getInvoiceSubType() + "]!");
-                    }
-                default:
-                    throw new FFK("Unexpected invoice type [" + var3.getInvoiceType() + "]!");
-            }
-
-            this.HMN(var1, var2, "invoices", var3, var3.getParentInvoiceWithCanceled(), var3.getInvoiceType().name(), var3.getInvoiceSubType().name(), var4);
-        } finally {
-            EXF.getInstance().ICP();
+        ArrayList var4 = new ArrayList();
+        if (var3.getIssuerNumber() != null && var3.getIssuerNumber().getValue() != null) {
+            var4.add(new FDU(FLT, var3.getIssuerNumber().getValue()));
         }
+
+        if (var3.getRefId() != null && var3.getRefId().getValue() != null) {
+            var4.add(new FDU(FLU, var3.getRefId().getValue()));
+        }
+
+        if (var3.getCreationDate() != null && var3.getCreationDate().getValue() != null) {
+            var4.add(new FDU(FMD, var3.getCreationDate().getValueDate()));
+        }
+
+        HI var6;
+        label319:
+        switch (var3.getInvoiceType()) {
+            case SELL:
+                if (((HY) var3).getInvoicingDate() != null && ((HY) var3).getInvoicingDate().getValue() != null) {
+                    var4.add(new FDU(FMC, ((HY) var3).getInvoicingDate().getValueDate()));
+                }
+
+                switch (var3.getInvoiceSubType()) {
+                    case INVOICE:
+                    case AGGREGATE:
+                        HU var14 = (HU) var3;
+                        if (var14.getAmountSummaryWithoutTax() != null && var14.getAmountSummaryWithoutTax().getValue() != null) {
+                            var4.add(new FDU(FMG, var14.getAmountSummaryWithoutTax().getValue()));
+                        }
+
+                        if (var14.getAmountSummaryWithTax() != null && var14.getAmountSummaryWithTax().getValue() != null) {
+                            var4.add(new FDU(FMH, var14.getAmountSummaryWithTax().getValue()));
+                        }
+
+                        if (var14.getAmountTax() != null && var14.getAmountTax().getValue() != null) {
+                            var4.add(new FDU(FMI, var14.getAmountTax().getValue()));
+                        }
+
+                        if (var3.getTransactionDate() != null && var3.getTransactionDate().getValue() != null) {
+                            var4.add(new FDU(QNR, var3.getTransactionDate().getValueDate()));
+                        }
+
+                        var6 = var14.getContractor();
+                        if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
+                            var4.add(new FDU(FME, var6.getName().getValue()));
+                            var4.add(new FDU(FMF, var6.getNip().getValue()));
+                        }
+                        break label319;
+                    case CORRECTION:
+                        HV var13 = (HV) var3;
+                        if (var13.getDifferenceAmountSummaryWithoutTax() != null && var13.getDifferenceAmountSummaryWithoutTax().getValue() != null) {
+                            var4.add(new FDU(FMG, var13.getDifferenceAmountSummaryWithoutTax().getValue()));
+                        }
+
+                        if (var13.getDifferenceAmountSummaryWithTax() != null && var13.getDifferenceAmountSummaryWithTax().getValue() != null) {
+                            var4.add(new FDU(FMH, var13.getDifferenceAmountSummaryWithTax().getValue()));
+                        }
+
+                        if (var13.getDifferenceAmountTax() != null && var13.getDifferenceAmountTax().getValue() != null) {
+                            var4.add(new FDU(FMI, var13.getDifferenceAmountTax().getValue()));
+                        }
+
+                        HU var15 = getInvoiceFirstParent(var3);
+                        if (var15.getTransactionDate() != null && var15.getTransactionDate().getValue() != null) {
+                            var4.add(new FDU(QNR, var15.getTransactionDate().getValueDate()));
+                        }
+
+                        Object var7;
+                        for (var7 = var13; ((HN) var7).getParentInvoiceOnlyActive() != null; var7 = ((HN) var7).getParentInvoiceOnlyActive()) {
+                        }
+
+                        HU var8 = (HU) var7;
+                        HI var9 = var8.getContractor();
+                        if (var9 != null && var9.getName() != null && var9.getName().getValue() != null) {
+                            var4.add(new FDU(FME, var9.getName().getValue()));
+                            var4.add(new FDU(FMF, var9.getNip().getValue()));
+                        }
+                        break label319;
+                    default:
+                        throw new FFK("Unexpected invoice subtype [" + var3.getInvoiceSubType() + "]!");
+                }
+            case PURCHASE:
+                switch (var3.getInvoiceSubType()) {
+                    case INVOICE:
+                    case AGGREGATE:
+                        HR var5 = (HR) var3;
+                        if (var5.getInvoicingDate() != null && var5.getInvoicingDate().getValue() != null) {
+                            var4.add(new FDU(FMC, var5.getInvoicingDate().getValueDate()));
+                        }
+
+                        if (var5.getAmountSummaryWithoutTax() != null && var5.getAmountSummaryWithoutTax().getValue() != null) {
+                            var4.add(new FDU(FMG, var5.getAmountSummaryWithoutTax().getValue()));
+                        }
+
+                        if (var5.getAmountSummaryWithTax() != null && var5.getAmountSummaryWithTax().getValue() != null) {
+                            var4.add(new FDU(FMH, var5.getAmountSummaryWithTax().getValue()));
+                        }
+
+                        if (var5.getAmountTax() != null && var5.getAmountTax().getValue() != null) {
+                            var4.add(new FDU(FMI, var5.getAmountTax().getValue()));
+                        }
+
+                        if (var3.getTransactionDate() != null && var3.getTransactionDate().getValue() != null) {
+                            var4.add(new FDU(QNR, var3.getTransactionDate().getValueDate()));
+                        }
+
+                        var6 = var5.getContractor();
+                        if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
+                            var4.add(new FDU(FME, var6.getName().getValue()));
+                            var4.add(new FDU(FMF, var6.getNip().getValue()));
+                        }
+                        break label319;
+                    default:
+                        throw new FFK("Unexpected invoice subtype [" + var3.getInvoiceSubType() + "]!");
+                }
+            default:
+                throw new FFK("Unexpected invoice type [" + var3.getInvoiceType() + "]!");
+        }
+
+        this.HMN(var1, var2, "invoices", var3, var3.getParentInvoiceWithCanceled(), var3.getInvoiceType().name(), var3.getInvoiceSubType().name(), var4);
 
     }
 
     public <_T extends QSG<?>> void ROE(FDO var1, FFF var2, _T var3) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var4 = new ArrayList();
-            if (var3.getIssuerNumber() != null && var3.getIssuerNumber().getValue() != null) {
-                var4.add(new FDU(FLT, var3.getIssuerNumber().getValue()));
-            }
-
-            if (var3.getRefId() != null && var3.getRefId().getValue() != null) {
-                var4.add(new FDU(FLU, var3.getRefId().getValue()));
-            }
-
-            if (var3.getCreationDate() != null && var3.getCreationDate().getValue() != null) {
-                var4.add(new FDU(FMD, var3.getCreationDate().getValueDate()));
-            }
-
-            HI var6;
-            label201:
-            switch (var3.getInvoiceOtherType()) {
-                case SELL:
-                    if (((QSO) var3).getInvoicingDate() != null && ((QSO) var3).getInvoicingDate().getValue() != null) {
-                        var4.add(new FDU(FMC, ((QSO) var3).getInvoicingDate().getValueDate()));
-                    }
-
-                    switch (var3.getInvoiceOtherSubType()) {
-                        case SELL_REASON_1:
-                        case SELL_REASON_2:
-                        case SELL_REASON_3:
-                        case SELL_REASON_4:
-                            QSN var10 = (QSN) var3;
-                            if (var10.getAmountSummaryWithoutTax() != null && var10.getAmountSummaryWithoutTax().getValue() != null) {
-                                var4.add(new FDU(FMG, var10.getAmountSummaryWithoutTax().getValue()));
-                            }
-
-                            if (var10.getAmountSummaryWithTax() != null && var10.getAmountSummaryWithTax().getValue() != null) {
-                                var4.add(new FDU(FMH, var10.getAmountSummaryWithTax().getValue()));
-                            }
-
-                            if (var10.getAmountTax() != null && var10.getAmountTax().getValue() != null) {
-                                var4.add(new FDU(FMI, var10.getAmountTax().getValue()));
-                            }
-
-                            var6 = var10.getContractor();
-                            if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
-                                var4.add(new FDU(FME, var6.getName().getValue()));
-                                var4.add(new FDU(FMF, var6.getNip().getValue()));
-                            }
-                            break label201;
-                        default:
-                            throw new FFK("Unexpected invoice other subtype [" + var3.getInvoiceOtherSubType() + "]!");
-                    }
-                case PURCHASE:
-                    switch (var3.getInvoiceOtherSubType()) {
-                        case PURCHASE_REASON_1:
-                        case PURCHASE_REASON_2:
-                        case PURCHASE_REASON_3:
-                        case PURCHASE_REASON_4:
-                            QSK var5 = (QSK) var3;
-                            if (var5.getInvoicingDate() != null && var5.getInvoicingDate().getValue() != null) {
-                                var4.add(new FDU(FMC, var5.getInvoicingDate().getValueDate()));
-                            }
-
-                            if (var5.getAmountSummaryWithoutTax() != null && var5.getAmountSummaryWithoutTax().getValue() != null) {
-                                var4.add(new FDU(FMG, var5.getAmountSummaryWithoutTax().getValue()));
-                            }
-
-                            if (var5.getAmountSummaryWithTax() != null && var5.getAmountSummaryWithTax().getValue() != null) {
-                                var4.add(new FDU(FMH, var5.getAmountSummaryWithTax().getValue()));
-                            }
-
-                            if (var5.getAmountTax() != null && var5.getAmountTax().getValue() != null) {
-                                var4.add(new FDU(FMI, var5.getAmountTax().getValue()));
-                            }
-
-                            var6 = var5.getContractor();
-                            if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
-                                var4.add(new FDU(FME, var6.getName().getValue()));
-                                var4.add(new FDU(FMF, var6.getNip().getValue()));
-                            }
-                            break label201;
-                        default:
-                            throw new FFK("Unexpected invoice other subtype [" + var3.getInvoiceOtherSubType() + "]!");
-                    }
-                default:
-                    throw new FFK("Unexpected invoice other type [" + var3.getInvoiceOtherType() + "]!");
-            }
-
-            this.HMN(var1, var2, "invoicesother", var3, var3.getParentInvoiceWithCanceled(), var3.getInvoiceOtherType().name(), var3.getInvoiceOtherSubType().name(), var4);
-        } finally {
-            EXF.getInstance().ICP();
+        ArrayList var4 = new ArrayList();
+        if (var3.getIssuerNumber() != null && var3.getIssuerNumber().getValue() != null) {
+            var4.add(new FDU(FLT, var3.getIssuerNumber().getValue()));
         }
+
+        if (var3.getRefId() != null && var3.getRefId().getValue() != null) {
+            var4.add(new FDU(FLU, var3.getRefId().getValue()));
+        }
+
+        if (var3.getCreationDate() != null && var3.getCreationDate().getValue() != null) {
+            var4.add(new FDU(FMD, var3.getCreationDate().getValueDate()));
+        }
+
+        HI var6;
+        label201:
+        switch (var3.getInvoiceOtherType()) {
+            case SELL:
+                if (((QSO) var3).getInvoicingDate() != null && ((QSO) var3).getInvoicingDate().getValue() != null) {
+                    var4.add(new FDU(FMC, ((QSO) var3).getInvoicingDate().getValueDate()));
+                }
+
+                switch (var3.getInvoiceOtherSubType()) {
+                    case SELL_REASON_1:
+                    case SELL_REASON_2:
+                    case SELL_REASON_3:
+                    case SELL_REASON_4:
+                        QSN var10 = (QSN) var3;
+                        if (var10.getAmountSummaryWithoutTax() != null && var10.getAmountSummaryWithoutTax().getValue() != null) {
+                            var4.add(new FDU(FMG, var10.getAmountSummaryWithoutTax().getValue()));
+                        }
+
+                        if (var10.getAmountSummaryWithTax() != null && var10.getAmountSummaryWithTax().getValue() != null) {
+                            var4.add(new FDU(FMH, var10.getAmountSummaryWithTax().getValue()));
+                        }
+
+                        if (var10.getAmountTax() != null && var10.getAmountTax().getValue() != null) {
+                            var4.add(new FDU(FMI, var10.getAmountTax().getValue()));
+                        }
+
+                        var6 = var10.getContractor();
+                        if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
+                            var4.add(new FDU(FME, var6.getName().getValue()));
+                            var4.add(new FDU(FMF, var6.getNip().getValue()));
+                        }
+                        break label201;
+                    default:
+                        throw new FFK("Unexpected invoice other subtype [" + var3.getInvoiceOtherSubType() + "]!");
+                }
+            case PURCHASE:
+                switch (var3.getInvoiceOtherSubType()) {
+                    case PURCHASE_REASON_1:
+                    case PURCHASE_REASON_2:
+                    case PURCHASE_REASON_3:
+                    case PURCHASE_REASON_4:
+                        QSK var5 = (QSK) var3;
+                        if (var5.getInvoicingDate() != null && var5.getInvoicingDate().getValue() != null) {
+                            var4.add(new FDU(FMC, var5.getInvoicingDate().getValueDate()));
+                        }
+
+                        if (var5.getAmountSummaryWithoutTax() != null && var5.getAmountSummaryWithoutTax().getValue() != null) {
+                            var4.add(new FDU(FMG, var5.getAmountSummaryWithoutTax().getValue()));
+                        }
+
+                        if (var5.getAmountSummaryWithTax() != null && var5.getAmountSummaryWithTax().getValue() != null) {
+                            var4.add(new FDU(FMH, var5.getAmountSummaryWithTax().getValue()));
+                        }
+
+                        if (var5.getAmountTax() != null && var5.getAmountTax().getValue() != null) {
+                            var4.add(new FDU(FMI, var5.getAmountTax().getValue()));
+                        }
+
+                        var6 = var5.getContractor();
+                        if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
+                            var4.add(new FDU(FME, var6.getName().getValue()));
+                            var4.add(new FDU(FMF, var6.getNip().getValue()));
+                        }
+                        break label201;
+                    default:
+                        throw new FFK("Unexpected invoice other subtype [" + var3.getInvoiceOtherSubType() + "]!");
+                }
+            default:
+                throw new FFK("Unexpected invoice other type [" + var3.getInvoiceOtherType() + "]!");
+        }
+
+        this.HMN(var1, var2, "invoicesother", var3, var3.getParentInvoiceWithCanceled(), var3.getInvoiceOtherType().name(), var3.getInvoiceOtherSubType().name(), var4);
 
     }
 
     public <_T extends IN> void HMG(FDO var1, FFF var2, _T var3) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HMN(var1, var2, "receiptrecords", var3, (IK) null, var3.getReceiptRecordType().name(), null, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HMN(var1, var2, "receiptrecords", var3, (IK) null, var3.getReceiptRecordType().name(), null, null);
 
     }
 
     public <_T extends JF> void HMH(FDO var1, FFF var2, _T var3, _T var4) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var5 = new ArrayList();
-            var5.add(new FDU(FLX, var3.FJI().getValue()));
-            this.HMN(var1, var2, "settlements", var3, var4, var3.getSettlementType().name(), null, var5);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ArrayList var5 = new ArrayList();
+        var5.add(new FDU(FLX, var3.FJI().getValue()));
+        this.HMN(var1, var2, "settlements", var3, var4, var3.getSettlementType().name(), null, var5);
 
     }
 
     public <_T extends HJ, _Q extends JF> void HMI(FDO var1, FFF var2, _T var3, _Q var4) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var5 = new ArrayList();
-            var5.add(new FDU(FLX, var3.FJI().getValue()));
-            if (var4 != null) {
-                var5.add(new FDU(FLF, var4.getId()));
-            }
-
-            var5.add(new FDU(FLX, var3.FJI().getValue()));
-            this.HMN(var1, var2, "declarations", var3, (IK) null, var3.getDeclarationType().name(), var3.getDeclarationSubType().name(), var5);
-        } finally {
-            EXF.getInstance().ICP();
+        ArrayList var5 = new ArrayList();
+        var5.add(new FDU(FLX, var3.FJI().getValue()));
+        if (var4 != null) {
+            var5.add(new FDU(FLF, var4.getId()));
         }
+
+        var5.add(new FDU(FLX, var3.FJI().getValue()));
+        this.HMN(var1, var2, "declarations", var3, (IK) null, var3.getDeclarationType().name(), var3.getDeclarationSubType().name(), var5);
 
     }
 
     public <_T extends IC, _Q extends JF> void HMJ(FDO var1, FFF var2, _T var3, _Q var4) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var5 = new ArrayList();
-            var5.add(new FDU(FLX, var3.FJI().getValue()));
-            if (var4 != null) {
-                var5.add(new FDU(FLF, var4.getId()));
-            }
-
-            this.HMN(var1, var2, "invoicerecords", var3, (IK) null, var3.getInvoiceRecordType().name(), null, var5);
-        } finally {
-            EXF.getInstance().ICP();
+        ArrayList var5 = new ArrayList();
+        var5.add(new FDU(FLX, var3.FJI().getValue()));
+        if (var4 != null) {
+            var5.add(new FDU(FLF, var4.getId()));
         }
+
+        this.HMN(var1, var2, "invoicerecords", var3, (IK) null, var3.getInvoiceRecordType().name(), null, var5);
 
     }
 
     public <_T extends HI> void HMK(FDO var1, FFF var2, HI var3) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var4 = new ArrayList();
-            this.HMM(var1, var2, "contacts", var3, null, var3.getType(), null, var4);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ArrayList var4 = new ArrayList();
+        this.HMM(var1, var2, "contacts", var3, null, var3.getType(), null, var4);
 
     }
 
     private <_T extends LW> void HML(FDO var1, FFF var2, String var3, String var4, _T var5) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var5 == null) {
-                throw FCZ.getInstance().IHG();
-            }
-
-            Integer var6;
-            if (var5.getVersion() != null && var5.getVersion().getValue() != null) {
-                var6 = var5.getVersion().getValue();
-            } else {
-                var6 = 0;
-            }
-
-            ArrayList var7 = new ArrayList();
-            var7.add(new FDU(FLJ, var3));
-            var7.add(new FDU(FLP, var5.getClass().getName()));
-            ArrayList var8 = new ArrayList();
-            switch (var1) {
-                case insert:
-                    var8.add(new FDU(FLI, var6));
-                    break;
-                case update:
-                case delete:
-                    var7.add(new FDU(FLI, var6));
-                    break;
-                default:
-                    throw new FFK("Unsupported action type [" + var1 + "]!");
-            }
-
-            this.HMO(this.FIS, var1, var2, var4, var7, var8, this.HKZ(var5));
-        } finally {
-            EXF.getInstance().ICP();
+        if (var5 == null) {
+            throw FCZ.getInstance().IHG();
         }
+
+        Integer var6;
+        if (var5.getVersion() != null && var5.getVersion().getValue() != null) {
+            var6 = var5.getVersion().getValue();
+        } else {
+            var6 = 0;
+        }
+
+        ArrayList var7 = new ArrayList();
+        var7.add(new FDU(FLJ, var3));
+        var7.add(new FDU(FLP, var5.getClass().getName()));
+        ArrayList var8 = new ArrayList();
+        switch (var1) {
+            case insert:
+                var8.add(new FDU(FLI, var6));
+                break;
+            case update:
+            case delete:
+                var7.add(new FDU(FLI, var6));
+                break;
+            default:
+                throw new FFK("Unsupported action type [" + var1 + "]!");
+        }
+
+        this.HMO(this.FIS, var1, var2, var4, var7, var8, this.HKZ(var5));
 
     }
 
     private <_T extends IL> void HMM(FDO var1, FFF var2, String var3, HI var4, _T var5, String var6, String var7, List<FDU<?>> var8) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var4 == null) {
-                throw new FFK("Contractor cannot be NULL!");
-            }
-
-            ArrayList var9 = new ArrayList();
-            ArrayList var10 = new ArrayList();
-            var9.add(new FDU(FLD, var4.getId()));
-            HI var11 = var4.AICD();
-            if (var11.DAI().getValue() == null) {
-                throw new FFK("Name of Contractor cannot be NULL!");
-            }
-
-            var10.add(new FDU(FME, var11.DAI().getValue()));
-            if (var11.DAJ().getValue().length() == 10) {
-                var10.add(new FDU(FMF, var11.DAJ().getValue()));
-            } else {
-                var10.add(new FDU(FMF, null));
-            }
-
-            var10.add(new FDU(FLN, var6));
-            var10.add(new FDU(FLO, var7));
-            var10.add(new FDU(FLP, var4.getClass().getName()));
-            if (var5 != null) {
-                var10.add(new FDU(FLE, var5.getId()));
-            }
-
-            if (var8 != null) {
-                var10.addAll(var8);
-            }
-
-            var10.add(new FDU(QNS, var4.QON()));
-            this.HMO(this.FIT, var1, var2, var3, var9, var10, this.HKZ(var4));
-        } finally {
-            EXF.getInstance().ICP();
+        if (var4 == null) {
+            throw new FFK("Contractor cannot be NULL!");
         }
+
+        ArrayList var9 = new ArrayList();
+        ArrayList var10 = new ArrayList();
+        var9.add(new FDU(FLD, var4.getId()));
+        HI var11 = var4.AICD();
+        if (var11.DAI().getValue() == null) {
+            throw new FFK("Name of Contractor cannot be NULL!");
+        }
+
+        var10.add(new FDU(FME, var11.DAI().getValue()));
+        if (var11.DAJ().getValue().length() == 10) {
+            var10.add(new FDU(FMF, var11.DAJ().getValue()));
+        } else {
+            var10.add(new FDU(FMF, null));
+        }
+
+        var10.add(new FDU(FLN, var6));
+        var10.add(new FDU(FLO, var7));
+        var10.add(new FDU(FLP, var4.getClass().getName()));
+        if (var5 != null) {
+            var10.add(new FDU(FLE, var5.getId()));
+        }
+
+        if (var8 != null) {
+            var10.addAll(var8);
+        }
+
+        var10.add(new FDU(QNS, var4.QON()));
+        this.HMO(this.FIT, var1, var2, var3, var9, var10, this.HKZ(var4));
 
     }
 
     private <_T extends IK> void HMN(FDO var1, FFF var2, String var3, _T var4, _T var5, String var6, String var7, List<FDU<?>> var8) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var9 = new ArrayList();
-            var9.add(new FDU(FLD, var4.getId()));
-            ArrayList var10 = new ArrayList();
-            if (var4.getPeriod() != null) {
-                JN var11 = var4.getPeriod().DDN();
-                if (var11.DDJ().getValue() == null) {
-                    throw new FFK("Period year cannot be NULL!");
-                } else {
-                    var10.add(new FDU(FLV, var11.DDJ().getValue()));
-                    if (var11.DDK().getValue() != null) {
-                        var10.add(new FDU(FLW, var11.DDK().getValue()));
-                        var10.add(new FDU(FLN, var6));
-                        var10.add(new FDU(FLO, var7));
-                        var10.add(new FDU(FLP, var4.getClass().getName()));
-                        if (var5 != null) {
-                            var10.add(new FDU(FLE, var5.getId()));
-                        }
-
-                        if (var8 != null) {
-                            var10.addAll(var8);
-                        }
-
-                        this.HMO(this.FIT, var1, var2, var3, var9, var10, this.HKZ(var4));
-                    } else {
-                        throw new FFK("Period month cannot be NULL!");
-                    }
-                }
+        ArrayList var9 = new ArrayList();
+        var9.add(new FDU(FLD, var4.getId()));
+        ArrayList var10 = new ArrayList();
+        if (var4.getPeriod() != null) {
+            JN var11 = var4.getPeriod().DDN();
+            if (var11.DDJ().getValue() == null) {
+                throw new FFK("Period year cannot be NULL!");
             } else {
-                throw new FFK("Period cannot be NULL!");
+                var10.add(new FDU(FLV, var11.DDJ().getValue()));
+                if (var11.DDK().getValue() != null) {
+                    var10.add(new FDU(FLW, var11.DDK().getValue()));
+                    var10.add(new FDU(FLN, var6));
+                    var10.add(new FDU(FLO, var7));
+                    var10.add(new FDU(FLP, var4.getClass().getName()));
+                    if (var5 != null) {
+                        var10.add(new FDU(FLE, var5.getId()));
+                    }
+
+                    if (var8 != null) {
+                        var10.addAll(var8);
+                    }
+
+                    this.HMO(this.FIT, var1, var2, var3, var9, var10, this.HKZ(var4));
+                } else {
+                    throw new FFK("Period month cannot be NULL!");
+                }
             }
-        } finally {
-            EXF.getInstance().ICP();
+        } else {
+            throw new FFK("Period cannot be NULL!");
         }
     }
 
     private void HMO(Connection var1, FDO var2, FFF var3, String var4, List<FDU<?>> var5, List<FDU<?>> var6, byte[] var7) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             ArrayList var12 = null;
@@ -2926,73 +2668,65 @@ public class EMX implements ENC {
                     throw new FFK("Unsupported action type [" + var2 + "]!");
             }
         } catch (InvalidAlgorithmParameterException | IOException | InvalidKeyException var16) {
-            EXF.getInstance().ICA(var16);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var16);
             throw new FFK(var16);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     public <_T extends IJE> void HMP(FDO var1, _T var2) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2.IYW().getValue() == null || var2.IYX().getValue() == null) {
-                throw new FFK("DictionaryName and dictionaryEntryName must be set!");
-            }
+        if (var2.IYW().getValue() == null || var2.IYX().getValue() == null) {
+            throw new FFK("DictionaryName and dictionaryEntryName must be set!");
+        }
 
-            String var3 = var2.IYW().getValue().toUpperCase();
-            String var4 = var2.IYX().getValue().toUpperCase();
-            ArrayList var5 = new ArrayList();
-            ArrayList var6 = new ArrayList();
-            switch (var1) {
-                case insert:
-                    var5.add(new FDU(FLH, this.FIR));
-                case update:
-                    byte[] var7 = this.HKZ(var2);
-                    var5.add(new FDU(FMA, var3));
-                    var5.add(new FDU(FMB, var4));
-                    var5.add(new FDU(FLP, var2.getClass().getName()));
-                    var5.add(new FDU(FLS, var7));
-                case delete:
-                    break;
-                default:
-                    throw new FFK("Unsupported action type [" + var1 + "]!");
-            }
+        String var3 = var2.IYW().getValue().toUpperCase();
+        String var4 = var2.IYX().getValue().toUpperCase();
+        ArrayList var5 = new ArrayList();
+        ArrayList var6 = new ArrayList();
+        switch (var1) {
+            case insert:
+                var5.add(new FDU(FLH, this.FIR));
+            case update:
+                byte[] var7 = this.HKZ(var2);
+                var5.add(new FDU(FMA, var3));
+                var5.add(new FDU(FMB, var4));
+                var5.add(new FDU(FLP, var2.getClass().getName()));
+                var5.add(new FDU(FLS, var7));
+            case delete:
+                break;
+            default:
+                throw new FFK("Unsupported action type [" + var1 + "]!");
+        }
 
-            switch (var1) {
-                case insert:
-                    break;
-                case update:
-                case delete:
-                    var6.add(new FDU(FMA, var3));
-                    var6.add(new FDU(FMB, var4));
-                    break;
-                default:
-                    throw new FFK("Unsupported action type [" + var1 + "]!");
-            }
+        switch (var1) {
+            case insert:
+                break;
+            case update:
+            case delete:
+                var6.add(new FDU(FMA, var3));
+                var6.add(new FDU(FMB, var4));
+                break;
+            default:
+                throw new FFK("Unsupported action type [" + var1 + "]!");
+        }
 
-            switch (var1) {
-                case insert:
-                    this.HMS(this.FIT, "dictionaries", var6, var5);
-                    break;
-                case update:
-                    this.HMT(this.FIT, "dictionaries", var6, var5);
-                    break;
-                case delete:
-                    this.HMU(this.FIT, "dictionaries", var6);
-                    break;
-                default:
-                    throw new FFK("Unsupported action type [" + var1 + "]!");
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        switch (var1) {
+            case insert:
+                this.HMS(this.FIT, "dictionaries", var6, var5);
+                break;
+            case update:
+                this.HMT(this.FIT, "dictionaries", var6, var5);
+                break;
+            case delete:
+                this.HMU(this.FIT, "dictionaries", var6);
+                break;
+            default:
+                throw new FFK("Unsupported action type [" + var1 + "]!");
         }
 
     }
 
     public <_T extends IJE> List<_T> HMQ(String var1, String var2) throws FFK {
-        EXF.getInstance().ICO();
 
         ArrayList var23;
         try {
@@ -3038,17 +2772,14 @@ public class EMX implements ENC {
                 var23 = var7;
             }
         } catch (ClassNotFoundException | SQLException var21) {
-            EXF.getInstance().ICA(var21);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var21);
             throw new FFK(var21);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var23;
     }
 
     private <_T extends KU> void HMR(Connection var1, String var2, Map<String, FDU<?>> var3) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             FDF var4 = new FDF(FJM, var2);
@@ -3058,16 +2789,13 @@ public class EMX implements ENC {
                 FDB.IIL(var1, var4);
             }
         } catch (SQLException var12) {
-            EXF.getInstance().ICA(var12);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
             throw new FFK(var12);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private <_T extends KU> void HMS(Connection var1, String var2, List<FDU<?>> var3, List<FDU<?>> var4) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             ArrayList var5 = new ArrayList();
@@ -3080,16 +2808,13 @@ public class EMX implements ENC {
                 FDB.IIL(var1, var6);
             }
         } catch (SQLException var14) {
-            EXF.getInstance().ICA(var14);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var14);
             throw new FFK(var14);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private <_T extends KU> void HMT(Connection var1, String var2, List<FDU<?>> var3, List<FDU<?>> var4) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             FDG var5 = new FDG(FJM, var2);
@@ -3099,16 +2824,13 @@ public class EMX implements ENC {
                 FDB.IIM(var1, var5);
             }
         } catch (SQLException var13) {
-            EXF.getInstance().ICA(var13);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var13);
             throw new FFK(var13);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private <_T extends KU> void HMU(Connection var1, String var2, List<FDU<?>> var3) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             FDC var4 = new FDC(FJM, var2);
@@ -3117,10 +2839,8 @@ public class EMX implements ENC {
                 FDB.IIN(var1, var4);
             }
         } catch (SQLException var12) {
-            EXF.getInstance().ICA(var12);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
             throw new FFK(var12);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -3134,7 +2854,6 @@ public class EMX implements ENC {
     }
 
     public Integer getSequenceValue(JN var1, String var2) throws FFK {
-        EXF.getInstance().ICO();
 
         Integer var26;
         try {
@@ -3181,7 +2900,7 @@ public class EMX implements ENC {
                 Object var9 = null;
                 Integer var24;
                 if (var7.getResults().size() == 0) {
-                    var24 = new Integer(1);
+                    var24 = Integer.valueOf(1);
                     FDF var10 = new FDF(FJM, "sequences");
                     var10.IJM(FLV);
                     var10.IJM(FLW);
@@ -3213,17 +2932,14 @@ public class EMX implements ENC {
                 var26 = var24;
             }
         } catch (SQLException var19) {
-            EXF.getInstance().ICA(var19);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var19);
             throw new FFK(var19);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var26;
     }
 
     public Map<String, Map<JN, Integer>> getSequences() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             FDE var1 = new FDE(FJM, "sequences");
@@ -3269,15 +2985,12 @@ public class EMX implements ENC {
                 return var21;
             }
         } catch (SQLException var18) {
-            EXF.getInstance().ICA(var18);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var18);
             throw new FFK(var18);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     public void ROF(JN var1, String var2, Integer var3, Integer var4) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             if (var1 == null || var2 == null || var2.length() <= 0 || var3 == null || var4 == null) {
@@ -3289,55 +3002,37 @@ public class EMX implements ENC {
             var5.IJC(new FDP[]{new FDU(FLV, var1.DDJ().getValue()), new FDU(FLW, var1.DDK().getValue()), new FDU(FLN, var2), new FDU(FLY, var3)});
             FDB.IIM(this.FIT, var5);
         } catch (SQLException var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             throw new FFK(var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public Integer getMaxDocumentIndex_Settlements(JN var1, JH var2) throws FFK {
-        EXF.getInstance().ICO();
 
         Integer var3;
-        try {
-            var3 = this.getMaxDocumentIndex(var1, var2, null, "settlements");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var3 = this.getMaxDocumentIndex(var1, var2, null, "settlements");
 
         return var3;
     }
 
     public Integer getMaxDocumentIndex_InvoiceRecords(JN var1, IH var2) throws FFK {
-        EXF.getInstance().ICO();
 
         Integer var3;
-        try {
-            var3 = this.getMaxDocumentIndex(var1, var2, null, "invoicerecords");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var3 = this.getMaxDocumentIndex(var1, var2, null, "invoicerecords");
 
         return var3;
     }
 
     public Integer getMaxDocumentIndex_Declarations(JN var1, HM var2, AGWW var3) throws FFK {
-        EXF.getInstance().ICO();
 
         Integer var4;
-        try {
-            var4 = this.getMaxDocumentIndex(var1, var2, var3, "declarations");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var4 = this.getMaxDocumentIndex(var1, var2, var3, "declarations");
 
         return var4;
     }
 
     private Integer getMaxDocumentIndex(JN var1, Enum<?> var2, Enum<?> var3, String var4) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             FDE var8;
@@ -3401,40 +3096,28 @@ public class EMX implements ENC {
                 }
             }
         } catch (SQLException var22) {
-            EXF.getInstance().ICA(var22);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var22);
             throw new FFK(var22);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     protected void finalize() throws Throwable {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HMV();
-            super.finalize();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HMV();
+        super.finalize();
 
     }
 
     protected void HMV() throws Throwable {
-        EXF.getInstance().ICO();
 
-        try {
-            if (this.FIS != null && !this.FIS.isClosed()) {
-                this.FIS.rollback();
-                this.FIS.close();
-            }
+        if (this.FIS != null && !this.FIS.isClosed()) {
+            this.FIS.rollback();
+            this.FIS.close();
+        }
 
-            if (this.FIT != null && !this.FIT.isClosed()) {
-                this.FIT.rollback();
-                this.FIT.close();
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (this.FIT != null && !this.FIT.isClosed()) {
+            this.FIT.rollback();
+            this.FIT.close();
         }
 
     }
@@ -3452,7 +3135,7 @@ public class EMX implements ENC {
                 }
             }
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
         }
 
     }

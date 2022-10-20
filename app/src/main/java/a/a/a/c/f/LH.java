@@ -1,12 +1,10 @@
 package a.a.a.c.f;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-
-import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class LH<_T extends JM> extends KX<_T> {
@@ -16,12 +14,12 @@ public abstract class LH<_T extends JM> extends KX<_T> {
     public LH(_T var1) {
         super(var1);
         this.APV = new LI(this);
-        EXF.getInstance().ICQ();
+
     }
 
     public LH() {
         this(null);
-        EXF.getInstance().ICQ();
+
     }
 
     public int compareTo(KX<_T> var1) {

@@ -2,7 +2,6 @@ package a.a.a.c.g;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.g.c.FCZ;
 import javafx.beans.property.BooleanProperty;
 import javafx.concurrent.Task;
@@ -32,7 +31,6 @@ public abstract class MSX {
     }
 
     public void MXH() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
             if (!QHL.tryAcquire()) {
@@ -91,10 +89,8 @@ public abstract class MSX {
             this.QHM.set(true);
             (new Thread(var5)).start();
         } catch (IOException var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             throw new FFI(var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

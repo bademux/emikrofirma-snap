@@ -2,7 +2,6 @@ package a.a.a.c.c.b.a.a.a;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.PasswordFieldRequired_8;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
@@ -22,9 +21,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ResourceBundle;
 
+@Slf4j
 public class EML {
     public static final String FHJ = "changePassword.fxml";
     private boolean FHK;
@@ -62,10 +63,9 @@ public class EML {
 
     @FXML
     protected void fxml_handleButton_changePasswordButton(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [changePassword] clicked");
+            log.info("Button [changePassword] clicked");
             this.FHQ.setValue(false);
             final MTI var2 = new MTI(null);
             MSX var3 = new MSX(this.FHR, this.fxml_parent.disableProperty()) {
@@ -73,10 +73,10 @@ public class EML {
                     try {
                         EML.this.MWD = EMB.getInstance().HJB(EML.this.fxml_oldPasswordFieldPassword.getText(), EML.this.fxml_newPasswordFieldPassword.getText());
                     } catch (FFK var2x) {
-                        EXF.getInstance().ICA(var2x);
+                        log.error("Something bad happened", var2x);
                         var2.setObject(var2x);
                     } catch (Exception var3) {
-                        EXF.getInstance().ICA(var3);
+                        log.error("Something bad happened", var3);
                         var2.setObject(var3);
                     }
 
@@ -100,22 +100,18 @@ public class EML {
 
                             EML.this.FHQ.setValue(true);
                         } else {
-                            EXF.getInstance().ICA((Throwable) var2.getObject());
+                            log.error("Something bad happened", (Throwable) var2.getObject());
                         }
-                    } catch (Exception var5) {
-                        EXF.getInstance().ICA(var5);
-                    } finally {
-                        EXF.getInstance().ICP();
+                    } catch (Exception e) {
+                        log.error("Something bad happened", e);
                     }
 
                 }
             };
             var3.MXH();
-        } catch (FFK var7) {
-            EXF.getInstance().ICA(var7);
-            FCT.IGX(this.FHS.getString("micro.changePassword.applicationException"), var7);
-        } finally {
-            EXF.getInstance().ICP();
+        } catch (FFK e) {
+            log.error("Something bad happened", e);
+            FCT.IGX(this.FHS.getString("micro.changePassword.applicationException"), e);
         }
 
     }
@@ -129,16 +125,11 @@ public class EML {
     }
 
     public void setDefault() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_oldPasswordFieldPassword.clear();
-            this.fxml_newPasswordFieldPassword.clear();
-            this.fxml_newPasswordFieldRepeatedPassword.clear();
-            this.fxml_errorMessageText.setText("");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_oldPasswordFieldPassword.clear();
+        this.fxml_newPasswordFieldPassword.clear();
+        this.fxml_newPasswordFieldRepeatedPassword.clear();
+        this.fxml_errorMessageText.setText("");
 
     }
 
@@ -152,7 +143,6 @@ public class EML {
 
     @FXML
     public void initialize() {
-        EXF.getInstance().ICO();
 
         try {
             if (!(Boolean) EMB.getInstance().getCurrentUser().getUsePassword().getValue()) {
@@ -168,7 +158,7 @@ public class EML {
 
             this.fxml_oldPasswordFieldPassword.textProperty().addListener(new ChangeListener<String>() {
                 public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-                   EML.this.FHL = var3 != null && var3.length() > 0 && !EML.this.fxml_oldPasswordFieldPassword.validProperty().get();
+                    EML.this.FHL = var3 != null && var3.length() > 0 && !EML.this.fxml_oldPasswordFieldPassword.validProperty().get();
 
                     String var4 = "";
                     if (EML.this.FHL) {
@@ -216,7 +206,7 @@ public class EML {
                 public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
                     if (var3 != null && var3.length() > 0) {
                         EML.this.FHN = false;
-                       EML.this.FHM = !EML.this.fxml_newPasswordFieldPassword.validProperty().get();
+                        EML.this.FHM = !EML.this.fxml_newPasswordFieldPassword.validProperty().get();
                     } else {
                         EML.this.FHN = true;
                         EML.this.FHM = false;
@@ -316,9 +306,7 @@ public class EML {
                 }
             });
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
-        } finally {
-            EXF.getInstance().ICP();
+            log.error("Something bad happened", var5);
         }
 
     }

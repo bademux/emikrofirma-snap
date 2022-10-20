@@ -8,7 +8,6 @@ import a.a.a.b.e.a.FEX;
 import a.a.a.b.e.a.a.FEU;
 import a.a.a.b.e.a.a.FEV;
 import a.a.a.b.e.c.FFC;
-import a.a.a.b.e.c.a.FFD;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFN;
@@ -19,10 +18,10 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.d.a.EPV;
 import a.a.a.c.d.a.a.EPP;
 import a.a.a.c.d.d.EQX;
+import a.a.a.c.e.EXK;
 import a.a.a.c.e.a.d.EWD;
 import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHDJ;
 import a.a.a.c.f.a.c.a.AHDW;
@@ -39,6 +38,10 @@ import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCX;
 import a.a.a.c.g.c.FCZ;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.ws.BindingProvider;
+import jakarta.xml.ws.Holder;
+import lombok.extern.slf4j.Slf4j;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.*;
@@ -54,7 +57,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.*;
-import jakarta.xml.bind.JAXBException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -71,10 +73,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import jakarta.xml.ws.BindingProvider;
-import jakarta.xml.ws.Holder;
 import java.io.*;
-import java.math.BigInteger;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
@@ -83,6 +82,7 @@ import java.security.cert.*;
 import java.time.LocalDate;
 import java.util.*;
 
+@Slf4j
 public class EPW {
     private static final String FUU = "MD5";
     private static final String FUV = "SHA-256";
@@ -99,10 +99,9 @@ public class EPW {
     }
 
     public static byte[] HOW(EWX var0, File var1, JN var2, Integer var3, LY var4, List<EDF<IC>> var5) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("About to generate [JPK_VAT] declaration for " + var2 + ", reason [" + var3 + "] into file [" + var1 + "]");
+            log.info("About to generate [JPK_VAT] declaration for " + var2 + ", reason [" + var3 + "] into file [" + var1 + "]");
             if (var1 == null) {
                 throw new FFI("No output file definition!");
             } else {
@@ -125,25 +124,24 @@ public class EPW {
                 EWX.IBJ(var0, 0.01, 0L, 0L);
                 byte[] var18 = EQF.HQD(var0, "MD5", var1, String.valueOf(var3), var2, var4, var6, var7);
                 EWX.IBJ(var0, 1.0, 0L, 0L);
-                EXF.getInstance().ICE("Declaration [JPK_VAT] for " + var2 + ", reason [" + var3 + "] generated.");
+                log.info("Declaration [JPK_VAT] for " + var2 + ", reason [" + var3 + "] generated.");
                 byte[] var19 = var18;
                 return var19;
             }
         } catch (Exception var16) {
-            EXF.getInstance().ICA(var16);
+            log.error("Something bad happened", var16);
             throw new FFK(var16);
         } finally {
             EWX.IBJ(var0, 1.0, 0L, 0L);
-            EXF.getInstance().ICP();
+
         }
     }
 
     public static byte[] QOL(EWX var0, File var1, LocalDate var2, LocalDate var3, LY var4, List<HY> var5) throws FFK {
-        EXF.getInstance().ICO();
 
         byte[] var7;
         try {
-            EXF.getInstance().ICE("About to generate [JPK_FA] declaration from " + var2.toString() + " to " + var3.toString() + ", into file [" + var1 + "]");
+            log.info("About to generate [JPK_FA] declaration from " + var2.toString() + " to " + var3.toString() + ", into file [" + var1 + "]");
             if (var1 == null) {
                 throw new FFI("No output file definition!");
             }
@@ -151,25 +149,25 @@ public class EPW {
             EWX.IBJ(var0, 0.01, 0L, 0L);
             byte[] var6 = EQF.RPC(var0, "MD5", var1, var2, var3, var4, var5);
             EWX.IBJ(var0, 1.0, 0L, 0L);
-            EXF.getInstance().ICE("Declaration [JPK_FA] from " + var2 + " to " + var3 + ",  generated.");
+            log.info("Declaration [JPK_FA] from " + var2 + " to " + var3 + ",  generated.");
             var7 = var6;
         } catch (Exception var11) {
-            EXF.getInstance().ICA(var11);
+            log.error("Something bad happened", var11);
             throw new FFK(var11);
         } finally {
             EWX.IBJ(var0, 1.0, 0L, 0L);
-            EXF.getInstance().ICP();
+
         }
 
         return var7;
     }
 
     public static byte[] HOX(EWX var0, File var1) throws FFK {
-        EXF.getInstance().ICO();
+
         FileInputStream var2 = null;
 
         try {
-            EXF.getInstance().ICE("About to calculate file [" + var1 + "] checksum");
+            log.info("About to calculate file [" + var1 + "] checksum");
             Object var3 = null;
             if (var1 == null) {
                 throw new FFI("No input file definition!");
@@ -186,12 +184,12 @@ public class EPW {
 
                 var6.close();
                 byte[] var18 = var4.digest();
-                EXF.getInstance().ICE("File [" + var1 + "] checksum calculated. " + (new JT(var18)).getValueHexString());
+                log.info("File [" + var1 + "] checksum calculated. " + (new JT(var18)).getValueHexString());
                 byte[] var19 = var18;
                 return var19;
             }
         } catch (Exception var16) {
-            EXF.getInstance().ICA(var16);
+            log.error("Something bad happened", var16);
             throw new FFK(var16);
         } finally {
             EWX.IBJ(var0, 1.0, 0L, 0L);
@@ -199,20 +197,18 @@ public class EPW {
                 try {
                     var2.close();
                 } catch (IOException var15) {
-                    EXF.getInstance().ICA(var15);
+                    log.error("Something bad happened", var15);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
     }
 
     public static AGXC HOY() throws FFK {
-        EXF.getInstance().ICO();
 
         AGXC var4;
         try {
-            EXF.getInstance().ICE("About to generate AES256 key and InitialisationVector");
+            log.info("About to generate AES256 key and InitialisationVector");
             SecretKey var0 = EQP.HQQ();
             Random var1 = new Random(System.nanoTime());
             byte[] var2 = new byte[16];
@@ -222,32 +218,30 @@ public class EPW {
             var3.setSecretKeyBytes(new JT(var0.getEncoded()));
             var3.setSecretKeyAlgorithm(new KO(var0.getAlgorithm()));
             var3.setSecretKeyFormat(new KO(var0.getFormat()));
-            EXF.getInstance().ICE("AES256 key and InitialisationVector generated");
+            log.info("AES256 key and InitialisationVector generated");
             var4 = var3;
         } catch (Exception var8) {
-            EXF.getInstance().ICA(var8);
+            log.error("Something bad happened", var8);
             throw new FFI(var8);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var4;
     }
 
     public static boolean HOZ(EWX var0, AGWN var1) throws FFK {
-        EXF.getInstance().ICO();
+
         FileInputStream var2 = null;
 
         boolean var22;
         try {
             String var3 = AHDJ.AIDF(",", true);
             File var4 = var1.getDeclarationFile();
-            EXF.getInstance().ICK("declarationInputFile " + var4);
-            EXF.getInstance().ICE("About to validate the declaration input file [" + var4.getAbsolutePath() + "]");
+            log.debug("declarationInputFile " + var4);
+            log.info("About to validate the declaration input file [" + var4.getAbsolutePath() + "]");
             AGXA var5 = var1.getDeclarationFileSchema();
-            EXF.getInstance().ICK("jpkSchemaType " + var5);
+            log.debug("jpkSchemaType " + var5);
             URL var6 = var5.getUrl();
-            EXF.getInstance().ICK("schemaFileURL " + var6);
+            log.debug("schemaFileURL " + var6);
             File var7 = new File(var1.getContextDir(), var1.getDeclarationFileName() + "_validationReport.log");
             final FileOutputStream var8 = new FileOutputStream(var7);
             var8.write(var3.getBytes(StandardCharsets.UTF_8));
@@ -279,7 +273,6 @@ public class EPW {
                     }
 
                     private void handle(FCX.FCY var1, SAXParseException var2) {
-                        EXF.getInstance().ICO();
 
                         try {
                             var9.setFirstValue((Integer) var9.getFirstValue() + 1);
@@ -287,9 +280,7 @@ public class EPW {
                             var8.write(var3.getBytes(StandardCharsets.UTF_8));
                             var8.flush();
                         } catch (IOException var7) {
-                            EXF.getInstance().ICA(var7);
-                        } finally {
-                            EXF.getInstance().ICP();
+                            log.error("Something bad happened", var7);
                         }
 
                     }
@@ -315,11 +306,11 @@ public class EPW {
                 }
 
                 var1.setDeclarationFileValid(true);
-                EXF.getInstance().ICE("Input file [" + var1.getDeclarationFile() + "] validation successful");
+                log.info("Input file [" + var1.getDeclarationFile() + "] validation successful");
                 var22 = true;
             } catch (IOException | XMLStreamException | SAXException var51) {
                 SAXException var10 = (SAXException) var51;
-                EXF.getInstance().ICA(var51);
+                log.error("Something bad happened", var51);
 
                 try {
                     FCX.FCY var11 = FCX.FCY.ERROR;
@@ -328,7 +319,7 @@ public class EPW {
                     var8.write(var12.getBytes(StandardCharsets.UTF_8));
                     var8.flush();
                 } catch (IOException var50) {
-                    EXF.getInstance().ICA(var51);
+                    log.error("Something bad happened", var51);
                 }
 
                 var1.setDeclarationFileValid(false);
@@ -339,13 +330,13 @@ public class EPW {
                     try {
                         var8.close();
                     } catch (IOException var49) {
-                        EXF.getInstance().ICA(var49);
+                        log.error("Something bad happened", var49);
                     }
                 }
 
             }
         } catch (Exception var53) {
-            EXF.getInstance().ICA(var53);
+            log.error("Something bad happened", var53);
             throw new FFK(var53);
         } finally {
             EWX.IBJ(var0, 1.0, 0L, 0L);
@@ -353,32 +344,31 @@ public class EPW {
                 try {
                     var2.close();
                 } catch (IOException var48) {
-                    EXF.getInstance().ICA(var48);
+                    log.error("Something bad happened", var48);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
 
         return var22;
     }
 
     public static boolean HPA(EWX var0, AGWN var1) throws FFK {
-        EXF.getInstance().ICO();
+
         Object var2 = null;
 
         try {
             String var3 = AHDJ.AIDG(",", true);
             File var4 = var1.getDeclarationFile();
-            EXF.getInstance().ICE("About to validate the declaration input file [" + var4.getAbsolutePath() + "]");
+            log.info("About to validate the declaration input file [" + var4.getAbsolutePath() + "]");
             AGXA var5 = var1.getDeclarationFileSchema();
-            EXF.getInstance().ICK("jpkSchemaType " + var5);
+            log.debug("jpkSchemaType " + var5);
             URL var6 = var5.getUrl();
-            EXF.getInstance().ICK("schemaFileURL " + var6);
+            log.debug("schemaFileURL " + var6);
             if (AGXA.AHSV.getKodFormularza().equals(var5.getKodFormularza()) && AGXA.AHSV.getKodSystemowy().equals(var5.getKodSystemowy()) && AGXA.AHSV.getWersjaSchemy().equals(var5.getWersjaSchemy()) && AGXA.AHSV.getWariantFormularza().equals(var5.getWariantFormularza())) {
                 HK var54 = (HK) var1;
                 if (var54.AICF()) {
-                    EXF.getInstance().ICE("About to verify the input file [" + var4.getAbsolutePath() + "]");
+                    log.info("About to verify the input file [" + var4.getAbsolutePath() + "]");
                     FileInputStream var55 = null;
                     File var9 = new File(var1.getContextDir(), var1.getDeclarationFileName() + "_verificationReport.log");
                     final FileOutputStream var10 = new FileOutputStream(var9);
@@ -413,7 +403,6 @@ public class EPW {
                             }
 
                             private void handle(FCX.FCY var1, SAXParseException var2) {
-                                EXF.getInstance().ICO();
 
                                 try {
                                     var11.setFirstValue((Integer) var11.getFirstValue() + 1);
@@ -421,9 +410,7 @@ public class EPW {
                                     var10.write(var3.getBytes(StandardCharsets.UTF_8));
                                     var10.flush();
                                 } catch (IOException var7) {
-                                    EXF.getInstance().ICA(var7);
-                                } finally {
-                                    EXF.getInstance().ICP();
+                                    log.error("Something bad happened", var7);
                                 }
 
                             }
@@ -443,7 +430,7 @@ public class EPW {
                         FFL var25 = new FFL(var9, (Integer) var11.getFirstValue(), var3);
                         AHCI var26;
                         if (var60 && (Integer) var11.getFirstValue() == 0) {
-                            EXF.getInstance().ICE("Input file [" + var1.getDeclarationFile() + "] validation successful");
+                            log.info("Input file [" + var1.getDeclarationFile() + "] validation successful");
                             var26 = var17.getFinalActionResult();
                             switch (var26) {
                                 case SUCCESS:
@@ -466,7 +453,7 @@ public class EPW {
                                 case ERROR:
                                     FCR.IGL(FCW.getInstance().getMessageForKey("micro.jpk.sendout.dialog.processing.information.title"), FCW.getInstance().getMessageForKey("micro.jpk.sendout.dialog.processing.information.verification").replaceFirst("##STATUS##", var26.getDescription()), var9, false);
                                 case SUCCESS:
-                                    EXF.getInstance().ICE("Input successfully file verified for file [" + var4.getAbsolutePath() + "] with result [" + var26 + "]");
+                                    log.info("Input successfully file verified for file [" + var4.getAbsolutePath() + "] with result [" + var26 + "]");
                                     boolean var27 = true;
                                     return var27;
                                 default:
@@ -486,8 +473,7 @@ public class EPW {
                         }
                     } catch (ParserConfigurationException | JAXBException var50) {
                         Exception var12 = var50;
-                        EXF.getInstance().IBZ(var1.getId(), var50);
-
+                        log.error("Something bad happened id {}", var1.getId(), var50);
                         try {
                             FCX.FCY var13 = FCX.FCY.ERROR;
                             var11.setFirstValue((Integer) var11.getFirstValue() + 1);
@@ -495,7 +481,7 @@ public class EPW {
                             var10.write(var14.getBytes(StandardCharsets.UTF_8));
                             var10.flush();
                         } catch (IOException var49) {
-                            EXF.getInstance().ICA(var50);
+                            log.error("Something bad happened", var50);
                         }
 
                         var1.setDeclarationFileVerificationResult(AHCI.ERROR);
@@ -520,7 +506,7 @@ public class EPW {
                 return var7;
             }
         } catch (Exception var52) {
-            EXF.getInstance().ICA(var52);
+            log.error("Something bad happened", var52);
             throw new FFK(var52);
         } finally {
             EWX.IBJ(var0, 1.0, 0L, 0L);
@@ -528,22 +514,21 @@ public class EPW {
                 try {
                     ((InputStream) var2).close();
                 } catch (IOException var48) {
-                    EXF.getInstance().ICA(var48);
+                    log.error("Something bad happened", var48);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
     }
 
     public static boolean HPB(EWX var0, AGWN var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
+
         FileInputStream var2 = null;
 
         boolean var14;
         try {
             File var3 = var1.getDeclarationFile();
-            EXF.getInstance().ICE("Generate input file SHA256 checksum of file [" + var3.getAbsolutePath() + "]");
+            log.info("Generate input file SHA256 checksum of file [" + var3.getAbsolutePath() + "]");
             MessageDigest var4 = MessageDigest.getInstance("MD5");
             MessageDigest var5 = MessageDigest.getInstance("SHA-256");
             var2 = new FileInputStream(var3);
@@ -566,7 +551,7 @@ public class EPW {
                 return var14;
             }
 
-            EXF.getInstance().ICE("Input file SHA256 checksum generated for file [" + var1.getDeclarationFile() + "]");
+            log.info("Input file SHA256 checksum generated for file [" + var1.getDeclarationFile() + "]");
             var14 = true;
         } catch (NoSuchAlgorithmException | IOException var24) {
             throw new FFK(var24);
@@ -576,41 +561,36 @@ public class EPW {
                 try {
                     var2.close();
                 } catch (IOException var23) {
-                    EXF.getInstance().ICA(var23);
+                    log.error("Something bad happened", var23);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
 
         return var14;
     }
 
     public static void HPC(AGWN var0) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("About to compress input file [" + var0.getDeclarationFile() + "]");
+            log.info("About to compress input file [" + var0.getDeclarationFile() + "]");
             File var1 = var0.getDeclarationFile();
             String var2 = "zippedFile_" + System.nanoTime() + ".zip";
             File var3 = null;
             var3 = new File(var0.getContextDir(), var2);
             FEJ.IKC(false, var3, var1);
             var0.setZipFile(var3);
-            EXF.getInstance().ICE("Input compressed for file [" + var0.getDeclarationFile() + "]");
+            log.info("Input compressed for file [" + var0.getDeclarationFile() + "]");
         } catch (IOException var7) {
             throw new FFK(var7);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public static void HPD(AGWN var0) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("About to split compressed input file [" + var0.getZipFile().getAbsolutePath() + "]");
+            log.info("About to split compressed input file [" + var0.getZipFile().getAbsolutePath() + "]");
             File var1 = var0.getZipFile();
             List var2 = FEJ.IKD(var1, var0.getContextDir(), 62914560L);
             Iterator var3 = var2.iterator();
@@ -621,29 +601,21 @@ public class EPW {
                 var0.getZipFileList().add(var5);
             }
 
-            EXF.getInstance().ICE("Compressed input splitted for file [" + var0.getZipFile().getAbsolutePath() + "]");
+            log.info("Compressed input splitted for file [" + var0.getZipFile().getAbsolutePath() + "]");
         } catch (IOException var9) {
             throw new FFK(var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     public static void HPE(AGXC var0, AGWN var1) throws FFK, FFN {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var2 = new ArrayList();
-            var2.add(var1);
-            HPE(var0, var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ArrayList var2 = new ArrayList();
+        var2.add(var1);
+        HPE(var0, var2);
 
     }
 
     public static void HPE(AGXC var0, List<AGWN> var1) throws FFK, FFN {
-        EXF.getInstance().ICO();
 
         try {
             IvParameterSpec var2 = new IvParameterSpec(var0.getInitialisationVector().getValue());
@@ -658,17 +630,14 @@ public class EPW {
         } catch (NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException |
                  NoSuchAlgorithmException var9) {
             throw new FFK(var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private static void HPF(Cipher var0, AGWN var1) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("About to encrypt all parts of splitted compressed file [" + var1.getZipFile().getAbsolutePath() + "]");
+            log.info("About to encrypt all parts of splitted compressed file [" + var1.getZipFile().getAbsolutePath() + "]");
             Iterator var2 = var1.getZipFileList().iterator();
 
             while (var2.hasNext()) {
@@ -712,49 +681,36 @@ public class EPW {
                 }
             }
 
-            EXF.getInstance().ICE("All parts of splitted compressed file encrypted for file [" + var1.getZipFile().getAbsolutePath() + "]");
+            log.info("All parts of splitted compressed file encrypted for file [" + var1.getZipFile().getAbsolutePath() + "]");
         } catch (IOException var31) {
             throw new FFK(var31);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     public static void HPG(AGXC var0, AGWN var1, Certificate var2) throws FFN, FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var3 = new ArrayList();
-            var3.add(var1);
-            HPG(var0, var3, var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ArrayList var3 = new ArrayList();
+        var3.add(var1);
+        HPG(var0, var3, var2);
 
     }
 
     public static void HPG(AGXC var0, List<AGWN> var1, Certificate var2) throws FFN, FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            String var3 = EQP.HQU(var0.getSecretKeyBytes().getValue(), var2);
-            Iterator var4 = var1.iterator();
+        String var3 = EQP.HQU(var0.getSecretKeyBytes().getValue(), var2);
+        Iterator var4 = var1.iterator();
 
-            while (var4.hasNext()) {
-                AGWN var5 = (AGWN) var4.next();
-                HPH(var3, var0.getInitialisationVector(), var5);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        while (var4.hasNext()) {
+            AGWN var5 = (AGWN) var4.next();
+            HPH(var3, var0.getInitialisationVector(), var5);
         }
 
     }
 
     private static void HPH(String var0, JT var1, AGWN var2) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("About to create InitUpload file for input file [" + var2.getDeclarationFile() + "]");
+            log.info("About to create InitUpload file for input file [" + var2.getDeclarationFile() + "]");
             ObjectFactory var3 = new ObjectFactory();
             File var4 = var2.getDeclarationFile();
             AGXA var5 = var2.getDeclarationFileSchema();
@@ -833,78 +789,71 @@ public class EPW {
             byte[] var34 = var33.IKU(var3.createInitUpload(var8));
             var7.setValue(var34);
             var2.setInitUploadSignedFile(var7);
-            EXF.getInstance().ICE("InitUpload file created for input file [" + var2.getDeclarationFile() + "]");
+            log.info("InitUpload file created for input file [" + var2.getDeclarationFile() + "]");
         } catch (JAXBException | NoSuchAlgorithmException | IOException var31) {
             throw new FFK(var31);
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     public static boolean HPI(EWX var0, AGWN var1) throws FFK {
-        EXF.getInstance().ICO();
 
         boolean var24;
         try {
-            EXF.getInstance().ICE("About to valida InitUploadFile of input file [" + var1.getDeclarationFile() + "]");
+            log.info("About to valida InitUploadFile of input file [" + var1.getDeclarationFile() + "]");
             JT var2 = var1.getInitUploadSignedFile();
             boolean var3 = false;
 
+            final FFM var5;
             try {
-                final FFM var5;
-                try {
-                    EWW var23 = new EWW(new ByteArrayInputStream(var2.getValue()), var2.getValue().length, var0);
-                    var5 = new FFM();
-                    XMLInputFactory var6 = XMLInputFactory.newInstance();
-                    XMLStreamReader var7 = var6.createXMLStreamReader(var23);
-                    StAXSource var8 = new StAXSource(var7);
-                    SchemaFactory var9 = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
-                    Schema var10 = var9.newSchema(EQL.getInstance().getInitUploadXsd());
-                    Validator var11 = var10.newValidator();
-                    var11.setErrorHandler(new ErrorHandler() {
-                        public void warning(SAXParseException var1) throws SAXException {
-                            var5.ILJ(new FCX(FCX.FCY.WARNING, var1));
-                        }
+                EWW var23 = new EWW(new ByteArrayInputStream(var2.getValue()), var2.getValue().length, var0);
+                var5 = new FFM();
+                XMLInputFactory var6 = XMLInputFactory.newInstance();
+                XMLStreamReader var7 = var6.createXMLStreamReader(var23);
+                StAXSource var8 = new StAXSource(var7);
+                SchemaFactory var9 = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
+                Schema var10 = var9.newSchema(EQL.getInstance().getInitUploadXsd());
+                Validator var11 = var10.newValidator();
+                var11.setErrorHandler(new ErrorHandler() {
+                    public void warning(SAXParseException var1) throws SAXException {
+                        var5.ILJ(new FCX(FCX.FCY.WARNING, var1));
+                    }
 
-                        public void fatalError(SAXParseException var1) throws SAXException {
-                            var5.ILJ(new FCX(FCX.FCY.FATALERROR, var1));
-                        }
+                    public void fatalError(SAXParseException var1) throws SAXException {
+                        var5.ILJ(new FCX(FCX.FCY.FATALERROR, var1));
+                    }
 
-                        public void error(SAXParseException var1) throws SAXException {
-                            var5.ILJ(new FCX(FCX.FCY.ERROR, var1));
-                        }
-                    });
-                    var11.validate(var8);
-                    var1.setInitUploadSignedFileValid(true);
-                    var23.close();
-                    var1.setExceptions(var5);
-                   var3 = var5.getThrowables().size() <= 0;
-                } catch (IOException | XMLStreamException | SAXException var20) {
-                    var1.setInitUploadSignedFileValid(false);
-                    FFM var51 = new FFM();
-                    var51.ILJ(var20);
-                    var1.setExceptions(var51);
-                    throw new FFK(var20);
-                }
-            } finally {
+                    public void error(SAXParseException var1) throws SAXException {
+                        var5.ILJ(new FCX(FCX.FCY.ERROR, var1));
+                    }
+                });
+                var11.validate(var8);
+                var1.setInitUploadSignedFileValid(true);
+                var23.close();
+                var1.setExceptions(var5);
+                var3 = var5.getThrowables().size() <= 0;
+            } catch (IOException | XMLStreamException | SAXException var20) {
+                var1.setInitUploadSignedFileValid(false);
+                FFM var51 = new FFM();
+                var51.ILJ(var20);
+                var1.setExceptions(var51);
+                throw new FFK(var20);
             }
 
-            EXF.getInstance().ICE("InitUpload file validated for the input file [" + var1.getDeclarationFile() + "]");
+            log.info("InitUpload file validated for the input file [" + var1.getDeclarationFile() + "]");
             var24 = var3;
         } finally {
             EWX.IBJ(var0, 1.0, 0L, 0L);
-            EXF.getInstance().ICP();
+
         }
 
         return var24;
     }
 
     private static synchronized byte[] HPJ(String var0, String var1, String var2, X509Certificate var3) throws FFK {
-        EXF.getInstance().ICO();
 
         byte[] var28;
         try {
-            EXF.getInstance().ICE("About to create UqalifyingProperties for signature [" + var0 + "]");
+            log.info("About to create UqalifyingProperties for signature [" + var0 + "]");
             Document var4 = null;
             var4 = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             Element var5 = var4.createElementNS("http://uri.etsi.org/01903/v1.3.2#", "xades:QualifyingProperties");
@@ -953,29 +902,22 @@ public class EPW {
             var21.setTextContent("text/xml");
             ByteArrayOutputStream var27 = new ByteArrayOutputStream();
             TransformerFactory.newInstance().newTransformer().transform(new DOMSource(var4), new StreamResult(var27));
-            EXF.getInstance().ICE("QualifyingProperties created for the signature [" + var0 + "]");
+            log.info("QualifyingProperties created for the signature [" + var0 + "]");
             var28 = var27.toByteArray();
         } catch (NoSuchAlgorithmException | CertificateEncodingException | TransformerException |
-                 TransformerFactoryConfigurationError | ParserConfigurationException var25) {
-            EXF.getInstance().IBZ(var0, var25);
-            throw new FFK(var25);
-        } finally {
-            EXF.getInstance().ICP();
+                 TransformerFactoryConfigurationError | ParserConfigurationException e) {
+            log.error("Something bad happened {}", var0, e);
+            throw new FFK(e);
         }
 
         return var28;
     }
 
     public static void HPK(AGWN var0, FFC var1, X509Certificate var2) throws Exception {
-        EXF.getInstance().ICO();
 
-        try {
-            ArrayList var3 = new ArrayList();
-            var3.add(var0);
-            HPK(var3, var1, var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ArrayList var3 = new ArrayList();
+        var3.add(var0);
+        HPK(var3, var1, var2);
 
     }
 
@@ -984,216 +926,206 @@ public class EPW {
     }
 
     public static boolean HPL(AGWN var0) throws FFN, FFO {
-        EXF.getInstance().ICO();
 
         boolean var2;
-        try {
-            ArrayList var1 = new ArrayList();
-            var1.add(var0);
-            var2 = HPL(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ArrayList var1 = new ArrayList();
+        var1.add(var0);
+        var2 = HPL(var1);
 
         return var2;
     }
 
     public static boolean HPL(List<AGWN> var0) throws FFN, FFO {
-        EXF.getInstance().ICO();
+
         FFM var1 = new FFM();
 
-        try {
-            String var2 = "#" + System.nanoTime();
-            long var3 = 0L;
-            Iterator var5 = var0.iterator();
+        String var2 = "#" + System.nanoTime();
+        long var3 = 0L;
+        Iterator var5 = var0.iterator();
 
-            while (var5.hasNext()) {
-                AGWN var6 = (AGWN) var5.next();
-                JT var7 = var6.getInitUploadSignedFile();
-                var3 += var7.getValue().length;
-                if ((long) var7.getValue().length > 5248000L) {
-                    throw FCZ.getInstance().IHS(String.valueOf(5248000L), String.valueOf(var7.getValue().length), var6.getDeclarationFileName());
-                }
+        while (var5.hasNext()) {
+            AGWN var6 = (AGWN) var5.next();
+            JT var7 = var6.getInitUploadSignedFile();
+            var3 += var7.getValue().length;
+            if ((long) var7.getValue().length > 5248000L) {
+                throw FCZ.getInstance().IHS(String.valueOf(5248000L), String.valueOf(var7.getValue().length), var6.getDeclarationFileName());
             }
+        }
 
-            if (var3 > 20992000L) {
-                throw FCZ.getInstance().IHR(String.valueOf(20992000L), String.valueOf(var3));
-            } else {
+        if (var3 > 20992000L) {
+            throw FCZ.getInstance().IHR(String.valueOf(20992000L), String.valueOf(var3));
+        } else {
+            try {
+                PodpisPZ_Service var49 = new PodpisPZ_Service(PodpisPZ_Service.WSDL_LOCATION, PodpisPZ_Service.SERVICE);
+                PodpisPZ var51 = var49.getPodpisPZSOAP();
+                BindingProvider var53 = (BindingProvider) var51;
+                URL var8 = new URL((String) var53.getRequestContext().get("jakarta.xml.ws.service.endpoint.address"));
+                final String var9 = var8.getHost();
+                var53.getRequestContext().put("com.sun.xml.internal.ws.transport.https.client.hostname.verifier", new HostnameVerifier() {
+                    public boolean verify(String var1, SSLSession var2) {
+                        return var9.equals(var1);
+                    }
+                });
+                var53.getRequestContext().put("com.sun.xml.internal.ws.transport.https.client.SSLSocketFactory", getSSLSocketFactory());
+                ArrayList var10 = new ArrayList();
+                var10.add(new EQX("jpk_podpis_pz", "3ger}97DDx"));
+                var53.getBinding().setHandlerChain(var10);
+                Holder var11 = new Holder();
+                Holder var12 = new Holder();
+                Holder var13 = new Holder();
+                String var14 = "JPKM " + var2;
+                log.info("opisZadania " + var14);
+                ListaDokumentowType var15 = new ListaDokumentowType();
+
+                Object var19;
+                Object var20;
+                for (int var16 = 0; var16 < var0.size(); ++var16) {
+                    AGWN var17 = var0.get(var16);
+                    var17.setSignatureType(EHK.PZ);
+                    JT var18 = var17.getInitUploadSignedFile();
+                    var19 = var17.getDeclarationFileName();
+                    log.info("inputFileName " + var19);
+                    log.info("documentId " + var16);
+                    var20 = new DokumentZadanieType();
+                    ((DokumentZadanieType) var20).setIdDokumentu(var16);
+                    ((DokumentZadanieType) var20).setOpis((String) var19);
+                    ((DokumentZadanieType) var20).setZawartosc(var18.getValue());
+                    var15.getDokument().add((DokumentZadanieType) var20);
+                }
+
+                log.info("About to execute podpisPZ.zadaniePodpisu");
+
                 try {
-                    PodpisPZ_Service var49 = new PodpisPZ_Service(PodpisPZ_Service.WSDL_LOCATION, PodpisPZ_Service.SERVICE);
-                    PodpisPZ var51 = var49.getPodpisPZSOAP();
-                    BindingProvider var53 = (BindingProvider) var51;
-                    URL var8 = new URL((String) var53.getRequestContext().get("jakarta.xml.ws.service.endpoint.address"));
-                    final String var9 = var8.getHost();
-                    var53.getRequestContext().put("com.sun.xml.internal.ws.transport.https.client.hostname.verifier", new HostnameVerifier() {
-                        public boolean verify(String var1, SSLSession var2) {
-                            return var9.equals(var1);
-                        }
-                    });
-                    var53.getRequestContext().put("com.sun.xml.internal.ws.transport.https.client.SSLSocketFactory", getSSLSocketFactory());
-                    ArrayList var10 = new ArrayList();
-                    var10.add(new EQX("jpk_podpis_pz", "3ger}97DDx"));
-                    var53.getBinding().setHandlerChain(var10);
-                    Holder var11 = new Holder();
-                    Holder var12 = new Holder();
-                    Holder var13 = new Holder();
-                    String var14 = "JPKM " + var2;
-                    EXF.getInstance().ICE("opisZadania " + var14);
-                    ListaDokumentowType var15 = new ListaDokumentowType();
-
-                    Object var19;
-                    Object var20;
-                    for (int var16 = 0; var16 < var0.size(); ++var16) {
-                        AGWN var17 = var0.get(var16);
-                        var17.setSignatureType(EHK.PZ);
-                        JT var18 = var17.getInitUploadSignedFile();
-                        var19 = var17.getDeclarationFileName();
-                        EXF.getInstance().ICE("inputFileName " + var19);
-                        EXF.getInstance().ICE("documentId " + var16);
-                        var20 = new DokumentZadanieType();
-                        ((DokumentZadanieType) var20).setIdDokumentu(var16);
-                        ((DokumentZadanieType) var20).setOpis((String) var19);
-                        ((DokumentZadanieType) var20).setZawartosc(var18.getValue());
-                        var15.getDokument().add((DokumentZadanieType) var20);
+                    var51.zadaniePodpisu(var14, var15, var11, var12, var13);
+                } catch (Exception var42) {
+                    log.error("Something bad happened", var42);
+                    File log = new File(EXK.GPW + "/reports/emk.log");
+                    String var57 = var42.getLocalizedMessage();
+                    if (var57 == null) {
+                        var57 = "";
                     }
 
-                    EXF.getInstance().ICE("About to execute podpisPZ.zadaniePodpisu");
-
-                    try {
-                        var51.zadaniePodpisu(var14, var15, var11, var12, var13);
-                    } catch (Exception var42) {
-                        EXF.getInstance().ICA(var42);
-                        File var55 = EXF.getInstance().getDefaultOutputLoggerFile();
-                        String var57 = var42.getLocalizedMessage();
-                        if (var57 == null) {
-                            var57 = "";
-                        }
-
-                        FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.errorGoodLooking") + " ", var55, false);
-                        var19 = false;
-                        return (boolean) var19;
-                    }
-
-                    EXF.getInstance().ICE("podpisPZ.zadaniePodpisu executed");
-                    EXF.getInstance().ICE("wynik " + var11.value);
-                    EXF.getInstance().ICE("adresZadania " + var12.value);
-                    StringBuilder var54 = new StringBuilder();
-                    var54.append((String) var11.value).append(System.lineSeparator());
-                    boolean var56 = true;
-                    if ("200: OK".equalsIgnoreCase((String) var11.value)) {
-                        Iterator var58 = ((ListaDokWynikType) var13.value).getDokument().iterator();
-
-                        while (var58.hasNext()) {
-                            var19 = var58.next();
-                            if (!"200: OK".equalsIgnoreCase(((DokumentWynikType) var19).getWynik())) {
-                                var56 = false;
-                                var54.append(((DokumentWynikType) var19).getIdDokumentu()).append(" ").append(((DokumentWynikType) var19).getWynik()).append(System.lineSeparator());
-                            }
-                        }
-                    } else {
-                        var56 = false;
-                    }
-
-                    if (var56) {
-                        boolean var59;
-                        do {
-                            var59 = true;
-                            var19 = FCR.getConfirmPZDialog(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), 300.0, 100.0, FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.query"), (String) var12.value, FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.context"));
-                            if (!Boolean.TRUE.equals(var19)) {
-                                return false;
-                            }
-
-                            var20 = new Holder();
-                            Holder var21 = new Holder();
-                            ListaDokDoPobraniaType var22 = new ListaDokDoPobraniaType();
-                            Iterator var23 = ((ListaDokWynikType) var13.value).getDokument().iterator();
-
-                            while (var23.hasNext()) {
-                                DokumentWynikType var24 = (DokumentWynikType) var23.next();
-                                DokumentType var25 = new DokumentType();
-                                var25.setIdDokumentu(var24.getIdDokumentu());
-                                var22.getDokument().add(var25);
-                            }
-
-                            EXF.getInstance().ICE("About to execute podpisPZ.pobierzDokumenty");
-
-                            int var26;
-                            try {
-                                var51.pobierzDokumenty((String) var12.value, var22, (Holder) var20, var21);
-                            } catch (Exception var43) {
-                                EXF.getInstance().ICA(var43);
-                                File var61 = EXF.getInstance().getDefaultOutputLoggerFile();
-                                String var63 = var43.getLocalizedMessage();
-                                if (var63 == null) {
-                                    var63 = "";
-                                }
-
-                                FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.errorGoodLooking") + " ", var61, false);
-                                return false;
-                            }
-
-                            EXF.getInstance().ICE("podpisPZ.pobierzDokumenty executed");
-                            EXF.getInstance().ICE("wynik " + ((Holder) var20).value);
-                            StringBuilder var60 = new StringBuilder();
-                            if ("200: OK".equalsIgnoreCase((String) ((Holder) var20).value)) {
-                                Iterator var62 = ((ListaDokPodpisaneType) var21.value).getDokument().iterator();
-
-                                while (var62.hasNext()) {
-                                    DokumentPodpisanyType var64 = (DokumentPodpisanyType) var62.next();
-                                    if ("200: OK".equalsIgnoreCase(var64.getWynik())) {
-                                        for (var26 = 0; var26 < var0.size(); ++var26) {
-                                            if ((long) var26 == var64.getIdDokumentu()) {
-                                                AGWN var27 = var0.get(var26);
-                                                var27.setInitUploadSignedEnvelopedFile(new JT(var64.getPodpisanaZawartosc()));
-                                                break;
-                                            }
-                                        }
-                                    } else {
-                                        var59 = false;
-                                        var60.append(var64.getIdDokumentu()).append(" ").append(var64.getWynik()).append(System.lineSeparator());
-                                    }
-                                }
-                            } else {
-                                var59 = false;
-                            }
-
-                            if (var59) {
-                                FCR.IGF(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.success").replaceFirst("##MESSAGE##", var60.toString()), false, 400.0, 100.0);
-                            } else {
-                                FCR.IGK(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.error").replaceFirst("##MESSAGE##", var60.toString()), false);
-                            }
-                        } while (!var59);
-
-                        var19 = true;
-                        return (boolean) var19;
-                    }
-
-                    FCR.IGK(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.error").replaceFirst("##MESSAGE##", var54.toString()), false);
-                } catch (FFO var44) {
-                    EXF.getInstance().ICA(var44);
-                    throw var44;
-                } catch (Exception var45) {
-                    EXF.getInstance().ICA(var45);
-                    var1.ILJ(var45);
-                } finally {
+                    FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.errorGoodLooking") + " ", log, false);
+                    var19 = false;
+                    return (boolean) var19;
                 }
 
-                if (var1.getThrowables().size() > 0) {
-                    var5 = var1.getThrowables().iterator();
+                log.info("podpisPZ.zadaniePodpisu executed");
+                log.info("wynik " + var11.value);
+                log.info("adresZadania " + var12.value);
+                StringBuilder var54 = new StringBuilder();
+                var54.append((String) var11.value).append(System.lineSeparator());
+                boolean var56 = true;
+                if ("200: OK".equalsIgnoreCase((String) var11.value)) {
+                    Iterator var58 = ((ListaDokWynikType) var13.value).getDokument().iterator();
 
-                    while (var5.hasNext()) {
-                        Throwable var52 = (Throwable) var5.next();
-                        EXF.getInstance().ICA(var52);
+                    while (var58.hasNext()) {
+                        var19 = var58.next();
+                        if (!"200: OK".equalsIgnoreCase(((DokumentWynikType) var19).getWynik())) {
+                            var56 = false;
+                            var54.append(((DokumentWynikType) var19).getIdDokumentu()).append(" ").append(((DokumentWynikType) var19).getWynik()).append(System.lineSeparator());
+                        }
                     }
-
-                    throw new FFN(var1.getThrowables());
                 } else {
-                    boolean var50 = false;
-                    return var50;
+                    var56 = false;
                 }
+
+                if (var56) {
+                    boolean var59;
+                    do {
+                        var59 = true;
+                        var19 = FCR.getConfirmPZDialog(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), 300.0, 100.0, FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.query"), (String) var12.value, FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.context"));
+                        if (!Boolean.TRUE.equals(var19)) {
+                            return false;
+                        }
+
+                        var20 = new Holder();
+                        Holder var21 = new Holder();
+                        ListaDokDoPobraniaType var22 = new ListaDokDoPobraniaType();
+                        Iterator var23 = ((ListaDokWynikType) var13.value).getDokument().iterator();
+
+                        while (var23.hasNext()) {
+                            DokumentWynikType var24 = (DokumentWynikType) var23.next();
+                            DokumentType var25 = new DokumentType();
+                            var25.setIdDokumentu(var24.getIdDokumentu());
+                            var22.getDokument().add(var25);
+                        }
+
+                        log.info("About to execute podpisPZ.pobierzDokumenty");
+
+                        int var26;
+                        try {
+                            var51.pobierzDokumenty((String) var12.value, var22, (Holder) var20, var21);
+                        } catch (Exception var43) {
+                            log.error("Something bad happened", var43);
+                            File log = new File(EXK.GPW + "/reports/emk.log");
+                            String var63 = var43.getLocalizedMessage();
+                            if (var63 == null) {
+                                var63 = "";
+                            }
+
+                            FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.errorGoodLooking") + " ", log, false);
+                            return false;
+                        }
+
+                        log.info("podpisPZ.pobierzDokumenty executed");
+                        log.info("wynik " + ((Holder) var20).value);
+                        StringBuilder var60 = new StringBuilder();
+                        if ("200: OK".equalsIgnoreCase((String) ((Holder) var20).value)) {
+                            Iterator var62 = ((ListaDokPodpisaneType) var21.value).getDokument().iterator();
+
+                            while (var62.hasNext()) {
+                                DokumentPodpisanyType var64 = (DokumentPodpisanyType) var62.next();
+                                if ("200: OK".equalsIgnoreCase(var64.getWynik())) {
+                                    for (var26 = 0; var26 < var0.size(); ++var26) {
+                                        if ((long) var26 == var64.getIdDokumentu()) {
+                                            AGWN var27 = var0.get(var26);
+                                            var27.setInitUploadSignedEnvelopedFile(new JT(var64.getPodpisanaZawartosc()));
+                                            break;
+                                        }
+                                    }
+                                } else {
+                                    var59 = false;
+                                    var60.append(var64.getIdDokumentu()).append(" ").append(var64.getWynik()).append(System.lineSeparator());
+                                }
+                            }
+                        } else {
+                            var59 = false;
+                        }
+
+                        if (var59) {
+                            FCR.IGF(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.success").replaceFirst("##MESSAGE##", var60.toString()), false, 400.0, 100.0);
+                        } else {
+                            FCR.IGK(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.error").replaceFirst("##MESSAGE##", var60.toString()), false);
+                        }
+                    } while (!var59);
+
+                    var19 = true;
+                    return (boolean) var19;
+                }
+
+                FCR.IGK(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.header").replaceFirst("##SESSIONID##", var2), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.sign.pz.message.error").replaceFirst("##MESSAGE##", var54.toString()), false);
+            } catch (FFO var44) {
+                log.error("Something bad happened", var44);
+                throw var44;
+            } catch (Exception var45) {
+                log.error("Something bad happened", var45);
+                var1.ILJ(var45);
             }
-        } finally {
-            EXF.getInstance().ICP();
+
+            if (var1.getThrowables().size() > 0) {
+                var5 = var1.getThrowables().iterator();
+
+                while (var5.hasNext()) {
+                    Throwable var52 = (Throwable) var5.next();
+                    log.error("Something bad happened", var52);
+                }
+
+                throw new FFN(var1.getThrowables());
+            } else {
+                boolean var50 = false;
+                return var50;
+            }
         }
     }
 
@@ -1202,7 +1134,7 @@ public class EPW {
     }
 
     private static SSLContext getSSLContext() throws NoSuchAlgorithmException, KeyManagementException, CertificateException, IOException {
-        EXF.getInstance().ICO();
+
         InputStream var0 = null;
 
         SSLContext var4;
@@ -1243,17 +1175,15 @@ public class EPW {
                 var0.close();
             }
 
-            EXF.getInstance().ICP();
         }
 
         return var4;
     }
 
     public static void HPM(AGWN var0, FFC var1, X509Certificate var2) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("About to sign InitUpload file for input file [" + var0.getDeclarationFile() + "]");
+            log.info("About to sign InitUpload file for input file [" + var0.getDeclarationFile() + "]");
             JT var3 = var0.getInitUploadSignedFile();
             JT var4 = new JT();
             String var5 = "sigId_" + System.nanoTime();
@@ -1263,80 +1193,70 @@ public class EPW {
             byte[] var9 = FEX.IKZ(var1, var2, var3.getValue(), HPJ(var5, var7, var8, var2), var5, var6, var7, var8);
             var4.setValue(var9);
             var0.setInitUploadSignedEnvelopedFile(var4);
-            EXF.getInstance().ICE("InitUpload file signed for input file [" + var0.getDeclarationFile() + "]");
+            log.info("InitUpload file signed for input file [" + var0.getDeclarationFile() + "]");
         } catch (FEV var13) {
             throw new FFK(var13);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public static void HPN(AGWN var0) throws FFO {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("About to validate signature of the InitUpload file of the input file [" + var0.getDeclarationFile() + "]");
+            log.info("About to validate signature of the InitUpload file of the input file [" + var0.getDeclarationFile() + "]");
             JT var1 = var0.getInitUploadSignedEnvelopedFile();
-            EXF.getInstance().ICK("signedEnvelopedFile " + var1);
+            log.debug("signedEnvelopedFile " + var1);
             if (var1 != null) {
                 FEQ.IKY(var1.getValue());
                 var0.setInitUploadSignedEnvelopedFileValid(true);
             }
 
-            EXF.getInstance().ICE("Signature of the InitUpload file validated for the input file [" + var0.getDeclarationFile() + "]");
+            log.info("Signature of the InitUpload file validated for the input file [" + var0.getDeclarationFile() + "]");
         } catch (FEU var5) {
             var0.setInitUploadSignedEnvelopedFileValid(false);
             throw new FFO(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public static void step_10_setSignedEnvelopedFile(AGWN var0, File var1) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("About to load externally signed file as signed InitUpload file for input file [" + var0.getDeclarationFile() + "]");
+            log.info("About to load externally signed file as signed InitUpload file for input file [" + var0.getDeclarationFile() + "]");
             byte[] var2 = FEJ.IKP(var1);
             var0.setInitUploadSignedEnvelopedFile(new JT(var2));
-            EXF.getInstance().ICE("Externally signed file loaded as signed InitUpload file for input file [" + var0.getDeclarationFile() + "]");
+            log.info("Externally signed file loaded as signed InitUpload file for input file [" + var0.getDeclarationFile() + "]");
         } catch (IOException var6) {
             throw new FFK(var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public static EQB.EQC HPO(EWX var0, AGWN var1) {
-        EXF.getInstance().ICO();
 
         EQB.EQC var3;
         try {
-            EXF.getInstance().ICE("About to start sendout for declaration [" + var1.getId() + "]");
+            log.info("About to start sendout for declaration [" + var1.getId() + "]");
             EQB var2 = new EQB(var0, var1);
             var3 = var2.HPW();
         } finally {
             EWX.IBJ(var0, 1.0, 0L, 0L);
-            EXF.getInstance().ICP();
+
         }
 
         return var3;
     }
 
     public static EQB.EQC MWZ(EWX var0, AGWN var1) {
-        EXF.getInstance().ICO();
 
         EQB.EQC var3;
         try {
-            EXF.getInstance().ICE("About to start KD sendout for declaration [" + var1.getId() + "]");
+            log.info("About to start KD sendout for declaration [" + var1.getId() + "]");
             EQB var2 = new EQB(var0, var1);
             var3 = var2.MXA();
         } finally {
             EWX.IBJ(var0, 1.0, 0L, 0L);
-            EXF.getInstance().ICP();
+
         }
 
         return var3;

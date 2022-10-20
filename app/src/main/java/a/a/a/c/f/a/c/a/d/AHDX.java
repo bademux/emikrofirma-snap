@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.c.a.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHDI;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -15,24 +13,14 @@ public abstract class AHDX extends AHDI {
     protected final AHEF AHWI;
 
     protected AHDX() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWI = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWI = null;
 
     }
 
     public AHDX(AHEF var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWI = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWI = var1;
 
     }
 

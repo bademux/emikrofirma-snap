@@ -1,7 +1,5 @@
 package a.a.a.c.c.b;
 
-import a.a.a.c.e.a.k.a.EXF;
-
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -26,18 +24,12 @@ public class EMY {
     }
 
     private EMY() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FIY = new ArrayList();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FIY = new ArrayList();
 
     }
 
     public void HMY() {
-        EXF.getInstance().ICO();
 
         try {
             Iterator var1 = this.FIY.iterator();
@@ -48,25 +40,18 @@ public class EMY {
                 try {
                     Files.delete(var2.toPath());
                 } catch (Exception var8) {
-                    EXF.getInstance().ICA(var8);
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
                 }
             }
         } catch (Exception var9) {
-            EXF.getInstance().ICA(var9);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
         }
 
     }
 
     public void HMZ(File var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FIY.add(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FIY.add(var1);
 
     }
 }

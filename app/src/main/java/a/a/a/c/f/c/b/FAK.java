@@ -1,6 +1,5 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.TextFieldRequired;
 
 public class FAK<_T extends TextFieldRequired> extends FAO<_T> {
@@ -11,27 +10,22 @@ public class FAK<_T extends TextFieldRequired> extends FAO<_T> {
     }
 
     protected void IFV(String var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2 != null && var2.length() > 0) {
-                if (this.GXU.IFF() != null && this.GXU.IFF().intValue() > 0 && var2.length() > this.GXU.IFF().intValue()) {
-                    this.GXR = true;
-                    this.GXU.textProperty().set(var1);
-                } else if (this.GXR) {
-                    this.GXR = false;
-                } else {
-                    this.GXU.IEU().set(true);
-                    super.IFV(var1, var2);
-                }
+        if (var2 != null && var2.length() > 0) {
+            if (this.GXU.IFF() != null && this.GXU.IFF().intValue() > 0 && var2.length() > this.GXU.IFF().intValue()) {
+                this.GXR = true;
+                this.GXU.textProperty().set(var1);
             } else if (this.GXR) {
                 this.GXR = false;
             } else {
-                this.GXU.IEU().set(!this.GXU.IFB());
+                this.GXU.IEU().set(true);
                 super.IFV(var1, var2);
             }
-        } finally {
-            EXF.getInstance().ICP();
+        } else if (this.GXR) {
+            this.GXR = false;
+        } else {
+            this.GXU.IEU().set(!this.GXU.IFB());
+            super.IFV(var1, var2);
         }
 
     }

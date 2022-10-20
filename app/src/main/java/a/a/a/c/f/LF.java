@@ -2,11 +2,11 @@ package a.a.a.c.f;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.e.a.k.a.EXF;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import lombok.extern.slf4j.Slf4j;
 
-import jakarta.xml.bind.annotation.XmlTransient;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -15,6 +15,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+@Slf4j
 @XmlTransient
 public abstract class LF extends KX<XMLGregorianCalendar> {
     @XmlTransient
@@ -23,37 +24,37 @@ public abstract class LF extends KX<XMLGregorianCalendar> {
     private LF(boolean var1, XMLGregorianCalendar var2) {
         super(var1, var2);
         this.APT = new LG(this);
-        EXF.getInstance().ICQ();
+
     }
 
     private LF(XMLGregorianCalendar var1) {
         this(false, var1);
-        EXF.getInstance().ICQ();
+
     }
 
     public LF(boolean var1, Date var2) {
         this(var1, DEB(var2));
-        EXF.getInstance().ICQ();
+
     }
 
     public LF(Date var1) {
         this(false, DEB(var1));
-        EXF.getInstance().ICQ();
+
     }
 
     public LF(boolean var1, LocalDate var2) {
         this(var1, DEB(var2));
-        EXF.getInstance().ICQ();
+
     }
 
     public LF(LocalDate var1) {
         this(false, DEB(var1));
-        EXF.getInstance().ICQ();
+
     }
 
     public LF() {
         this((XMLGregorianCalendar) null);
-        EXF.getInstance().ICQ();
+
     }
 
     public Date getValueDate() {
@@ -65,7 +66,6 @@ public abstract class LF extends KX<XMLGregorianCalendar> {
     public abstract XMLGregorianCalendar DEA(String var1) throws FFK;
 
     public static XMLGregorianCalendar DEB(Date var0) {
-        EXF.getInstance().ICO();
 
         XMLGregorianCalendar var2;
         try {
@@ -78,17 +78,14 @@ public abstract class LF extends KX<XMLGregorianCalendar> {
             var1.setTime(var0);
             var2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(var1);
         } catch (DatatypeConfigurationException var6) {
-            EXF.getInstance().ICA(var6);
+            log.error("Something bad happened", var6);
             throw new FFI(var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     public static XMLGregorianCalendar DEB(LocalDate var0) {
-        EXF.getInstance().ICO();
 
         GregorianCalendar var1;
         try {
@@ -100,10 +97,8 @@ public abstract class LF extends KX<XMLGregorianCalendar> {
 
             var1 = null;
         } catch (DatatypeConfigurationException var6) {
-            EXF.getInstance().ICA(var6);
+            log.error("Something bad happened", var6);
             throw new FFI(var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return null;
@@ -121,7 +116,7 @@ public abstract class LF extends KX<XMLGregorianCalendar> {
         try {
             return this.DDZ();
         } catch (FFK var2) {
-            EXF.getInstance().ICA(var2);
+            log.error("Something bad happened", var2);
             return "";
         }
     }
@@ -155,7 +150,7 @@ public abstract class LF extends KX<XMLGregorianCalendar> {
                     XMLGregorianCalendar var3 = DatatypeFactory.newInstance().newXMLGregorianCalendar(var2);
                     this.APS.setValue(var3);
                 } catch (DatatypeConfigurationException var4) {
-                    EXF.getInstance().ICA(var4);
+                    log.error("Something bad happened", var4);
                     throw new FFI(var4);
                 }
             } else {

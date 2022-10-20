@@ -7,16 +7,15 @@ import a.a.a.b.e.a.a.FEU;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.a.FFL;
 import a.a.a.b.f.a.FFM;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.b.c.JT;
 import a.a.a.c.f.b.c.KO;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.annotation.XmlTransient;
 import org.json.simple.JSONObject;
 import org.w3c.dom.Node;
 import pl.akmf.apps.micro.jaxb.upo.v1_6.Potwierdzenie;
 
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -58,39 +57,34 @@ public abstract class AGWN extends HJ {
 
     public AGWN(AGWW var1, Integer var2) {
         super(HM.JPK, var1, var2);
-        EXF.getInstance().ICQ();
+
     }
 
     public AGWN() {
         this(null, 0);
-        EXF.getInstance().ICQ();
+
     }
 
     public AGWN(AGWW var1, Integer var2, File var3, AGXA var4) {
         this(var1, var2);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHRR = var3;
-            if (this.AHRR == null) {
-                throw new FFI("DeclarationFile cannot be empty!");
-            }
+        this.AHRR = var3;
+        if (this.AHRR == null) {
+            throw new FFI("DeclarationFile cannot be empty!");
+        }
 
-            this.AHRU = this.AHRR.getName();
-            this.AHRT = new KO(this.AHRR.getAbsolutePath());
-            this.AHRQ = var4;
-            this.AHSD = new ArrayList();
-            if (this.AHRQ == null) {
-                throw new FFI("DeclarationFileSchema cannot be empty!");
-            }
+        this.AHRU = this.AHRR.getName();
+        this.AHRT = new KO(this.AHRR.getAbsolutePath());
+        this.AHRQ = var4;
+        this.AHSD = new ArrayList();
+        if (this.AHRQ == null) {
+            throw new FFI("DeclarationFileSchema cannot be empty!");
+        }
 
-            if (!"JPK_VAT".equals(this.AHRQ.getKodFormularza()) && !"JPK_PKPIR".equals(this.AHRQ.getKodFormularza())) {
-                this.AHRP = AGWZ.JPKAH;
-            } else {
-                this.AHRP = AGWZ.JPK;
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (!"JPK_VAT".equals(this.AHRQ.getKodFormularza()) && !"JPK_PKPIR".equals(this.AHRQ.getKodFormularza())) {
+            this.AHRP = AGWZ.JPKAH;
+        } else {
+            this.AHRP = AGWZ.JPK;
         }
 
     }
@@ -278,13 +272,13 @@ public abstract class AGWN extends HJ {
     }
 
     public void setUpo(String var1) throws FEU, FET, JAXBException {
-        EXF.getInstance().ICK("upoString " + var1);
+        org.slf4j.LoggerFactory.getLogger(getClass()).debug("upoString " + var1);
         byte[] var2 = var1.getBytes(StandardCharsets.UTF_8);
         FEQ.IKY(var2);
         Node var3 = FEQ.getObject(var2, "Potwierdzenie");
         FEP var4 = new FEP(Potwierdzenie.class);
         Potwierdzenie var5 = var4.IKV(var3, Potwierdzenie.class);
-        EXF.getInstance().ICK("potwierdzenie " + var5);
+        org.slf4j.LoggerFactory.getLogger(getClass()).debug("potwierdzenie " + var5);
         this.AHSP = var5;
         Node var6 = FEQ.getObject(var2, "xades:QualifyingProperties");
 
@@ -297,7 +291,7 @@ public abstract class AGWN extends HJ {
                         for (int var11 = 0; var11 < var10.getChildNodes().getLength(); ++var11) {
                             Node var12 = var10.getChildNodes().item(var11);
                             if ("xades:SigningTime".equals(var12.getNodeName())) {
-                                EXF.getInstance().ICK(var12.getNodeName() + " " + var12.getTextContent());
+                                org.slf4j.LoggerFactory.getLogger(getClass()).debug(var12.getNodeName() + " " + var12.getTextContent());
                                 this.AHSQ = var12.getTextContent();
                             }
                         }

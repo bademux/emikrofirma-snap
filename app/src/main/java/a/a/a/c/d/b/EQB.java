@@ -6,23 +6,24 @@ import a.a.a.b.d.FEO;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
+import a.a.a.c.e.EXK;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWC;
 import a.a.a.c.e.a.d.MME;
 import a.a.a.c.e.a.f.*;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.b.c.JT;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.b.FCW;
+import jakarta.xml.bind.JAXBException;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import pl.akmf.apps.micro.jaxb.kd.type.DaneAutoryzujace;
 import pl.akmf.apps.micro.jaxb.kd.type.JPKMicro;
 import pl.akmf.apps.micro.jaxb.kd.type.ObjectFactory;
 
-import jakarta.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -42,6 +43,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
+@Slf4j
 public class EQB {
     private final EWX FVP;
     private final AGWN FVQ;
@@ -50,52 +52,36 @@ public class EQB {
     String MWL = "";
 
     public EQB(EWX var1, AGWN var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FVP = var1;
-            this.FVQ = var2;
-            this.FVQ.setDeclarationStatus(HL.NEW);
-            this.FVR = EQB.EQC.INIT;
-            this.FVS = EQB.EQD.START;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FVP = var1;
+        this.FVQ = var2;
+        this.FVQ.setDeclarationStatus(HL.NEW);
+        this.FVR = EQB.EQC.INIT;
+        this.FVS = EQB.EQD.START;
 
     }
 
     private void HPU(EQD var1, Double var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HPV(var1, var2, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HPV(var1, var2, null);
 
     }
 
     private void HPV(EQD var1, Double var2, String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICK("progress " + var2);
-            this.FVS = var1;
-            EWX.IBJ(this.FVP, var2, 0L, 0L);
-            if (var3 != null) {
-                this.MWL = var3;
-                EXF.getInstance().ICE(var3);
-            } else {
-                this.MWL = "";
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        log.debug("progress " + var2);
+        this.FVS = var1;
+        EWX.IBJ(this.FVP, var2, 0L, 0L);
+        if (var3 != null) {
+            this.MWL = var3;
+            log.info(var3);
+        } else {
+            this.MWL = "";
         }
 
     }
 
     public EQC HPW() {
-        EXF.getInstance().ICO();
 
         EQC var43;
         try {
@@ -118,21 +104,21 @@ public class EQB {
                         try {
                             this.HPU(EQB.EQD.INIT_START, 0.0);
                             JT var37 = this.FVQ.getInitUploadSignedEnvelopedFile();
-                            EXF.getInstance().ICE("Processing signed file " + var37);
+                            log.info("Processing signed file " + var37);
                             this.HPU(EQB.EQD.INIT_START, 0.03);
                             EWJ var40 = new EWJ(EWP.POST, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/InitUploadSigned", EWQ.XML, var37.getValue());
                             this.HPU(EQB.EQD.INIT_START, 0.06);
                             var40.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
-                            EXF.getInstance().ICE("HttpSenderRequest InitUploadSigned " + var40);
+                            log.info("HttpSenderRequest InitUploadSigned " + var40);
                             this.HPU(EQB.EQD.INIT_START, 0.09);
                             EWK var47 = EWH.IBA(var40, null, new EWI());
-                            EXF.getInstance().ICE("HttpSenderResult InitUploadSigned " + var47);
+                            log.info("HttpSenderResult InitUploadSigned " + var47);
                             if (var47.getStatus() == 200) {
                                 this.HPU(EQB.EQD.INIT_SUCCESS, 0.12);
                                 this.FVQ.setInitUploadSignedResponseJSON((JSONObject) var47.getContent());
                                 var53 = (JSONObject) var47.getContent();
-                                EXF.getInstance().ICE("InitUploadSignedResult.ReferenceNumber " + var53.get("ReferenceNumber"));
-                                EXF.getInstance().ICE("InitUploadSignedResult.TimeoutInSec " + var53.get("TimeoutInSec"));
+                                log.info("InitUploadSignedResult.ReferenceNumber " + var53.get("ReferenceNumber"));
+                                log.info("InitUploadSignedResult.TimeoutInSec " + var53.get("TimeoutInSec"));
                                 this.FVQ.setReferenceId((String) var53.get("ReferenceNumber"));
                             } else {
                                 StringBuilder var54;
@@ -152,7 +138,7 @@ public class EQB {
                                     this.HPV(EQB.EQD.INIT_BAD_REQUEST, 0.12, var55);
                                     this.FVR = EQB.EQC.FAIL;
                                     this.FVQ.setDeclarationStatus(HL.FAILURE);
-                                    EXF.getInstance().ICA("Initial call for file [" + this.FVQ.getDeclarationFile() + "] failed! " + var55);
+                                    log.error("Initial call for file [" + this.FVQ.getDeclarationFile() + "] failed! " + var55);
                                 } else if (var47.getStatus() == 500) {
                                     this.FVQ.setInitUploadSignedResponseJSON((JSONObject) var47.getContent());
                                     var53 = (JSONObject) var47.getContent();
@@ -163,16 +149,16 @@ public class EQB {
                                     this.HPV(EQB.EQD.INIT_SERVER_ERROR, 0.12, var55);
                                     this.FVR = EQB.EQC.CAN_BE_RESTARTED;
                                     this.FVQ.setDeclarationStatus(HL.RETRY);
-                                    EXF.getInstance().ICA("Initial call for file [" + this.FVQ.getDeclarationFile() + "] failed! " + var55);
+                                    log.error("Initial call for file [" + this.FVQ.getDeclarationFile() + "] failed! " + var55);
                                 } else {
                                     this.HPV(EQB.EQD.INIT_FAILED_OTHER, 0.12, "Status " + var47.getStatus());
                                     this.FVR = EQB.EQC.CAN_BE_RESTARTED;
                                     this.FVQ.setDeclarationStatus(HL.RETRY);
-                                    EXF.getInstance().ICA("Initial call for file [" + this.FVQ.getDeclarationFile() + "] failed!");
+                                    log.error("Initial call for file [" + this.FVQ.getDeclarationFile() + "] failed!");
                                 }
                             }
                         } catch (Exception var30) {
-                            EXF.getInstance().ICA(var30);
+                            log.error("Something bad happened", var30);
                             this.HPV(EQB.EQD.INIT_FAILED_OTHER, 0.12, var30.getClass().getName() + " " + var30.getLocalizedMessage());
                             this.FVR = EQB.EQC.CAN_BE_RESTARTED;
                             this.FVQ.setDeclarationStatus(HL.RETRY);
@@ -184,8 +170,8 @@ public class EQB {
                         try {
                             this.HPU(EQB.EQD.UPLOAD_START, 0.15);
                             var36 = this.FVQ.getInitUploadSignedResponseJSONObject();
-                            EXF.getInstance().ICE("InitUploadSignedResult.ReferenceNumber " + var36.get("ReferenceNumber"));
-                            EXF.getInstance().ICE("InitUploadSignedResult.TimeoutInSec " + var36.get("TimeoutInSec"));
+                            log.info("InitUploadSignedResult.ReferenceNumber " + var36.get("ReferenceNumber"));
+                            log.info("InitUploadSignedResult.TimeoutInSec " + var36.get("TimeoutInSec"));
                             this.HPU(EQB.EQD.UPLOAD_START, 0.18);
                             var38 = (JSONArray) var36.get("RequestToUploadFileList");
                             final double var45 = 0.2;
@@ -225,29 +211,29 @@ public class EQB {
                                     EQC var19 = (EQC) var18.getFirstValue();
                                     String var20 = (String) var18.getSecondValue();
                                     var12.append(System.lineSeparator());
-                                    EXF.getInstance().ICE("Upload [" + var16 + "] finished with status [" + var19 + "].");
+                                    log.info("Upload [" + var16 + "] finished with status [" + var19 + "].");
                                     switch (var19) {
                                         case SUCCESS:
-                                            EXF.getInstance().ICE("Upload process [BlobUpload] [" + var16 + "] [" + var19 + "] succeded.");
+                                            log.info("Upload process [BlobUpload] [" + var16 + "] [" + var19 + "] succeded.");
                                             break;
                                         case FAIL:
                                             var58 = false;
                                             var59 = false;
-                                            EXF.getInstance().ICA("Upload process [BlobUpload] [" + var16 + "] [" + var19 + "] failed! " + var20);
+                                            log.error("Upload process [BlobUpload] [" + var16 + "] [" + var19 + "] failed! " + var20);
                                             var12.append(var20).append(System.lineSeparator());
                                             break;
                                         case CAN_BE_RESTARTED:
                                             var58 = false;
-                                            EXF.getInstance().ICA("Upload process [BlobUpload] [" + var16 + "] [" + var19 + "] failed, but can be restarted. " + var20);
+                                            log.error("Upload process [BlobUpload] [" + var16 + "] [" + var19 + "] failed, but can be restarted. " + var20);
                                             var12.append(var20).append(System.lineSeparator());
                                             break;
                                         case INIT:
                                         case RUNNING:
-                                            EXF.getInstance().ICA("Not supposed to happen in this place [" + var16 + "] [" + var19 + "]");
+                                            log.error("Not supposed to happen in this place [" + var16 + "] [" + var19 + "]");
                                     }
                                 }
                             } catch (Exception var32) {
-                                EXF.getInstance().ICA(var32);
+                                log.error("Something bad happened", var32);
                                 String var14 = this.FVQ.getReferenceId() != null ? this.FVQ.getReferenceId() : this.FVQ.getDeclarationType().name() + "_" + this.FVQ.getDeclarationSubType().name() + "_" + this.FVQ.getId();
                                 FCR.IGI(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var14), var32.getLocalizedMessage(), false);
                             }
@@ -263,7 +249,7 @@ public class EQB {
                                 this.FVR = EQB.EQC.FAIL;
                             }
                         } catch (Exception var33) {
-                            EXF.getInstance().ICA(var33);
+                            log.error("Something bad happened", var33);
                             this.HPV(EQB.EQD.UPLOAD_FAILED, 0.82, var33.getClass().getName() + " " + var33.getLocalizedMessage());
                             this.FVR = EQB.EQC.CAN_BE_RESTARTED;
                         }
@@ -292,10 +278,10 @@ public class EQB {
                             this.HPU(EQB.EQD.FINISH_START, 0.87);
                             EWJ var51 = new EWJ(EWP.POST, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/FinishUpload", EWQ.JSON, var53.toJSONString().getBytes(StandardCharsets.UTF_8));
                             var51.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
-                            EXF.getInstance().ICE("HttpSenderRequest FinishUpload " + var51);
+                            log.info("HttpSenderRequest FinishUpload " + var51);
                             this.HPU(EQB.EQD.FINISH_START, 0.88);
                             EWK var6 = EWH.IBA(var51, null, new EWI());
-                            EXF.getInstance().ICE("HttpSenderResult FinishUpload " + var6);
+                            log.info("HttpSenderResult FinishUpload " + var6);
                             this.FVQ.setFinishUploadResponseStatus(new AGWY(var6.getStatus()));
                             if (var6.getStatus() == 200) {
                                 this.HPU(EQB.EQD.FINISH_SUCCESS, 0.89);
@@ -314,7 +300,7 @@ public class EQB {
 
                                     this.HPV(EQB.EQD.FINISH_BAD_REQUEST, 0.89, var8.toString());
                                     this.FVR = EQB.EQC.FAIL;
-                                    EXF.getInstance().ICA("Finish call for file [" + this.FVQ.getDeclarationFile() + "] failed!");
+                                    log.error("Finish call for file [" + this.FVQ.getDeclarationFile() + "] failed!");
                                 } else if (var6.getStatus() == 500) {
                                     var7 = (JSONObject) var6.getContent();
                                     this.FVQ.setFinishUploadResponseJSON(var7);
@@ -323,15 +309,15 @@ public class EQB {
                                     var8.append(var7.get("RequestId"));
                                     this.HPV(EQB.EQD.FINISH_SERVER_ERROR, 0.89, var8.toString());
                                     this.FVR = EQB.EQC.CAN_BE_RESTARTED;
-                                    EXF.getInstance().ICA("Finish call for file [" + this.FVQ.getDeclarationFile() + "] failed!");
+                                    log.error("Finish call for file [" + this.FVQ.getDeclarationFile() + "] failed!");
                                 } else {
                                     this.HPV(EQB.EQD.FINISH_FAILED_OTHER, 0.89, "Status " + var6.getStatus());
                                     this.FVR = EQB.EQC.CAN_BE_RESTARTED;
-                                    EXF.getInstance().ICA("Finish call for file [" + this.FVQ.getDeclarationFile() + "] failed!");
+                                    log.error("Finish call for file [" + this.FVQ.getDeclarationFile() + "] failed!");
                                 }
                             }
                         } catch (Exception var31) {
-                            EXF.getInstance().ICA(var31);
+                            log.error("Something bad happened", var31);
                             this.HPV(EQB.EQD.FINISH_FAILED_OTHER, 0.89, var31.getClass().getName() + " " + var31.getLocalizedMessage());
                             this.FVR = EQB.EQC.CAN_BE_RESTARTED;
                         }
@@ -343,21 +329,21 @@ public class EQB {
                             this.HPU(EQB.EQD.STATUS_START, 0.9);
                             EWJ var1 = new EWJ(EWP.GET, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + this.FVQ.getReferenceId(), EWQ.JSON, null);
                             var1.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
-                            EXF.getInstance().ICE("HttpSenderRequest Status " + var1);
+                            log.info("HttpSenderRequest Status " + var1);
                             this.HPU(EQB.EQD.STATUS_START, 0.91);
                             EWK var2 = EWH.IBA(var1, null, new EWI());
-                            EXF.getInstance().ICE("HttpSenderResult Status " + var2);
+                            log.info("HttpSenderResult Status " + var2);
                             this.HPU(EQB.EQD.STATUS_START, 0.92);
                             JSONObject var3;
                             if (var2.getStatus() == 200) {
                                 this.HPU(EQB.EQD.STATUS_SUCCESS, 1.0);
                                 this.FVQ.setStatusResponseJSON((JSONObject) var2.getContent());
                                 var3 = (JSONObject) var2.getContent();
-                                EXF.getInstance().ICE("StatusResult.Code " + var3.get("Code"));
-                                EXF.getInstance().ICE("StatusResult.Description " + var3.get("Description"));
-                                EXF.getInstance().ICE("StatusResult.Details " + var3.get("Details"));
-                                EXF.getInstance().ICE("StatusResult.Timestamp " + var3.get("Timestamp"));
-                                EXF.getInstance().ICE("StatusResult.Upo " + var3.get("Upo"));
+                                log.info("StatusResult.Code " + var3.get("Code"));
+                                log.info("StatusResult.Description " + var3.get("Description"));
+                                log.info("StatusResult.Details " + var3.get("Details"));
+                                log.info("StatusResult.Timestamp " + var3.get("Timestamp"));
+                                log.info("StatusResult.Upo " + var3.get("Upo"));
                                 String var4 = (String) var3.get("Upo");
                                 if (var4 != null && var4.length() > 0) {
                                     this.FVQ.setUpo(var4);
@@ -378,7 +364,7 @@ public class EQB {
 
                                     this.HPV(EQB.EQD.STATUS_FAILED, 1.0, var46.toString());
                                     this.FVR = EQB.EQC.FAIL;
-                                    EXF.getInstance().ICA("Status call for session entry [" + this.FVQ.getId() + "] failed! " + var46);
+                                    log.error("Status call for session entry [" + this.FVQ.getId() + "] failed! " + var46);
                                 } else if (var2.getStatus() == 500) {
                                     this.FVQ.setStatusResponseJSON((JSONObject) var2.getContent());
                                     var3 = (JSONObject) var2.getContent();
@@ -387,16 +373,16 @@ public class EQB {
                                     var46.append(var3.get("RequestId")).append(" ");
                                     this.HPV(EQB.EQD.STATUS_FAILED, 1.0, var46.toString());
                                     this.FVR = EQB.EQC.CAN_BE_RESTARTED;
-                                    EXF.getInstance().ICA("Status call for session entry [" + this.FVQ.getId() + "] failed! " + var46);
+                                    log.error("Status call for session entry [" + this.FVQ.getId() + "] failed! " + var46);
                                 } else {
                                     this.FVR = EQB.EQC.FAIL;
                                     this.HPV(EQB.EQD.STATUS_FAILED, 1.0, "Status " + var2.getStatus());
                                     this.FVR = EQB.EQC.CAN_BE_RESTARTED;
-                                    EXF.getInstance().ICA("Status call for session entry [" + this.FVQ.getId() + "] failed!");
+                                    log.error("Status call for session entry [" + this.FVQ.getId() + "] failed!");
                                 }
                             }
                         } catch (Exception var29) {
-                            EXF.getInstance().ICA(var29);
+                            log.error("Something bad happened", var29);
                             this.HPV(EQB.EQD.STATUS_FAILED, 1.0, var29.getClass().getName() + " " + var29.getLocalizedMessage());
                             this.FVR = EQB.EQC.CAN_BE_RESTARTED;
                         }
@@ -404,14 +390,14 @@ public class EQB {
 
                 if (EQB.EQC.CAN_BE_RESTARTED.equals(this.FVR)) {
                     var39 = this.FVQ.getReferenceId() != null ? this.FVQ.getReferenceId() : this.FVQ.getDeclarationType().name() + "_" + this.FVQ.getDeclarationSubType().name() + "_" + this.FVQ.getId();
-                    File var41 = EXF.getInstance().getDefaultOutputLoggerFile();
-                    FCR.IGL(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL) + " " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), var41, false);
+                    File log = new File(EXK.GPW + "/reports/emk.log");
+                    FCR.IGL(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL) + " " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), log, false);
                     FEN var49 = FCR.getConfirmDataDialog(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.retry.confirm"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.retry.cancel"), 300.0, 200.0, FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.retry.desc"));
-                   if (var49 == FEN.Confirm) {
-                      this.FVR = EQC.RUNNING;
-                   } else {
-                      this.FVR = EQC.FAIL;
-                   }
+                    if (var49 == FEN.Confirm) {
+                        this.FVR = EQC.RUNNING;
+                    } else {
+                        this.FVR = EQC.FAIL;
+                    }
                 }
             }
 
@@ -424,121 +410,113 @@ public class EQB {
                     break;
                 case FAIL:
                 default:
-                   if (this.FVS == EQD.INIT_FAILED_OTHER) {
-                      File var56 = EXF.getInstance().getDefaultOutputLoggerFile();
-                      FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL) + " " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), var56, false);
-                   } else {
-                      FCR.IGI(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL), false);
-                   }
+                    if (this.FVS == EQD.INIT_FAILED_OTHER) {
+                        File log = new File(EXK.GPW + "/reports/emk.log");
+                        FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL) + " " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), log, false);
+                    } else {
+                        FCR.IGI(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL), false);
+                    }
             }
 
             var43 = this.FVR;
         } catch (Exception var34) {
             this.HPV(EQB.EQD.PROCESS_FAILED, 0.0, var34.getLocalizedMessage());
             this.FVR = EQB.EQC.FAIL;
-            EXF.getInstance().ICA(var34);
+            log.error("Something bad happened", var34);
             FCR.IGP("", var34, false);
             throw new FFI(var34);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var43;
     }
 
     public static boolean QIU(AGWN var0) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var0 == null || var0.getReferenceId() == null) {
-                throw new FFK("Missing declaration or referenceId");
+        if (var0 == null || var0.getReferenceId() == null) {
+            throw new FFK("Missing declaration or referenceId");
+        } else {
+            EHK var1 = var0.MWX();
+            if (var1 != null && var1 != EHK.Unknown) {
+                EQC var14 = HPX(var0);
+                boolean var16 = true;
+                return var16;
             } else {
-                EHK var1 = var0.MWX();
-                if (var1 != null && var1 != EHK.Unknown) {
-                    EQC var14 = HPX(var0);
-                    boolean var16 = true;
-                    return var16;
-                } else {
-                    FFO var2 = null;
-                    EQC var3 = null;
+                FFO var2 = null;
+                EQC var3 = null;
 
-                    try {
-                        var3 = QIW(var0);
-                    } catch (FFO var12) {
-                        var2 = var12;
-                    }
+                try {
+                    var3 = QIW(var0);
+                } catch (FFO var12) {
+                    var2 = var12;
+                }
 
-                    JSONObject var4;
-                    Long var5;
-                    boolean var6;
-                    if (var3 == EQB.EQC.SUCCESS) {
-                        var4 = var0.getStatusResponseJSONObject();
-                        if (var4 != null) {
-                            var5 = (Long) var4.get("Code");
-                            if (var5 != 300L) {
-                                var0.setSignatureType(EHK.CC);
-                                var6 = true;
-                                return var6;
-                            }
+                JSONObject var4;
+                Long var5;
+                boolean var6;
+                if (var3 == EQB.EQC.SUCCESS) {
+                    var4 = var0.getStatusResponseJSONObject();
+                    if (var4 != null) {
+                        var5 = (Long) var4.get("Code");
+                        if (var5 != 300L) {
+                            var0.setSignatureType(EHK.CC);
+                            var6 = true;
+                            return var6;
                         }
-                    }
-
-                    var3 = null;
-
-                    try {
-                        var3 = QIV(var0);
-                    } catch (FFO var11) {
-                        var2 = var11;
-                    }
-
-                    if (var3 == EQB.EQC.SUCCESS) {
-                        var4 = var0.getStatusResponseJSONObject();
-                        if (var4 != null) {
-                            var5 = (Long) var4.get("Code");
-                            if (var5 != 300L) {
-                                var0.setSignatureType(EHK.KD);
-                                var6 = true;
-                                return var6;
-                            }
-                        }
-                    }
-
-                    if (var2 != null) {
-                        throw var2;
-                    } else {
-                        boolean var15 = false;
-                        return var15;
                     }
                 }
+
+                var3 = null;
+
+                try {
+                    var3 = QIV(var0);
+                } catch (FFO var11) {
+                    var2 = var11;
+                }
+
+                if (var3 == EQB.EQC.SUCCESS) {
+                    var4 = var0.getStatusResponseJSONObject();
+                    if (var4 != null) {
+                        var5 = (Long) var4.get("Code");
+                        if (var5 != 300L) {
+                            var0.setSignatureType(EHK.KD);
+                            var6 = true;
+                            return var6;
+                        }
+                    }
+                }
+
+                if (var2 != null) {
+                    throw var2;
+                } else {
+                    boolean var15 = false;
+                    return var15;
+                }
             }
-        } finally {
-            EXF.getInstance().ICP();
         }
     }
 
     private static EQC QIV(AGWN var0) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         EQC var19;
         try {
             EQC var1 = EQB.EQC.INIT;
             EWJ var2 = new EWJ(EWP.GET, FEK.MWU, "esb2.mf.gov.pl", 5064, "/jpkmicro/Status/" + var0.getReferenceId(), EWQ.JSON, null);
             var2.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
-            EXF.getInstance().ICE("HttpSenderRequest Status " + var2);
+            log.info("HttpSenderRequest Status " + var2);
             CertificateFactory var3 = CertificateFactory.getInstance("X.509");
             InputStream var4 = EQK.class.getResourceAsStream("/cert/mf_kd.cer");
             X509Certificate var5 = (X509Certificate) var3.generateCertificate(var4);
             EWK var6 = EWH.MXF(var2, null, new EWI(), var5);
-            EXF.getInstance().ICE("HttpSenderResult Status " + var6);
+            log.info("HttpSenderResult Status " + var6);
             JSONObject var7;
             if (var6.getStatus() == 200) {
                 var0.setStatusResponseJSON((JSONObject) var6.getContent());
                 var7 = (JSONObject) var6.getContent();
-                EXF.getInstance().ICE("StatusResult.Code " + var7.get("Code"));
-                EXF.getInstance().ICE("StatusResult.Description " + var7.get("Description"));
-                EXF.getInstance().ICE("StatusResult.Details " + var7.get("Details"));
-                EXF.getInstance().ICE("StatusResult.Timestamp " + var7.get("Timestamp"));
-                EXF.getInstance().ICE("StatusResult.Upo " + var7.get("Upo"));
+                log.info("StatusResult.Code " + var7.get("Code"));
+                log.info("StatusResult.Description " + var7.get("Description"));
+                log.info("StatusResult.Details " + var7.get("Details"));
+                log.info("StatusResult.Timestamp " + var7.get("Timestamp"));
+                log.info("StatusResult.Upo " + var7.get("Upo"));
                 String var8 = (String) var7.get("Upo");
                 if (var8 != null && var8.length() > 0) {
                     var0.setUpo(var8);
@@ -573,7 +551,7 @@ public class EQB {
                     }
 
                     var1 = EQB.EQC.FAIL;
-                    EXF.getInstance().ICA("Status call for session entry [" + var0.getId() + "] failed! " + var20);
+                    log.error("Status call for session entry [" + var0.getId() + "] failed! " + var20);
                 } else if (var6.getStatus() == 500) {
                     var0.setStatusResponseJSON((JSONObject) var6.getContent());
                     var7 = (JSONObject) var6.getContent();
@@ -581,10 +559,10 @@ public class EQB {
                     var20.append(var7.get("Message")).append(" ");
                     var20.append(var7.get("RequestId")).append(" ");
                     var1 = EQB.EQC.FAIL;
-                    EXF.getInstance().ICA("Status call for session entry [" + var0.getId() + "] failed! " + var20);
+                    log.error("Status call for session entry [" + var0.getId() + "] failed! " + var20);
                 } else {
                     var1 = EQB.EQC.FAIL;
-                    EXF.getInstance().ICA("Status call for session entry [" + var0.getId() + "] failed!");
+                    log.error("Status call for session entry [" + var0.getId() + "] failed!");
                 }
             }
 
@@ -596,35 +574,32 @@ public class EQB {
         } catch (FFO var16) {
             throw var16;
         } catch (Exception var17) {
-            EXF.getInstance().ICA(var17);
+            log.error("Something bad happened", var17);
             throw new FFK(var17);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var19;
     }
 
     private static EQC QIW(AGWN var0) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         EQC var16;
         try {
             EQC var1 = EQB.EQC.INIT;
             EWJ var2 = new EWJ(EWP.GET, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + var0.getReferenceId(), EWQ.JSON, null);
             var2.getHeaderFields().put("Accept", EWQ.JSON.getMimeType());
-            EXF.getInstance().ICE("HttpSenderRequest Status " + var2);
+            log.info("HttpSenderRequest Status " + var2);
             EWK var3 = EWH.IBA(var2, null, new EWI());
-            EXF.getInstance().ICE("HttpSenderResult Status " + var3);
+            log.info("HttpSenderResult Status " + var3);
             JSONObject var4;
             if (var3.getStatus() == 200) {
                 var0.setStatusResponseJSON((JSONObject) var3.getContent());
                 var4 = (JSONObject) var3.getContent();
-                EXF.getInstance().ICE("StatusResult.Code " + var4.get("Code"));
-                EXF.getInstance().ICE("StatusResult.Description " + var4.get("Description"));
-                EXF.getInstance().ICE("StatusResult.Details " + var4.get("Details"));
-                EXF.getInstance().ICE("StatusResult.Timestamp " + var4.get("Timestamp"));
-                EXF.getInstance().ICE("StatusResult.Upo " + var4.get("Upo"));
+                log.info("StatusResult.Code " + var4.get("Code"));
+                log.info("StatusResult.Description " + var4.get("Description"));
+                log.info("StatusResult.Details " + var4.get("Details"));
+                log.info("StatusResult.Timestamp " + var4.get("Timestamp"));
+                log.info("StatusResult.Upo " + var4.get("Upo"));
                 String var5 = (String) var4.get("Upo");
                 if (var5 != null && var5.length() > 0) {
                     var0.setUpo(var5);
@@ -659,7 +634,7 @@ public class EQB {
                     }
 
                     var1 = EQB.EQC.FAIL;
-                    EXF.getInstance().ICA("Status call for session entry [" + var0.getId() + "] failed! " + var17);
+                    log.error("Status call for session entry [" + var0.getId() + "] failed! " + var17);
                 } else if (var3.getStatus() == 500) {
                     var0.setStatusResponseJSON((JSONObject) var3.getContent());
                     var4 = (JSONObject) var3.getContent();
@@ -667,10 +642,10 @@ public class EQB {
                     var17.append(var4.get("Message")).append(" ");
                     var17.append(var4.get("RequestId")).append(" ");
                     var1 = EQB.EQC.FAIL;
-                    EXF.getInstance().ICA("Status call for session entry [" + var0.getId() + "] failed! " + var17);
+                    log.error("Status call for session entry [" + var0.getId() + "] failed! " + var17);
                 } else {
                     var1 = EQB.EQC.FAIL;
-                    EXF.getInstance().ICA("Status call for session entry [" + var0.getId() + "] failed!");
+                    log.error("Status call for session entry [" + var0.getId() + "] failed!");
                 }
             }
 
@@ -682,17 +657,14 @@ public class EQB {
         } catch (FFO var13) {
             throw var13;
         } catch (Exception var14) {
-            EXF.getInstance().ICA(var14);
+            log.error("Something bad happened", var14);
             throw new FFK(var14);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var16;
     }
 
     public static EQC HPX(AGWN var0) throws FFK {
-        EXF.getInstance().ICO();
 
         EQC var2;
         try {
@@ -711,38 +683,35 @@ public class EQB {
                     var2 = QIW(var0);
             }
         } catch (Exception var6) {
-            EXF.getInstance().ICA(var6);
+            log.error("Something bad happened", var6);
             throw new FFK(var6);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     private EVZ<EQC, String> HPY(JSONObject var1, AGXD var2, EWX var3) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var8;
         try {
-            EXF.getInstance().ICE("RequestToUploadFile.BlobName " + var1.get("BlobName"));
-            EXF.getInstance().ICE("RequestToUploadFile.FileName " + var1.get("FileName"));
-            EXF.getInstance().ICE("RequestToUploadFile.Url " + var1.get("Url"));
-            EXF.getInstance().ICE("RequestToUploadFile.Method " + var1.get("Method"));
+            log.info("RequestToUploadFile.BlobName " + var1.get("BlobName"));
+            log.info("RequestToUploadFile.FileName " + var1.get("FileName"));
+            log.info("RequestToUploadFile.Url " + var1.get("Url"));
+            log.info("RequestToUploadFile.Method " + var1.get("Method"));
             HashMap var4 = new HashMap();
             JSONArray var14 = (JSONArray) var1.get("HeaderList");
 
             for (int var6 = 0; var6 < var14.size(); ++var6) {
                 JSONObject var7 = (JSONObject) var14.get(var6);
-                EXF.getInstance().ICE("RequestToUploadFile.HeaderList[" + var6 + "].Key " + var7.get("Key"));
-                EXF.getInstance().ICE("RequestToUploadFile.HeaderList[" + var6 + "].Value " + var7.get("Value"));
+                log.info("RequestToUploadFile.HeaderList[" + var6 + "].Key " + var7.get("Key"));
+                log.info("RequestToUploadFile.HeaderList[" + var6 + "].Value " + var7.get("Value"));
                 var4.put(var7.get("Key"), var7.get("Value"));
             }
 
             EWJ var15 = new EWJ(EWP.valueOf((String) var1.get("Method")), new URL((String) var1.get("Url")), EWQ.OCTETSTREAM, var2.getSplitFileEncrypted(), var4);
-            EXF.getInstance().ICE("HttpSenderRequest BlobUpload " + var15);
+            log.info("HttpSenderRequest BlobUpload " + var15);
             EWK var16 = EWH.IAX(var15, var3, null, new EWU());
-            EXF.getInstance().ICE("HttpSenderResult BlobUpload " + var16);
+            log.info("HttpSenderResult BlobUpload " + var16);
             var2.setFileUploadResponseStatus(new AGWY(var16.getStatus()));
             if (var16.getStatus() < 200 || var16.getStatus() >= 400) {
                 var8 = new EVZ(EQB.EQC.FAIL, "Stauts " + var16.getStatus());
@@ -751,18 +720,15 @@ public class EQB {
 
             var8 = new EVZ(EQB.EQC.SUCCESS, null);
         } catch (Exception var12) {
-            EXF.getInstance().ICA(var12);
+            log.error("Something bad happened", var12);
             EVZ var5 = new EVZ(EQB.EQC.CAN_BE_RESTARTED, var12.getLocalizedMessage());
             return var5;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var8;
     }
 
     public EQC MXA() {
-        EXF.getInstance().ICO();
 
         EQC var30;
         try {
@@ -779,7 +745,7 @@ public class EQB {
                 MME var2 = this.FVQ.getKdSignatureData();
                 var3 = this.FVQ.getDeclarationFile();
                 String var4 = this.FVQ.getDeclarationFileName();
-                EXF.getInstance().ICE("Processing file " + var4);
+                log.info("Processing file " + var4);
                 this.HPU(EQB.EQD.KD_SEND_START, 0.02);
                 CertificateFactory var5 = CertificateFactory.getInstance("X.509");
                 InputStream var6 = EQK.class.getResourceAsStream("/cert/mf_kd.cer");
@@ -791,23 +757,23 @@ public class EQB {
                 this.HPU(EQB.EQD.KD_SEND_START, 0.06);
                 FileInputStream var11 = new FileInputStream(var3);
                 this.HPU(EQB.EQD.KD_SEND_START, 0.09);
-                var8.add(new EWC("<JPKMicro>", var10, new Long(var9.length)));
+                var8.add(new EWC("<JPKMicro>", var10, Long.valueOf(var9.length)));
                 var8.add(new EWC("<DokumentJPK>", var11, var3.length()));
                 double var12 = 0.2;
                 double var14 = 0.81;
                 this.HPU(EQB.EQD.KD_SEND_START, var12);
                 EWK var16 = EWH.MXE(EWP.POST, FEK.MWU, "esb2.mf.gov.pl", 5064, "/jpkmicro/UploadJPK", "jpkmicro", var8, null, null, new MML(), var7);
-                EXF.getInstance().ICE("HttpSenderResult " + var16);
+                log.info("HttpSenderResult " + var16);
                 if (var16.getStatus() == 200) {
                     this.HPU(EQB.EQD.KD_SEND_SUCCESS, var14);
                     JSONObject var17 = (JSONObject) var16.getContent();
                     this.FVQ.setKdResponseJSON(var17);
-                    EXF.getInstance().ICE("KdResponseJSON.ReferenceNumber " + var17.get("ReferenceNumber"));
-                    EXF.getInstance().ICE("KdResponseJSON.ReceiveDateTime " + var17.get("ReceiveDateTime"));
-                    EXF.getInstance().ICE("KdResponseJSON.Code " + var17.get("Code"));
-                    EXF.getInstance().ICE("KdResponseJSON.Message " + var17.get("Message"));
-                    EXF.getInstance().ICE("KdResponseJSON.Errors " + var17.get("Errors"));
-                    EXF.getInstance().ICE("KdResponseJSON.RequestId " + var17.get("RequestId"));
+                    log.info("KdResponseJSON.ReferenceNumber " + var17.get("ReferenceNumber"));
+                    log.info("KdResponseJSON.ReceiveDateTime " + var17.get("ReceiveDateTime"));
+                    log.info("KdResponseJSON.Code " + var17.get("Code"));
+                    log.info("KdResponseJSON.Message " + var17.get("Message"));
+                    log.info("KdResponseJSON.Errors " + var17.get("Errors"));
+                    log.info("KdResponseJSON.RequestId " + var17.get("RequestId"));
                     if (var17.containsKey("ReferenceNumber")) {
                         this.HPU(EQB.EQD.KD_SEND_SUCCESS, 0.85);
                         this.FVR = EQB.EQC.SUCCESS;
@@ -816,29 +782,29 @@ public class EQB {
                         String var18 = (String) var17.get("ReceiveDateTime");
                         String var19 = this.FVQ.getReferenceId() != null ? this.FVQ.getReferenceId() : this.FVQ.getDeclarationType().name() + "_" + this.FVQ.getDeclarationSubType().name() + "_" + this.FVQ.getId();
                         FCR.IGF(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var19), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.kd_status.message.body").replaceFirst("##TIMESTAMP##", var18), true, 800.0, 300.0);
-                        EXF.getInstance().ICA("Initial call for file [" + var4 + "] succeded! " + var19);
+                        log.error("Initial call for file [" + var4 + "] succeded! " + var19);
                     } else {
                         this.HPU(EQB.EQD.KD_SEND_FAILED, 0.85);
                         this.FVR = EQB.EQC.FAIL;
                         this.FVQ.setDeclarationStatus(HL.FAILURE);
-                        File var31 = EXF.getInstance().getDefaultOutputLoggerFile();
-                       String var20 = var17.get("Code") + " - " +
-                               var17.get("Message") + " - " +
-                               var17.get("Errors") + " - " +
-                               var17.get("RequestId");
+                        File log = new File(EXK.GPW + "/reports/emk.log");
+                        String var20 = var17.get("Code") + " - " +
+                                var17.get("Message") + " - " +
+                                var17.get("Errors") + " - " +
+                                var17.get("RequestId");
                         String var21 = this.FVQ.getReferenceId() != null ? this.FVQ.getReferenceId() : this.FVQ.getDeclarationType().name() + "_" + this.FVQ.getDeclarationSubType().name() + "_" + this.FVQ.getId();
-                        FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var21), var20 + " | " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), var31, false);
-                        EXF.getInstance().ICA("Initial call for file [" + var4 + "] failed! " + var20);
+                        FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var21), var20 + " | " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), log, false);
+                        EQB.log.error("Initial call for file [" + var4 + "] failed! " + var20);
                     }
                 } else {
                     this.HPU(EQB.EQD.KD_SEND_FAILED, var14);
                     this.FVR = EQB.EQC.FAIL;
                     this.FVQ.setDeclarationStatus(HL.FAILURE);
-                    EXF.getInstance().ICA("Request status is " + var16.getStatus());
+                    log.error("Request status is " + var16.getStatus());
                     var1 = true;
                 }
             } catch (Exception var26) {
-                EXF.getInstance().ICA(var26);
+                log.error("Something bad happened", var26);
                 this.HPV(EQB.EQD.KD_SEND_FAILED, 0.9, var26.getClass().getName() + " " + var26.getLocalizedMessage());
                 this.FVR = EQB.EQC.FAIL;
                 this.FVQ.setDeclarationStatus(HL.FAILURE);
@@ -847,7 +813,7 @@ public class EQB {
 
             if (var1) {
                 String var29 = this.FVQ.getReferenceId() != null ? this.FVQ.getReferenceId() : this.FVQ.getDeclarationType().name() + "_" + this.FVQ.getDeclarationSubType().name() + "_" + this.FVQ.getId();
-                var3 = EXF.getInstance().getDefaultOutputLoggerFile();
+                var3 = new File(EXK.GPW + "/reports/emk.log");
                 FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var29), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL) + " " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), var3, false);
             }
 
@@ -855,18 +821,15 @@ public class EQB {
         } catch (Exception var27) {
             this.HPV(EQB.EQD.PROCESS_FAILED, 0.0, var27.getLocalizedMessage());
             this.FVR = EQB.EQC.FAIL;
-            EXF.getInstance().ICA(var27);
+            log.error("Something bad happened", var27);
             FCR.IGP("", var27, false);
             throw new FFI(var27);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var30;
     }
 
     private byte[] MXB(MME<Boolean, String, String, String, LocalDate, BigDecimal, String> var1) throws FFO, FFK {
-        EXF.getInstance().ICO();
 
         byte[] var7;
         try {
@@ -893,30 +856,23 @@ public class EQB {
             byte[] var6 = var5.IKU(var3);
             var7 = var6;
         } catch (JAXBException | DatatypeConfigurationException var11) {
-            EXF.getInstance().ICA(var11);
+            log.error("Something bad happened", var11);
             throw new FFK(var11);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var7;
     }
 
     private XMLGregorianCalendar MXC(LocalDate var1) throws DatatypeConfigurationException {
-        EXF.getInstance().ICO();
 
         GregorianCalendar var2;
-        try {
-            if (var1 != null) {
-                var2 = GregorianCalendar.from(var1.atStartOfDay(ZoneId.systemDefault()));
-                XMLGregorianCalendar var3 = DatatypeFactory.newInstance().newXMLGregorianCalendarDate(var2.get(1), var2.get(2) + 1, var2.get(5), -2147483648);
-                return var3;
-            }
-
-            return null;
-        } finally {
-            EXF.getInstance().ICP();
+        if (var1 != null) {
+            var2 = GregorianCalendar.from(var1.atStartOfDay(ZoneId.systemDefault()));
+            XMLGregorianCalendar var3 = DatatypeFactory.newInstance().newXMLGregorianCalendarDate(var2.get(1), var2.get(2) + 1, var2.get(5), -2147483648);
+            return var3;
         }
+
+        return null;
     }
 
     public enum EQD {

@@ -1,11 +1,9 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.b.c.JS;
 import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.KO;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -19,8 +17,7 @@ public class HU extends HX {
     private KO AKQ;
 
     public HU() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public HI getContractor() {

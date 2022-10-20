@@ -2,15 +2,14 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.h.EWY;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.b.AHCB;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.AHDH;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlIDREF;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
@@ -27,33 +26,23 @@ public abstract class AHDD<_T> extends AHDB {
     protected String[] AHVH;
 
     protected AHDD() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVF = null;
-            this.AHVG = new AHDH[0];
-            this.AHVH = new String[0];
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVF = null;
+        this.AHVG = new AHDH[0];
+        this.AHVH = new String[0];
 
     }
 
     public AHDD(AHCJ var1, String var2, AHDG var3, Class<? extends AHCB<_T>> var4, AHDH[] var5, String[] var6) {
         super(var1, var2, var3);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVF = var4;
-            if (this.AHVF == null) {
-                throw new FFI("CustomActionClass cannot be null!");
-            }
-
-            this.AHVG = EWY.IBM(AHDH.class, var5);
-            this.AHVH = EWY.IBM(String.class, var6);
-        } finally {
-            EXF.getInstance().ICP();
+        this.AHVF = var4;
+        if (this.AHVF == null) {
+            throw new FFI("CustomActionClass cannot be null!");
         }
+
+        this.AHVG = EWY.IBM(AHDH.class, var5);
+        this.AHVH = EWY.IBM(String.class, var6);
 
     }
 
@@ -109,7 +98,7 @@ public abstract class AHDD<_T> extends AHDB {
             }
         } catch (InstantiationException | IllegalAccessException | SecurityException | IllegalArgumentException |
                  InvocationTargetException | NullPointerException var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             throw new FFI(var9);
         }
     }

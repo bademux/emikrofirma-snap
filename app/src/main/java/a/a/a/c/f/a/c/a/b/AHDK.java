@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.c.a.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHDH;
-
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlTransient;
@@ -16,25 +14,15 @@ public abstract class AHDK<_T> extends AHDH {
     protected final _T AHVP;
 
     protected AHDK() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVP = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVP = null;
 
     }
 
     public AHDK(String var1, _T var2) {
         super(var1);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVP = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVP = var2;
 
     }
 

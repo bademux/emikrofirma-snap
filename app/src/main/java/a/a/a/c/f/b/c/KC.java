@@ -1,9 +1,7 @@
 package a.a.a.c.f.b.c;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.LH;
 import a.a.a.c.f.b.c.a.KJ;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -11,24 +9,19 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 public class KC extends LH<KJ> {
     public KC(KJ var1) {
         super(var1);
-        EXF.getInstance().ICQ();
+
     }
 
     public KC() {
-        EXF.getInstance().ICQ();
+
     }
 
     public KC DEK() {
-        EXF.getInstance().ICO();
 
         KC var2;
-        try {
-            KC var1 = new KC();
-            var1.setValue(this.getValue());
-            var2 = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        KC var1 = new KC();
+        var1.setValue(this.getValue());
+        var2 = var1;
 
         return var2;
     }

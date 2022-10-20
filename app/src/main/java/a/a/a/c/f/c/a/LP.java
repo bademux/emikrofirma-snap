@@ -1,10 +1,9 @@
 package a.a.a.c.f.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.LW;
 import a.a.a.c.g.FCQ;
-
 import jakarta.xml.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,21 +26,16 @@ public class LP extends LW {
     private final List<LQ<?, ?>> AQF;
 
     public LP() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AQF = new ArrayList();
-            LQ var1 = QJZ.getDefaultConfigurationProperty(FCQ.WorkingDir);
-            this.AQF.add(var1);
-            LQ var2 = QJZ.getDefaultConfigurationProperty(FCQ.SellRefIdPattern);
-            this.AQF.add(var2);
-            LQ var3 = QJZ.getDefaultConfigurationProperty(FCQ.SellCorrectionRefIdPattern);
-            this.AQF.add(var3);
-            LQ var4 = QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod);
-            this.AQF.add(var4);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AQF = new ArrayList();
+        LQ var1 = QJZ.getDefaultConfigurationProperty(FCQ.WorkingDir);
+        this.AQF.add(var1);
+        LQ var2 = QJZ.getDefaultConfigurationProperty(FCQ.SellRefIdPattern);
+        this.AQF.add(var2);
+        LQ var3 = QJZ.getDefaultConfigurationProperty(FCQ.SellCorrectionRefIdPattern);
+        this.AQF.add(var3);
+        LQ var4 = QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod);
+        this.AQF.add(var4);
 
     }
 

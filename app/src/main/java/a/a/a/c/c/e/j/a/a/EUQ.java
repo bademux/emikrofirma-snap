@@ -1,7 +1,6 @@
 package a.a.a.c.c.e.j.a.a;
 
 import a.a.a.c.c.e.j.a.EUT;
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
@@ -15,15 +14,10 @@ public class EUQ implements ChangeListener<LocalDate> {
     }
 
     public void changed(ObservableValue<? extends LocalDate> var1, LocalDate var2, LocalDate var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var3 != null) {
-                this.GLG.HXO();
-                EXF.getInstance().ICE("Payment date changed to " + var3);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (var3 != null) {
+            this.GLG.HXO();
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Payment date changed to " + var3);
         }
 
     }

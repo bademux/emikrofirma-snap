@@ -5,7 +5,6 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.e.c.c.ESJ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EZP;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.b.b.JN;
@@ -35,14 +34,9 @@ public class ESF {
     private Stage GBX;
     private final ChangeListener<Integer> GBY = new ChangeListener<Integer>() {
         public void changed(ObservableValue<? extends Integer> var1, Integer var2, Integer var3) {
-            EXF.getInstance().ICO();
 
-            try {
-                if (var3 != null) {
-                    ESF.this.HSW(var3);
-                }
-            } finally {
-                EXF.getInstance().ICP();
+            if (var3 != null) {
+                ESF.this.HSW(var3);
             }
 
         }
@@ -75,40 +69,25 @@ public class ESF {
 
     @FXML
     protected void fxml_handleButton_save(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("[save] clicked");
-            this.GBV = true;
-            this.GBX.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("[save] clicked");
+        this.GBV = true;
+        this.GBX.close();
 
     }
 
     @FXML
     protected void fxml_handleButton_cancel(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("[cancel] clicked");
-            this.GBX.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("[cancel] clicked");
+        this.GBX.close();
 
     }
 
     public void HSU() {
-        EXF.getInstance().ICO();
 
-        try {
-            if (((ComboBoxRequired) this.fxml_invoice_settlements_yearController.fxml_component_main_element).getValue() != null) {
-                this.HSW((Integer) ((ComboBoxRequired) this.fxml_invoice_settlements_yearController.fxml_component_main_element).getValue());
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (((ComboBoxRequired) this.fxml_invoice_settlements_yearController.fxml_component_main_element).getValue() != null) {
+            this.HSW((Integer) ((ComboBoxRequired) this.fxml_invoice_settlements_yearController.fxml_component_main_element).getValue());
         }
 
     }
@@ -118,7 +97,6 @@ public class ESF {
     }
 
     private void HSW(int var1) {
-        EXF.getInstance().ICO();
 
         try {
             ((ComboBoxRequired) this.fxml_invoice_settlements_monthController.fxml_component_main_element).getItems().clear();
@@ -134,10 +112,8 @@ public class ESF {
                 }
             }
         } catch (FFO | FFK var11) {
-            EXF.getInstance().ICA(var11);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var11);
             throw new FFI("get SettlementStatus error");
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

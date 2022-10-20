@@ -12,7 +12,6 @@ import a.a.a.c.c.d.h.EPD;
 import a.a.a.c.c.e.i.a.a.ETX;
 import a.a.a.c.c.e.i.a.a.ETY;
 import a.a.a.c.c.e.i.d.EUF;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.AGWN;
 import a.a.a.c.f.a.d.AGXB;
 import a.a.a.c.f.a.d.HJ;
@@ -33,11 +32,13 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
+@Slf4j
 public class EUA extends ELU<EUF> {
     @FXML
     private ScrollPane fxml_include_container;
@@ -64,7 +65,6 @@ public class EUA extends ELU<EUF> {
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var2;
         try {
@@ -76,18 +76,15 @@ public class EUA extends ELU<EUF> {
             var2 = true;
             return var2;
         } catch (FFO | FFK var6) {
-            EXF.getInstance().ICA(var6);
+            log.error("Something bad happened", var6);
             FCT.IGX(this.resources.getString("micro.process.declaration_list.exception.saving"), var6);
             var2 = true;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.fxml_include_left_barController.HHC();
@@ -100,81 +97,64 @@ public class EUA extends ELU<EUF> {
             this.fxml_include_declarationListLogicController.setFxml_parent_node(this.fxml_parent);
             this.fxml_include_declarationListLogicController.HHC();
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            log.error("Something bad happened", var5);
             FCT.IGX(this.resources.getString("micro.process.declaration_list.exception.loading"), var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.jpk_list.title"));
-            this.fxml_generalButtonState.disableProperty().bind(this.fxml_include_declarationListLogicController.GJT.or(this.fxml_include_declarationListLogicController.GJU).not().or(this.QHY));
-            this.fxml_include_declarationListLogicController.GJT.addListener(new ETX(this));
-            this.fxml_include_declarationListLogicController.GJU.addListener(new ETY(this));
-            this.fxml_generalButtonDeleteJPK.disableProperty().bind(this.fxml_include_declarationListLogicController.QHS.not());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.jpk_list.title"));
+        this.fxml_generalButtonState.disableProperty().bind(this.fxml_include_declarationListLogicController.GJT.or(this.fxml_include_declarationListLogicController.GJU).not().or(this.QHY));
+        this.fxml_include_declarationListLogicController.GJT.addListener(new ETX(this));
+        this.fxml_include_declarationListLogicController.GJU.addListener(new ETY(this));
+        this.fxml_generalButtonDeleteJPK.disableProperty().bind(this.fxml_include_declarationListLogicController.QHS.not());
 
     }
 
     @FXML
     public void fxml_handleButton_generalButtonState(ActionEvent var1) {
         this.QHY.set(true);
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [checkState] clicked");
-            if (this.fxml_include_declarationListLogicController.GJU.get()) {
-                this.HWL((AGWN) this.fxml_include_declarationListLogicController.getSelectedDeclaration());
-            } else {
-                if (!this.fxml_include_declarationListLogicController.GJT.get()) {
-                    throw new FFI("Wrong state - button should be disabled");
-                }
-
-                if (this.fxml_include_declarationListLogicController.getSelectedDeclaration() != null) {
-                    this.HWM(this.fxml_include_declarationListLogicController.getSelectedDeclaration());
-                }
-
-                this.QHY.set(false);
+        log.info("Button [checkState] clicked");
+        if (this.fxml_include_declarationListLogicController.GJU.get()) {
+            this.HWL((AGWN) this.fxml_include_declarationListLogicController.getSelectedDeclaration());
+        } else {
+            if (!this.fxml_include_declarationListLogicController.GJT.get()) {
+                throw new FFI("Wrong state - button should be disabled");
             }
-        } finally {
-            EXF.getInstance().ICP();
+
+            if (this.fxml_include_declarationListLogicController.getSelectedDeclaration() != null) {
+                this.HWM(this.fxml_include_declarationListLogicController.getSelectedDeclaration());
+            }
+
+            this.QHY.set(false);
         }
 
     }
 
     private void HWL(final AGWN var1) {
-        EXF.getInstance().ICO();
 
         try {
             final MTI var2 = new MTI(null);
             final MTI var3 = new MTI(Boolean.FALSE);
             MSX var4 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
                 public void MXI() {
-                    EXF.getInstance().ICO();
 
                     try {
                         var3.setObject(EUA.this.getProcess().HHM(var1));
                     } catch (FFO | FFK var6) {
-                        EXF.getInstance().ICA(var6);
+                        log.error("Something bad happened", var6);
                         var2.setObject(var6);
                     } catch (Exception var7) {
-                        EXF.getInstance().ICA(var7);
+                        log.error("Something bad happened", var7);
                         var2.setObject(var7);
-                    } finally {
-                        EXF.getInstance().ICP();
                     }
 
                 }
 
                 public void MXJ() {
-                    EXF.getInstance().ICO();
 
                     try {
                         if (var2.getObject() == null) {
@@ -189,33 +169,30 @@ public class EUA extends ELU<EUF> {
                             FCR.IGE(EUA.this.resources.getString("micro.process.common.jpk.state.title"), EUA.this.resources.getString("micro.process.common.jpk.state.header"), var3x + ",  " + var4, false);
                             EUA.this.HWN();
                         } else {
-                            EXF.getInstance().ICA((Throwable) var2.getObject());
+                            log.error("Something bad happened", (Throwable) var2.getObject());
                             FCT.IGX(EUA.this.resources.getString("micro.process.common.jpk.error.checkState"), (Exception) var2.getObject());
                         }
                     } catch (ParseException var8) {
-                        EXF.getInstance().ICA((Throwable) var2.getObject());
+                        log.error("Something bad happened", (Throwable) var2.getObject());
                         FCT.IGX(EUA.this.resources.getString("micro.process.common.jpk.error.checkState"), (Exception) var2.getObject());
                     } finally {
                         EUA.this.fxml_parent.requestFocus();
                         EUA.this.fxml_parent.setDisable(false);
                         EUA.this.QHY.set(false);
-                        EXF.getInstance().ICP();
+
                     }
 
                 }
             };
             var4.MXH();
         } catch (FFK var8) {
-            EXF.getInstance().ICA(var8);
+            log.error("Something bad happened", var8);
             FCT.IGX(this.resources.getString("micro.process.common.jpk.error.checkState"), var8);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void HWM(HJ var1) {
-        EXF.getInstance().ICO();
 
         try {
             EPD var2 = null;
@@ -234,20 +211,17 @@ public class EUA extends ELU<EUF> {
                 throw new FFI("unknown declaration type");
             }
         } catch (FFO | FFK var7) {
-            EXF.getInstance().ICA(var7);
+            log.error("Something bad happened", var7);
             FCT.IGX(this.resources.getString("micro.process.print.error"), var7);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     public void fxml_handleButton_generalButtonSendJPK(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [sendJPK] clicked");
+            log.info("Button [sendJPK] clicked");
             FXMLLoader var2 = new FXMLLoader();
             var2.setLocation(EUA.class.getResource("/fxml/declarationList_selectAndSend_JPK.fxml"));
             var2.setResources(this.resources);
@@ -269,20 +243,17 @@ public class EUA extends ELU<EUF> {
             var4.showAndWait();
             this.HWN();
         } catch (FFO | IOException | FFK var10) {
-            EXF.getInstance().ICA(var10);
+            log.error("Something bad happened", var10);
             FCT.IGX(this.resources.getString("micro.process.declaration_list.exception.dialogOpen"), var10);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     public void fxml_handleButton_jpkConvertCSV2XML(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [convertCSV2XML] clicked");
+            log.info("Button [convertCSV2XML] clicked");
             FXMLLoader var2 = new FXMLLoader();
             var2.setLocation(EMP.class.getResource("/fxml/declarationList_jpkConvertCSV2XML.fxml"));
             var2.setResources(this.resources);
@@ -300,50 +271,43 @@ public class EUA extends ELU<EUF> {
             var6.HWT();
             var4.showAndWait();
         } catch (FFK | FFO | IOException var10) {
-            EXF.getInstance().ICA(var10);
+            log.error("Something bad happened", var10);
             FCT.IGX(this.resources.getString("micro.process.declaration_list.exception.dialogOpen"), var10);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     public void fxml_handleButton_generalButtonDeleteJPK(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
             this.getProcess().QIY(this.fxml_include_declarationListLogicController.getSelectedDeclaration());
             this.HWN();
         } catch (FFO | FFK var6) {
-            EXF.getInstance().ICA(var6);
+            log.error("Something bad happened", var6);
             FCT.IGX(this.resources.getString("micro.process.jpk_list.button.error.Deletedeclaration"), var6);
         } finally {
             this.fxml_parent.requestFocus();
-            EXF.getInstance().ICP();
+
         }
 
     }
 
     public void HWN() {
-        EXF.getInstance().ICO();
 
         try {
             EUF var1 = this.getProcess();
             this.fxml_include_declarationListLogicController.setDeclarations(var1.getDeclarations());
             this.fxml_include_declarationListLogicController.HWK();
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            log.error("Something bad happened", var5);
             FCT.IGX(this.resources.getString("micro.process.jpk_list.button.error.LoadingDeclarations"), var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     public void fxml_handleButton_generalButtonGenerateAndSendJPK_FA(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
             FXMLLoader var2 = new FXMLLoader();
@@ -364,7 +328,7 @@ public class EUA extends ELU<EUF> {
             var6.QOW();
             var4.showAndWait();
             if (var6.getJpkFaGenerateSettings() != null) {
-                EXF.getInstance().ICE("Button [sendJPKFA] clicked");
+                log.info("Button [sendJPKFA] clicked");
                 var2 = new FXMLLoader();
                 var2.setLocation(EUA.class.getResource("/fxml/declarationList_selectAndSend_JPK.fxml"));
                 var2.setResources(this.resources);
@@ -389,8 +353,6 @@ public class EUA extends ELU<EUF> {
             }
         } catch (FFK | FFO | IOException var11) {
             var11.printStackTrace();
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

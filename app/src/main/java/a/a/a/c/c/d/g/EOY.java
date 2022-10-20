@@ -1,7 +1,6 @@
 package a.a.a.c.c.d.g;
 
 import a.a.a.c.c.d.ENI;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.a.KL;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -153,7 +152,7 @@ public class EOY {
         try {
             var2 = (BigDecimal) this.FOU.parse(var1);
         } catch (ParseException var4) {
-            EXF.getInstance().ICA(var4);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var4);
             var2 = new BigDecimal(0);
         }
 

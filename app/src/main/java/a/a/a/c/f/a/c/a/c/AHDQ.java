@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.c.a.c;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.AHEQ;
 
 public class AHDQ {
@@ -9,21 +8,16 @@ public class AHDQ {
     protected String AHVS;
 
     public AHDQ(AHEQ var1, String var2, String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVQ = var1;
-            this.AHVR = var2;
-            this.AHVS = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVQ = var1;
+        this.AHVR = var2;
+        this.AHVS = var3;
 
     }
 
     public AHDQ(AHEQ var1, String var2) {
         this(var1, var2, null);
-        EXF.getInstance().ICQ();
+
     }
 
     public AHEQ getElementNamespace() {

@@ -11,7 +11,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.scene.image.Image;
@@ -159,7 +158,7 @@ public class EYZ extends EXZ<String, RequiredGridPane, ComboBoxRequired<String>>
             }
         });
         this.fxml_component_main_element.setSkin(new ComboBoxListViewSkin<String>(this.fxml_component_main_element) {
-            protected boolean isHideOnClickEnabled() {
+            private boolean isHideOnClickEnabled() {
                 return false;
             }
         });

@@ -1,6 +1,5 @@
 package a.a.a.c.c.e.k.c;
 
-import a.a.a.b.a.a.FDL;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -9,7 +8,6 @@ import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.e.k.b.EVB;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.f.a.IP;
 import a.a.a.c.f.a.f.a.IQ;
 import a.a.a.c.f.a.f.a.IR;
@@ -34,24 +32,18 @@ public class EVC extends ELV {
 
     public EVC() {
         super(EVB.GNN.getProcessName());
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     protected void HHI() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GNP = new IR();
-            this.GNP.setRefId(new KE(FCW.getInstance().getMessageForKey("micro.process.cash_register_new.RefId_value")));
-            this.GNP.setNet(new JR(BigDecimal.ZERO));
-            this.GNP.setGross(new JR(BigDecimal.ZERO));
-            this.GNP.setVat(new JR(BigDecimal.ZERO));
-            LocalDate var1 = LocalDate.now().minusMonths(1L);
-            this.GNP.setPeriod(new JN(var1.getYear(), var1.getMonthValue()));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GNP = new IR();
+        this.GNP.setRefId(new KE(FCW.getInstance().getMessageForKey("micro.process.cash_register_new.RefId_value")));
+        this.GNP.setNet(new JR(BigDecimal.ZERO));
+        this.GNP.setGross(new JR(BigDecimal.ZERO));
+        this.GNP.setVat(new JR(BigDecimal.ZERO));
+        LocalDate var1 = LocalDate.now().minusMonths(1L);
+        this.GNP.setPeriod(new JN(var1.getYear(), var1.getMonthValue()));
 
     }
 
@@ -75,7 +67,6 @@ public class EVC extends ELV {
     }
 
     protected void HHJ() {
-        EXF.getInstance().ICO();
 
         try {
             if (ENL.ENM.NEW.equals(this.GNQ)) {
@@ -89,15 +80,12 @@ public class EVC extends ELV {
             this.GNQ = null;
         } catch (FFO | FFK var5) {
             throw new FFI(var5.getMessage());
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void resetAndCleanUpProcessImpl() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public IR getReceiptRecord(JN var1) {
@@ -110,33 +98,28 @@ public class EVC extends ELV {
                 return ((List) var3.getSecondValue()).size() > 0 ? (IR) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject() : null;
             }
         } catch (FFO | FFK var4) {
-            EXF.getInstance().ICA(var4);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var4);
             throw new FFI(var4);
         }
     }
 
     public boolean HYK(JN var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         boolean var10;
-        try {
-            IY var2 = new IY(JF.class, var1, JH.VAT, null);
-            EVZ var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
-            if (((List) var3.getSecondValue()).size() > 1) {
-                throw new FFO("More than one settlement per one period!");
-            }
-
-            Iterator var4 = ((List) var3.getSecondValue()).iterator();
-            if (var4.hasNext()) {
-                EDF var5 = (EDF) var4.next();
-                boolean var6 = JG.SETTLED.equals(((JF) var5.getModelBaseElementWithIdObject()).getSettlementStatus());
-                return var6;
-            }
-
-            var10 = false;
-        } finally {
-            EXF.getInstance().ICP();
+        IY var2 = new IY(JF.class, var1, JH.VAT, null);
+        EVZ var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+        if (((List) var3.getSecondValue()).size() > 1) {
+            throw new FFO("More than one settlement per one period!");
         }
+
+        Iterator var4 = ((List) var3.getSecondValue()).iterator();
+        if (var4.hasNext()) {
+            EDF var5 = (EDF) var4.next();
+            boolean var6 = JG.SETTLED.equals(((JF) var5.getModelBaseElementWithIdObject()).getSettlementStatus());
+            return var6;
+        }
+
+        var10 = false;
 
         return var10;
     }

@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EYK;
 import a.a.a.c.f.c.a.RequiredGridPane;
 import a.a.a.c.f.c.c.PathFieldRequired;
@@ -34,13 +33,8 @@ public class EZR extends EYK<RequiredGridPane, PathFieldRequired> {
 
     @FXML
     protected void fxml_handleButton_clear_button(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_component_main_element.setText(null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_component_main_element.setText(null);
 
     }
 }

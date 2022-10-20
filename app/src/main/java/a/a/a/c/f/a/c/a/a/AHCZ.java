@@ -2,20 +2,21 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
 import a.a.a.c.f.a.c.a.f.AHEO;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import lombok.extern.slf4j.Slf4j;
+
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Slf4j
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AHCZ extends AHCT<XMLGregorianCalendar> {
     private final transient SimpleDateFormat AHUZ;
@@ -25,69 +26,58 @@ public class AHCZ extends AHCT<XMLGregorianCalendar> {
     private final transient SimpleDateFormat AHVD;
 
     private AHCZ() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHUZ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
-            this.AHVA = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-            this.AHVB = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-            this.AHVC = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-            this.AHVD = new SimpleDateFormat("yyyy-MM-dd");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHUZ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+        this.AHVA = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        this.AHVB = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        this.AHVC = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        this.AHVD = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
     public AHCZ(AHCJ var1, String var2, AHDG var3, AHEO var4) {
         super(var1, var2, var3, var4);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHUZ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
-            this.AHVA = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-            this.AHVB = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-            this.AHVC = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-            this.AHVD = new SimpleDateFormat("yyyy-MM-dd");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHUZ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+        this.AHVA = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        this.AHVB = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        this.AHVC = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        this.AHVD = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
     public EVZ<AHCI, String> AICX(AHDT var1) {
-        EXF.getInstance().ICO();
 
         EVZ var10;
         try {
-            EXF.getInstance().ICK("field " + var1);
-            EXF.getInstance().ICK("conditionType " + this.AHUF);
-            EXF.getInstance().ICK("variable " + this.AHUP);
+            log.debug("field " + var1);
+            log.debug("conditionType " + this.AHUF);
+            log.debug("variable " + this.AHUP);
             String var2 = var1.getValue();
-            EXF.getInstance().ICK("fieldValue " + var2);
+            log.debug("fieldValue " + var2);
             String var3 = var2 != null ? var2.trim() : "";
-            EXF.getInstance().ICK("fieldValueTrimed " + var3);
+            log.debug("fieldValueTrimed " + var3);
             Date var4 = null;
 
             try {
                 var4 = this.AHUZ.parse(var3);
             } catch (ParseException var21) {
-                EXF.getInstance().ICI(var21);
+                log.warn("Something bad happened", var21);
 
                 try {
                     var4 = this.AHVA.parse(var3);
                 } catch (ParseException var20) {
-                    EXF.getInstance().ICI(var20);
+                    log.warn("Something bad happened", var20);
 
                     try {
                         var4 = this.AHVB.parse(var3);
                     } catch (ParseException var19) {
-                        EXF.getInstance().ICI(var19);
+                        log.warn("Something bad happened", var19);
 
                         try {
                             var4 = this.AHVC.parse(var3);
                         } catch (ParseException var18) {
-                            EXF.getInstance().ICI(var18);
+                            log.warn("Something bad happened", var18);
                             var4 = this.AHVD.parse(var3);
                         }
                     }
@@ -137,10 +127,8 @@ public class AHCZ extends AHCT<XMLGregorianCalendar> {
 
             var10 = new EVZ(var9, this.AIDB("", var1));
         } catch (DatatypeConfigurationException | ParseException var22) {
-            EXF.getInstance().ICA(var22);
+            log.error("Something bad happened", var22);
             throw new FFI(var22);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var10;

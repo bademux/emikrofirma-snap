@@ -1,11 +1,10 @@
 package a.a.a.c.f.a.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,13 +20,8 @@ public class AHDW {
     private final List<AHDJ> AHWH;
 
     public AHDW() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWH = new ArrayList();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWH = new ArrayList();
 
     }
 

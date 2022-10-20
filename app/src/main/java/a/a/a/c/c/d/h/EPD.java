@@ -1,7 +1,6 @@
 package a.a.a.c.c.d.h;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.AGWN;
 import a.a.a.c.f.b.c.a.KK;
 import a.a.a.c.g.c.FCZ;
@@ -26,22 +25,16 @@ public class EPD extends EPJ {
 
     public EPD(ResourceBundle var1, File var2, AGWN var3) {
         super(var1, var2);
-        EXF.getInstance().ICO();
 
-        try {
-            this.FPL = var3.getUpo();
-            this.FPM = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FPL = var3.getUpo();
+        this.FPM = var3;
 
     }
 
     public void HOF() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICK("potwierdzenie " + this.FPL);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("potwierdzenie " + this.FPL);
             Transformer transformer = TransformerFactory.newInstance().newTransformer(new StreamSource(EPD.class.getResourceAsStream("/fop/upo.xsl")));
             transformer.setParameter("documentReceiver", this.FPL.getNazwaPodmiotuPrzyjmujacego());
             transformer.setParameter("documentId", this.FPL.getNumerReferencyjny());
@@ -73,10 +66,8 @@ public class EPD extends EPJ {
                 fos.flush();
             }
         } catch (TransformerException | ConfigurationException | SAXException | IOException var15) {
-            EXF.getInstance().ICA(var15);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var15);
             throw FCZ.getInstance().IHL();
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

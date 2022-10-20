@@ -1,10 +1,8 @@
 package a.a.a.c.f;
 
-import a.a.a.c.e.a.k.a.EXF;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-
-import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class LJ extends KX<Integer> {
@@ -14,12 +12,12 @@ public abstract class LJ extends KX<Integer> {
     public LJ(Integer var1) {
         super(var1);
         this.APX = new LK(this);
-        EXF.getInstance().ICQ();
+
     }
 
     public LJ() {
         this(null);
-        EXF.getInstance().ICQ();
+
     }
 
     public int compareTo(KX<Integer> var1) {

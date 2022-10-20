@@ -2,7 +2,6 @@ package a.a.a.c.c.d.h;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.e.HQ;
 import a.a.a.c.f.a.e.HU;
 import a.a.a.c.f.b.c.a.KL;
@@ -47,7 +46,6 @@ public class EPE extends EPL {
     }
 
     public void HOF() throws FFK {
-        EXF.getInstance().ICO();
 
         try {
 
@@ -152,14 +150,12 @@ public class EPE extends EPL {
                 fos.flush();
             }
         } catch (FileNotFoundException var31) {
-            EXF.getInstance().ICA(var31);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var31);
             throw FCZ.getInstance().IHI(this.FPP);
         } catch (TransformerException | TransformerFactoryConfigurationError | IOException | ConfigurationException |
                  SAXException | ParserConfigurationException var32) {
-            EXF.getInstance().ICA(var32);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var32);
             throw FCZ.getInstance().IHL();
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

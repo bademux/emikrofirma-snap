@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -17,13 +16,8 @@ public enum AGWW implements JM {
     private final String AHST;
 
     AGWW(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHST = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHST = var3;
 
     }
 

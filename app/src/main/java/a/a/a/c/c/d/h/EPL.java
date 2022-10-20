@@ -1,7 +1,6 @@
 package a.a.a.c.c.d.h;
 
 import a.a.a.c.c.d.ENI;
-import a.a.a.c.e.a.k.a.EXF;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -14,13 +13,8 @@ public abstract class EPL extends EPF {
 
     public EPL(ResourceBundle var1, File var2) {
         super(var1, var2);
-        EXF.getInstance().ICO();
 
-        try {
-            this.FQJ = ENI.get();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FQJ = ENI.get();
 
     }
 

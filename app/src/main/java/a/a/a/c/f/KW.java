@@ -1,9 +1,8 @@
 package a.a.a.c.f;
 
-import a.a.a.c.e.a.k.a.EXF;
-
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlTransient;
+
 import java.util.Date;
 
 @XmlTransient
@@ -13,18 +12,13 @@ public abstract class KW extends KV {
 
     protected KW() {
         this(DAE());
-        EXF.getInstance().ICQ();
+
     }
 
     protected KW(String var1) {
         super(var1);
-        EXF.getInstance().ICO();
 
-        try {
-            this.APE = new Date();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.APE = new Date();
 
     }
 

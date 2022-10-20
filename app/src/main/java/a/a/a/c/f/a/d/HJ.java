@@ -1,11 +1,10 @@
 package a.a.a.c.f.a.d;
 
 import a.a.a.c.e.a.d.MME;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EXM;
 import a.a.a.c.f.b.c.JY;
-
 import jakarta.xml.bind.annotation.XmlTransient;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -19,27 +18,17 @@ public abstract class HJ extends EXM {
     private transient MME<Boolean, String, String, String, LocalDate, BigDecimal, String> MWA;
 
     public HJ() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AJC = HL.NEW;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AJC = HL.NEW;
 
     }
 
     public HJ(HM var1, AGWW var2, Integer var3) {
         this();
-        EXF.getInstance().ICO();
 
-        try {
-            this.AJB = var1;
-            this.AHRN = var2;
-            this.AHRO = new JY(var3);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AJB = var1;
+        this.AHRN = var2;
+        this.AHRO = new JY(var3);
 
     }
 

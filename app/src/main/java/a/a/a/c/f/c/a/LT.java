@@ -1,7 +1,6 @@
 package a.a.a.c.f.c.a;
 
 import a.a.a.c.f.c.LV;
-
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient

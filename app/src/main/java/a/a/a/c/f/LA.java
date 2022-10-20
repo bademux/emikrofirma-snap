@@ -1,10 +1,8 @@
 package a.a.a.c.f;
 
-import a.a.a.c.e.a.k.a.EXF;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-
-import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
 public abstract class LA extends KX<Boolean> {
@@ -14,12 +12,12 @@ public abstract class LA extends KX<Boolean> {
     public LA(Boolean var1) {
         super(var1);
         this.APN = new LB(this);
-        EXF.getInstance().ICQ();
+
     }
 
     public LA() {
         this(null);
-        EXF.getInstance().ICQ();
+
     }
 
     public int compareTo(KX<Boolean> var1) {

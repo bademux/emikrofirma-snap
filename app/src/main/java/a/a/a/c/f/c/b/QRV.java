@@ -1,6 +1,5 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.QST;
 import a.a.a.c.f.c.c.ComboBoxRequiredText;
 
@@ -17,23 +16,18 @@ public class QRV<_A extends QST, _B extends ComboBoxRequiredText<_A>> extends FA
     }
 
     protected void IFV(_A var1, _A var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2 != null) {
-                if (var2.getTitle(this.QVQ).length() == 0) {
-                    this.GXH.IEU().set(!this.GXH.IFB());
-                } else {
-                    this.GXH.IEU().set(true);
-                }
-            } else {
+        if (var2 != null) {
+            if (var2.getTitle(this.QVQ).length() == 0) {
                 this.GXH.IEU().set(!this.GXH.IFB());
+            } else {
+                this.GXH.IEU().set(true);
             }
-
-            super.IFV(var1, var2);
-        } finally {
-            EXF.getInstance().ICP();
+        } else {
+            this.GXH.IEU().set(!this.GXH.IFB());
         }
+
+        super.IFV(var1, var2);
 
     }
 }

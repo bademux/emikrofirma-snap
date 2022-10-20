@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.e.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.KR;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -11,7 +9,7 @@ public class IE extends ID {
     private KR AME;
 
     public IE() {
-        EXF.getInstance().ICQ();
+
     }
 
     public KR getTaxReason() {

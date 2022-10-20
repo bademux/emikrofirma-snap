@@ -1,11 +1,7 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.KM;
-import a.a.a.c.f.b.c.a.QSV;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -15,7 +11,7 @@ public class HP extends HO {
     private KR AKJ;
 
     public HP() {
-        EXF.getInstance().ICQ();
+
     }
 
     public JS getTaxDeduction50P() {

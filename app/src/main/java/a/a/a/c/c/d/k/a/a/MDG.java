@@ -3,13 +3,8 @@ package a.a.a.c.c.d.k.a.a;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.b.EMB;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.c.b.LY;
-import a.a.a.c.f.c.c.TextFieldValidated_Email_KD;
-import a.a.a.c.f.c.c.TextFieldValidated_NIP;
-import a.a.a.c.f.c.c.TextFieldValidated_PESEL;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
 import a.a.a.c.g.b.FCW;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -52,36 +47,30 @@ public class MDG {
 
     @FXML
     private void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_include_nipController.fxml_component_main_element.IFC().bind(this.fxml_include_nipOrPeselController.fxml_component_main_element.selectedProperty().not());
-            this.fxml_include_peselController.fxml_component_main_element.IFC().bind(this.fxml_include_nipOrPeselController.fxml_component_main_element.selectedProperty());
-            this.fxml_include_nipController.fxml_component_main_element.disableProperty().bind(this.fxml_include_nipController.requiredProperty().not());
-            this.fxml_include_peselController.fxml_component_main_element.disableProperty().bind(this.fxml_include_peselController.requiredProperty().not());
-            Image var1 = new Image(MDG.class.getResourceAsStream("/img/info-20.png"));
-            this.fxml_button_info.setGraphic(new ImageView(var1));
-            final Tooltip var2 = new Tooltip(FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.method.kd.dialog.declarationTaxValue.tooltip"));
-            this.fxml_button_info.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent var1) {
-                    var2.show(MDG.this.MWE);
-                }
-            });
-            this.fxml_button_info.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent var1) {
-                    var2.hide();
-                }
-            });
-            this.fxml_button_save.disableProperty().bind(this.fxml_include_nipController.requiredAndValidProperty().or(this.fxml_include_nipController.fxml_component_main_element.disabledProperty()).and(this.fxml_include_peselController.requiredAndValidProperty().or(this.fxml_include_peselController.fxml_component_main_element.disabledProperty()).and(this.fxml_include_firstNameController.requiredAndValidProperty().and(this.fxml_include_lastNameController.requiredAndValidProperty().and(this.fxml_include_birthDateController.requiredAndValidProperty().and(this.fxml_include_taxAmountController.requiredAndValidProperty().and(this.fxml_include_emailController.requiredAndValidProperty())))))).not());
-            this.fxml_include_peselController.fxml_component_main_element.focusedProperty().addListener(new MDH(this.fxml_include_peselController, this.fxml_include_birthDateController));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_nipController.fxml_component_main_element.IFC().bind(this.fxml_include_nipOrPeselController.fxml_component_main_element.selectedProperty().not());
+        this.fxml_include_peselController.fxml_component_main_element.IFC().bind(this.fxml_include_nipOrPeselController.fxml_component_main_element.selectedProperty());
+        this.fxml_include_nipController.fxml_component_main_element.disableProperty().bind(this.fxml_include_nipController.requiredProperty().not());
+        this.fxml_include_peselController.fxml_component_main_element.disableProperty().bind(this.fxml_include_peselController.requiredProperty().not());
+        Image var1 = new Image(MDG.class.getResourceAsStream("/img/info-20.png"));
+        this.fxml_button_info.setGraphic(new ImageView(var1));
+        final Tooltip var2 = new Tooltip(FCW.getInstance().getMessageForKey("micro.jpk.sendout.signature.method.kd.dialog.declarationTaxValue.tooltip"));
+        this.fxml_button_info.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent var1) {
+                var2.show(MDG.this.MWE);
+            }
+        });
+        this.fxml_button_info.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent var1) {
+                var2.hide();
+            }
+        });
+        this.fxml_button_save.disableProperty().bind(this.fxml_include_nipController.requiredAndValidProperty().or(this.fxml_include_nipController.fxml_component_main_element.disabledProperty()).and(this.fxml_include_peselController.requiredAndValidProperty().or(this.fxml_include_peselController.fxml_component_main_element.disabledProperty()).and(this.fxml_include_firstNameController.requiredAndValidProperty().and(this.fxml_include_lastNameController.requiredAndValidProperty().and(this.fxml_include_birthDateController.requiredAndValidProperty().and(this.fxml_include_taxAmountController.requiredAndValidProperty().and(this.fxml_include_emailController.requiredAndValidProperty())))))).not());
+        this.fxml_include_peselController.fxml_component_main_element.focusedProperty().addListener(new MDH(this.fxml_include_peselController, this.fxml_include_birthDateController));
 
     }
 
     public void setupDefaults() {
-        EXF.getInstance().ICO();
 
         try {
             LY var1 = EMB.getInstance().HHV();
@@ -90,21 +79,14 @@ public class MDG {
             this.fxml_include_lastNameController.fxml_component_main_element.setText(var1.DFJ().getValue());
             this.fxml_include_emailController.fxml_component_main_element.setText(var1.DFL().getValue());
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
         }
 
     }
 
     public void setDialogStage(Stage var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.MWE = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.MWE = var1;
 
     }
 
@@ -114,27 +96,17 @@ public class MDG {
 
     @FXML
     private void fxml_handleButton_save(ActionEvent var1) throws FFO, FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.MWF = true;
-            this.MWE.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.MWF = true;
+        this.MWE.close();
 
     }
 
     @FXML
     private void fxml_handleButton_cancel(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.MWF = false;
-            this.MWE.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.MWF = false;
+        this.MWE.close();
 
     }
 }

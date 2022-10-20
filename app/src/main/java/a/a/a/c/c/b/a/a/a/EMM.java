@@ -6,7 +6,6 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.a.EMI;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.b.LX;
 import a.a.a.c.f.c.c.PasswordFieldRequired_8;
 import a.a.a.c.g.b.FCW;
@@ -59,10 +58,9 @@ public class EMM extends EMI {
 
     @FXML
     protected void fxml_handleButton_login(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [login] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [login] clicked");
             this.fxml_loginText.setText("");
             if (!EMB.getInstance().HHR(this.fxml_userName.getValue(), this.fxml_passwordField.getText())) {
                 throw FCZ.getInstance().IHA();
@@ -71,33 +69,25 @@ public class EMM extends EMI {
             this.RHG = this.fxml_userName.getValue();
             this.getApplication().HJD(this.getFxmlName(), "main.fxml");
         } catch (FFO | FFK var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             this.fxml_loginText.setText(var6.getLocalizedMessage());
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     protected void fxml_handleButton_register(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [register] clicked");
-            this.getApplication().HJD(this.getFxmlName(), "register.fxml");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [register] clicked");
+        this.getApplication().HJD(this.getFxmlName(), "register.fxml");
 
     }
 
     @FXML
     protected void fxml_handleComboBox_action(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("ComboBox [userName] changed");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("ComboBox [userName] changed");
             String var2 = this.fxml_userName.getValue();
             if (var2 == null) {
                 return;
@@ -106,62 +96,50 @@ public class EMM extends EMI {
             LX var3 = EMB.getInstance().getSimpleUserDataForUserName(var2);
             this.FHV.set(var3.DFB().getValue());
         } catch (FFK var7) {
-            EXF.getInstance().ICA(var7);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
         }
 
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            super.HHE();
-            this.fxml_passwordField.textProperty().addListener(new ChangeListener<String>() {
-                public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-                    if (EMM.this.FHV.get()) {
-                        if (var3 != null && var3.length() > 0) {
-                            if (!EMM.this.fxml_passwordField.validProperty().get()) {
-                                EMM.this.fxml_loginText.setText(FCW.getInstance().getMessageForKey("micro.types.password.invalid").replaceFirst("##MIN_PASSWORD_LENGTH##", String.valueOf(8)));
-                            } else {
-                                EMM.this.fxml_loginText.setText("");
-                            }
+        super.HHE();
+        this.fxml_passwordField.textProperty().addListener(new ChangeListener<String>() {
+            public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
+                if (EMM.this.FHV.get()) {
+                    if (var3 != null && var3.length() > 0) {
+                        if (!EMM.this.fxml_passwordField.validProperty().get()) {
+                            EMM.this.fxml_loginText.setText(FCW.getInstance().getMessageForKey("micro.types.password.invalid").replaceFirst("##MIN_PASSWORD_LENGTH##", String.valueOf(8)));
                         } else {
-                            EMM.this.fxml_loginText.setText(FCW.getInstance().getMessageForKey("micro.types.password.empty"));
+                            EMM.this.fxml_loginText.setText("");
                         }
+                    } else {
+                        EMM.this.fxml_loginText.setText(FCW.getInstance().getMessageForKey("micro.types.password.empty"));
                     }
-
                 }
-            });
-            this.fxml_passwordField.disableProperty().bind(this.FHV.not());
-            this.fxml_button_login.disableProperty().bind(this.FHV.and(this.fxml_passwordField.validProperty()).or(this.FHV.not()).not());
-            this.fxml_button_register.disableProperty().bind(this.QNQ.not());
-            this.fxml_passwordField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                public void handle(KeyEvent var1) {
-                    if (KeyCode.ENTER.equals(var1.getCode())) {
-                        EMM.this.fxml_handleButton_login(null);
-                    }
 
+            }
+        });
+        this.fxml_passwordField.disableProperty().bind(this.FHV.not());
+        this.fxml_button_login.disableProperty().bind(this.FHV.and(this.fxml_passwordField.validProperty()).or(this.FHV.not()).not());
+        this.fxml_button_register.disableProperty().bind(this.QNQ.not());
+        this.fxml_passwordField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent var1) {
+                if (KeyCode.ENTER.equals(var1.getCode())) {
+                    EMM.this.fxml_handleButton_login(null);
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        });
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            this.fxml_passwordField.clear();
-            this.fxml_loginText.setText("");
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_passwordField.clear();
+        this.fxml_loginText.setText("");
+        var1 = true;
 
         return var1;
     }
@@ -175,7 +153,6 @@ public class EMM extends EMI {
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             if (this.FHW) {
@@ -217,10 +194,8 @@ public class EMM extends EMI {
             this.fxml_loginText.setText("");
             this.fxml_button_login.requestFocus();
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

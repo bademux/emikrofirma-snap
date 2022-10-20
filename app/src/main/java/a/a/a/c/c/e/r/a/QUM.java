@@ -18,7 +18,6 @@ import a.a.a.c.c.e.r.c.QUU;
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWC;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.n.QSG;
@@ -59,41 +58,31 @@ public class QUM extends QUV<QUU> {
 
     public QUM(EMC var1, EMT var2, String var3, String var4) {
         super(var1, var2, var3, var4);
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     @FXML
     public void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_invoiceSaleLogicController.RDX.not());
-            this.fxml_generalButtonSave.visibleProperty().bind(this.fxml_include_invoiceSaleLogicController.REA);
-            this.fxml_generalButtonSave.managedProperty().bind(this.fxml_include_invoiceSaleLogicController.REA);
-            this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_invoiceSaleLogicController.RDX.and(this.fxml_include_invoiceSaleLogicController.REA.and(this.fxml_include_invoiceSaleLogicController.RED)).not());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_invoiceSaleLogicController.RDX.not());
+        this.fxml_generalButtonSave.visibleProperty().bind(this.fxml_include_invoiceSaleLogicController.REA);
+        this.fxml_generalButtonSave.managedProperty().bind(this.fxml_include_invoiceSaleLogicController.REA);
+        this.fxml_generalButtonSave.disableProperty().bind(this.fxml_include_invoiceSaleLogicController.RDX.and(this.fxml_include_invoiceSaleLogicController.REA.and(this.fxml_include_invoiceSaleLogicController.RED)).not());
 
     }
 
     public void HHE() {
-        EXF.getInstance().ICO();
 
         try {
             super.HHE();
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             FCT.IGX("", var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var2;
         try {
@@ -133,18 +122,15 @@ public class QUM extends QUV<QUU> {
             this.getProcess().resetAndCleanUpProcess();
             var2 = true;
         } catch (FFO | FFK var6) {
-            EXF.getInstance().ICA(var6);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
             var2 = true;
             return var2;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var2;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.RDT = false;
@@ -185,51 +171,37 @@ public class QUM extends QUV<QUU> {
             this.fxml_include_invoiceSaleLogicController.HHC();
             this.fxml_parent.requestFocus();
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             FCT.IGX("", var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     public void fxml_handleButton_back(ActionEvent var1) {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     @FXML
     public void fxml_handleButton_generalButtonCancel(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [cancel] clicked");
-            this.RDT = true;
-            this.RNK();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [cancel] clicked");
+        this.RDT = true;
+        this.RNK();
 
     }
 
     @FXML
     public void fxml_handleButton_generalButtonSave(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [save] clicked");
-            this.RDT = true;
-            this.RNG();
-            this.RNK();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [save] clicked");
+        this.RDT = true;
+        this.RNG();
+        this.RNK();
 
     }
 
     private void RNG() {
-        EXF.getInstance().ICO();
 
         try {
             this.RNJ();
@@ -240,17 +212,15 @@ public class QUM extends QUV<QUU> {
                 this.RNH(this.RDR.getContractor());
             }
         } catch (FFO | FFI | FFK var8) {
-            EXF.getInstance().ICA(var8);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
             FCT.IGX(this.resources.getString("micro.process.invoice_sale_new.Error.SaveInvoice"), var8);
 
             try {
                 this.getProcess().resetAndCleanUpProcess();
             } catch (FFO | FFK var7) {
-                EXF.getInstance().ICA(var8);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
                 FCT.IGX(this.resources.getString("micro.process.invoice_sale_new.Error.SaveInvoice"), var8);
             }
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -292,103 +262,85 @@ public class QUM extends QUV<QUU> {
                 var3.getModelManager().HKL(var3.getParentDefinition());
             }
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
         }
 
     }
 
     private List<EDF<HI>> RNI(HI var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         Object var8;
-        try {
-            Object var2 = new ArrayList();
-            QUU var3 = this.getProcess();
-            if (var1 != null) {
-                AGYN var4;
-                if (!var1.AICE()) {
-                    if (var1.getNip() != null && var1.getNip().getValue() != null) {
-                        var4 = new AGYN(HI.class, var1.getNip().getValue());
-                        var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
-                    }
-                } else if (var1.getName() != null && var1.getName().getValue() != null) {
-                    var4 = new AGYN(HI.class, var1.QON(), null);
+        Object var2 = new ArrayList();
+        QUU var3 = this.getProcess();
+        if (var1 != null) {
+            AGYN var4;
+            if (!var1.AICE()) {
+                if (var1.getNip() != null && var1.getNip().getValue() != null) {
+                    var4 = new AGYN(HI.class, var1.getNip().getValue());
                     var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
                 }
+            } else if (var1.getName() != null && var1.getName().getValue() != null) {
+                var4 = new AGYN(HI.class, var1.QON(), null);
+                var2 = var3.getModelManager().HJY(var3.getParentDefinition(), var4).getSecondValue();
             }
-
-            var8 = var2;
-        } finally {
-            EXF.getInstance().ICP();
         }
+
+        var8 = var2;
 
         return (List) var8;
     }
 
     private void RNJ() {
-        EXF.getInstance().ICO();
 
-        try {
-            HashMap var1 = new HashMap();
-            List var2 = this.RDR.getInvoiceOtherElements();
-            Iterator var3 = var2.iterator();
+        HashMap var1 = new HashMap();
+        List var2 = this.RDR.getInvoiceOtherElements();
+        Iterator var3 = var2.iterator();
 
-            while (var3.hasNext()) {
-                QSJ var4 = (QSJ) var3.next();
-                if (var1.get(var4.getTaxRate().getValue()) == null) {
-                    var1.put(var4.getTaxRate().getValue(), new EWC(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
-                }
-
-                ((EWC) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
-                ((EWC) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
-                ((EWC) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
+        while (var3.hasNext()) {
+            QSJ var4 = (QSJ) var3.next();
+            if (var1.get(var4.getTaxRate().getValue()) == null) {
+                var1.put(var4.getTaxRate().getValue(), new EWC(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
             }
 
-            this.RDR.getSumOfAmountsDividedByTaxRate().clear();
-            this.RDR.getAmountOfTaxDividedByTaxRate().clear();
-            this.RDR.getSumOfGrossAmountsDividedByTaxRate().clear();
-            var3 = var1.keySet().iterator();
+            ((EWC) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
+            ((EWC) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
+            ((EWC) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
+        }
 
-            while (var3.hasNext()) {
-                KL var8 = (KL) var3.next();
-                this.RDR.getSumOfAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getFirstValue()));
-                this.RDR.getAmountOfTaxDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getSecondValue()));
-                this.RDR.getSumOfGrossAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getThirdValue()));
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        this.RDR.getSumOfAmountsDividedByTaxRate().clear();
+        this.RDR.getAmountOfTaxDividedByTaxRate().clear();
+        this.RDR.getSumOfGrossAmountsDividedByTaxRate().clear();
+        var3 = var1.keySet().iterator();
+
+        while (var3.hasNext()) {
+            KL var8 = (KL) var3.next();
+            this.RDR.getSumOfAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getFirstValue()));
+            this.RDR.getAmountOfTaxDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getSecondValue()));
+            this.RDR.getSumOfGrossAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getThirdValue()));
         }
 
     }
 
     private void RNK() {
-        EXF.getInstance().ICO();
 
-        try {
-            JN var1 = null;
-            if (this.RDR != null && this.RDR.getPeriod() != null) {
-                var1 = this.RDR.getPeriod();
-            }
-
-            JN finalVar = var1;
-            this.getApplication().HJE(this.getFxmlName(), EOS.OTHER_SALE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
-                public void HNE(ENK<?> var1x) {
-                    EXF.getInstance().ICO();
-
-                    try {
-                        var1x.setPeriod(finalVar);
-                    } catch (FFK var6) {
-                        EXF.getInstance().ICA(var6);
-                        throw new FFI(var6);
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
-
-                }
-            });
-        } finally {
-            EXF.getInstance().ICP();
+        JN var1 = null;
+        if (this.RDR != null && this.RDR.getPeriod() != null) {
+            var1 = this.RDR.getPeriod();
         }
+
+        JN finalVar = var1;
+        this.getApplication().HJE(this.getFxmlName(), EOS.OTHER_SALE_LIST.getProcessFxmlFileName(), new ENB<ENK<?>>() {
+            public void HNE(ENK<?> var1x) {
+
+                try {
+                    var1x.setPeriod(finalVar);
+                } catch (FFK var6) {
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
+                    throw new FFI(var6);
+                }
+
+            }
+        });
 
     }
 

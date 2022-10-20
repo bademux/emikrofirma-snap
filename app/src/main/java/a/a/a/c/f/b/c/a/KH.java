@@ -48,7 +48,7 @@ public enum KH implements JM {
     }
 
     public String getMonthNumberString() {
-        Integer var1 = new Integer(this.AOP);
+        Integer var1 = Integer.valueOf(this.AOP);
         String var2 = var1.toString();
         if (var2.length() == 1) {
             String var3 = "0";

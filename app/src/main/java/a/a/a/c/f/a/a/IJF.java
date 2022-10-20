@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.KQ;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -17,7 +15,7 @@ public class IJF extends IJE {
 
     public IJF() {
         super("commodity");
-        EXF.getInstance().ICQ();
+
     }
 
     public KQ getTaxRateValue() {

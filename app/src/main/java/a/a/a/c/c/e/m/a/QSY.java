@@ -4,7 +4,6 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.d.d.EOQ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EZI;
 import a.a.a.c.f.a.a.EZP;
 import a.a.a.c.f.a.a.EZQ;
@@ -43,49 +42,34 @@ public class QSY {
 
     @FXML
     private void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.setCellFactory(new EOQ());
-            this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getCellFactory().call(null));
-            ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getItems().addAll(KM.values());
-            this.fxml_button_save.disableProperty().bind(this.fxml_include_netValueNumberBox_boxController.requiredAndValidProperty().and(this.fxml_include_taxReasonRequiredComboBox_boxController.requiredAndValidProperty()).not());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.setCellFactory(new EOQ());
+        this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getCellFactory().call(null));
+        ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getItems().addAll(KM.values());
+        this.fxml_button_save.disableProperty().bind(this.fxml_include_netValueNumberBox_boxController.requiredAndValidProperty().and(this.fxml_include_taxReasonRequiredComboBox_boxController.requiredAndValidProperty()).not());
 
     }
 
     public void setupDefaults(ResourceBundle var1) {
-        EXF.getInstance().ICO();
+
+        ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getSelectionModel().select(KM.acquisition_of_general_goods);
+        String var2 = null;
 
         try {
-            ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getSelectionModel().select(KM.acquisition_of_general_goods);
-            String var2 = null;
-
-            try {
-                LP var3 = EMB.getInstance().HHU();
-                var2 = (String) var3.getConfigurationPropertyOrDefault(FCQ.CalculationMethod).DEY().getValue();
-            } catch (FFK var7) {
-                var2 = (String) QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod).DEY().getValue();
-            }
-
-            this.fxml_include_netValueNumberBox_boxController.fxml_component_root_element.setLabel(var1.getString("micro.process.aggregate_purchase_addNewPosition.RegistryTable_UnitValue_NET"));
-            this.fxml_include_taxValueNumberBox_boxController.fxml_component_root_element.setLabel(var1.getString("micro.process.aggregate_purchase_addNewPosition.RegistryTable_UnitValue_TAX"));
-        } finally {
-            EXF.getInstance().ICP();
+            LP var3 = EMB.getInstance().HHU();
+            var2 = (String) var3.getConfigurationPropertyOrDefault(FCQ.CalculationMethod).DEY().getValue();
+        } catch (FFK var7) {
+            var2 = (String) QJZ.getDefaultConfigurationProperty(FCQ.CalculationMethod).DEY().getValue();
         }
+
+        this.fxml_include_netValueNumberBox_boxController.fxml_component_root_element.setLabel(var1.getString("micro.process.aggregate_purchase_addNewPosition.RegistryTable_UnitValue_NET"));
+        this.fxml_include_taxValueNumberBox_boxController.fxml_component_root_element.setLabel(var1.getString("micro.process.aggregate_purchase_addNewPosition.RegistryTable_UnitValue_TAX"));
 
     }
 
     public void setDialogStage(Stage var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QZD = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QZD = var1;
 
     }
 
@@ -95,27 +79,17 @@ public class QSY {
 
     @FXML
     private void fxml_handleButton_save(ActionEvent var1) throws FFO, FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QZE = true;
-            this.QZD.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QZE = true;
+        this.QZD.close();
 
     }
 
     @FXML
     private void fxml_handleButton_cancel(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QZE = false;
-            this.QZD.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QZE = false;
+        this.QZD.close();
 
     }
 }

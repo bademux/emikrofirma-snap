@@ -2,7 +2,6 @@ package a.a.a.c.c.b.a.b.a;
 
 import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.EMD;
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -14,8 +13,7 @@ public class EMQ extends EMD {
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public String getFxmlNameDirection() {
@@ -28,32 +26,21 @@ public class EMQ extends EMD {
 
     @FXML
     protected void fxml_handleButton_back(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [back] clicked");
-            this.getApplication().HJD(this.getFxmlName(), this.getFxmlNameDirection());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [back] clicked");
+        this.getApplication().HJD(this.getFxmlName(), this.getFxmlNameDirection());
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 }

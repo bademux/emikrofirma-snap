@@ -1,10 +1,11 @@
 package pl.akmf.apps.micro.ws.pz;
 
-import javax.xml.namespace.QName;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.WebEndpoint;
 import jakarta.xml.ws.WebServiceClient;
 import jakarta.xml.ws.WebServiceFeature;
+
+import javax.xml.namespace.QName;
 import java.net.URL;
 
 @WebServiceClient(

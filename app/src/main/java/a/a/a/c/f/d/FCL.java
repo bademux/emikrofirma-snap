@@ -1,6 +1,5 @@
 package a.a.a.c.f.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EYD;
 import a.a.a.c.f.b.QST;
 import a.a.a.c.f.c.a.RequiredGridPane;
@@ -84,22 +83,17 @@ public abstract class FCL<_T extends ComboBoxRequiredText<QST>> extends EYD<QST,
         ((TextField) ((ComboBoxRequiredText) this.fxml_component_main_element).editorProperty().get()).textProperty().addListener(new FCN(this));
         this.fxml_component_main_element.getEditor().focusedProperty().addListener(new ChangeListener<Boolean>() {
             public void changed(ObservableValue<? extends Boolean> var1, Boolean var2, Boolean var3) {
-                EXF.getInstance().ICO();
 
-                try {
-                    if (!var3) {
-                        String var4 = FCL.this.fxml_component_main_element.getEditor().getText();
-                        if (var4 != null) {
-                            String var5 = var4.trim();
-                            if (var5.length() > 0) {
-                                FCL.this.fxml_component_main_element.getEditor().setText(var5);
-                            } else {
-                                FCL.this.fxml_component_main_element.getEditor().setText(null);
-                            }
+                if (!var3) {
+                    String var4 = FCL.this.fxml_component_main_element.getEditor().getText();
+                    if (var4 != null) {
+                        String var5 = var4.trim();
+                        if (var5.length() > 0) {
+                            FCL.this.fxml_component_main_element.getEditor().setText(var5);
+                        } else {
+                            FCL.this.fxml_component_main_element.getEditor().setText(null);
                         }
                     }
-                } finally {
-                    EXF.getInstance().ICP();
                 }
 
             }
@@ -129,7 +123,7 @@ public abstract class FCL<_T extends ComboBoxRequiredText<QST>> extends EYD<QST,
     }
 
     public void IFR() {
-        EXF.getInstance().ICO();
+
         this.fxml_component_main_element.hide();
         if (this.fxml_component_main_element.isFocused()) {
             this.HAS = true;

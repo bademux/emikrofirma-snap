@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.n;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -17,13 +16,8 @@ public enum QSQ implements JM {
     private final String QYL;
 
     QSQ(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QYL = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QYL = var3;
 
     }
 

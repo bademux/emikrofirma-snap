@@ -11,7 +11,9 @@ dependencies {
         exclude module: 'xml-apis-ext'
         exclude module: 'xalan'
         exclude module: 'serializer'
+        exclude module: 'commons-logging'
     }
+    compileOnly group: 'org.slf4j', name: 'jcl-over-slf4j', version: slf4jVersion
 }
 
 java {
@@ -21,6 +23,7 @@ java {
 shadowJar {
     mergeServiceFiles()
     exclude('**/FopMarker.class')
+    exclude('**/module-info.class')
 }
 
 configurations {

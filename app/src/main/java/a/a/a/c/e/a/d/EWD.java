@@ -39,7 +39,7 @@ public class EWD<_FIRST> {
         } else {
             EWD var2 = (EWD) var1;
             if (this.GQG == null) {
-               return var2.GQG == null;
+                return var2.GQG == null;
             } else return this.GQG.equals(var2.GQG);
         }
     }

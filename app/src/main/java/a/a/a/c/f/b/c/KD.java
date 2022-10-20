@@ -1,8 +1,6 @@
 package a.a.a.c.f.b.c;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.LL;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -10,21 +8,16 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 public class KD extends LL {
     public KD(String var1) {
         super(var1);
-        EXF.getInstance().ICQ();
+
     }
 
     public KD() {
-        EXF.getInstance().ICQ();
+
     }
 
     public void setValue(String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            super.setValue(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        super.setValue(var1);
 
     }
 }

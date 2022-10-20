@@ -10,12 +10,10 @@ import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.e.d.b.ESW;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWC;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EYL;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.c.QJW;
 import a.a.a.c.f.a.e.HR;
-import a.a.a.c.f.a.e.IA;
 import a.a.a.c.f.a.e.IB;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.g.IU;
@@ -26,7 +24,6 @@ import a.a.a.c.f.a.h.JI;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.KE;
-import a.a.a.c.f.b.c.a.QSW;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -40,18 +37,12 @@ public class ESX extends ELX implements EYL {
 
     public ESX() {
         super(ESW.GFC.getProcessName());
-        EXF.getInstance().ICO();
 
-        try {
-            this.GFE = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GFE = null;
 
     }
 
     protected void HHI() {
-        EXF.getInstance().ICO();
 
         try {
             if (this.GFE == null) {
@@ -64,16 +55,13 @@ public class ESX extends ELX implements EYL {
                 this.GFF = FDO.select;
             }
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void HHJ() {
-        EXF.getInstance().ICO();
 
         try {
             switch (this.GFF) {
@@ -91,10 +79,8 @@ public class ESX extends ELX implements EYL {
 
             this.GFE = null;
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -121,22 +107,19 @@ public class ESX extends ELX implements EYL {
                 this.getModelManager().HKB(this.getParentDefinition(), var4);
             }
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
         }
 
     }
 
     protected void resetAndCleanUpProcessImpl() {
-        EXF.getInstance().ICO();
 
         try {
             this.getModelManager().resetData(this.getParentDefinition());
             this.GFE = null;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -162,7 +145,6 @@ public class ESX extends ELX implements EYL {
     }
 
     public boolean HUC(JN var1, KE var2, KA var3) {
-        EXF.getInstance().ICO();
 
         boolean var19;
         try {
@@ -200,17 +182,14 @@ public class ESX extends ELX implements EYL {
 
             var19 = var4;
         } catch (FFO | FFK var17) {
-            EXF.getInstance().ICA(var17);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var17);
             throw new FFI(var17);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var19;
     }
 
     public boolean HUD(JN var1) {
-        EXF.getInstance().ICO();
 
         boolean var12;
         try {
@@ -233,17 +212,15 @@ public class ESX extends ELX implements EYL {
 
             var12 = var2;
         } catch (FFO | FFK var10) {
-            EXF.getInstance().ICA(var10);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var10);
             throw new FFI(var10);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var12;
     }
 
     public List<QJW> getContractorsByText(String var1) {
-        EXF.getInstance().ICO();
+
         ArrayList var2 = new ArrayList();
 
         ArrayList var4;
@@ -264,10 +241,8 @@ public class ESX extends ELX implements EYL {
             ArrayList var12 = var2;
             return var12;
         } catch (FFO | FFK var10) {
-            EXF.getInstance().ICA(var10);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var10);
             var4 = var2;
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var4;

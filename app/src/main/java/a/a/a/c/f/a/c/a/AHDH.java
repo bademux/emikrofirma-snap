@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.AHCC;
-
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlID;
 
@@ -18,24 +16,14 @@ public abstract class AHDH extends AHCC {
     }
 
     protected AHDH() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVJ = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVJ = null;
 
     }
 
     public AHDH(String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVJ = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVJ = var1;
 
     }
 

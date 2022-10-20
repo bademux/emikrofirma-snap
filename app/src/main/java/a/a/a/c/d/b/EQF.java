@@ -7,7 +7,6 @@ import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWC;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.d.AGXA;
 import a.a.a.c.f.a.e.*;
@@ -23,6 +22,7 @@ import a.a.a.c.f.b.c.a.QSV;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCZ;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
@@ -44,6 +44,7 @@ import java.util.regex.Pattern;
 
 import static com.github.bademux.emk.utils.LocaleUtils.LOCALE;
 
+@Slf4j
 public class EQF {
     public static final Charset FVZ;
     private static final String FWA = "http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/";
@@ -62,10 +63,9 @@ public class EQF {
     public static byte[] RPC(EWX var0, String var1, File var2, LocalDate var3, LocalDate var4, LY var5, List<HY> var6) throws FFO {
         byte var7 = 0;
         FileOutputStream var8 = null;
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICK("outputFile " + var2);
+            log.debug("outputFile " + var2);
             EWX.IBJ(var0, 0.05, 0L, 0L);
             MessageDigest var9 = MessageDigest.getInstance(var1);
             var8 = new FileOutputStream(var2);
@@ -256,9 +256,9 @@ public class EQF {
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_15", FWE, getBigDecimalSum((BigDecimal) var19.getFirstValue(), (BigDecimal) var20.getFirstValue(), (BigDecimal) var21.getFirstValue(), var53, (BigDecimal) var27.getFirstValue(), (BigDecimal) var23.getFirstValue(), (BigDecimal) var24.getFirstValue(), (BigDecimal) var19.getSecondValue(), (BigDecimal) var20.getSecondValue(), (BigDecimal) var21.getSecondValue(), var29, BigDecimal.ZERO));
                 boolean var30 = !var25.getFirstValue().equals(BigDecimal.ZERO) || !var26.getFirstValue().equals(BigDecimal.ZERO);
 
-               boolean var31 = !var24.getFirstValue().equals(BigDecimal.ZERO);
+                boolean var31 = !var24.getFirstValue().equals(BigDecimal.ZERO);
 
-               HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_16", QLF, false);
+                HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_16", QLF, false);
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_17", QLF, false);
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_18", QLF, var30);
                 HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_18A", QLF, var17.getMpp().getValue());
@@ -363,110 +363,94 @@ public class EQF {
             var12.close();
             byte[] var46 = var9.digest();
             return var46;
-        } catch (Exception var41) {
-            EXF.getInstance().ICA(var41);
-            throw FCZ.getInstance().IHW(var7, var41);
+        } catch (Exception e) {
+            log.error("Something bad happened", e);
+            throw FCZ.getInstance().IHW(var7, e);
         } finally {
             if (var8 != null) {
                 try {
                     var8.close();
-                } catch (IOException var40) {
-                    EXF.getInstance().ICA(var40);
+                } catch (IOException e) {
+                    log.error("Something bad happened", e);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
     }
 
     public static Map<KL, EWC<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(HV var0) {
-        EXF.getInstance().ICO();
 
-        try {
-            HN var1 = var0.getParentInvoiceOnlyActive();
-            HashMap var2 = new HashMap();
-            Iterator var3 = var0.getSumOfAmountsDividedByTaxRate().iterator();
-            Iterator var4 = var0.getAmountOfTaxDividedByTaxRate().iterator();
-            Iterator var5 = var0.getSumOfGrossAmountsDividedByTaxRate().iterator();
+        HN var1 = var0.getParentInvoiceOnlyActive();
+        HashMap var2 = new HashMap();
+        Iterator var3 = var0.getSumOfAmountsDividedByTaxRate().iterator();
+        Iterator var4 = var0.getAmountOfTaxDividedByTaxRate().iterator();
+        Iterator var5 = var0.getSumOfGrossAmountsDividedByTaxRate().iterator();
 
-            EVZ var6;
-            EVZ var7;
-            EVZ var8;
-            while (var3.hasNext()) {
-                var6 = (EVZ) var3.next();
-                var7 = (EVZ) var4.next();
-                var8 = (EVZ) var5.next();
-                var2.put(var6.getFirstValue(), new EWC(var6.getSecondValue(), var7.getSecondValue(), var8.getSecondValue()));
-            }
-
-            var3 = var1.getSumOfAmountsDividedByTaxRate().iterator();
-            var4 = var1.getAmountOfTaxDividedByTaxRate().iterator();
-            var5 = var1.getSumOfGrossAmountsDividedByTaxRate().iterator();
-
-            while (var3.hasNext()) {
-                var6 = (EVZ) var3.next();
-                var7 = (EVZ) var4.next();
-                var8 = (EVZ) var5.next();
-                if (var2.get(var6.getFirstValue()) == null) {
-                    var2.put(var6.getFirstValue(), new EWC(EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var6.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var7.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var8.getSecondValue())));
-                } else {
-                    ((EWC) var2.get(var6.getFirstValue())).setFirstValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getFirstValue(), (BigDecimal) var6.getSecondValue()));
-                    ((EWC) var2.get(var6.getFirstValue())).setSecondValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getSecondValue(), (BigDecimal) var7.getSecondValue()));
-                    ((EWC) var2.get(var6.getFirstValue())).setThirdValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getThirdValue(), (BigDecimal) var8.getSecondValue()));
-                }
-            }
-
-            HashMap var12 = var2;
-            return var12;
-        } finally {
-            EXF.getInstance().ICP();
+        EVZ var6;
+        EVZ var7;
+        EVZ var8;
+        while (var3.hasNext()) {
+            var6 = (EVZ) var3.next();
+            var7 = (EVZ) var4.next();
+            var8 = (EVZ) var5.next();
+            var2.put(var6.getFirstValue(), new EWC(var6.getSecondValue(), var7.getSecondValue(), var8.getSecondValue()));
         }
+
+        var3 = var1.getSumOfAmountsDividedByTaxRate().iterator();
+        var4 = var1.getAmountOfTaxDividedByTaxRate().iterator();
+        var5 = var1.getSumOfGrossAmountsDividedByTaxRate().iterator();
+
+        while (var3.hasNext()) {
+            var6 = (EVZ) var3.next();
+            var7 = (EVZ) var4.next();
+            var8 = (EVZ) var5.next();
+            if (var2.get(var6.getFirstValue()) == null) {
+                var2.put(var6.getFirstValue(), new EWC(EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var6.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var7.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var8.getSecondValue())));
+            } else {
+                ((EWC) var2.get(var6.getFirstValue())).setFirstValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getFirstValue(), (BigDecimal) var6.getSecondValue()));
+                ((EWC) var2.get(var6.getFirstValue())).setSecondValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getSecondValue(), (BigDecimal) var7.getSecondValue()));
+                ((EWC) var2.get(var6.getFirstValue())).setThirdValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getThirdValue(), (BigDecimal) var8.getSecondValue()));
+            }
+        }
+
+        HashMap var12 = var2;
+        return var12;
     }
 
     public static HI getContractorFromInvoiceSellType(HY var0) {
-        EXF.getInstance().ICO();
 
-        try {
-            HI var1;
-            switch (var0.getInvoiceSubType()) {
-                case INVOICE:
-                case AGGREGATE:
-                    var1 = ((HU) var0).DBV();
-                    return var1;
-                case CORRECTION:
-                    var1 = getOriginalInvoice((HV) var0).DBV();
-                    return var1;
-                default:
-                    throw new FFI("unknown invoice subtype");
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        HI var1;
+        switch (var0.getInvoiceSubType()) {
+            case INVOICE:
+            case AGGREGATE:
+                var1 = ((HU) var0).DBV();
+                return var1;
+            case CORRECTION:
+                var1 = getOriginalInvoice((HV) var0).DBV();
+                return var1;
+            default:
+                throw new FFI("unknown invoice subtype");
         }
     }
 
     public static HU getOriginalInvoice(HV var0) {
-        EXF.getInstance().ICO();
 
-        try {
-            Object var1;
-            for (var1 = var0; ((HN) var1).getParentInvoiceOnlyActive() != null; var1 = ((HN) var1).getParentInvoiceOnlyActive()) {
-            }
-
-            HU var2 = (HU) var1;
-            return var2;
-        } finally {
-            EXF.getInstance().ICP();
+        Object var1;
+        for (var1 = var0; ((HN) var1).getParentInvoiceOnlyActive() != null; var1 = ((HN) var1).getParentInvoiceOnlyActive()) {
         }
+
+        HU var2 = (HU) var1;
+        return var2;
     }
 
     public static byte[] HQD(EWX var0, String var1, File var2, String var3, JN var4, LY var5, IG var6, IF var7) throws FFO {
-        EXF.getInstance().ICO();
+
         byte var8 = 0;
         FileOutputStream var9 = null;
 
         byte[] var67;
         try {
-            EXF.getInstance().ICK("outputFile " + var2);
+            log.debug("outputFile " + var2);
             EWX.IBJ(var0, 0.05, 0L, 0L);
             MessageDigest var10 = MessageDigest.getInstance(var1);
             var9 = new FileOutputStream(var2);
@@ -627,8 +611,8 @@ public class EQF {
                                                 HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "AdresKontrahenta", FCW.getInstance().getMessageForKey("micro.process.general.address.null"));
                                             }
                                         }
-                                       var80 = var79.RII().getValue() != null && var79.RII().getValue() || var79.RIJ().getValue() != null && var79.RIJ().getValue();
-                                       var82 = var79.RIK().getValue() != null && var79.RIK().getValue() || var79.RIL().getValue() != null && var79.RIL().getValue();
+                                        var80 = var79.RII().getValue() != null && var79.RII().getValue() || var79.RIJ().getValue() != null && var79.RIJ().getValue();
+                                        var82 = var79.RIK().getValue() != null && var79.RIK().getValue() || var79.RIL().getValue() != null && var79.RIL().getValue();
 
                                         if (var79.HGX().getValue() != null) {
                                             HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "DowodSprzedazy", var79.HGX().getValue());
@@ -953,9 +937,9 @@ public class EQF {
 
                     boolean var72 = var70.RIM().getValue() != null && var70.RIM().getValue() || var70.RIN().getValue() != null && var70.RIN().getValue();
 
-                   boolean var73 = var70.RIO().getValue() != null && var70.RIO().getValue() || var70.RIP().getValue() != null && var70.RIP().getValue();
+                    boolean var73 = var70.RIO().getValue() != null && var70.RIO().getValue() || var70.RIP().getValue() != null && var70.RIP().getValue();
 
-                   if (!var72 && !var73) {
+                    if (!var72 && !var73) {
                         if (var70.AICN().getValue() != null) {
                             HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "DataZakupu", var70.AICN().DDZ());
                         } else {
@@ -1026,18 +1010,17 @@ public class EQF {
             var13.close();
             var67 = var10.digest();
         } catch (Exception var65) {
-            EXF.getInstance().ICA(var65);
+            log.error("Something bad happened", var65);
             throw FCZ.getInstance().IHW(var8, var65);
         } finally {
             if (var9 != null) {
                 try {
                     var9.close();
                 } catch (IOException var64) {
-                    EXF.getInstance().ICA(var64);
+                    log.error("Something bad happened", var64);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
 
         return var67;
@@ -1125,7 +1108,6 @@ public class EQF {
             }
         } catch (XMLStreamException var15) {
             throw new FFK(var15);
-        } finally {
         }
     }
 

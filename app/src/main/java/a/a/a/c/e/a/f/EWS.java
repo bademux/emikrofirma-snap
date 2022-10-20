@@ -4,5 +4,5 @@ public enum EWS {
     http,
     https,
     file,
-    jar;
+    jar
 }

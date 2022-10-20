@@ -1,11 +1,10 @@
 package a.a.a.c.f;
 
-import a.a.a.c.e.a.k.a.EXF;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 
 @XmlTransient
@@ -24,21 +23,16 @@ public abstract class KY extends KX<BigDecimal> {
     public KY(BigDecimal var1) {
         super(var1);
         this.APL = new KZ(this);
-        EXF.getInstance().ICO();
 
-        try {
-            this.API = true;
-            this.APJ = 20;
-            this.APK = 2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.API = true;
+        this.APJ = 20;
+        this.APK = 2;
 
     }
 
     public KY() {
         this(null);
-        EXF.getInstance().ICQ();
+
     }
 
     public boolean DDQ() {

@@ -1,7 +1,6 @@
 package a.a.a.c.c.e.j.a.a;
 
 import a.a.a.c.c.e.j.a.EUT;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,14 +15,9 @@ public class EUS implements ChangeListener<String> {
     }
 
     public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var3 != null) {
-                this.GLJ.fxml_sale_contractor_private_person.setSelected(var3.equalsIgnoreCase(this.GLK));
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (var3 != null) {
+            this.GLJ.fxml_sale_contractor_private_person.setSelected(var3.equalsIgnoreCase(this.GLK));
         }
 
     }

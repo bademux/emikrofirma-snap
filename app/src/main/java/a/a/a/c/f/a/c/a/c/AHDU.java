@@ -3,15 +3,14 @@ package a.a.a.c.f.a.c.a.c;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWD;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHDI;
 import a.a.a.c.f.a.c.a.a.AHDC;
 import a.a.a.c.f.a.c.a.d.AHEE;
 import a.a.a.c.f.a.c.a.e.AHEJ;
-
 import jakarta.xml.bind.annotation.*;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -41,40 +40,29 @@ public class AHDU extends AHDI {
     protected final List<AHCF> AHWD;
 
     private AHDU() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVY = AHCI.SUCCESS;
-            this.AHVZ = 0L;
-            this.AHWA = null;
-            this.AHWB = new HashSet();
-            this.AHWC = new ArrayList();
-            this.AHWD = new ArrayList();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVY = AHCI.SUCCESS;
+        this.AHVZ = 0L;
+        this.AHWA = null;
+        this.AHWB = new HashSet();
+        this.AHWC = new ArrayList();
+        this.AHWD = new ArrayList();
 
     }
 
     public AHDU(AHDS var1) {
         this(var1, new HashSet(), new ArrayList(), new ArrayList());
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public AHDU(AHDS var1, Set<AHDO> var2, List<AHEE> var3, List<AHCF> var4) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHVY = AHCI.SUCCESS;
-            this.AHVZ = 0L;
-            this.AHWA = var1;
-            this.AHWB = var2;
-            this.AHWC = var3;
-            this.AHWD = var4;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHVY = AHCI.SUCCESS;
+        this.AHVZ = 0L;
+        this.AHWA = var1;
+        this.AHWB = var2;
+        this.AHWC = var3;
+        this.AHWD = var4;
 
     }
 
@@ -103,23 +91,17 @@ public class AHDU extends AHDI {
     }
 
     public void AIDK() {
-        EXF.getInstance().ICO();
 
-        try {
-            Iterator var1 = this.AHWC.iterator();
+        Iterator var1 = this.AHWC.iterator();
 
-            while (var1.hasNext()) {
-                AHEE var2 = (AHEE) var1.next();
-                var2.AIDS(this.AHWB);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        while (var1.hasNext()) {
+            AHEE var2 = (AHEE) var1.next();
+            var2.AIDS(this.AHWB);
         }
 
     }
 
     public void AIDL(OutputStream var1, EWD<Integer> var2, String var3) {
-        EXF.getInstance().ICO();
 
         try {
             HashMap var4 = new HashMap();
@@ -134,7 +116,7 @@ public class AHDU extends AHDI {
 
             while (var5.hasNext()) {
                 AHCF var14 = (AHCF) var5.next();
-                EXF.getInstance().ICK("rule " + var14);
+                org.slf4j.LoggerFactory.getLogger(getClass()).debug("rule " + var14);
                 EVZ var7 = var14.AICY(var4);
                 switch ((AHCI) var7.getFirstValue()) {
                     case SUCCESS:
@@ -144,7 +126,7 @@ public class AHDU extends AHDI {
                         this.AHVY = this.AIDM(this.AHVY, (AHCI) var7.getFirstValue());
                         var2.setFirstValue(var2.getFirstValue() + 1);
                         String var8 = this.getFieldType() + var3 + this.AHVZ + var3 + var7.getFirstValue() + var3 + ((AHCI) var7.getFirstValue()).getDescription() + var3 + var7.getSecondValue() + System.lineSeparator();
-                        EXF.getInstance().ICE(var8);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).info(var8);
                         var1.write(var8.getBytes(StandardCharsets.UTF_8));
                         var1.flush();
                         break;
@@ -153,25 +135,18 @@ public class AHDU extends AHDI {
                 }
             }
         } catch (IOException var12) {
-            EXF.getInstance().ICA(var12);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
         }
 
     }
 
     public void executeReset() {
-        EXF.getInstance().ICO();
 
-        try {
-            Iterator var1 = this.AHWB.iterator();
+        Iterator var1 = this.AHWB.iterator();
 
-            while (var1.hasNext()) {
-                AHDO var2 = (AHDO) var1.next();
-                var2.reset();
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        while (var1.hasNext()) {
+            AHDO var2 = (AHDO) var1.next();
+            var2.reset();
         }
 
     }

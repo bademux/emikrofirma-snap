@@ -1,8 +1,6 @@
 package a.a.a.c.c.e.j.a.a;
 
 import a.a.a.c.c.e.j.a.EUT;
-import a.a.a.c.e.a.k.a.EXF;
-import a.a.a.c.f.c.c.TextAreaRequired;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -33,7 +31,7 @@ public class ROY implements ChangeListener<Boolean> {
                 this.RPA.fxml_invoice_sale_remarksController.fxml_component_main_element.setText(this.RPA.fxml_invoice_sale_remarksController.fxml_component_main_element.getText().replaceAll(Pattern.quote(this.RPB), ""));
             }
 
-            EXF.getInstance().ICE("Mpp checkbox set to " + var3);
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Mpp checkbox set to " + var3);
         }
 
     }

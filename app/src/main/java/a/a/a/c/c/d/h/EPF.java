@@ -3,7 +3,6 @@ package a.a.a.c.c.d.h;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.b.EMY;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.k.a.EXF;
 
 import java.awt.*;
 import java.io.File;
@@ -15,28 +14,18 @@ public abstract class EPF {
     protected final ResourceBundle FPQ;
 
     public EPF(ResourceBundle var1, File var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FPQ = var1;
-            EPH.setResources(var1);
-            this.FPP = var2;
-            EMY.getInstance().HMZ(var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FPQ = var1;
+        EPH.setResources(var1);
+        this.FPP = var2;
+        EMY.getInstance().HMZ(var2);
 
     }
 
     public final void HOE() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.HOF();
-            this.HOH();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.HOF();
+        this.HOH();
 
     }
 
@@ -45,23 +34,18 @@ public abstract class EPF {
     protected abstract void HOG() throws FFK;
 
     public final void HOH() {
-        EXF.getInstance().ICO();
 
-        try {
-            if (Desktop.isDesktopSupported()) {
-                (new EVN() {
-                    public void HZI() {
-                        try {
-                            Desktop.getDesktop().open(EPF.this.FPP);
-                        } catch (IOException var2) {
-                            EXF.getInstance().ICA(var2);
-                        }
-
+        if (Desktop.isDesktopSupported()) {
+            (new EVN() {
+                public void HZI() {
+                    try {
+                        Desktop.getDesktop().open(EPF.this.FPP);
+                    } catch (IOException var2) {
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var2);
                     }
-                }).start();
-            }
-        } finally {
-            EXF.getInstance().ICP();
+
+                }
+            }).start();
         }
 
     }

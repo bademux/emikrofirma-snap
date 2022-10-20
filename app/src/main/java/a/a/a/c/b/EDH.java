@@ -1,6 +1,5 @@
 package a.a.a.c.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.KA;
@@ -14,44 +13,29 @@ public class EDH<_T extends HN<?>> {
     }
 
     public JN getPeriod() {
-        EXF.getInstance().ICO();
 
         JN var3;
-        try {
-            Integer var1 = this.FFY.getValue("business_periodYear");
-            Integer var2 = this.FFY.getValue("business_periodMonth");
-            var3 = new JN(var1, var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        Integer var1 = this.FFY.getValue("business_periodYear");
+        Integer var2 = this.FFY.getValue("business_periodMonth");
+        var3 = new JN(var1, var2);
 
         return var3;
     }
 
     public KE getRefId() {
-        EXF.getInstance().ICO();
 
         KE var2;
-        try {
-            String var1 = this.FFY.getValue("business_refid");
-            var2 = new KE(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        String var1 = this.FFY.getValue("business_refid");
+        var2 = new KE(var1);
 
         return var2;
     }
 
     public KA getIssuerNumber() {
-        EXF.getInstance().ICO();
 
         KA var2;
-        try {
-            String var1 = this.FFY.getValue("business_issuer_number");
-            var2 = new KA(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        String var1 = this.FFY.getValue("business_issuer_number");
+        var2 = new KA(var1);
 
         return var2;
     }

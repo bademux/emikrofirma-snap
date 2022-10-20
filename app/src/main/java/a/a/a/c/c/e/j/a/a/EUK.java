@@ -4,9 +4,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.j.a.EUT;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.b.JN;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
@@ -27,7 +25,7 @@ public class EUK implements ChangeListener<JN> {
                 try {
                     var4 = this.GKW.GLL.HYB(var3, this.GKW.fxml_invoice_sale_ref_idController.fxml_component_main_element.getText());
                 } catch (FFO | FFK var6) {
-                    EXF.getInstance().ICA(var6);
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
                 }
 
                 if (this.GKW.GLM != EPB.EDIT && this.GKW.GLM != EPB.EDIT_CORRECTION && !var4) {
@@ -36,7 +34,7 @@ public class EUK implements ChangeListener<JN> {
                     this.GKW.fxml_invoice_sale_ref_idController.fxml_component_main_element.IEW().set(false);
                 }
 
-                EXF.getInstance().ICE("Period changed to " + var3);
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Period changed to " + var3);
             }
         } else {
             this.GKW.GLW.set(false);

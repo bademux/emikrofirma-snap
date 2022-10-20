@@ -1,10 +1,11 @@
 package pl.akmf.apps.fix;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import javax.xml.crypto.*;
-import javax.xml.crypto.dom.DOMCryptoContext;
-import javax.xml.crypto.dom.DOMURIReference;
 import javax.xml.xpath.*;
 import java.util.ArrayList;
 import java.util.List;

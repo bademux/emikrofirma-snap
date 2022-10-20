@@ -2,13 +2,12 @@ package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.text.ParseException;
@@ -20,40 +19,29 @@ public class AHCN extends AHCL<XMLGregorianCalendar> {
     private final transient SimpleDateFormat AHUH;
 
     private AHCN() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHUH = new SimpleDateFormat("yyyy-MM-dd");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHUH = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
     public AHCN(AHCJ var1, String var2, AHDG var3, XMLGregorianCalendar var4) {
         super(var1, var2, var3, var4);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHUH = new SimpleDateFormat("yyyy-MM-dd");
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHUH = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
     public EVZ<AHCI, String> AICX(AHDT var1) {
-        EXF.getInstance().ICO();
 
         EVZ var8;
         try {
-            EXF.getInstance().ICK("field " + var1);
-            EXF.getInstance().ICK("conditionType " + this.AHUF);
-            EXF.getInstance().ICK("value " + this.AHUG);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("value " + this.AHUG);
             String var2 = var1.getValue();
-            EXF.getInstance().ICK("fieldValue " + var2);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("fieldValue " + var2);
             String var3 = var2 != null ? var2.trim() : "";
-            EXF.getInstance().ICK("fieldValueTrimed " + var3);
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("fieldValueTrimed " + var3);
             Date var4 = this.AHUH.parse(var3);
             XMLGregorianCalendar var5 = this.AICS(var4);
             boolean var6 = false;
@@ -96,10 +84,8 @@ public class AHCN extends AHCL<XMLGregorianCalendar> {
 
             var8 = new EVZ(var7, this.AIDB("", var1));
         } catch (DatatypeConfigurationException | ParseException var12) {
-            EXF.getInstance().ICA(var12);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
             throw new FFI(var12);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var8;

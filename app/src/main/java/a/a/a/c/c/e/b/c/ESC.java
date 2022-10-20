@@ -5,7 +5,6 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.b.b.ESB;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.g.JB;
 import a.a.a.c.f.b.c.KA;
 import a.a.a.c.f.b.c.a.KG;
@@ -17,18 +16,12 @@ public class ESC extends ELV {
 
     public ESC() {
         super(ESB.GBR.getProcessName());
-        EXF.getInstance().ICO();
 
-        try {
-            this.GBS = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GBS = null;
 
     }
 
     protected void HHI() {
-        EXF.getInstance().ICO();
 
         try {
             if (this.GBS == null) {
@@ -53,41 +46,33 @@ public class ESC extends ELV {
                 }
             }
         } catch (FFK var7) {
-            EXF.getInstance().ICA(var7);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var7);
             throw new FFI(var7);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void HHJ() {
-        EXF.getInstance().ICO();
 
         try {
             this.getModelManager().HJU(this.getParentDefinition(), this.GBS);
             this.getModelManager().HKL(this.getParentDefinition());
             this.GBS = null;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void resetAndCleanUpProcessImpl() {
-        EXF.getInstance().ICO();
 
         try {
             this.getModelManager().resetData(this.getParentDefinition());
             this.GBS = null;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

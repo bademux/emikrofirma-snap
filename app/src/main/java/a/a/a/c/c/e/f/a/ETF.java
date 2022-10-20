@@ -4,14 +4,12 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.d.d.b.EOB;
 import a.a.a.c.c.d.d.b.EOC;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.a.IC;
 import a.a.a.c.f.a.e.a.ID;
 import a.a.a.c.f.a.e.a.IE;
 import a.a.a.c.f.b.a.JJ;
 import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -20,14 +18,12 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -225,7 +221,7 @@ class ETF {
                     try {
                         return new SimpleStringProperty(var1.getValue().QRF().DDZ());
                     } catch (FFK var3) {
-                        EXF.getInstance().ICA(var3);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var3);
                     }
                 }
 

@@ -3,17 +3,13 @@ package a.a.a.b.e.a;
 import a.a.a.b.b.FEJ;
 import a.a.a.b.e.a.a.FET;
 import a.a.a.b.e.a.a.FEU;
-import a.a.a.c.e.a.k.a.EXF;
+import lombok.extern.slf4j.Slf4j;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import javax.xml.crypto.*;
-import javax.xml.crypto.dsig.Reference;
-import javax.xml.crypto.dsig.XMLSignature;
-import javax.xml.crypto.dsig.XMLSignatureFactory;
-import javax.xml.crypto.dsig.dom.DOMValidateContext;
 import javax.xml.crypto.dsig.keyinfo.KeyInfo;
 import javax.xml.crypto.dsig.keyinfo.X509Data;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -26,21 +22,19 @@ import java.security.PublicKey;
 import java.security.cert.X509Certificate;
 import java.util.Iterator;
 
+@Slf4j
 public class FEQ extends FES {
     public FEQ() {
     }
 
     public static void IKY(File var0) throws FEU {
-        EXF.getInstance().ICO();
 
         try {
             byte[] var1 = FEJ.IKP(var0);
             IKY(var1);
-        } catch (Exception var5) {
-            EXF.getInstance().ICA(var5);
-            throw new FEU(var5);
-        } finally {
-            EXF.getInstance().ICP();
+        } catch (Exception e) {
+            log.error("Something bad happened", e);
+            throw new FEU(e);
         }
 
     }
@@ -50,7 +44,6 @@ public class FEQ extends FES {
     }
 
     public static Node getObject(byte[] var0, String var1) throws FET {
-        EXF.getInstance().ICO();
 
         Object var16;
         try {
@@ -79,11 +72,9 @@ public class FEQ extends FES {
             }
 
             var16 = null;
-        } catch (Exception var14) {
-            EXF.getInstance().ICA(var14);
-            throw new FET(var14);
-        } finally {
-            EXF.getInstance().ICP();
+        } catch (Exception e) {
+            log.error("Something bad happened", e);
+            throw new FET(e);
         }
 
         return (Node) var16;

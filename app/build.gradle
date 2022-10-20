@@ -13,7 +13,9 @@ dependencies {
 
     implementation project(path: ':fopcore', configuration: 'moduleJar')
     implementation group: 'com.github.cliftonlabs', name: 'json-simple', version: jsonSimpleVersion
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: slf4jVersion
+    implementation group: 'org.slf4j', name: 'slf4j-jdk-platform-logging', version: slf4jVersion
+    implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: slf4jVersion
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: sqliteVersion
     implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: jakartaXmlBindVersion
     implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxXmlBindVersion
@@ -48,10 +50,9 @@ test {
 
 extraJavaModuleInfo {
     failOnMissingModuleInfo.set(true)
-    automaticModule('com.github.cliftonlabs:json-simple', 'com.googlecode.jsonsimple')
-//    module('com.googlecode.json-simple:json-simple', 'com.googlecode.jsonsimple') {
-//        exports 'org.json.simple'
-//        exports 'org.json.simple.parser'
-//    }
+    module('com.github.cliftonlabs:json-simple', 'com.googlecode.jsonsimple') {
+        exports 'org.json.simple'
+        exports 'org.json.simple.parser'
+    }
 
 }

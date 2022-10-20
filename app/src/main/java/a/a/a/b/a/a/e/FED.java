@@ -26,8 +26,7 @@ public class FED extends FEH {
 
         for (int var6 = 0; var6 < var5; ++var6) {
             FDY var7 = var4[var6];
-            if (var7 instanceof FDW) {
-                FDW var8 = (FDW) var7;
+            if (var7 instanceof FDW var8) {
                 String var9 = var7.getName() + " " + var8.getOrder().getKeyWord();
                 this.HEO.add(var9);
             } else {

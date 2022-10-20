@@ -1,9 +1,8 @@
 package a.a.a.c.f.a.d;
 
-import a.a.a.c.e.a.k.a.EXF;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.net.URL;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -21,18 +20,13 @@ public class AGXA {
     }
 
     public AGXA(String var1, String var2, String var3, String var4, String var5, URL var6) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHSW = var1;
-            this.AHSX = var2;
-            this.AHSY = var3;
-            this.AHSZ = var4;
-            this.AHTA = var5;
-            this.AHTB = var6;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHSW = var1;
+        this.AHSX = var2;
+        this.AHSY = var3;
+        this.AHSZ = var4;
+        this.AHTA = var5;
+        this.AHTB = var6;
 
     }
 

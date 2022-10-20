@@ -1,11 +1,10 @@
 package a.a.a.c.f.a.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.g.b.FCW;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+
 import java.util.regex.Matcher;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -20,26 +19,16 @@ public abstract class AHCG extends AHDI {
     private final String AHTZ;
 
     protected AHCG() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHTY = null;
-            this.AHTZ = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHTY = null;
+        this.AHTZ = null;
 
     }
 
     public AHCG(AHCJ var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHTY = var1;
-            this.AHTZ = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHTY = var1;
+        this.AHTZ = var2;
 
     }
 

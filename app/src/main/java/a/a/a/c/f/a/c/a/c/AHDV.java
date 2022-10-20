@@ -3,17 +3,16 @@ package a.a.a.c.f.a.c.a.c;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWD;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.a.AHCE;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.a.*;
 import a.a.a.c.f.a.c.a.d.*;
 import a.a.a.c.f.a.c.a.e.AHEH;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElements;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -87,35 +86,24 @@ public class AHDV extends AHDT {
     protected final List<AHCE> AHWG;
 
     private AHDV() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWE = AHCI.SUCCESS;
-            this.AHWF = new ArrayList();
-            this.AHWG = new ArrayList();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWE = AHCI.SUCCESS;
+        this.AHWF = new ArrayList();
+        this.AHWG = new ArrayList();
 
     }
 
     public AHDV(AHDS var1) {
         this(var1, new ArrayList(), new ArrayList());
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public AHDV(AHDS var1, List<AHDY> var2, List<AHCE> var3) {
         super(var1);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHWE = AHCI.SUCCESS;
-            this.AHWF = var2;
-            this.AHWG = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHWE = AHCI.SUCCESS;
+        this.AHWF = var2;
+        this.AHWG = var3;
 
     }
 
@@ -132,31 +120,25 @@ public class AHDV extends AHDT {
     }
 
     public void AIDN() {
-        EXF.getInstance().ICO();
 
-        try {
-            Iterator var1 = this.AHWF.iterator();
+        Iterator var1 = this.AHWF.iterator();
 
-            while (var1.hasNext()) {
-                AHDY var2 = (AHDY) var1.next();
-                EXF.getInstance().ICK("operation " + var2);
-                var2.AIDR(this);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        while (var1.hasNext()) {
+            AHDY var2 = (AHDY) var1.next();
+            org.slf4j.LoggerFactory.getLogger(getClass()).debug("operation " + var2);
+            var2.AIDR(this);
         }
 
     }
 
     public void AIDO(OutputStream var1, EWD<Integer> var2, String var3) {
-        EXF.getInstance().ICO();
 
         try {
             Iterator var4 = this.AHWG.iterator();
 
             while (var4.hasNext()) {
                 AHCE var5 = (AHCE) var4.next();
-                EXF.getInstance().ICK("rule " + var5);
+                org.slf4j.LoggerFactory.getLogger(getClass()).debug("rule " + var5);
                 EVZ var6 = var5.AICX(this);
                 switch ((AHCI) var6.getFirstValue()) {
                     case SUCCESS:
@@ -166,7 +148,7 @@ public class AHDV extends AHDT {
                         this.AHWE = this.AIDP(this.AHWE, (AHCI) var6.getFirstValue());
                         var2.setFirstValue(var2.getFirstValue() + 1);
                         String var7 = this.getFieldType() + var3 + var3 + var6.getFirstValue() + var3 + ((AHCI) var6.getFirstValue()).getDescription() + var3 + var6.getSecondValue() + System.lineSeparator();
-                        EXF.getInstance().ICE(var7);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).info(var7);
                         var1.write(var7.getBytes(StandardCharsets.UTF_8));
                         var1.flush();
                         break;
@@ -175,9 +157,7 @@ public class AHDV extends AHDT {
                 }
             }
         } catch (IOException var11) {
-            EXF.getInstance().ICA(var11);
-        } finally {
-            EXF.getInstance().ICP();
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var11);
         }
 
     }

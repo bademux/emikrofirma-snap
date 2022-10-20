@@ -1,7 +1,6 @@
 package a.a.a.c.c.b.a;
 
 import a.a.a.c.c.b.EMC;
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -17,14 +16,9 @@ public abstract class EMD implements EMG {
     protected ResourceBundle resources;
 
     public EMD(EMC var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FGU = var1;
-            this.FGV = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FGU = var1;
+        this.FGV = var2;
 
     }
 
@@ -37,53 +31,38 @@ public abstract class EMD implements EMG {
     }
 
     public void setPrimaryStage(Stage var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FGW = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FGW = var1;
 
     }
 
     public Stage getPrimaryStage() {
-        EXF.getInstance().ICO();
 
         Stage var1;
-        try {
-            var1 = this.FGW;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = this.FGW;
 
         return var1;
     }
 
     protected String getVersionFromPackage(Package var1) {
-        EXF.getInstance().ICO();
 
         String var3;
-        try {
-            String var2 = "";
-            if (var1 != null) {
-                if (var1.getSpecificationTitle() != null) {
-                    var2 = var1.getSpecificationTitle();
-                }
-
-                if (var1.getImplementationVersion() != null) {
-                    if (var2.length() > 0) {
-                        var2 = var2 + " - ";
-                    }
-
-                    var2 = var2 + var1.getImplementationVersion();
-                }
+        String var2 = "";
+        if (var1 != null) {
+            if (var1.getSpecificationTitle() != null) {
+                var2 = var1.getSpecificationTitle();
             }
 
-            var3 = var2;
-        } finally {
-            EXF.getInstance().ICP();
+            if (var1.getImplementationVersion() != null) {
+                if (var2.length() > 0) {
+                    var2 = var2 + " - ";
+                }
+
+                var2 = var2 + var1.getImplementationVersion();
+            }
         }
+
+        var3 = var2;
 
         return var3;
     }

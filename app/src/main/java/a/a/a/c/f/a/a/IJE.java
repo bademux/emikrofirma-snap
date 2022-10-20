@@ -1,9 +1,7 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IL;
 import a.a.a.c.f.b.c.KO;
-
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
@@ -13,17 +11,12 @@ public abstract class IJE extends IL {
 
     public IJE() {
         this(null);
-        EXF.getInstance().ICQ();
+
     }
 
     public IJE(String var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.IVK = new KO(var1);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.IVK = new KO(var1);
 
     }
 

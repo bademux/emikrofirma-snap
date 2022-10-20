@@ -4,7 +4,6 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.a.b.ERT;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.g.JB;
 import a.a.a.c.f.c.a.LP;
 
@@ -14,18 +13,12 @@ public class ERU extends ELV {
 
     public ERU() {
         super(ERT.GBH.getProcessName());
-        EXF.getInstance().ICO();
 
-        try {
-            this.GBI = null;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GBI = null;
 
     }
 
     protected void HHI() {
-        EXF.getInstance().ICO();
 
         try {
             if (this.GBI == null) {
@@ -39,16 +32,13 @@ public class ERU extends ELV {
                 }
             }
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void HHJ() {
-        EXF.getInstance().ICO();
 
         try {
             if (this.GBJ) {
@@ -61,25 +51,20 @@ public class ERU extends ELV {
             this.getModelManager().HKL(this.getParentDefinition());
             this.GBI = null;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void resetAndCleanUpProcessImpl() {
-        EXF.getInstance().ICO();
 
         try {
             this.getModelManager().resetData(this.getParentDefinition());
             this.GBI = null;
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

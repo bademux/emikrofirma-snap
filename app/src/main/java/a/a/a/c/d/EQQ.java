@@ -5,7 +5,6 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
 import a.a.a.c.d.f.*;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.II;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HR;
@@ -21,11 +20,9 @@ import a.a.a.c.f.a.n.QSN;
 import a.a.a.c.f.a.n.QSQ;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.JR;
-import a.a.a.c.f.b.c.JV;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.b.c.a.KM;
 import a.a.a.c.f.c.b.LY;
-
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -35,54 +32,48 @@ public class EQQ {
     }
 
     public static Set<IC> RHZ(JN var0, LY var1, List<EDF<HN<?>>> var2, List<EDF<IN>> var3, List<EDF<QSG<?>>> var4) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            HashSet var5 = new HashSet();
-            JN var6 = var0.DDN();
-            IG var7 = new IG();
-            var7.setPeriod(var6);
-            var7.setUserDataVersion(var1.getVersion());
-            var5.add(var7);
-            IF var8 = new IF();
-            var8.setPeriod(var6);
-            var8.setUserDataVersion(var1.getVersion());
-            var5.add(var8);
-            Iterator var9 = var2.iterator();
+        HashSet var5 = new HashSet();
+        JN var6 = var0.DDN();
+        IG var7 = new IG();
+        var7.setPeriod(var6);
+        var7.setUserDataVersion(var1.getVersion());
+        var5.add(var7);
+        IF var8 = new IF();
+        var8.setPeriod(var6);
+        var8.setUserDataVersion(var1.getVersion());
+        var5.add(var8);
+        Iterator var9 = var2.iterator();
 
-            EDF var10;
-            while (var9.hasNext()) {
-                var10 = (EDF) var9.next();
-                HN var11 = (HN) var10.getModelBaseElementWithIdObject();
-                HQY(var11, var7, var8);
-            }
-
-            var9 = var3.iterator();
-
-            while (var9.hasNext()) {
-                var10 = (EDF) var9.next();
-                HQZ(var7, HQX((IN) var10.getModelBaseElementWithIdObject()));
-            }
-
-            var9 = var4.iterator();
-
-            while (var9.hasNext()) {
-                var10 = (EDF) var9.next();
-                RIA((QSG) var10.getModelBaseElementWithIdObject(), var7, var8);
-            }
-
-            HashSet var15 = var5;
-            return var15;
-        } finally {
-            EXF.getInstance().ICP();
+        EDF var10;
+        while (var9.hasNext()) {
+            var10 = (EDF) var9.next();
+            HN var11 = (HN) var10.getModelBaseElementWithIdObject();
+            HQY(var11, var7, var8);
         }
+
+        var9 = var3.iterator();
+
+        while (var9.hasNext()) {
+            var10 = (EDF) var9.next();
+            HQZ(var7, HQX((IN) var10.getModelBaseElementWithIdObject()));
+        }
+
+        var9 = var4.iterator();
+
+        while (var9.hasNext()) {
+            var10 = (EDF) var9.next();
+            RIA((QSG) var10.getModelBaseElementWithIdObject(), var7, var8);
+        }
+
+        HashSet var15 = var5;
+        return var15;
     }
 
     private static ID HQX(IN var0) {
-        if (!(var0 instanceof IR)) {
+        if (!(var0 instanceof IR var1)) {
             throw new UnsupportedOperationException();
         } else {
-            IR var1 = (IR) var0;
             ID var2 = new ID();
             var2.setDate(var1.getCreationDate());
             var2.setRefId(var1.getRefId());
@@ -330,65 +321,60 @@ public class EQQ {
     }
 
     private static void RIA(QSG<?> var0, IC var1, IC var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            EQZ var3 = null;
-            switch (var0.getInvoiceOtherSubType()) {
-                case SELL_REASON_1:
-                case SELL_REASON_2:
-                case SELL_REASON_3:
-                case SELL_REASON_4:
-                    ID var9 = new ID();
-                    var9.setInvoiceOtherSubType(var0.getInvoiceOtherSubType());
-                    var9.HGZ().setValue(false);
-                    ERA var8 = new ERA(var0);
-                    var9.setRefId(var0.getRefId());
-                    if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_3)) {
-                        var9.RIK().setValue(true);
-                    } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_4)) {
-                        var9.RIL().setValue(true);
-                    } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_1)) {
-                        var9.RII().setValue(true);
-                    } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_2)) {
-                        var9.RIJ().setValue(true);
-                    }
+        EQZ var3 = null;
+        switch (var0.getInvoiceOtherSubType()) {
+            case SELL_REASON_1:
+            case SELL_REASON_2:
+            case SELL_REASON_3:
+            case SELL_REASON_4:
+                ID var9 = new ID();
+                var9.setInvoiceOtherSubType(var0.getInvoiceOtherSubType());
+                var9.HGZ().setValue(false);
+                ERA var8 = new ERA(var0);
+                var9.setRefId(var0.getRefId());
+                if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_3)) {
+                    var9.RIK().setValue(true);
+                } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_4)) {
+                    var9.RIL().setValue(true);
+                } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_1)) {
+                    var9.RII().setValue(true);
+                } else if (var0.getInvoiceOtherSubType().equals(QSQ.SELL_REASON_2)) {
+                    var9.RIJ().setValue(true);
+                }
 
-                    var9.setCreationDate(var0.RIS().DEF());
-                    var9.setTransactionDate(null);
-                    var9.setDate(((QSN) var0).getInvoicingDate());
-                    var9.setContractor(((QSN) var0).getContractor());
-                    setBasicVatPricesForInvoiceRecordElement(var9, var8.getForAll());
-                    HQZ(var1, var9);
-                    break;
-                case PURCHASE_REASON_1:
-                case PURCHASE_REASON_2:
-                case PURCHASE_REASON_3:
-                case PURCHASE_REASON_4:
-                    IE var4 = new IE();
-                    var4.setInvoiceOtherSubType(var0.getInvoiceOtherSubType());
-                    var4.HGZ().setValue(false);
-                    var3 = new EQZ(var0);
-                    var4.setRefId(var0.getRefId());
-                    if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_1)) {
-                        var4.RIM().setValue(true);
-                    } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_2)) {
-                        var4.RIN().setValue(true);
-                    } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_3)) {
-                        var4.RIO().setValue(true);
-                    } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_4)) {
-                        var4.RIP().setValue(true);
-                    }
+                var9.setCreationDate(var0.RIS().DEF());
+                var9.setTransactionDate(null);
+                var9.setDate(((QSN) var0).getInvoicingDate());
+                var9.setContractor(((QSN) var0).getContractor());
+                setBasicVatPricesForInvoiceRecordElement(var9, var8.getForAll());
+                HQZ(var1, var9);
+                break;
+            case PURCHASE_REASON_1:
+            case PURCHASE_REASON_2:
+            case PURCHASE_REASON_3:
+            case PURCHASE_REASON_4:
+                IE var4 = new IE();
+                var4.setInvoiceOtherSubType(var0.getInvoiceOtherSubType());
+                var4.HGZ().setValue(false);
+                var3 = new EQZ(var0);
+                var4.setRefId(var0.getRefId());
+                if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_1)) {
+                    var4.RIM().setValue(true);
+                } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_2)) {
+                    var4.RIN().setValue(true);
+                } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_3)) {
+                    var4.RIO().setValue(true);
+                } else if (var0.getInvoiceOtherSubType().equals(QSQ.PURCHASE_REASON_4)) {
+                    var4.RIP().setValue(true);
+                }
 
-                    var4.setCreationDate(var0.RIS().DEF());
-                    var4.setTransactionDate(null);
-                    var4.setDate(((QSK) var0).getInvoicingDate());
-                    var4.setContractor(((QSK) var0).getContractor());
-                    setBasicVatPricesForInvoiceRecordElement(var4, var3.getForAll());
-                    HQZ(var2, var4);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+                var4.setCreationDate(var0.RIS().DEF());
+                var4.setTransactionDate(null);
+                var4.setDate(((QSK) var0).getInvoicingDate());
+                var4.setContractor(((QSK) var0).getContractor());
+                setBasicVatPricesForInvoiceRecordElement(var4, var3.getForAll());
+                HQZ(var2, var4);
         }
 
     }

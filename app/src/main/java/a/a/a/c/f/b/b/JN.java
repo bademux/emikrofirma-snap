@@ -2,15 +2,14 @@ package a.a.a.c.f.b.b;
 
 import a.a.a.b.f.FFK;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IJ;
 import a.a.a.c.f.b.c.JY;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlTransient;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
@@ -30,45 +29,40 @@ public class JN extends IJ implements Comparable<JN> {
     public JN(JY var1, JY var2) {
         this.AOH = new JO(this);
         this.AOI = new JP(this);
-        EXF.getInstance().ICO();
 
-        try {
-            this.AOF = var1;
-            this.AOG = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AOF = var1;
+        this.AOG = var2;
 
     }
 
     public JN(Integer var1, Integer var2) {
         this(new JY(var1), new JY(var2));
-        EXF.getInstance().ICQ();
+
     }
 
     private JN(EVZ<Integer, Integer> var1) {
         this(new JY(var1.getFirstValue()), new JY(var1.getSecondValue()));
-        EXF.getInstance().ICQ();
+
     }
 
     public JN(Date var1) throws FFK {
         this(DDO(var1));
-        EXF.getInstance().ICQ();
+
     }
 
     public JN(LocalDate var1) throws FFK {
         this(DDO(var1));
-        EXF.getInstance().ICQ();
+
     }
 
     public JN(JN var1) {
         this(var1.AOF, var1.AOG);
-        EXF.getInstance().ICQ();
+
     }
 
     public JN() {
         this(null, (JY) null);
-        EXF.getInstance().ICQ();
+
     }
 
     public JY getYear() {
@@ -136,23 +130,18 @@ public class JN extends IJ implements Comparable<JN> {
             }
 
             if (this.AOF == null) {
-               return var2.AOF == null;
+                return var2.AOF == null;
             } else return this.AOF.equals(var2.AOF);
         }
     }
 
     public JN DDN() {
-        EXF.getInstance().ICO();
 
         JN var2;
-        try {
-            JN var1 = new JN();
-            var1.AOF = this.AOF != null ? this.AOF.DEH() : null;
-            var1.AOG = this.AOG != null ? this.AOG.DEH() : null;
-            var2 = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        JN var1 = new JN();
+        var1.AOF = this.AOF != null ? this.AOF.DEH() : null;
+        var1.AOG = this.AOG != null ? this.AOG.DEH() : null;
+        var2 = var1;
 
         return var2;
     }
@@ -162,41 +151,31 @@ public class JN extends IJ implements Comparable<JN> {
     }
 
     private static EVZ<Integer, Integer> DDO(Date var0) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var5;
-        try {
-            if (var0 == null) {
-                throw new FFK("Date cannot be NULL!");
-            }
-
-            SimpleDateFormat var1 = new SimpleDateFormat("yyyy");
-            SimpleDateFormat var2 = new SimpleDateFormat("MM");
-            Integer var3 = Integer.parseInt(var1.format(var0));
-            Integer var4 = Integer.parseInt(var2.format(var0));
-            var5 = new EVZ(var3, var4);
-        } finally {
-            EXF.getInstance().ICP();
+        if (var0 == null) {
+            throw new FFK("Date cannot be NULL!");
         }
+
+        SimpleDateFormat var1 = new SimpleDateFormat("yyyy");
+        SimpleDateFormat var2 = new SimpleDateFormat("MM");
+        Integer var3 = Integer.parseInt(var1.format(var0));
+        Integer var4 = Integer.parseInt(var2.format(var0));
+        var5 = new EVZ(var3, var4);
 
         return var5;
     }
 
     private static EVZ<Integer, Integer> DDO(LocalDate var0) throws FFK {
-        EXF.getInstance().ICO();
 
         EVZ var3;
-        try {
-            if (var0 == null) {
-                throw new FFK("Date cannot be NULL!");
-            }
-
-            Integer var1 = var0.getYear();
-            Integer var2 = var0.getMonthValue();
-            var3 = new EVZ(var1, var2);
-        } finally {
-            EXF.getInstance().ICP();
+        if (var0 == null) {
+            throw new FFK("Date cannot be NULL!");
         }
+
+        Integer var1 = var0.getYear();
+        Integer var2 = var0.getMonthValue();
+        var3 = new EVZ(var1, var2);
 
         return var3;
     }

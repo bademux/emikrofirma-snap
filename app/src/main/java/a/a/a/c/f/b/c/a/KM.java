@@ -1,9 +1,7 @@
 package a.a.a.c.f.b.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -15,13 +13,8 @@ public enum KM implements JM {
     private final String AOZ;
 
     KM(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AOZ = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AOZ = var3;
 
     }
 

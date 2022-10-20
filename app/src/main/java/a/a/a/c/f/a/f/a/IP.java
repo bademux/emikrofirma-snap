@@ -1,13 +1,9 @@
 package a.a.a.c.f.a.f.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.KQ;
-import a.a.a.c.f.b.c.a.KL;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class IP extends IO implements Cloneable {
@@ -38,7 +34,7 @@ public class IP extends IO implements Cloneable {
     }
 
     public IP() {
-        EXF.getInstance().ICQ();
+
     }
 
     public JR getNet() {

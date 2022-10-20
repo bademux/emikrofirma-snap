@@ -5,8 +5,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 
-import java.math.BigDecimal;
-
 public class EOB<_T> implements Callback<TableColumn<_T, JR>, TableCell<_T, JR>> {
     public EOB() {
     }

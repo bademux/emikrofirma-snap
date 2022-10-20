@@ -6,13 +6,9 @@ import a.a.a.c.c.d.d.EOQ;
 import a.a.a.c.c.d.d.h.QKK;
 import a.a.a.c.c.d.f.EOV;
 import a.a.a.c.c.e.j.c.EUY;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.*;
 import a.a.a.c.f.b.c.a.KL;
 import a.a.a.c.f.c.c.ComboBoxRequired;
-import a.a.a.c.f.c.c.TextAreaRequired;
-import a.a.a.c.f.c.c.TextFieldValidated_Number;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -86,14 +82,10 @@ public class EUG {
     }
 
     public void setDefault() {
-        try {
-            ((ComboBoxRequired) this.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element).getSelectionModel().select(KL.RATE_23);
-            this.fxml_invoice_sale_new_add_invoice_element_unitController.fxml_component_main_element.setText(this.GKQ.getString("micro.process.invoice_sale_new.Error.DefaultUnit"));
-            String var1 = this.RAU;
-            this.fxml_invoice_sale_new_add_invoice_element_netpriceController.fxml_component_root_element.setLabel(this.GKQ.getString("micro.process.invoice_sale_new.DialogAddNewInvoiceElement.UnitValue_" + var1));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        ((ComboBoxRequired) this.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element).getSelectionModel().select(KL.RATE_23);
+        this.fxml_invoice_sale_new_add_invoice_element_unitController.fxml_component_main_element.setText(this.GKQ.getString("micro.process.invoice_sale_new.Error.DefaultUnit"));
+        String var1 = this.RAU;
+        this.fxml_invoice_sale_new_add_invoice_element_netpriceController.fxml_component_root_element.setLabel(this.GKQ.getString("micro.process.invoice_sale_new.DialogAddNewInvoiceElement.UnitValue_" + var1));
 
     }
 

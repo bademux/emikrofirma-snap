@@ -1,11 +1,10 @@
 package a.a.a.c.f.b.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -27,22 +26,17 @@ public enum KL implements JM {
     private final String QMA;
 
     KL(boolean var3, boolean var4, Double var5, String var6, String var7) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AOV = var3;
-            this.AOW = var4;
-            if (var5 != null) {
-                this.AOX = BigDecimal.valueOf(var5);
-            } else {
-                this.AOX = null;
-            }
-
-            this.AOY = var6;
-            this.QMA = var7;
-        } finally {
-            EXF.getInstance().ICP();
+        this.AOV = var3;
+        this.AOW = var4;
+        if (var5 != null) {
+            this.AOX = BigDecimal.valueOf(var5);
+        } else {
+            this.AOX = null;
         }
+
+        this.AOY = var6;
+        this.QMA = var7;
 
     }
 

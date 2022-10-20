@@ -1,6 +1,5 @@
 package a.a.a.c.c.d.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.HL;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeTableCell;
@@ -27,35 +26,30 @@ public class EOR<_T> implements Callback<TreeTableColumn<_T, HL>, TreeTableCell<
             final ImageView TXZ = new ImageView();
 
             protected void updateItem(HL var1, boolean var2) {
-                EXF.getInstance().ICO();
 
-                try {
-                    super.updateItem(var1, var2);
-                    if (var1 != null) {
-                        if (var1.equals(HL.SUCCESS)) {
-                            this.TXZ.setFitWidth(15.0);
-                            this.TXZ.setFitHeight(15.0);
-                            this.TXZ.setImage(EOR.this.FNS);
-                        } else if (var1.equals(HL.FAILURE)) {
-                            this.TXZ.setFitWidth(13.0);
-                            this.TXZ.setFitHeight(18.0);
-                            this.TXZ.setImage(EOR.this.FNT);
-                        } else {
-                            this.TXZ.setFitWidth(7.0);
-                            this.TXZ.setFitHeight(15.0);
-                            this.TXZ.setImage(EOR.this.FNU);
-                        }
-
-                        this.setGraphic(this.TXZ);
-                        this.setTooltip(new Tooltip(var1.getDescription()));
-                    } else {
+                super.updateItem(var1, var2);
+                if (var1 != null) {
+                    if (var1.equals(HL.SUCCESS)) {
+                        this.TXZ.setFitWidth(15.0);
+                        this.TXZ.setFitHeight(15.0);
+                        this.TXZ.setImage(EOR.this.FNS);
+                    } else if (var1.equals(HL.FAILURE)) {
                         this.TXZ.setFitWidth(13.0);
                         this.TXZ.setFitHeight(18.0);
-                        this.TXZ.setImage(EOR.this.MWJ);
-                        this.setGraphic(this.TXZ);
+                        this.TXZ.setImage(EOR.this.FNT);
+                    } else {
+                        this.TXZ.setFitWidth(7.0);
+                        this.TXZ.setFitHeight(15.0);
+                        this.TXZ.setImage(EOR.this.FNU);
                     }
-                } finally {
-                    EXF.getInstance().ICP();
+
+                    this.setGraphic(this.TXZ);
+                    this.setTooltip(new Tooltip(var1.getDescription()));
+                } else {
+                    this.TXZ.setFitWidth(13.0);
+                    this.TXZ.setFitHeight(18.0);
+                    this.TXZ.setImage(EOR.this.MWJ);
+                    this.setGraphic(this.TXZ);
                 }
 
             }

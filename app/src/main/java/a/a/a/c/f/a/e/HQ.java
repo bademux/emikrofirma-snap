@@ -1,17 +1,14 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.b.c.a.KL;
-import a.a.a.c.f.b.c.a.QSV;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HQ extends HO {
     public HQ() {
-        EXF.getInstance().ICQ();
+
     }
 
     public Object RIH() {

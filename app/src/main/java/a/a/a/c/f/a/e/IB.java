@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -11,13 +10,8 @@ public enum IB implements JM {
     private final String AKZ;
 
     IB(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AKZ = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AKZ = var3;
 
     }
 

@@ -1,17 +1,15 @@
 package a.a.a.c.f.a.n;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.b.c.JV;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 @XmlRootElement(
         name = "invoiceOtherPurchase"
@@ -25,8 +23,7 @@ public class QSK extends QSM {
     private final ObjectProperty<ObservableList<QSI>> QYG = new QSL(this);
 
     public QSK() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public HI getContractor() {

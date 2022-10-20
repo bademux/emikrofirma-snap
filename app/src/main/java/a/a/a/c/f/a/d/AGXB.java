@@ -1,11 +1,11 @@
 package a.a.a.c.f.a.d;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -93,8 +93,7 @@ public class AGXB {
             var4.append("\"").append(var3.getValue()).append("\"");
         } else if (var3.getValue() instanceof HashMap) {
             var4.append(this.AICK(var2 + 1, (JSONObject) var3.getValue()));
-        } else if (var3.getValue() instanceof ArrayList) {
-            ArrayList var9 = (ArrayList) var3.getValue();
+        } else if (var3.getValue() instanceof ArrayList var9) {
             var4.append("[").append(System.lineSeparator());
             boolean var6 = true;
             Iterator var7 = var9.iterator();
@@ -137,8 +136,7 @@ public class AGXB {
             var4.append("\"").append(var3).append("\"");
         } else if (var3 instanceof HashMap) {
             var4.append(this.AICK(var2 + 1, (JSONObject) var3));
-        } else if (var3 instanceof ArrayList) {
-            ArrayList var9 = (ArrayList) var3;
+        } else if (var3 instanceof ArrayList var9) {
             var4.append("[");
             boolean var6 = true;
             Iterator var7 = var9.iterator();

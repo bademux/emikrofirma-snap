@@ -21,7 +21,6 @@ import a.a.a.c.c.d.g.EOX;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.d.n.QVB;
 import a.a.a.c.c.e.o.c.QTU;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.a.EZG;
 import a.a.a.c.f.a.h.JG;
 import a.a.a.c.f.a.n.QSK;
@@ -29,7 +28,6 @@ import a.a.a.c.f.a.n.QSQ;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.a.KH;
 import a.a.a.c.f.b.c.a.QSW;
-import a.a.a.c.f.c.c.TextFieldValidated_Text;
 import a.a.a.c.g.MSX;
 import a.a.a.c.g.MTI;
 import a.a.a.c.g.a.FCR;
@@ -40,7 +38,6 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -119,123 +116,109 @@ public class QTN extends ENO<QTU> {
 
     public QTN(EMC var1, EMT var2, String var3, String var4) {
         super(var1, var2, var3, var4);
-        EXF.getInstance().ICQ();
+
     }
 
     @FXML
     public void initialize() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.RBF = this.resources.getString("micro.process.other_purchase_list.SearchAll");
-            this.fxml_other_purchase_list_table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<QVB<QSK>>() {
-                public void changed(ObservableValue<? extends QVB<QSK>> var1, QVB<QSK> var2, QVB<QSK> var3) {
-                    if (var3 != null) {
-                        QTN.this.RLN();
-                    } else {
-                        QTN.this.setAllDisabled();
-                    }
+        this.RBF = this.resources.getString("micro.process.other_purchase_list.SearchAll");
+        this.fxml_other_purchase_list_table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<QVB<QSK>>() {
+            public void changed(ObservableValue<? extends QVB<QSK>> var1, QVB<QSK> var2, QVB<QSK> var3) {
+                if (var3 != null) {
+                    QTN.this.RLN();
+                } else {
+                    QTN.this.setAllDisabled();
+                }
 
-                }
-            });
-            this.fxml_other_purchase_list_table_column_invoicing_date.setCellValueFactory(new PropertyValueFactory("invoicingDate"));
-            this.fxml_other_purchase_list_table_column_ref_id.setCellValueFactory(new PropertyValueFactory("refId"));
-            this.fxml_other_purchase_list_table_column_other_type.setCellValueFactory(new PropertyValueFactory("invoiceOtherSubType"));
-            this.fxml_other_purchase_list_table_column_sum_net.setCellValueFactory(new PropertyValueFactory("sumNet"));
-            this.fxml_other_purchase_list_table_column_sum_tax.setCellValueFactory(new PropertyValueFactory("sumTax"));
-            this.fxml_other_purchase_list_table_column_sum_brut.setCellValueFactory(new PropertyValueFactory("sumBrut"));
-            this.fxml_other_purchase_list_table_column_sum_net.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
-            this.fxml_other_purchase_list_table_column_sum_tax.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
-            this.fxml_other_purchase_list_table_column_sum_brut.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
-            this.fxml_other_purchase_list_month.setCellFactory(new EOQ());
-            this.fxml_other_purchase_list_month.setButtonCell(this.fxml_other_purchase_list_month.getCellFactory().call(null));
-            this.fxml_other_purchase_list_table.setFixedCellSize(30.0);
-            this.fxml_other_purchase_list_table.setMinHeight(this.fxml_other_purchase_list_table.getFixedCellSize() * 2.0);
-            this.fxml_other_purchase_list_table_column_other_type.setCellFactory(new EOG());
-            this.fxml_other_purchase_list_table_column_invoicing_date.setCellFactory(new QUZ());
-            this.fxml_other_purchase_list_summary_table_column_sum_net.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<EOX<String>, BigDecimal>, ObservableValue<BigDecimal>>() {
-                public ObservableValue<BigDecimal> call(TableColumn.CellDataFeatures<EOX<String>, BigDecimal> var1) {
-                    return ((EOX) var1.getValue()).getSumNet();
-                }
-            });
-            this.fxml_other_purchase_list_summary_table_column_sum_tax.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<EOX<String>, BigDecimal>, ObservableValue<BigDecimal>>() {
-                public ObservableValue<BigDecimal> call(TableColumn.CellDataFeatures<EOX<String>, BigDecimal> var1) {
-                    return ((EOX) var1.getValue()).getSumTax();
-                }
-            });
-            this.fxml_other_purchase_list_summary_table_column_sum_brut.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<EOX<String>, BigDecimal>, ObservableValue<BigDecimal>>() {
-                public ObservableValue<BigDecimal> call(TableColumn.CellDataFeatures<EOX<String>, BigDecimal> var1) {
-                    return ((EOX) var1.getValue()).getSumBrut();
-                }
-            });
-            this.fxml_other_purchase_list_summary_table_column_name.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<EOX<String>, String>, ObservableValue<String>>() {
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<EOX<String>, String> var1) {
-                    return ((EOX) var1.getValue()).getTaxRate();
-                }
-            });
-            this.fxml_other_purchase_list_summary_table.setItems(this.RBK);
-            this.fxml_other_purchase_list_summary_table_column_sum_net.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
-            this.fxml_other_purchase_list_summary_table_column_sum_tax.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
-            this.fxml_other_purchase_list_summary_table_column_sum_brut.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
-            this.fxml_other_purchase_list_summary_table_column_name.minWidthProperty().bind(this.fxml_other_purchase_list_table_column_invoicing_date.widthProperty().add(this.fxml_other_purchase_list_table_column_ref_id.widthProperty()).add(this.fxml_other_purchase_list_table_column_other_type.widthProperty()));
-            this.fxml_other_purchase_list_summary_table_column_name.maxWidthProperty().bind(this.fxml_other_purchase_list_table_column_invoicing_date.widthProperty().add(this.fxml_other_purchase_list_table_column_ref_id.widthProperty()).add(this.fxml_other_purchase_list_table_column_other_type.widthProperty()));
-            this.fxml_other_purchase_list_summary_table_column_sum_net.minWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_net.widthProperty());
-            this.fxml_other_purchase_list_summary_table_column_sum_net.maxWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_net.widthProperty());
-            this.fxml_other_purchase_list_summary_table_column_sum_tax.minWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_tax.widthProperty());
-            this.fxml_other_purchase_list_summary_table_column_sum_tax.maxWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_tax.widthProperty());
-            this.fxml_other_purchase_list_summary_table_column_sum_brut.minWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_brut.widthProperty());
-            this.fxml_other_purchase_list_summary_table_column_sum_brut.maxWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_brut.widthProperty());
-            this.fxml_other_purchase_list_month.valueProperty().addListener(this.RBL);
-            this.fxml_other_purchase_list_year.valueProperty().addListener(this.RBM);
-            this.fxml_other_purchase_list_searchController.fxml_component_main_element.textProperty().addListener(this.RBN);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+            }
+        });
+        this.fxml_other_purchase_list_table_column_invoicing_date.setCellValueFactory(new PropertyValueFactory("invoicingDate"));
+        this.fxml_other_purchase_list_table_column_ref_id.setCellValueFactory(new PropertyValueFactory("refId"));
+        this.fxml_other_purchase_list_table_column_other_type.setCellValueFactory(new PropertyValueFactory("invoiceOtherSubType"));
+        this.fxml_other_purchase_list_table_column_sum_net.setCellValueFactory(new PropertyValueFactory("sumNet"));
+        this.fxml_other_purchase_list_table_column_sum_tax.setCellValueFactory(new PropertyValueFactory("sumTax"));
+        this.fxml_other_purchase_list_table_column_sum_brut.setCellValueFactory(new PropertyValueFactory("sumBrut"));
+        this.fxml_other_purchase_list_table_column_sum_net.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
+        this.fxml_other_purchase_list_table_column_sum_tax.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
+        this.fxml_other_purchase_list_table_column_sum_brut.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
+        this.fxml_other_purchase_list_month.setCellFactory(new EOQ());
+        this.fxml_other_purchase_list_month.setButtonCell(this.fxml_other_purchase_list_month.getCellFactory().call(null));
+        this.fxml_other_purchase_list_table.setFixedCellSize(30.0);
+        this.fxml_other_purchase_list_table.setMinHeight(this.fxml_other_purchase_list_table.getFixedCellSize() * 2.0);
+        this.fxml_other_purchase_list_table_column_other_type.setCellFactory(new EOG());
+        this.fxml_other_purchase_list_table_column_invoicing_date.setCellFactory(new QUZ());
+        this.fxml_other_purchase_list_summary_table_column_sum_net.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<EOX<String>, BigDecimal>, ObservableValue<BigDecimal>>() {
+            public ObservableValue<BigDecimal> call(TableColumn.CellDataFeatures<EOX<String>, BigDecimal> var1) {
+                return ((EOX) var1.getValue()).getSumNet();
+            }
+        });
+        this.fxml_other_purchase_list_summary_table_column_sum_tax.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<EOX<String>, BigDecimal>, ObservableValue<BigDecimal>>() {
+            public ObservableValue<BigDecimal> call(TableColumn.CellDataFeatures<EOX<String>, BigDecimal> var1) {
+                return ((EOX) var1.getValue()).getSumTax();
+            }
+        });
+        this.fxml_other_purchase_list_summary_table_column_sum_brut.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<EOX<String>, BigDecimal>, ObservableValue<BigDecimal>>() {
+            public ObservableValue<BigDecimal> call(TableColumn.CellDataFeatures<EOX<String>, BigDecimal> var1) {
+                return ((EOX) var1.getValue()).getSumBrut();
+            }
+        });
+        this.fxml_other_purchase_list_summary_table_column_name.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<EOX<String>, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<EOX<String>, String> var1) {
+                return ((EOX) var1.getValue()).getTaxRate();
+            }
+        });
+        this.fxml_other_purchase_list_summary_table.setItems(this.RBK);
+        this.fxml_other_purchase_list_summary_table_column_sum_net.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
+        this.fxml_other_purchase_list_summary_table_column_sum_tax.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
+        this.fxml_other_purchase_list_summary_table_column_sum_brut.setCellFactory(TextFieldTableCell.forTableColumn(new EOK(ENI.get(), 2)));
+        this.fxml_other_purchase_list_summary_table_column_name.minWidthProperty().bind(this.fxml_other_purchase_list_table_column_invoicing_date.widthProperty().add(this.fxml_other_purchase_list_table_column_ref_id.widthProperty()).add(this.fxml_other_purchase_list_table_column_other_type.widthProperty()));
+        this.fxml_other_purchase_list_summary_table_column_name.maxWidthProperty().bind(this.fxml_other_purchase_list_table_column_invoicing_date.widthProperty().add(this.fxml_other_purchase_list_table_column_ref_id.widthProperty()).add(this.fxml_other_purchase_list_table_column_other_type.widthProperty()));
+        this.fxml_other_purchase_list_summary_table_column_sum_net.minWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_net.widthProperty());
+        this.fxml_other_purchase_list_summary_table_column_sum_net.maxWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_net.widthProperty());
+        this.fxml_other_purchase_list_summary_table_column_sum_tax.minWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_tax.widthProperty());
+        this.fxml_other_purchase_list_summary_table_column_sum_tax.maxWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_tax.widthProperty());
+        this.fxml_other_purchase_list_summary_table_column_sum_brut.minWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_brut.widthProperty());
+        this.fxml_other_purchase_list_summary_table_column_sum_brut.maxWidthProperty().bind(this.fxml_other_purchase_list_table_column_sum_brut.widthProperty());
+        this.fxml_other_purchase_list_month.valueProperty().addListener(this.RBL);
+        this.fxml_other_purchase_list_year.valueProperty().addListener(this.RBM);
+        this.fxml_other_purchase_list_searchController.fxml_component_main_element.textProperty().addListener(this.RBN);
 
     }
 
     public void HHE() {
-        EXF.getInstance().ICO();
 
         try {
             super.HHE();
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            this.fxml_include_top_menuController.HHB();
-            this.fxml_include_left_barController.HHB();
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_include_top_menuController.HHB();
+        this.fxml_include_left_barController.HHB();
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
         try {
             this.fxml_include_top_menuController.HHC();
             this.fxml_include_left_barController.HHC();
             this.HHG();
-           this.RLK(this.RBC == null);
+            this.RLK(this.RBC == null);
 
             this.RBM.RLF();
             this.RBL.RLD();
             if (this.RBC != null && this.RBC.getYear() != null && this.RBC.getYear().getValue() != null && this.RBC.getMonth() != null && this.RBC.getMonth().getValue() != null) {
-                EXF.getInstance().ICE("Initial period " + this.RBC);
+                org.slf4j.LoggerFactory.getLogger(getClass()).info("Initial period " + this.RBC);
                 if (this.RBB.get(String.valueOf(this.RBC.DDJ().getValue())) != null && this.RBB.get(String.valueOf(this.RBC.DDJ().getValue())).contains(KH.getMonthByNumber(this.RBC.DDK().getValue()))) {
                     this.fxml_other_purchase_list_year.getSelectionModel().select(String.valueOf(this.RBC.DDJ().getValue()));
                     this.fxml_other_purchase_list_month.getSelectionModel().select(KH.getMonthByNumber(this.RBC.DDK().getValue()));
@@ -251,10 +234,8 @@ public class QTN extends ENO<QTU> {
             this.getInvoicesByPeriod(false);
             this.fxml_parent.requestFocus();
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
@@ -263,18 +244,12 @@ public class QTN extends ENO<QTU> {
     }
 
     public void setPeriod(JN var1) throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            this.RBC = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.RBC = var1;
 
     }
 
     private void RLK(boolean var1) {
-        EXF.getInstance().ICO();
 
         try {
             this.RBM.RLF();
@@ -287,12 +262,12 @@ public class QTN extends ENO<QTU> {
             int var5 = var3.get(2);
             this.RBE = KH.getMonthByNumber(var5 + 1);
             this.RBD = String.valueOf(var4);
-            EXF.getInstance().ICE("Actual year: " + this.RBD + " Actual month: " + (var5 + 1));
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Actual year: " + this.RBD + " Actual month: " + (var5 + 1));
             if (this.RBB.get(this.RBD) == null) {
                 this.RBB.put(this.RBD, new TreeSet());
             }
 
-           this.RBB.get(this.RBD).add(this.RBE);
+            this.RBB.get(this.RBD).add(this.RBE);
 
             this.fxml_other_purchase_list_pagination.setPageCount(1);
             this.fxml_other_purchase_list_year_search.getItems().clear();
@@ -310,16 +285,13 @@ public class QTN extends ENO<QTU> {
             this.RBL.RLE();
             this.RBN.RLI();
         } catch (FFO | FFK var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             FCT.IGX(this.resources.getString("micro.process.invoice_purchase_list.Error.GetPossibleDatesError"), var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     protected void getInvoicesByPeriod(final boolean var1) {
-        EXF.getInstance().ICO();
 
         try {
             final Callback<Integer, Node> var2 = this::RLL;
@@ -329,10 +301,8 @@ public class QTN extends ENO<QTU> {
                     try {
                         QTN.this.RBI = QTN.this.getProcess().getInvoicesOtherPurchase(Integer.valueOf(QTN.this.fxml_other_purchase_list_year.getValue()), Integer.valueOf(QTN.this.fxml_other_purchase_list_month.getValue().getMonthNumberString()), null, QSW.ACTIVE);
                     } catch (FFK | FFO | NumberFormatException var5) {
-                        EXF.getInstance().ICA(var5);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
                         var3.setObject(var5);
-                    } finally {
-                        EXF.getInstance().ICP();
                     }
 
                 }
@@ -374,16 +344,13 @@ public class QTN extends ENO<QTU> {
             };
             var4.MXH();
         } catch (FFK var8) {
-            EXF.getInstance().ICA(var8);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
             FCT.IGX(this.resources.getString("micro.process.invoice_purchase_list.Error.GetInvoicesError"), var8);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void getInvoicesBySearch() {
-        EXF.getInstance().ICO();
 
         try {
             String var1 = this.fxml_other_purchase_list_searchController.fxml_component_main_element.getText();
@@ -404,7 +371,6 @@ public class QTN extends ENO<QTU> {
             final MTI var4 = new MTI(null);
             MSX var5 = new MSX(this.FGW, this.fxml_parent.disableProperty()) {
                 public void MXI() {
-                    EXF.getInstance().ICO();
 
                     try {
                         if (QTN.this.fxml_other_purchase_list_year_search.getValue().equals(QTN.this.RBF)) {
@@ -413,10 +379,8 @@ public class QTN extends ENO<QTU> {
                             QTN.this.RBI = QTN.this.getProcess().getInvoicesOtherPurchase(Integer.valueOf(QTN.this.fxml_other_purchase_list_year.getValue()), null, var2, null);
                         }
                     } catch (Exception var5) {
-                        EXF.getInstance().ICA(var5);
+                        org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
                         var4.setObject(var5);
-                    } finally {
-                        EXF.getInstance().ICP();
                     }
 
                 }
@@ -441,384 +405,290 @@ public class QTN extends ENO<QTU> {
             };
             var5.MXH();
         } catch (FFK | NumberFormatException var9) {
-            EXF.getInstance().ICA(var9);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
             FCT.IGX(this.resources.getString("micro.process.other_purchase_list.Error.GetInvoicesError"), var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void setPossibleMonths(String var1, boolean var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            boolean var3 = this.RBL.isDisabled();
-            this.RBL.RLD();
-            this.fxml_other_purchase_list_month.getItems().clear();
-            if (this.RBB.get(var1) != null) {
-                this.fxml_other_purchase_list_month.getItems().addAll(this.RBB.get(var1));
-            }
+        boolean var3 = this.RBL.isDisabled();
+        this.RBL.RLD();
+        this.fxml_other_purchase_list_month.getItems().clear();
+        if (this.RBB.get(var1) != null) {
+            this.fxml_other_purchase_list_month.getItems().addAll(this.RBB.get(var1));
+        }
 
-            if (this.RBD.equals(var1) && var2) {
-                this.fxml_other_purchase_list_month.setValue(this.RBE);
-            } else if (this.RBB.get(var1) != null && this.RBB.get(var1).size() > 0) {
-                this.fxml_other_purchase_list_month.setValue((KH) ((SortedSet) this.RBB.get(var1)).last());
-            }
+        if (this.RBD.equals(var1) && var2) {
+            this.fxml_other_purchase_list_month.setValue(this.RBE);
+        } else if (this.RBB.get(var1) != null && this.RBB.get(var1).size() > 0) {
+            this.fxml_other_purchase_list_month.setValue((KH) ((SortedSet) this.RBB.get(var1)).last());
+        }
 
-            if (!var3) {
-                this.RBL.RLE();
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (!var3) {
+            this.RBL.RLE();
         }
 
     }
 
     private Node RLL(int var1) {
-        EXF.getInstance().ICO();
 
         VBox var3;
-        try {
-            this.RBH = var1;
-            this.RLM();
-            this.setTableHeight();
-            VBox var2 = new VBox(this.fxml_other_purchase_list_table, this.fxml_other_purchase_list_summary_table);
-            var3 = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.RBH = var1;
+        this.RLM();
+        this.setTableHeight();
+        VBox var2 = new VBox(this.fxml_other_purchase_list_table, this.fxml_other_purchase_list_summary_table);
+        var3 = var2;
 
         return var3;
     }
 
     private void setTableHeight() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_purchase_list_table.setPrefHeight(this.fxml_other_purchase_list_table.getFixedCellSize() * ((double) this.fxml_other_purchase_list_table.getItems().size() + 1.2));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_purchase_list_table.setPrefHeight(this.fxml_other_purchase_list_table.getFixedCellSize() * ((double) this.fxml_other_purchase_list_table.getItems().size() + 1.2));
 
     }
 
     private void RLM() {
-        EXF.getInstance().ICO();
 
-        try {
-            if (this.RBI == null) {
-                return;
-            }
-
-            int var1 = this.RBH * 50;
-            int var2 = Math.min(var1 + 50, this.RBI.size());
-            List var3 = this.RBI.subList(var1, var2);
-            this.fxml_other_purchase_list_table.setItems(FXCollections.observableArrayList(var3));
-            this.fxml_other_purchase_list_table.refresh();
-        } finally {
-            EXF.getInstance().ICP();
+        if (this.RBI == null) {
+            return;
         }
+
+        int var1 = this.RBH * 50;
+        int var2 = Math.min(var1 + 50, this.RBI.size());
+        List var3 = this.RBI.subList(var1, var2);
+        this.fxml_other_purchase_list_table.setItems(FXCollections.observableArrayList(var3));
+        this.fxml_other_purchase_list_table.refresh();
 
     }
 
     private void RLN() {
-        EXF.getInstance().ICO();
 
-        try {
-            if (this.fxml_other_purchase_list_table.getSelectionModel().getSelectedIndex() == -1) {
-                this.setAllDisabled();
-                return;
-            }
+        if (this.fxml_other_purchase_list_table.getSelectionModel().getSelectedIndex() == -1) {
+            this.setAllDisabled();
+            return;
+        }
 
-            QVB var1 = this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem();
-            if (var1 == null) {
-                this.setAllDisabled();
-                return;
-            }
+        QVB var1 = this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem();
+        if (var1 == null) {
+            this.setAllDisabled();
+            return;
+        }
 
-            QTR var2 = this.RLO(var1);
-            if (var2.RLJ()) {
-                this.setEditDisable(false, null);
-            } else {
-                this.setEditDisable(true, var2.getText());
-            }
+        QTR var2 = this.RLO(var1);
+        if (var2.RLJ()) {
+            this.setEditDisable(false, null);
+        } else {
+            this.setEditDisable(true, var2.getText());
+        }
 
-            var2 = this.RLP(var1);
-            if (var2.RLJ()) {
-                this.setViewDisable(false, null);
-            } else {
-                this.setViewDisable(true, var2.getText());
-            }
+        var2 = this.RLP(var1);
+        if (var2.RLJ()) {
+            this.setViewDisable(false, null);
+        } else {
+            this.setViewDisable(true, var2.getText());
+        }
 
-            var2 = this.RLQ(var1);
-            if (var2.RLJ()) {
-                this.setDeleteDisable(false, null);
-            } else {
-                this.setDeleteDisable(true, var2.getText());
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        var2 = this.RLQ(var1);
+        if (var2.RLJ()) {
+            this.setDeleteDisable(false, null);
+        } else {
+            this.setDeleteDisable(true, var2.getText());
         }
 
     }
 
     private void setAllDisabled() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.setEditDisable(true, null);
-            this.setViewDisable(true, null);
-            this.setDeleteDisable(true, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.setEditDisable(true, null);
+        this.setViewDisable(true, null);
+        this.setDeleteDisable(true, null);
 
     }
 
     private void setEditDisable(boolean var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_purchase_list_button_edit.setDisable(var1);
-            this.fxml_other_purchase_list_button_error_label.setText(var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_purchase_list_button_edit.setDisable(var1);
+        this.fxml_other_purchase_list_button_error_label.setText(var2);
 
     }
 
     private void setViewDisable(boolean var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_purchase_list_button_view.setDisable(var1);
-            this.fxml_other_purchase_list_button_error_label.setText(var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_purchase_list_button_view.setDisable(var1);
+        this.fxml_other_purchase_list_button_error_label.setText(var2);
 
     }
 
     private void setDeleteDisable(boolean var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_other_purchase_list_button_delete.setDisable(var1);
-            this.fxml_other_purchase_list_button_error_label.setText(var2);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_other_purchase_list_button_delete.setDisable(var1);
+        this.fxml_other_purchase_list_button_error_label.setText(var2);
 
     }
 
     private QTR RLO(QVB<QSK> var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var1.getState().equals(QSW.CANCELED)) {
-                QTR var10 = new QTR(false, null);
-                return var10;
-            } else {
-                boolean var2 = false;
-
-                try {
-                    var2 = this.RLR(var1);
-                } catch (FFO | FFK var8) {
-                    EXF.getInstance().ICA(var8);
-                    FCT.IGX(this.resources.getString("micro.process.other_purchase_list.Error.GetInvoiceSettlement"), var8);
-                    QTR var4 = new QTR(false, this.resources.getString("micro.process.other_purchase_list.Error.GetInvoiceSettlement"));
-                    return var4;
-                }
-
-                QTR var3;
-                if (var2) {
-                    var3 = new QTR(false, this.resources.getString("micro.process.other_purchase_list.PossibleResult.SettlementSetted"));
-                    return var3;
-                } else {
-                    var3 = new QTR(true, null);
-                    return var3;
-                }
-            }
-        } finally {
-            EXF.getInstance().ICP();
-        }
-    }
-
-    private QTR RLP(QVB<QSK> var1) {
-        EXF.getInstance().ICO();
-
-        QTR var2;
-        try {
-            var2 = new QTR(true, null);
-        } finally {
-            EXF.getInstance().ICP();
-        }
-
-        return var2;
-    }
-
-    private QTR RLQ(QVB<QSK> var1) {
-        EXF.getInstance().ICO();
-
-        QTR var3;
-        try {
+        if (var1.getState().equals(QSW.CANCELED)) {
+            QTR var10 = new QTR(false, null);
+            return var10;
+        } else {
             boolean var2 = false;
 
             try {
                 var2 = this.RLR(var1);
             } catch (FFO | FFK var8) {
-                EXF.getInstance().ICA(var8);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
                 FCT.IGX(this.resources.getString("micro.process.other_purchase_list.Error.GetInvoiceSettlement"), var8);
                 QTR var4 = new QTR(false, this.resources.getString("micro.process.other_purchase_list.Error.GetInvoiceSettlement"));
                 return var4;
             }
 
+            QTR var3;
             if (var2) {
                 var3 = new QTR(false, this.resources.getString("micro.process.other_purchase_list.PossibleResult.SettlementSetted"));
                 return var3;
-            }
-
-            if (!var1.getState().equals(QSW.CANCELED)) {
+            } else {
                 var3 = new QTR(true, null);
                 return var3;
             }
-
-            var3 = new QTR(false, this.resources.getString("micro.process.other_purchase_list.error.CantCancelCanceledInvoice"));
-        } finally {
-            EXF.getInstance().ICP();
         }
+    }
+
+    private QTR RLP(QVB<QSK> var1) {
+
+        QTR var2;
+        var2 = new QTR(true, null);
+
+        return var2;
+    }
+
+    private QTR RLQ(QVB<QSK> var1) {
+
+        QTR var3;
+        boolean var2 = false;
+
+        try {
+            var2 = this.RLR(var1);
+        } catch (FFO | FFK var8) {
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
+            FCT.IGX(this.resources.getString("micro.process.other_purchase_list.Error.GetInvoiceSettlement"), var8);
+            QTR var4 = new QTR(false, this.resources.getString("micro.process.other_purchase_list.Error.GetInvoiceSettlement"));
+            return var4;
+        }
+
+        if (var2) {
+            var3 = new QTR(false, this.resources.getString("micro.process.other_purchase_list.PossibleResult.SettlementSetted"));
+            return var3;
+        }
+
+        if (!var1.getState().equals(QSW.CANCELED)) {
+            var3 = new QTR(true, null);
+            return var3;
+        }
+
+        var3 = new QTR(false, this.resources.getString("micro.process.other_purchase_list.error.CantCancelCanceledInvoice"));
 
         return var3;
     }
 
     public boolean RLR(QVB<QSK> var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         boolean var3;
-        try {
-            boolean var2 = this.RLS(var1.getPeriod());
-            var3 = var2;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        boolean var2 = this.RLS(var1.getPeriod());
+        var3 = var2;
 
         return var3;
     }
 
     public boolean RLS(JN var1) throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         boolean var4;
-        try {
-            QTU var2 = this.getProcess();
-            if (var2 == null) {
-                throw FCZ.getInstance().IHJ();
-            }
-
-            JG var3 = var2.getSettlementStatus(var1);
-            if (var3 != JG.SETTLED) {
-                var4 = false;
-                return var4;
-            }
-
-            var4 = true;
-        } finally {
-            EXF.getInstance().ICP();
+        QTU var2 = this.getProcess();
+        if (var2 == null) {
+            throw FCZ.getInstance().IHJ();
         }
+
+        JG var3 = var2.getSettlementStatus(var1);
+        if (var3 != JG.SETTLED) {
+            var4 = false;
+            return var4;
+        }
+
+        var4 = true;
 
         return var4;
     }
 
     private void RLT() {
-        EXF.getInstance().ICO();
 
-        try {
-            BigDecimal var1 = new BigDecimal(0);
-            BigDecimal var2 = new BigDecimal(0);
-            BigDecimal var3 = new BigDecimal(0);
-            QVB var5;
-            if (this.RBI != null) {
-                for (Iterator var4 = this.RBI.iterator(); var4.hasNext(); var3 = var3.add(var5.getSumTax())) {
-                    var5 = (QVB) var4.next();
-                    var1 = var1.add(var5.getSumNet());
-                    var2 = var2.add(var5.getSumBrut());
-                }
+        BigDecimal var1 = new BigDecimal(0);
+        BigDecimal var2 = new BigDecimal(0);
+        BigDecimal var3 = new BigDecimal(0);
+        QVB var5;
+        if (this.RBI != null) {
+            for (Iterator var4 = this.RBI.iterator(); var4.hasNext(); var3 = var3.add(var5.getSumTax())) {
+                var5 = (QVB) var4.next();
+                var1 = var1.add(var5.getSumNet());
+                var2 = var2.add(var5.getSumBrut());
             }
-
-            this.RBK.get().clear();
-            EOX var9 = new EOX(this.resources.getString("micro.process.other_purchase_list.SummaryTaxRow"), var1, var3, var2);
-            this.RBK.add(var9);
-        } finally {
-            EXF.getInstance().ICP();
         }
+
+        this.RBK.get().clear();
+        EOX var9 = new EOX(this.resources.getString("micro.process.other_purchase_list.SummaryTaxRow"), var1, var3, var2);
+        this.RBK.add(var9);
 
     }
 
     @FXML
     private void fxml_handleButton_other_purchase_list_view() {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [view] clicked");
-            this.HHB();
-            this.getApplication().HJE(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<QUV<?>>() {
-                public void HNE(QUV<?> var1) {
-                    EXF.getInstance().ICO();
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [view] clicked");
+        this.HHB();
+        this.getApplication().HJE(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<QUV<?>>() {
+            public void HNE(QUV<?> var1) {
 
-                    try {
-                        var1.setInvoice(((QVB) QTN.this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem()).getRealInvoice());
-                        var1.setMode(EPB.VIEW);
-                    } catch (FFK var6) {
-                        EXF.getInstance().ICA(var6);
-                        throw new FFI(var6);
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
-
+                try {
+                    var1.setInvoice(((QVB) QTN.this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem()).getRealInvoice());
+                    var1.setMode(EPB.VIEW);
+                } catch (FFK var6) {
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
+                    throw new FFI(var6);
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        });
 
     }
 
     @FXML
     private void fxml_handleButton_other_purchase_list_edit() {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [edit] clicked");
-            this.HHB();
-            this.getApplication().HJE(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<QUV<?>>() {
-                public void HNE(QUV<?> var1) {
-                    EXF.getInstance().ICO();
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [edit] clicked");
+        this.HHB();
+        this.getApplication().HJE(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName(), new ENB<QUV<?>>() {
+            public void HNE(QUV<?> var1) {
 
-                    try {
-                        var1.setInvoice(((QVB) QTN.this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem()).getRealInvoice());
-                        var1.setMode(EPB.EDIT);
-                    } catch (FFK var6) {
-                        EXF.getInstance().ICA(var6);
-                        throw new FFI(var6);
-                    } finally {
-                        EXF.getInstance().ICP();
-                    }
-
+                try {
+                    var1.setInvoice(((QVB) QTN.this.fxml_other_purchase_list_table.getSelectionModel().getSelectedItem()).getRealInvoice());
+                    var1.setMode(EPB.EDIT);
+                } catch (FFK var6) {
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var6);
+                    throw new FFI(var6);
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        });
 
     }
 
     @FXML
     private void fxml_handleButton_other_purchase_list_delete() {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [delete] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [delete] clicked");
             FEN var1 = FCR.getConfirmDataDialog(this.resources.getString("micro.process.invoice_purchase_list.Dialog.deleteAreYouSure.title"), null, this.resources.getString("micro.dialog.remove.confirm.button.remove"), this.resources.getString("micro.dialog.remove.confirm.button.cancel"), 500.0, 100.0, this.resources.getString("micro.process.other_purchase_list.Dialog.deleteAreYouSure.header"));
             switch (var1) {
                 case Confirm:
@@ -829,29 +699,22 @@ public class QTN extends ENO<QTU> {
                         this.getInvoicesByPeriod(false);
                     }
 
-                    EXF.getInstance().ICE("Invoice deleted");
+                    org.slf4j.LoggerFactory.getLogger(getClass()).info("Invoice deleted");
                 case Reject:
                 case CancelExit:
             }
         } catch (FFO | FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     @FXML
     private void fxml_other_purchase_list_button_new_other_purchase() {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [PURCHASE_NEW_OTHER] clicked");
-            this.getApplication().HJD(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [PURCHASE_NEW_OTHER] clicked");
+        this.getApplication().HJD(this.getFxmlName(), EOS.OTHER_PURCHASE_NEW.getProcessFxmlFileName());
 
     }
 
@@ -888,14 +751,9 @@ public class QTN extends ENO<QTU> {
         }
 
         public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-            EXF.getInstance().ICO();
 
-            try {
-                if (var3 != null && !this.RAY) {
-                    QTN.this.getInvoicesBySearch();
-                }
-            } finally {
-                EXF.getInstance().ICP();
+            if (var3 != null && !this.RAY) {
+                QTN.this.getInvoicesBySearch();
             }
 
         }
@@ -916,15 +774,10 @@ public class QTN extends ENO<QTU> {
         }
 
         public void changed(ObservableValue<? extends String> var1, String var2, String var3) {
-            EXF.getInstance().ICO();
 
-            try {
-                if (var3 != null && !this.RAX) {
-                    QTN.this.setPossibleMonths(var3, false);
-                    QTN.this.getInvoicesByPeriod(false);
-                }
-            } finally {
-                EXF.getInstance().ICP();
+            if (var3 != null && !this.RAX) {
+                QTN.this.setPossibleMonths(var3, false);
+                QTN.this.getInvoicesByPeriod(false);
             }
 
         }
@@ -949,14 +802,9 @@ public class QTN extends ENO<QTU> {
         }
 
         public void changed(ObservableValue<? extends KH> var1, KH var2, KH var3) {
-            EXF.getInstance().ICO();
 
-            try {
-                if (var3 != null && !this.RAW) {
-                    QTN.this.getInvoicesByPeriod(false);
-                }
-            } finally {
-                EXF.getInstance().ICP();
+            if (var3 != null && !this.RAW) {
+                QTN.this.getInvoicesByPeriod(false);
             }
 
         }

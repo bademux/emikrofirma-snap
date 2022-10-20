@@ -1,6 +1,5 @@
 package a.a.a.c.f.b.c.a;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -419,14 +418,9 @@ public enum KK implements JM {
     private static final KK[] AOU;
 
     KK(String var3, String var4) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AHTQ = var3;
-            this.AOS = var4;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AHTQ = var3;
+        this.AOS = var4;
 
     }
 

@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -13,14 +12,9 @@ public enum IA implements JM {
     private final String QLS;
 
     IA(String var3, String var4) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.AKY = var3;
-            this.QLS = var4;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.AKY = var3;
+        this.QLS = var4;
 
     }
 

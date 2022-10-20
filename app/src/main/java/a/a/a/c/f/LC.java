@@ -1,15 +1,14 @@
 package a.a.a.c.f;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.EXR;
-import a.a.a.c.e.a.k.a.EXF;
+import com.github.bademux.emk.utils.Base64Utils;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
-import jakarta.xml.bind.annotation.XmlTransient;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -26,54 +25,44 @@ public abstract class LC extends KX<byte[]> {
         super(var1);
         this.APQ = new LD(this);
         this.APR = new LE(this);
-        EXF.getInstance().ICQ();
+
     }
 
     public LC() {
         this(null);
-        EXF.getInstance().ICQ();
+
     }
 
     public String getValueBase64String() {
-        return EXR.IEQ(this.getValue());
+        return Base64Utils.encodeToString(this.getValue());
     }
 
     public String getValueHexString() {
-        EXF.getInstance().ICO();
 
         String var1;
-        try {
-            if (this.getValue() == null) {
-                var1 = "";
-                return var1;
-            }
-
-            var1 = this.AICR(this.getValue(), "");
-        } finally {
-            EXF.getInstance().ICP();
+        if (this.getValue() == null) {
+            var1 = "";
+            return var1;
         }
+
+        var1 = this.AICR(this.getValue(), "");
 
         return var1;
     }
 
     private String AICR(byte[] var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            StringBuffer var3 = new StringBuffer();
-            byte[] var4 = var1;
-            int var5 = var1.length;
+        StringBuffer var3 = new StringBuffer();
+        byte[] var4 = var1;
+        int var5 = var1.length;
 
-            for (int var6 = 0; var6 < var5; ++var6) {
-                byte var7 = var4[var6];
-                var3.append(String.format("%02x", var7)).append(var2);
-            }
-
-            String var11 = var3.toString();
-            return var11;
-        } finally {
-            EXF.getInstance().ICP();
+        for (int var6 = 0; var6 < var5; ++var6) {
+            byte var7 = var4[var6];
+            var3.append(String.format("%02x", var7)).append(var2);
         }
+
+        String var11 = var3.toString();
+        return var11;
     }
 
     public int compareTo(KX<byte[]> var1) {
@@ -89,43 +78,32 @@ public abstract class LC extends KX<byte[]> {
     }
 
     public static byte[] DDV(Image var0) throws IOException {
-        EXF.getInstance().ICO();
 
         byte[] var3;
-        try {
-            BufferedImage var1;
-            if (var0 == null) {
-                return null;
-            }
-
-            var1 = SwingFXUtils.fromFXImage(var0, null);
-            ByteArrayOutputStream var2 = new ByteArrayOutputStream();
-            ImageIO.write(var1, "png", var2);
-            var3 = var2.toByteArray();
-        } finally {
-            EXF.getInstance().ICP();
+        BufferedImage var1;
+        if (var0 == null) {
+            return null;
         }
+
+        var1 = SwingFXUtils.fromFXImage(var0, null);
+        ByteArrayOutputStream var2 = new ByteArrayOutputStream();
+        ImageIO.write(var1, "png", var2);
+        var3 = var2.toByteArray();
 
         return var3;
     }
 
     public static Image DDW(byte[] var0) throws IOException {
-        EXF.getInstance().ICO();
 
         ByteArrayInputStream var1;
-        try {
-            if (var0 != null) {
-                var1 = new ByteArrayInputStream(var0);
-                Image var2 = new Image(var1);
-                BufferedImage var3 = SwingFXUtils.fromFXImage(var2, null);
-                ByteArrayOutputStream var4 = new ByteArrayOutputStream();
-                ImageIO.write(var3, "png", var4);
-                Image var5 = new Image(new ByteArrayInputStream(var4.toByteArray()));
-                return var5;
-            }
-
-        } finally {
-            EXF.getInstance().ICP();
+        if (var0 != null) {
+            var1 = new ByteArrayInputStream(var0);
+            Image var2 = new Image(var1);
+            BufferedImage var3 = SwingFXUtils.fromFXImage(var2, null);
+            ByteArrayOutputStream var4 = new ByteArrayOutputStream();
+            ImageIO.write(var3, "png", var4);
+            Image var5 = new Image(new ByteArrayInputStream(var4.toByteArray()));
+            return var5;
         }
 
         return null;
@@ -162,7 +140,7 @@ public abstract class LC extends KX<byte[]> {
                 }
 
             } catch (IOException var4) {
-                EXF.getInstance().ICA(var4);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var4);
                 throw new FFI(var4);
             }
         }

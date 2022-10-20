@@ -1,8 +1,6 @@
 package a.a.a.c.f.a.d;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.b.JN;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -14,7 +12,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class QGX extends AGWN {
     public QGX() {
         super(AGWW.STATUS_TRACKER, 0);
-        EXF.getInstance().ICQ();
+
     }
 
     public QGX(String var1) {
@@ -22,6 +20,6 @@ public class QGX extends AGWN {
         this.setReferenceId(var1);
         this.setPeriod(JN.AOE);
         this.setDeclarationStatus(HL.NEW);
-        EXF.getInstance().ICQ();
+
     }
 }

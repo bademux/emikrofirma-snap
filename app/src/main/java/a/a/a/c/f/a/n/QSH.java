@@ -1,12 +1,10 @@
 package a.a.a.c.f.a.n;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.IJ;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JY;
 import a.a.a.c.f.b.c.KQ;
 import a.a.a.c.f.b.c.QSU;
-
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
@@ -19,8 +17,7 @@ public abstract class QSH extends IJ implements Cloneable {
     protected QSU QXZ;
 
     public QSH() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public JY getPosition() {

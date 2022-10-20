@@ -8,7 +8,6 @@ import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.a.EMI;
 import a.a.a.c.c.b.b.EMT;
-import a.a.a.c.e.a.k.a.EXF;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
@@ -21,14 +20,9 @@ public abstract class ELU<_PROCESS extends ELV> extends EMI {
 
     public ELU(EMC var1, EMT var2, String var3, String var4) {
         super(var1, var4);
-        EXF.getInstance().ICO();
 
-        try {
-            this.FGE = var2;
-            this.FGD = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FGE = var2;
+        this.FGD = var3;
 
     }
 
@@ -37,15 +31,10 @@ public abstract class ELU<_PROCESS extends ELV> extends EMI {
     }
 
     protected _PROCESS HHG() throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         ELV var1;
-        try {
-            this.FGF = (_PROCESS) this.FGE.HJR(this.FGD);
-            var1 = this.FGF;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FGF = (_PROCESS) this.FGE.HJR(this.FGD);
+        var1 = this.FGF;
 
         return (_PROCESS) var1;
     }
@@ -55,36 +44,21 @@ public abstract class ELU<_PROCESS extends ELV> extends EMI {
     }
 
     protected void HHH() throws FFK, FFO {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FGE.HJS(this.FGD);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FGE.HJS(this.FGD);
 
     }
 
     protected void resetAndCleanUpProcess() throws FFK, FFO {
-        EXF.getInstance().ICO();
 
-        try {
-            this.FGE.resetAndCleanUpProcess(this.FGD);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.FGE.resetAndCleanUpProcess(this.FGD);
 
     }
 
     protected EMA getCurrentProcessMainStatus() throws FFK, FFO {
-        EXF.getInstance().ICO();
 
         EMA var1;
-        try {
-            var1 = this.FGE.getMainStatus(this.FGD);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var1 = this.FGE.getMainStatus(this.FGD);
 
         return var1;
     }
@@ -94,14 +68,9 @@ public abstract class ELU<_PROCESS extends ELV> extends EMI {
     }
 
     public void HHE() throws FFK {
-        EXF.getInstance().ICO();
 
-        try {
-            super.HHE();
-            this.fxml_textVersions.setText(this.getVersionFromPackage(this.getClass().getPackage()));
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        super.HHE();
+        this.fxml_textVersions.setText(this.getVersionFromPackage(this.getClass().getPackage()));
 
     }
 }

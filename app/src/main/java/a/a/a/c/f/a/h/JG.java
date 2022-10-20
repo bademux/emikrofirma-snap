@@ -1,12 +1,10 @@
 package a.a.a.c.f.a.h;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
+import jakarta.xml.bind.annotation.XmlTransient;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-
-import jakarta.xml.bind.annotation.XmlTransient;
 
 public enum JG implements JM {
     NEW(FCW.getInstance().getMessageForKey("micro.model.type.settlementstatus.new")),
@@ -25,13 +23,8 @@ public enum JG implements JM {
     private final ReadOnlyBooleanProperty CNB = new CCV(this);
 
     JG(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.ANP = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.ANP = var3;
 
     }
 

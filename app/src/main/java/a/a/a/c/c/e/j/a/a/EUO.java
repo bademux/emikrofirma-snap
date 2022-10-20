@@ -1,9 +1,6 @@
 package a.a.a.c.c.e.j.a.a;
 
 import a.a.a.c.c.e.j.a.EUT;
-import a.a.a.c.e.a.k.a.EXF;
-import a.a.a.c.f.c.c.ComboBoxValidated_NIP;
-import a.a.a.c.f.c.c.TextAreaRequired;
 import a.a.a.c.g.b.FCW;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -40,7 +37,7 @@ public class EUO implements ChangeListener<Boolean> {
                 this.GLB.fxml_invoice_sale_remarksController.fxml_component_main_element.setText(this.GLB.fxml_invoice_sale_remarksController.fxml_component_main_element.getText().replaceAll(this.GLD, ""));
             }
 
-            EXF.getInstance().ICE("Private person checkbox set to " + var3);
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Private person checkbox set to " + var3);
         }
 
     }

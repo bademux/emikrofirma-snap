@@ -4,7 +4,6 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.b.EMC;
 import a.a.a.c.c.b.a.EMD;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.a.CustomAnchorPane;
 import a.a.a.c.g.FCV;
 import javafx.beans.property.SimpleStringProperty;
@@ -31,63 +30,44 @@ public class EMR extends EMD {
     }
 
     public void initialize() {
-        EXF.getInstance().ICO();
 
         try {
             this.FIC = new EMS(this.fxml_top_menu.labelProperty(), true);
             this.FID = new EMS(this.fxml_top_menu.labelProperty(), false);
             this.HJQ();
         } catch (FFK var5) {
-            EXF.getInstance().ICA(var5);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
             throw new FFI(var5);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     private void HJQ() throws FFK {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     @FXML
     protected void fxml_handleButton_home_button(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            EXF.getInstance().ICE("Button [home] clicked");
-            this.getApplication().HJD(this.getFxmlName(), FCV.MAIN.getFxmlFileName());
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [home] clicked");
+        this.getApplication().HJD(this.getFxmlName(), FCV.MAIN.getFxmlFileName());
 
     }
 
     public boolean HHB() {
-        EXF.getInstance().ICO();
 
         boolean var1;
-        try {
-            this.fxml_top_menu_process_label_a.textProperty().unbind();
-            this.fxml_top_menu_process_label_b.textProperty().unbind();
-            var1 = true;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_top_menu_process_label_a.textProperty().unbind();
+        this.fxml_top_menu_process_label_b.textProperty().unbind();
+        var1 = true;
 
         return var1;
     }
 
     public void HHC() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.fxml_top_menu_process_label_a.textProperty().bind(this.FIC);
-            this.fxml_top_menu_process_label_b.textProperty().bind(this.FID);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.fxml_top_menu_process_label_a.textProperty().bind(this.FIC);
+        this.fxml_top_menu_process_label_b.textProperty().bind(this.FID);
 
     }
 

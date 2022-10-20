@@ -6,14 +6,12 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.QGU;
 import a.a.a.c.c.b.EMC;
-import a.a.a.c.c.b.ENB;
 import a.a.a.c.c.d.EOS;
 import a.a.a.c.c.d.l.MDP;
 import a.a.a.c.c.e.c.c.ESJ;
 import a.a.a.c.d.b.EPW;
 import a.a.a.c.d.b.EQM;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.b.b.JN;
@@ -55,8 +53,7 @@ public class QKI {
     private Button fxml_button_close;
 
     public QKI() {
-        EXF.getInstance().ICO();
-        EXF.getInstance().ICP();
+
     }
 
     public void setDeclarationSubType(AGWW var1) {
@@ -64,43 +61,28 @@ public class QKI {
     }
 
     public void setDialogStage(Stage var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QMV = var1;
-            this.QMV.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                public void handle(WindowEvent var1) {
-                    if (WindowEvent.WINDOW_CLOSE_REQUEST.equals(var1.getEventType())) {
-                        QKI.this.QNA.stop();
-                    }
-
+        this.QMV = var1;
+        this.QMV.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent var1) {
+                if (WindowEvent.WINDOW_CLOSE_REQUEST.equals(var1.getEventType())) {
+                    QKI.this.QNA.stop();
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        });
 
     }
 
     public void setImplementation(ESJ var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QMW = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QMW = var1;
 
     }
 
     public void setSettlement(JF var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QMX = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QMX = var1;
 
     }
 
@@ -113,7 +95,7 @@ public class QKI {
     }
 
     private void QPB() throws QGU {
-        EXF.getInstance().ICO();
+
         MDP var1 = null;
 
         try {
@@ -168,95 +150,75 @@ public class QKI {
                     }
                 });
             } else {
-                EXF.getInstance().ICA(var20);
+                org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var20);
                 FCT.IGX("", var20);
             }
         } catch (Exception var21) {
-            EXF.getInstance().ICA(var21);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var21);
             FCT.IGX("", var21);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }
 
     public void QPC() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QNA = new EVN() {
-                public void HZI() {
-                    EXF.getInstance().ICO();
+        this.QNA = new EVN() {
+            public void HZI() {
 
-                    try {
-                        if (QKI.this.QMU == AGWW.VAT) {
-                            QKI.this.QPB();
-                        } else {
-                            throw new FFI("JPK subtype not supported");
-                        }
-                    } catch (QGU var5) {
-                        EXF.getInstance().ICA(var5);
-                    } finally {
-                        EXF.getInstance().ICP();
+                try {
+                    if (QKI.this.QMU == AGWW.VAT) {
+                        QKI.this.QPB();
+                    } else {
+                        throw new FFI("JPK subtype not supported");
                     }
-
+                } catch (QGU var5) {
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);
                 }
-            };
-            this.QNA.start();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+
+            }
+        };
+        this.QNA.start();
 
     }
 
     private File QPD(final JN var1, final int var2, final String var3) {
-        EXF.getInstance().ICO();
 
         File var4;
-        try {
-            var4 = FEL.IKS(new FEM<File>() {
-                public File IKT() {
-                    try {
-                        FileChooser var1x = new FileChooser();
-                        var1x.setTitle(QKI.this.resources.getString("micro.types.xml.fileselect"));
-                        FileChooser.ExtensionFilter var2x = new FileChooser.ExtensionFilter(QKI.this.resources.getString("micro.types.xml.filetype.xml") + " (*.xml)", "*.xml");
-                        var1x.getExtensionFilters().add(var2x);
-                        File var3x = QKI.this.QMW.getWorkingDir(QKI.this.QMV);
-                        var1x.setInitialDirectory(var3x);
-                        String var4 = null;
-                        KA var5 = QKI.this.QMW.QOX();
-                        if (var5 != null && var5.getValue() != null) {
-                            var4 = var5.getValue() + "_";
-                        } else {
-                            var4 = "";
-                        }
-
-                        String var6 = var3 + "_" + var4 + var1.getYear().getValue() + "_" + var1.getMonth().getValue() + "_" + var2 + ".xml";
-                        var1x.setInitialFileName(var6);
-                        File var7 = var1x.showSaveDialog(QKI.this.QMV);
-                        return var7;
-                    } catch (FFK var8) {
-                        EXF.getInstance().ICA(var8);
-                        return null;
+        var4 = FEL.IKS(new FEM<File>() {
+            public File IKT() {
+                try {
+                    FileChooser var1x = new FileChooser();
+                    var1x.setTitle(QKI.this.resources.getString("micro.types.xml.fileselect"));
+                    FileChooser.ExtensionFilter var2x = new FileChooser.ExtensionFilter(QKI.this.resources.getString("micro.types.xml.filetype.xml") + " (*.xml)", "*.xml");
+                    var1x.getExtensionFilters().add(var2x);
+                    File var3x = QKI.this.QMW.getWorkingDir(QKI.this.QMV);
+                    var1x.setInitialDirectory(var3x);
+                    String var4 = null;
+                    KA var5 = QKI.this.QMW.QOX();
+                    if (var5 != null && var5.getValue() != null) {
+                        var4 = var5.getValue() + "_";
+                    } else {
+                        var4 = "";
                     }
+
+                    String var6 = var3 + "_" + var4 + var1.getYear().getValue() + "_" + var1.getMonth().getValue() + "_" + var2 + ".xml";
+                    var1x.setInitialFileName(var6);
+                    File var7 = var1x.showSaveDialog(QKI.this.QMV);
+                    return var7;
+                } catch (FFK var8) {
+                    org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var8);
+                    return null;
                 }
-            });
-        } finally {
-            EXF.getInstance().ICP();
-        }
+            }
+        });
 
         return var4;
     }
 
     @FXML
     private void fxml_handleButton_close(ActionEvent var1) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QMV.close();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QMV.close();
 
     }
 }

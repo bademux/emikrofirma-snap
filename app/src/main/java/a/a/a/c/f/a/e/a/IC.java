@@ -2,14 +2,13 @@ package a.a.a.c.f.a.e.a;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.EXM;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JY;
-
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElements;
 import jakarta.xml.bind.annotation.XmlTransient;
+
 import java.math.BigDecimal;
 import java.util.Set;
 import java.util.TreeSet;
@@ -55,18 +54,13 @@ public abstract class IC extends EXM {
         this.ALL = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
         this.ALM = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
         this.ALN = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        EXF.getInstance().ICQ();
+
     }
 
     public IC(IH var1) {
         this();
-        EXF.getInstance().ICO();
 
-        try {
-            this.ALA = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.ALA = var1;
 
     }
 

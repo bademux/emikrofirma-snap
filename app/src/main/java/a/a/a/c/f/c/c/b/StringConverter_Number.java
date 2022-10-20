@@ -1,6 +1,5 @@
 package a.a.a.c.f.c.c.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.TextFieldValidated_Number;
 import javafx.util.StringConverter;
 
@@ -16,7 +15,6 @@ public class StringConverter_Number extends StringConverter<String> {
     }
 
     public String toString(String var1) {
-        EXF.getInstance().ICO();
 
         String var3;
         try {
@@ -43,22 +41,15 @@ public class StringConverter_Number extends StringConverter<String> {
             return var5;
         } catch (ParseException var11) {
             var3 = "";
-        } finally {
-            EXF.getInstance().ICP();
         }
 
         return var3;
     }
 
     public String fromString(String var1) {
-        EXF.getInstance().ICO();
 
         String var2;
-        try {
-            var2 = var1;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        var2 = var1;
 
         return var2;
     }

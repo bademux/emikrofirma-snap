@@ -2,7 +2,6 @@ package a.a.b.a.a.a.a;
 
 import a.a.a.c.c.e.e.a.ETB;
 import a.a.a.c.f.a.a.EZF;
-import a.a.a.c.f.c.c.TextFieldValidated_NIP;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 

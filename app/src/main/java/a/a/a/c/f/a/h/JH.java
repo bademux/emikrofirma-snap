@@ -1,6 +1,5 @@
 package a.a.a.c.f.a.h;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.b.JM;
 import a.a.a.c.g.b.FCW;
 
@@ -10,13 +9,8 @@ public enum JH implements JM {
     private final String ANQ;
 
     JH(String var3) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.ANQ = var3;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.ANQ = var3;
 
     }
 

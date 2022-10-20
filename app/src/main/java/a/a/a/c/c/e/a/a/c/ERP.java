@@ -1,6 +1,5 @@
 package a.a.a.c.c.e.a.a.c;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.g.b.FCW;
 
 import java.util.regex.Pattern;
@@ -45,15 +44,10 @@ public enum ERP {
     }
 
     ERP(String var3, String var4, String var5) {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GAP = var3;
-            this.GAQ = var4;
-            this.QZR = var5;
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GAP = var3;
+        this.GAQ = var4;
+        this.QZR = var5;
 
     }
 

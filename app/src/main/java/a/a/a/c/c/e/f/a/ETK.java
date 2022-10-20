@@ -4,7 +4,6 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.c.d.d.b.EOC;
 import a.a.a.c.e.a.a.EVN;
 import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.a.IC;
 import a.a.a.c.f.a.e.a.ID;
@@ -58,10 +57,9 @@ public class ETK {
     }
 
     private void HVJ(boolean var1, final File file) throws FFK {
-        EXF.getInstance().ICO();
 
         try {
-            EXF.getInstance().ICE("Button [print sales] clicked");
+            org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [print sales] clicked");
             IC var4 = this.GHK;
             if (var1) {
                 var4 = this.GHL;
@@ -83,7 +81,7 @@ public class ETK {
                         try {
                             Desktop.getDesktop().open(file);
                         } catch (IOException var2x) {
-                            EXF.getInstance().ICA(var2x);
+                            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var2x);
                         }
 
                     }
@@ -91,10 +89,8 @@ public class ETK {
             }
         } catch (IOException | ParserConfigurationException | ConfigurationException | SAXException |
                  TransformerException var24) {
-            EXF.getInstance().ICA(var24);
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var24);
             throw new FFK(var24);
-        } finally {
-            EXF.getInstance().ICP();
         }
 
     }

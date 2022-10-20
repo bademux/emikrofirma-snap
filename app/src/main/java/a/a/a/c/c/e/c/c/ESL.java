@@ -2,7 +2,6 @@ package a.a.a.c.c.e.c.c;
 
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.d.d.ENW;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.HL;
 import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.a.h.JG;
@@ -120,18 +119,13 @@ public class ESL extends ESK implements ENW, Comparable<ESL> {
     }
 
     public void reset() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.QPF();
-            this.getPeriod();
-            this.getSettlementDate();
-            this.getSettlementStatus();
-            this.getDeclarationJPKVATDate();
-            this.getDeclarationJPKVATStatus();
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.QPF();
+        this.getPeriod();
+        this.getSettlementDate();
+        this.getSettlementStatus();
+        this.getDeclarationJPKVATDate();
+        this.getDeclarationJPKVATStatus();
 
     }
 

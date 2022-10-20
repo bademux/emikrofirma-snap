@@ -1,6 +1,5 @@
 package a.a.a.c.f.c.b;
 
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.c.c.TextAreaChanged;
 
 public class FAR<_T extends TextAreaChanged> extends FAF<String> {
@@ -11,14 +10,9 @@ public class FAR<_T extends TextAreaChanged> extends FAF<String> {
     }
 
     protected void IFV(String var1, String var2) {
-        EXF.getInstance().ICO();
 
-        try {
-            if (var2 != null && !var2.equals(var1) || var1 != null && !var1.equals(var2)) {
-                this.GXW.changedProperty().set(true);
-            }
-        } finally {
-            EXF.getInstance().ICP();
+        if (var2 != null && !var2.equals(var1) || var1 != null && !var1.equals(var2)) {
+            this.GXW.changedProperty().set(true);
         }
 
     }

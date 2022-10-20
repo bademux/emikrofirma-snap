@@ -27,8 +27,7 @@ public abstract class FEH implements FEF {
 
         for (int var5 = 0; var5 < var4; ++var5) {
             FDY var6 = var3[var5];
-            if (var6 instanceof FDW) {
-                FDW var7 = (FDW) var6;
+            if (var6 instanceof FDW var7) {
                 String var8 = var6.getName() + " " + var7.getOrder().getKeyWord();
                 this.HER.add(var8);
             } else {

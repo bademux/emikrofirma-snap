@@ -1,6 +1,5 @@
 package a.a.a.c.e.c;
 
-import a.a.a.c.e.a.k.a.EXF;
 import com.github.bademux.emk.utils.LocaleUtils;
 
 import java.util.ResourceBundle;
@@ -23,13 +22,8 @@ public class EXN {
     }
 
     public EXN() {
-        EXF.getInstance().ICO();
 
-        try {
-            this.GUR = ResourceBundle.getBundle("messages/launcher_messages", LocaleUtils.LOCALE);
-        } finally {
-            EXF.getInstance().ICP();
-        }
+        this.GUR = ResourceBundle.getBundle("messages/launcher_messages", LocaleUtils.LOCALE);
 
     }
 

@@ -6,9 +6,9 @@ import a.a.a.b.f.FFO;
 import a.a.a.b.g.FFP;
 import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
-import a.a.a.c.e.a.k.a.EXF;
 import a.a.a.c.f.a.d.AGXA;
 import a.a.a.c.g.c.FCZ;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
@@ -19,6 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.regex.Pattern;
 
+@Slf4j
 public class EPX {
     public static final Character FVI = '"';
     public static final Character FVJ = ';';
@@ -31,16 +32,16 @@ public class EPX {
     }
 
     public static void HPQ(EWX var0, File var1, File var2) throws FFO {
-        EXF.getInstance().ICO();
+
         int var3 = 0;
         InputStream var4 = null;
         FileOutputStream var5 = null;
         BufferedReader var6 = null;
 
         try {
-            EXF.getInstance().ICK("progressReporter " + var0);
-            EXF.getInstance().ICK("inputFile " + var1);
-            EXF.getInstance().ICK("outputFile " + var2);
+            log.debug("progressReporter " + var0);
+            log.debug("inputFile " + var1);
+            log.debug("outputFile " + var2);
             EQA var7 = new EQA();
             FFP var8 = new FFP(FVI, FVJ);
             var5 = new FileOutputStream(var2);
@@ -167,7 +168,7 @@ public class EPX {
                         }
                     }
                 } else {
-                    EXF.getInstance().ICI("Empty line [" + var3 + "]");
+                    log.warn("Empty line [" + var3 + "]");
                 }
             }
 
@@ -180,18 +181,18 @@ public class EPX {
                 var12 = (double) var1.length() * 1000.0 / (double) (var34 * 1024L * 1024L);
             }
 
-            EXF.getInstance().ICK("actualTimeStart " + var15);
-            EXF.getInstance().ICK("actualTimeElapsed " + var34);
-            EXF.getInstance().ICK("actualTimeAvgSpeed " + var12);
+            log.debug("actualTimeStart " + var15);
+            log.debug("actualTimeElapsed " + var34);
+            log.debug("actualTimeAvgSpeed " + var12);
         } catch (Exception var32) {
-            EXF.getInstance().IBZ("Exception in line [" + var3 + "]", var32);
+            log.error("Exception in line [" + var3 + "]", var32);
             throw FCZ.getInstance().IHW(var3, var32);
         } finally {
             if (var1 != null) {
                 try {
                     var4.close();
                 } catch (IOException var31) {
-                    EXF.getInstance().ICA(var31);
+                    log.error("Something bad happened", var31);
                 }
             }
 
@@ -199,7 +200,7 @@ public class EPX {
                 try {
                     var5.close();
                 } catch (IOException var30) {
-                    EXF.getInstance().ICA(var30);
+                    log.error("Something bad happened", var30);
                 }
             }
 
@@ -207,11 +208,10 @@ public class EPX {
                 try {
                     var6.close();
                 } catch (IOException var29) {
-                    EXF.getInstance().ICA(var29);
+                    log.error("Something bad happened", var29);
                 }
             }
 
-            EXF.getInstance().ICP();
         }
     }
 
@@ -255,7 +255,6 @@ public class EPX {
             var0.writeEndElement();
         } catch (XMLStreamException var13) {
             throw new FFK(var13);
-        } finally {
         }
     }
 

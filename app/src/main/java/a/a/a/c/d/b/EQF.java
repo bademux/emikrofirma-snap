@@ -1,5 +1,6 @@
 package a.a.a.c.d.b;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -82,7 +83,7 @@ public class EQF {
             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "KodFormularza", JPKSchemaType.QLP.getKodFormularza(), new EQG("kodSystemowy", JPKSchemaType.QLP.getKodSystemowy()), new EQG("wersjaSchemy", JPKSchemaType.QLP.getWersjaSchemy()));
             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "WariantFormularza", JPKSchemaType.QLP.getWariantFormularza());
             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "CelZlozenia", "1");
-            HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "DataWytworzeniaJPK", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")).format(new Date()));
+            HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "DataWytworzeniaJPK", (new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue())).format(new Date()));
             String var13 = var3.toString();
             HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "DataOd", var13);
             String var14 = var4.toString();
@@ -466,11 +467,11 @@ public class EQF {
             HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "KodFormularza", JPKSchemaType.AHSV.getKodFormularza(), new EQG("kodSystemowy", JPKSchemaType.AHSV.getKodSystemowy()), new EQG("wersjaSchemy", JPKSchemaType.AHSV.getWersjaSchemy()));
             HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "WariantFormularza", JPKSchemaType.AHSV.getWariantFormularza());
             HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "CelZlozenia", var3);
-            HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "DataWytworzeniaJPK", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")).format(new Date()));
+            HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "DataWytworzeniaJPK", (new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue())).format(new Date()));
             String var14 = var4.DDJ().getValueAsString() + "-" + String.format("%02d", var4.DDK().getValue()) + "-";
             String var15 = var14 + "01";
             HQE(var13, "http://jpk.mf.gov.pl/wzor/2017/11/13/1113/", "DataOd", var15);
-            Date var16 = (new SimpleDateFormat("yyyy-MM-dd")).parse(var15);
+            Date var16 = (new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue())).parse(var15);
             GregorianCalendar var17 = new GregorianCalendar();
             var17.setTime(var16);
             String var18 = var14 + String.format("%02d", var17.getActualMaximum(5));

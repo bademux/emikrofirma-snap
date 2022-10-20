@@ -1,5 +1,6 @@
 package a.a.a.c.f.a.c.a.d;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.FFI;
 import a.a.a.c.f.a.c.a.c.SelectedField;
 import a.a.a.c.f.a.c.a.f.VariableDate;
@@ -36,7 +37,7 @@ public class OperationOnFieldAndVariableDate extends OperationOnFieldAndVariable
                 org.slf4j.LoggerFactory.getLogger(getClass()).debug("selectedFieldValue " + var2);
                 String var3 = var2 != null ? var2.trim() : "";
                 org.slf4j.LoggerFactory.getLogger(getClass()).debug("selectedFieldValueTrimed " + var3);
-                SimpleDateFormat var4 = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat var4 = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
                 Date var5 = var4.parse(var3);
                 this.AHWJ.setValue(var5);
                 return;

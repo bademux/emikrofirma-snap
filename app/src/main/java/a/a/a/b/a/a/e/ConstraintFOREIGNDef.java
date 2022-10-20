@@ -84,7 +84,7 @@ public class ConstraintFOREIGNDef extends ConstraintBase {
         return "ConstraintFOREIGNDef [refTableName=" + this.HEN + ", refColumns=" + this.HEO + ", toString()=" + super.toString() + "]";
     }
 
-    public FEF IJZ() {
+    public ConstraintDef copy() {
         ConstraintFOREIGNDef var1 = new ConstraintFOREIGNDef(this.HEN);
         Iterator var2 = this.HER.iterator();
 

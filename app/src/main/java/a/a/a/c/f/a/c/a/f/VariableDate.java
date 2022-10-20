@@ -1,5 +1,6 @@
 package a.a.a.c.f.a.c.a.f;
 
+import a.a.a.b.DateFormat;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -12,14 +13,14 @@ public class VariableDate extends VariableRef<Date> {
 
     private VariableDate() {
 
-        this.AHXB = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHXB = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 
     public VariableDate(String var1, Date var2) {
         super(var1, var2);
 
-        this.AHXB = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHXB = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 

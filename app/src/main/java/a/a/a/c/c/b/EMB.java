@@ -1,5 +1,7 @@
 package a.a.a.c.c.b;
 
+import a.a.a.b.DateFormat;
+import a.a.a.b.a.DbUtils;
 import a.a.a.b.a.a.OrderType;
 import a.a.a.b.a.a.SqlOperation;
 import a.a.a.b.e.FEY;
@@ -131,7 +133,7 @@ public class EMB {
         }
 
         if (var1.size() < 1) {
-            throw new FFK("Database corruption! Delete files " + Application.getHomeDir() + "/*." + ".db");
+            throw new FFK("Database corruption! Delete files " + Application.getHomeDir() + "/*." + DbUtils.DB_FILE_EXT);
         }
 
         var2 = (String) var1.iterator().next();
@@ -434,7 +436,7 @@ public class EMB {
             this.HIC(var5, var4);
         }
 
-        this.FGN.ROD("invoices", var1);
+        this.FGN.ROD(EntityName.INVOICES, var1);
 
     }
 
@@ -518,7 +520,7 @@ public class EMB {
             this.HIC(var5, var4);
         }
 
-        this.FGN.ROD("invoicesother", var1);
+        this.FGN.ROD(EntityName.INVOICESOTHER, var1);
 
     }
 
@@ -1036,7 +1038,7 @@ public class EMB {
         Connection var4 = null;
 
         try {
-            String var5 = (new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss")).format(new Date());
+            String var5 = (new SimpleDateFormat(DateFormat.yyyy_MM_dd_HH_mm_ss.getValue())).format(new Date());
             String var6 = "kopia_zapasowa_" + var5;
             File var7 = Paths.get(var1, var6).toFile();
             if (!var7.mkdirs()) {
@@ -1045,7 +1047,7 @@ public class EMB {
 
             var4 = this.FGN.QPQ(this.FGO, (FFF) var3, var2, var2, var7);
             var4.close();
-            File var8 = Paths.get(var7.getAbsolutePath(), var2 + ".db").toFile();
+            File var8 = Paths.get(var7.getAbsolutePath(), var2 + DbUtils.DB_FILE_EXT).toFile();
             File profiles = Paths.get(var7.getAbsolutePath(), "profiles.db").toFile();
             File zip = Paths.get(var1, var6 + ".zip").toFile();
             EWF.writeToZip(zip, var8, profiles);
@@ -1074,19 +1076,19 @@ public class EMB {
                     if (var4 != null && var4.length == 2) {
                         File var5 = var4[0];
                         File var6 = var4[1];
-                        if (var5 != null && var5.isFile() && var5.getName().endsWith(".db") && var6 != null && var6.isFile() && var6.getName().endsWith(".db")) {
+                        if (var5 != null && var5.isFile() && var5.getName().endsWith(DbUtils.DB_FILE_EXT) && var6 != null && var6.isFile() && var6.getName().endsWith(DbUtils.DB_FILE_EXT)) {
                             SimpleUserData var7 = new SimpleUserData(this.FGP.getUsername(), this.FGP.getLoginType(), new PrivtePerson(false), null, null, true);
                             boolean var8 = this.FGN.QQC(var2, this.FGO, this.FGQ);
                             if (var8) {
-                                if (var5.getName().startsWith("profiles")) {
+                                if (var5.getName().startsWith(EntityName.PROFILES)) {
                                     var5.delete();
                                 } else {
                                     var6.delete();
                                     var6 = var5;
                                 }
 
-                                String var10 = var6.getName().replace(".db", "");
-                                String var11 = var6.getName().replace(".db", "_NEW.db");
+                                String var10 = var6.getName().replace(DbUtils.DB_FILE_EXT, "");
+                                String var11 = var6.getName().replace(DbUtils.DB_FILE_EXT, "_NEW.db");
                                 String var12 = Paths.get(var6.getParentFile().getParent(), var11).toString();
                                 EWF.HZZ(var6.getAbsolutePath(), var12);
                                 int var13 = this.QQL(var10, var10 + EMX.POSTFIX_NEW, this.FGN.QQD((new File(var12)).getParentFile(), var10), var7, true);

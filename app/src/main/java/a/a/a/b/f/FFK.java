@@ -1,6 +1,6 @@
 package a.a.a.b.f;
 
-public class FFK extends Exception implements FFG {
+public class FFK extends Exception implements ExceptionMarker {
     private static final long serialVersionUID = 1L;
 
     public FFK(String var1, Throwable var2) {

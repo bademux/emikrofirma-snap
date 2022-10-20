@@ -1,5 +1,6 @@
 package a.a.a.c.f.a.c.a.a;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.ActionResult;
@@ -19,14 +20,14 @@ public class ConditionOnFieldAndVariableOffsetDateLong extends ConditionOnFieldA
 
     private ConditionOnFieldAndVariableOffsetDateLong() {
 
-        this.AHUX = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHUX = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 
     public ConditionOnFieldAndVariableOffsetDateLong(ActionType var1, String var2, ConditionType var3, VariableDate var4, Long var5) {
         super(var1, var2, var3, var4, var5);
 
-        this.AHUX = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHUX = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 

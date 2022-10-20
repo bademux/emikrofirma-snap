@@ -26,7 +26,7 @@ public class ConstraintUNIQUEDef extends ConstraintBase {
         return "ConstraintUNIQUEDef [toString()=" + super.toString() + "]";
     }
 
-    public FEF IJZ() {
+    public ConstraintDef copy() {
         ConstraintUNIQUEDef var1 = new ConstraintUNIQUEDef();
         Iterator var2 = this.HER.iterator();
 

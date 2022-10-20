@@ -1,7 +1,8 @@
 package a.a.a.c.d.b;
 
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
+
+import java.util.function.Supplier;
 
 public abstract class EQE {
     public EQE() {
@@ -10,8 +11,8 @@ public abstract class EQE {
     protected abstract void HPZ();
 
     public void HQA() {
-        FEL.IKS(new FEM<Void>() {
-            public Void IKT() {
+        FEL.IKS(new Supplier<Void>() {
+            public Void get() {
                 EQE.this.HPZ();
                 return null;
             }

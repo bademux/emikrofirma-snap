@@ -7,7 +7,7 @@ import a.a.a.b.a.a.c.ViewDef;
 import a.a.a.b.a.a.d.*;
 import a.a.a.b.a.a.e.ConstraintFOREIGNDef;
 import a.a.a.b.a.a.e.ConstraintPRIMARYDef;
-import a.a.a.b.a.a.e.FEF;
+import a.a.a.b.a.a.e.ConstraintDef;
 import a.a.a.b.a.a.e.ConstraintBase;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
@@ -24,6 +24,7 @@ public class DbUtils {
 
     public static final CellTyped auditTsCell = new CellTyped("audit_ts", CellType.TIMESTAMP);
     public static final CellTyped auditReasonCell = new CellTyped("audit_reason", CellType.TEXT);
+    public static final String DB_FILE_EXT = ".db";
 
     public static Connection getConnection(File baseDir, String dbName) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
@@ -87,7 +88,7 @@ public class DbUtils {
 
             while (true) {
                 while (var5.hasNext()) {
-                    FEF var16 = (FEF) var5.next();
+                    ConstraintDef var16 = (ConstraintDef) var5.next();
                     boolean var7;
                     StringBuilder var9;
                     Iterator var10;
@@ -413,7 +414,7 @@ public class DbUtils {
                     Iterator var24;
                     label1587:
                     while (var21.hasNext()) {
-                        FEF var22 = (FEF) var21.next();
+                        ConstraintDef var22 = (ConstraintDef) var21.next();
                         if (ConstraintPRIMARYDef.class.isAssignableFrom(var22.getClass())) {
                             ConstraintPRIMARYDef var23 = (ConstraintPRIMARYDef) var22;
                             var24 = var23.getColumns().iterator();

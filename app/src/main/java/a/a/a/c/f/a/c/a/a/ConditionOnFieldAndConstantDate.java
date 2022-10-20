@@ -1,5 +1,6 @@
 package a.a.a.c.f.a.c.a.a;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.ActionResult;
@@ -20,14 +21,14 @@ public class ConditionOnFieldAndConstantDate extends ConditionOnFieldAndConstant
 
     private ConditionOnFieldAndConstantDate() {
 
-        this.AHUH = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHUH = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 
     public ConditionOnFieldAndConstantDate(ActionType var1, String var2, ConditionType var3, XMLGregorianCalendar var4) {
         super(var1, var2, var3, var4);
 
-        this.AHUH = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHUH = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 

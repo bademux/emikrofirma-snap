@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FFN extends Exception implements FFG {
+public class FFN extends Exception implements ExceptionMarker {
     private static final long serialVersionUID = 1L;
     private final List<Throwable> HGL;
 

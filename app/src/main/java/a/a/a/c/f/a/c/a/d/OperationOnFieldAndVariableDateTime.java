@@ -1,5 +1,6 @@
 package a.a.a.c.f.a.c.a.d;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.FFI;
 import a.a.a.c.f.a.c.a.c.SelectedField;
 import a.a.a.c.f.a.c.a.f.VariableDateTime;
@@ -24,22 +25,22 @@ public class OperationOnFieldAndVariableDateTime extends OperationOnFieldAndVari
 
     private OperationOnFieldAndVariableDateTime() {
 
-        this.AHWK = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+        this.AHWK = new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue());
         this.AHWL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         this.AHWM = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         this.AHWN = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        this.AHWO = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHWO = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 
     public OperationOnFieldAndVariableDateTime(OperationType var1, VariableDateTime var2) {
         super(var1, var2);
 
-        this.AHWK = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+        this.AHWK = new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue());
         this.AHWL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         this.AHWM = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         this.AHWN = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        this.AHWO = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHWO = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 

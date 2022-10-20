@@ -3,6 +3,7 @@ package a.a.a.c.g.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
+import a.a.a.c.c.b.SqlStatements;
 import com.github.bademux.emk.utils.LocaleUtils;
 import org.xml.sax.SAXParseException;
 
@@ -342,7 +343,7 @@ public class FCZ {
             }
         }
 
-        var6 = new FFK(this.HBL.getString("micro.databasemanager.poisondata.exception").replaceFirst("##TABLE_NAME##", Matcher.quoteReplacement(var1)).replaceFirst("##TABLE_ID##", Matcher.quoteReplacement(var2)).replaceFirst("##REASON##", Matcher.quoteReplacement(var4)));
+        var6 = new FFK(this.HBL.getString("micro.databasemanager.poisondata.exception").replaceFirst(SqlStatements.TABLE_NAME_PLACEHOLDER, Matcher.quoteReplacement(var1)).replaceFirst("##TABLE_ID##", Matcher.quoteReplacement(var2)).replaceFirst("##REASON##", Matcher.quoteReplacement(var4)));
 
         return var6;
     }

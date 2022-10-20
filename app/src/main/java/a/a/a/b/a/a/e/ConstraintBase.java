@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class ConstraintBase implements FEF {
+public abstract class ConstraintBase implements ConstraintDef {
     protected final SqlColumnKeyword HEQ;
     protected final List<String> HER;
 

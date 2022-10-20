@@ -1,5 +1,6 @@
 package a.a.a.c.c.d.d;
 
+import a.a.a.b.DateFormat;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
@@ -17,7 +18,7 @@ public class QVA<_T> implements Callback<TreeTableColumn<_T, Date>, TreeTableCel
 
                 super.updateItem(var1, var2);
                 if (var1 != null) {
-                    SimpleDateFormat var3 = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat var3 = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
                     String var4 = var3.format(var1);
                     this.setText(var4);
                 } else {

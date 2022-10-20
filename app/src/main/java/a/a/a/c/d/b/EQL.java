@@ -1,5 +1,6 @@
 package a.a.a.c.d.b;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.FFK;
 import a.a.a.c.f.a.d.JPKSchemaType;
 import org.w3c.dom.Document;
@@ -41,11 +42,11 @@ public class EQL {
     }
 
     public static String getCurrentDateShortString() {
-        return (new SimpleDateFormat("yyyyMMddHHmmssS")).format(new Date());
+        return (new SimpleDateFormat(DateFormat.yyyyMMddHHmmssS.getValue())).format(new Date());
     }
 
     public static String getCurrentDateSigningTimeString() {
-        return (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")).format(new Date());
+        return (new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue())).format(new Date());
     }
 
     public EQL() throws FFK {

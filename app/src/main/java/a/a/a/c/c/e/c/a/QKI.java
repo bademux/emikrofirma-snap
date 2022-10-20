@@ -1,7 +1,6 @@
 package a.a.a.c.c.e.c.a;
 
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.QGU;
@@ -33,6 +32,7 @@ import javafx.stage.WindowEvent;
 import java.io.File;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Supplier;
 
 public class QKI {
     private DeclarationSubtype QMU;
@@ -183,8 +183,8 @@ public class QKI {
     private File QPD(final Period var1, final int var2, final String var3) {
 
         File var4;
-        var4 = FEL.IKS(new FEM<File>() {
-            public File IKT() {
+        var4 = FEL.IKS(new Supplier<File>() {
+            public File get() {
                 try {
                     FileChooser var1x = new FileChooser();
                     var1x.setTitle(QKI.this.resources.getString("micro.types.xml.fileselect"));

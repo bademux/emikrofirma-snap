@@ -1,7 +1,7 @@
 package a.a.a.b.a.a.a;
 
 import a.a.a.b.a.a.d.CellDef;
-import a.a.a.b.a.a.e.FEF;
+import a.a.a.b.a.a.e.ConstraintDef;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -15,9 +15,9 @@ public class TableDef extends BaseTable {
     private final boolean temporary;
     private final boolean failOnExisting;
     private final List<CellDef> columns;
-    private final List<FEF> constraints;
+    private final List<ConstraintDef> constraints;
 
-    public TableDef(boolean temporary, String schema, String alias, String name, boolean failOnExisting, List<CellDef> columns, List<FEF> constraints) {
+    public TableDef(boolean temporary, String schema, String alias, String name, boolean failOnExisting, List<CellDef> columns, List<ConstraintDef> constraints) {
         super(schema, alias, name);
         this.temporary = temporary;
         this.failOnExisting = failOnExisting;
@@ -46,8 +46,8 @@ public class TableDef extends BaseTable {
         {
             Iterator it = this.constraints.iterator();
             while (it.hasNext()) {
-                FEF var5 = (FEF) it.next();
-                tableDef.getConstraints().add(var5.IJZ());
+                ConstraintDef var5 = (ConstraintDef) it.next();
+                tableDef.getConstraints().add(var5.copy());
             }
         }
 

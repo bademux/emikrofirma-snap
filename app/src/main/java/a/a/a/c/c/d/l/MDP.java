@@ -1,7 +1,6 @@
 package a.a.a.c.c.d.l;
 
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.k.a.a.MDG;
@@ -21,6 +20,7 @@ import java.math.BigDecimal;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.function.Supplier;
 
 public class MDP extends EQK {
     private final String MWI = "kdDialog.fxml";
@@ -45,8 +45,8 @@ public class MDP extends EQK {
     private ValueContainer7<Boolean, String, String, String, LocalDate, BigDecimal, String> getKDDataDialog() throws URISyntaxException {
 
         ValueContainer7 var1;
-        var1 = FEL.IKS(new FEM<ValueContainer7<Boolean, String, String, String, LocalDate, BigDecimal, String>>() {
-            public ValueContainer7<Boolean, String, String, String, LocalDate, BigDecimal, String> IKT() {
+        var1 = FEL.IKS(new Supplier<ValueContainer7<Boolean, String, String, String, LocalDate, BigDecimal, String>>() {
+            public ValueContainer7<Boolean, String, String, String, LocalDate, BigDecimal, String> get() {
 
                 ValueContainer7 var8;
                 AnchorPane var2;

@@ -5,15 +5,17 @@ import a.a.a.b.f.FFK;
 import a.a.a.c.f.ModelBaseElementWithId;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.a.InvoiceState;
+import lombok.SneakyThrows;
 
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 public class EDF<_A extends ModelBaseElementWithId> extends ModelBaseElementWithId {
     private _A FFS;
-    private final EDE<_A> FFT;
+    private final Callable<_A> FFT;
     private final Map<String, Object> FFU;
 
-    public EDF(EDE<_A> var1, String var2, Map<String, Object> var3) {
+    public EDF(Callable<_A> var1, String var2, Map<String, Object> var3) {
         super(var2);
 
         this.FFT = var1;
@@ -22,11 +24,12 @@ public class EDF<_A extends ModelBaseElementWithId> extends ModelBaseElementWith
 
     }
 
+    @SneakyThrows
     public _A getModelBaseElementWithIdObject() throws FFK {
 
         ModelBaseElementWithId var1;
         if (this.FFS == null) {
-            this.FFS = this.FFT.HGW();
+            this.FFS = this.FFT.call();
         }
 
         var1 = this.FFS;

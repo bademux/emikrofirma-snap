@@ -98,6 +98,7 @@ public class EPW {
     private static final String FVB = "Base64";
     private static final long FVC = 5248000L;
     private static final long FVD = 20992000L;
+    public static final String PRIV_KEY = "/cert/mf_pz.pem";
 
     public EPW() {
     }
@@ -1252,7 +1253,7 @@ public class EPW {
         SSLContext var4;
         try {
             CertificateFactory var1 = CertificateFactory.getInstance("X.509");
-            var0 = EPW.class.getResourceAsStream("/cert/mf_pz.pem");
+            var0 = EPW.class.getResourceAsStream(PRIV_KEY);
             final X509Certificate var2 = (X509Certificate) var1.generateCertificate(var0);
             SSLContext var3 = SSLContext.getInstance("TLS");
             var3.init(null, new X509TrustManager[]{new X509TrustManager() {

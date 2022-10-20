@@ -1,5 +1,6 @@
 package a.a.a.c.c.b;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.a.DbUtils;
 import a.a.a.b.a.a.*;
 import a.a.a.b.a.a.a.*;
@@ -14,7 +15,6 @@ import a.a.a.b.d.FEP;
 import a.a.a.b.e.FFF;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.b.EDE;
 import a.a.a.c.b.EDF;
 import a.a.a.c.f.a.n.BaseInvoiceSell;
 import a.a.a.c.f.b.c.a.TaxRate;
@@ -68,11 +68,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.Callable;
 
 import static java.util.Objects.requireNonNullElseGet;
 
 @Slf4j
-public class EMX implements ENC {
+public class EMX implements EntityName {
     private static final int FIG = 100;
     public static final String POSTFIX_OLD = "_OLD";
     public static final String POSTFIX_NEW = "_NEW";
@@ -127,26 +128,26 @@ public class EMX implements ENC {
     }
 
     private void initProfilesTable(Connection connection) throws SQLException {
-        TableDef var2 = new TableDef(false, FJM, "users", false);
-        var2.getColumns().add(new CellDef(FLJ, false, true));
-        var2.getColumns().add(new CellDef(FLN, true, false));
-        var2.getColumns().add(new CellDef(FLK, true, false));
-        var2.getColumns().add(new CellDef(FLL, true, false));
-        var2.getColumns().add(new CellDef(FLM, true, false));
+        TableDef var2 = new TableDef(false, null, EntityName.USERS, false);
+        var2.getColumns().add(new CellDef(CellType.cell_technical_username.getDefinition(), false, true));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), true, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_password.getDefinition(), true, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_password_change.getDefinition(), true, false));
         DbUtils.IIH(connection, var2);
         DbUtils.IIJ(connection, var2);
-        var2 = new TableDef(false, FJM, "preferences", false);
-        var2.getColumns().add(new CellDef(FLJ, false, false));
-        var2.getColumns().add(new CellDef(FLP, false, false));
-        var2.getColumns().add(new CellDef(FLH, false, false));
-        var2.getColumns().add(new CellDef(FLI, false, false));
-        var2.getColumns().add(new CellDef(FLQ, false, false));
-        var2.getColumns().add(new CellDef(FLK, true, false));
-        var2.getColumns().add(new CellDef(FLR, true, false));
-        var2.getColumns().add(new CellDef(FLS, false, false));
-        var2.getConstraints().add(new ConstraintUNIQUEDef(FLJ, FLP, FLI));
+        var2 = new TableDef(false, null, EntityName.PREFERENCES, false);
+        var2.getColumns().add(new CellDef(CellType.cell_technical_username.getDefinition(), false, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+        var2.getColumns().add(new CellDef(CellType.cell_business_version.getDefinition(), false, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_encrypted.getDefinition(), false, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_iv.getDefinition(), true, false));
+        var2.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+        var2.getConstraints().add(new ConstraintUNIQUEDef(CellType.cell_technical_username.<CellTyped>getDefinition(), CellType.cell_technical_typeclass.<CellTyped>getDefinition(), CellType.cell_business_version.<CellTyped>getDefinition()));
         DbUtils.IIH(connection, var2);
-        ViewDef var3 = new ViewDef(false, FJM, "preferencesLatestVersion", false, "select a.* from preferences a inner join (select technical_username, technical_typeclass, max(business_version) max_ from preferences group by technical_username, technical_typeclass) b on a.technical_username = b.technical_username and a.technical_typeclass = b.technical_typeclass and a.business_version = b.max_ ");
+        ViewDef var3 = new ViewDef(false, null, EntityName.PREFERENCES_LATEST_VERSION, false, SqlStatements.PREFERENCES_LATEST_VERSION_SQL);
         DbUtils.IIK(connection, var3);
         connection.commit();
     }
@@ -159,34 +160,34 @@ public class EMX implements ENC {
             Map var9 = (Map) var8.next();
             Integer var10 = 0;
             byte[] var13 = null;
-            if (var9.containsKey(FLS.getName())) {
-                var13 = (byte[]) ((CellValue) var9.get(FLS.getName())).getValue();
+            if (var9.containsKey(CellType.cell_technical_body.<CellTyped>getDefinition().getName())) {
+                var13 = (byte[]) ((CellValue) var9.get(CellType.cell_technical_body.<CellTyped>getDefinition().getName())).getValue();
             }
 
-            if (var9.containsKey(FLQ.getName())) {
-                byte[] var14 = (byte[]) ((CellValue) var9.get(FLK.getName())).getValue();
-                byte[] var15 = (byte[]) ((CellValue) var9.get(FLR.getName())).getValue();
-                var10 = (Integer) ((CellValue) var9.get(FLQ.getName())).getValue();
+            if (var9.containsKey(CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName())) {
+                byte[] var14 = (byte[]) ((CellValue) var9.get(CellType.cell_technical_salt.<CellTyped>getDefinition().getName())).getValue();
+                byte[] var15 = (byte[]) ((CellValue) var9.get(CellType.cell_technical_iv.<CellTyped>getDefinition().getName())).getValue();
+                var10 = (Integer) ((CellValue) var9.get(CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName())).getValue();
                 if (var10 > 0 && var13 != null) {
                     var13 = var1.ILI(var15, var14, var13);
                 }
 
                 if (var2 != null) {
-                    ((CellValue) var9.get(FLK.getName())).setValue(var2.getSalt());
-                    ((CellValue) var9.get(FLR.getName())).setValue(var2.getInitialisationVector());
+                    ((CellValue) var9.get(CellType.cell_technical_salt.<CellTyped>getDefinition().getName())).setValue(var2.getSalt());
+                    ((CellValue) var9.get(CellType.cell_technical_iv.<CellTyped>getDefinition().getName())).setValue(var2.getInitialisationVector());
                     var13 = var2.ILG(var13);
                     var10 = 1;
                 } else {
-                    ((CellValue) var9.get(FLK.getName())).setValue(null);
-                    ((CellValue) var9.get(FLR.getName())).setValue(null);
+                    ((CellValue) var9.get(CellType.cell_technical_salt.<CellTyped>getDefinition().getName())).setValue(null);
+                    ((CellValue) var9.get(CellType.cell_technical_iv.<CellTyped>getDefinition().getName())).setValue(null);
                     var10 = 0;
                 }
 
-                ((CellValue) var9.get(FLQ.getName())).setValue(var10);
+                ((CellValue) var9.get(CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName())).setValue(var10);
             }
 
             if (var13 != null) {
-                ((CellValue) var9.get(FLS.getName())).setValue(var13);
+                ((CellValue) var9.get(CellType.cell_technical_body.<CellTyped>getDefinition().getName())).setValue(var13);
             }
 
             this.HMR(var3, var4, var9);
@@ -224,50 +225,50 @@ public class EMX implements ENC {
                     var10 = 0;
                     var13 = null;
                     var14 = new ArrayList();
-                } while (var9.containsKey(FLJ.getName()) && !((CellValue) var9.get(FLJ.getName())).getValue().equals(var5));
+                } while (var9.containsKey(CellType.cell_technical_username.<CellTyped>getDefinition().getName()) && !((CellValue) var9.get(CellType.cell_technical_username.<CellTyped>getDefinition().getName())).getValue().equals(var5));
 
-                if (var9.containsKey(FLS.getName())) {
-                    var13 = (byte[]) ((CellValue) var9.get(FLS.getName())).getValue();
+                if (var9.containsKey(CellType.cell_technical_body.<CellTyped>getDefinition().getName())) {
+                    var13 = (byte[]) ((CellValue) var9.get(CellType.cell_technical_body.<CellTyped>getDefinition().getName())).getValue();
                 }
 
-                if (!var9.containsKey(FLQ.getName())) {
+                if (!var9.containsKey(CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName())) {
                     break;
                 }
 
-                byte[] var15 = (byte[]) ((CellValue) var9.get(FLK.getName())).getValue();
-                byte[] var16 = (byte[]) ((CellValue) var9.get(FLR.getName())).getValue();
-                var10 = (Integer) ((CellValue) var9.get(FLQ.getName())).getValue();
+                byte[] var15 = (byte[]) ((CellValue) var9.get(CellType.cell_technical_salt.<CellTyped>getDefinition().getName())).getValue();
+                byte[] var16 = (byte[]) ((CellValue) var9.get(CellType.cell_technical_iv.<CellTyped>getDefinition().getName())).getValue();
+                var10 = (Integer) ((CellValue) var9.get(CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName())).getValue();
                 if (var10 > 0 && var13 != null) {
                     var13 = var1.ILI(var16, var15, var13);
                     if (var2 != null) {
-                        ((CellValue) var9.get(FLK.getName())).setValue(var2.getSalt());
-                        ((CellValue) var9.get(FLR.getName())).setValue(var2.getInitialisationVector());
+                        ((CellValue) var9.get(CellType.cell_technical_salt.<CellTyped>getDefinition().getName())).setValue(var2.getSalt());
+                        ((CellValue) var9.get(CellType.cell_technical_iv.<CellTyped>getDefinition().getName())).setValue(var2.getInitialisationVector());
                         var13 = var2.ILG(var13);
                     } else {
-                        ((CellValue) var9.get(FLQ.getName())).setValue(0);
-                        ((CellValue) var9.get(FLK.getName())).setValue(null);
-                        ((CellValue) var9.get(FLR.getName())).setValue(null);
+                        ((CellValue) var9.get(CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName())).setValue(0);
+                        ((CellValue) var9.get(CellType.cell_technical_salt.<CellTyped>getDefinition().getName())).setValue(null);
+                        ((CellValue) var9.get(CellType.cell_technical_iv.<CellTyped>getDefinition().getName())).setValue(null);
                     }
 
-                    ((CellValue) var9.get(FLS.getName())).setValue(var13);
+                    ((CellValue) var9.get(CellType.cell_technical_body.<CellTyped>getDefinition().getName())).setValue(var13);
                     break;
                 }
 
                 if (var6 != null) {
-                    ((CellValue) var9.get(FLQ.getName())).setValue(0);
-                    ((CellValue) var9.get(FLK.getName())).setValue(null);
-                    ((CellValue) var9.get(FLR.getName())).setValue(null);
+                    ((CellValue) var9.get(CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName())).setValue(0);
+                    ((CellValue) var9.get(CellType.cell_technical_salt.<CellTyped>getDefinition().getName())).setValue(null);
+                    ((CellValue) var9.get(CellType.cell_technical_iv.<CellTyped>getDefinition().getName())).setValue(null);
                     break;
                 }
             }
 
-            var14.add(new CellValue(FLJ, var5));
-            if (var9.containsKey(FLP.getName())) {
-                var14.add(new CellValue(FLP, ((CellValue) var9.get(FLP.getName())).getValue()));
+            var14.add(new CellValue(CellType.cell_technical_username.getDefinition(), var5));
+            if (var9.containsKey(CellType.cell_technical_typeclass.<CellTyped>getDefinition().getName())) {
+                var14.add(new CellValue(CellType.cell_technical_typeclass.getDefinition(), ((CellValue) var9.get(CellType.cell_technical_typeclass.<CellTyped>getDefinition().getName())).getValue()));
             }
 
-            if (var9.containsKey(FLI.getName())) {
-                var14.add(new CellValue(FLI, ((CellValue) var9.get(FLI.getName())).getValue()));
+            if (var9.containsKey(CellType.cell_business_version.<CellTyped>getDefinition().getName())) {
+                var14.add(new CellValue(CellType.cell_business_version.getDefinition(), ((CellValue) var9.get(CellType.cell_business_version.<CellTyped>getDefinition().getName())).getValue()));
             }
 
             if (var6 != null) {
@@ -287,10 +288,10 @@ public class EMX implements ENC {
         try {
             this.isProfileDatabaseInitiated = false;
             if (var5 == null) {
-                var6 = Application.getHomeDir().resolve(var4 + ".db").toFile();
+                var6 = Application.getHomeDir().resolve(var4 + DbUtils.DB_FILE_EXT).toFile();
             } else {
                 var7 = true;
-                var6 = Application.getHomeDir().resolve( var4 + ".db").toFile();
+                var6 = Application.getHomeDir().resolve( var4 + DbUtils.DB_FILE_EXT).toFile();
             }
 
             log.info("New db path: " + var6.getAbsolutePath());
@@ -303,8 +304,8 @@ public class EMX implements ENC {
                 log.info("Initiating connection to new db");
                 Connection var9 = this.getConnection(var1, var4, var5);
                 log.info("Starting coping records to new db");
-                String var10 = "invoices";
-                TableValuesSelect var11 = new TableValuesSelect(FJM, var10);
+                String var10 = EntityName.INVOICES;
+                TableValuesSelect var11 = new TableValuesSelect(null, var10);
                 Integer var12 = 0;
                 Integer var13 = 0;
 
@@ -313,9 +314,9 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "invoices"));
-                var10 = "receiptrecords";
-                var11 = new TableValuesSelect(FJM, var10);
+                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", EntityName.INVOICES));
+                var10 = EntityName.RECEIPTRECORDS;
+                var11 = new TableValuesSelect(null, var10);
                 var12 = 0;
                 var13 = 0;
 
@@ -324,9 +325,9 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "receiptrecords"));
-                var10 = "settlements";
-                var11 = new TableValuesSelect(FJM, var10);
+                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", EntityName.RECEIPTRECORDS));
+                var10 = EntityName.SETTLEMENTS;
+                var11 = new TableValuesSelect(null, var10);
                 var12 = 0;
                 var13 = 0;
 
@@ -335,9 +336,9 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "settlements"));
-                var10 = "invoicerecords";
-                var11 = new TableValuesSelect(FJM, var10);
+                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", EntityName.SETTLEMENTS));
+                var10 = EntityName.INVOICERECORDS;
+                var11 = new TableValuesSelect(null, var10);
                 var12 = 0;
                 var13 = 0;
 
@@ -346,9 +347,9 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "invoicerecords"));
-                var10 = "declarations";
-                var11 = new TableValuesSelect(FJM, var10);
+                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", EntityName.INVOICERECORDS));
+                var10 = EntityName.DECLARATIONS;
+                var11 = new TableValuesSelect(null, var10);
                 var12 = 0;
                 var13 = 0;
 
@@ -357,9 +358,9 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "declarations"));
-                var10 = "contacts";
-                var11 = new TableValuesSelect(FJM, var10);
+                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", EntityName.DECLARATIONS));
+                var10 = EntityName.CONTACTS;
+                var11 = new TableValuesSelect(null, var10);
                 var12 = 0;
                 var13 = 0;
 
@@ -368,9 +369,9 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "contacts"));
-                var10 = "sequences";
-                var11 = new TableValuesSelect(FJM, var10);
+                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", EntityName.CONTACTS));
+                var10 = EntityName.SEQUENCES;
+                var11 = new TableValuesSelect(null, var10);
                 var12 = 0;
                 var13 = 0;
 
@@ -379,9 +380,9 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "sequences"));
-                var10 = "dictionaries";
-                var11 = new TableValuesSelect(FJM, var10);
+                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", EntityName.SEQUENCES));
+                var10 = EntityName.DICTIONARIES;
+                var11 = new TableValuesSelect(null, var10);
                 var12 = 0;
                 var13 = 0;
 
@@ -390,9 +391,9 @@ public class EMX implements ENC {
                     var13 = var13 + var12;
                 } while (var12 > 0);
 
-                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", "dictionaries"));
-                var10 = "preferences";
-                var11 = new TableValuesSelect(FJM, var10);
+                log.info("Copied ##copycount## records from: ##tablename##".replaceFirst("##copycount##", var13.toString()).replace("##tablename##", EntityName.DICTIONARIES));
+                var10 = EntityName.PREFERENCES;
+                var11 = new TableValuesSelect(null, var10);
                 if (var7) {
                     Connection var14 = DbUtils.getConnection(var6.getParentFile(), "profiles.db");
                     var14.setAutoCommit(false);
@@ -418,10 +419,10 @@ public class EMX implements ENC {
     }
 
     private void QPR(FFF var1, FFF var2, String var3, String var4, TableValuesSelect var5, Connection var6, boolean var7) throws ClassNotFoundException, SQLException, FFK, InvalidKeyException, InvalidAlgorithmParameterException, IOException, NoSuchAlgorithmException, InvalidKeySpecException {
-        var5 = new TableValuesSelect(FJM, var4);
+        var5 = new TableValuesSelect(null, var4);
         this.QPP(var1, var2, var4, var5, var3, var6);
-        var4 = "users";
-        var5 = new TableValuesSelect(FJM, var4);
+        var4 = EntityName.USERS;
+        var5 = new TableValuesSelect(null, var4);
         this.QPP(var1, var2, var4, var5, var3, var6);
         Connection var8 = null;
         if (var7) {
@@ -438,8 +439,8 @@ public class EMX implements ENC {
         try {
             this.isProfileDatabaseInitiated = true;
             File var4 =Application.getHomeDir().toFile();
-            String var5 = var4.getAbsolutePath() + "/" + var2 + ".db";
-            String var6 = var4.getAbsolutePath() + "/" + var3 + ".db";
+            String var5 = var4.getAbsolutePath() + "/" + var2 + DbUtils.DB_FILE_EXT;
+            String var6 = var4.getAbsolutePath() + "/" + var3 + DbUtils.DB_FILE_EXT;
             this.connection.close();
             var1.close();
             File var7 = new File(var5);
@@ -483,10 +484,10 @@ public class EMX implements ENC {
 
     public boolean HKU(String var1, String var2, boolean var3) throws FFK {
         File var4 = Application.getHomeDir().toFile();
-        String var5 = var4.getAbsolutePath() + "/" + var2 + ".db";
-        String var6 = var4.getAbsolutePath() + "/" + var1 + ".db";
+        String var5 = var4.getAbsolutePath() + "/" + var2 + DbUtils.DB_FILE_EXT;
+        String var6 = var4.getAbsolutePath() + "/" + var1 + DbUtils.DB_FILE_EXT;
         String var7 = var1 + POSTFIX_OLD;
-        String var8 = var4.getAbsolutePath() + "/" + var7 + ".db";
+        String var8 = var4.getAbsolutePath() + "/" + var7 + DbUtils.DB_FILE_EXT;
         File var9 = new File(var5);
         File var10 = new File(var6);
         File var11 = new File(var8);
@@ -522,7 +523,7 @@ public class EMX implements ENC {
     public boolean HKV(String var1) {
         try {
             File var2 = Application.getHomeDir().toFile();
-            String var3 = var2.getAbsolutePath() + "/" + var1 + ".db";
+            String var3 = var2.getAbsolutePath() + "/" + var1 + DbUtils.DB_FILE_EXT;
             File var4 = new File(var3);
             if (var4.exists()) {
                 return var4.delete();
@@ -552,50 +553,50 @@ public class EMX implements ENC {
             if (dbName == null || dbName.length() <= 0) {
                 throw new FFI("Profile name is empty!");
             }
-            final Connection connection = DbUtils.getConnection(requireNonNullElseGet(homeDir, Application.getHomeDir()::toFile), dbName + ".db");
+            final Connection connection = DbUtils.getConnection(requireNonNullElseGet(homeDir, Application.getHomeDir()::toFile), dbName + DbUtils.DB_FILE_EXT);
             connection.setAutoCommit(false);
             this.QIN = new HashMap();
-            var invoicesTableDef = new TableDef(false, FJM, "ref", "invoices", false);
-            invoicesTableDef.getColumns().add(new CellDef(FLD, false, true, OrderType.ASC));
-            invoicesTableDef.getColumns().add(new CellDef(FLE, true, true));
-            invoicesTableDef.getColumns().add(new CellDef(FLH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            invoicesTableDef.getColumns().add(new CellDef(FLV, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLW, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(RHL, false, false, InvoiceState.ACTIVE.getKey()));
-            invoicesTableDef.getColumns().add(new CellDef(FLT, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLU, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLK, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLR, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLS, false, false));
-            CellDef var6 = new CellDef(FMD, false, false);
+            var invoicesTableDef = new TableDef(false, null, "ref", EntityName.INVOICES, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_id.getDefinition(), false, true, OrderType.ASC));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_parentid.getDefinition(), true, true));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodYear.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodMonth.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_subType.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_state.getDefinition(), false, false, InvoiceState.ACTIVE.getKey()));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_issuer_number.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_refid.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_encrypted.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_iv.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+            CellDef var6 = new CellDef(CellType.cell_business_creationDate.getDefinition(), false, false);
             invoicesTableDef.getColumns().add(var6);
-            invoicesTableDef.getColumns().add(new CellDef(FME, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMF, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMG, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMI, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(FLD));
-            invoicesTableDef.getConstraints().add(new ConstraintUNIQUEDef(FLV, FLW, FLN, FLT, FLU));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_contractorName.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_contractorNIP.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_netValue.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_grossValue.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_taxValue.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(CellType.cell_technical_id.<CellTyped>getDefinition()));
+            invoicesTableDef.getConstraints().add(new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_technical_type.<CellTyped>getDefinition(), CellType.cell_business_issuer_number.<CellTyped>getDefinition(), CellType.cell_business_refid.<CellTyped>getDefinition()));
             DbUtils.IIH(connection, invoicesTableDef);
             DbUtils.createTable(connection, invoicesTableDef);
-            ViewDef var7 = new ViewDef(false, FJM, "invoicesTreeBase", false, "select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_id = fact.technical_parentid ) SELECT viewQueryId, 'c_child' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, 'a_parent' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select technical_id master, 'b_select' type, 0 level, technical_id viewRefId from ##TABLE_NAME## order by 1, 2, 3".replaceAll("##TABLE_NAME##", "invoices"));
+            ViewDef var7 = new ViewDef(false, null, EntityName.INVOICES_TREE_BASE, false, SqlStatements.TREE_BASE_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.INVOICES));
             DbUtils.IIK(connection, var7);
-            ViewDef var8 = new ViewDef(false, FJM, "invoicesTreeFull", false, "select t.*, i.* from ##TABLE_NAME## i inner join ##VIEW_NAME## t on i.technical_id = t.viewRefId ".replaceAll("##TABLE_NAME##", "invoices").replaceAll("##VIEW_NAME##", "invoicesTreeBase"));
+            ViewDef var8 = new ViewDef(false, null, EntityName.INVOICES_TREE_FULL, false, SqlStatements.TREE_FULL_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.INVOICES).replaceAll(SqlStatements.VIEW_NAME_PLACEHOLDER, EntityName.INVOICES_TREE_BASE));
             DbUtils.IIK(connection, var8);
             invoicesTableDef.getColumns().remove(var6);
-            invoicesTableDef.getColumns().add(new InitScriptCell(FMC, true, false, "select i.business_creationDate from invoices i where i.technical_id = ref.technical_id"));
+            invoicesTableDef.getColumns().add(new InitScriptCell(CellType.cell_business_invoicingDate.getDefinition(), true, false, "select i.business_creationDate from invoices i where i.technical_id = ref.technical_id"));
             HashSet var9 = new HashSet();
-            var9.add(FLP);
-            var9.add(FLQ);
-            var9.add(FLK);
-            var9.add(FLR);
-            var9.add(FLS);
-            invoicesTableDef.getColumns().add(new MigrationCell(FMD, true, false, var9, new MigrationCell.MigrationAction<Date>() {
+            var9.add(CellType.cell_technical_typeclass.<CellTyped>getDefinition());
+            var9.add(CellType.cell_technical_encrypted.<CellTyped>getDefinition());
+            var9.add(CellType.cell_technical_salt.<CellTyped>getDefinition());
+            var9.add(CellType.cell_technical_iv.<CellTyped>getDefinition());
+            var9.add(CellType.cell_technical_body.<CellTyped>getDefinition());
+            invoicesTableDef.getColumns().add(new MigrationCell(CellType.cell_business_creationDate.getDefinition(), true, false, var9, new MigrationCell.MigrationAction<Date>() {
                 private final FFF RQC = var1;
 
                 public Date action(Set<CellValue<?>> contextColumns) {
@@ -611,7 +612,7 @@ public class EMX implements ENC {
                     }
                 }
             }, null));
-            invoicesTableDef.getColumns().add(new MigrationCell(QNR, true, false, var9, new MigrationCell.MigrationAction<Date>() {
+            invoicesTableDef.getColumns().add(new MigrationCell(CellType.cell_business_transactionDate.getDefinition(), true, false, var9, new MigrationCell.MigrationAction<Date>() {
                 private final FFF RQC = var1;
 
                 public Date action(Set<CellValue<?>> contextColumns) {
@@ -637,205 +638,205 @@ public class EMX implements ENC {
             }));
             DbUtils.IIJ(connection, invoicesTableDef);
             DbUtils.QIQ(connection, invoicesTableDef);
-            this.QIN.put("invoices", invoicesTableDef);
-            this.QIN.put("invoicesTreeFull", invoicesTableDef);
-            invoicesTableDef = new TableDef(false, FJM, "ref", "invoicesother", false);
-            invoicesTableDef.getColumns().add(new CellDef(FLD, false, true, OrderType.ASC));
-            invoicesTableDef.getColumns().add(new CellDef(FLE, true, true));
-            invoicesTableDef.getColumns().add(new CellDef(FLH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            invoicesTableDef.getColumns().add(new CellDef(FLV, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLW, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(RHL, false, false, InvoiceState.ACTIVE.getKey()));
-            invoicesTableDef.getColumns().add(new CellDef(FLT, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLU, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLK, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLR, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLS, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMD, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMC, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FME, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMF, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMG, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMI, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(FLD));
+            this.QIN.put(EntityName.INVOICES, invoicesTableDef);
+            this.QIN.put(EntityName.INVOICES_TREE_FULL, invoicesTableDef);
+            invoicesTableDef = new TableDef(false, null, "ref", EntityName.INVOICESOTHER, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_id.getDefinition(), false, true, OrderType.ASC));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_parentid.getDefinition(), true, true));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodYear.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodMonth.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_subType.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_state.getDefinition(), false, false, InvoiceState.ACTIVE.getKey()));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_issuer_number.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_refid.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_encrypted.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_iv.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_creationDate.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_invoicingDate.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_contractorName.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_contractorNIP.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_netValue.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_grossValue.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_taxValue.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(CellType.cell_technical_id.<CellTyped>getDefinition()));
             DbUtils.IIH(connection, invoicesTableDef);
             DbUtils.createTable(connection, invoicesTableDef);
-            ViewDef var18 = new ViewDef(false, FJM, "invoicesotherTreeBase", false, "select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_id = fact.technical_parentid ) SELECT viewQueryId, 'c_child' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, 'a_parent' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select technical_id master, 'b_select' type, 0 level, technical_id viewRefId from ##TABLE_NAME## order by 1, 2, 3".replaceAll("##TABLE_NAME##", "invoicesother"));
+            ViewDef var18 = new ViewDef(false, null, EntityName.INVOICESOTHER_TREE_BASE, false, SqlStatements.TREE_BASE_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.INVOICESOTHER));
             DbUtils.IIK(connection, var18);
-            var7 = new ViewDef(false, FJM, "invoicesotherTreeFull", false, "select t.*, i.* from ##TABLE_NAME## i inner join ##VIEW_NAME## t on i.technical_id = t.viewRefId ".replaceAll("##TABLE_NAME##", "invoicesother").replaceAll("##VIEW_NAME##", "invoicesotherTreeBase"));
+            var7 = new ViewDef(false, null, EntityName.INVOICESOTHER_TREE_FULL, false, SqlStatements.TREE_FULL_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.INVOICESOTHER).replaceAll(SqlStatements.VIEW_NAME_PLACEHOLDER, EntityName.INVOICESOTHER_TREE_BASE));
             DbUtils.IIK(connection, var7);
-            this.QIN.put("invoicesother", invoicesTableDef);
-            this.QIN.put("invoicesotherTreeFull", invoicesTableDef);
-            invoicesTableDef = new TableDef(false, FJM, "ref", "receiptrecords", false);
-            invoicesTableDef.getColumns().add(new CellDef(FLD, false, true, OrderType.ASC));
-            invoicesTableDef.getColumns().add(new CellDef(FLE, true, true));
-            invoicesTableDef.getColumns().add(new CellDef(FLH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            invoicesTableDef.getColumns().add(new CellDef(FLV, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLW, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLK, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLR, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLS, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(FLD));
-            invoicesTableDef.getConstraints().add(new ConstraintUNIQUEDef(FLV, FLW, FLP));
+            this.QIN.put(EntityName.INVOICESOTHER, invoicesTableDef);
+            this.QIN.put(EntityName.INVOICESOTHER_TREE_FULL, invoicesTableDef);
+            invoicesTableDef = new TableDef(false, null, "ref", EntityName.RECEIPTRECORDS, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_id.getDefinition(), false, true, OrderType.ASC));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_parentid.getDefinition(), true, true));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodYear.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodMonth.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_subType.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_encrypted.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_iv.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(CellType.cell_technical_id.<CellTyped>getDefinition()));
+            invoicesTableDef.getConstraints().add(new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_technical_typeclass.<CellTyped>getDefinition()));
             DbUtils.IIH(connection, invoicesTableDef);
             DbUtils.createTable(connection, invoicesTableDef);
-            var18 = new ViewDef(false, FJM, "receiptrecordsTreeBase", false, "select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_id = fact.technical_parentid ) SELECT viewQueryId, 'c_child' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, 'a_parent' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select technical_id master, 'b_select' type, 0 level, technical_id viewRefId from ##TABLE_NAME## order by 1, 2, 3".replaceAll("##TABLE_NAME##", "receiptrecords"));
+            var18 = new ViewDef(false, null, EntityName.RECEIPTRECORDS_TREE_BASE, false, SqlStatements.TREE_BASE_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.RECEIPTRECORDS));
             DbUtils.IIK(connection, var18);
-            var7 = new ViewDef(false, FJM, "receiptrecordsTreeFull", false, "select t.*, i.* from ##TABLE_NAME## i inner join ##VIEW_NAME## t on i.technical_id = t.viewRefId ".replaceAll("##TABLE_NAME##", "receiptrecords").replaceAll("##VIEW_NAME##", "receiptrecordsTreeBase"));
+            var7 = new ViewDef(false, null, EntityName.RECEIPTRECORDS_TREE_FULL, false, SqlStatements.TREE_FULL_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.RECEIPTRECORDS).replaceAll(SqlStatements.VIEW_NAME_PLACEHOLDER, EntityName.RECEIPTRECORDS_TREE_BASE));
             DbUtils.IIK(connection, var7);
-            this.QIN.put("receiptrecords", invoicesTableDef);
-            this.QIN.put("receiptrecordsTreeFull", invoicesTableDef);
-            invoicesTableDef = new TableDef(false, FJM, "settlements", false);
-            invoicesTableDef.getColumns().add(new CellDef(FLD, false, true, OrderType.ASC));
-            invoicesTableDef.getColumns().add(new CellDef(FLE, true, true));
-            invoicesTableDef.getColumns().add(new CellDef(FLH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            invoicesTableDef.getColumns().add(new CellDef(FLV, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLW, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLK, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLR, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLS, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(FLD));
-            ConstraintUNIQUEDef var19 = new ConstraintUNIQUEDef(FLV, FLW, FLN);
+            this.QIN.put(EntityName.RECEIPTRECORDS, invoicesTableDef);
+            this.QIN.put(EntityName.RECEIPTRECORDS_TREE_FULL, invoicesTableDef);
+            invoicesTableDef = new TableDef(false, null, EntityName.SETTLEMENTS, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_id.getDefinition(), false, true, OrderType.ASC));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_parentid.getDefinition(), true, true));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodYear.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodMonth.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_subType.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_encrypted.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_iv.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(CellType.cell_technical_id.<CellTyped>getDefinition()));
+            ConstraintUNIQUEDef var19 = new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_technical_type.<CellTyped>getDefinition());
             invoicesTableDef.getConstraints().add(var19);
             DbUtils.IIH(connection, invoicesTableDef);
             DbUtils.createTable(connection, invoicesTableDef);
-            var7 = new ViewDef(false, FJM, "settlementsTreeBase", false, "select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_id = fact.technical_parentid ) SELECT viewQueryId, 'c_child' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, 'a_parent' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select technical_id master, 'b_select' type, 0 level, technical_id viewRefId from ##TABLE_NAME## order by 1, 2, 3".replaceAll("##TABLE_NAME##", "settlements"));
+            var7 = new ViewDef(false, null, EntityName.SETTLEMENTS_TREE_BASE, false, SqlStatements.TREE_BASE_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.SETTLEMENTS));
             DbUtils.IIK(connection, var7);
-            var8 = new ViewDef(false, FJM, "settlementsTreeFull", false, "select t.*, i.* from ##TABLE_NAME## i inner join ##VIEW_NAME## t on i.technical_id = t.viewRefId ".replaceAll("##TABLE_NAME##", "settlements").replaceAll("##VIEW_NAME##", "settlementsTreeBase"));
+            var8 = new ViewDef(false, null, EntityName.SETTLEMENTS_TREE_FULL, false, SqlStatements.TREE_FULL_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.SETTLEMENTS).replaceAll(SqlStatements.VIEW_NAME_PLACEHOLDER, EntityName.SETTLEMENTS_TREE_BASE));
             DbUtils.IIK(connection, var8);
-            ViewDef var21 = new ViewDef(false, FJM, "settlementsTreeRefLevel", false, "select viewQueryId, viewMaxRefLevel from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM temp INNER JOIN ##TABLE_NAME## fact  ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, max(viewRefLevel) viewMaxRefLevel FROM temp group by viewQueryId ) ".replaceAll("##TABLE_NAME##", "settlements"));
+            ViewDef var21 = new ViewDef(false, null, EntityName.SETTLEMENTS_TREE_REF_LEVEL, false, SqlStatements.TREE_REF_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.SETTLEMENTS));
             DbUtils.IIK(connection, var21);
-            invoicesTableDef.getColumns().add(new InitScriptCell(FLX, false, false, "select viewMaxRefLevel from settlementsTreeRefLevel where viewQueryId = technical_id"));
+            invoicesTableDef.getColumns().add(new InitScriptCell(CellType.cell_business_documentIndex.getDefinition(), false, false, "select viewMaxRefLevel from settlementsTreeRefLevel where viewQueryId = technical_id"));
             invoicesTableDef.getConstraints().remove(var19);
-            ConstraintUNIQUEDef var10 = new ConstraintUNIQUEDef(FLV, FLW, FLX, FLN);
+            ConstraintUNIQUEDef var10 = new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_business_documentIndex.<CellTyped>getDefinition(), CellType.cell_technical_type.<CellTyped>getDefinition());
             invoicesTableDef.getConstraints().add(var10);
             DbUtils.IIJ(connection, invoicesTableDef);
             DbUtils.QIQ(connection, invoicesTableDef);
-            ViewDef var11 = new ViewDef(false, FJM, "settlementsLastChildIdBase", false, "select viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## where technical_parentid is null UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_id = fact.technical_parentid ) SELECT c.technical_id viewRefId FROM temp c inner join ( SELECT a.viewQueryId, max(a.viewRefLevel) maxViewRefLevel FROM temp a group by a.viewQueryId ) b on b.viewQueryId = c.viewQueryId and b.maxViewRefLevel = c.viewRefLevel ) ".replaceAll("##TABLE_NAME##", "settlements"));
+            ViewDef var11 = new ViewDef(false, null, EntityName.SETTLEMENTS_LAST_CHILD_ID_BASE, false, SqlStatements.SETTLEMENTS_LAST_CHILD_ID_BASE_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.SETTLEMENTS));
             DbUtils.IIK(connection, var11);
-            ViewDef var12 = new ViewDef(false, FJM, "settlementsLastChildIdFull", false, "select t.*, i.* from ##TABLE_NAME## i inner join ##VIEW_NAME## t on i.technical_id = t.viewRefId ".replaceAll("##TABLE_NAME##", "settlements").replaceAll("##VIEW_NAME##", "settlementsLastChildIdBase"));
+            ViewDef var12 = new ViewDef(false, null, EntityName.SETTLEMENTS_LAST_CHILD_ID_FULL, false, SqlStatements.TREE_FULL_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.SETTLEMENTS).replaceAll(SqlStatements.VIEW_NAME_PLACEHOLDER, EntityName.SETTLEMENTS_LAST_CHILD_ID_BASE));
             DbUtils.IIK(connection, var12);
-            this.QIN.put("settlements", invoicesTableDef);
-            this.QIN.put("settlementsTreeFull", invoicesTableDef);
-            invoicesTableDef = new TableDef(false, FJM, "ref", "invoicerecords", false);
-            invoicesTableDef.getColumns().add(new CellDef(FLD, false, true, OrderType.ASC));
-            invoicesTableDef.getColumns().add(new CellDef(FLE, true, true));
-            invoicesTableDef.getColumns().add(new CellDef(FLH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            invoicesTableDef.getColumns().add(new CellDef(FLV, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLW, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLK, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLR, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLS, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(FLD));
-            var19 = new ConstraintUNIQUEDef(FLV, FLW, FLN);
+            this.QIN.put(EntityName.SETTLEMENTS, invoicesTableDef);
+            this.QIN.put(EntityName.SETTLEMENTS_TREE_FULL, invoicesTableDef);
+            invoicesTableDef = new TableDef(false, null, "ref", EntityName.INVOICERECORDS, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_id.getDefinition(), false, true, OrderType.ASC));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_parentid.getDefinition(), true, true));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodYear.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodMonth.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_subType.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_encrypted.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_iv.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(CellType.cell_technical_id.<CellTyped>getDefinition()));
+            var19 = new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_technical_type.<CellTyped>getDefinition());
             invoicesTableDef.getConstraints().add(var19);
             DbUtils.IIH(connection, invoicesTableDef);
             DbUtils.createTable(connection, invoicesTableDef);
-            var7 = new ViewDef(false, FJM, "invoicerecordsTreeBase", false, "select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_id = fact.technical_parentid ) SELECT viewQueryId, 'c_child' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, 'a_parent' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select technical_id master, 'b_select' type, 0 level, technical_id viewRefId from ##TABLE_NAME## order by 1, 2, 3".replaceAll("##TABLE_NAME##", "invoicerecords"));
+            var7 = new ViewDef(false, null, EntityName.INVOICERECORDS_TREE_BASE, false, SqlStatements.TREE_BASE_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.INVOICERECORDS));
             DbUtils.IIK(connection, var7);
-            var8 = new ViewDef(false, FJM, "invoicerecordsTreeFull", false, "select t.*, i.* from ##TABLE_NAME## i inner join ##VIEW_NAME## t on i.technical_id = t.viewRefId ".replaceAll("##TABLE_NAME##", "invoicerecords").replaceAll("##VIEW_NAME##", "invoicerecordsTreeBase"));
+            var8 = new ViewDef(false, null, EntityName.INVOICERECORDS_TREE_FULL, false, SqlStatements.TREE_FULL_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.INVOICERECORDS).replaceAll(SqlStatements.VIEW_NAME_PLACEHOLDER, EntityName.INVOICERECORDS_TREE_BASE));
             DbUtils.IIK(connection, var8);
-            var21 = new ViewDef(false, FJM, "invoicerecordsTreeRefLevel", false, "select viewQueryId, viewMaxRefLevel from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM temp INNER JOIN ##TABLE_NAME## fact  ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, max(viewRefLevel) viewMaxRefLevel FROM temp group by viewQueryId ) ".replaceAll("##TABLE_NAME##", "invoicerecords"));
+            var21 = new ViewDef(false, null, EntityName.INVOICERECORDS_TREE_REF_LEVEL, false, SqlStatements.TREE_REF_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.INVOICERECORDS));
             DbUtils.IIK(connection, var21);
-            invoicesTableDef.getColumns().add(new InitScriptCell(FLF, true, false, "select s.technical_id from settlements s where s.business_periodYear = ref.business_periodYear and s.business_periodMonth = ref.business_periodMonth"));
-            invoicesTableDef.getColumns().add(new InitScriptCell(FLX, false, false, "select viewMaxRefLevel from invoicerecordsTreeRefLevel where viewQueryId = technical_id"));
+            invoicesTableDef.getColumns().add(new InitScriptCell(CellType.cell_technical_settlementid.getDefinition(), true, false, "select s.technical_id from settlements s where s.business_periodYear = ref.business_periodYear and s.business_periodMonth = ref.business_periodMonth"));
+            invoicesTableDef.getColumns().add(new InitScriptCell(CellType.cell_business_documentIndex.getDefinition(), false, false, "select viewMaxRefLevel from invoicerecordsTreeRefLevel where viewQueryId = technical_id"));
             invoicesTableDef.getConstraints().remove(var19);
-            var10 = new ConstraintUNIQUEDef(FLV, FLW, FLX, FLN);
+            var10 = new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_business_documentIndex.<CellTyped>getDefinition(), CellType.cell_technical_type.<CellTyped>getDefinition());
             invoicesTableDef.getConstraints().add(var10);
-            invoicesTableDef.getConstraints().add(new ConstraintFOREIGNDef("settlements", new CellNamed[]{FLF}, new CellNamed[]{FLD}));
+            invoicesTableDef.getConstraints().add(new ConstraintFOREIGNDef(EntityName.SETTLEMENTS, new CellNamed[]{CellType.cell_technical_settlementid.<CellTyped>getDefinition()}, new CellNamed[]{CellType.cell_technical_id.<CellTyped>getDefinition()}));
             DbUtils.IIJ(connection, invoicesTableDef);
             DbUtils.QIQ(connection, invoicesTableDef);
-            var11 = new ViewDef(false, FJM, "invoicerecordsLatestTypeForPeriod", false, "select fact.* from ##TABLE_NAME## fact inner join (select business_periodYear, business_periodMonth, technical_type, technical_subType, max(business_documentIndex) maxDocumentIndex from ##TABLE_NAME## group by business_periodYear, business_periodMonth, technical_type, technical_subType) group_ on fact.business_periodYear = group_.business_periodYear and fact.business_periodMonth = group_.business_periodMonth and fact.technical_type = group_.technical_type and coalesce(fact.technical_subType, 'NULL') = coalesce(group_.technical_subType, 'NULL') and fact.business_documentIndex = group_.maxDocumentIndex  ".replaceAll("##TABLE_NAME##", "invoicerecords"));
+            var11 = new ViewDef(false, null, EntityName.INVOICERECORDS_LATEST_TYPE_FOR_PERIOD, false, SqlStatements.INVOICERECORDS_LATEST_TYPE_FOR_PERIOD_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.INVOICERECORDS));
             DbUtils.IIK(connection, var11);
-            this.QIN.put("invoicerecords", invoicesTableDef);
-            this.QIN.put("invoicerecordsTreeFull", invoicesTableDef);
-            invoicesTableDef = new TableDef(false, FJM, "ref", "declarations", false);
-            invoicesTableDef.getColumns().add(new CellDef(FLD, false, true, OrderType.ASC));
-            invoicesTableDef.getColumns().add(new CellDef(FLE, true, true));
-            invoicesTableDef.getColumns().add(new CellDef(FLH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            invoicesTableDef.getColumns().add(new CellDef(FLV, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLW, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLK, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLR, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLS, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(FLD));
-            var19 = new ConstraintUNIQUEDef(FLV, FLW, FLN);
+            this.QIN.put(EntityName.INVOICERECORDS, invoicesTableDef);
+            this.QIN.put(EntityName.INVOICERECORDS_TREE_FULL, invoicesTableDef);
+            invoicesTableDef = new TableDef(false, null, "ref", EntityName.DECLARATIONS, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_id.getDefinition(), false, true, OrderType.ASC));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_parentid.getDefinition(), true, true));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodYear.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodMonth.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_subType.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_encrypted.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_iv.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(CellType.cell_technical_id.<CellTyped>getDefinition()));
+            var19 = new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_technical_type.<CellTyped>getDefinition());
             invoicesTableDef.getConstraints().add(var19);
             DbUtils.IIH(connection, invoicesTableDef);
             DbUtils.createTable(connection, invoicesTableDef);
-            var7 = new ViewDef(false, FJM, "declarationsTreeBase", false, "select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_id = fact.technical_parentid ) SELECT viewQueryId, 'c_child' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, 'a_parent' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select technical_id master, 'b_select' type, 0 level, technical_id viewRefId from ##TABLE_NAME## order by 1, 2, 3".replaceAll("##TABLE_NAME##", "declarations"));
+            var7 = new ViewDef(false, null, EntityName.DECLARATIONS_TREE_BASE, false, SqlStatements.TREE_BASE_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.DECLARATIONS));
             DbUtils.IIK(connection, var7);
-            var8 = new ViewDef(false, FJM, "declarationsTreeFull", false, "select t.*, i.* from ##TABLE_NAME## i inner join ##VIEW_NAME## t on i.technical_id = t.viewRefId ".replaceAll("##TABLE_NAME##", "declarations").replaceAll("##VIEW_NAME##", "declarationsTreeBase"));
+            var8 = new ViewDef(false, null, EntityName.DECLARATIONS_TREE_FULL, false, SqlStatements.TREE_FULL_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.DECLARATIONS).replaceAll(SqlStatements.VIEW_NAME_PLACEHOLDER, EntityName.DECLARATIONS_TREE_BASE));
             DbUtils.IIK(connection, var8);
-            var21 = new ViewDef(false, FJM, "declarationsTreeRefLevel", false, "select viewQueryId, viewMaxRefLevel from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM temp INNER JOIN ##TABLE_NAME## fact  ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, max(viewRefLevel) viewMaxRefLevel FROM temp group by viewQueryId ) ".replaceAll("##TABLE_NAME##", "declarations"));
+            var21 = new ViewDef(false, null, EntityName.DECLARATIONS_TREE_REF_LEVEL, false, SqlStatements.TREE_REF_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.DECLARATIONS));
             DbUtils.IIK(connection, var21);
-            invoicesTableDef.getColumns().add(new InitScriptCell(FLF, true, false, "select s.technical_id from settlements s where s.business_periodYear = ref.business_periodYear and s.business_periodMonth = ref.business_periodMonth"));
-            invoicesTableDef.getColumns().add(new InitScriptCell(FLX, false, false, "select viewMaxRefLevel from declarationsTreeRefLevel where viewQueryId = technical_id"));
+            invoicesTableDef.getColumns().add(new InitScriptCell(CellType.cell_technical_settlementid.getDefinition(), true, false, "select s.technical_id from settlements s where s.business_periodYear = ref.business_periodYear and s.business_periodMonth = ref.business_periodMonth"));
+            invoicesTableDef.getColumns().add(new InitScriptCell(CellType.cell_business_documentIndex.getDefinition(), false, false, "select viewMaxRefLevel from declarationsTreeRefLevel where viewQueryId = technical_id"));
             invoicesTableDef.getConstraints().remove(var19);
-            var10 = new ConstraintUNIQUEDef(FLV, FLW, FLX, FLN, FLO);
+            var10 = new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_business_documentIndex.<CellTyped>getDefinition(), CellType.cell_technical_type.<CellTyped>getDefinition(), CellType.cell_technical_subType.<CellTyped>getDefinition());
             invoicesTableDef.getConstraints().add(var10);
-            invoicesTableDef.getConstraints().add(new ConstraintFOREIGNDef("settlements", new CellNamed[]{FLF}, new CellNamed[]{FLD}));
+            invoicesTableDef.getConstraints().add(new ConstraintFOREIGNDef(EntityName.SETTLEMENTS, new CellNamed[]{CellType.cell_technical_settlementid.<CellTyped>getDefinition()}, new CellNamed[]{CellType.cell_technical_id.<CellTyped>getDefinition()}));
             DbUtils.IIJ(connection, invoicesTableDef);
             DbUtils.QIQ(connection, invoicesTableDef);
-            this.QIN.put("declarations", invoicesTableDef);
-            this.QIN.put("declarationsTreeFull", invoicesTableDef);
-            invoicesTableDef = new TableDef(false, FJM, "ref", "contacts", false);
-            invoicesTableDef.getColumns().add(new CellDef(FLD, false, true, OrderType.ASC));
-            invoicesTableDef.getColumns().add(new CellDef(FLE, true, true));
-            invoicesTableDef.getColumns().add(new CellDef(FLH, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            var6 = new CellDef(FLZ, false, true);
+            this.QIN.put(EntityName.DECLARATIONS, invoicesTableDef);
+            this.QIN.put(EntityName.DECLARATIONS_TREE_FULL, invoicesTableDef);
+            invoicesTableDef = new TableDef(false, null, "ref", EntityName.CONTACTS, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_id.getDefinition(), false, true, OrderType.ASC));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_parentid.getDefinition(), true, true));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            var6 = new CellDef(CellType.cell_business_name.getDefinition(), false, true);
             invoicesTableDef.getColumns().add(var6);
-            invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLO, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLQ, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLK, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLR, true, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLS, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(FLD));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_subType.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_encrypted.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_salt.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_iv.getDefinition(), true, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintPRIMARYDef(CellType.cell_technical_id.<CellTyped>getDefinition()));
             DbUtils.IIH(connection, invoicesTableDef);
             DbUtils.createTable(connection, invoicesTableDef);
-            var7 = new ViewDef(false, FJM, "contactsTreeBase", false, "select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_id = fact.technical_parentid ) SELECT viewQueryId, 'c_child' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select viewQueryId, viewRefType, viewRefLevel, viewRefId from ( WITH RECURSIVE temp(viewQueryId, technical_id, technical_parentid, viewRefLevel) AS ( select technical_id viewQueryId, technical_id viewRefId, technical_parentid, 0 from ##TABLE_NAME## UNION ALL SELECT temp.viewQueryId, fact.technical_id viewRefId, fact.technical_parentid, viewRefLevel + 1 FROM ##TABLE_NAME## fact INNER JOIN temp ON temp.technical_parentid = fact.technical_id ) SELECT viewQueryId, 'a_parent' viewRefType, viewRefLevel, technical_id viewRefId FROM temp where viewQueryId != technical_id ) union all select technical_id master, 'b_select' type, 0 level, technical_id viewRefId from ##TABLE_NAME## order by 1, 2, 3".replaceAll("##TABLE_NAME##", "contacts"));
+            var7 = new ViewDef(false, null, EntityName.CONTACTS_TREE_BASE, false, SqlStatements.TREE_BASE_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.CONTACTS));
             DbUtils.IIK(connection, var7);
-            var8 = new ViewDef(false, FJM, "contactsTreeFull", false, "select t.*, i.* from ##TABLE_NAME## i inner join ##VIEW_NAME## t on i.technical_id = t.viewRefId ".replaceAll("##TABLE_NAME##", "contacts").replaceAll("##VIEW_NAME##", "contactsTreeBase"));
+            var8 = new ViewDef(false, null, EntityName.CONTACTS_TREE_FULL, false, SqlStatements.TREE_FULL_SQL.replaceAll(SqlStatements.TABLE_NAME_PLACEHOLDER, EntityName.CONTACTS).replaceAll(SqlStatements.VIEW_NAME_PLACEHOLDER, EntityName.CONTACTS_TREE_BASE));
             DbUtils.IIK(connection, var8);
             invoicesTableDef.getColumns().remove(var6);
-            invoicesTableDef.getColumns().add(new InitScriptCell(FME, false, false, "select c.business_name from contacts c where c.technical_id = ref.technical_id"));
-            invoicesTableDef.getColumns().add(new CellDef(FMF, true, true));
+            invoicesTableDef.getColumns().add(new InitScriptCell(CellType.cell_business_contractorName.getDefinition(), false, false, "select c.business_name from contacts c where c.technical_id = ref.technical_id"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_contractorNIP.getDefinition(), true, true));
             var9 = new HashSet();
-            var9.add(FLP);
-            var9.add(FLQ);
-            var9.add(FLK);
-            var9.add(FLR);
-            var9.add(FLS);
-            invoicesTableDef.getColumns().add(new MigrationCell(QNS, false, false, -1, var9, new MigrationCell.MigrationAction<Integer>() {
+            var9.add(CellType.cell_technical_typeclass.<CellTyped>getDefinition());
+            var9.add(CellType.cell_technical_encrypted.<CellTyped>getDefinition());
+            var9.add(CellType.cell_technical_salt.<CellTyped>getDefinition());
+            var9.add(CellType.cell_technical_iv.<CellTyped>getDefinition());
+            var9.add(CellType.cell_technical_body.<CellTyped>getDefinition());
+            invoicesTableDef.getColumns().add(new MigrationCell(CellType.cell_business_hash.getDefinition(), false, false, -1, var9, new MigrationCell.MigrationAction<Integer>() {
                 private final FFF TWH = var1;
 
                 public Integer action(Set<CellValue<?>> contextColumns) {
@@ -860,27 +861,27 @@ public class EMX implements ENC {
             }, null));
             DbUtils.IIJ(connection, invoicesTableDef);
             DbUtils.QIQ(connection, invoicesTableDef);
-            this.QIN.put("contacts", invoicesTableDef);
-            this.QIN.put("contactsTreeFull", invoicesTableDef);
-            invoicesTableDef = new TableDef(false, FJM, "sequences", false);
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            invoicesTableDef.getColumns().add(new CellDef(FLV, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLW, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLN, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLY, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintUNIQUEDef(FLV, FLW, FLN));
+            this.QIN.put(EntityName.CONTACTS, invoicesTableDef);
+            this.QIN.put(EntityName.CONTACTS_TREE_FULL, invoicesTableDef);
+            invoicesTableDef = new TableDef(false, null, EntityName.SEQUENCES, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodYear.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_periodMonth.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_type.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_numeric_value.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintUNIQUEDef(CellType.cell_business_periodYear.<CellTyped>getDefinition(), CellType.cell_business_periodMonth.<CellTyped>getDefinition(), CellType.cell_technical_type.<CellTyped>getDefinition()));
             DbUtils.IIH(connection, invoicesTableDef);
-            this.QIN.put("sequences", invoicesTableDef);
-            invoicesTableDef = new TableDef(false, FJM, "dictionaries", false);
-            invoicesTableDef.getColumns().add(new CellDef(FMA, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FMB, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLP, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLS, false, false));
-            invoicesTableDef.getColumns().add(new CellDef(FLG, false, false, "current_timestamp"));
-            invoicesTableDef.getColumns().add(new CellDef(FLH, false, false));
-            invoicesTableDef.getConstraints().add(new ConstraintUNIQUEDef(FMA, FMB));
+            this.QIN.put(EntityName.SEQUENCES, invoicesTableDef);
+            invoicesTableDef = new TableDef(false, null, EntityName.DICTIONARIES, false);
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_dictionaryName.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_business_dictionaryEntry.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_typeclass.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_body.getDefinition(), false, false));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_audit_ts_created.getDefinition(), false, false, "current_timestamp"));
+            invoicesTableDef.getColumns().add(new CellDef(CellType.cell_technical_version.getDefinition(), false, false));
+            invoicesTableDef.getConstraints().add(new ConstraintUNIQUEDef(CellType.cell_business_dictionaryName.<CellTyped>getDefinition(), CellType.cell_business_dictionaryEntry.<CellTyped>getDefinition()));
             DbUtils.IIH(connection, invoicesTableDef);
-            this.QIN.put("dictionaries", invoicesTableDef);
+            this.QIN.put(EntityName.DICTIONARIES, invoicesTableDef);
             connection.commit();
             this.isProfileDatabaseInitiated = true;
             return connection;
@@ -905,9 +906,9 @@ public class EMX implements ENC {
                 CellValue var9 = (CellValue) var8.next();
                 String var10 = var9.getName();
                 Object var11 = var9.getValue();
-                if (FLP.getName().equals(var10)) {
+                if (CellType.cell_technical_typeclass.<CellTyped>getDefinition().getName().equals(var10)) {
                     var3 = Class.forName((String) var11);
-                } else if (FLQ.getName().equals(var10)) {
+                } else if (CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName().equals(var10)) {
                     if (var11 instanceof Integer) {
                         var4 = ((Integer) var11).shortValue();
                     } else {
@@ -917,11 +918,11 @@ public class EMX implements ENC {
 
                         var4 = (Short) var11;
                     }
-                } else if (FLK.getName().equals(var10)) {
+                } else if (CellType.cell_technical_salt.<CellTyped>getDefinition().getName().equals(var10)) {
                     var5 = (byte[]) var11;
-                } else if (FLR.getName().equals(var10)) {
+                } else if (CellType.cell_technical_iv.<CellTyped>getDefinition().getName().equals(var10)) {
                     var6 = (byte[]) var11;
-                } else if (FLS.getName().equals(var10)) {
+                } else if (CellType.cell_technical_body.<CellTyped>getDefinition().getName().equals(var10)) {
                     var7 = (byte[]) var11;
                 }
             }
@@ -1051,14 +1052,14 @@ public class EMX implements ENC {
 
         try {
             ArrayList var1 = new ArrayList();
-            var1.add(new CellQuery(FLJ));
-            var1.add(new CellQuery(FLN));
-            var1.add(new CellQuery(FLK));
-            var1.add(new CellQuery(FLL));
-            var1.add(new CellQuery(FLM));
+            var1.add(new CellQuery(CellType.cell_technical_username.<CellTyped>getDefinition()));
+            var1.add(new CellQuery(CellType.cell_technical_type.<CellTyped>getDefinition()));
+            var1.add(new CellQuery(CellType.cell_technical_salt.<CellTyped>getDefinition()));
+            var1.add(new CellQuery(CellType.cell_technical_password.<CellTyped>getDefinition()));
+            var1.add(new CellQuery(CellType.cell_technical_password_change.<CellTyped>getDefinition()));
             ArrayList var2 = new ArrayList();
             ArrayList var3 = new ArrayList();
-            ValueContainer2 var4 = this.HMB(this.profilesConnection, "users", var1, var2, var3, null, null, new ENC.ENE<ValueContainer1<SimpleUserData>, SimpleUserData>() {
+            ValueContainer2 var4 = this.HMB(this.profilesConnection, EntityName.USERS, var1, var2, var3, null, null, new ENE<ValueContainer1<SimpleUserData>, SimpleUserData>() {
                 public ValueContainer1<SimpleUserData> HNF(List<CellValue<?>> var1) throws Exception {
                     Text var2 = null;
                     JZ var3 = null;
@@ -1071,15 +1072,15 @@ public class EMX implements ENC {
                     while (true) {
                         while (var8.hasNext()) {
                             CellValue var9 = (CellValue) var8.next();
-                            if (ENC.FLJ.getName().equals(var9.getName())) {
+                            if (CellType.cell_technical_username.<CellTyped>getDefinition().getName().equals(var9.getName())) {
                                 var2 = new Text((String) var9.getValue());
-                            } else if (ENC.FLN.getName().equals(var9.getName())) {
+                            } else if (CellType.cell_technical_type.<CellTyped>getDefinition().getName().equals(var9.getName())) {
                                 var3 = new JZ(LoginType.valueOf((String) var9.getValue()));
-                            } else if (ENC.FLK.getName().equals(var9.getName())) {
+                            } else if (CellType.cell_technical_salt.<CellTyped>getDefinition().getName().equals(var9.getName())) {
                                 var5 = new Bytes((byte[]) var9.getValue());
-                            } else if (ENC.FLL.getName().equals(var9.getName())) {
+                            } else if (CellType.cell_technical_password.<CellTyped>getDefinition().getName().equals(var9.getName())) {
                                 var6 = new Bytes((byte[]) var9.getValue());
-                            } else if (ENC.FLM.getName().equals(var9.getName())) {
+                            } else if (CellType.cell_technical_password_change.<CellTyped>getDefinition().getName().equals(var9.getName())) {
                                 Integer var10 = (Integer) var9.getValue();
                                 var7 = var10 != null && var10 > 0;
                             }
@@ -1113,8 +1114,8 @@ public class EMX implements ENC {
 
     public <_T extends LW> void HLI(SimpleUserData var1) throws FFK {
 
-        String var2 = "users";
-        synchronized ("users") {
+        String var2 = EntityName.USERS;
+        synchronized (EntityName.USERS) {
             this.HLL(SqlOperation.insert, var1);
         }
 
@@ -1122,8 +1123,8 @@ public class EMX implements ENC {
 
     public <_T extends LW> void HLJ(SimpleUserData var1) throws FFK {
 
-        String var2 = "users";
-        synchronized ("users") {
+        String var2 = EntityName.USERS;
+        synchronized (EntityName.USERS) {
             this.HLL(SqlOperation.update, var1);
         }
 
@@ -1131,8 +1132,8 @@ public class EMX implements ENC {
 
     public <_T extends LW> void HLK(SimpleUserData var1) throws FFK {
 
-        String var2 = "users";
-        synchronized ("users") {
+        String var2 = EntityName.USERS;
+        synchronized (EntityName.USERS) {
             this.HLL(SqlOperation.delete, var1);
         }
 
@@ -1151,16 +1152,16 @@ public class EMX implements ENC {
         byte[] var7 = var5 ? var2.DFD().getValue() : null;
         Integer var8 = var5 ? var2.HHA() : null;
         ArrayList var9 = new ArrayList();
-        var9.add(new CellValue(FLJ, var3));
+        var9.add(new CellValue(CellType.cell_technical_username.getDefinition(), var3));
         ArrayList var10 = null;
         switch (var1) {
             case insert:
             case update:
                 var10 = new ArrayList();
-                var10.add(new CellValue(FLN, var4));
-                var10.add(new CellValue(FLK, var7));
-                var10.add(new CellValue(FLL, var6));
-                var10.add(new CellValue(FLM, var8));
+                var10.add(new CellValue(CellType.cell_technical_type.getDefinition(), var4));
+                var10.add(new CellValue(CellType.cell_technical_salt.getDefinition(), var7));
+                var10.add(new CellValue(CellType.cell_technical_password.getDefinition(), var6));
+                var10.add(new CellValue(CellType.cell_technical_password_change.getDefinition(), var8));
             case delete:
                 break;
             default:
@@ -1169,13 +1170,13 @@ public class EMX implements ENC {
 
         switch (var1) {
             case insert:
-                this.HMS(this.profilesConnection, "users", var9, var10);
+                this.HMS(this.profilesConnection, EntityName.USERS, var9, var10);
                 break;
             case update:
-                this.HMT(this.profilesConnection, "users", var9, var10);
+                this.HMT(this.profilesConnection, EntityName.USERS, var9, var10);
                 break;
             case delete:
-                this.HMU(this.profilesConnection, "users", var9);
+                this.HMU(this.profilesConnection, EntityName.USERS, var9);
                 break;
             default:
                 throw new FFK("Unsupported action type [" + var1 + "]!");
@@ -1195,11 +1196,11 @@ public class EMX implements ENC {
 
         LW var5;
         if (var4 == null) {
-            var5 = this.HMA(var1, "preferencesLatestVersion", var2, var3, null);
+            var5 = this.HMA(var1, EntityName.PREFERENCES_LATEST_VERSION, var2, var3, null);
             return (_T) var5;
         }
 
-        var5 = this.HMA(var1, "preferences", var2, var3, var4);
+        var5 = this.HMA(var1, EntityName.PREFERENCES, var2, var3, var4);
 
         return (_T) var5;
     }
@@ -1222,46 +1223,46 @@ public class EMX implements ENC {
         ArrayList var16 = new ArrayList();
         String var17 = var9 != null ? var9.getValue() : null;
         if (var17 != null) {
-            var16.add(new CellValue(FLU, var17));
+            var16.add(new CellValue(CellType.cell_business_refid.getDefinition(), var17));
         }
 
         String var18 = var10 != null ? var10.getValue() : null;
         if (var18 != null) {
-            var16.add(new CellValue(FLT, var18));
+            var16.add(new CellValue(CellType.cell_business_issuer_number.getDefinition(), var18));
         }
 
         String var19 = var11 != null ? var11.getValue() : null;
         if (var19 != null) {
-            var16.add(new CellValue(FMF, var19));
+            var16.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), var19));
         }
 
         if (var12 != null && var12.getFirstValue() != null && var12.getSecondValue() != null) {
-            var16.add(new CellValue(FMD, var12.getFirstValue(), Condition.GREATER_THAN_OR_EQUALS));
-            var16.add(new CellValue(FMD, var12.getSecondValue(), Condition.LESS_THAN_OR_EQUALS));
+            var16.add(new CellValue(CellType.cell_business_creationDate.getDefinition(), var12.getFirstValue(), Condition.GREATER_THAN_OR_EQUALS));
+            var16.add(new CellValue(CellType.cell_business_creationDate.getDefinition(), var12.getSecondValue(), Condition.LESS_THAN_OR_EQUALS));
         }
 
         if (var13 != null && var13.getFirstValue() != null && var13.getSecondValue() != null) {
-            var16.add(new CellValue(QNR, var13.getFirstValue(), Condition.GREATER_THAN_OR_EQUALS));
-            var16.add(new CellValue(QNR, var13.getSecondValue(), Condition.LESS_THAN_OR_EQUALS));
+            var16.add(new CellValue(CellType.cell_business_transactionDate.getDefinition(), var13.getFirstValue(), Condition.GREATER_THAN_OR_EQUALS));
+            var16.add(new CellValue(CellType.cell_business_transactionDate.getDefinition(), var13.getSecondValue(), Condition.LESS_THAN_OR_EQUALS));
         }
 
         if (var2 != null) {
-            var16.add(new CellValue(RHL, var2.getKey(), Condition.EQUALS));
+            var16.add(new CellValue(CellType.cell_business_state.getDefinition(), var2.getKey(), Condition.EQUALS));
         }
 
         ArrayList var20 = new ArrayList();
         if (var14 != null && var14.length() >= 3) {
             Expression var21 = new Expression(SqlOperator.OR);
-            var21.IJR(new CellValue(FLU, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FME, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FMF, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FMG, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FMH, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FMI, "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_refid.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_contractorName.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_netValue.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_grossValue.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_taxValue.getDefinition(), "%" + var14 + "%", Condition.LIKE));
             var20.add(var21);
         }
 
-        var25 = this.HLX(var1, "invoices", "invoicesTreeFull", var15, var16, var20, var3, var4, var5, var6, var7, var8);
+        var25 = this.HLX(var1, EntityName.INVOICES, EntityName.INVOICES_TREE_FULL, var15, var16, var20, var3, var4, var5, var6, var7, var8);
 
         return var25;
     }
@@ -1283,41 +1284,41 @@ public class EMX implements ENC {
         ArrayList var16 = new ArrayList();
         String var17 = var9 != null ? var9.getValue() : null;
         if (var17 != null) {
-            var16.add(new CellValue(FLU, var17));
+            var16.add(new CellValue(CellType.cell_business_refid.getDefinition(), var17));
         }
 
         String var18 = var10 != null ? var10.getValue() : null;
         if (var18 != null) {
-            var16.add(new CellValue(FLT, var18));
+            var16.add(new CellValue(CellType.cell_business_issuer_number.getDefinition(), var18));
         }
 
         String var19 = var11 != null ? var11.getValue() : null;
         if (var19 != null) {
-            var16.add(new CellValue(FMF, var19));
+            var16.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), var19));
         }
 
         if (var12 != null && var12.getFirstValue() != null && var12.getSecondValue() != null) {
-            var16.add(new CellValue(FMD, var12.getFirstValue(), Condition.GREATER_THAN_OR_EQUALS));
-            var16.add(new CellValue(FMD, var12.getSecondValue(), Condition.LESS_THAN_OR_EQUALS));
+            var16.add(new CellValue(CellType.cell_business_creationDate.getDefinition(), var12.getFirstValue(), Condition.GREATER_THAN_OR_EQUALS));
+            var16.add(new CellValue(CellType.cell_business_creationDate.getDefinition(), var12.getSecondValue(), Condition.LESS_THAN_OR_EQUALS));
         }
 
         if (var2 != null) {
-            var16.add(new CellValue(RHL, var2, Condition.EQUALS));
+            var16.add(new CellValue(CellType.cell_business_state.getDefinition(), var2, Condition.EQUALS));
         }
 
         ArrayList var20 = new ArrayList();
         if (var14 != null && var14.length() >= 3) {
             Expression var21 = new Expression(SqlOperator.OR);
-            var21.IJR(new CellValue(FLU, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FME, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FMF, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FMG, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FMH, "%" + var14 + "%", Condition.LIKE));
-            var21.IJR(new CellValue(FMI, "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_refid.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_contractorName.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_netValue.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_grossValue.getDefinition(), "%" + var14 + "%", Condition.LIKE));
+            var21.IJR(new CellValue(CellType.cell_business_taxValue.getDefinition(), "%" + var14 + "%", Condition.LIKE));
             var20.add(var21);
         }
 
-        var25 = this.HLX(var1, "invoicesother", "invoicesotherTreeFull", var15, var16, var20, var3, var4, var5, var6, var7, var8);
+        var25 = this.HLX(var1, EntityName.INVOICESOTHER, EntityName.INVOICESOTHER_TREE_FULL, var15, var16, var20, var3, var4, var5, var6, var7, var8);
 
         return var25;
     }
@@ -1325,7 +1326,7 @@ public class EMX implements ENC {
     public <_T extends ReceiptRecord> ValueContainer2<Integer, List<EDF<_T>>> HLP(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, RecordType var6) throws FFK {
 
         ValueContainer2 var7;
-        var7 = this.HLX(var1, "receiptrecords", "receiptrecordsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
+        var7 = this.HLX(var1, EntityName.RECEIPTRECORDS, EntityName.RECEIPTRECORDS_TREE_FULL, null, null, null, var2, var3, var4, var5, var6, null);
 
         return var7;
     }
@@ -1333,7 +1334,7 @@ public class EMX implements ENC {
     public <_T extends Settlement> ValueContainer2<Integer, List<EDF<_T>>> HLQ(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, SettlementType var6) throws FFK {
 
         ValueContainer2 var7;
-        var7 = this.HLX(var1, "settlementsLastChildIdFull", "settlementsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
+        var7 = this.HLX(var1, EntityName.SETTLEMENTS_LAST_CHILD_ID_FULL, EntityName.SETTLEMENTS_TREE_FULL, null, null, null, var2, var3, var4, var5, var6, null);
 
         return var7;
     }
@@ -1341,7 +1342,7 @@ public class EMX implements ENC {
     public <_T extends Declaration> ValueContainer2<Integer, List<EDF<_T>>> HLR(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, DeclarationType var6, DeclarationSubtype var7) throws FFK {
 
         ValueContainer2 var8;
-        var8 = this.HLX(var1, "declarations", "declarationsTreeFull", null, null, null, var2, var3, var4, var5, var6, var7);
+        var8 = this.HLX(var1, EntityName.DECLARATIONS, EntityName.DECLARATIONS_TREE_FULL, null, null, null, var2, var3, var4, var5, var6, var7);
 
         return var8;
     }
@@ -1354,8 +1355,8 @@ public class EMX implements ENC {
         }
 
         ArrayList var9 = new ArrayList();
-        var9.add(new CellValue(FLF, var5.getId()));
-        var10 = this.HLX(var1, "declarations", "declarationsTreeFull", null, var9, null, var2, var3, var4, var6, var7, var8);
+        var9.add(new CellValue(CellType.cell_technical_settlementid.getDefinition(), var5.getId()));
+        var10 = this.HLX(var1, EntityName.DECLARATIONS, EntityName.DECLARATIONS_TREE_FULL, null, var9, null, var2, var3, var4, var6, var7, var8);
 
         return var10;
     }
@@ -1366,7 +1367,7 @@ public class EMX implements ENC {
         ArrayList var3 = new ArrayList();
         var3.add(CellType.cell_business_contractorName);
         var3.add(CellType.cell_business_contractorNIP);
-        var4 = this.HLY(var1, "contacts", "contactsTreeFull", var3, null, null, var2, null, null, null, null, null);
+        var4 = this.HLY(var1, EntityName.CONTACTS, EntityName.CONTACTS_TREE_FULL, var3, null, null, var2, null, null, null, null, null);
 
         return var4;
     }
@@ -1379,18 +1380,18 @@ public class EMX implements ENC {
         var5.add(CellType.cell_business_contractorNIP);
         ArrayList var6 = new ArrayList();
         if (var3 != null) {
-            var6.add(new CellValue(QNS, var3));
+            var6.add(new CellValue(CellType.cell_business_hash.getDefinition(), var3));
         }
 
         ArrayList var7 = new ArrayList();
         if (var4 != null && var4.length() >= 3) {
             Expression var8 = new Expression(SqlOperator.OR);
-            var8.IJR(new CellValue(FME, "%" + var4 + "%", Condition.LIKE));
-            var8.IJR(new CellValue(FMF, "%" + var4 + "%", Condition.LIKE));
+            var8.IJR(new CellValue(CellType.cell_business_contractorName.getDefinition(), "%" + var4 + "%", Condition.LIKE));
+            var8.IJR(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), "%" + var4 + "%", Condition.LIKE));
             var7.add(var8);
         }
 
-        var12 = this.HLY(var1, "contacts", "contactsTreeFull", var5, var6, var7, var2, null, null, null, null, null);
+        var12 = this.HLY(var1, EntityName.CONTACTS, EntityName.CONTACTS_TREE_FULL, var5, var6, var7, var2, null, null, null, null, null);
 
         return var12;
     }
@@ -1398,7 +1399,7 @@ public class EMX implements ENC {
     public <_T extends InvoiceRecord> ValueContainer2<Integer, List<EDF<_T>>> HLV(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceRecordType var6) throws FFK {
 
         ValueContainer2 var7;
-        var7 = this.HLX(var1, "invoicerecordsLatestTypeForPeriod", "invoicerecordsTreeFull", null, null, null, var2, var3, var4, var5, var6, null);
+        var7 = this.HLX(var1, EntityName.INVOICERECORDS_LATEST_TYPE_FOR_PERIOD, EntityName.INVOICERECORDS_TREE_FULL, null, null, null, var2, var3, var4, var5, var6, null);
 
         return var7;
     }
@@ -1411,8 +1412,8 @@ public class EMX implements ENC {
         }
 
         ArrayList var8 = new ArrayList();
-        var8.add(new CellValue(FLF, var5.getId()));
-        var9 = this.HLX(var1, "invoicerecords", "invoicerecordsTreeFull", null, var8, null, var2, var3, var4, var6, var7, null);
+        var8.add(new CellValue(CellType.cell_technical_settlementid.getDefinition(), var5.getId()));
+        var9 = this.HLX(var1, EntityName.INVOICERECORDS, EntityName.INVOICERECORDS_TREE_FULL, null, var8, null, var2, var3, var4, var6, var7, null);
 
         return var9;
     }
@@ -1436,22 +1437,22 @@ public class EMX implements ENC {
         var4.add(CellType.cell_business_periodMonth);
         String var13 = var11 != null ? var11.name() : null;
         if (var13 != null) {
-            var5.add(new CellValue(FLN, var13));
+            var5.add(new CellValue(CellType.cell_technical_type.getDefinition(), var13));
         }
 
         String var14 = var12 != null ? var12.name() : null;
         if (var14 != null) {
-            var5.add(new CellValue(FLO, var14));
+            var5.add(new CellValue(CellType.cell_technical_subType.getDefinition(), var14));
         }
 
         if (var10 != null) {
             Period var15 = var10.DDN();
             if (var15.DDJ().getValue() != null) {
-                var5.add(new CellValue(FLV, var15.DDJ().getValue()));
+                var5.add(new CellValue(CellType.cell_business_periodYear.getDefinition(), var15.DDJ().getValue()));
             }
 
             if (var15.DDK().getValue() != null) {
-                var5.add(new CellValue(FLW, var15.DDK().getValue()));
+                var5.add(new CellValue(CellType.cell_business_periodMonth.getDefinition(), var15.DDK().getValue()));
             }
         }
 
@@ -1468,9 +1469,9 @@ public class EMX implements ENC {
         }
 
         if (var16 != OrderType.NONE) {
-            var21.add(new CellOrder(FLV, var16));
-            var21.add(new CellOrder(FLW, var16));
-            var21.add(new CellOrder(FLG, var16));
+            var21.add(new CellOrder(CellType.cell_business_periodYear.<CellTyped>getDefinition(), var16));
+            var21.add(new CellOrder(CellType.cell_business_periodMonth.<CellTyped>getDefinition(), var16));
+            var21.add(new CellOrder(CellType.cell_audit_ts_created.<CellTyped>getDefinition(), var16));
         }
 
         var17 = this.HLZ(var1, var2, var3, var4, var5, var6, var21, var8, var9);
@@ -1496,22 +1497,22 @@ public class EMX implements ENC {
         if (var10 != null) {
             Period var13 = var10.DDN();
             if (var13.DDJ().getValue() != null) {
-                var5.add(new CellValue(FLV, var13.DDJ().getValue()));
+                var5.add(new CellValue(CellType.cell_business_periodYear.getDefinition(), var13.DDJ().getValue()));
             }
 
             if (var13.DDK().getValue() != null) {
-                var5.add(new CellValue(FLW, var13.DDK().getValue()));
+                var5.add(new CellValue(CellType.cell_business_periodMonth.getDefinition(), var13.DDK().getValue()));
             }
         }
 
         String var21 = var11 != null ? var11.name() : null;
         if (var21 != null) {
-            var5.add(new CellValue(FLN, var21));
+            var5.add(new CellValue(CellType.cell_technical_type.getDefinition(), var21));
         }
 
         String var14 = var12 != null ? var12.name() : null;
         if (var14 != null) {
-            var5.add(new CellValue(FLO, var14));
+            var5.add(new CellValue(CellType.cell_technical_subType.getDefinition(), var14));
         }
 
         if (var5.isEmpty()) {
@@ -1527,8 +1528,8 @@ public class EMX implements ENC {
         }
 
         if (var16 != OrderType.NONE) {
-            var15.add(new CellOrder(FME, var16));
-            var15.add(new CellOrder(FMF, var16));
+            var15.add(new CellOrder(CellType.cell_business_contractorName.<CellTyped>getDefinition(), var16));
+            var15.add(new CellOrder(CellType.cell_business_contractorNIP.<CellTyped>getDefinition(), var16));
         }
 
         var17 = this.HLZ(var1, var2, var3, var4, var5, var6, var15, var8, var9);
@@ -1541,11 +1542,11 @@ public class EMX implements ENC {
         try {
             final Connection var10 = this.connection;
             ArrayList var11 = new ArrayList();
-            var11.add(new CellQuery(FLD));
-            var11.add(new CellQuery(FLE));
-            var11.add(new CellQuery(FLN));
-            var11.add(new CellQuery(FLO));
-            var11.add(new CellQuery(FLP));
+            var11.add(new CellQuery(CellType.cell_technical_id.<CellTyped>getDefinition()));
+            var11.add(new CellQuery(CellType.cell_technical_parentid.<CellTyped>getDefinition()));
+            var11.add(new CellQuery(CellType.cell_technical_type.<CellTyped>getDefinition()));
+            var11.add(new CellQuery(CellType.cell_technical_subType.<CellTyped>getDefinition()));
+            var11.add(new CellQuery(CellType.cell_technical_typeclass.<CellTyped>getDefinition()));
             if (var4 != null) {
                 Iterator var12 = var4.iterator();
 
@@ -1569,7 +1570,7 @@ public class EMX implements ENC {
                 log.debug("Query without any order.");
             }
 
-            ValueContainer2 var14 = this.HMC(var10, var2, var3, var4, var11, var23, var6, var24, var8, var9, new ENC.ENF<ValueContainer1<EDF<_T>>, EDF<_T>>() {
+            ValueContainer2 var14 = this.HMC(var10, var2, var3, var4, var11, var23, var6, var24, var8, var9, new ENF<ValueContainer1<EDF<_T>>, EDF<_T>>() {
                 private final String TCL = "topElementDef";
 
                 public ValueContainer1<EDF<_T>> HNG(List<CellType> var1x, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3x) throws Exception {
@@ -1688,12 +1689,12 @@ public class EMX implements ENC {
 
                     String var16 = var4 == null ? "topElementDef" : var4;
                     String finalVar3x = var3x;
-                    ValueContainer3 var17 = new ValueContainer3(var3x, var16, new EDF(new EDE<_T>() {
-                        public _T HGW() throws FFK {
+                    ValueContainer3 var17 = new ValueContainer3(var3x, var16, new EDF(new Callable<_T>() {
+                        public _T call() throws FFK {
                             ArrayList var1x = new ArrayList();
                             ArrayList var2 = new ArrayList();
-                            var2.add(new CellValue(ENC.FMJ, finalVar3x));
-                            ValueContainer1 var3xx = EMX.this.HMD(var10, var3, var1x, var2, new ENC.ENF<ValueContainer1<_T>, _T>() {
+                            var2.add(new CellValue(CellType.cell_viewQueryId.getDefinition(), finalVar3x));
+                            ValueContainer1 var3xx = EMX.this.HMD(var10, var3, var1x, var2, new ENF<ValueContainer1<_T>, _T>() {
                                 private final FFF RUA = var1;
 
                                 public ValueContainer1<_T> HNG(List<CellType> var1x, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3xx) throws Exception {
@@ -1756,13 +1757,13 @@ public class EMX implements ENC {
                                         CellValue var12 = (CellValue) var11.next();
                                         String var13 = var12.getName();
                                         Object var14 = var12.getValue();
-                                        if (ENC.FLD.getName().equals(var13)) {
+                                        if (CellType.cell_technical_id.<CellTyped>getDefinition().getName().equals(var13)) {
                                             var2 = (String) var14;
-                                        } else if (ENC.FLE.getName().equals(var13)) {
+                                        } else if (CellType.cell_technical_parentid.<CellTyped>getDefinition().getName().equals(var13)) {
                                             var3xx = (String) var14;
-                                        } else if (ENC.FLP.getName().equals(var13)) {
+                                        } else if (CellType.cell_technical_typeclass.<CellTyped>getDefinition().getName().equals(var13)) {
                                             var4 = Class.forName((String) var14);
-                                        } else if (ENC.FLQ.getName().equals(var13)) {
+                                        } else if (CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName().equals(var13)) {
                                             if (var14 instanceof Integer) {
                                                 var5 = ((Integer) var14).shortValue();
                                             } else {
@@ -1772,15 +1773,15 @@ public class EMX implements ENC {
 
                                                 var5 = (Short) var14;
                                             }
-                                        } else if (ENC.FLK.getName().equals(var13)) {
+                                        } else if (CellType.cell_technical_salt.<CellTyped>getDefinition().getName().equals(var13)) {
                                             var6 = (byte[]) var14;
-                                        } else if (ENC.FLR.getName().equals(var13)) {
+                                        } else if (CellType.cell_technical_iv.<CellTyped>getDefinition().getName().equals(var13)) {
                                             var7 = (byte[]) var14;
-                                        } else if (ENC.FLS.getName().equals(var13)) {
+                                        } else if (CellType.cell_technical_body.<CellTyped>getDefinition().getName().equals(var13)) {
                                             var8 = (byte[]) var14;
-                                        } else if (ENC.FLX.getName().equals(var13)) {
+                                        } else if (CellType.cell_business_documentIndex.<CellTyped>getDefinition().getName().equals(var13)) {
                                             var10x = (Integer) var14;
-                                        } else if (ENC.RHL.getName().equals(var13)) {
+                                        } else if (CellType.cell_business_state.<CellTyped>getDefinition().getName().equals(var13)) {
                                             var9 = (String) var14;
                                         }
                                     }
@@ -1842,7 +1843,7 @@ public class EMX implements ENC {
             String var9 = var8.toString(StandardCharsets.UTF_8);
             Connection var10 = this.connection;
             this.HLG();
-            DbUtils.QIR(var10, this.QIN.get(var5), FLD, var6, var9);
+            DbUtils.QIR(var10, this.QIN.get(var5), CellType.cell_technical_id.getDefinition(), var6, var9);
             this.HLF();
             log.info("Moving corrupted (encryption) data [" + var5 + " | " + var6 + "] to purgatory succeded");
             throw FCZ.getInstance().QIT(var5, var6, var9);
@@ -1863,7 +1864,7 @@ public class EMX implements ENC {
             String var7 = var6.toString(StandardCharsets.UTF_8);
             Connection var8 = this.connection;
             this.HLG();
-            DbUtils.QIR(var8, this.QIN.get(var3), FLD, var4, var7);
+            DbUtils.QIR(var8, this.QIN.get(var3), CellType.cell_technical_id.getDefinition(), var4, var7);
             this.HLF();
             log.info("Moving corrupted (unmarshal) data [" + var3 + " | " + var4 + "] to purgatory succeded");
             throw FCZ.getInstance().QIT(var3, var4, var7);
@@ -1878,14 +1879,14 @@ public class EMX implements ENC {
         try {
             ArrayList var6 = new ArrayList();
             ArrayList var7 = new ArrayList();
-            var7.add(new CellValue(FLJ, var3));
-            var7.add(new CellValue(FLP, var4.getName()));
+            var7.add(new CellValue(CellType.cell_technical_username.getDefinition(), var3));
+            var7.add(new CellValue(CellType.cell_technical_typeclass.getDefinition(), var4.getName()));
             if (var5 != null) {
-                var7.add(new CellValue(FLI, var5));
+                var7.add(new CellValue(CellType.cell_business_version.getDefinition(), var5));
             }
 
             ArrayList var8 = new ArrayList();
-            ValueContainer2 var9 = this.HMB(this.profilesConnection, var2, var6, var7, var8, null, null, new ENC.ENE<ValueContainer1<_T>, _T>() {
+            ValueContainer2 var9 = this.HMB(this.profilesConnection, var2, var6, var7, var8, null, null, new ENE<ValueContainer1<_T>, _T>() {
                 private final FFF RUB = var1;
 
                 public ValueContainer1<_T> HNF(List<CellValue<?>> var1x) throws Exception {
@@ -1901,17 +1902,17 @@ public class EMX implements ENC {
                         CellValue var9 = (CellValue) var8.next();
                         String var10 = var9.getName();
                         Object var11 = var9.getValue();
-                        if (ENC.FLD.getName().equals(var10)) {
+                        if (CellType.cell_technical_id.<CellTyped>getDefinition().getName().equals(var10)) {
                             var2x = (String) var11;
-                        } else if (ENC.FLP.getName().equals(var10)) {
+                        } else if (CellType.cell_technical_typeclass.<CellTyped>getDefinition().getName().equals(var10)) {
                             var3 = Class.forName((String) var11);
-                        } else if (ENC.FLQ.getName().equals(var10)) {
+                        } else if (CellType.cell_technical_encrypted.<CellTyped>getDefinition().getName().equals(var10)) {
                             var4 = ((Integer) var11).shortValue();
-                        } else if (ENC.FLK.getName().equals(var10)) {
+                        } else if (CellType.cell_technical_salt.<CellTyped>getDefinition().getName().equals(var10)) {
                             var5 = (byte[]) var11;
-                        } else if (ENC.FLR.getName().equals(var10)) {
+                        } else if (CellType.cell_technical_iv.<CellTyped>getDefinition().getName().equals(var10)) {
                             var6 = (byte[]) var11;
-                        } else if (ENC.FLS.getName().equals(var10)) {
+                        } else if (CellType.cell_technical_body.<CellTyped>getDefinition().getName().equals(var10)) {
                             var7 = (byte[]) var11;
                         }
                     }
@@ -1945,7 +1946,7 @@ public class EMX implements ENC {
         return (_T) var10;
     }
 
-    private <_A extends ValueContainer1<_T>, _T extends ModelBase> ValueContainer2<Integer, List<_A>> HMB(Connection var1, String var2, List<CellQuery> var3, List<CellValue<?>> var4, List<CellOrder> var5, Integer var6, Integer var7, ENC.ENE<_A, _T> var8) throws FFK {
+    private <_A extends ValueContainer1<_T>, _T extends ModelBase> ValueContainer2<Integer, List<_A>> HMB(Connection var1, String var2, List<CellQuery> var3, List<CellValue<?>> var4, List<CellOrder> var5, Integer var6, Integer var7, ENE<_A, _T> var8) throws FFK {
 
         try {
             if (var8 == null) {
@@ -1953,7 +1954,7 @@ public class EMX implements ENC {
             } else {
                 synchronized (var2) {
                     int var10 = -1;
-                    TableValuesSelect var11 = new TableValuesSelect(FJM, var2);
+                    TableValuesSelect var11 = new TableValuesSelect(null, var2);
                     var11.IJH(new CellQuery("1", "count_", AggregateType.COUNT));
                     var11.IJC(var4);
                     DbUtils.IIO(var1, var11);
@@ -1964,7 +1965,7 @@ public class EMX implements ENC {
                         }
                     }
 
-                    TableValuesSelect var26 = new TableValuesSelect(FJM, var2);
+                    TableValuesSelect var26 = new TableValuesSelect(null, var2);
                     var26.IJI(var3);
                     var26.IJC(var4);
                     var26.IJK(var5);
@@ -1991,7 +1992,7 @@ public class EMX implements ENC {
         }
     }
 
-    private <_A extends ValueContainer1<_T>, _T extends ModelBase> ValueContainer2<Integer, List<_A>> HMC(Connection var1, String var2, String var3, List<CellType> var4, List<CellQuery> var5, List<CellValue<?>> var6, List<Expression> var7, List<CellOrder> var8, Integer var9, Integer var10, ENC.ENF<_A, _T> var11) throws FFK {
+    private <_A extends ValueContainer1<_T>, _T extends ModelBase> ValueContainer2<Integer, List<_A>> HMC(Connection var1, String var2, String var3, List<CellType> var4, List<CellQuery> var5, List<CellValue<?>> var6, List<Expression> var7, List<CellOrder> var8, Integer var9, Integer var10, ENF<_A, _T> var11) throws FFK {
 
         try {
             if (var11 == null) {
@@ -1999,12 +2000,12 @@ public class EMX implements ENC {
             } else {
                 synchronized (var2) {
                     ArrayList var13 = new ArrayList();
-                    var13.add(new CellQuery(FMJ));
-                    var13.add(new CellQuery(FMK));
-                    var13.add(new CellQuery(FML));
+                    var13.add(new CellQuery(CellType.cell_viewQueryId.<CellTyped>getDefinition()));
+                    var13.add(new CellQuery(CellType.cell_viewRefType.getDefinition()));
+                    var13.add(new CellQuery(CellType.cell_viewRefLevel.getDefinition()));
                     var13.addAll(var5);
                     int var14 = -1;
-                    TableValuesSelect var15 = new TableValuesSelect(FJM, var2);
+                    TableValuesSelect var15 = new TableValuesSelect(null, var2);
                     var15.IJH(new CellQuery("1", "count_", AggregateType.COUNT));
                     var15.IJC(var6);
                     var15.IJD(var7);
@@ -2017,13 +2018,13 @@ public class EMX implements ENC {
                     }
 
                     log.debug("count " + var14);
-                    TableValuesSelect var37 = new TableValuesSelect(FJM, "query_", var2);
+                    TableValuesSelect var37 = new TableValuesSelect(null, "query_", var2);
                     var37.IJC(var6);
                     var37.IJD(var7);
                     var37.IJK(var8);
-                    TableValuesSelect var17 = new TableValuesSelect(FJM, "data_", var3);
+                    TableValuesSelect var17 = new TableValuesSelect(null, "data_", var3);
                     var17.IJI(var13);
-                    var17.setJoin("inner join", new CellJoin(FMJ, var37, FLD, Condition.EQUALS));
+                    var17.setJoin("inner join", new CellJoin(CellType.cell_viewQueryId.<CellTyped>getDefinition(), var37, CellType.cell_technical_id.<CellTyped>getDefinition(), Condition.EQUALS));
                     DbUtils.IIO(var1, var9, var10, var37, var17);
                     ArrayList var18 = new ArrayList();
                     HashMap var19 = new HashMap();
@@ -2059,11 +2060,11 @@ public class EMX implements ENC {
                         while (var26.hasNext()) {
                             CellValue var27 = (CellValue) var26.next();
                             String var28 = var27.getName();
-                            if (FMJ.getName().equals(var28)) {
+                            if (CellType.cell_viewQueryId.<CellTyped>getDefinition().getName().equals(var28)) {
                                 var23 = (String) var27.getValue();
-                            } else if (FMK.getName().equals(var28)) {
+                            } else if (CellType.cell_viewRefType.getDefinition().getName().equals(var28)) {
                                 var24 = (String) var27.getValue();
-                            } else if (FML.getName().equals(var28)) {
+                            } else if (CellType.cell_viewRefLevel.getDefinition().getName().equals(var28)) {
                                 var25 = (Integer) var27.getValue();
                             }
                         }
@@ -2074,7 +2075,7 @@ public class EMX implements ENC {
                         }
 
                         Map var44 = (Map) var19.get(var23);
-                        if ("b_select".equals(var24)) {
+                        if (EntityName.B_SELECT.equals(var24)) {
                             var18.add(new ValueContainer2(var23, var44));
                         }
 
@@ -2095,7 +2096,7 @@ public class EMX implements ENC {
         }
     }
 
-    private <_A extends ValueContainer1<_T>, _T extends ModelBase> _A HMD(Connection var1, String var2, List<CellQuery> var3, List<CellValue<?>> var4, ENC.ENF<_A, _T> var5) throws FFK {
+    private <_A extends ValueContainer1<_T>, _T extends ModelBase> _A HMD(Connection var1, String var2, List<CellQuery> var3, List<CellValue<?>> var4, ENF<_A, _T> var5) throws FFK {
 
         try {
             if (var5 == null) {
@@ -2103,9 +2104,9 @@ public class EMX implements ENC {
             } else {
                 synchronized (var2) {
                     ArrayList var7 = new ArrayList();
-                    var7.add(new CellQuery(FMJ));
-                    var7.add(new CellQuery(FMK));
-                    var7.add(new CellQuery(FML));
+                    var7.add(new CellQuery(CellType.cell_viewQueryId.<CellTyped>getDefinition()));
+                    var7.add(new CellQuery(CellType.cell_viewRefType.getDefinition()));
+                    var7.add(new CellQuery(CellType.cell_viewRefLevel.getDefinition()));
                     if (var3 != null && !var3.isEmpty()) {
                         var7.addAll(var3);
                     } else {
@@ -2113,7 +2114,7 @@ public class EMX implements ENC {
                         var7.add(new CellQuery("*"));
                     }
 
-                    TableValuesSelect var8 = new TableValuesSelect(FJM, "data_", var2);
+                    TableValuesSelect var8 = new TableValuesSelect(null, "data_", var2);
                     var8.IJI(var7);
                     var8.IJC(var4);
                     DbUtils.IIO(var1, var8);
@@ -2151,11 +2152,11 @@ public class EMX implements ENC {
                         while (var17.hasNext()) {
                             CellValue var18 = (CellValue) var17.next();
                             String var19 = var18.getName();
-                            if (FMJ.getName().equals(var19)) {
+                            if (CellType.cell_viewQueryId.<CellTyped>getDefinition().getName().equals(var19)) {
                                 var14 = (String) var18.getValue();
-                            } else if (FMK.getName().equals(var19)) {
+                            } else if (CellType.cell_viewRefType.getDefinition().getName().equals(var19)) {
                                 var15 = (String) var18.getValue();
-                            } else if (FML.getName().equals(var19)) {
+                            } else if (CellType.cell_viewRefLevel.getDefinition().getName().equals(var19)) {
                                 var16 = (Integer) var18.getValue();
                             }
                         }
@@ -2183,7 +2184,7 @@ public class EMX implements ENC {
 
     public <_T extends LW> void HME(SqlOperation var1, FFF var2, String var3, _T var4) throws FFK {
 
-        this.HML(var1, var2, var3, "preferences", var4);
+        this.HML(var1, var2, var3, EntityName.PREFERENCES, var4);
 
     }
 
@@ -2201,7 +2202,7 @@ public class EMX implements ENC {
 
         ArrayList var3 = new ArrayList();
         ArrayList var4 = new ArrayList();
-        var4.add(new CellValue(FLD, var2.getId()));
+        var4.add(new CellValue(CellType.cell_technical_id.getDefinition(), var2.getId()));
         Map var5 = var2.getValuesMap();
         Iterator var6 = var5.entrySet().iterator();
 
@@ -2217,15 +2218,15 @@ public class EMX implements ENC {
 
         ArrayList var4 = new ArrayList();
         if (var3.getIssuerNumber() != null && var3.getIssuerNumber().getValue() != null) {
-            var4.add(new CellValue(FLT, var3.getIssuerNumber().getValue()));
+            var4.add(new CellValue(CellType.cell_business_issuer_number.getDefinition(), var3.getIssuerNumber().getValue()));
         }
 
         if (var3.getRefId() != null && var3.getRefId().getValue() != null) {
-            var4.add(new CellValue(FLU, var3.getRefId().getValue()));
+            var4.add(new CellValue(CellType.cell_business_refid.getDefinition(), var3.getRefId().getValue()));
         }
 
         if (var3.getCreationDate() != null && var3.getCreationDate().getValue() != null) {
-            var4.add(new CellValue(FMD, var3.getCreationDate().getValueDate()));
+            var4.add(new CellValue(CellType.cell_business_creationDate.getDefinition(), var3.getCreationDate().getValueDate()));
         }
 
         Contractor var6;
@@ -2233,7 +2234,7 @@ public class EMX implements ENC {
         switch (var3.getInvoiceType()) {
             case SELL:
                 if (((a.a.a.c.f.a.e.BaseInvoiceSell) var3).getInvoicingDate() != null && ((a.a.a.c.f.a.e.BaseInvoiceSell) var3).getInvoicingDate().getValue() != null) {
-                    var4.add(new CellValue(FMC, ((a.a.a.c.f.a.e.BaseInvoiceSell) var3).getInvoicingDate().getValueDate()));
+                    var4.add(new CellValue(CellType.cell_business_invoicingDate.getDefinition(), ((a.a.a.c.f.a.e.BaseInvoiceSell) var3).getInvoicingDate().getValueDate()));
                 }
 
                 switch (var3.getInvoiceSubType()) {
@@ -2241,44 +2242,44 @@ public class EMX implements ENC {
                     case AGGREGATE:
                         InvoiceSell var14 = (InvoiceSell) var3;
                         if (var14.getAmountSummaryWithoutTax() != null && var14.getAmountSummaryWithoutTax().getValue() != null) {
-                            var4.add(new CellValue(FMG, var14.getAmountSummaryWithoutTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_netValue.getDefinition(), var14.getAmountSummaryWithoutTax().getValue()));
                         }
 
                         if (var14.getAmountSummaryWithTax() != null && var14.getAmountSummaryWithTax().getValue() != null) {
-                            var4.add(new CellValue(FMH, var14.getAmountSummaryWithTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_grossValue.getDefinition(), var14.getAmountSummaryWithTax().getValue()));
                         }
 
                         if (var14.getAmountTax() != null && var14.getAmountTax().getValue() != null) {
-                            var4.add(new CellValue(FMI, var14.getAmountTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_taxValue.getDefinition(), var14.getAmountTax().getValue()));
                         }
 
                         if (var3.getTransactionDate() != null && var3.getTransactionDate().getValue() != null) {
-                            var4.add(new CellValue(QNR, var3.getTransactionDate().getValueDate()));
+                            var4.add(new CellValue(CellType.cell_business_transactionDate.getDefinition(), var3.getTransactionDate().getValueDate()));
                         }
 
                         var6 = var14.getContractor();
                         if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
-                            var4.add(new CellValue(FME, var6.getName().getValue()));
-                            var4.add(new CellValue(FMF, var6.getNip().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorName.getDefinition(), var6.getName().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), var6.getNip().getValue()));
                         }
                         break label319;
                     case CORRECTION:
                         InvoiceSellCorrection var13 = (InvoiceSellCorrection) var3;
                         if (var13.getDifferenceAmountSummaryWithoutTax() != null && var13.getDifferenceAmountSummaryWithoutTax().getValue() != null) {
-                            var4.add(new CellValue(FMG, var13.getDifferenceAmountSummaryWithoutTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_netValue.getDefinition(), var13.getDifferenceAmountSummaryWithoutTax().getValue()));
                         }
 
                         if (var13.getDifferenceAmountSummaryWithTax() != null && var13.getDifferenceAmountSummaryWithTax().getValue() != null) {
-                            var4.add(new CellValue(FMH, var13.getDifferenceAmountSummaryWithTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_grossValue.getDefinition(), var13.getDifferenceAmountSummaryWithTax().getValue()));
                         }
 
                         if (var13.getDifferenceAmountTax() != null && var13.getDifferenceAmountTax().getValue() != null) {
-                            var4.add(new CellValue(FMI, var13.getDifferenceAmountTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_taxValue.getDefinition(), var13.getDifferenceAmountTax().getValue()));
                         }
 
                         InvoiceSell var15 = getInvoiceFirstParent(var3);
                         if (var15.getTransactionDate() != null && var15.getTransactionDate().getValue() != null) {
-                            var4.add(new CellValue(QNR, var15.getTransactionDate().getValueDate()));
+                            var4.add(new CellValue(CellType.cell_business_transactionDate.getDefinition(), var15.getTransactionDate().getValueDate()));
                         }
 
                         Object var7;
@@ -2288,8 +2289,8 @@ public class EMX implements ENC {
                         InvoiceSell var8 = (InvoiceSell) var7;
                         Contractor var9 = var8.getContractor();
                         if (var9 != null && var9.getName() != null && var9.getName().getValue() != null) {
-                            var4.add(new CellValue(FME, var9.getName().getValue()));
-                            var4.add(new CellValue(FMF, var9.getNip().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorName.getDefinition(), var9.getName().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), var9.getNip().getValue()));
                         }
                         break label319;
                     default:
@@ -2301,29 +2302,29 @@ public class EMX implements ENC {
                     case AGGREGATE:
                         InvoicePurchase var5 = (InvoicePurchase) var3;
                         if (var5.getInvoicingDate() != null && var5.getInvoicingDate().getValue() != null) {
-                            var4.add(new CellValue(FMC, var5.getInvoicingDate().getValueDate()));
+                            var4.add(new CellValue(CellType.cell_business_invoicingDate.getDefinition(), var5.getInvoicingDate().getValueDate()));
                         }
 
                         if (var5.getAmountSummaryWithoutTax() != null && var5.getAmountSummaryWithoutTax().getValue() != null) {
-                            var4.add(new CellValue(FMG, var5.getAmountSummaryWithoutTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_netValue.getDefinition(), var5.getAmountSummaryWithoutTax().getValue()));
                         }
 
                         if (var5.getAmountSummaryWithTax() != null && var5.getAmountSummaryWithTax().getValue() != null) {
-                            var4.add(new CellValue(FMH, var5.getAmountSummaryWithTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_grossValue.getDefinition(), var5.getAmountSummaryWithTax().getValue()));
                         }
 
                         if (var5.getAmountTax() != null && var5.getAmountTax().getValue() != null) {
-                            var4.add(new CellValue(FMI, var5.getAmountTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_taxValue.getDefinition(), var5.getAmountTax().getValue()));
                         }
 
                         if (var3.getTransactionDate() != null && var3.getTransactionDate().getValue() != null) {
-                            var4.add(new CellValue(QNR, var3.getTransactionDate().getValueDate()));
+                            var4.add(new CellValue(CellType.cell_business_transactionDate.getDefinition(), var3.getTransactionDate().getValueDate()));
                         }
 
                         var6 = var5.getContractor();
                         if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
-                            var4.add(new CellValue(FME, var6.getName().getValue()));
-                            var4.add(new CellValue(FMF, var6.getNip().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorName.getDefinition(), var6.getName().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), var6.getNip().getValue()));
                         }
                         break label319;
                     default:
@@ -2333,7 +2334,7 @@ public class EMX implements ENC {
                 throw new FFK("Unexpected invoice type [" + var3.getInvoiceType() + "]!");
         }
 
-        this.HMN(var1, var2, "invoices", var3, var3.getParentInvoiceWithCanceled(), var3.getInvoiceType().name(), var3.getInvoiceSubType().name(), var4);
+        this.HMN(var1, var2, EntityName.INVOICES, var3, var3.getParentInvoiceWithCanceled(), var3.getInvoiceType().name(), var3.getInvoiceSubType().name(), var4);
 
     }
 
@@ -2341,15 +2342,15 @@ public class EMX implements ENC {
 
         ArrayList var4 = new ArrayList();
         if (var3.getIssuerNumber() != null && var3.getIssuerNumber().getValue() != null) {
-            var4.add(new CellValue(FLT, var3.getIssuerNumber().getValue()));
+            var4.add(new CellValue(CellType.cell_business_issuer_number.getDefinition(), var3.getIssuerNumber().getValue()));
         }
 
         if (var3.getRefId() != null && var3.getRefId().getValue() != null) {
-            var4.add(new CellValue(FLU, var3.getRefId().getValue()));
+            var4.add(new CellValue(CellType.cell_business_refid.getDefinition(), var3.getRefId().getValue()));
         }
 
         if (var3.getCreationDate() != null && var3.getCreationDate().getValue() != null) {
-            var4.add(new CellValue(FMD, var3.getCreationDate().getValueDate()));
+            var4.add(new CellValue(CellType.cell_business_creationDate.getDefinition(), var3.getCreationDate().getValueDate()));
         }
 
         Contractor var6;
@@ -2357,7 +2358,7 @@ public class EMX implements ENC {
         switch (var3.getInvoiceOtherType()) {
             case SELL:
                 if (((BaseInvoiceSell) var3).getInvoicingDate() != null && ((BaseInvoiceSell) var3).getInvoicingDate().getValue() != null) {
-                    var4.add(new CellValue(FMC, ((BaseInvoiceSell) var3).getInvoicingDate().getValueDate()));
+                    var4.add(new CellValue(CellType.cell_business_invoicingDate.getDefinition(), ((BaseInvoiceSell) var3).getInvoicingDate().getValueDate()));
                 }
 
                 switch (var3.getInvoiceOtherSubType()) {
@@ -2367,21 +2368,21 @@ public class EMX implements ENC {
                     case SELL_REASON_4:
                         InvoiceOtherSell var10 = (InvoiceOtherSell) var3;
                         if (var10.getAmountSummaryWithoutTax() != null && var10.getAmountSummaryWithoutTax().getValue() != null) {
-                            var4.add(new CellValue(FMG, var10.getAmountSummaryWithoutTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_netValue.getDefinition(), var10.getAmountSummaryWithoutTax().getValue()));
                         }
 
                         if (var10.getAmountSummaryWithTax() != null && var10.getAmountSummaryWithTax().getValue() != null) {
-                            var4.add(new CellValue(FMH, var10.getAmountSummaryWithTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_grossValue.getDefinition(), var10.getAmountSummaryWithTax().getValue()));
                         }
 
                         if (var10.getAmountTax() != null && var10.getAmountTax().getValue() != null) {
-                            var4.add(new CellValue(FMI, var10.getAmountTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_taxValue.getDefinition(), var10.getAmountTax().getValue()));
                         }
 
                         var6 = var10.getContractor();
                         if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
-                            var4.add(new CellValue(FME, var6.getName().getValue()));
-                            var4.add(new CellValue(FMF, var6.getNip().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorName.getDefinition(), var6.getName().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), var6.getNip().getValue()));
                         }
                         break label201;
                     default:
@@ -2395,25 +2396,25 @@ public class EMX implements ENC {
                     case PURCHASE_REASON_4:
                         InvoiceOtherPurchase var5 = (InvoiceOtherPurchase) var3;
                         if (var5.getInvoicingDate() != null && var5.getInvoicingDate().getValue() != null) {
-                            var4.add(new CellValue(FMC, var5.getInvoicingDate().getValueDate()));
+                            var4.add(new CellValue(CellType.cell_business_invoicingDate.getDefinition(), var5.getInvoicingDate().getValueDate()));
                         }
 
                         if (var5.getAmountSummaryWithoutTax() != null && var5.getAmountSummaryWithoutTax().getValue() != null) {
-                            var4.add(new CellValue(FMG, var5.getAmountSummaryWithoutTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_netValue.getDefinition(), var5.getAmountSummaryWithoutTax().getValue()));
                         }
 
                         if (var5.getAmountSummaryWithTax() != null && var5.getAmountSummaryWithTax().getValue() != null) {
-                            var4.add(new CellValue(FMH, var5.getAmountSummaryWithTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_grossValue.getDefinition(), var5.getAmountSummaryWithTax().getValue()));
                         }
 
                         if (var5.getAmountTax() != null && var5.getAmountTax().getValue() != null) {
-                            var4.add(new CellValue(FMI, var5.getAmountTax().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_taxValue.getDefinition(), var5.getAmountTax().getValue()));
                         }
 
                         var6 = var5.getContractor();
                         if (var6 != null && var6.getName() != null && var6.getName().getValue() != null) {
-                            var4.add(new CellValue(FME, var6.getName().getValue()));
-                            var4.add(new CellValue(FMF, var6.getNip().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorName.getDefinition(), var6.getName().getValue()));
+                            var4.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), var6.getNip().getValue()));
                         }
                         break label201;
                     default:
@@ -2423,53 +2424,53 @@ public class EMX implements ENC {
                 throw new FFK("Unexpected invoice other type [" + var3.getInvoiceOtherType() + "]!");
         }
 
-        this.HMN(var1, var2, "invoicesother", var3, var3.getParentInvoiceWithCanceled(), var3.getInvoiceOtherType().name(), var3.getInvoiceOtherSubType().name(), var4);
+        this.HMN(var1, var2, EntityName.INVOICESOTHER, var3, var3.getParentInvoiceWithCanceled(), var3.getInvoiceOtherType().name(), var3.getInvoiceOtherSubType().name(), var4);
 
     }
 
     public <_T extends ReceiptRecord> void HMG(SqlOperation var1, FFF var2, _T var3) throws FFK {
 
-        this.HMN(var1, var2, "receiptrecords", var3, (ModelBusinessPeriodElement) null, var3.getReceiptRecordType().name(), null, null);
+        this.HMN(var1, var2, EntityName.RECEIPTRECORDS, var3, (ModelBusinessPeriodElement) null, var3.getReceiptRecordType().name(), null, null);
 
     }
 
     public <_T extends Settlement> void HMH(SqlOperation var1, FFF var2, _T var3, _T var4) throws FFK {
 
         ArrayList var5 = new ArrayList();
-        var5.add(new CellValue(FLX, var3.FJI().getValue()));
-        this.HMN(var1, var2, "settlements", var3, var4, var3.getSettlementType().name(), null, var5);
+        var5.add(new CellValue(CellType.cell_business_documentIndex.getDefinition(), var3.FJI().getValue()));
+        this.HMN(var1, var2, EntityName.SETTLEMENTS, var3, var4, var3.getSettlementType().name(), null, var5);
 
     }
 
     public <_T extends Declaration, _Q extends Settlement> void HMI(SqlOperation var1, FFF var2, _T var3, _Q var4) throws FFK {
 
         ArrayList var5 = new ArrayList();
-        var5.add(new CellValue(FLX, var3.FJI().getValue()));
+        var5.add(new CellValue(CellType.cell_business_documentIndex.getDefinition(), var3.FJI().getValue()));
         if (var4 != null) {
-            var5.add(new CellValue(FLF, var4.getId()));
+            var5.add(new CellValue(CellType.cell_technical_settlementid.getDefinition(), var4.getId()));
         }
 
-        var5.add(new CellValue(FLX, var3.FJI().getValue()));
-        this.HMN(var1, var2, "declarations", var3, (ModelBusinessPeriodElement) null, var3.getDeclarationType().name(), var3.getDeclarationSubType().name(), var5);
+        var5.add(new CellValue(CellType.cell_business_documentIndex.getDefinition(), var3.FJI().getValue()));
+        this.HMN(var1, var2, EntityName.DECLARATIONS, var3, (ModelBusinessPeriodElement) null, var3.getDeclarationType().name(), var3.getDeclarationSubType().name(), var5);
 
     }
 
     public <_T extends InvoiceRecord, _Q extends Settlement> void HMJ(SqlOperation var1, FFF var2, _T var3, _Q var4) throws FFK {
 
         ArrayList var5 = new ArrayList();
-        var5.add(new CellValue(FLX, var3.FJI().getValue()));
+        var5.add(new CellValue(CellType.cell_business_documentIndex.getDefinition(), var3.FJI().getValue()));
         if (var4 != null) {
-            var5.add(new CellValue(FLF, var4.getId()));
+            var5.add(new CellValue(CellType.cell_technical_settlementid.getDefinition(), var4.getId()));
         }
 
-        this.HMN(var1, var2, "invoicerecords", var3, (ModelBusinessPeriodElement) null, var3.getInvoiceRecordType().name(), null, var5);
+        this.HMN(var1, var2, EntityName.INVOICERECORDS, var3, (ModelBusinessPeriodElement) null, var3.getInvoiceRecordType().name(), null, var5);
 
     }
 
     public <_T extends Contractor> void HMK(SqlOperation var1, FFF var2, Contractor var3) throws FFK {
 
         ArrayList var4 = new ArrayList();
-        this.HMM(var1, var2, "contacts", var3, null, var3.getType(), null, var4);
+        this.HMM(var1, var2, EntityName.CONTACTS, var3, null, var3.getType(), null, var4);
 
     }
 
@@ -2487,16 +2488,16 @@ public class EMX implements ENC {
         }
 
         ArrayList var7 = new ArrayList();
-        var7.add(new CellValue(FLJ, var3));
-        var7.add(new CellValue(FLP, var5.getClass().getName()));
+        var7.add(new CellValue(CellType.cell_technical_username.getDefinition(), var3));
+        var7.add(new CellValue(CellType.cell_technical_typeclass.getDefinition(), var5.getClass().getName()));
         ArrayList var8 = new ArrayList();
         switch (var1) {
             case insert:
-                var8.add(new CellValue(FLI, var6));
+                var8.add(new CellValue(CellType.cell_business_version.getDefinition(), var6));
                 break;
             case update:
             case delete:
-                var7.add(new CellValue(FLI, var6));
+                var7.add(new CellValue(CellType.cell_business_version.getDefinition(), var6));
                 break;
             default:
                 throw new FFK("Unsupported action type [" + var1 + "]!");
@@ -2514,31 +2515,31 @@ public class EMX implements ENC {
 
         ArrayList var9 = new ArrayList();
         ArrayList var10 = new ArrayList();
-        var9.add(new CellValue(FLD, var4.getId()));
+        var9.add(new CellValue(CellType.cell_technical_id.getDefinition(), var4.getId()));
         Contractor var11 = var4.AICD();
         if (var11.DAI().getValue() == null) {
             throw new FFK("Name of Contractor cannot be NULL!");
         }
 
-        var10.add(new CellValue(FME, var11.DAI().getValue()));
+        var10.add(new CellValue(CellType.cell_business_contractorName.getDefinition(), var11.DAI().getValue()));
         if (var11.DAJ().getValue().length() == 10) {
-            var10.add(new CellValue(FMF, var11.DAJ().getValue()));
+            var10.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), var11.DAJ().getValue()));
         } else {
-            var10.add(new CellValue(FMF, null));
+            var10.add(new CellValue(CellType.cell_business_contractorNIP.getDefinition(), null));
         }
 
-        var10.add(new CellValue(FLN, var6));
-        var10.add(new CellValue(FLO, var7));
-        var10.add(new CellValue(FLP, var4.getClass().getName()));
+        var10.add(new CellValue(CellType.cell_technical_type.getDefinition(), var6));
+        var10.add(new CellValue(CellType.cell_technical_subType.getDefinition(), var7));
+        var10.add(new CellValue(CellType.cell_technical_typeclass.getDefinition(), var4.getClass().getName()));
         if (var5 != null) {
-            var10.add(new CellValue(FLE, var5.getId()));
+            var10.add(new CellValue(CellType.cell_technical_parentid.getDefinition(), var5.getId()));
         }
 
         if (var8 != null) {
             var10.addAll(var8);
         }
 
-        var10.add(new CellValue(QNS, var4.QON()));
+        var10.add(new CellValue(CellType.cell_business_hash.getDefinition(), var4.QON()));
         this.HMO(this.connection, var1, var2, var3, var9, var10, this.HKZ(var4));
 
     }
@@ -2546,21 +2547,21 @@ public class EMX implements ENC {
     private <_T extends ModelBusinessPeriodElement> void HMN(SqlOperation var1, FFF var2, String var3, _T var4, _T var5, String var6, String var7, List<CellValue<?>> var8) throws FFK {
 
         ArrayList var9 = new ArrayList();
-        var9.add(new CellValue(FLD, var4.getId()));
+        var9.add(new CellValue(CellType.cell_technical_id.getDefinition(), var4.getId()));
         ArrayList var10 = new ArrayList();
         if (var4.getPeriod() != null) {
             Period var11 = var4.getPeriod().DDN();
             if (var11.DDJ().getValue() == null) {
                 throw new FFK("Period year cannot be NULL!");
             } else {
-                var10.add(new CellValue(FLV, var11.DDJ().getValue()));
+                var10.add(new CellValue(CellType.cell_business_periodYear.getDefinition(), var11.DDJ().getValue()));
                 if (var11.DDK().getValue() != null) {
-                    var10.add(new CellValue(FLW, var11.DDK().getValue()));
-                    var10.add(new CellValue(FLN, var6));
-                    var10.add(new CellValue(FLO, var7));
-                    var10.add(new CellValue(FLP, var4.getClass().getName()));
+                    var10.add(new CellValue(CellType.cell_business_periodMonth.getDefinition(), var11.DDK().getValue()));
+                    var10.add(new CellValue(CellType.cell_technical_type.getDefinition(), var6));
+                    var10.add(new CellValue(CellType.cell_technical_subType.getDefinition(), var7));
+                    var10.add(new CellValue(CellType.cell_technical_typeclass.getDefinition(), var4.getClass().getName()));
                     if (var5 != null) {
-                        var10.add(new CellValue(FLE, var5.getId()));
+                        var10.add(new CellValue(CellType.cell_technical_parentid.getDefinition(), var5.getId()));
                     }
 
                     if (var8 != null) {
@@ -2602,14 +2603,14 @@ public class EMX implements ENC {
 
                     var12 = new ArrayList();
                     var12.addAll(var6);
-                    var12.add(new CellValue(FLQ, Short.valueOf(var8)));
-                    var12.add(new CellValue(FLK, var9));
-                    var12.add(new CellValue(FLR, var10));
-                    var12.add(new CellValue(FLS, var11));
+                    var12.add(new CellValue(CellType.cell_technical_encrypted.getDefinition(), Short.valueOf(var8)));
+                    var12.add(new CellValue(CellType.cell_technical_salt.getDefinition(), var9));
+                    var12.add(new CellValue(CellType.cell_technical_iv.getDefinition(), var10));
+                    var12.add(new CellValue(CellType.cell_technical_body.getDefinition(), var11));
                 case delete:
                     switch (var2) {
                         case insert:
-                            var12.add(new CellValue(FLH, this.FIR));
+                            var12.add(new CellValue(CellType.cell_technical_version.getDefinition(), this.FIR));
                             this.HMS(var1, var4, var5, var12);
                             return;
                         case update:
@@ -2642,13 +2643,13 @@ public class EMX implements ENC {
         ArrayList var6 = new ArrayList();
         switch (var1) {
             case insert:
-                var5.add(new CellValue(FLH, this.FIR));
+                var5.add(new CellValue(CellType.cell_technical_version.getDefinition(), this.FIR));
             case update:
                 byte[] var7 = this.HKZ(var2);
-                var5.add(new CellValue(FMA, var3));
-                var5.add(new CellValue(FMB, var4));
-                var5.add(new CellValue(FLP, var2.getClass().getName()));
-                var5.add(new CellValue(FLS, var7));
+                var5.add(new CellValue(CellType.cell_business_dictionaryName.getDefinition(), var3));
+                var5.add(new CellValue(CellType.cell_business_dictionaryEntry.getDefinition(), var4));
+                var5.add(new CellValue(CellType.cell_technical_typeclass.getDefinition(), var2.getClass().getName()));
+                var5.add(new CellValue(CellType.cell_technical_body.getDefinition(), var7));
             case delete:
                 break;
             default:
@@ -2660,8 +2661,8 @@ public class EMX implements ENC {
                 break;
             case update:
             case delete:
-                var6.add(new CellValue(FMA, var3));
-                var6.add(new CellValue(FMB, var4));
+                var6.add(new CellValue(CellType.cell_business_dictionaryName.getDefinition(), var3));
+                var6.add(new CellValue(CellType.cell_business_dictionaryEntry.getDefinition(), var4));
                 break;
             default:
                 throw new FFK("Unsupported action type [" + var1 + "]!");
@@ -2669,13 +2670,13 @@ public class EMX implements ENC {
 
         switch (var1) {
             case insert:
-                this.HMS(this.connection, "dictionaries", var6, var5);
+                this.HMS(this.connection, EntityName.DICTIONARIES, var6, var5);
                 break;
             case update:
-                this.HMT(this.connection, "dictionaries", var6, var5);
+                this.HMT(this.connection, EntityName.DICTIONARIES, var6, var5);
                 break;
             case delete:
-                this.HMU(this.connection, "dictionaries", var6);
+                this.HMU(this.connection, EntityName.DICTIONARIES, var6);
                 break;
             default:
                 throw new FFK("Unsupported action type [" + var1 + "]!");
@@ -2693,13 +2694,15 @@ public class EMX implements ENC {
 
             String var3 = var1.toUpperCase();
             String var4 = var2.toUpperCase();
-            TableValuesSelect var5 = new TableValuesSelect(FJM, "dictionaries");
-            var5.IJH(new CellQuery(FLP));
-            var5.IJH(new CellQuery(FLS));
-            var5.IJA(new CellValue(FMA, var3));
-            var5.IJA(new CellValue(FMB, "%" + var4 + "%", Condition.LIKE));
-            String var6 = "dictionaries";
-            synchronized ("dictionaries") {
+            TableValuesSelect var5 = new TableValuesSelect(null, EntityName.DICTIONARIES);
+            var5.IJH(new CellQuery(CellType.cell_technical_typeclass.<CellTyped>getDefinition()));
+            var5.IJH(new CellQuery(CellType.cell_technical_body.<CellTyped>getDefinition()));
+            var5.IJA(new CellValue(CellType.cell_business_dictionaryName.getDefinition(), var3));
+            var5.IJA(new CellValue(CellType.cell_business_dictionaryEntry.getDefinition(), "%" + var4 + "%", Condition.LIKE));
+            String var6 = EntityName.DICTIONARIES;
+
+            synchronized (EntityName.DICTIONARIES) {
+
                 DbUtils.IIO(this.connection, var5);
                 ArrayList var7 = new ArrayList();
                 Iterator var8 = var5.getResults().iterator();
@@ -2713,9 +2716,9 @@ public class EMX implements ENC {
                     while (var12.hasNext()) {
                         CellValue var13 = (CellValue) var12.next();
                         String var14 = var13.getName();
-                        if (FLP.getName().equals(var14)) {
+                        if (CellType.cell_technical_typeclass.<CellTyped>getDefinition().getName().equals(var14)) {
                             var10 = Class.forName((String) var13.getValue());
-                        } else if (FLS.getName().equals(var14)) {
+                        } else if (CellType.cell_technical_body.<CellTyped>getDefinition().getName().equals(var14)) {
                             var11 = (byte[]) var13.getValue();
                         }
                     }
@@ -2739,7 +2742,7 @@ public class EMX implements ENC {
     private <_T extends ModelBase> void HMR(Connection var1, String var2, Map<String, CellValue<?>> var3) throws FFK {
 
         try {
-            TableValuesInsert var4 = new TableValuesInsert(FJM, var2);
+            TableValuesInsert var4 = new TableValuesInsert(null, var2);
             var4.IJN(new ArrayList(var3.values()));
             var4.IJO(var3);
             synchronized (var1) {
@@ -2758,7 +2761,7 @@ public class EMX implements ENC {
             ArrayList var5 = new ArrayList();
             var5.addAll(var3);
             var5.addAll(var4);
-            TableValuesInsert var6 = new TableValuesInsert(FJM, var2);
+            TableValuesInsert var6 = new TableValuesInsert(null, var2);
             var6.IJN(var5);
             var6.IJO(var5);
             synchronized (var1) {
@@ -2774,7 +2777,7 @@ public class EMX implements ENC {
     private <_T extends ModelBase> void HMT(Connection var1, String var2, List<CellValue<?>> var3, List<CellValue<?>> var4) throws FFK {
 
         try {
-            TableValuesUpdate var5 = new TableValuesUpdate(FJM, var2);
+            TableValuesUpdate var5 = new TableValuesUpdate(null, var2);
             var5.IJQ(var4);
             var5.IJC(var3);
             synchronized (var1) {
@@ -2790,7 +2793,7 @@ public class EMX implements ENC {
     private <_T extends ModelBase> void HMU(Connection var1, String var2, List<CellValue<?>> var3) throws FFK {
 
         try {
-            TableValuesDelete var4 = new TableValuesDelete(FJM, var2);
+            TableValuesDelete var4 = new TableValuesDelete(null, var2);
             var4.IJC(var3);
             synchronized (var1) {
                 DbUtils.IIN(var1, var4);
@@ -2847,23 +2850,23 @@ public class EMX implements ENC {
                     var22 = var23;
             }
 
-            TableValuesSelect var7 = new TableValuesSelect(FJM, "sequences");
-            var7.IJH(new CellQuery(FLY));
-            var7.IJA(new CellValue(FLV, var21));
-            var7.IJA(new CellValue(FLW, var22));
-            var7.IJA(new CellValue(FLN, var2));
+            TableValuesSelect var7 = new TableValuesSelect(null, EntityName.SEQUENCES);
+            var7.IJH(new CellQuery(CellType.cell_business_numeric_value.<CellTyped>getDefinition()));
+            var7.IJA(new CellValue(CellType.cell_business_periodYear.getDefinition(), var21));
+            var7.IJA(new CellValue(CellType.cell_business_periodMonth.getDefinition(), var22));
+            var7.IJA(new CellValue(CellType.cell_technical_type.getDefinition(), var2));
             synchronized (this.connection) {
                 DbUtils.IIO(this.connection, var7);
                 Object var9 = null;
                 Integer var24;
                 if (var7.getResults().size() == 0) {
                     var24 = Integer.valueOf(1);
-                    TableValuesInsert var10 = new TableValuesInsert(FJM, "sequences");
-                    var10.IJM(FLV);
-                    var10.IJM(FLW);
-                    var10.IJM(FLN);
-                    var10.IJM(FLY);
-                    var10.IJO(new CellValue[]{new CellValue(FLV, var21), new CellValue(FLW, var22), new CellValue(FLN, var2), new CellValue(FLY, var24)});
+                    TableValuesInsert var10 = new TableValuesInsert(null, EntityName.SEQUENCES);
+                    var10.IJM(CellType.cell_business_periodYear.<CellTyped>getDefinition());
+                    var10.IJM(CellType.cell_business_periodMonth.<CellTyped>getDefinition());
+                    var10.IJM(CellType.cell_technical_type.<CellTyped>getDefinition());
+                    var10.IJM(CellType.cell_business_numeric_value.<CellTyped>getDefinition());
+                    var10.IJO(new CellValue[]{new CellValue(CellType.cell_business_periodYear.getDefinition(), var21), new CellValue(CellType.cell_business_periodMonth.getDefinition(), var22), new CellValue(CellType.cell_technical_type.getDefinition(), var2), new CellValue(CellType.cell_business_numeric_value.getDefinition(), var24)});
                     DbUtils.IIL(this.connection, var10);
                 } else {
                     if (var7.getResults().size() != 1) {
@@ -2874,15 +2877,15 @@ public class EMX implements ENC {
 
                     Collection<CellValue> values = ((Map) var7.getResults().get(0)).values();
                     for (CellValue var12 : values) {
-                        if (FLY.getName().equals(var12.getName())) {
+                        if (CellType.cell_business_numeric_value.<CellTyped>getDefinition().getName().equals(var12.getName())) {
                             var26 = (Integer) var12.getValue();
                         }
                     }
 
                     var24 = var26 + 1;
-                    TableValuesUpdate var27 = new TableValuesUpdate(FJM, "sequences");
-                    var27.IJQ(new CellValue[]{new CellValue(FLY, var24)});
-                    var27.IJC(new CellConditioned[]{new CellValue(FLV, var21), new CellValue(FLW, var22), new CellValue(FLN, var2)});
+                    TableValuesUpdate var27 = new TableValuesUpdate(null, EntityName.SEQUENCES);
+                    var27.IJQ(new CellValue[]{new CellValue(CellType.cell_business_numeric_value.getDefinition(), var24)});
+                    var27.IJC(new CellConditioned[]{new CellValue(CellType.cell_business_periodYear.getDefinition(), var21), new CellValue(CellType.cell_business_periodMonth.getDefinition(), var22), new CellValue(CellType.cell_technical_type.getDefinition(), var2)});
                     DbUtils.IIM(this.connection, var27);
                 }
 
@@ -2899,11 +2902,11 @@ public class EMX implements ENC {
     public Map<String, Map<Period, Integer>> getSequences() throws FFK {
 
         try {
-            TableValuesSelect var1 = new TableValuesSelect(FJM, "sequences");
-            var1.IJH(new CellQuery(FLY));
-            var1.IJH(new CellQuery(FLV));
-            var1.IJH(new CellQuery(FLW));
-            var1.IJH(new CellQuery(FLN));
+            TableValuesSelect var1 = new TableValuesSelect(null, EntityName.SEQUENCES);
+            var1.IJH(new CellQuery(CellType.cell_business_numeric_value.<CellTyped>getDefinition()));
+            var1.IJH(new CellQuery(CellType.cell_business_periodYear.<CellTyped>getDefinition()));
+            var1.IJH(new CellQuery(CellType.cell_business_periodMonth.<CellTyped>getDefinition()));
+            var1.IJH(new CellQuery(CellType.cell_technical_type.<CellTyped>getDefinition()));
             HashMap var2 = new HashMap();
             synchronized (this.connection) {
                 DbUtils.IIO(this.connection, var1);
@@ -2919,13 +2922,13 @@ public class EMX implements ENC {
 
                     while (var10.hasNext()) {
                         CellValue var11 = (CellValue) var10.next();
-                        if (FLY.getName().equals(var11.getName())) {
+                        if (CellType.cell_business_numeric_value.<CellTyped>getDefinition().getName().equals(var11.getName())) {
                             var6 = (Integer) var11.getValue();
-                        } else if (FLV.getName().equals(var11.getName())) {
+                        } else if (CellType.cell_business_periodYear.<CellTyped>getDefinition().getName().equals(var11.getName())) {
                             var7 = (Integer) var11.getValue();
-                        } else if (FLW.getName().equals(var11.getName())) {
+                        } else if (CellType.cell_business_periodMonth.<CellTyped>getDefinition().getName().equals(var11.getName())) {
                             var8 = (Integer) var11.getValue();
-                        } else if (FLN.getName().equals(var11.getName())) {
+                        } else if (CellType.cell_technical_type.<CellTyped>getDefinition().getName().equals(var11.getName())) {
                             var9 = (String) var11.getValue();
                         }
                     }
@@ -2954,9 +2957,9 @@ public class EMX implements ENC {
                 throw new FFK("Period, sequenceName and numericValue cannot be empty!");
             }
 
-            TableValuesUpdate var5 = new TableValuesUpdate(FJM, "sequences");
-            var5.IJQ(new CellValue[]{new CellValue(FLY, var4)});
-            var5.IJC(new CellConditioned[]{new CellValue(FLV, var1.DDJ().getValue()), new CellValue(FLW, var1.DDK().getValue()), new CellValue(FLN, var2), new CellValue(FLY, var3)});
+            TableValuesUpdate var5 = new TableValuesUpdate(null, EntityName.SEQUENCES);
+            var5.IJQ(new CellValue[]{new CellValue(CellType.cell_business_numeric_value.getDefinition(), var4)});
+            var5.IJC(new CellConditioned[]{new CellValue(CellType.cell_business_periodYear.getDefinition(), var1.DDJ().getValue()), new CellValue(CellType.cell_business_periodMonth.getDefinition(), var1.DDK().getValue()), new CellValue(CellType.cell_technical_type.getDefinition(), var2), new CellValue(CellType.cell_business_numeric_value.getDefinition(), var3)});
             DbUtils.IIM(this.connection, var5);
         } catch (SQLException var9) {
             log.error("Something bad happened", var9);
@@ -2968,7 +2971,7 @@ public class EMX implements ENC {
     public Integer getMaxDocumentIndex_Settlements(Period var1, SettlementType var2) throws FFK {
 
         Integer var3;
-        var3 = this.getMaxDocumentIndex(var1, var2, null, "settlements");
+        var3 = this.getMaxDocumentIndex(var1, var2, null, EntityName.SETTLEMENTS);
 
         return var3;
     }
@@ -2976,7 +2979,7 @@ public class EMX implements ENC {
     public Integer getMaxDocumentIndex_InvoiceRecords(Period var1, InvoiceRecordType var2) throws FFK {
 
         Integer var3;
-        var3 = this.getMaxDocumentIndex(var1, var2, null, "invoicerecords");
+        var3 = this.getMaxDocumentIndex(var1, var2, null, EntityName.INVOICERECORDS);
 
         return var3;
     }
@@ -2984,7 +2987,7 @@ public class EMX implements ENC {
     public Integer getMaxDocumentIndex_Declarations(Period var1, DeclarationType var2, DeclarationSubtype var3) throws FFK {
 
         Integer var4;
-        var4 = this.getMaxDocumentIndex(var1, var2, var3, "declarations");
+        var4 = this.getMaxDocumentIndex(var1, var2, var3, EntityName.DECLARATIONS);
 
         return var4;
     }
@@ -3006,13 +3009,13 @@ public class EMX implements ENC {
                     var6 = var5.DDJ().getValue();
                     if (var5.DDK().getValue() != null) {
                         var7 = var5.DDK().getValue();
-                        var8 = new TableValuesSelect(FJM, var4);
-                        var8.IJH(new CellQuery(FLX, "documentIndex", AggregateType.COALESCE_0_MAX_PLUS_1));
-                        var8.IJA(new CellValue(FLV, var6));
-                        var8.IJA(new CellValue(FLW, var7));
+                        var8 = new TableValuesSelect(null, var4);
+                        var8.IJH(new CellQuery(CellType.cell_business_documentIndex.<CellTyped>getDefinition(), "documentIndex", AggregateType.COALESCE_0_MAX_PLUS_1));
+                        var8.IJA(new CellValue(CellType.cell_business_periodYear.getDefinition(), var6));
+                        var8.IJA(new CellValue(CellType.cell_business_periodMonth.getDefinition(), var7));
                         String var9 = var2 != null ? var2.name() : null;
                         if (var9 != null) {
-                            var8.IJA(new CellValue(FLN, var9));
+                            var8.IJA(new CellValue(CellType.cell_technical_type.getDefinition(), var9));
                         }
                         break label140;
                     }
@@ -3025,7 +3028,7 @@ public class EMX implements ENC {
 
             String var10 = var3 != null ? var3.name() : null;
             if (var10 != null) {
-                var8.IJA(new CellValue(FLO, var10));
+                var8.IJA(new CellValue(CellType.cell_technical_subType.getDefinition(), var10));
             }
 
             synchronized (var4) {
@@ -3087,7 +3090,7 @@ public class EMX implements ENC {
                 if (var2) {
                     var4.delete();
                 } else {
-                    String var5 = (new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss")).format(new Date());
+                    String var5 = (new SimpleDateFormat(DateFormat.yyyy_MM_dd_HH_mm_ss.getValue())).format(new Date());
                     var4.renameTo(new File(var3.replace(var1, var1 + "_" + var5)));
                 }
             }
@@ -3100,7 +3103,7 @@ public class EMX implements ENC {
     public String HMX(String var1) {
         File var2 = Application.getHomeDir().toFile();
         String var3 = var1 + POSTFIX_OLD;
-        File var4 = new File(var2.getAbsolutePath() + "/" + var3 + ".db");
+        File var4 = new File(var2.getAbsolutePath() + "/" + var3 + DbUtils.DB_FILE_EXT);
         return var4.exists() ? var4.getAbsolutePath() : null;
     }
 
@@ -3110,9 +3113,9 @@ public class EMX implements ENC {
         boolean var16;
         try {
             ArrayList var5 = new ArrayList();
-            String var6 = "preferences";
-            TableValuesSelect var7 = new TableValuesSelect(FJM, var6);
-            var4 = this.QQD(var1, "profiles");
+            String var6 = EntityName.PREFERENCES;
+            TableValuesSelect var7 = new TableValuesSelect(null, var6);
+            var4 = this.QQD(var1, EntityName.PROFILES);
             var4.setAutoCommit(false);
             DbUtils.IIO(var4, var7);
             boolean var8 = false;
@@ -3120,7 +3123,7 @@ public class EMX implements ENC {
 
             while (var9.hasNext()) {
                 Map var10 = (Map) var9.next();
-                if (var10.containsKey(FLJ.getName()) && ((CellValue) var10.get(FLJ.getName())).getValue().equals(var3)) {
+                if (var10.containsKey(CellType.cell_technical_username.<CellTyped>getDefinition().getName()) && ((CellValue) var10.get(CellType.cell_technical_username.<CellTyped>getDefinition().getName())).getValue().equals(var3)) {
                     var8 = true;
                     break;
                 }
@@ -3131,8 +3134,8 @@ public class EMX implements ENC {
                 return var15;
             }
 
-            var5.add(new CellValue(FLJ, var3));
-            this.HMU(this.profilesConnection, "users", var5);
+            var5.add(new CellValue(CellType.cell_technical_username.getDefinition(), var3));
+            this.HMU(this.profilesConnection, EntityName.USERS, var5);
             this.HMU(this.profilesConnection, var6, var5);
             Connection var14 = this.profilesConnection;
             this.profilesConnection = var4;
@@ -3150,7 +3153,7 @@ public class EMX implements ENC {
     }
 
     public Connection QQD(File var1, String var2) throws ClassNotFoundException, SQLException {
-        Connection var3 = DbUtils.getConnection(var1, var2 + ".db");
+        Connection var3 = DbUtils.getConnection(var1, var2 + DbUtils.DB_FILE_EXT);
         var3.setAutoCommit(false);
         return var3;
     }

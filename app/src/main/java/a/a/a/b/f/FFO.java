@@ -1,6 +1,6 @@
 package a.a.a.b.f;
 
-public class FFO extends Exception implements FFG {
+public class FFO extends Exception implements ExceptionMarker {
     private static final long serialVersionUID = 1L;
 
     public FFO(String var1, Throwable var2) {

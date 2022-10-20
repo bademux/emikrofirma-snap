@@ -1,6 +1,6 @@
 package a.a.a.b.f;
 
-public class FFI extends RuntimeException implements FFG {
+public class FFI extends RuntimeException implements ExceptionMarker {
     private static final long serialVersionUID = 1L;
 
     public FFI(String var1, Throwable var2) {

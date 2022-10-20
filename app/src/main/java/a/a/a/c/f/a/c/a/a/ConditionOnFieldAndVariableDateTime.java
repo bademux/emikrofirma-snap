@@ -1,5 +1,6 @@
 package a.a.a.c.f.a.c.a.a;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.ActionResult;
@@ -27,22 +28,22 @@ public class ConditionOnFieldAndVariableDateTime extends ConditionOnFieldAndVari
 
     private ConditionOnFieldAndVariableDateTime() {
 
-        this.AHUZ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+        this.AHUZ = new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue());
         this.AHVA = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         this.AHVB = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         this.AHVC = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        this.AHVD = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHVD = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 
     public ConditionOnFieldAndVariableDateTime(ActionType var1, String var2, ConditionType var3, VariableDateTime var4) {
         super(var1, var2, var3, var4);
 
-        this.AHUZ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+        this.AHUZ = new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue());
         this.AHVA = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         this.AHVB = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         this.AHVC = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        this.AHVD = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHVD = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 

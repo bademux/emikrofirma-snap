@@ -1,7 +1,6 @@
 package a.a.a.c.f.a;
 
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -11,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.ResourceBundle;
+import java.util.function.Supplier;
 
 @RequiredArgsConstructor
 public abstract class BaseBoxController {
@@ -27,8 +27,8 @@ public abstract class BaseBoxController {
     }
 
     protected void IES(final String var1, final String var2, final String var3) {
-        FEL.IKS(new FEM<Void>() {
-            public Void IKT() {
+        FEL.IKS(new Supplier<Void>() {
+            public Void get() {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.getDialogPane().setMinWidth(550.0);
                 alert.getDialogPane().setMinHeight(150.0);

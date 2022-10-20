@@ -1,12 +1,13 @@
 package a.a.a.c.f.a.a;
 
+import a.a.a.b.DateFormat;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AHCA extends XmlAdapter<String, Date> {
-    public static final String AHTT = "yyyy-MM-dd'T'HH:mm:ssXXX";
+    public static final String AHTT = DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue();
     public static final String AHTU = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX";
     public static final String AHTV = "yyyy-MM-dd'T'HH:mm:ss.SSS";
     public static final String AHTW = "yyyy-MM-dd'T'HH:mm:ss";

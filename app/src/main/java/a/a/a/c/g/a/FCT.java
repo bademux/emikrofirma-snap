@@ -1,5 +1,6 @@
 package a.a.a.c.g.a;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.*;
 import a.a.a.b.f.a.FFL;
 import a.a.a.b.f.a.FFM;
@@ -234,7 +235,7 @@ public class FCT {
                             var17 = new MenuItem(FCW.getInstance().getMessageForKey("micro.tableview.showexception"));
                             var17.setOnAction(new EventHandler<ActionEvent>() {
                                 public void handle(ActionEvent var1) {
-                                    if (var13 instanceof FFG) {
+                                    if (var13 instanceof ExceptionMarker) {
                                         FCR.IGE(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), "", var13.getLocalizedMessage(), false);
                                     } else {
                                         ByteArrayOutputStream var2 = new ByteArrayOutputStream();
@@ -479,7 +480,7 @@ public class FCT {
                             }
                         } else if (var1 instanceof Date var19) {
                             if (var19 != null) {
-                                SimpleDateFormat var22 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+                                SimpleDateFormat var22 = new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssZ.getValue());
                                 this.setTextDelegate(var22.format(var19));
                             }
                         } else if (var1 instanceof final String var20) {

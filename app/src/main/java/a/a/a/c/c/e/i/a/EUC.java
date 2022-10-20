@@ -1,7 +1,6 @@
 package a.a.a.c.c.e.i.a;
 
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.QGU;
 import a.a.a.c.c.d.Stage;
@@ -34,6 +33,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Supplier;
 
 @Slf4j
 public class EUC {
@@ -188,8 +188,8 @@ public class EUC {
     private File QOU(final LocalDate var1, final LocalDate var2, final int var3, final String var4) {
 
         File var5;
-        var5 = FEL.IKS(new FEM<File>() {
-            public File IKT() {
+        var5 = FEL.IKS(new Supplier<File>() {
+            public File get() {
                 try {
                     FileChooser var1x = new FileChooser();
                     var1x.setTitle(EUC.this.resources.getString("micro.types.xml.fileselect"));
@@ -309,8 +309,8 @@ public class EUC {
     private File HWY() {
 
         File var1;
-        var1 = FEL.IKS(new FEM<File>() {
-            public File IKT() {
+        var1 = FEL.IKS(new Supplier<File>() {
+            public File get() {
                 try {
                     FileChooser var1 = new FileChooser();
                     var1.setTitle(EUC.this.resources.getString("micro.types.xml.fileselect"));

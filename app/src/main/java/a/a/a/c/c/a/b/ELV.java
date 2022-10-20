@@ -2,7 +2,6 @@ package a.a.a.c.c.a.b;
 
 import a.a.a.b.a.a.SqlOperation;
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -21,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.Iterator;
+import java.util.function.Supplier;
 
 public abstract class ELV {
     private final String FGG;
@@ -155,8 +155,8 @@ public abstract class ELV {
 
         if (var13) {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Selecting new working directory");
-            var12 = FEL.IKS(new FEM<File>() {
-                public File IKT() {
+            var12 = FEL.IKS(new Supplier<File>() {
+                public File get() {
                     DirectoryChooser var1x = new DirectoryChooser();
                     var1x.setTitle(FCW.getInstance().getMessageForKey("micro.types.workingDir.directorychooser.title"));
                     File homeDir = Application.getHomeDir().toFile();

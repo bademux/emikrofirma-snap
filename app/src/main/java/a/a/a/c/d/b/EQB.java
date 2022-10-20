@@ -1,6 +1,5 @@
 package a.a.a.c.d.b;
 
-import a.a.a.b.FEK;
 import a.a.a.b.c.DialogButton;
 import a.a.a.b.d.FEO;
 import a.a.a.b.f.FFI;
@@ -45,6 +44,7 @@ import java.util.Iterator;
 
 @Slf4j
 public class EQB {
+    public static final String CERT = "/cert/mf_kd.cer";
     private final EWX FVP;
     private final DeclarationJPK FVQ;
     private SendoutStatus FVR;
@@ -106,7 +106,7 @@ public class EQB {
                             Bytes var37 = this.FVQ.getInitUploadSignedEnvelopedFile();
                             log.info("Processing signed file " + var37);
                             this.HPU(SendoutStep.INIT_START, 0.03);
-                            HttpSenderRequest var40 = new HttpSenderRequest(HttpMethod.POST, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/InitUploadSigned", Mime.XML, var37.getValue());
+                            HttpSenderRequest var40 = new HttpSenderRequest(HttpMethod.POST, Schema.https, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/InitUploadSigned", Mime.XML, var37.getValue());
                             this.HPU(SendoutStep.INIT_START, 0.06);
                             var40.getHeaderFields().put("Accept", Mime.JSON.getMimeType());
                             log.info("HttpSenderRequest InitUploadSigned " + var40);
@@ -276,7 +276,7 @@ public class EQB {
                             var53.put("ReferenceNumber", this.FVQ.getReferenceId());
                             var53.put("AzureBlobNameList", var44);
                             this.HPU(SendoutStep.FINISH_START, 0.87);
-                            HttpSenderRequest var51 = new HttpSenderRequest(HttpMethod.POST, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/FinishUpload", Mime.JSON, var53.toJSONString().getBytes(StandardCharsets.UTF_8));
+                            HttpSenderRequest var51 = new HttpSenderRequest(HttpMethod.POST, Schema.https, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/FinishUpload", Mime.JSON, var53.toJSONString().getBytes(StandardCharsets.UTF_8));
                             var51.getHeaderFields().put("Accept", Mime.JSON.getMimeType());
                             log.info("HttpSenderRequest FinishUpload " + var51);
                             this.HPU(SendoutStep.FINISH_START, 0.88);
@@ -327,7 +327,7 @@ public class EQB {
                     case STATUS_FAILED:
                         try {
                             this.HPU(SendoutStep.STATUS_START, 0.9);
-                            HttpSenderRequest var1 = new HttpSenderRequest(HttpMethod.GET, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + this.FVQ.getReferenceId(), Mime.JSON, null);
+                            HttpSenderRequest var1 = new HttpSenderRequest(HttpMethod.GET, Schema.https, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + this.FVQ.getReferenceId(), Mime.JSON, null);
                             var1.getHeaderFields().put("Accept", Mime.JSON.getMimeType());
                             log.info("HttpSenderRequest Status " + var1);
                             this.HPU(SendoutStep.STATUS_START, 0.91);
@@ -498,11 +498,11 @@ public class EQB {
         SendoutStatus var19;
         try {
             SendoutStatus var1 = SendoutStatus.INIT;
-            HttpSenderRequest var2 = new HttpSenderRequest(HttpMethod.GET, FEK.MWU, "esb2.mf.gov.pl", 5064, "/jpkmicro/Status/" + var0.getReferenceId(), Mime.JSON, null);
+            HttpSenderRequest var2 = new HttpSenderRequest(HttpMethod.GET, Schema.https, "esb2.mf.gov.pl", 5064, "/jpkmicro/Status/" + var0.getReferenceId(), Mime.JSON, null);
             var2.getHeaderFields().put("Accept", Mime.JSON.getMimeType());
             log.info("HttpSenderRequest Status " + var2);
             CertificateFactory var3 = CertificateFactory.getInstance("X.509");
-            InputStream var4 = EQK.class.getResourceAsStream("/cert/mf_kd.cer");
+            InputStream var4 = EQK.class.getResourceAsStream(CERT);
             X509Certificate var5 = (X509Certificate) var3.generateCertificate(var4);
             HttpSenderResult var6 = EWH.MXF(var2, null, new EWI(), var5);
             log.info("HttpSenderResult Status " + var6);
@@ -584,7 +584,7 @@ public class EQB {
         SendoutStatus var16;
         try {
             SendoutStatus var1 = SendoutStatus.INIT;
-            HttpSenderRequest var2 = new HttpSenderRequest(HttpMethod.GET, FEK.HEV, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + var0.getReferenceId(), Mime.JSON, null);
+            HttpSenderRequest var2 = new HttpSenderRequest(HttpMethod.GET, Schema.https, "e-dokumenty.mf.gov.pl", -1, "/api/Storage/Status/" + var0.getReferenceId(), Mime.JSON, null);
             var2.getHeaderFields().put("Accept", Mime.JSON.getMimeType());
             log.info("HttpSenderRequest Status " + var2);
             HttpSenderResult var3 = EWH.IBA(var2, null, new EWI());
@@ -760,7 +760,7 @@ public class EQB {
                 double var12 = 0.2;
                 double var14 = 0.81;
                 this.HPU(SendoutStep.KD_SEND_START, var12);
-                HttpSenderResult var16 = EWH.MXE(HttpMethod.POST, FEK.MWU, "esb2.mf.gov.pl", 5064, "/jpkmicro/UploadJPK", "jpkmicro", var8, null, null, new MML(), var7);
+                HttpSenderResult var16 = EWH.MXE(HttpMethod.POST, Schema.https, "esb2.mf.gov.pl", 5064, "/jpkmicro/UploadJPK", "jpkmicro", var8, null, null, new MML(), var7);
                 log.info("HttpSenderResult " + var16);
                 if (var16.getStatus() == 200) {
                     this.HPU(SendoutStep.KD_SEND_SUCCESS, var14);

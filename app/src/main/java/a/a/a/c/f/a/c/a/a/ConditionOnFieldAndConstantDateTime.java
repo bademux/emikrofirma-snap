@@ -1,5 +1,6 @@
 package a.a.a.c.f.a.c.a.a;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.c.a.ActionResult;
@@ -26,22 +27,22 @@ public class ConditionOnFieldAndConstantDateTime extends ConditionOnFieldAndCons
 
     private ConditionOnFieldAndConstantDateTime() {
 
-        this.AHUI = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+        this.AHUI = new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue());
         this.AHUJ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         this.AHUK = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         this.AHUL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        this.AHUM = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHUM = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 
     public ConditionOnFieldAndConstantDateTime(ActionType var1, String var2, ConditionType var3, XMLGregorianCalendar var4) {
         super(var1, var2, var3, var4);
 
-        this.AHUI = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+        this.AHUI = new SimpleDateFormat(DateFormat.yyyy_MM_ddTHH_mm_ssXXX.getValue());
         this.AHUJ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         this.AHUK = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         this.AHUL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        this.AHUM = new SimpleDateFormat("yyyy-MM-dd");
+        this.AHUM = new SimpleDateFormat(DateFormat.yyyy_MM_dd.getValue());
 
     }
 

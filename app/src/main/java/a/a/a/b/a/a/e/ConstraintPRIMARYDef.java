@@ -26,7 +26,7 @@ public class ConstraintPRIMARYDef extends ConstraintBase {
         return "ConstraintPRIMARYDef [toString()=" + super.toString() + "]";
     }
 
-    public FEF IJZ() {
+    public ConstraintDef copy() {
         ConstraintPRIMARYDef var1 = new ConstraintPRIMARYDef();
         Iterator var2 = this.HER.iterator();
 

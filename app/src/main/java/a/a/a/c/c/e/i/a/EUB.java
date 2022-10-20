@@ -1,7 +1,7 @@
 package a.a.a.c.c.e.i.a;
 
+import a.a.a.b.DateFormat;
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.e.i.d.EUF;
@@ -28,6 +28,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.function.Supplier;
 import java.util.regex.Matcher;
 
 public class EUB {
@@ -64,8 +65,8 @@ public class EUB {
 
     private void setProgress(final ProgressBar var1, final ProgressIndicator var2, final Double var3) {
 
-        FEL.IKS(new FEM<Void>() {
-            public Void IKT() {
+        FEL.IKS(new Supplier<Void>() {
+            public Void get() {
                 EUB.this.setProgressInner(var1, var2, var3);
                 return null;
             }
@@ -202,8 +203,8 @@ public class EUB {
     private File HWU() {
 
         File var1;
-        var1 = FEL.IKS(new FEM<File>() {
-            public File IKT() {
+        var1 = FEL.IKS(new Supplier<File>() {
+            public File get() {
                 FileChooser var1 = new FileChooser();
                 var1.setTitle(EUB.this.resources.getString("micro.types.csv.fileselect"));
                 FileChooser.ExtensionFilter var2 = new FileChooser.ExtensionFilter(EUB.this.resources.getString("micro.types.csv.filetype.xml") + " (*.csv, *.txt)", "*.csv", "*.txt");
@@ -227,8 +228,8 @@ public class EUB {
     private File HWV(final JPKSchemaType var1) {
 
         File var2;
-        var2 = FEL.IKS(new FEM<File>() {
-            public File IKT() {
+        var2 = FEL.IKS(new Supplier<File>() {
+            public File get() {
                 FileChooser var1x = new FileChooser();
                 var1x.setTitle(EUB.this.resources.getString("micro.types.xml.fileselect"));
                 FileChooser.ExtensionFilter var2 = new FileChooser.ExtensionFilter(EUB.this.resources.getString("micro.types.xml.filetype.xml") + " (*.xml)", "*.xml");
@@ -244,7 +245,7 @@ public class EUB {
                     var3 = "JPK_";
                 }
 
-                SimpleDateFormat var4 = new SimpleDateFormat("yyyyMMdd'T'HHmmssS");
+                SimpleDateFormat var4 = new SimpleDateFormat(DateFormat.yyyyMMddTHHmmssS.getValue());
                 String var5 = var3 + var4.format(new Date()) + ".xml";
                 var1x.setInitialFileName(var5);
                 File var6 = var1x.showSaveDialog(EUB.this.GJY);

@@ -1,7 +1,6 @@
 package a.a.a.c.d.b;
 
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
 import a.a.a.b.e.c.NewPrivateKey;
 import a.a.a.b.f.*;
 import a.a.a.c.e.a.d.*;
@@ -31,10 +30,12 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.function.Supplier;
 
 @Slf4j
 public abstract class EQK {
     public static final int QHR = 1;
+    public static final String PRIV_KEY_1 = "/cert/3af5843ae11db6d94edf0ea502b5cd1a.pem";
     protected final ResourceBundle MWM;
     private final TextArea FWF;
     private final VBox FWG;
@@ -108,7 +109,7 @@ public abstract class EQK {
                     }
 
                     CertificateFactory var33 = CertificateFactory.getInstance("X.509");
-                    InputStream var34 = EQK.class.getResourceAsStream("/cert/3af5843ae11db6d94edf0ea502b5cd1a.pem");
+                    InputStream var34 = EQK.class.getResourceAsStream(PRIV_KEY_1);
                     Certificate var8 = var33.generateCertificate(var34);
                     this.FWJ.setFirstValue(this.HQI(FCW.getInstance().getMessageForKey("micro.jpk.sendout.sha256.checksum.start")));
                     boolean var9 = EPW.HPB(this.FWK, var1);
@@ -471,8 +472,8 @@ public abstract class EQK {
     public ProgressBar HQI(final String var1) {
 
         ProgressBar var2;
-        var2 = FEL.IKS(new FEM<ProgressBar>() {
-            public ProgressBar IKT() {
+        var2 = FEL.IKS(new Supplier<ProgressBar>() {
+            public ProgressBar get() {
                 return EQK.this.HQJ(var1);
             }
         });
@@ -540,8 +541,8 @@ public abstract class EQK {
 
     private void setProgress(final ProgressBar var1, final String var2, final Double var3) {
 
-        FEL.IKS(new FEM<Void>() {
-            public Void IKT() {
+        FEL.IKS(new Supplier<Void>() {
+            public Void get() {
                 EQK.this.setProgressInner(var1, var2, var3);
                 return null;
             }

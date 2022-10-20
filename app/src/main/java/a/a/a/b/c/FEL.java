@@ -5,18 +5,19 @@ import javafx.application.Platform;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.Semaphore;
+import java.util.function.Supplier;
 
 @Slf4j
 public class FEL {
     public FEL() {
     }
 
-    public static <_A> _A IKS(final FEM<_A> var0) {
+    public static <_A> _A IKS(final Supplier<_A> var0) {
 
         final Semaphore var2;
         try {
             if (Platform.isFxApplicationThread()) {
-                Object var9 = var0.IKT();
+                Object var9 = var0.get();
                 return (_A) var9;
             }
 
@@ -25,7 +26,7 @@ public class FEL {
             var2.acquire();
             Platform.runLater(new Runnable() {
                 public void run() {
-                    var1.setFirstValue(var0.IKT());
+                    var1.setFirstValue(var0.get());
                     var2.release();
                 }
             });

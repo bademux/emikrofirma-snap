@@ -1,7 +1,6 @@
 package a.a.a.c.g.a;
 
 import a.a.a.b.c.FEL;
-import a.a.a.b.c.FEM;
 import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.c.e.a.a.EVN;
@@ -39,6 +38,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.*;
+import java.util.function.Supplier;
 
 @Slf4j
 public class FCR {
@@ -51,8 +51,8 @@ public class FCR {
     public static <_FIRST, _SECOND, _THIRD, _FOURTH, _T extends ValueContainer4<_FIRST, _SECOND, _THIRD, _FOURTH>> _T IGD(final String var0, final String var1, final List<_T> var2, final String var3, final String var4, final String var5, final String var6, final double var7, final double var9) {
 
         ValueContainer4 var11;
-        var11 = FEL.IKS(new FEM<_T>() {
-            public _T IKT() {
+        var11 = FEL.IKS(new Supplier<_T>() {
+            public _T get() {
                 final Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var7);
                 var1x.getDialogPane().setMinHeight(var9);
@@ -103,8 +103,8 @@ public class FCR {
     public static String getPasswordDialog(final String var0, final String var1, final double var2, final double var4) {
 
         String var6;
-        var6 = FEL.IKS(new FEM<String>() {
-            public String IKT() {
+        var6 = FEL.IKS(new Supplier<String>() {
+            public String get() {
                 final Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -153,8 +153,8 @@ public class FCR {
     public static boolean getConfirmPZDialog(final String var0, final String var1, final double var2, final double var4, final String var6, final String var7, final String var8) throws URISyntaxException {
 
         boolean var9;
-        var9 = FEL.IKS(new FEM<Boolean>() {
-            public Boolean IKT() {
+        var9 = FEL.IKS(new Supplier<Boolean>() {
+            public Boolean get() {
                 try {
                     final Dialog var1x = new Dialog();
                     var1x.getDialogPane().setMinWidth(var2);
@@ -277,8 +277,8 @@ public class FCR {
     public static DialogButton getConfirmDataDialog(final String var0, final String var1, final String var2, final String var3, final double var4, final double var6, final String var8) {
 
         DialogButton var9;
-        var9 = FEL.IKS(new FEM<DialogButton>() {
-            public DialogButton IKT() {
+        var9 = FEL.IKS(new Supplier<DialogButton>() {
+            public DialogButton get() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var4);
                 var1x.getDialogPane().setMinHeight(var6);
@@ -321,8 +321,8 @@ public class FCR {
     public static SignType getSignatureMethodSelector(final String var0, final String var1, final double var2, final double var4, final String var6, final boolean var7) {
 
         SignType var8;
-        var8 = FEL.IKS(new FEM<SignType>() {
-            public SignType IKT() {
+        var8 = FEL.IKS(new Supplier<SignType>() {
+            public SignType get() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -372,8 +372,8 @@ public class FCR {
     public static CloseButtonType getJpkStatusDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6, final boolean var7) {
 
         CloseButtonType var8;
-        var8 = FEL.IKS(new FEM<CloseButtonType>() {
-            public CloseButtonType IKT() {
+        var8 = FEL.IKS(new Supplier<CloseButtonType>() {
+            public CloseButtonType get() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -418,8 +418,8 @@ public class FCR {
     public static ButtonType getNoCryptCardDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6) {
 
         ButtonType var7;
-        var7 = FEL.IKS(new FEM<ButtonType>() {
-            public ButtonType IKT() {
+        var7 = FEL.IKS(new Supplier<ButtonType>() {
+            public ButtonType get() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -464,8 +464,8 @@ public class FCR {
     public static ApproveButton getAreYouSureDialogResult(final String var0, final String var1, final double var2, final double var4, final String var6) {
 
         ApproveButton var7;
-        var7 = FEL.IKS(new FEM<ApproveButton>() {
-            public ApproveButton IKT() {
+        var7 = FEL.IKS(new Supplier<ApproveButton>() {
+            public ApproveButton get() {
                 Dialog var1x = new Dialog();
                 var1x.getDialogPane().setMinWidth(var2);
                 var1x.getDialogPane().setMinHeight(var4);
@@ -527,8 +527,8 @@ public class FCR {
 
     public static void getMessageBoxDialogWithHyperLink(final String var0, final String var1, final File var2, final double var3, final double var5) {
 
-        FEL.IKS(new FEM<Void>() {
-            public Void IKT() {
+        FEL.IKS(new Supplier<Void>() {
+            public Void get() {
                 Alert var1x = new Alert(AlertType.WARNING);
                 var1x.getDialogPane().setMinWidth(var3);
                 var1x.getDialogPane().setMinHeight(var5);
@@ -599,8 +599,8 @@ public class FCR {
         if (var9) {
             IGH(var10, var0, var1, var2, var3, var4, var5, var7);
         } else {
-            FEL.IKS(new FEM<Void>() {
-                public Void IKT() {
+            FEL.IKS(new Supplier<Void>() {
+                public Void get() {
                     FCR.IGH(var10, var0, var1, var2, var3, var4, var5, var7);
                     return null;
                 }
@@ -611,8 +611,8 @@ public class FCR {
 
     private static void IGH(final Alert.AlertType var0, final String var1, final String var2, final String var3, final Object var4, final boolean var5, final Double var6, final Double var7) {
 
-        FEL.IKS(new FEM<Void>() {
-            public Void IKT() {
+        FEL.IKS(new Supplier<Void>() {
+            public Void get() {
                 Alert var1x = new Alert(var0);
                 if (var6 != null) {
                     var1x.getDialogPane().setMinWidth(var6);
@@ -717,8 +717,8 @@ public class FCR {
 
     public static void IGO(final String var0, final Throwable var1, final boolean var2) {
 
-        FEL.IKS(new FEM<Void>() {
-            public Void IKT() {
+        FEL.IKS(new Supplier<Void>() {
+            public Void get() {
                 Alert var1x = new Alert(AlertType.ERROR);
                 var1x.setResizable(true);
                 var1x.setTitle(FCW.getInstance().getMessageForKey("micro.dialog.error.technical.title"));
@@ -751,8 +751,8 @@ public class FCR {
 
     public static void IGP(final String var0, final List<Throwable> var1, final boolean var2) {
 
-        FEL.IKS(new FEM<Void>() {
-            public Void IKT() {
+        FEL.IKS(new Supplier<Void>() {
+            public Void get() {
                 Alert var1x = new Alert(AlertType.ERROR);
                 var1x.setResizable(true);
                 var1x.setTitle(FCW.getInstance().getMessageForKey("micro.dialog.error.technical.title"));

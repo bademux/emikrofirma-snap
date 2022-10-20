@@ -1,6 +1,7 @@
 plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.beryx.jlink' version '2.25.0'
     id 'org.gradlex.extra-java-module-info' version '1.0'
 }
 
@@ -62,6 +63,14 @@ run {
 
 test {
     useJUnitPlatform()
+}
+
+jlink {
+    options = ['--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher{
+        name = 'emk'
+        jvmArgs = exports + ['-Xmx1G']
+    }
 }
 
 extraJavaModuleInfo {

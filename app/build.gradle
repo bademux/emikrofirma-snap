@@ -80,5 +80,5 @@ extraJavaModuleInfo {
         exports 'org.json.simple'
         exports 'org.json.simple.parser'
     }
-
+    automaticModule('org.xerial:sqlite-jdbc', 'org.xerial.sqlitejdbc')
 }

@@ -45,7 +45,7 @@ public class QSY {
 
         this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getCellFactory().call(null));
-        ((ComboBoxRequired) this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element).getItems().addAll(KM.values());
+        this.fxml_include_taxReasonRequiredComboBox_boxController.fxml_component_main_element.getItems().addAll(KM.values());
         this.fxml_button_save.disableProperty().bind(this.fxml_include_netValueNumberBox_boxController.requiredAndValidProperty().and(this.fxml_include_taxReasonRequiredComboBox_boxController.requiredAndValidProperty()).not());
 
     }

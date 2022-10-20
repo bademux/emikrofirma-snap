@@ -380,7 +380,7 @@ public class EUT extends BaseFxController implements EMO<HO>, EYR {
         this.fxml_invoice_sale_summary_summary_table.refresh();
         this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_invoice_sale_payment_typeController.fxml_component_main_element).getCellFactory().call(null));
-        ((ComboBoxRequired) this.fxml_invoice_sale_payment_typeController.fxml_component_main_element).getItems().addAll(KI.values());
+        this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.getItems().addAll(KI.values());
         this.fxml_invoice_sale_payment_typeController.fxml_component_main_element.setEditable(false);
         this.GLX.addListener(new EUK(this));
         this.fxml_invoice_sale_creation_dateController.fxml_component_main_element.valueProperty().addListener(new EUM(this, this.resources));

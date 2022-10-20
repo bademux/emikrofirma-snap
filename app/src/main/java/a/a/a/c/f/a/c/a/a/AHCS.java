@@ -73,16 +73,14 @@ public abstract class AHCS<_T> extends AHCK {
                 }
             }
 
-            if (var1 != null) {
-                AHDH[] var10 = this.AHUO;
-                return (AHCB) var1.newInstance(var10);
-            } else {
+            if (var1 == null) {
                 throw new FFI("No constructor found!");
             }
+            return (AHCB) var1.newInstance((Object[]) this.AHUO);
         } catch (InstantiationException | IllegalAccessException | SecurityException | IllegalArgumentException |
-                 InvocationTargetException | NullPointerException var9) {
-            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var9);
-            throw new FFI(var9);
+                 InvocationTargetException | NullPointerException e) {
+            org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", e);
+            throw new FFI(e);
         }
     }
 

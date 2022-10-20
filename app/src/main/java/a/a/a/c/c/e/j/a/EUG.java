@@ -51,7 +51,7 @@ public class EUG {
     private void initialize() {
         this.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element).getCellFactory().call(null));
-        ((ComboBoxRequired) this.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element).getItems().addAll(KL.values());
+        this.fxml_invoice_sale_new_add_invoice_element_tax_typeController.fxml_component_main_element.getItems().addAll(KL.values());
         this.fxml_button_save.disableProperty().bind(this.fxml_invoice_sale_new_add_invoice_element_nameController.requiredAndValidProperty().and(this.fxml_invoice_sale_new_add_invoice_element_netpriceController.requiredAndValidProperty().and(this.fxml_invoice_sale_new_add_invoice_element_amountController.requiredAndValidProperty().and(this.fxml_invoice_sale_new_add_invoice_element_unitController.requiredAndValidProperty().and(this.fxml_invoice_sale_new_add_invoice_element_tax_typeController.requiredAndValidProperty().and(this.fxml_invoice_sale_new_add_invoice_element_descriptionController.requiredAndValidProperty()))))).not());
         this.fxml_invoice_sale_new_add_invoice_element_nameController.setValueMaxLength(256);
         this.fxml_invoice_sale_new_add_invoice_element_descriptionController.fxml_component_main_element.setOnKeyPressed(new EventHandler<KeyEvent>() {

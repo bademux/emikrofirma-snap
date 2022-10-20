@@ -71,7 +71,7 @@ public class QKA {
     @FXML
     private void initialize() {
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.setConverter(new QKL(this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element));
-        ((ComboBoxRequired) this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element).getItems().addAll(KK.DEN());
+        this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.getItems().addAll(KK.DEN());
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.editableProperty().set(true);
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.setOnKeyReleased(new QKN());
         this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.showingProperty().addListener(new QKO(this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element));
@@ -79,7 +79,7 @@ public class QKA {
         this.fxml_jpk_dialog_fa_settings_text_field_nipController.fxml_component_main_element.disableProperty().bind(this.fxml_jpk_dialog_fa_settings_checkbox_use_nip_filter.selectedProperty().not());
         this.fxml_jpk_dialog_fa_settings_date_picker_date_fromController.fxml_component_main_element.valueProperty().addListener(this.QMK);
         this.fxml_jpk_dialog_fa_settings_date_picker_date_toController.fxml_component_main_element.valueProperty().addListener(this.QML);
-        ((ComboBoxRequired) this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element).valueProperty().addListener(this.QMM);
+        this.fxml_jpk_dialog_fa_settings_combo_box_tax_officeController.fxml_component_main_element.valueProperty().addListener(this.QMM);
         this.fxml_jpk_dialog_fa_settings_text_field_nipController.fxml_component_main_element.textProperty().addListener(this.QMN);
         this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_creation_date.setSelected(true);
         this.fxml_jpk_dialog_fa_settings_checkbox_date_chooser_transaction_date.setSelected(false);

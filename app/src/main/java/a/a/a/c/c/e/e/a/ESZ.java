@@ -94,7 +94,7 @@ public class ESZ extends BaseFxController {
         this.fxml_contact_nip.setCellFactory(new EOU());
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getCellFactory().call(null));
-        ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getItems().addAll(KN.values());
+        this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.getItems().addAll(KN.values());
         this.fxml_contractor_private_person.disableProperty().set(true);
         this.fxml_include_ContractorName_boxController.fxml_component_main_element.editableProperty().set(false);
         this.fxml_include_nip_boxController.fxml_component_main_element.editableProperty().set(false);

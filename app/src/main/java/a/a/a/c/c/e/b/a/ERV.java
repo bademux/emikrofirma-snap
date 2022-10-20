@@ -49,9 +49,9 @@ public class ERV extends BaseFxController {
         this.fxml_include_nip_boxController.fxml_component_main_element.editableProperty().set(false);
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setCellFactory(new EOQ());
         this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.setButtonCell((ListCell) ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getCellFactory().call(null));
-        ((ComboBoxRequired) this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element).getItems().addAll(KN.values());
+        this.fxml_include_address_boxController.fxml_include_Voivodeship_boxController.fxml_component_main_element.getItems().addAll(KN.values());
         this.fxml_include_taxOffice_boxController.fxml_component_main_element.setConverter(new QKL(this.fxml_include_taxOffice_boxController.fxml_component_main_element));
-        ((ComboBoxRequired) this.fxml_include_taxOffice_boxController.fxml_component_main_element).getItems().addAll(KK.DEN());
+        this.fxml_include_taxOffice_boxController.fxml_component_main_element.getItems().addAll(KK.DEN());
         this.fxml_include_taxOffice_boxController.fxml_component_main_element.editableProperty().set(true);
         this.fxml_include_taxOffice_boxController.fxml_component_main_element.setOnKeyReleased(new QKN());
         this.fxml_include_taxOffice_boxController.fxml_component_main_element.showingProperty().addListener(new QKO(this.fxml_include_taxOffice_boxController.fxml_component_main_element));

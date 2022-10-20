@@ -60,7 +60,7 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
                     }
 
                     if (var1 instanceof final LH var3) {
-                        final ComboBox var4 = new ComboBox();
+                        var var4 = new ComboBox<JM>();
                         var4.setCellFactory(new EOQ());
                         var4.setButtonCell((ListCell) var4.getCellFactory().call(null));
                         if (EOT.this.REY == null) {
@@ -69,7 +69,7 @@ public class EOT<_T> implements Callback<TableColumn<_T, Object>, TableCell<_T, 
                             var4.getItems().addAll(EOT.this.REY);
                         }
 
-                        var4.getSelectionModel().select(var3.getValue());
+                        var4.getSelectionModel().select((JM) var3.getValue());
                         final ChangeListenerFocus var5 = new ChangeListenerFocus() {
                             @Override
                             public Object updateAndReturnObject() {

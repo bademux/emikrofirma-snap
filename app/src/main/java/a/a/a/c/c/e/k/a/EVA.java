@@ -25,27 +25,23 @@ public class EVA {
     private Button fxml_button_save;
     @FXML
     private Button fxml_button_cancel;
-    private Stage GNK;
+    private Stage stage;
     private IP GNL;
     private boolean GNM = false;
 
     public EVA() {
     }
 
-    public void setDialogStage(Stage var1) {
-
-        this.GNK = var1;
-
+    public void setDialogStage(Stage stage) {
+        this.stage = stage;
     }
 
     @FXML
     private void initialize() {
-
-        ((ComboBoxRequired) this.fxml_item_tax_rateController.fxml_component_main_element).getItems().addAll(IN.AMJ);
+        this.fxml_item_tax_rateController.fxml_component_main_element.getItems().addAll(IN.AMJ);
         this.fxml_item_tax_rateController.fxml_component_main_element.setConverter(new ENX());
         this.fxml_button_save.disableProperty().bind(Bindings.not(this.fxml_item_netController.validProperty()));
-        ((ComboBoxRequired) this.fxml_item_tax_rateController.fxml_component_main_element).setValue(((ComboBoxRequired) this.fxml_item_tax_rateController.fxml_component_main_element).getItems().get(0));
-
+        this.fxml_item_tax_rateController.fxml_component_main_element.setValue(this.fxml_item_tax_rateController.fxml_component_main_element.getItems().get(0));
     }
 
     @FXML
@@ -55,7 +51,7 @@ public class EVA {
         this.GNL.setNet(new JR(this.fxml_item_netController.fxml_component_main_element.getNumber()));
         this.GNL.setVat(new JR(EQY.getTaxValue(this.GNL.getNet().getValue(), this.GNL.getTaxRate().getValue())));
         this.GNM = true;
-        this.GNK.close();
+        this.stage.close();
 
     }
 
@@ -63,7 +59,7 @@ public class EVA {
     private void fxml_handleButton_cancel(ActionEvent var1) {
 
         this.GNM = false;
-        this.GNK.close();
+        this.stage.close();
 
     }
 

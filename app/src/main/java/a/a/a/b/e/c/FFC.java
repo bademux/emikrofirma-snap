@@ -1,19 +1,20 @@
 package a.a.a.b.e.c;
 
 import a.a.a.c.e.a.h.EWY;
+import sun.security.pkcs11.wrapper.PKCS11;
 
 import java.security.PrivateKey;
 import java.util.Arrays;
 
 public class FFC implements PrivateKey {
     private static final long serialVersionUID = 1L;
-    private final Object HFS;
+    private final PKCS11 HFS;
     private final long HFT;
     private final byte[] HFU;
     private long HFV;
     private long HFW;
 
-    public FFC(Object var1, long var2, byte[] var4) {
+    public FFC(PKCS11 var1, long var2, byte[] var4) {
         this.HFS = var1;
         this.HFT = var2;
         this.HFU = EWY.IBK(var4);
@@ -21,7 +22,7 @@ public class FFC implements PrivateKey {
         this.HFW = -1L;
     }
 
-    public Object getPkcs11() {
+    public PKCS11 getPkcs11() {
         return this.HFS;
     }
 

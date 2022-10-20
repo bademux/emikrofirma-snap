@@ -28,9 +28,24 @@ application {
     mainClass.set('com.github.bademux.emk.App')
 }
 
+ext {
+    exports = [
+            'jdk.crypto.cryptoki/sun.security.pkcs11.wrapper',
+            'java.xml.crypto/com.sun.org.apache.xml.internal.security',
+            'java.xml.crypto/com.sun.org.apache.xml.internal.security.signature',
+            'java.xml.crypto/com.sun.org.apache.xml.internal.security.utils',
+            'java.xml.crypto/com.sun.org.apache.xml.internal.security.utils.resolver',
+            'java.xml.crypto/org.jcp.xml.dsig.internal.dom',
+            'java.base/sun.security.rsa',
+            'java.base/sun.security.x509',
+    ]
+            .collect({ ['--add-exports', "$it=${application.mainModule.get()}"] })
+            .flatten()
+}
+
 compileJava {
     options.encoding = 'UTF-8'
-    options.compilerArgs << '-Xmaxerrs' << '1000'
+    options.compilerArgs += exports
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
@@ -42,6 +57,7 @@ javafx {
 
 run {
     enableAssertions = true
+    jvmArgs = exports
 }
 
 test {

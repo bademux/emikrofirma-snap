@@ -8,6 +8,7 @@ import a.a.a.b.e.a.FEX;
 import a.a.a.b.e.a.a.FEU;
 import a.a.a.b.e.a.a.FEV;
 import a.a.a.b.e.c.FFC;
+import a.a.a.b.e.c.a.FFD;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFN;
@@ -18,7 +19,6 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.d.a.EPV;
 import a.a.a.c.d.a.a.EPP;
 import a.a.a.c.d.d.EQX;
-import com.github.bademux.emk.App;
 import a.a.a.c.e.a.d.EWD;
 import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
@@ -38,6 +38,7 @@ import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.b.FCW;
 import a.a.a.c.g.c.FCX;
 import a.a.a.c.g.c.FCZ;
+import com.github.bademux.emk.App;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.Holder;
@@ -49,6 +50,8 @@ import pl.akmf.apps.micro.jaxb.initupload.*;
 import pl.akmf.apps.micro.jaxb.pz.type.*;
 import pl.akmf.apps.micro.ws.pz.PodpisPZ;
 import pl.akmf.apps.micro.ws.pz.PodpisPZ_Service;
+import sun.security.pkcs11.wrapper.CK_ATTRIBUTE;
+import sun.security.pkcs11.wrapper.PKCS11Exception;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -74,6 +77,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.*;
+import java.math.BigInteger;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
@@ -922,7 +926,117 @@ public class EPW {
     }
 
     public static void HPK(List<AGWN> var0, FFC var1, X509Certificate var2) throws FFN {
-        throw new UnsupportedOperationException("reimplement without sun.security");
+
+        FFM var3 = new FFM();
+
+        long var4 = -1L;
+
+        Iterator var6;
+        try {
+            log.debug("Requesting PIN code");
+            var6 = null;
+            String var7 = FCR.getPasswordDialog(FCW.getInstance().getMessageForKey("micro.dialog.pin.title"), "", 200.0, 10.0);
+            if (var7 == null) {
+                throw FCZ.getInstance().IHP();
+            }
+
+            char[] var46 = var7.toCharArray();
+            var4 = var1.getPkcs11().C_OpenSession(var1.getSlot(), 4L, null, null);
+            log.debug("p11Session " + var4);
+            var1.setSessionId(var4);
+            var1.getPkcs11().C_Login(var4, 1L, var46);
+            CK_ATTRIBUTE[] var8 = new CK_ATTRIBUTE[]{new CK_ATTRIBUTE(), null, null};
+            var8[0].type = 1L;
+            var8[0].pValue = true;
+            var8[1] = new CK_ATTRIBUTE();
+            var8[1].type = 0L;
+            var8[1].pValue = 3L;
+            var8[2] = new CK_ATTRIBUTE();
+            var8[2].type = 258L;
+            var8[2].pValue = var1.getKeyId();
+            var1.getPkcs11().C_FindObjectsInit(var4, var8);
+            long[] var9 = var1.getPkcs11().C_FindObjects(var4, 100L);
+            log.debug("objects " + var9);
+            log.debug("objects " + var9.length);
+            var1.getPkcs11().C_FindObjectsFinal(var4);
+            if (var9.length != 1) {
+                throw new FFK("Private key [" + Arrays.toString(var1.getKeyId()) + "] NOT found!");
+            }
+
+            long var10 = var9[0];
+            log.debug("objectId " + var10);
+            CK_ATTRIBUTE[] var12 = new CK_ATTRIBUTE[]{new CK_ATTRIBUTE(), null};
+            var12[0].type = 256L;
+            var12[1] = new CK_ATTRIBUTE();
+            var12[1].type = 288L;
+            var1.getPkcs11().C_GetAttributeValue(var4, var10, var12);
+            if (var12[0].pValue != null) {
+                long var13 = var12[0].getLong();
+                log.debug("valueLong " + var13);
+                if (var13 != 0L) {
+                    throw new FFK("Type [" + var13 + "] not implemented!");
+                }
+
+                BigInteger var15 = var12[1].getBigInteger();
+                int var16 = var15.bitLength();
+                log.debug("bitLength " + var16);
+                var1.setObjectId(var10);
+            }
+
+            Iterator var48 = var0.iterator();
+
+            while (var48.hasNext()) {
+                AGWN var11 = (AGWN) var48.next();
+
+                try {
+                    var11.setSignatureType(EHK.CC);
+                    HPM(var11, var1, var2);
+                } catch (FFD var42) {
+                    if (!"CKR_USER_NOT_LOGGED_IN".equals(var42.getErrorName())) {
+                        throw var42;
+                    }
+
+                    log.debug("New login required, requesting PIN code");
+                    var6 = null;
+                    var7 = null;
+                    var7 = FCR.getPasswordDialog(FCW.getInstance().getMessageForKey("micro.dialog.pin.title"), "", 200.0, 10.0);
+                    if (var7 == null) {
+                        throw FCZ.getInstance().IHP();
+                    }
+
+                    var46 = var7.toCharArray();
+                    var1.getPkcs11().C_Logout(var4);
+                    var1.getPkcs11().C_Login(var4, 1L, var46);
+                    HPM(var11, var1, var2);
+                }
+            }
+        } catch (PKCS11Exception | FFK e) {
+            var3.ILJ(e);
+        } finally {
+            if (var1 != null && var1.getPkcs11() != null) {
+                try {
+                    var1.getPkcs11().C_Logout(var4);
+                } catch (PKCS11Exception e) {
+                }
+
+                try {
+                    var1.getPkcs11().C_CloseSession(var4);
+                } catch (PKCS11Exception e) {
+                }
+            }
+
+        }
+
+        if (var3.getThrowables().size() > 0) {
+            var6 = var3.getThrowables().iterator();
+
+            while (var6.hasNext()) {
+                Throwable e = (Throwable) var6.next();
+                log.error("Something bad happened", e);
+            }
+
+            throw new FFN(var3.getThrowables());
+        }
     }
 
     public static boolean HPL(AGWN var0) throws FFN, FFO {

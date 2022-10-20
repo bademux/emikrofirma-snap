@@ -4,13 +4,12 @@ import a.a.a.b.c.FEL;
 import a.a.a.b.c.FEM;
 import a.a.a.b.e.c.FFC;
 import a.a.a.b.f.*;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWD;
-import a.a.a.c.e.a.d.MME;
+import a.a.a.c.e.a.d.*;
 import a.a.a.c.e.a.g.EWX;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.g.a.FCR;
 import a.a.a.c.g.b.FCW;
+import a.a.a.c.g.c.FCZ;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ProgressBar;
@@ -18,16 +17,20 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import lombok.extern.slf4j.Slf4j;
+import sun.security.pkcs11.wrapper.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.time.LocalDate;
-import java.util.Iterator;
-import java.util.ResourceBundle;
+import java.util.*;
 
 @Slf4j
 public abstract class EQK {
@@ -284,7 +287,176 @@ public abstract class EQK {
     }
 
     private EVZ<FFC, X509Certificate> getPrivateKeyAndCertificateFromSmartCard() throws FFO, FFK {
-        throw new UnsupportedOperationException("reimplement without sun.security");
+        FCR.QGW var1;
+        try {
+            if (this.FWI != null && this.FWI.length() > 0) {
+                PKCS11 var39 = PKCS11.getInstance(this.FWI, "C_GetFunctionList", null, false);
+                log.debug("pkcs11 " + var39);
+                boolean var2 = true;
+                long[] var3 = var39.C_GetSlotList(var2);
+                log.debug("slotList " + var3);
+                HashMap var4 = new HashMap();
+                long[] var5 = var3;
+                int var6 = var3.length;
+                int var7 = 0;
+
+                while (true) {
+                    if (var7 >= var6) {
+                        ArrayList var40 = new ArrayList();
+                        Iterator var41 = var4.entrySet().iterator();
+
+                        while (var41.hasNext()) {
+                            Map.Entry var43 = (Map.Entry) var41.next();
+                            Iterator var45 = ((Map) var43.getValue()).entrySet().iterator();
+
+                            while (var45.hasNext()) {
+                                Map.Entry var9 = (Map.Entry) var45.next();
+                                byte[] var48 = (byte[]) ((EWC) var9.getValue()).getSecondValue();
+                                X509Certificate var50 = (X509Certificate) ((EWC) var9.getValue()).getThirdValue();
+                                Date var52 = var50.getNotBefore();
+                                Date var53 = var50.getNotAfter();
+                                long var55 = (Long) var43.getKey();
+                                String var59 = (String) ((EWC) var9.getValue()).getFirstValue();
+                                var40.add(new EWB(var59, var50, var52, var53, new EVZ(var55, var48)));
+                            }
+                        }
+
+                        EWB var42 = (EWB) FCR.IGD(FCW.getInstance().getMessageForKey("micro.dialog.listchooser.title"), FCW.getInstance().getMessageForKey("micro.tableview.cert.header"), var40, FCW.getInstance().getMessageForKey("micro.tableview.column.cert.label"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.description"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.notbefore"), FCW.getInstance().getMessageForKey("micro.tableview.column.cert.notafter"), 700.0, 300.0);
+                        if (var42 != null) {
+                            String var44 = (String) var42.getFirstValue();
+                            log.debug("Selected Alias Encoded " + var44);
+                            Date var46 = (Date) var42.getThirdValue();
+                            log.debug("Selected Certificate Valid From " + var46);
+                            Date var47 = (Date) var42.getFourthValue();
+                            log.debug("Selected Certificate Valid To " + var47);
+                            X509Certificate var49 = (X509Certificate) var42.getSecondValue();
+                            log.debug("Selected Certificate Subject " + var49.getSubjectDN());
+                            long var51 = (Long) ((EVZ) var42.getFifthValue()).getFirstValue();
+                            log.debug("Selected Slot " + var51);
+                            byte[] var54 = (byte[]) ((EVZ) var42.getFifthValue()).getSecondValue();
+                            log.debug("Selected Certificate Id " + Arrays.toString(var54));
+                            FFC var56 = new FFC(var39, var51, var54);
+                            log.debug("Selected Private Key " + var56);
+                            EVZ var57 = new EVZ(var56, var49);
+                            return var57;
+                        }
+                        break;
+                    }
+
+                    long var8 = var5[var7];
+                    log.debug("slot " + var8);
+                    CK_TOKEN_INFO var10 = var39.C_GetTokenInfo(var8);
+                    log.debug("ck_token_info " + var10);
+                    log.debug("ck_token_info.label " + new String(var10.label));
+                    String var11 = Functions.tokenInfoFlagsToString(var10.flags);
+                    log.debug("ck_token_info.flags " + var11);
+                    String[] var12 = var11.split("\\|");
+                    boolean var13 = false;
+                    boolean var14 = false;
+                    boolean var15 = false;
+                    String[] var16 = var12;
+                    int var17 = var12.length;
+
+                    for (int var18 = 0; var18 < var17; ++var18) {
+                        String var19 = var16[var18];
+                        log.debug("flag " + var19.trim());
+                        switch (var19.trim()) {
+                            case "CKF_LOGIN_REQUIRED":
+                                var13 = true;
+                                break;
+                            case "CKF_TOKEN_INITIALIZED":
+                                var14 = true;
+                                break;
+                            case "CKF_USER_PIN_INITIALIZED":
+                                var15 = true;
+                        }
+                    }
+
+                    if (var14 && (!var13 || var15)) {
+                        HashMap var58 = new HashMap();
+                        var4.put(var8, var58);
+                        long var60 = var39.C_OpenSession(var8, 4L, null, null);
+                        log.debug("session " + var60);
+                        CK_ATTRIBUTE[] var61 = new CK_ATTRIBUTE[]{new CK_ATTRIBUTE(), null};
+                        var61[0].type = 1L;
+                        var61[0].pValue = true;
+                        var61[1] = new CK_ATTRIBUTE();
+                        var61[1].type = 0L;
+                        var61[1].pValue = 1L;
+                        var39.C_FindObjectsInit(var60, var61);
+                        long[] var62 = var39.C_FindObjects(var60, 100L);
+                        log.debug("objects " + var62);
+                        log.debug("objects " + var62.length);
+                        long[] var63 = var62;
+                        int var22 = var62.length;
+
+                        for (int var23 = 0; var23 < var22; ++var23) {
+                            long var24 = var63[var23];
+                            log.debug("object " + var24);
+                            CK_ATTRIBUTE[] var26 = new CK_ATTRIBUTE[]{new CK_ATTRIBUTE(), null, null};
+                            var26[0].type = 3L;
+                            var26[1] = new CK_ATTRIBUTE();
+                            var26[1].type = 258L;
+                            var26[2] = new CK_ATTRIBUTE();
+                            var26[2].type = 17L;
+                            var39.C_GetAttributeValue(var60, var24, var26);
+                            Object var27 = null;
+                            char[] var64;
+                            if (var26[0].pValue != null) {
+                                var64 = var26[0].getCharArray();
+                            } else {
+                                if (var26[1].pValue == null) {
+                                    throw new FFK("Missing label for certificate!");
+                                }
+
+                                var64 = Base64.getEncoder().encodeToString(var26[1].getByteArray()).toCharArray();
+                            }
+
+                            log.debug("Certificate Label Charaters " + new String(var64));
+                            log.debug("Certificate Label Charaters Encoded " + new String((new String(var64)).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+                            Object var28 = null;
+                            if (var26[1].pValue != null) {
+                                byte[] var65 = var26[1].getByteArray();
+                                Object var29 = null;
+                                if (var26[2].pValue == null) {
+                                    throw new FFK("Missing value for certificate!");
+                                }
+
+                                byte[] var66 = var26[2].getByteArray();
+                                Certificate var30 = CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(var66));
+                                X509Certificate var31 = (X509Certificate) var30;
+                                log.debug("Available Certificate Valid From " + var31.getNotBefore());
+                                log.debug("Available Certificate Valid To " + var31.getNotAfter());
+                                log.debug("Available Certificate Subject " + var31.getSubjectDN());
+                                log.debug("Available Certificate Id " + Arrays.toString(var65));
+                                var58.put(var24, new EWC(new String((new String(var64)).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8), var65, var30));
+                            } else {
+                                log.error("Missing ID for certificate " + new String(var64));
+                            }
+                        }
+
+                        var39.C_FindObjectsFinal(var60);
+                        var39.C_CloseSession(var60);
+                    }
+
+                    ++var7;
+                }
+            } else {
+                var1 = FCR.getNoCryptCardDialogResult(FCW.getInstance().getMessageForKey("micro.dialog.sign.no_cryptcard.title"), FCW.getInstance().getMessageForKey("micro.dialog.sign.no_cryptcard.header"), 800.0, 150.0, FCW.getInstance().getMessageForKey("micro.dialog.sign.no_cryptcard.description"));
+                if (var1 == FCR.QGW.GO_TO_SETTINGS) {
+                    throw new QGU("go to setting", 1);
+                }
+            }
+
+            return null;
+        } catch (NullPointerException e) {
+            log.error("Something bad happened", e);
+            throw FCZ.getInstance().IHQ();
+        } catch (PKCS11Exception | CertificateException | IOException e) {
+            log.error("Something bad happened", e);
+            throw new FFK(e);
+        }
+
     }
 
     protected abstract MME<Boolean, String, String, String, LocalDate, BigDecimal, String> getSignatureValuesForKD() throws FFO, FFK;

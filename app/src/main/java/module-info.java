@@ -15,5 +15,6 @@ open module emk {
     requires jakarta.xml.ws;
     requires org.slf4j;
     requires fopcore;
+    requires jdk.crypto.cryptoki;
 
 }

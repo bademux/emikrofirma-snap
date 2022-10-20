@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
@@ -31,9 +31,9 @@ public class AHCN extends AHCL<XMLGregorianCalendar> {
 
     }
 
-    public EVZ<AHCI, String> AICX(AHDT var1) {
+    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
 
-        EVZ var8;
+        TwoValueBox var8;
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
@@ -66,7 +66,7 @@ public class AHCN extends AHCL<XMLGregorianCalendar> {
             }
 
             if (var6) {
-                EVZ var14 = new EVZ(AHCI.SUCCESS, null);
+                TwoValueBox var14 = new TwoValueBox(AHCI.SUCCESS, null);
                 return var14;
             }
 
@@ -82,7 +82,7 @@ public class AHCN extends AHCL<XMLGregorianCalendar> {
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");
             }
 
-            var8 = new EVZ(var7, this.AIDB("", var1));
+            var8 = new TwoValueBox(var7, this.AIDB("", var1));
         } catch (DatatypeConfigurationException | ParseException var12) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
             throw new FFI(var12);

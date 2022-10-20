@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.c.a;
 
-import a.a.a.c.e.a.d.EWD;
+import a.a.a.c.e.a.d.OneValueBox;
 import a.a.a.c.f.a.c.a.b.AHDK;
 import a.a.a.c.f.a.c.a.b.AHDL;
 import a.a.a.c.f.a.c.a.b.AHDM;
@@ -87,7 +87,7 @@ public class AHDJ extends AHDI {
         return this.AHVO;
     }
 
-    public void AIDD(OutputStream var1, EWD<Integer> var2, String var3) {
+    public void AIDD(OutputStream var1, OneValueBox<Integer> var2, String var3) {
 
         Iterator var4 = this.AHVO.iterator();
 

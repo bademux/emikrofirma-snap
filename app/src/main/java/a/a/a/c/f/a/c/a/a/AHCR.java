@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.b.AHCB;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
@@ -23,7 +23,7 @@ public class AHCR extends AHCS<String> {
 
     }
 
-    public EVZ<AHCI, String> AICX(AHDT var1) {
+    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
@@ -34,7 +34,7 @@ public class AHCR extends AHCS<String> {
             var2 = this.getCustomAction();
             var4 = var2.AIBY(var3);
             if (var4) {
-                EVZ var11 = new EVZ(AHCI.SUCCESS, null);
+                TwoValueBox var11 = new TwoValueBox(AHCI.SUCCESS, null);
                 return var11;
             } else {
                 AHCI var5 = null;
@@ -50,7 +50,7 @@ public class AHCR extends AHCS<String> {
                 }
 
                 String var6 = var2.getContextString(var3);
-                EVZ var7 = new EVZ(var5, this.AIDB(var6, var1));
+                TwoValueBox var7 = new TwoValueBox(var5, this.AIDB(var6, var1));
                 return var7;
             }
         }

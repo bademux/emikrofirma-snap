@@ -6,7 +6,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.k.a.a.MDG;
 import a.a.a.c.d.b.EQK;
-import a.a.a.c.e.a.d.MME;
+import a.a.a.c.e.a.d.SevenValueBox;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -29,9 +29,9 @@ public class MDP extends EQK {
         super(var1, var2, var3, var4);
     }
 
-    protected MME<Boolean, String, String, String, LocalDate, BigDecimal, String> getSignatureValuesForKD() throws FFO, FFK {
+    protected SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> getSignatureValuesForKD() throws FFO, FFK {
 
-        MME var1;
+        SevenValueBox var1;
         try {
             var1 = this.getKDDataDialog();
         } catch (URISyntaxException var5) {
@@ -42,13 +42,13 @@ public class MDP extends EQK {
         return var1;
     }
 
-    private MME<Boolean, String, String, String, LocalDate, BigDecimal, String> getKDDataDialog() throws URISyntaxException {
+    private SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> getKDDataDialog() throws URISyntaxException {
 
-        MME var1;
-        var1 = FEL.IKS(new FEM<MME<Boolean, String, String, String, LocalDate, BigDecimal, String>>() {
-            public MME<Boolean, String, String, String, LocalDate, BigDecimal, String> IKT() {
+        SevenValueBox var1;
+        var1 = FEL.IKS(new FEM<SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String>>() {
+            public SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> IKT() {
 
-                MME var8;
+                SevenValueBox var8;
                 AnchorPane var2;
                 try {
                     FXMLLoader loader = new FXMLLoader();
@@ -68,7 +68,7 @@ public class MDP extends EQK {
                     var3.showAndWait();
                     if (!var5.getResult()) {
                         Object var14 = null;
-                        return (MME) var14;
+                        return (SevenValueBox) var14;
                     }
 
                     boolean var6 = var5.fxml_include_nipOrPeselController.fxml_component_main_element.isSelected();
@@ -79,7 +79,7 @@ public class MDP extends EQK {
                         var7 = var5.fxml_include_nipController.fxml_component_main_element.getText();
                     }
 
-                    var8 = new MME(var6, var7, var5.fxml_include_firstNameController.fxml_component_main_element.getText(), var5.fxml_include_lastNameController.fxml_component_main_element.getText(), var5.fxml_include_birthDateController.fxml_component_main_element.getValue(), var5.fxml_include_taxAmountController.fxml_component_main_element.getNumber(), var5.fxml_include_emailController.fxml_component_main_element.getText());
+                    var8 = new SevenValueBox(var6, var7, var5.fxml_include_firstNameController.fxml_component_main_element.getText(), var5.fxml_include_lastNameController.fxml_component_main_element.getText(), var5.fxml_include_birthDateController.fxml_component_main_element.getValue(), var5.fxml_include_taxAmountController.fxml_component_main_element.getNumber(), var5.fxml_include_emailController.fxml_component_main_element.getText());
                 } catch (IOException var12) {
                     org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var12);
                     return null;

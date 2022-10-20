@@ -1,7 +1,7 @@
 package a.a.a.c.d.f;
 
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.EWC;
+import a.a.a.c.e.a.d.ThreeValueBox;
 import a.a.a.c.f.a.e.HO;
 import a.a.a.c.f.a.e.HP;
 import a.a.a.c.f.b.c.a.KL;
@@ -70,7 +70,7 @@ public class ERB {
         }
 
         KL var6 = var1.DBN().getValue();
-        EWC var7 = null;
+        ThreeValueBox var7 = null;
         switch (var6) {
             case RATE_23:
                 var7 = this.QGM(var5, var2, var3, var4, this.getVat23Amount(), this.getVat23Tax(), this.getGrossPrice());
@@ -136,7 +136,7 @@ public class ERB {
             var5 = ((HP) var1).getTaxDeduction50P().getValue();
         }
 
-        EWC var6 = null;
+        ThreeValueBox var6 = null;
         var6 = this.QGM(var5, var2, var3, var4, this.getNetPrice(), this.getVatPrice(), this.getGrossPrice());
         this.setNetPrice((BigDecimal) var6.getFirstValue());
         this.setVatPrice((BigDecimal) var6.getSecondValue());
@@ -156,7 +156,7 @@ public class ERB {
         return var2;
     }
 
-    private EWC<BigDecimal, BigDecimal, BigDecimal> QGM(Boolean var1, BigDecimal var2, BigDecimal var3, BigDecimal var4, BigDecimal var5, BigDecimal var6, BigDecimal var7) {
+    private ThreeValueBox<BigDecimal, BigDecimal, BigDecimal> QGM(Boolean var1, BigDecimal var2, BigDecimal var3, BigDecimal var4, BigDecimal var5, BigDecimal var6, BigDecimal var7) {
         BigDecimal var8;
         BigDecimal var9;
         BigDecimal var10;
@@ -173,7 +173,7 @@ public class ERB {
             var10 = EQY.HRI(var7, var4);
         }
 
-        return new EWC(var8, var9, var10);
+        return new ThreeValueBox(var8, var9, var10);
     }
 
     public BigDecimal getNetPrice() {

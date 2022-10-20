@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.b.AHCB;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
@@ -25,7 +25,7 @@ public class AHDC extends AHDD<Map<AHDS, AHDT>> {
 
     }
 
-    public EVZ<AHCI, String> AICY(Map<AHDS, AHDT> var1) {
+    public TwoValueBox<AHCI, String> AICY(Map<AHDS, AHDT> var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("fields " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHVE);
@@ -34,7 +34,7 @@ public class AHDC extends AHDD<Map<AHDS, AHDT>> {
         if (this.AHVE == AHDG.MATCHES) {
             var2 = this.getCustomAction();
             var3 = var2.AIBY(var1);
-            EVZ var4;
+            TwoValueBox var4;
             if (!var3) {
                 var4 = null;
                 AHCI var10;
@@ -50,11 +50,11 @@ public class AHDC extends AHDD<Map<AHDS, AHDT>> {
                 }
 
                 String var5 = var2.getContextString(var1);
-                EVZ var6 = new EVZ(var10, this.AICW(var5));
+                TwoValueBox var6 = new TwoValueBox(var10, this.AICW(var5));
                 return var6;
             }
 
-            var4 = new EVZ(AHCI.SUCCESS, null);
+            var4 = new TwoValueBox(AHCI.SUCCESS, null);
             return var4;
         }
         throw new FFI("Invalid conditionType [" + this.AHVE + "]!");

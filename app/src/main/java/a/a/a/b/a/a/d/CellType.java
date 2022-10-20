@@ -1,6 +1,6 @@
 package a.a.a.b.a.a.d;
 
-public enum FDV {
+public enum CellType {
     NULL(0),
     TINYINT(-6),
     INTEGER(4),
@@ -12,7 +12,7 @@ public enum FDV {
 
     private final int HEE;
 
-    FDV(int var3) {
+    CellType(int var3) {
         this.HEE = var3;
     }
 
@@ -20,12 +20,12 @@ public enum FDV {
         return this.HEE;
     }
 
-    public static FDV getCellDataTypeType(int var0) {
-        FDV[] var1 = values();
+    public static CellType getCellDataTypeType(int var0) {
+        CellType[] var1 = values();
         int var2 = var1.length;
 
         for (int var3 = 0; var3 < var2; ++var3) {
-            FDV var4 = var1[var3];
+            CellType var4 = var1[var3];
             if (var4.getSqlType() == var0) {
                 return var4;
             }

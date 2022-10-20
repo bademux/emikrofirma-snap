@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.e;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.a.AHCE;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
@@ -56,15 +56,15 @@ public class AHEH extends AHCE {
         return this.AHWS;
     }
 
-    public EVZ<AHCI, String> AICX(AHDT var1) {
+    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
 
-        EVZ var5;
+        TwoValueBox var5;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionLeft " + this.AHWQ);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("logicalOperator " + this.AHWR);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionRight " + this.AHWS);
-        EVZ var2 = null;
-        EVZ var3 = null;
+        TwoValueBox var2 = null;
+        TwoValueBox var3 = null;
         switch (this.AHWR) {
             case AND:
             case OR:
@@ -73,7 +73,7 @@ public class AHEH extends AHCE {
                 break;
             case NOT:
                 var2 = this.AHWQ.getActionOnField().AICX(var1);
-                var3 = new EVZ(AHCI.SUCCESS, "");
+                var3 = new TwoValueBox(AHCI.SUCCESS, "");
                 break;
             default:
                 throw new FFI("Invalid logicalOperator [" + this.AHWR + "]!");
@@ -108,11 +108,11 @@ public class AHEH extends AHCE {
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");
             }
 
-            EVZ var6 = new EVZ(var10, this.AIDT("", (String) var2.getSecondValue(), (String) var3.getSecondValue()));
+            TwoValueBox var6 = new TwoValueBox(var10, this.AIDT("", (String) var2.getSecondValue(), (String) var3.getSecondValue()));
             return var6;
         }
 
-        var5 = new EVZ(AHCI.SUCCESS, null);
+        var5 = new TwoValueBox(AHCI.SUCCESS, null);
 
         return var5;
     }

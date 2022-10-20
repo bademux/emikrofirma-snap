@@ -1,13 +1,13 @@
 package a.a.a.b.a.a;
 
-public enum FDL {
+public enum OrderType {
     NONE(""),
     ASC("asc"),
     DESC("desc");
 
     private final String HDQ;
 
-    FDL(String var3) {
+    OrderType(String var3) {
         this.HDQ = var3;
     }
 

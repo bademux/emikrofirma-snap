@@ -1,10 +1,10 @@
 package a.a.a.c.c.b;
 
-import a.a.a.b.a.a.d.FDR;
-import a.a.a.b.a.a.d.FDU;
-import a.a.a.b.a.a.d.FDV;
-import a.a.a.b.a.a.d.FDY;
-import a.a.a.c.e.a.d.EWD;
+import a.a.a.b.a.a.d.CellTyped;
+import a.a.a.b.a.a.d.CellValue;
+import a.a.a.b.a.a.d.CellType;
+import a.a.a.b.a.a.d.CellNamed;
+import a.a.a.c.e.a.d.OneValueBox;
 import a.a.a.c.f.KU;
 
 import java.util.List;
@@ -57,102 +57,102 @@ public interface ENC {
     String FLA = "select a.* from preferences a inner join (select technical_username, technical_typeclass, max(business_version) max_ from preferences group by technical_username, technical_typeclass) b on a.technical_username = b.technical_username and a.technical_typeclass = b.technical_typeclass and a.business_version = b.max_ ";
     String FLB = "profiles";
     String FLC = ".db";
-    FDR FLD = END.cell_technical_id.getDefinition();
-    FDR FLE = END.cell_technical_parentid.getDefinition();
-    FDR FLF = END.cell_technical_settlementid.getDefinition();
-    FDR FLG = END.cell_audit_ts_created.getDefinition();
-    FDR FLH = END.cell_technical_version.getDefinition();
-    FDR FLI = END.cell_business_version.getDefinition();
-    FDR FLJ = END.cell_technical_username.getDefinition();
-    FDR FLK = END.cell_technical_salt.getDefinition();
-    FDR FLL = END.cell_technical_password.getDefinition();
-    FDR FLM = END.cell_technical_password_change.getDefinition();
-    FDR FLN = END.cell_technical_type.getDefinition();
-    FDR FLO = END.cell_technical_subType.getDefinition();
-    FDR FLP = END.cell_technical_typeclass.getDefinition();
-    FDR FLQ = END.cell_technical_encrypted.getDefinition();
-    FDR FLR = END.cell_technical_iv.getDefinition();
-    FDR FLS = END.cell_technical_body.getDefinition();
-    FDR RHL = END.cell_business_state.getDefinition();
-    FDR FLT = END.cell_business_issuer_number.getDefinition();
-    FDR FLU = END.cell_business_refid.getDefinition();
-    FDR FLV = END.cell_business_periodYear.getDefinition();
-    FDR FLW = END.cell_business_periodMonth.getDefinition();
-    FDR FLX = END.cell_business_documentIndex.getDefinition();
-    FDR FLY = END.cell_business_numeric_value.getDefinition();
-    FDR FLZ = END.cell_business_name.getDefinition();
-    FDR FMA = END.cell_business_dictionaryName.getDefinition();
-    FDR FMB = END.cell_business_dictionaryEntry.getDefinition();
-    FDR FMC = END.cell_business_invoicingDate.getDefinition();
-    FDR FMD = END.cell_business_creationDate.getDefinition();
-    FDR QNR = END.cell_business_transactionDate.getDefinition();
-    FDR FME = END.cell_business_contractorName.getDefinition();
-    FDR FMF = END.cell_business_contractorNIP.getDefinition();
-    FDR FMG = END.cell_business_netValue.getDefinition();
-    FDR FMH = END.cell_business_grossValue.getDefinition();
-    FDR FMI = END.cell_business_taxValue.getDefinition();
-    FDR QNS = END.cell_business_hash.getDefinition();
-    FDR FMJ = END.cell_viewQueryId.getDefinition();
-    FDY FMK = ENC.END.cell_viewRefType.getDefinition();
-    FDY FML = ENC.END.cell_viewRefLevel.getDefinition();
-    FDY FMM = ENC.END.cell_viewRefId.getDefinition();
+    CellTyped FLD = END.cell_technical_id.getDefinition();
+    CellTyped FLE = END.cell_technical_parentid.getDefinition();
+    CellTyped FLF = END.cell_technical_settlementid.getDefinition();
+    CellTyped FLG = END.cell_audit_ts_created.getDefinition();
+    CellTyped FLH = END.cell_technical_version.getDefinition();
+    CellTyped FLI = END.cell_business_version.getDefinition();
+    CellTyped FLJ = END.cell_technical_username.getDefinition();
+    CellTyped FLK = END.cell_technical_salt.getDefinition();
+    CellTyped FLL = END.cell_technical_password.getDefinition();
+    CellTyped FLM = END.cell_technical_password_change.getDefinition();
+    CellTyped FLN = END.cell_technical_type.getDefinition();
+    CellTyped FLO = END.cell_technical_subType.getDefinition();
+    CellTyped FLP = END.cell_technical_typeclass.getDefinition();
+    CellTyped FLQ = END.cell_technical_encrypted.getDefinition();
+    CellTyped FLR = END.cell_technical_iv.getDefinition();
+    CellTyped FLS = END.cell_technical_body.getDefinition();
+    CellTyped RHL = END.cell_business_state.getDefinition();
+    CellTyped FLT = END.cell_business_issuer_number.getDefinition();
+    CellTyped FLU = END.cell_business_refid.getDefinition();
+    CellTyped FLV = END.cell_business_periodYear.getDefinition();
+    CellTyped FLW = END.cell_business_periodMonth.getDefinition();
+    CellTyped FLX = END.cell_business_documentIndex.getDefinition();
+    CellTyped FLY = END.cell_business_numeric_value.getDefinition();
+    CellTyped FLZ = END.cell_business_name.getDefinition();
+    CellTyped FMA = END.cell_business_dictionaryName.getDefinition();
+    CellTyped FMB = END.cell_business_dictionaryEntry.getDefinition();
+    CellTyped FMC = END.cell_business_invoicingDate.getDefinition();
+    CellTyped FMD = END.cell_business_creationDate.getDefinition();
+    CellTyped QNR = END.cell_business_transactionDate.getDefinition();
+    CellTyped FME = END.cell_business_contractorName.getDefinition();
+    CellTyped FMF = END.cell_business_contractorNIP.getDefinition();
+    CellTyped FMG = END.cell_business_netValue.getDefinition();
+    CellTyped FMH = END.cell_business_grossValue.getDefinition();
+    CellTyped FMI = END.cell_business_taxValue.getDefinition();
+    CellTyped QNS = END.cell_business_hash.getDefinition();
+    CellTyped FMJ = END.cell_viewQueryId.getDefinition();
+    CellNamed FMK = ENC.END.cell_viewRefType.getDefinition();
+    CellNamed FML = ENC.END.cell_viewRefLevel.getDefinition();
+    CellNamed FMM = ENC.END.cell_viewRefId.getDefinition();
 
-    interface ENF<_A extends EWD<_B>, _B extends KU> {
-        _A HNG(List<END> var1, String var2, Map<String, Map<Integer, List<FDU<?>>>> var3) throws Exception;
+    interface ENF<_A extends OneValueBox<_B>, _B extends KU> {
+        _A HNG(List<END> var1, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3) throws Exception;
     }
 
-    interface ENE<_A extends EWD<_B>, _B extends KU> {
-        _A HNF(List<FDU<?>> var1) throws Exception;
+    interface ENE<_A extends OneValueBox<_B>, _B extends KU> {
+        _A HNF(List<CellValue<?>> var1) throws Exception;
     }
 
     enum END {
-        cell_technical_id(new FDR("technical_id", FDV.TEXT)),
-        cell_technical_parentid(new FDR("technical_parentid", FDV.TEXT)),
-        cell_technical_settlementid(new FDR("technical_settlementid", FDV.TEXT)),
-        cell_audit_ts_created(new FDR("audit_ts_created", FDV.TIMESTAMP)),
-        cell_technical_username(new FDR("technical_username", FDV.TEXT)),
-        cell_technical_salt(new FDR("technical_salt", FDV.BLOB)),
-        cell_technical_password(new FDR("technical_password", FDV.BLOB)),
-        cell_technical_password_change(new FDR("technical_password_change", FDV.INTEGER)),
-        cell_technical_version(new FDR("technical_version", FDV.INTEGER)),
-        cell_business_version(new FDR("business_version", FDV.INTEGER)),
-        cell_technical_type(new FDR("technical_type", FDV.TEXT)),
-        cell_technical_subType(new FDR("technical_subType", FDV.TEXT)),
-        cell_technical_typeclass(new FDR("technical_typeclass", FDV.TEXT)),
-        cell_technical_encrypted(new FDR("technical_encrypted", FDV.TINYINT)),
-        cell_technical_iv(new FDR("technical_iv", FDV.BLOB)),
-        cell_technical_body(new FDR("technical_body", FDV.BLOB)),
-        cell_business_state(new FDR("business_state", FDV.TEXT)),
-        cell_business_issuer_number(new FDR("business_issuer_number", FDV.TEXT)),
-        cell_business_refid(new FDR("business_refid", FDV.TEXT)),
-        cell_business_periodYear(new FDR("business_periodYear", FDV.INTEGER)),
-        cell_business_periodMonth(new FDR("business_periodMonth", FDV.INTEGER)),
-        cell_business_documentIndex(new FDR("business_documentIndex", FDV.INTEGER)),
-        cell_business_numeric_value(new FDR("business_numericValue", FDV.INTEGER)),
-        cell_business_name(new FDR("business_name", FDV.TEXT)),
-        cell_business_dictionaryName(new FDR("business_dictionaryName", FDV.TEXT)),
-        cell_business_dictionaryEntry(new FDR("business_dictionaryEntry", FDV.TEXT)),
-        cell_business_invoicingDate(new FDR("business_invoicingDate", FDV.DATE)),
-        cell_business_creationDate(new FDR("business_creationDate", FDV.DATE)),
-        cell_business_transactionDate(new FDR("business_transactionDate", FDV.DATE)),
-        cell_business_contractorName(new FDR("business_contractorName", FDV.TEXT)),
-        cell_business_contractorNIP(new FDR("business_contractorNIP", FDV.TEXT)),
-        cell_business_netValue(new FDR("business_netValue", FDV.REAL)),
-        cell_business_grossValue(new FDR("business_grossValue", FDV.REAL)),
-        cell_business_taxValue(new FDR("business_taxValue", FDV.REAL)),
-        cell_business_hash(new FDR("business_hash", FDV.INTEGER)),
-        cell_viewQueryId(new FDR("viewQueryId", FDV.TEXT)),
-        cell_viewRefType(new FDY("viewRefType")),
-        cell_viewRefLevel(new FDY("viewRefLevel")),
-        cell_viewRefId(new FDY("viewRefId"));
+        cell_technical_id(new CellTyped("technical_id", CellType.TEXT)),
+        cell_technical_parentid(new CellTyped("technical_parentid", CellType.TEXT)),
+        cell_technical_settlementid(new CellTyped("technical_settlementid", CellType.TEXT)),
+        cell_audit_ts_created(new CellTyped("audit_ts_created", CellType.TIMESTAMP)),
+        cell_technical_username(new CellTyped("technical_username", CellType.TEXT)),
+        cell_technical_salt(new CellTyped("technical_salt", CellType.BLOB)),
+        cell_technical_password(new CellTyped("technical_password", CellType.BLOB)),
+        cell_technical_password_change(new CellTyped("technical_password_change", CellType.INTEGER)),
+        cell_technical_version(new CellTyped("technical_version", CellType.INTEGER)),
+        cell_business_version(new CellTyped("business_version", CellType.INTEGER)),
+        cell_technical_type(new CellTyped("technical_type", CellType.TEXT)),
+        cell_technical_subType(new CellTyped("technical_subType", CellType.TEXT)),
+        cell_technical_typeclass(new CellTyped("technical_typeclass", CellType.TEXT)),
+        cell_technical_encrypted(new CellTyped("technical_encrypted", CellType.TINYINT)),
+        cell_technical_iv(new CellTyped("technical_iv", CellType.BLOB)),
+        cell_technical_body(new CellTyped("technical_body", CellType.BLOB)),
+        cell_business_state(new CellTyped("business_state", CellType.TEXT)),
+        cell_business_issuer_number(new CellTyped("business_issuer_number", CellType.TEXT)),
+        cell_business_refid(new CellTyped("business_refid", CellType.TEXT)),
+        cell_business_periodYear(new CellTyped("business_periodYear", CellType.INTEGER)),
+        cell_business_periodMonth(new CellTyped("business_periodMonth", CellType.INTEGER)),
+        cell_business_documentIndex(new CellTyped("business_documentIndex", CellType.INTEGER)),
+        cell_business_numeric_value(new CellTyped("business_numericValue", CellType.INTEGER)),
+        cell_business_name(new CellTyped("business_name", CellType.TEXT)),
+        cell_business_dictionaryName(new CellTyped("business_dictionaryName", CellType.TEXT)),
+        cell_business_dictionaryEntry(new CellTyped("business_dictionaryEntry", CellType.TEXT)),
+        cell_business_invoicingDate(new CellTyped("business_invoicingDate", CellType.DATE)),
+        cell_business_creationDate(new CellTyped("business_creationDate", CellType.DATE)),
+        cell_business_transactionDate(new CellTyped("business_transactionDate", CellType.DATE)),
+        cell_business_contractorName(new CellTyped("business_contractorName", CellType.TEXT)),
+        cell_business_contractorNIP(new CellTyped("business_contractorNIP", CellType.TEXT)),
+        cell_business_netValue(new CellTyped("business_netValue", CellType.REAL)),
+        cell_business_grossValue(new CellTyped("business_grossValue", CellType.REAL)),
+        cell_business_taxValue(new CellTyped("business_taxValue", CellType.REAL)),
+        cell_business_hash(new CellTyped("business_hash", CellType.INTEGER)),
+        cell_viewQueryId(new CellTyped("viewQueryId", CellType.TEXT)),
+        cell_viewRefType(new CellNamed("viewRefType")),
+        cell_viewRefLevel(new CellNamed("viewRefLevel")),
+        cell_viewRefId(new CellNamed("viewRefId"));
 
-        private final FDY FJL;
+        private final CellNamed FJL;
 
-        END(FDY var3) {
+        END(CellNamed var3) {
             this.FJL = var3;
         }
 
-        public <_T extends FDY> _T getDefinition() {
+        public <_T extends CellNamed> _T getDefinition() {
             return (_T) this.FJL;
         }
 

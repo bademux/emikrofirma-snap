@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.c.c;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -8,7 +8,7 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELW;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.c.b.ESI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.e.HV;
 import a.a.a.c.f.a.e.HY;
@@ -132,7 +132,7 @@ public class ESJ extends ELW {
         HK var4;
         try {
             EYD var2 = new EYD(HK.class, var1, null, HM.JPK, AGWW.VAT);
-            EVZ var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
+            TwoValueBox var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() <= 0) {
                 var4 = null;
                 return var4;
@@ -152,7 +152,7 @@ public class ESJ extends ELW {
         AGWP var4;
         try {
             EYD var2 = new EYD(AGWP.class, var1, null, HM.JPK, AGWW.FA);
-            EVZ var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
+            TwoValueBox var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() <= 0) {
                 var4 = null;
                 return var4;
@@ -171,8 +171,8 @@ public class ESJ extends ELW {
 
         List var3;
         try {
-            IY var1 = new IY(JF.class, null, JH.VAT, null, FDL.DESC);
-            EVZ var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+            IY var1 = new IY(JF.class, null, JH.VAT, null, OrderType.DESC);
+            TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             var3 = (List) var2.getSecondValue();
         } catch (FFO | FFK var7) {
             log.error("Something bad happened", var7);
@@ -186,8 +186,8 @@ public class ESJ extends ELW {
 
         boolean var3;
         try {
-            IU var1 = new IU(HV.class, QSW.ACTIVE, JN.AOE, IB.SELL, IA.CORRECTION, null, null, FDL.DESC);
-            EVZ var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+            IU var1 = new IU(HV.class, QSW.ACTIVE, JN.AOE, IB.SELL, IA.CORRECTION, null, null, OrderType.DESC);
+            TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             if (((List) var2.getSecondValue()).size() <= 0) {
                 var3 = false;
                 return var3;
@@ -272,7 +272,7 @@ public class ESJ extends ELW {
 
         JG var6;
         IY var2 = new IY(JF.class, var1, JH.VAT, null);
-        EVZ var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+        TwoValueBox var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -309,7 +309,7 @@ public class ESJ extends ELW {
         try {
             IU var2;
             if (var1 != null && var1.getMonth() != null && var1.getMonth().getValue() != null && var1.getYear() != null && var1.getYear().getValue() != null) {
-                var2 = new IU(HY.class, QSW.ACTIVE, var1, IB.SELL, null, null, null, FDL.DESC);
+                var2 = new IU(HY.class, QSW.ACTIVE, var1, IB.SELL, null, null, null, OrderType.DESC);
                 return (List) this.getModelManager().HJY(this.getParentDefinition(), var2).getSecondValue();
             }
 

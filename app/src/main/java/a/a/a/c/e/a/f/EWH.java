@@ -1,6 +1,6 @@
 package a.a.a.c.e.a.f;
 
-import a.a.a.c.e.a.d.EWC;
+import a.a.a.c.e.a.d.ThreeValueBox;
 import a.a.a.c.e.a.f.a.EWN;
 import a.a.a.c.e.a.g.EWV;
 import a.a.a.c.e.a.g.EWX;
@@ -252,7 +252,7 @@ public class EWH extends EWM {
         return var52;
     }
 
-    public static <_RESULT_TYPE> EWK<_RESULT_TYPE> MXE(EWP var0, EWS var1, String var2, int var3, String var4, String var5, List<EWC<String, InputStream, Long>> var6, EWX var7, EWX var8, EWG<_RESULT_TYPE> var9, X509Certificate var10) throws Exception {
+    public static <_RESULT_TYPE> EWK<_RESULT_TYPE> MXE(EWP var0, EWS var1, String var2, int var3, String var4, String var5, List<ThreeValueBox<String, InputStream, Long>> var6, EWX var7, EWX var8, EWG<_RESULT_TYPE> var9, X509Certificate var10) throws Exception {
 
         LinkedHashMap var11 = new LinkedHashMap();
         var11.put("Content-Type", EWQ.MULTIPART_RELATED.getMimeType() + "; boundary=" + var5);
@@ -261,10 +261,10 @@ public class EWH extends EWM {
         Long var13 = 0L;
         Iterator var14 = var6.iterator();
 
-        EWC var15;
+        ThreeValueBox var15;
         String var16;
         while (var14.hasNext()) {
-            var15 = (EWC) var14.next();
+            var15 = (ThreeValueBox) var14.next();
             var16 = (String) var15.getFirstValue();
             Long var17 = (Long) var15.getThirdValue();
             var13 = var13 + var17;
@@ -418,7 +418,7 @@ public class EWH extends EWM {
                 Iterator var49 = var6.iterator();
 
                 for (; var49.hasNext(); var37.write("\r\n".getBytes(StandardCharsets.UTF_8))) {
-                    EWC var46 = (EWC) var49.next();
+                    ThreeValueBox var46 = (ThreeValueBox) var49.next();
                     var22 = (String) var46.getFirstValue();
                     var51 = (InputStream) var46.getSecondValue();
                     Long var53 = (Long) var46.getThirdValue();

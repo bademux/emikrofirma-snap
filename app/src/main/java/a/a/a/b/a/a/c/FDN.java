@@ -1,6 +1,6 @@
 package a.a.a.b.a.a.c;
 
-import a.a.a.b.a.a.d.FDY;
+import a.a.a.b.a.a.d.CellNamed;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +8,10 @@ import java.util.List;
 public class FDN extends FDM {
     private final boolean HDU;
     private final boolean HDV;
-    private final List<FDY> HDW;
+    private final List<CellNamed> HDW;
     private final String HDX;
 
-    public FDN(boolean var1, String var2, String var3, boolean var4, List<FDY> var5, String var6) {
+    public FDN(boolean var1, String var2, String var3, boolean var4, List<CellNamed> var5, String var6) {
         super(var2, null, var3);
         this.HDU = var1;
         this.HDV = var4;
@@ -31,7 +31,7 @@ public class FDN extends FDM {
         return this.HDV;
     }
 
-    public List<FDY> getColumns() {
+    public List<CellNamed> getColumns() {
         return this.HDW;
     }
 

@@ -1,6 +1,6 @@
 package a.a.a.c.c.b;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.b.a.a.FDO;
 import a.a.a.b.e.FEY;
 import a.a.a.b.e.FFF;
@@ -10,7 +10,7 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.d.EQQ;
 import com.github.bademux.emk.Application;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.e.a.e.EWF;
 import a.a.a.c.f.a.a.IJE;
 import a.a.a.c.f.a.c.HI;
@@ -227,21 +227,21 @@ public class EMB {
         return var23;
     }
 
-    public synchronized boolean HHR(String var1, String var2) throws FFO, FFK {
+    public synchronized boolean login(String username, String password) throws FFO, FFK {
 
         try {
-            if (var1 != null && var1.length() >= 3) {
+            if (username != null && username.length() >= 3) {
                 if (this.FGR == null) {
                     this.resetSimpleUserData();
                 }
 
-                String var3 = var1.toLowerCase();
-                LX var4 = this.FGR.get(var3);
+                String lowercaseUserName = username.toLowerCase();
+                LX var4 = this.FGR.get(lowercaseUserName);
                 if (var4 != null) {
                     boolean var5 = false;
                     if (var4.getUsePassword().getValue()) {
-                        if (FEY.getInstance().ILA(var4.getPassword().getValue(), var2.toCharArray(), var4.getSalt().getValue())) {
-                            this.FGO = new FFF(var2.toCharArray());
+                        if (FEY.getInstance().ILA(var4.getPassword().getValue(), password.toCharArray(), var4.getSalt().getValue())) {
+                            this.FGO = new FFF(password.toCharArray());
                             var5 = true;
                         }
                     } else {
@@ -256,7 +256,7 @@ public class EMB {
                         this.FGQ = this.FGP.getUsername().getValue();
                         if (this.FGP.getPasswordChanged() != null && this.FGP.getPasswordChanged() > 0) {
                             try {
-                                this.FGN.QQB(var3, false);
+                                this.FGN.QQB(lowercaseUserName, false);
                                 var4.setPasswordChanged(false);
                                 this.FGN.HLJ(var4);
                                 this.FGN.HLD();
@@ -264,11 +264,11 @@ public class EMB {
                                 this.FGN.HLE();
                                 org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var11);
                             }
-                        } else if (!this.FGN.HKU(var3, var3 + "_NEW", false)) {
+                        } else if (!this.FGN.HKU(lowercaseUserName, lowercaseUserName + EMX.POSTFIX_NEW, false)) {
                             throw new FFI("Cleanup failed");
                         }
 
-                        this.FGN.QPS(this.FGO, var3);
+                        this.FGN.initConnection(this.FGO, lowercaseUserName);
                     }
 
                     boolean var6 = var5;
@@ -440,7 +440,7 @@ public class EMB {
 
     private void HIC(JN var1, JH var2) throws FFK, FFO {
 
-        EVZ var3 = this.FGN.HLQ(this.FGO, null, null, null, var1.DDN(), var2);
+        TwoValueBox var3 = this.FGN.HLQ(this.FGO, null, null, null, var1.DDN(), var2);
         JI var4;
         if (var3 != null && var3.getSecondValue() != null && ((List) var3.getSecondValue()).size() != 0) {
             if (var3 == null || var3.getSecondValue() == null || ((List) var3.getSecondValue()).size() != 1) {
@@ -471,9 +471,9 @@ public class EMB {
 
     }
 
-    public EVZ<Integer, List<EDF<HN<?>>>> ROM(QSW var1, FDL var2, Integer var3, Integer var4, JN var5, IB var6, IA var7, KE var8, KA var9, KA var10, EVZ<Date, Date> var11, EVZ<Date, Date> var12, String var13) throws FFK, FFO {
+    public TwoValueBox<Integer, List<EDF<HN<?>>>> ROM(QSW var1, OrderType var2, Integer var3, Integer var4, JN var5, IB var6, IA var7, KE var8, KA var9, KA var10, TwoValueBox<Date, Date> var11, TwoValueBox<Date, Date> var12, String var13) throws FFK, FFO {
 
-        EVZ var14;
+        TwoValueBox var14;
         var14 = this.FGN.ROB(this.FGO, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
 
         return var14;
@@ -522,9 +522,9 @@ public class EMB {
 
     }
 
-    public EVZ<Integer, List<EDF<QSG<?>>>> ROQ(QSW var1, FDL var2, Integer var3, Integer var4, JN var5, QSR var6, QSQ var7, KE var8, KA var9, KA var10, EVZ<Date, Date> var11, EVZ<Date, Date> var12, String var13) throws FFK, FFO {
+    public TwoValueBox<Integer, List<EDF<QSG<?>>>> ROQ(QSW var1, OrderType var2, Integer var3, Integer var4, JN var5, QSR var6, QSQ var7, KE var8, KA var9, KA var10, TwoValueBox<Date, Date> var11, TwoValueBox<Date, Date> var12, String var13) throws FFK, FFO {
 
-        EVZ var14;
+        TwoValueBox var14;
         var14 = this.FGN.ROC(this.FGO, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
 
         return var14;
@@ -554,9 +554,9 @@ public class EMB {
 
     }
 
-    public EVZ<Integer, List<EDF<IN>>> HIG(FDL var1, Integer var2, Integer var3, JN var4, IQ var5) throws FFK, FFO {
+    public TwoValueBox<Integer, List<EDF<IN>>> HIG(OrderType var1, Integer var2, Integer var3, JN var4, IQ var5) throws FFK, FFO {
 
-        EVZ var6;
+        TwoValueBox var6;
         var6 = this.FGN.HLP(this.FGO, var1, var2, var3, var4, var5);
 
         return var6;
@@ -572,7 +572,7 @@ public class EMB {
 
         JN var4 = var2.getPeriod();
         JH var5 = var2.getSettlementType();
-        EVZ var8;
+        TwoValueBox var8;
         switch (var1) {
             case insert:
                 Integer var6 = this.FGN.getMaxDocumentIndex_Settlements(var4, var5);
@@ -583,8 +583,8 @@ public class EMB {
                 this.FGN.HMH(var1, this.FGO, var2, var3);
                 if (var7) {
                     var8 = this.FGN.ROB(this.FGO, QSW.ACTIVE, null, null, null, var4, null, null, null, null, null, null, null, null);
-                    EVZ var20 = this.FGN.HLP(this.FGO, null, null, null, var4, null);
-                    EVZ var19 = this.FGN.ROC(this.FGO, QSW.ACTIVE, null, null, null, var4, null, null, null, null, null, null, null, null);
+                    TwoValueBox var20 = this.FGN.HLP(this.FGO, null, null, null, var4, null);
+                    TwoValueBox var19 = this.FGN.ROC(this.FGO, QSW.ACTIVE, null, null, null, var4, null, null, null, null, null, null, null, null);
                     LY var11 = this.HHV();
                     Set var12 = EQQ.RHZ(var4, var11, (List) var8.getSecondValue(), (List) var20.getSecondValue(), (List) var19.getSecondValue());
                     Iterator var13 = var12.iterator();
@@ -614,9 +614,9 @@ public class EMB {
 
     }
 
-    public EVZ<Integer, List<EDF<JF>>> HIJ(FDL var1, Integer var2, Integer var3, JN var4, JH var5) throws FFK, FFO {
+    public TwoValueBox<Integer, List<EDF<JF>>> HIJ(OrderType var1, Integer var2, Integer var3, JN var4, JH var5) throws FFK, FFO {
 
-        EVZ var6;
+        TwoValueBox var6;
         var6 = this.FGN.HLQ(this.FGO, var1, var2, var3, var4, var5);
 
         return var6;
@@ -634,17 +634,17 @@ public class EMB {
 
     }
 
-    public EVZ<Integer, List<EDF<HJ>>> HIM(FDL var1, Integer var2, Integer var3, JN var4, HM var5, AGWW var6) throws FFK, FFO {
+    public TwoValueBox<Integer, List<EDF<HJ>>> HIM(OrderType var1, Integer var2, Integer var3, JN var4, HM var5, AGWW var6) throws FFK, FFO {
 
-        EVZ var7;
+        TwoValueBox var7;
         var7 = this.FGN.HLR(this.FGO, var1, var2, var3, var4, var5, var6);
 
         return var7;
     }
 
-    public EVZ<Integer, List<EDF<HJ>>> QQI(FDL var1, Integer var2, Integer var3, JF var4, JN var5, HM var6, AGWW var7) throws FFK, FFO {
+    public TwoValueBox<Integer, List<EDF<HJ>>> QQI(OrderType var1, Integer var2, Integer var3, JF var4, JN var5, HM var6, AGWW var7) throws FFK, FFO {
 
-        EVZ var8;
+        TwoValueBox var8;
         var8 = this.FGN.QPW(this.FGO, var1, var2, var3, var4, var5, var6, var7);
 
         return var8;
@@ -670,9 +670,9 @@ public class EMB {
 
     }
 
-    public EVZ<Integer, List<EDF<HI>>> QQJ(FDL var1, Integer var2, String var3) throws FFK {
+    public TwoValueBox<Integer, List<EDF<HI>>> QQJ(OrderType var1, Integer var2, String var3) throws FFK {
 
-        EVZ var4;
+        TwoValueBox var4;
         var4 = this.FGN.QPX(this.FGO, var1, var2, var3);
 
         return var4;
@@ -690,17 +690,17 @@ public class EMB {
 
     }
 
-    public EVZ<Integer, List<EDF<IC>>> HIT(FDL var1, Integer var2, Integer var3, JN var4, IH var5) throws FFK, FFO {
+    public TwoValueBox<Integer, List<EDF<IC>>> HIT(OrderType var1, Integer var2, Integer var3, JN var4, IH var5) throws FFK, FFO {
 
-        EVZ var6;
+        TwoValueBox var6;
         var6 = this.FGN.HLV(this.FGO, var1, var2, var3, var4, var5);
 
         return var6;
     }
 
-    public EVZ<Integer, List<EDF<IC>>> QQK(FDL var1, Integer var2, Integer var3, JF var4, JN var5, IH var6) throws FFK, FFO {
+    public TwoValueBox<Integer, List<EDF<IC>>> QQK(OrderType var1, Integer var2, Integer var3, JF var4, JN var5, IH var6) throws FFK, FFO {
 
-        EVZ var7;
+        TwoValueBox var7;
         var7 = this.FGN.QPY(this.FGO, var1, var2, var3, var4, var5, var6);
 
         return var7;
@@ -847,7 +847,7 @@ public class EMB {
         return var9;
     }
 
-    public List<EVZ<String, String>> getReferenceByPatternDemoSequences(Date var1) throws FFK {
+    public List<TwoValueBox<String, String>> getReferenceByPatternDemoSequences(Date var1) throws FFK {
 
         JN var2 = new JN(var1);
         ArrayList var3 = new ArrayList();
@@ -858,7 +858,7 @@ public class EMB {
         for (int var7 = 0; var7 < var6; ++var7) {
             String var8 = var5[var7];
             SimpleDateFormat var9 = new SimpleDateFormat(var8);
-            var3.add(new EVZ(var8, var9.format(var1)));
+            var3.add(new TwoValueBox(var8, var9.format(var1)));
         }
 
         Map var13 = this.FGS.get(var2);
@@ -867,7 +867,7 @@ public class EMB {
 
             while (var14.hasNext()) {
                 Map.Entry var16 = (Map.Entry) var14.next();
-                var3.add(new EVZ(var16.getKey(), String.valueOf(var16.getValue())));
+                var3.add(new TwoValueBox(var16.getKey(), String.valueOf(var16.getValue())));
             }
         }
 
@@ -907,7 +907,7 @@ public class EMB {
             LX var9 = null;
 
             try {
-                var5 = var3 + "_NEW";
+                var5 = var3 + EMX.POSTFIX_NEW;
                 FFF var13 = new FFF(var2.toCharArray());
                 var6 = this.FGN.QPQ(this.FGO, var13, var3, var5, null);
                 if (var6 == null) {
@@ -939,7 +939,7 @@ public class EMB {
             return 2;
         } else {
             try {
-                var3 = var1 + "_NEW";
+                var3 = var1 + EMX.POSTFIX_NEW;
                 var4 = this.FGN.QPQ(this.FGO, (FFF) var2, var1, var3, null);
                 if (var4 == null) {
                     this.FGN.HLE();
@@ -1089,8 +1089,8 @@ public class EMB {
                                 String var11 = var6.getName().replace(".db", "_NEW.db");
                                 String var12 = Paths.get(var6.getParentFile().getParent(), var11).toString();
                                 EWF.HZZ(var6.getAbsolutePath(), var12);
-                                int var13 = this.QQL(var10, var10 + "_NEW", this.FGN.QQD((new File(var12)).getParentFile(), var10), var7, true);
-                                this.FGN.HKW(var10);
+                                int var13 = this.QQL(var10, var10 + EMX.POSTFIX_NEW, this.FGN.QQD((new File(var12)).getParentFile(), var10), var7, true);
+                                this.FGN.initConnection(var10);
                                 var2.delete();
                                 if (var13 != 0) {
                                     throw FCZ.getInstance().RHO();

@@ -4,7 +4,7 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDF;
 import a.a.a.c.d.f.*;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.II;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HR;
@@ -86,7 +86,7 @@ public class EQQ {
 
             for (int var6 = 0; var6 < var5; ++var6) {
                 KL var7 = var4[var6];
-                EVZ var8 = new EVZ();
+                TwoValueBox var8 = new TwoValueBox();
                 var8.setFirstValue(new JR());
                 var8.setSecondValue(new JR());
                 var3.put(var7, var8);
@@ -96,7 +96,7 @@ public class EQQ {
 
             while (var11.hasNext()) {
                 IP var12 = (IP) var11.next();
-                EVZ var13 = (EVZ) var3.get(var12.getTaxRate().getValue());
+                TwoValueBox var13 = (TwoValueBox) var3.get(var12.getTaxRate().getValue());
                 BigDecimal var14 = var12.DCF().getValue();
                 BigDecimal var15 = var12.DCG().getValue();
                 BigDecimal var9 = ((JR) var13.getFirstValue()).getValue();
@@ -115,13 +115,13 @@ public class EQQ {
                 ((JR) var13.getSecondValue()).setValue(var10);
             }
 
-            var2.setVat23((EVZ) var3.get(KL.RATE_23));
-            var2.setVat8((EVZ) var3.get(KL.RATE_8));
-            var2.setVat5((EVZ) var3.get(KL.RATE_5));
-            var2.setVat4((EVZ) var3.get(KL.RATE_4));
-            var2.setVat0((EVZ) var3.get(KL.RATE_0));
-            var2.setVatNp((EVZ) var3.get(KL.NP));
-            var2.setVatZw((EVZ) var3.get(KL.ZW));
+            var2.setVat23((TwoValueBox) var3.get(KL.RATE_23));
+            var2.setVat8((TwoValueBox) var3.get(KL.RATE_8));
+            var2.setVat5((TwoValueBox) var3.get(KL.RATE_5));
+            var2.setVat4((TwoValueBox) var3.get(KL.RATE_4));
+            var2.setVat0((TwoValueBox) var3.get(KL.RATE_0));
+            var2.setVatNp((TwoValueBox) var3.get(KL.NP));
+            var2.setVatZw((TwoValueBox) var3.get(KL.ZW));
             return var2;
         }
     }
@@ -142,8 +142,8 @@ public class EQQ {
                 var11.setContractor(((HU) var0).getContractor());
                 setBasicVatPricesForInvoiceRecordElement(var11, var10.getForAll());
                 if (var10.HRL()) {
-                    var11.setVatOo23(new EVZ(new JR(var10.getForAll().getVatOo23Amount()), new JR(var10.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
-                    var11.setVatOo8(new EVZ(new JR(var10.getForAll().getVatOo8Amount()), new JR(var10.getForAll().getVatOo8Amount() != null ? BigDecimal.ZERO : null)));
+                    var11.setVatOo23(new TwoValueBox(new JR(var10.getForAll().getVatOo23Amount()), new JR(var10.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
+                    var11.setVatOo8(new TwoValueBox(new JR(var10.getForAll().getVatOo8Amount()), new JR(var10.getForAll().getVatOo8Amount() != null ? BigDecimal.ZERO : null)));
                 }
 
                 HQZ(var1, var11);
@@ -164,8 +164,8 @@ public class EQQ {
                 var11.setContractor(((HU) var12).getContractor());
                 setBasicVatPricesForInvoiceRecordElement(var11, var9.getForAll());
                 if (var9.HRL()) {
-                    var11.setVatOo23(new EVZ(new JR(var9.getForAll().getVatOo23Amount()), new JR(var9.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
-                    var11.setVatOo8(new EVZ(new JR(var9.getForAll().getVatOo8Amount()), new JR(var9.getForAll().getVatOo8Amount() != null ? BigDecimal.ZERO : null)));
+                    var11.setVatOo23(new TwoValueBox(new JR(var9.getForAll().getVatOo23Amount()), new JR(var9.getForAll().getVatOo23Amount() != null ? BigDecimal.ZERO : null)));
+                    var11.setVatOo8(new TwoValueBox(new JR(var9.getForAll().getVatOo8Amount()), new JR(var9.getForAll().getVatOo8Amount() != null ? BigDecimal.ZERO : null)));
                 }
 
                 HQZ(var1, var11);
@@ -248,13 +248,13 @@ public class EQQ {
         var1.setNet(new JR(var2));
         var1.setGross(new JR(var2.add(var3)));
         var1.setVat(new JR(var3));
-        var1.setVat23(new EVZ(new JR(), new JR()));
-        var1.setVat8(new EVZ(new JR(), new JR()));
-        var1.setVat5(new EVZ(new JR(), new JR()));
-        var1.setVat4(new EVZ(new JR(), new JR()));
-        var1.setVat0(new EVZ(new JR(), new JR()));
-        var1.setVatZw(new EVZ(new JR(), new JR()));
-        var1.setVatNp(new EVZ(new JR(), new JR()));
+        var1.setVat23(new TwoValueBox(new JR(), new JR()));
+        var1.setVat8(new TwoValueBox(new JR(), new JR()));
+        var1.setVat5(new TwoValueBox(new JR(), new JR()));
+        var1.setVat4(new TwoValueBox(new JR(), new JR()));
+        var1.setVat0(new TwoValueBox(new JR(), new JR()));
+        var1.setVatZw(new TwoValueBox(new JR(), new JR()));
+        var1.setVatNp(new TwoValueBox(new JR(), new JR()));
         var1.setVatOo23(var0.QRQ());
         var1.setVatOo8(var0.QRR());
         return var1;
@@ -279,8 +279,8 @@ public class EQQ {
                 var6 = var1.getForFixedAssets().getVatOo8Amount();
             }
 
-            var0.setVatOo23(new EVZ(new JR(var5), new JR(var2.getVatOo23Tax())));
-            var0.setVatOo8(new EVZ(new JR(var6), new JR(var2.getVatOo8Tax())));
+            var0.setVatOo23(new TwoValueBox(new JR(var5), new JR(var2.getVatOo23Tax())));
+            var0.setVatOo8(new TwoValueBox(new JR(var6), new JR(var2.getVatOo8Tax())));
         }
 
     }
@@ -311,13 +311,13 @@ public class EQQ {
             var0.setVat(new JR(var1.getVatPrice()));
         }
 
-        var0.setVat23(new EVZ(new JR(var1.getVat23Amount()), new JR(var1.getVat23Tax())));
-        var0.setVat8(new EVZ(new JR(var1.getVat8Amount()), new JR(var1.getVat8Tax())));
-        var0.setVat5(new EVZ(new JR(var1.getVat5Amount()), new JR(var1.getVat5Tax())));
-        var0.setVat4(new EVZ(new JR(var1.getVat4Amount()), new JR(var1.getVat4Tax())));
-        var0.setVat0(new EVZ(new JR(var1.getVat0Amount()), new JR(var1.getVat0Tax())));
-        var0.setVatZw(new EVZ(new JR(var1.getVatZwAmount()), new JR(var1.getVatZwTax())));
-        var0.setVatNp(new EVZ(new JR(var1.getVatNpAmount()), new JR(var1.getProperVatNpTax())));
+        var0.setVat23(new TwoValueBox(new JR(var1.getVat23Amount()), new JR(var1.getVat23Tax())));
+        var0.setVat8(new TwoValueBox(new JR(var1.getVat8Amount()), new JR(var1.getVat8Tax())));
+        var0.setVat5(new TwoValueBox(new JR(var1.getVat5Amount()), new JR(var1.getVat5Tax())));
+        var0.setVat4(new TwoValueBox(new JR(var1.getVat4Amount()), new JR(var1.getVat4Tax())));
+        var0.setVat0(new TwoValueBox(new JR(var1.getVat0Amount()), new JR(var1.getVat0Tax())));
+        var0.setVatZw(new TwoValueBox(new JR(var1.getVatZwAmount()), new JR(var1.getVatZwTax())));
+        var0.setVatNp(new TwoValueBox(new JR(var1.getVatNpAmount()), new JR(var1.getProperVatNpTax())));
     }
 
     private static void RIA(QSG<?> var0, IC var1, IC var2) {

@@ -2,8 +2,8 @@ package a.a.a.c.c.c;
 
 import a.a.a.b.f.FFI;
 import a.a.a.c.c.a.ELZ;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWD;
+import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.OneValueBox;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,7 +35,7 @@ public class ENG {
     public static final String RHB = "display.type";
     public static final String RHC = "lock.config";
     private Map<String, Map<String, Object>> FNB;
-    private Map<ENH, Map<EWD<?>, Map<String, Object>>> RHD;
+    private Map<ENH, Map<OneValueBox<?>, Map<String, Object>>> RHD;
 
     public ENG() {
 
@@ -59,7 +59,7 @@ public class ENG {
             String var4;
             String var6;
             Integer var7;
-            EWD var8;
+            OneValueBox var8;
             String var28;
             Iterator var1 = props.keySet().iterator();
             while (var1.hasNext()) {
@@ -87,7 +87,7 @@ public class ENG {
                             var28 = var3.replaceFirst("micro.global.anchor\\[" + var4 + "\\" + ']' + ".definition" + "\\" + '[' + var6 + "\\" + ']' + "\\" + '[', "");
                             var28 = var28.substring(0, var28.indexOf(93));
                             Integer var9 = Integer.parseInt(var28);
-                            EVZ var10 = new EVZ(var7, var9);
+                            TwoValueBox var10 = new TwoValueBox(var7, var9);
                             if (!this.RHD.get(var5).containsKey(var10)) {
                                 ((Map) this.RHD.get(var5)).put(var10, new HashMap());
                             }
@@ -96,7 +96,7 @@ public class ENG {
                             var6 = var3.replaceFirst("micro.global.anchor\\[" + var4 + "\\" + ']' + ".definition" + "\\" + '[', "");
                             var6 = var6.substring(0, var6.indexOf(93));
                             var7 = Integer.parseInt(var6);
-                            var8 = new EWD(var7);
+                            var8 = new OneValueBox(var7);
                             if (!this.RHD.get(var5).containsKey(var8)) {
                                 ((Map) this.RHD.get(var5)).put(var8, new HashMap());
                             }
@@ -196,11 +196,11 @@ public class ENG {
                     var7 = null;
                     switch (var20) {
                         case MAIN:
-                            EVZ var36 = (EVZ) var30.getKey();
+                            TwoValueBox var36 = (TwoValueBox) var30.getKey();
                             var25 = var4 + ".definition" + '[' + var36.getFirstValue() + ']' + '[' + var36.getSecondValue() + ']';
                             break;
                         case LEFT_BAR:
-                            var8 = (EWD) var30.getKey();
+                            var8 = (OneValueBox) var30.getKey();
                             var25 = var4 + ".definition" + '[' + var8.getFirstValue() + ']';
                             break;
                         default:
@@ -235,7 +235,7 @@ public class ENG {
         return new HashMap<>(this.FNB.get(name));
     }
 
-    public Map<EWD<?>, Map<String, Object>> getGlobalAnchorDefinition(ENH name) {
+    public Map<OneValueBox<?>, Map<String, Object>> getGlobalAnchorDefinition(ENH name) {
 
         return new HashMap<>(this.RHD.get(name));
     }

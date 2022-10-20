@@ -8,8 +8,8 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.b.EDH;
 import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.e.d.b.ESW;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWC;
+import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ThreeValueBox;
 import a.a.a.c.f.a.a.EYL;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.c.QJW;
@@ -33,7 +33,7 @@ import java.util.List;
 public class ESX extends ELX implements EYL {
     private HR GFE;
     private FDO GFF;
-    private EWC<JN, KE, KA> GFG;
+    private ThreeValueBox<JN, KE, KA> GFG;
 
     public ESX() {
         super(ESW.GFC.getProcessName());
@@ -140,7 +140,7 @@ public class ESX extends ELX implements EYL {
         this.GFF = var1;
     }
 
-    public void setInvoicePurchaseEditKey(EWC<JN, KE, KA> var1) {
+    public void setInvoicePurchaseEditKey(ThreeValueBox<JN, KE, KA> var1) {
         this.GFG = var1;
     }
 
@@ -151,7 +151,7 @@ public class ESX extends ELX implements EYL {
             boolean var4 = false;
             if (var1 != null && var1.getYear() != null && var1.getMonth() != null && var2 != null && var2.getValue() != null) {
                 IU var5 = new IU(HR.class, null, var1, IB.PURCHASE, null, new KE(var2), var3, null);
-                EVZ var6 = this.getModelManager().HJY(this.getParentDefinition(), var5);
+                TwoValueBox var6 = this.getModelManager().HJY(this.getParentDefinition(), var5);
                 if (((List) var6.getSecondValue()).isEmpty()) {
                     var4 = true;
                 } else {
@@ -196,7 +196,7 @@ public class ESX extends ELX implements EYL {
             boolean var2 = false;
             if (var1 != null && var1.getYear() != null && var1.getMonth() != null) {
                 JE var3 = new JE(JI.class, var1, JH.VAT);
-                EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+                TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
                 if (((List) var4.getSecondValue()).isEmpty()) {
                     var2 = true;
                 } else {
@@ -226,7 +226,7 @@ public class ESX extends ELX implements EYL {
         ArrayList var4;
         try {
             AGYN var3 = new AGYN(HI.class, var1);
-            EVZ var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            TwoValueBox var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
 

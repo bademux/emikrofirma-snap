@@ -1,6 +1,6 @@
 package a.a.a.c.d.f;
 
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.b.c.JR;
 
 import java.math.BigDecimal;
@@ -9,7 +9,7 @@ public class ERD {
     public ERD() {
     }
 
-    public static EVZ<JR, JR> HRV(EVZ<JR, JR> var0, EVZ<JR, JR> var1) {
+    public static TwoValueBox<JR, JR> HRV(TwoValueBox<JR, JR> var0, TwoValueBox<JR, JR> var1) {
         BigDecimal var2 = BigDecimal.ZERO;
         BigDecimal var3 = BigDecimal.ZERO;
         BigDecimal var4 = BigDecimal.ZERO;
@@ -34,6 +34,6 @@ public class ERD {
             }
         }
 
-        return new EVZ(new JR(var2.add(var4)), new JR(var3.add(var5)));
+        return new TwoValueBox(new JR(var2.add(var4)), new JR(var3.add(var5)));
     }
 }

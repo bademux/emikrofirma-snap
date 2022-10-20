@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.e.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.IJ;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.n.QSQ;
@@ -26,16 +26,16 @@ public class ID extends IJ implements Comparable<ID> {
     private JR ALS;
     private JR ALT;
     private JR ALU;
-    private EVZ<JR, JR> ALV;
-    private EVZ<JR, JR> ALW;
-    private EVZ<JR, JR> ALX;
-    private EVZ<JR, JR> QLU;
-    private EVZ<JR, JR> ALY;
-    private EVZ<JR, JR> ALZ;
-    private EVZ<JR, JR> AMA;
-    private EVZ<JR, JR> AMB;
-    private EVZ<JR, JR> AMC;
-    private EVZ<JR, JR> AMD;
+    private TwoValueBox<JR, JR> ALV;
+    private TwoValueBox<JR, JR> ALW;
+    private TwoValueBox<JR, JR> ALX;
+    private TwoValueBox<JR, JR> QLU;
+    private TwoValueBox<JR, JR> ALY;
+    private TwoValueBox<JR, JR> ALZ;
+    private TwoValueBox<JR, JR> AMA;
+    private TwoValueBox<JR, JR> AMB;
+    private TwoValueBox<JR, JR> AMC;
+    private TwoValueBox<JR, JR> AMD;
     private JS FGB;
     private JS QWR;
     private JS QWS;
@@ -116,163 +116,163 @@ public class ID extends IJ implements Comparable<ID> {
         this.ALU = var1;
     }
 
-    public EVZ<JR, JR> getVat23() {
+    public TwoValueBox<JR, JR> getVat23() {
         return this.ALV;
     }
 
-    public EVZ<JR, JR> QRJ() {
+    public TwoValueBox<JR, JR> QRJ() {
         if (this.ALV == null) {
-            this.ALV = new EVZ(new JR(), new JR());
+            this.ALV = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALV;
     }
 
-    public void setVat23(EVZ<JR, JR> var1) {
+    public void setVat23(TwoValueBox<JR, JR> var1) {
         this.ALV = var1;
     }
 
-    public EVZ<JR, JR> getVat8() {
+    public TwoValueBox<JR, JR> getVat8() {
         return this.ALW;
     }
 
-    public EVZ<JR, JR> QRK() {
+    public TwoValueBox<JR, JR> QRK() {
         if (this.ALW == null) {
-            this.ALW = new EVZ(new JR(), new JR());
+            this.ALW = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALW;
     }
 
-    public void setVat8(EVZ<JR, JR> var1) {
+    public void setVat8(TwoValueBox<JR, JR> var1) {
         this.ALW = var1;
     }
 
-    public EVZ<JR, JR> getVat5() {
+    public TwoValueBox<JR, JR> getVat5() {
         return this.ALX;
     }
 
-    public EVZ<JR, JR> QRL() {
+    public TwoValueBox<JR, JR> QRL() {
         if (this.ALX == null) {
-            this.ALX = new EVZ(new JR(), new JR());
+            this.ALX = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALX;
     }
 
-    public void setVat5(EVZ<JR, JR> var1) {
+    public void setVat5(TwoValueBox<JR, JR> var1) {
         this.ALX = var1;
     }
 
-    public EVZ<JR, JR> getVat4() {
+    public TwoValueBox<JR, JR> getVat4() {
         return this.QLU;
     }
 
-    public EVZ<JR, JR> QRM() {
+    public TwoValueBox<JR, JR> QRM() {
         if (this.QLU == null) {
-            this.QLU = new EVZ(new JR(), new JR());
+            this.QLU = new TwoValueBox(new JR(), new JR());
         }
 
         return this.QLU;
     }
 
-    public void setVat4(EVZ<JR, JR> var1) {
+    public void setVat4(TwoValueBox<JR, JR> var1) {
         this.QLU = var1;
     }
 
-    public EVZ<JR, JR> getVat0() {
+    public TwoValueBox<JR, JR> getVat0() {
         return this.ALY;
     }
 
-    public EVZ<JR, JR> QRN() {
+    public TwoValueBox<JR, JR> QRN() {
         if (this.ALY == null) {
-            this.ALY = new EVZ(new JR(), new JR());
+            this.ALY = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALY;
     }
 
-    public void setVat0(EVZ<JR, JR> var1) {
+    public void setVat0(TwoValueBox<JR, JR> var1) {
         this.ALY = var1;
     }
 
-    public EVZ<JR, JR> getVatZw() {
+    public TwoValueBox<JR, JR> getVatZw() {
         return this.ALZ;
     }
 
-    public EVZ<JR, JR> QRO() {
+    public TwoValueBox<JR, JR> QRO() {
         if (this.ALZ == null) {
-            this.ALZ = new EVZ(new JR(), new JR());
+            this.ALZ = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALZ;
     }
 
-    public void setVatZw(EVZ<JR, JR> var1) {
+    public void setVatZw(TwoValueBox<JR, JR> var1) {
         this.ALZ = var1;
     }
 
-    public EVZ<JR, JR> getVatNp() {
+    public TwoValueBox<JR, JR> getVatNp() {
         return this.AMA;
     }
 
-    public EVZ<JR, JR> QRP() {
+    public TwoValueBox<JR, JR> QRP() {
         if (this.AMA == null) {
-            this.AMA = new EVZ(new JR(), new JR());
+            this.AMA = new TwoValueBox(new JR(), new JR());
         }
 
         return this.AMA;
     }
 
-    public void setVatNp(EVZ<JR, JR> var1) {
+    public void setVatNp(TwoValueBox<JR, JR> var1) {
         this.AMA = var1;
     }
 
-    public EVZ<JR, JR> getVatOo23() {
+    public TwoValueBox<JR, JR> getVatOo23() {
         return this.AMB;
     }
 
-    public EVZ<JR, JR> QRQ() {
+    public TwoValueBox<JR, JR> QRQ() {
         if (this.AMB == null) {
-            this.AMB = new EVZ(new JR(), new JR());
+            this.AMB = new TwoValueBox(new JR(), new JR());
         }
 
         return this.AMB;
     }
 
-    public void setVatOo23(EVZ<JR, JR> var1) {
+    public void setVatOo23(TwoValueBox<JR, JR> var1) {
         this.AMB = var1;
     }
 
-    public EVZ<JR, JR> getVatOo8() {
+    public TwoValueBox<JR, JR> getVatOo8() {
         return this.AMC;
     }
 
-    public EVZ<JR, JR> QRR() {
+    public TwoValueBox<JR, JR> QRR() {
         if (this.AMC == null) {
-            this.AMC = new EVZ(new JR(), new JR());
+            this.AMC = new TwoValueBox(new JR(), new JR());
         }
 
         return this.AMC;
     }
 
-    public void setVatOo8(EVZ<JR, JR> var1) {
+    public void setVatOo8(TwoValueBox<JR, JR> var1) {
         this.AMC = var1;
     }
 
-    public EVZ<JR, JR> getVatOo5() {
+    public TwoValueBox<JR, JR> getVatOo5() {
         return this.AMD;
     }
 
-    public EVZ<JR, JR> QRS() {
+    public TwoValueBox<JR, JR> QRS() {
         if (this.AMD == null) {
-            this.AMD = new EVZ(new JR(), new JR());
+            this.AMD = new TwoValueBox(new JR(), new JR());
         }
 
         return this.AMD;
     }
 
-    public void setVatOo5(EVZ<JR, JR> var1) {
+    public void setVatOo5(TwoValueBox<JR, JR> var1) {
         this.AMD = var1;
     }
 
@@ -384,7 +384,7 @@ public class ID extends IJ implements Comparable<ID> {
         return this.FGB;
     }
 
-    public EVZ<JR, JR> getVat4and8() {
+    public TwoValueBox<JR, JR> getVat4and8() {
         BigDecimal var1 = BigDecimal.ZERO;
         BigDecimal var2 = BigDecimal.ZERO;
         if (this.QLU != null && this.QLU.getFirstValue() != null && this.QLU.getFirstValue().getValue() != null) {
@@ -403,14 +403,14 @@ public class ID extends IJ implements Comparable<ID> {
             var2 = var2.add(this.ALW.getSecondValue().getValue());
         }
 
-        return new EVZ(new JR(var1), new JR(var2));
+        return new TwoValueBox(new JR(var1), new JR(var2));
     }
 
-    public EVZ<JR, JR> QRT() {
+    public TwoValueBox<JR, JR> QRT() {
         return this.getVat4and8();
     }
 
-    public void setVat4and8(EVZ<JR, JR> var1) {
+    public void setVat4and8(TwoValueBox<JR, JR> var1) {
         throw new FFI("This method should not be used");
     }
 

@@ -3,7 +3,7 @@ package a.a.a.c.c.e.f.a;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.d.d.b.EOC;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.a.IC;
 import a.a.a.c.f.a.e.a.ID;
@@ -265,7 +265,7 @@ public class ETK {
 
     }
 
-    private String getValue(EVZ<JR, JR> var1, boolean var2) {
+    private String getValue(TwoValueBox<JR, JR> var1, boolean var2) {
         if (var1 != null) {
             if (var2 && var1.getFirstValue() != null && var1.getFirstValue().getValue() != null) {
                 return EOC.HNN(var1.getFirstValue().getValue());

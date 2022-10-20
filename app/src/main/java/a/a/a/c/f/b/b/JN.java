@@ -1,7 +1,7 @@
 package a.a.a.c.f.b.b;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.IJ;
 import a.a.a.c.f.b.c.JY;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -40,7 +40,7 @@ public class JN extends IJ implements Comparable<JN> {
 
     }
 
-    private JN(EVZ<Integer, Integer> var1) {
+    private JN(TwoValueBox<Integer, Integer> var1) {
         this(new JY(var1.getFirstValue()), new JY(var1.getSecondValue()));
 
     }
@@ -150,9 +150,9 @@ public class JN extends IJ implements Comparable<JN> {
         return "Period [year=" + this.AOF + ", month=" + this.AOG + "]";
     }
 
-    private static EVZ<Integer, Integer> DDO(Date var0) throws FFK {
+    private static TwoValueBox<Integer, Integer> DDO(Date var0) throws FFK {
 
-        EVZ var5;
+        TwoValueBox var5;
         if (var0 == null) {
             throw new FFK("Date cannot be NULL!");
         }
@@ -161,21 +161,21 @@ public class JN extends IJ implements Comparable<JN> {
         SimpleDateFormat var2 = new SimpleDateFormat("MM");
         Integer var3 = Integer.parseInt(var1.format(var0));
         Integer var4 = Integer.parseInt(var2.format(var0));
-        var5 = new EVZ(var3, var4);
+        var5 = new TwoValueBox(var3, var4);
 
         return var5;
     }
 
-    private static EVZ<Integer, Integer> DDO(LocalDate var0) throws FFK {
+    private static TwoValueBox<Integer, Integer> DDO(LocalDate var0) throws FFK {
 
-        EVZ var3;
+        TwoValueBox var3;
         if (var0 == null) {
             throw new FFK("Date cannot be NULL!");
         }
 
         Integer var1 = var0.getYear();
         Integer var2 = var0.getMonthValue();
-        var3 = new EVZ(var1, var2);
+        var3 = new TwoValueBox(var1, var2);
 
         return var3;
     }
@@ -237,7 +237,7 @@ public class JN extends IJ implements Comparable<JN> {
                 this.AOC = var1;
 
                 try {
-                    EVZ var2 = JN.DDO(var1);
+                    TwoValueBox var2 = JN.DDO(var1);
                     this.AOB.DDJ().setValue((Integer) var2.getFirstValue());
                     this.AOB.DDK().setValue((Integer) var2.getSecondValue());
                 } catch (FFK var3) {

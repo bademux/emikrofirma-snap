@@ -7,7 +7,7 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.p.b.QUC;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.a.EYL;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.c.QJW;
@@ -76,7 +76,7 @@ public class QUD extends ELX implements EYL {
         JG var7;
         JN var2 = new JN(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         IY var3 = new IY(JF.class, var2, JH.VAT, null);
-        EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -99,7 +99,7 @@ public class QUD extends ELX implements EYL {
         ArrayList var4;
         try {
             AGYN var3 = new AGYN(HI.class, var1);
-            EVZ var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            TwoValueBox var13 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var13 != null) {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
 

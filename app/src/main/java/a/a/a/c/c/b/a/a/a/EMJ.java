@@ -11,7 +11,7 @@ import a.a.a.c.c.b.a.b.a.EMR;
 import a.a.a.c.c.c.ENG;
 import a.a.a.c.c.c.ENH;
 import a.a.a.c.c.c.QVH;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.c.a.LP;
 import a.a.a.c.f.c.b.LY;
 import a.a.a.c.g.a.FCT;
@@ -44,8 +44,8 @@ public class EMJ extends BaseSceneFxController {
     private Text fxml_textVersions;
     @FXML
     private Label fxml_label_startMessage;
-    private final Map<Integer, Map<Integer, EVZ<QVH, ContextMenu>>> RHH = new HashMap();
-    private final List<EVZ<Boolean, Button>> FHE = new ArrayList();
+    private final Map<Integer, Map<Integer, TwoValueBox<QVH, ContextMenu>>> RHH = new HashMap();
+    private final List<TwoValueBox<Boolean, Button>> FHE = new ArrayList();
     @FXML
     private EMR fxml_include_top_menuController;
     @FXML
@@ -76,7 +76,7 @@ public class EMJ extends BaseSceneFxController {
         String var8;
         while (var1.hasNext()) {
             Map.Entry var2 = (Map.Entry) var1.next();
-            EVZ var3 = (EVZ) var2.getKey();
+            TwoValueBox var3 = (TwoValueBox) var2.getKey();
             var4 = (Map) var2.getValue();
             int var5 = (Integer) var3.getFirstValue();
             int var6 = (Integer) var3.getSecondValue();
@@ -102,9 +102,9 @@ public class EMJ extends BaseSceneFxController {
 
                 }
             });
-            this.FHE.add(new EVZ(var10, var11));
+            this.FHE.add(new TwoValueBox(var10, var11));
             this.HJG(var11, var5, var6, var8);
-            this.setAnchorDisplayTypeByLocation(var5, var6, new EVZ(QVH.valueOf(var9), var12));
+            this.setAnchorDisplayTypeByLocation(var5, var6, new TwoValueBox(QVH.valueOf(var9), var12));
         }
 
         var1 = ENG.getInstance().HNI().iterator();
@@ -127,7 +127,7 @@ public class EMJ extends BaseSceneFxController {
                     QVH var14 = QVH.valueOf(var13);
                     String var15 = (String) var30.get("context.position");
                     int var16 = Integer.parseInt(var15);
-                    EVZ var17 = this.getAnchorDisplayTypeByLocation(var34, var35);
+                    TwoValueBox var17 = this.getAnchorDisplayTypeByLocation(var34, var35);
                     QVH var18 = null;
                     if (var17 != null) {
                         var18 = (QVH) var17.getFirstValue();
@@ -149,14 +149,14 @@ public class EMJ extends BaseSceneFxController {
                                     EMJ.this.getApplication().initController(EMJ.this.getFxmlName(), finalVar, null);
                                 }
                             });
-                            this.FHE.add(new EVZ(var32, var36));
+                            this.FHE.add(new TwoValueBox(var32, var36));
                             if (var34 != null && var35 != null) {
                                 this.HJG(var36, var34, var35, var33);
                                 if (var17 != null) {
                                     throw new FFI("Value for anchor display type [" + var14 + "] already set!");
                                 }
 
-                                var17 = new EVZ(var14, null);
+                                var17 = new TwoValueBox(var14, null);
                                 this.setAnchorDisplayTypeByLocation(var34, var35, var17);
                                 break;
                             }
@@ -202,26 +202,26 @@ public class EMJ extends BaseSceneFxController {
 
     }
 
-    private EVZ<QVH, ContextMenu> getAnchorDisplayTypeByLocation(String var1, String var2) {
+    private TwoValueBox<QVH, ContextMenu> getAnchorDisplayTypeByLocation(String var1, String var2) {
         return this.HJH(var1) && this.HJH(var2) ? this.getAnchorDisplayTypeByLocation(Integer.parseInt(var1), Integer.parseInt(var2)) : null;
     }
 
-    private EVZ<QVH, ContextMenu> getAnchorDisplayTypeByLocation(int var1, int var2) {
+    private TwoValueBox<QVH, ContextMenu> getAnchorDisplayTypeByLocation(int var1, int var2) {
         if (!this.RHH.containsKey(var2)) {
             this.RHH.put(var2, new HashMap());
         }
 
-        return (EVZ) ((Map) this.RHH.get(var2)).get(var1);
+        return (TwoValueBox) ((Map) this.RHH.get(var2)).get(var1);
     }
 
-    private void setAnchorDisplayTypeByLocation(String var1, String var2, EVZ<QVH, ContextMenu> var3) {
+    private void setAnchorDisplayTypeByLocation(String var1, String var2, TwoValueBox<QVH, ContextMenu> var3) {
         if (this.HJH(var1) && this.HJH(var2)) {
             this.setAnchorDisplayTypeByLocation(Integer.parseInt(var1), Integer.parseInt(var2), var3);
         }
 
     }
 
-    private void setAnchorDisplayTypeByLocation(int var1, int var2, EVZ<QVH, ContextMenu> var3) {
+    private void setAnchorDisplayTypeByLocation(int var1, int var2, TwoValueBox<QVH, ContextMenu> var3) {
         if (!this.RHH.containsKey(var2)) {
             this.RHH.put(var2, new HashMap());
         }
@@ -274,7 +274,7 @@ public class EMJ extends BaseSceneFxController {
 
             while (true) {
                 while (var3.hasNext()) {
-                    EVZ var4 = (EVZ) var3.next();
+                    TwoValueBox var4 = (TwoValueBox) var3.next();
                     if ((Boolean) var4.getFirstValue()) {
                         ((Button) var4.getSecondValue()).disableProperty().set(var1 == null || var2 == null);
                     } else {

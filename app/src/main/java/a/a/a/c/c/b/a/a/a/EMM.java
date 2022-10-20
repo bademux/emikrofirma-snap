@@ -62,7 +62,7 @@ public class EMM extends BaseSceneFxController {
         try {
             org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [login] clicked");
             this.fxml_loginText.setText("");
-            if (!EMB.getInstance().HHR(this.fxml_userName.getValue(), this.fxml_passwordField.getText())) {
+            if (!EMB.getInstance().login(this.fxml_userName.getValue(), this.fxml_passwordField.getText())) {
                 throw FCZ.getInstance().IHA();
             }
 

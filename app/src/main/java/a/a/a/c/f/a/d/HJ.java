@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.d;
 
-import a.a.a.c.e.a.d.MME;
+import a.a.a.c.e.a.d.SevenValueBox;
 import a.a.a.c.f.a.EXM;
 import a.a.a.c.f.b.c.JY;
 import jakarta.xml.bind.annotation.XmlTransient;
@@ -15,7 +15,7 @@ public abstract class HJ extends EXM {
     private HL AJC;
     private JY AHRO;
     private EHK FFZ;
-    private transient MME<Boolean, String, String, String, LocalDate, BigDecimal, String> MWA;
+    private transient SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> MWA;
 
     public HJ() {
 
@@ -72,11 +72,11 @@ public abstract class HJ extends EXM {
         this.FFZ = var1;
     }
 
-    public MME<Boolean, String, String, String, LocalDate, BigDecimal, String> getKdSignatureData() {
+    public SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> getKdSignatureData() {
         return this.MWA;
     }
 
-    public void setKdSignatureData(MME<Boolean, String, String, String, LocalDate, BigDecimal, String> var1) {
+    public void setKdSignatureData(SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> var1) {
         this.MWA = var1;
     }
 

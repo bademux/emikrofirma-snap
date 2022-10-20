@@ -1,6 +1,6 @@
 package a.a.a.b.a.a;
 
-public enum FDK {
+public enum Condition {
     EQUALS("="),
     NOT_EQUALS("!="),
     LESS_THAN("<"),
@@ -11,7 +11,7 @@ public enum FDK {
 
     private final String HDP;
 
-    FDK(String var3) {
+    Condition(String var3) {
         this.HDP = var3;
     }
 

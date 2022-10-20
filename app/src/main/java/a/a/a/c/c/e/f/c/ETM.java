@@ -6,7 +6,7 @@ import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.f.b.ETL;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.e.a.IC;
 import a.a.a.c.f.a.g.EYD;
 import a.a.a.c.f.a.g.IY;
@@ -79,7 +79,7 @@ public class ETM extends ELV {
         try {
             HashSet var2 = new HashSet();
             IY var3 = new IY(IC.class, var1, null, null);
-            EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             if (var4 != null) {
                 Iterator var5 = ((List) var4.getSecondValue()).iterator();
 
@@ -101,7 +101,7 @@ public class ETM extends ELV {
         HashSet var12;
         try {
             EYD var2 = new EYD(IC.class, var1, null, null, null);
-            EVZ var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
+            TwoValueBox var3 = this.getModelManager().HKD(this.getParentDefinition(), var2);
             HashSet var4 = new HashSet();
             if (var3 != null) {
                 Iterator var5 = ((List) var3.getSecondValue()).iterator();

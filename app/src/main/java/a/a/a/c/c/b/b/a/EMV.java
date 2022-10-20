@@ -1,6 +1,6 @@
 package a.a.a.c.c.b.b.a;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.b.a.a.FDO;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
@@ -9,7 +9,7 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.ELZ;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.b.EMU;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.KU;
 import a.a.a.c.f.LN;
 import a.a.a.c.f.a.II;
@@ -237,11 +237,11 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends IL, _Q extends IW<_T>, _R extends EDF<_T>, _S extends List<_R>> EVZ<Integer, _S> HJY(ELZ var1, _Q var2) throws FFK, FFO {
+    public <_T extends IL, _Q extends IW<_T>, _R extends EDF<_T>, _S extends List<_R>> TwoValueBox<Integer, _S> HJY(ELZ var1, _Q var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getTypeClass());
         II var3 = II.getByType(var2.getTypeClass());
-        FDL var4 = null;
+        OrderType var4 = null;
         Integer var5 = null;
         Integer var6 = null;
         JN var7 = null;
@@ -250,8 +250,8 @@ public class EMV implements EMU {
         KE var10 = null;
         KA var11 = null;
         KA var12 = null;
-        EVZ var13 = null;
-        EVZ var14 = null;
+        TwoValueBox var13 = null;
+        TwoValueBox var14 = null;
         Integer var15 = null;
         String var16 = null;
         QSW var17 = null;
@@ -307,7 +307,7 @@ public class EMV implements EMU {
             var16 = var26.getSearch();
         }
 
-        EVZ var27;
+        TwoValueBox var27;
         switch (var3) {
             case InvoiceSell:
             case InvoiceSellCorrection:
@@ -358,11 +358,11 @@ public class EMV implements EMU {
         }
     }
 
-    public <_T extends IK, _I extends Enum<_I>, _L extends Enum<_L>, _Q extends EYD<_T, _I, _L>, _R extends EDF<_T>, _S extends List<_R>> EVZ<Integer, _S> HKD(ELZ var1, _Q var2) throws FFK, FFO {
+    public <_T extends IK, _I extends Enum<_I>, _L extends Enum<_L>, _Q extends EYD<_T, _I, _L>, _R extends EDF<_T>, _S extends List<_R>> TwoValueBox<Integer, _S> HKD(ELZ var1, _Q var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getTypeClass());
         II var3 = II.getByType(var2.getTypeClass());
-        FDL var4 = null;
+        OrderType var4 = null;
         Integer var5 = null;
         Integer var6 = null;
         Enum var7 = null;
@@ -388,7 +388,7 @@ public class EMV implements EMU {
             var10 = var2.getSettlement();
         }
 
-        EVZ var11;
+        TwoValueBox var11;
         switch (var3) {
             case Declaration:
             case DeclarationJPK:
@@ -726,7 +726,7 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends IL, _Q extends IW<_T>, _R extends EDF<_T>, _S extends List<_R>> EVZ<Integer, _S> HKE(ELZ var1, _Q var2) throws FFK, FFO {
+    public <_T extends IL, _Q extends IW<_T>, _R extends EDF<_T>, _S extends List<_R>> TwoValueBox<Integer, _S> HKE(ELZ var1, _Q var2) throws FFK, FFO {
         return null;
     }
 }

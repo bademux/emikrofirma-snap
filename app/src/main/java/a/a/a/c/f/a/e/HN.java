@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.e;
 
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.IK;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.b.c.a.KL;
@@ -21,9 +21,9 @@ public abstract class HN<_T extends HO> extends IK {
     private KE AJI;
     private JV AJJ;
     private JV AJK;
-    private final List<EVZ<KL, BigDecimal>> AJL;
-    private final List<EVZ<KL, BigDecimal>> AJM;
-    private final List<EVZ<KL, BigDecimal>> AJN;
+    private final List<TwoValueBox<KL, BigDecimal>> AJL;
+    private final List<TwoValueBox<KL, BigDecimal>> AJM;
+    private final List<TwoValueBox<KL, BigDecimal>> AJN;
     private JR AJO;
     private JR AJP;
     private JR AJQ;
@@ -132,15 +132,15 @@ public abstract class HN<_T extends HO> extends IK {
         this.AJK = var1;
     }
 
-    public List<EVZ<KL, BigDecimal>> getSumOfAmountsDividedByTaxRate() {
+    public List<TwoValueBox<KL, BigDecimal>> getSumOfAmountsDividedByTaxRate() {
         return this.AJL;
     }
 
-    public List<EVZ<KL, BigDecimal>> getAmountOfTaxDividedByTaxRate() {
+    public List<TwoValueBox<KL, BigDecimal>> getAmountOfTaxDividedByTaxRate() {
         return this.AJM;
     }
 
-    public List<EVZ<KL, BigDecimal>> getSumOfGrossAmountsDividedByTaxRate() {
+    public List<TwoValueBox<KL, BigDecimal>> getSumOfGrossAmountsDividedByTaxRate() {
         return this.AJN;
     }
 
@@ -334,15 +334,15 @@ public abstract class HN<_T extends HO> extends IK {
         return var1;
     }
 
-    public EVZ<BigDecimal, BigDecimal> getNetAndTaxForTaxRate(KL var1) {
+    public TwoValueBox<BigDecimal, BigDecimal> getNetAndTaxForTaxRate(KL var1) {
 
         BigDecimal var2 = BigDecimal.ZERO;
         BigDecimal var3 = BigDecimal.ZERO;
         Iterator var4 = this.getSumOfAmountsDividedByTaxRate().iterator();
 
-        EVZ var5;
+        TwoValueBox var5;
         while (var4.hasNext()) {
-            var5 = (EVZ) var4.next();
+            var5 = (TwoValueBox) var4.next();
             if (var5.getFirstValue().equals(var1)) {
                 var2 = (BigDecimal) var5.getSecondValue();
             }
@@ -351,13 +351,13 @@ public abstract class HN<_T extends HO> extends IK {
         var4 = this.getAmountOfTaxDividedByTaxRate().iterator();
 
         while (var4.hasNext()) {
-            var5 = (EVZ) var4.next();
+            var5 = (TwoValueBox) var4.next();
             if (var5.getFirstValue().equals(var1)) {
                 var3 = (BigDecimal) var5.getSecondValue();
             }
         }
 
-        EVZ var9 = new EVZ(var2, var3);
+        TwoValueBox var9 = new TwoValueBox(var2, var3);
         return var9;
     }
 

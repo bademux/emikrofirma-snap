@@ -10,7 +10,7 @@ import a.a.a.c.c.e.i.d.EUF;
 import a.a.a.c.d.b.EPW;
 import a.a.a.c.d.b.EQM;
 import a.a.a.c.e.a.a.EVN;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.JT;
@@ -97,7 +97,7 @@ public class EUC {
             if (var3 != null) {
                 EQM var4 = new EQM();
                 if (var4.HQL(var3)) {
-                    EVZ var5 = var4.HQO(var3);
+                    TwoValueBox var5 = var4.HQO(var3);
                     AGXA var6 = (AGXA) var5.getFirstValue();
                     Integer var7 = 0;
 

@@ -1,6 +1,6 @@
 package a.a.a.c.d.f;
 
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HU;
 import a.a.a.c.f.a.n.QSG;
@@ -19,7 +19,7 @@ public class ERA extends ERC {
         Iterator var4 = var2.getSumOfAmountsDividedByTaxRate().iterator();
 
         while (var4.hasNext()) {
-            EVZ var5 = (EVZ) var4.next();
+            TwoValueBox var5 = (TwoValueBox) var4.next();
             var3.put(var5.getFirstValue(), var5.getSecondValue());
         }
 
@@ -39,7 +39,7 @@ public class ERA extends ERC {
         Iterator var7 = var2.getAmountOfTaxDividedByTaxRate().iterator();
 
         while (var7.hasNext()) {
-            EVZ var6 = (EVZ) var7.next();
+            TwoValueBox var6 = (TwoValueBox) var7.next();
             var8.put(var6.getFirstValue(), var6.getSecondValue());
         }
 
@@ -61,7 +61,7 @@ public class ERA extends ERC {
         Iterator var4 = var2.getSumOfAmountsDividedByTaxRate().iterator();
 
         while (var4.hasNext()) {
-            EVZ var5 = (EVZ) var4.next();
+            TwoValueBox var5 = (TwoValueBox) var4.next();
             var3.put(var5.getFirstValue(), var5.getSecondValue());
         }
 
@@ -81,7 +81,7 @@ public class ERA extends ERC {
         Iterator var7 = var2.getAmountOfTaxDividedByTaxRate().iterator();
 
         while (var7.hasNext()) {
-            EVZ var6 = (EVZ) var7.next();
+            TwoValueBox var6 = (TwoValueBox) var7.next();
             var8.put(var6.getFirstValue(), var6.getSecondValue());
         }
 

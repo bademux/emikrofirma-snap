@@ -1,7 +1,7 @@
 package a.a.a.c.c.d.h;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.e.HQ;
 import a.a.a.c.f.a.e.HU;
 import a.a.a.c.f.b.c.a.KL;
@@ -193,9 +193,9 @@ public class EPE extends EPL {
         Iterator var6 = this.FPN.getSumOfGrossAmountsDividedByTaxRate().iterator();
 
         while (var4.hasNext()) {
-            EVZ var7 = (EVZ) var4.next();
-            EVZ var8 = (EVZ) var10.next();
-            EVZ var9 = (EVZ) var6.next();
+            TwoValueBox var7 = (TwoValueBox) var4.next();
+            TwoValueBox var8 = (TwoValueBox) var10.next();
+            TwoValueBox var9 = (TwoValueBox) var6.next();
             var2 = var1.getDocument().createElement("summaryTable");
             var1.HOR("taxRate", ((KL) var7.getFirstValue()).getDescription(), var2);
             var1.HOR("netSum", this.HOI((BigDecimal) var7.getSecondValue()), var2);

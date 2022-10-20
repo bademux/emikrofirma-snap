@@ -1,6 +1,6 @@
 package a.a.a.b.c;
 
-import a.a.a.c.e.a.d.EWD;
+import a.a.a.c.e.a.d.OneValueBox;
 import javafx.application.Platform;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +20,7 @@ public class FEL {
                 return (_A) var9;
             }
 
-            final EWD var1 = new EWD();
+            final OneValueBox var1 = new OneValueBox();
             var2 = new Semaphore(1);
             var2.acquire();
             Platform.runLater(new Runnable() {

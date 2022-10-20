@@ -1,13 +1,13 @@
 package a.a.a.c.c.a.b;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.d.b.EQB;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.d.AGWN;
 import a.a.a.c.f.a.d.HL;
 import a.a.a.c.f.a.d.QJY;
@@ -62,16 +62,16 @@ public abstract class ELW extends ELV {
         IU var6;
         switch (var1) {
             case CREATION_DATE:
-                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, new EVZ(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, null, FDL.ASC, null, null);
+                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, new TwoValueBox(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, null, OrderType.ASC, null, null);
                 break;
             case TRANSACTION_DATE:
-                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, null, new EVZ(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, FDL.ASC, null, null);
+                var6 = new IU(HY.class, QSW.ACTIVE, null, IB.SELL, null, null, null, var4, null, new TwoValueBox(Date.from(var2.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(var3.atStartOfDay(ZoneId.systemDefault()).toInstant())), null, OrderType.ASC, null, null);
                 break;
             default:
                 throw new FFI("not known date search type");
         }
 
-        EVZ var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
+        TwoValueBox var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         Iterator var8 = ((List) var7.getSecondValue()).iterator();
 
         while (var8.hasNext()) {

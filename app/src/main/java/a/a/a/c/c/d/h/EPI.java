@@ -4,7 +4,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.c.d.g.EOZ;
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.EWC;
+import a.a.a.c.e.a.d.ThreeValueBox;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HQ;
 import a.a.a.c.f.a.e.HU;
@@ -248,9 +248,9 @@ public class EPI extends EPL {
             Map.Entry var6 = (Map.Entry) var8.next();
             var2 = var1.getDocument().createElement("summaryTable");
             var1.HOR("taxRate", ((KL) var6.getKey()).getDescription(), var2);
-            var1.HOR("netSum", this.HOI((BigDecimal) ((EWC) var6.getValue()).getFirstValue()), var2);
-            var1.HOR("taxSum", this.HOI((BigDecimal) ((EWC) var6.getValue()).getSecondValue()), var2);
-            var1.HOR("brutSum", this.HOI((BigDecimal) ((EWC) var6.getValue()).getThirdValue()), var2);
+            var1.HOR("netSum", this.HOI((BigDecimal) ((ThreeValueBox) var6.getValue()).getFirstValue()), var2);
+            var1.HOR("taxSum", this.HOI((BigDecimal) ((ThreeValueBox) var6.getValue()).getSecondValue()), var2);
+            var1.HOR("brutSum", this.HOI((BigDecimal) ((ThreeValueBox) var6.getValue()).getThirdValue()), var2);
             var1.getRoot().appendChild(var2);
         }
 

@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.a.f.AHEL;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -34,7 +34,7 @@ public abstract class AHCH<_T> extends AHCG {
         return this.AHUA;
     }
 
-    public abstract EVZ<AHCI, String> AICZ();
+    public abstract TwoValueBox<AHCI, String> AICZ();
 
     public String toString() {
         return "ActionOnVariable [actionType=" + this.AHTY + ", variable=" + this.AHUA + "]";

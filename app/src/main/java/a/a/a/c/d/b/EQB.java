@@ -7,9 +7,9 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import com.github.bademux.emk.Application;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWC;
-import a.a.a.c.e.a.d.MME;
+import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ThreeValueBox;
+import a.a.a.c.e.a.d.SevenValueBox;
 import a.a.a.c.e.a.f.*;
 import a.a.a.c.e.a.g.EWX;
 import a.a.a.c.f.a.d.*;
@@ -202,7 +202,7 @@ public class EQB {
                                     }
 
                                     int finalVar1 = var13;
-                                    EVZ var18 = this.HPY(var15, var17, new EWX() {
+                                    TwoValueBox var18 = this.HPY(var15, var17, new EWX() {
                                         public void IBI(long var1, double var3, long var5, long var7, long var9, long var11) {
                                             double var13x = var45 + var57 / (double) var38.size() * (double) finalVar1 + var57 / (double) var38.size() * var3;
                                             EWX.IBJ(EQB.this.FVP, var13x, 0L, 0L);
@@ -688,9 +688,9 @@ public class EQB {
         return var2;
     }
 
-    private EVZ<EQC, String> HPY(JSONObject var1, AGXD var2, EWX var3) throws FFK {
+    private TwoValueBox<EQC, String> HPY(JSONObject var1, AGXD var2, EWX var3) throws FFK {
 
-        EVZ var8;
+        TwoValueBox var8;
         try {
             log.info("RequestToUploadFile.BlobName " + var1.get("BlobName"));
             log.info("RequestToUploadFile.FileName " + var1.get("FileName"));
@@ -712,14 +712,14 @@ public class EQB {
             log.info("HttpSenderResult BlobUpload " + var16);
             var2.setFileUploadResponseStatus(new AGWY(var16.getStatus()));
             if (var16.getStatus() < 200 || var16.getStatus() >= 400) {
-                var8 = new EVZ(EQB.EQC.FAIL, "Stauts " + var16.getStatus());
+                var8 = new TwoValueBox(EQB.EQC.FAIL, "Stauts " + var16.getStatus());
                 return var8;
             }
 
-            var8 = new EVZ(EQB.EQC.SUCCESS, null);
+            var8 = new TwoValueBox(EQB.EQC.SUCCESS, null);
         } catch (Exception var12) {
             log.error("Something bad happened", var12);
-            EVZ var5 = new EVZ(EQB.EQC.CAN_BE_RESTARTED, var12.getLocalizedMessage());
+            TwoValueBox var5 = new TwoValueBox(EQB.EQC.CAN_BE_RESTARTED, var12.getLocalizedMessage());
             return var5;
         }
 
@@ -740,7 +740,7 @@ public class EQB {
             File var3;
             try {
                 this.HPU(EQB.EQD.KD_SEND_START, 0.0);
-                MME var2 = this.FVQ.getKdSignatureData();
+                SevenValueBox var2 = this.FVQ.getKdSignatureData();
                 var3 = this.FVQ.getDeclarationFile();
                 String var4 = this.FVQ.getDeclarationFileName();
                 log.info("Processing file " + var4);
@@ -755,8 +755,8 @@ public class EQB {
                 this.HPU(EQB.EQD.KD_SEND_START, 0.06);
                 FileInputStream var11 = new FileInputStream(var3);
                 this.HPU(EQB.EQD.KD_SEND_START, 0.09);
-                var8.add(new EWC("<JPKMicro>", var10, Long.valueOf(var9.length)));
-                var8.add(new EWC("<DokumentJPK>", var11, var3.length()));
+                var8.add(new ThreeValueBox("<JPKMicro>", var10, Long.valueOf(var9.length)));
+                var8.add(new ThreeValueBox("<DokumentJPK>", var11, var3.length()));
                 double var12 = 0.2;
                 double var14 = 0.81;
                 this.HPU(EQB.EQD.KD_SEND_START, var12);
@@ -825,7 +825,7 @@ public class EQB {
         return var30;
     }
 
-    private byte[] MXB(MME<Boolean, String, String, String, LocalDate, BigDecimal, String> var1) throws FFO, FFK {
+    private byte[] MXB(SevenValueBox<Boolean, String, String, String, LocalDate, BigDecimal, String> var1) throws FFO, FFK {
 
         byte[] var7;
         try {

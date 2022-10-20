@@ -17,8 +17,8 @@ import a.a.a.c.c.d.h.EPE;
 import a.a.a.c.c.d.h.EPI;
 import a.a.a.c.c.e.j.c.EUY;
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWC;
+import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ThreeValueBox;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.*;
 import a.a.a.c.f.a.g.AGYN;
@@ -419,12 +419,12 @@ public class EUV extends ENN<EUY> {
         while (var3.hasNext()) {
             HQ var4 = (HQ) var3.next();
             if (var1.get(var4.getTaxRate().getValue()) == null) {
-                var1.put(var4.getTaxRate().getValue(), new EWC(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
+                var1.put(var4.getTaxRate().getValue(), new ThreeValueBox(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
             }
 
-            ((EWC) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
-            ((EWC) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
-            ((EWC) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
+            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
+            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
+            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
         }
 
         if (this.GMK.equals(EPB.CORRECT)) {
@@ -442,13 +442,13 @@ public class EUV extends ENN<EUY> {
         while (var3.hasNext()) {
             KL var8 = (KL) var3.next();
             if (this.GMK.equals(EPB.CORRECT)) {
-                this.GMM.getSumOfAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getFirstValue()));
-                this.GMM.getAmountOfTaxDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getSecondValue()));
-                this.GMM.getSumOfGrossAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getThirdValue()));
+                this.GMM.getSumOfAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getFirstValue()));
+                this.GMM.getAmountOfTaxDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getSecondValue()));
+                this.GMM.getSumOfGrossAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getThirdValue()));
             } else {
-                this.GML.getSumOfAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getFirstValue()));
-                this.GML.getAmountOfTaxDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getSecondValue()));
-                this.GML.getSumOfGrossAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getThirdValue()));
+                this.GML.getSumOfAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getFirstValue()));
+                this.GML.getAmountOfTaxDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getSecondValue()));
+                this.GML.getSumOfGrossAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getThirdValue()));
             }
         }
 

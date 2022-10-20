@@ -1,15 +1,15 @@
 package a.a.a.c.f.a.g;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.c.f.KU;
 
 public abstract class JA<_T extends KU> {
     private final Class<_T> ANE;
-    private final FDL ANF;
+    private final OrderType ANF;
     private final Integer ANG;
     private final Integer ANH;
 
-    public JA(Class<_T> var1, FDL var2, Integer var3, Integer var4) {
+    public JA(Class<_T> var1, OrderType var2, Integer var3, Integer var4) {
 
         this.ANE = var1;
         this.ANF = var2;
@@ -18,13 +18,13 @@ public abstract class JA<_T extends KU> {
 
     }
 
-    public JA(Class<_T> var1, FDL var2) {
+    public JA(Class<_T> var1, OrderType var2) {
         this(var1, var2, null, null);
 
     }
 
     public JA(Class<_T> var1) {
-        this(var1, FDL.ASC);
+        this(var1, OrderType.ASC);
 
     }
 
@@ -32,7 +32,7 @@ public abstract class JA<_T extends KU> {
         return this.ANE;
     }
 
-    public FDL getOrderType() {
+    public OrderType getOrderType() {
         return this.ANF;
     }
 

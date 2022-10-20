@@ -14,7 +14,7 @@ import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.d.d.ENZ;
 import a.a.a.c.c.d.d.b.EOB;
 import a.a.a.c.c.e.h.c.ETV;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.f.a.IR;
 import a.a.a.c.f.b.b.JN;
 import a.a.a.c.f.b.c.JR;
@@ -224,7 +224,7 @@ public class ETT extends BaseProgressFxController<ETV> {
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("currentPage " + this.GJC);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("pageOffset " + var2);
             org.slf4j.LoggerFactory.getLogger(getClass()).debug("RECORDS_PER_PAGE 12");
-            EVZ var3 = this.getProcess().getReceiptRecords(12, var2, this.GJF);
+            TwoValueBox var3 = this.getProcess().getReceiptRecords(12, var2, this.GJF);
             if (var3 != null) {
                 Iterator var4 = ((List) var3.getSecondValue()).iterator();
 

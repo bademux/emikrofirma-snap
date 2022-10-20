@@ -1,8 +1,8 @@
 package a.a.a.c.f.a.c.a.c;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWD;
+import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.OneValueBox;
 import a.a.a.c.f.a.c.a.AHCE;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.a.*;
@@ -131,7 +131,7 @@ public class AHDV extends AHDT {
 
     }
 
-    public void AIDO(OutputStream var1, EWD<Integer> var2, String var3) {
+    public void AIDO(OutputStream var1, OneValueBox<Integer> var2, String var3) {
 
         try {
             Iterator var4 = this.AHWG.iterator();
@@ -139,7 +139,7 @@ public class AHDV extends AHDT {
             while (var4.hasNext()) {
                 AHCE var5 = (AHCE) var4.next();
                 org.slf4j.LoggerFactory.getLogger(getClass()).debug("rule " + var5);
-                EVZ var6 = var5.AICX(this);
+                TwoValueBox var6 = var5.AICX(this);
                 switch ((AHCI) var6.getFirstValue()) {
                     case SUCCESS:
                         break;

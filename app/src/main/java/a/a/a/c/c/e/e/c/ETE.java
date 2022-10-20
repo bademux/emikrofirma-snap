@@ -7,7 +7,7 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.e.a.ETC;
 import a.a.a.c.c.e.e.b.ETD;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.g.AGYN;
 
@@ -90,7 +90,7 @@ public class ETE extends ELV {
         ArrayList var11;
         try {
             AGYN var1 = new AGYN(HI.class, null);
-            EVZ var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+            TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             ArrayList var3 = new ArrayList();
             if (var2 != null) {
                 Iterator var4 = ((List) var2.getSecondValue()).iterator();
@@ -118,7 +118,7 @@ public class ETE extends ELV {
             AGYN var3 = new AGYN(HI.class, var1);
 
             try {
-                EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+                TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
                 if (((List) var4.getSecondValue()).size() == 0) {
                     var2 = true;
                 }
@@ -136,7 +136,7 @@ public class ETE extends ELV {
             AGYN var3 = new AGYN(HI.class, var1.QON(), null);
 
             try {
-                EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+                TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
                 if (((List) var4.getSecondValue()).size() == 0) {
                     var2 = true;
                 }

@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.l.c;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -9,7 +9,7 @@ import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.b.ENP;
 import a.a.a.c.c.d.g.EPA;
 import a.a.a.c.c.e.l.b.EVI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HV;
 import a.a.a.c.f.a.e.HY;
@@ -95,20 +95,20 @@ public class EVJ extends QVI {
         IU var6;
         switch (var1) {
             case ONLY_EMPTY:
-                var6 = new IU(HY.class, QSW.ACTIVE, JN.AOE, IB.SELL, null, null, null, FDL.DESC);
+                var6 = new IU(HY.class, QSW.ACTIVE, JN.AOE, IB.SELL, null, null, null, OrderType.DESC);
                 break;
             case ONLY_CANCELED:
-                var6 = new IU(HY.class, QSW.CANCELED, null, IB.SELL, null, null, null, FDL.DESC);
+                var6 = new IU(HY.class, QSW.CANCELED, null, IB.SELL, null, null, null, OrderType.DESC);
                 break;
             case WITHOUT_EMPTY:
-                var6 = new IU(HY.class, QSW.ACTIVE, new JN(var2, var3), IB.SELL, null, null, var4, FDL.DESC);
+                var6 = new IU(HY.class, QSW.ACTIVE, new JN(var2, var3), IB.SELL, null, null, var4, OrderType.DESC);
                 break;
             case ALL:
             default:
-                var6 = new IU(HY.class, null, null, IB.SELL, null, null, var4, FDL.DESC);
+                var6 = new IU(HY.class, null, null, IB.SELL, null, null, var4, OrderType.DESC);
         }
 
-        EVZ var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
+        TwoValueBox var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         ArrayList var8 = new ArrayList();
         if (var7 != null) {
             int var9 = 0;
@@ -195,7 +195,7 @@ public class EVJ extends QVI {
         ArrayList var4;
         try {
             IY var3 = new IY(JF.class, null, JH.VAT, null);
-            EVZ var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            TwoValueBox var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
@@ -227,7 +227,7 @@ public class EVJ extends QVI {
 
         boolean var5;
         IU var3 = new IU(HY.class, null, var1, IB.SELL, null, new KE(var2), null);
-        EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() <= 0) {
             var5 = true;
             return var5;

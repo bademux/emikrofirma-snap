@@ -1,13 +1,13 @@
 package a.a.a.c.e.a.d;
 
-public class EVZ<_FIRST, _SECOND> extends EWD<_FIRST> {
+public class TwoValueBox<_FIRST, _SECOND> extends OneValueBox<_FIRST> {
     protected _SECOND GQC;
 
-    public EVZ() {
+    public TwoValueBox() {
         this(null, null);
     }
 
-    public EVZ(_FIRST var1, _SECOND var2) {
+    public TwoValueBox(_FIRST var1, _SECOND var2) {
         super(var1);
         this.GQC = var2;
     }
@@ -38,7 +38,7 @@ public class EVZ<_FIRST, _SECOND> extends EWD<_FIRST> {
         } else if (this.getClass() != var1.getClass()) {
             return false;
         } else {
-            EVZ var2 = (EVZ) var1;
+            TwoValueBox var2 = (TwoValueBox) var1;
             if (this.GQC == null) {
                 return var2.GQC == null;
             } else return this.GQC.equals(var2.GQC);

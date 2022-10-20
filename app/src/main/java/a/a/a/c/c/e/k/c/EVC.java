@@ -7,7 +7,7 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.e.k.b.EVB;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.f.a.IP;
 import a.a.a.c.f.a.f.a.IQ;
 import a.a.a.c.f.a.f.a.IR;
@@ -91,7 +91,7 @@ public class EVC extends ELV {
     public IR getReceiptRecord(JN var1) {
         try {
             JD var2 = new JD(IR.class, var1, IQ.VAT, null, null, null);
-            EVZ var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+            TwoValueBox var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
             if (((List) var3.getSecondValue()).size() > 1) {
                 throw new FFO("More than one ReceiptRecord per one period!");
             } else {
@@ -107,7 +107,7 @@ public class EVC extends ELV {
 
         boolean var10;
         IY var2 = new IY(JF.class, var1, JH.VAT, null);
-        EVZ var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+        TwoValueBox var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }

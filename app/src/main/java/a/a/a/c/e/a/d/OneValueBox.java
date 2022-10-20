@@ -1,13 +1,13 @@
 package a.a.a.c.e.a.d;
 
-public class EWD<_FIRST> {
+public class OneValueBox<_FIRST> {
     protected _FIRST GQG;
 
-    public EWD() {
+    public OneValueBox() {
         this(null);
     }
 
-    public EWD(_FIRST var1) {
+    public OneValueBox(_FIRST var1) {
         this.GQG = var1;
     }
 
@@ -37,7 +37,7 @@ public class EWD<_FIRST> {
         } else if (this.getClass() != var1.getClass()) {
             return false;
         } else {
-            EWD var2 = (EWD) var1;
+            OneValueBox var2 = (OneValueBox) var1;
             if (this.GQG == null) {
                 return var2.GQG == null;
             } else return this.GQG.equals(var2.GQG);

@@ -15,8 +15,8 @@ import a.a.a.c.c.d.a.QUV;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.p.c.QUD;
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWC;
+import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ThreeValueBox;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.g.AGYN;
 import a.a.a.c.f.a.n.QSG;
@@ -289,12 +289,12 @@ public class QTV extends QUV<QUD> {
         while (var3.hasNext()) {
             QSI var4 = (QSI) var3.next();
             if (var1.get(var4.getTaxRate().getValue()) == null) {
-                var1.put(var4.getTaxRate().getValue(), new EWC(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
+                var1.put(var4.getTaxRate().getValue(), new ThreeValueBox(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
             }
 
-            ((EWC) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
-            ((EWC) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
-            ((EWC) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((EWC) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
+            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setFirstValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getFirstValue(), var4.getNetPriceForAll().getValue()));
+            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setSecondValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getSecondValue(), var4.getTaxValueForAll().getValue()));
+            ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).setThirdValue(EQY.HRI((BigDecimal) ((ThreeValueBox) var1.get(var4.getTaxRate().getValue())).getThirdValue(), var4.getGrossValueForAll().getValue()));
         }
 
         this.RBS.getSumOfAmountsDividedByTaxRate().clear();
@@ -304,9 +304,9 @@ public class QTV extends QUV<QUD> {
 
         while (var3.hasNext()) {
             KL var8 = (KL) var3.next();
-            this.RBS.getSumOfAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getFirstValue()));
-            this.RBS.getAmountOfTaxDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getSecondValue()));
-            this.RBS.getSumOfGrossAmountsDividedByTaxRate().add(new EVZ(var8, ((EWC) var1.get(var8)).getThirdValue()));
+            this.RBS.getSumOfAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getFirstValue()));
+            this.RBS.getAmountOfTaxDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getSecondValue()));
+            this.RBS.getSumOfGrossAmountsDividedByTaxRate().add(new TwoValueBox(var8, ((ThreeValueBox) var1.get(var8)).getThirdValue()));
         }
 
     }

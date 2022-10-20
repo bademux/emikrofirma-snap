@@ -1,13 +1,13 @@
 package a.a.a.c.e.a.d;
 
-public class MME<_FIRST, _SECOND, _THIRD, _FOURTH, _FIFTH, _SIXTH, _SEVENTH> extends EWE<_FIRST, _SECOND, _THIRD, _FOURTH, _FIFTH, _SIXTH> {
+public class SevenValueBox<_FIRST, _SECOND, _THIRD, _FOURTH, _FIFTH, _SIXTH, _SEVENTH> extends SixValueBox<_FIRST, _SECOND, _THIRD, _FOURTH, _FIFTH, _SIXTH> {
     protected _SEVENTH MWP;
 
-    public MME() {
+    public SevenValueBox() {
         this(null, null, null, null, null, null, null);
     }
 
-    public MME(_FIRST var1, _SECOND var2, _THIRD var3, _FOURTH var4, _FIFTH var5, _SIXTH var6, _SEVENTH var7) {
+    public SevenValueBox(_FIRST var1, _SECOND var2, _THIRD var3, _FOURTH var4, _FIFTH var5, _SIXTH var6, _SEVENTH var7) {
         super(var1, var2, var3, var4, var5, var6);
         this.MWP = var7;
     }
@@ -38,7 +38,7 @@ public class MME<_FIRST, _SECOND, _THIRD, _FOURTH, _FIFTH, _SIXTH, _SEVENTH> ext
         } else if (this.getClass() != var1.getClass()) {
             return false;
         } else {
-            MME var2 = (MME) var1;
+            SevenValueBox var2 = (SevenValueBox) var1;
             if (this.MWP == null) {
                 return var2.MWP == null;
             } else return this.MWP.equals(var2.MWP);

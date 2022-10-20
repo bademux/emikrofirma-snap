@@ -4,7 +4,7 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.a.h.JG;
@@ -32,7 +32,7 @@ public abstract class ELX extends ELV {
         ArrayList var4;
         try {
             IY var3 = new IY(JF.class, null, JH.VAT, null);
-            EVZ var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+            TwoValueBox var18 = this.getModelManager().HJY(this.getParentDefinition(), var3);
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {

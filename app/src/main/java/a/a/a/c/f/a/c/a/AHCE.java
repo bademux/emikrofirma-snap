@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.c.a;
 
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.a.c.AHDT;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -16,5 +16,5 @@ public abstract class AHCE extends AHCG {
 
     }
 
-    public abstract EVZ<AHCI, String> AICX(AHDT var1);
+    public abstract TwoValueBox<AHCI, String> AICX(AHDT var1);
 }

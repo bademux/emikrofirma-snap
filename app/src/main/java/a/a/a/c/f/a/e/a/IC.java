@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.e.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.EXM;
 import a.a.a.c.f.b.c.JR;
 import a.a.a.c.f.b.c.JY;
@@ -27,16 +27,16 @@ public abstract class IC extends EXM {
     private JR ALC;
     private JR ALD;
     private JR ALE;
-    private EVZ<JR, JR> ALF;
-    private EVZ<JR, JR> ALG;
-    private EVZ<JR, JR> ALH;
-    private EVZ<JR, JR> QLT;
-    private EVZ<JR, JR> ALI;
-    private EVZ<JR, JR> ALJ;
-    private EVZ<JR, JR> ALK;
-    private EVZ<JR, JR> ALL;
-    private EVZ<JR, JR> ALM;
-    private EVZ<JR, JR> ALN;
+    private TwoValueBox<JR, JR> ALF;
+    private TwoValueBox<JR, JR> ALG;
+    private TwoValueBox<JR, JR> ALH;
+    private TwoValueBox<JR, JR> QLT;
+    private TwoValueBox<JR, JR> ALI;
+    private TwoValueBox<JR, JR> ALJ;
+    private TwoValueBox<JR, JR> ALK;
+    private TwoValueBox<JR, JR> ALL;
+    private TwoValueBox<JR, JR> ALM;
+    private TwoValueBox<JR, JR> ALN;
     private JY ALO;
 
     public IC() {
@@ -44,16 +44,16 @@ public abstract class IC extends EXM {
         this.ALC = new JR(BigDecimal.ZERO);
         this.ALD = new JR(BigDecimal.ZERO);
         this.ALE = new JR(BigDecimal.ZERO);
-        this.ALF = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.ALG = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.ALH = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.QLT = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.ALI = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.ALJ = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.ALK = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.ALL = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.ALM = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
-        this.ALN = new EVZ(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALF = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALG = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALH = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.QLT = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALI = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALJ = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALK = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALL = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALM = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
+        this.ALN = new TwoValueBox(new JR(BigDecimal.ZERO), new JR(BigDecimal.ZERO));
 
     }
 
@@ -120,167 +120,167 @@ public abstract class IC extends EXM {
         this.ALE = var1;
     }
 
-    public EVZ<JR, JR> getVat23() {
+    public TwoValueBox<JR, JR> getVat23() {
         return this.ALF;
     }
 
-    public EVZ<JR, JR> QQU() {
+    public TwoValueBox<JR, JR> QQU() {
         if (this.ALF == null) {
-            this.ALF = new EVZ(new JR(), new JR());
+            this.ALF = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALF;
     }
 
-    public void setVat23(EVZ<JR, JR> var1) {
+    public void setVat23(TwoValueBox<JR, JR> var1) {
         this.ALF = var1;
     }
 
-    public EVZ<JR, JR> getVat8() {
+    public TwoValueBox<JR, JR> getVat8() {
         return this.ALG;
     }
 
-    public EVZ<JR, JR> QQV() {
+    public TwoValueBox<JR, JR> QQV() {
         if (this.ALG == null) {
-            this.ALG = new EVZ(new JR(), new JR());
+            this.ALG = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALG;
     }
 
-    public void setVat8(EVZ<JR, JR> var1) {
+    public void setVat8(TwoValueBox<JR, JR> var1) {
         this.ALG = var1;
     }
 
-    public EVZ<JR, JR> getVat5() {
+    public TwoValueBox<JR, JR> getVat5() {
         return this.ALH;
     }
 
-    public EVZ<JR, JR> QQW() {
+    public TwoValueBox<JR, JR> QQW() {
         if (this.ALH == null) {
-            this.ALH = new EVZ(new JR(), new JR());
+            this.ALH = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALH;
     }
 
-    public void setVat5(EVZ<JR, JR> var1) {
+    public void setVat5(TwoValueBox<JR, JR> var1) {
         this.ALH = var1;
     }
 
-    public EVZ<JR, JR> getVat4() {
+    public TwoValueBox<JR, JR> getVat4() {
         return this.QLT;
     }
 
-    public EVZ<JR, JR> QQX() {
+    public TwoValueBox<JR, JR> QQX() {
         if (this.QLT == null) {
-            this.QLT = new EVZ(new JR(), new JR());
+            this.QLT = new TwoValueBox(new JR(), new JR());
         }
 
         return this.QLT;
     }
 
-    public void setVat4(EVZ<JR, JR> var1) {
+    public void setVat4(TwoValueBox<JR, JR> var1) {
         this.QLT = var1;
     }
 
-    public EVZ<JR, JR> getVat0() {
+    public TwoValueBox<JR, JR> getVat0() {
         return this.ALI;
     }
 
-    public EVZ<JR, JR> QQY() {
+    public TwoValueBox<JR, JR> QQY() {
         if (this.ALI == null) {
-            this.ALI = new EVZ(new JR(), new JR());
+            this.ALI = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALI;
     }
 
-    public void setVat0(EVZ<JR, JR> var1) {
+    public void setVat0(TwoValueBox<JR, JR> var1) {
         this.ALI = var1;
     }
 
-    public EVZ<JR, JR> getVatZw() {
+    public TwoValueBox<JR, JR> getVatZw() {
         return this.ALJ;
     }
 
-    public EVZ<JR, JR> QQZ() {
+    public TwoValueBox<JR, JR> QQZ() {
         if (this.ALJ == null) {
-            this.ALJ = new EVZ(new JR(), new JR());
+            this.ALJ = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALJ;
     }
 
-    public void setVatZw(EVZ<JR, JR> var1) {
+    public void setVatZw(TwoValueBox<JR, JR> var1) {
         this.ALJ = var1;
     }
 
-    public EVZ<JR, JR> getVatNp() {
+    public TwoValueBox<JR, JR> getVatNp() {
         return this.ALK;
     }
 
-    public EVZ<JR, JR> QRA() {
+    public TwoValueBox<JR, JR> QRA() {
         if (this.ALK == null) {
-            this.ALK = new EVZ(new JR(), new JR());
+            this.ALK = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALK;
     }
 
-    public void setVatNp(EVZ<JR, JR> var1) {
+    public void setVatNp(TwoValueBox<JR, JR> var1) {
         this.ALK = var1;
     }
 
-    public EVZ<JR, JR> getVatOo23() {
+    public TwoValueBox<JR, JR> getVatOo23() {
         return this.ALL;
     }
 
-    public EVZ<JR, JR> QRB() {
+    public TwoValueBox<JR, JR> QRB() {
         if (this.ALL == null) {
-            this.ALL = new EVZ(new JR(), new JR());
+            this.ALL = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALL;
     }
 
-    public void setVatOo23(EVZ<JR, JR> var1) {
+    public void setVatOo23(TwoValueBox<JR, JR> var1) {
         this.ALL = var1;
     }
 
-    public EVZ<JR, JR> getVatOo8() {
+    public TwoValueBox<JR, JR> getVatOo8() {
         return this.ALM;
     }
 
-    public EVZ<JR, JR> QRC() {
+    public TwoValueBox<JR, JR> QRC() {
         if (this.ALM == null) {
-            this.ALM = new EVZ(new JR(), new JR());
+            this.ALM = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALM;
     }
 
-    public void setVatOo8(EVZ<JR, JR> var1) {
+    public void setVatOo8(TwoValueBox<JR, JR> var1) {
         this.ALM = var1;
     }
 
-    public EVZ<JR, JR> getVatOo5() {
+    public TwoValueBox<JR, JR> getVatOo5() {
         return this.ALN;
     }
 
-    public EVZ<JR, JR> QRD() {
+    public TwoValueBox<JR, JR> QRD() {
         if (this.ALN == null) {
-            this.ALN = new EVZ(new JR(), new JR());
+            this.ALN = new TwoValueBox(new JR(), new JR());
         }
 
         return this.ALN;
     }
 
-    public void setVatOo5(EVZ<JR, JR> var1) {
+    public void setVatOo5(TwoValueBox<JR, JR> var1) {
         this.ALN = var1;
     }
 
-    public EVZ<JR, JR> getVat4and8() {
+    public TwoValueBox<JR, JR> getVat4and8() {
         BigDecimal var1 = BigDecimal.ZERO;
         BigDecimal var2 = BigDecimal.ZERO;
         if (this.QLT != null && this.QLT.getFirstValue() != null && this.QLT.getFirstValue().getValue() != null) {
@@ -299,14 +299,14 @@ public abstract class IC extends EXM {
             var2 = var2.add(this.ALG.getSecondValue().getValue());
         }
 
-        return var1 == null && var2 == null ? null : new EVZ(new JR(var1), new JR(var2));
+        return var1 == null && var2 == null ? null : new TwoValueBox(new JR(var1), new JR(var2));
     }
 
-    public EVZ<JR, JR> QRE() {
+    public TwoValueBox<JR, JR> QRE() {
         return this.getVat4and8();
     }
 
-    public void setVat4and8(EVZ<JR, JR> var1) {
+    public void setVat4and8(TwoValueBox<JR, JR> var1) {
         throw new FFI("This method should not be used");
     }
 

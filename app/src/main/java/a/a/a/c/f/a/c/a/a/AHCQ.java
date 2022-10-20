@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
@@ -19,9 +19,9 @@ public class AHCQ extends AHCL<String> {
 
     }
 
-    public EVZ<AHCI, String> AICX(AHDT var1) {
+    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
 
-        EVZ var4;
+        TwoValueBox var4;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("value " + this.AHUG);
@@ -52,11 +52,11 @@ public class AHCQ extends AHCL<String> {
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");
             }
 
-            EVZ var5 = new EVZ(var9, this.AIDB("", var1));
+            TwoValueBox var5 = new TwoValueBox(var9, this.AIDB("", var1));
             return var5;
         }
 
-        var4 = new EVZ(AHCI.SUCCESS, null);
+        var4 = new TwoValueBox(AHCI.SUCCESS, null);
 
         return var4;
     }

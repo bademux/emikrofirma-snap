@@ -1,6 +1,6 @@
 package a.a.a.b.a.a.e;
 
-import a.a.a.b.a.a.d.FDY;
+import a.a.a.b.a.a.d.CellNamed;
 
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +10,7 @@ public class FEE extends FEH {
         super(FEG.PRIMARY);
     }
 
-    public FEE(FDY... var1) {
+    public FEE(CellNamed... var1) {
         super(FEG.PRIMARY, var1);
     }
 

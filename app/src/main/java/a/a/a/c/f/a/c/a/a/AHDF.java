@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
@@ -19,7 +19,7 @@ public class AHDF extends AHCK {
 
     }
 
-    public EVZ<AHCI, String> AICX(AHDT var1) {
+    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
 
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("field " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionType " + this.AHUF);
@@ -27,7 +27,7 @@ public class AHDF extends AHCK {
         if (this.AHUF == AHDG.ISSET) {
             var2 = var1.AIDH();
             if (var2) {
-                EVZ var8 = new EVZ(AHCI.SUCCESS, null);
+                TwoValueBox var8 = new TwoValueBox(AHCI.SUCCESS, null);
                 return var8;
             } else {
                 AHCI var3 = null;
@@ -42,7 +42,7 @@ public class AHDF extends AHCK {
                         throw new FFI("Invalid actionType [" + this.AHTY + "]!");
                 }
 
-                EVZ var4 = new EVZ(var3, this.AIDB("", var1));
+                TwoValueBox var4 = new TwoValueBox(var3, this.AIDB("", var1));
                 return var4;
             }
         }

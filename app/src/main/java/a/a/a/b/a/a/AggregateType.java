@@ -1,6 +1,6 @@
 package a.a.a.b.a.a;
 
-public enum FEI {
+public enum AggregateType {
     NONE("", ""),
     MIN("MIN(", ")"),
     MAX("MAX(", ")"),
@@ -11,7 +11,7 @@ public enum FEI {
     private final String HES;
     private final String HET;
 
-    FEI(String var3, String var4) {
+    AggregateType(String var3, String var4) {
         this.HES = var3;
         this.HET = var4;
     }

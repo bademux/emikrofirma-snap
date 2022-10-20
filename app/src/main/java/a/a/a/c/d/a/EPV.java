@@ -1,7 +1,7 @@
 package a.a.a.c.d.a;
 
 import a.a.a.c.d.a.a.EPP;
-import a.a.a.c.e.a.d.EWD;
+import a.a.a.c.e.a.d.OneValueBox;
 import a.a.a.c.f.a.c.AHEQ;
 import a.a.a.c.f.a.c.a.AHDJ;
 import a.a.a.c.f.a.c.a.AHDW;
@@ -17,7 +17,7 @@ import java.util.*;
 @Slf4j
 public class EPV extends DefaultHandler {
     private final OutputStream FUM;
-    final EWD<Integer> FUN;
+    final OneValueBox<Integer> FUN;
     private final String FUO;
     private final AHDW FUP;
     private final Stack<Map<String, AHEQ>> FUQ;
@@ -25,7 +25,7 @@ public class EPV extends DefaultHandler {
     private final Stack<AHDU> FUS;
     private AHDR FUT = null;
 
-    public EPV(OutputStream var1, EWD<Integer> var2, String var3, AHDW var4) {
+    public EPV(OutputStream var1, OneValueBox<Integer> var2, String var3, AHDW var4) {
 
         log.debug("outputStream " + var1);
         log.debug("counter " + var2);

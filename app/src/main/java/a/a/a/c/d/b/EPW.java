@@ -19,7 +19,7 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.d.a.EPV;
 import a.a.a.c.d.a.a.EPP;
 import a.a.a.c.d.d.EQX;
-import a.a.a.c.e.a.d.EWD;
+import a.a.a.c.e.a.d.OneValueBox;
 import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
 import a.a.a.c.f.a.c.a.AHCI;
@@ -250,7 +250,7 @@ public class EPW {
             final FileOutputStream var8 = new FileOutputStream(var7);
             var8.write(var3.getBytes(StandardCharsets.UTF_8));
             var8.flush();
-            final EWD var9 = new EWD(0);
+            final OneValueBox var9 = new OneValueBox(0);
 
             try {
                 MessageDigest var55 = MessageDigest.getInstance("MD5");
@@ -378,7 +378,7 @@ public class EPW {
                     final FileOutputStream var10 = new FileOutputStream(var9);
                     var10.write(var3.getBytes(StandardCharsets.UTF_8));
                     var10.flush();
-                    final EWD var11 = new EWD(0);
+                    final OneValueBox var11 = new OneValueBox(0);
 
                     try {
                         MessageDigest var56 = MessageDigest.getInstance("MD5");

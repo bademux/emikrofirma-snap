@@ -14,7 +14,7 @@ import a.a.a.c.c.d.a.ENK;
 import a.a.a.c.c.d.a.ENN;
 import a.a.a.c.c.d.g.EPB;
 import a.a.a.c.c.e.d.c.ESX;
-import a.a.a.c.e.a.d.EWC;
+import a.a.a.c.e.a.d.ThreeValueBox;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.HN;
 import a.a.a.c.f.a.e.HR;
@@ -156,7 +156,7 @@ public class EST extends ENN<ESX> {
                     JN var2 = this.GEQ.getPeriod() != null ? this.GEQ.getPeriod().DDN() : null;
                     KE var3 = this.GEQ.getRefId() != null ? this.GEQ.getRefId().DEL() : null;
                     KA var4 = this.GEQ.getIssuerNumber() != null ? this.GEQ.getIssuerNumber().DEJ() : null;
-                    var1.setInvoicePurchaseEditKey(new EWC(var2, var3, var4));
+                    var1.setInvoicePurchaseEditKey(new ThreeValueBox(var2, var3, var4));
                 }
             } else {
                 this.fxml_include_top_menuController.fxml_top_menu.labelProperty().set(this.resources.getString("micro.process.invoice_purchase_new.Title"));

@@ -4,8 +4,8 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.d.e.EQY;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWC;
+import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.ThreeValueBox;
 import a.a.a.c.e.a.g.EWX;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.d.AGXA;
@@ -137,69 +137,69 @@ public class EQF {
                     HQE(var12, "http://jpk.mf.gov.pl/wzor/2019/09/27/09271/", "P_6", var18.DDZ());
                 }
 
-                EVZ var19;
-                EVZ var20;
-                EVZ var21;
-                EVZ var22;
-                EVZ var23;
-                EVZ var24;
-                EVZ var25;
-                EVZ var26;
-                EVZ var27;
+                TwoValueBox var19;
+                TwoValueBox var20;
+                TwoValueBox var21;
+                TwoValueBox var22;
+                TwoValueBox var23;
+                TwoValueBox var24;
+                TwoValueBox var25;
+                TwoValueBox var26;
+                TwoValueBox var27;
                 if (var17.getInvoiceSubType().equals(IA.CORRECTION)) {
                     Map var28 = getTaxRateSummaryDiffForCorrection((HV) var17);
                     if (var28.get(KL.RATE_23) != null) {
-                        var19 = new EVZ(((EWC) var28.get(KL.RATE_23)).getFirstValue(), ((EWC) var28.get(KL.RATE_23)).getSecondValue());
+                        var19 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_23)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_23)).getSecondValue());
                     } else {
-                        var19 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var19 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.RATE_8) != null) {
-                        var20 = new EVZ(((EWC) var28.get(KL.RATE_8)).getFirstValue(), ((EWC) var28.get(KL.RATE_8)).getSecondValue());
+                        var20 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_8)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_8)).getSecondValue());
                     } else {
-                        var20 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var20 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.RATE_5) != null) {
-                        var21 = new EVZ(((EWC) var28.get(KL.RATE_5)).getFirstValue(), ((EWC) var28.get(KL.RATE_5)).getSecondValue());
+                        var21 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_5)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_5)).getSecondValue());
                     } else {
-                        var21 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var21 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.RATE_4) != null) {
-                        var22 = new EVZ(((EWC) var28.get(KL.RATE_4)).getFirstValue(), ((EWC) var28.get(KL.RATE_4)).getSecondValue());
+                        var22 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_4)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_4)).getSecondValue());
                     } else {
-                        var22 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var22 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.RATE_0) != null) {
-                        var23 = new EVZ(((EWC) var28.get(KL.RATE_0)).getFirstValue(), ((EWC) var28.get(KL.RATE_0)).getSecondValue());
+                        var23 = new TwoValueBox(((ThreeValueBox) var28.get(KL.RATE_0)).getFirstValue(), ((ThreeValueBox) var28.get(KL.RATE_0)).getSecondValue());
                     } else {
-                        var23 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var23 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.ZW) != null) {
-                        var24 = new EVZ(((EWC) var28.get(KL.ZW)).getFirstValue(), ((EWC) var28.get(KL.ZW)).getSecondValue());
+                        var24 = new TwoValueBox(((ThreeValueBox) var28.get(KL.ZW)).getFirstValue(), ((ThreeValueBox) var28.get(KL.ZW)).getSecondValue());
                     } else {
-                        var24 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var24 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.OO_23) != null) {
-                        var25 = new EVZ(((EWC) var28.get(KL.OO_23)).getFirstValue(), ((EWC) var28.get(KL.OO_23)).getSecondValue());
+                        var25 = new TwoValueBox(((ThreeValueBox) var28.get(KL.OO_23)).getFirstValue(), ((ThreeValueBox) var28.get(KL.OO_23)).getSecondValue());
                     } else {
-                        var25 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var25 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.OO_8) != null) {
-                        var26 = new EVZ(((EWC) var28.get(KL.OO_8)).getFirstValue(), ((EWC) var28.get(KL.OO_8)).getSecondValue());
+                        var26 = new TwoValueBox(((ThreeValueBox) var28.get(KL.OO_8)).getFirstValue(), ((ThreeValueBox) var28.get(KL.OO_8)).getSecondValue());
                     } else {
-                        var26 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var26 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
 
                     if (var28.get(KL.NP) != null) {
-                        var27 = new EVZ(((EWC) var28.get(KL.NP)).getFirstValue(), ((EWC) var28.get(KL.NP)).getSecondValue());
+                        var27 = new TwoValueBox(((ThreeValueBox) var28.get(KL.NP)).getFirstValue(), ((ThreeValueBox) var28.get(KL.NP)).getSecondValue());
                     } else {
-                        var27 = new EVZ(BigDecimal.ZERO, BigDecimal.ZERO);
+                        var27 = new TwoValueBox(BigDecimal.ZERO, BigDecimal.ZERO);
                     }
                 } else {
                     var19 = var17.getNetAndTaxForTaxRate(KL.RATE_23);
@@ -378,7 +378,7 @@ public class EQF {
         }
     }
 
-    public static Map<KL, EWC<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(HV var0) {
+    public static Map<KL, ThreeValueBox<BigDecimal, BigDecimal, BigDecimal>> getTaxRateSummaryDiffForCorrection(HV var0) {
 
         HN var1 = var0.getParentInvoiceOnlyActive();
         HashMap var2 = new HashMap();
@@ -386,14 +386,14 @@ public class EQF {
         Iterator var4 = var0.getAmountOfTaxDividedByTaxRate().iterator();
         Iterator var5 = var0.getSumOfGrossAmountsDividedByTaxRate().iterator();
 
-        EVZ var6;
-        EVZ var7;
-        EVZ var8;
+        TwoValueBox var6;
+        TwoValueBox var7;
+        TwoValueBox var8;
         while (var3.hasNext()) {
-            var6 = (EVZ) var3.next();
-            var7 = (EVZ) var4.next();
-            var8 = (EVZ) var5.next();
-            var2.put(var6.getFirstValue(), new EWC(var6.getSecondValue(), var7.getSecondValue(), var8.getSecondValue()));
+            var6 = (TwoValueBox) var3.next();
+            var7 = (TwoValueBox) var4.next();
+            var8 = (TwoValueBox) var5.next();
+            var2.put(var6.getFirstValue(), new ThreeValueBox(var6.getSecondValue(), var7.getSecondValue(), var8.getSecondValue()));
         }
 
         var3 = var1.getSumOfAmountsDividedByTaxRate().iterator();
@@ -401,15 +401,15 @@ public class EQF {
         var5 = var1.getSumOfGrossAmountsDividedByTaxRate().iterator();
 
         while (var3.hasNext()) {
-            var6 = (EVZ) var3.next();
-            var7 = (EVZ) var4.next();
-            var8 = (EVZ) var5.next();
+            var6 = (TwoValueBox) var3.next();
+            var7 = (TwoValueBox) var4.next();
+            var8 = (TwoValueBox) var5.next();
             if (var2.get(var6.getFirstValue()) == null) {
-                var2.put(var6.getFirstValue(), new EWC(EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var6.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var7.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var8.getSecondValue())));
+                var2.put(var6.getFirstValue(), new ThreeValueBox(EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var6.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var7.getSecondValue()), EQY.HRJ(BigDecimal.ZERO, (BigDecimal) var8.getSecondValue())));
             } else {
-                ((EWC) var2.get(var6.getFirstValue())).setFirstValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getFirstValue(), (BigDecimal) var6.getSecondValue()));
-                ((EWC) var2.get(var6.getFirstValue())).setSecondValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getSecondValue(), (BigDecimal) var7.getSecondValue()));
-                ((EWC) var2.get(var6.getFirstValue())).setThirdValue(EQY.HRJ((BigDecimal) ((EWC) var2.get(var6.getFirstValue())).getThirdValue(), (BigDecimal) var8.getSecondValue()));
+                ((ThreeValueBox) var2.get(var6.getFirstValue())).setFirstValue(EQY.HRJ((BigDecimal) ((ThreeValueBox) var2.get(var6.getFirstValue())).getFirstValue(), (BigDecimal) var6.getSecondValue()));
+                ((ThreeValueBox) var2.get(var6.getFirstValue())).setSecondValue(EQY.HRJ((BigDecimal) ((ThreeValueBox) var2.get(var6.getFirstValue())).getSecondValue(), (BigDecimal) var7.getSecondValue()));
+                ((ThreeValueBox) var2.get(var6.getFirstValue())).setThirdValue(EQY.HRJ((BigDecimal) ((ThreeValueBox) var2.get(var6.getFirstValue())).getThirdValue(), (BigDecimal) var8.getSecondValue()));
             }
         }
 

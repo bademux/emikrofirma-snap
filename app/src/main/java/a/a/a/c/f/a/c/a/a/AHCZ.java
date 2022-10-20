@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.a;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
 import a.a.a.c.f.a.c.a.c.AHDT;
@@ -46,9 +46,9 @@ public class AHCZ extends AHCT<XMLGregorianCalendar> {
 
     }
 
-    public EVZ<AHCI, String> AICX(AHDT var1) {
+    public TwoValueBox<AHCI, String> AICX(AHDT var1) {
 
-        EVZ var10;
+        TwoValueBox var10;
         try {
             log.debug("field " + var1);
             log.debug("conditionType " + this.AHUF);
@@ -109,7 +109,7 @@ public class AHCZ extends AHCT<XMLGregorianCalendar> {
             }
 
             if (var8) {
-                EVZ var24 = new EVZ(AHCI.SUCCESS, null);
+                TwoValueBox var24 = new TwoValueBox(AHCI.SUCCESS, null);
                 return var24;
             }
 
@@ -125,7 +125,7 @@ public class AHCZ extends AHCT<XMLGregorianCalendar> {
                     throw new FFI("Invalid actionType [" + this.AHTY + "]!");
             }
 
-            var10 = new EVZ(var9, this.AIDB("", var1));
+            var10 = new TwoValueBox(var9, this.AIDB("", var1));
         } catch (DatatypeConfigurationException | ParseException var22) {
             log.error("Something bad happened", var22);
             throw new FFI(var22);

@@ -1,7 +1,7 @@
 package a.a.a.c.f.a.c.a.e;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.a.AHCF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHCJ;
@@ -52,9 +52,9 @@ public class AHEJ extends AHCF {
         return this.AHWW;
     }
 
-    public EVZ<AHCI, String> AICY(Map<AHDS, AHDT> var1) {
+    public TwoValueBox<AHCI, String> AICY(Map<AHDS, AHDT> var1) {
 
-        EVZ var14;
+        TwoValueBox var14;
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("fields " + var1);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("conditionLeft " + this.AHWV);
         org.slf4j.LoggerFactory.getLogger(getClass()).debug("logicalOperator " + this.AHWU);
@@ -62,8 +62,8 @@ public class AHEJ extends AHCF {
         boolean var2 = false;
         AHDT var3 = var1.get(this.AHWV.getDeclaredFieldType());
         AHDT var4 = var1.get(this.AHWW.getDeclaredFieldType());
-        EVZ var5 = null;
-        EVZ var6 = null;
+        TwoValueBox var5 = null;
+        TwoValueBox var6 = null;
         String var7;
         if (var3.AIDH() && var4.AIDH()) {
             var5 = this.AHWV.getActionOnField().AICX(var3);
@@ -95,12 +95,12 @@ public class AHEJ extends AHCF {
         } else {
             var7 = FCW.getInstance().getMessageForKey("micro.rules.field.valueoffield") + " " + var3.getFieldType().name() + " " + (var3.AIDH() ? AHDG.ISSET.getDescription() : AHDG.ISNOTSET.getDescription());
             String var8 = FCW.getInstance().getMessageForKey("micro.rules.field.valueoffield") + " " + var4.getFieldType().name() + " " + (var4.AIDH() ? AHDG.ISSET.getDescription() : AHDG.ISNOTSET.getDescription());
-            var5 = new EVZ(null, var7);
-            var6 = new EVZ(null, var8);
+            var5 = new TwoValueBox(null, var7);
+            var6 = new TwoValueBox(null, var8);
         }
 
         if (var2) {
-            EVZ var15 = new EVZ(AHCI.SUCCESS, null);
+            TwoValueBox var15 = new TwoValueBox(AHCI.SUCCESS, null);
             return var15;
         }
 
@@ -117,7 +117,7 @@ public class AHEJ extends AHCF {
                 throw new FFI("Invalid actionType [" + this.AHTY + "]!");
         }
 
-        var14 = new EVZ(var13, this.AIDU("", (String) var5.getSecondValue(), (String) var6.getSecondValue()));
+        var14 = new TwoValueBox(var13, this.AIDU("", (String) var5.getSecondValue(), (String) var6.getSecondValue()));
 
         return var14;
     }

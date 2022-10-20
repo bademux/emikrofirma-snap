@@ -3,7 +3,7 @@ package a.a.a.c.c.e.f.a;
 import a.a.a.b.f.FFK;
 import a.a.a.c.c.d.d.b.EOB;
 import a.a.a.c.c.d.d.b.EOC;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.e.a.IC;
 import a.a.a.c.f.a.e.a.ID;
@@ -39,15 +39,15 @@ class ETF {
     private TableColumn<ID, ?> GGI;
     private TableColumn<ID, ?> GGJ;
     private TableColumn<ID, ?> GGK;
-    private TableColumn<ID, EVZ<JR, JR>> GGL;
-    private TableColumn<ID, EVZ<JR, JR>> GGM;
-    private TableColumn<ID, EVZ<JR, JR>> GGN;
-    private TableColumn<ID, EVZ<JR, JR>> QMR;
-    private TableColumn<ID, EVZ<JR, JR>> GGO;
-    private TableColumn<ID, EVZ<JR, JR>> GGP;
-    private TableColumn<ID, EVZ<JR, JR>> GGQ;
-    private TableColumn<ID, EVZ<JR, JR>> GGR;
-    private TableColumn<ID, EVZ<JR, JR>> GGS;
+    private TableColumn<ID, TwoValueBox<JR, JR>> GGL;
+    private TableColumn<ID, TwoValueBox<JR, JR>> GGM;
+    private TableColumn<ID, TwoValueBox<JR, JR>> GGN;
+    private TableColumn<ID, TwoValueBox<JR, JR>> QMR;
+    private TableColumn<ID, TwoValueBox<JR, JR>> GGO;
+    private TableColumn<ID, TwoValueBox<JR, JR>> GGP;
+    private TableColumn<ID, TwoValueBox<JR, JR>> GGQ;
+    private TableColumn<ID, TwoValueBox<JR, JR>> GGR;
+    private TableColumn<ID, TwoValueBox<JR, JR>> GGS;
     private TableColumn<ID, JR> GGT;
     private TableColumn<ID, JR> GGU;
     private TableColumn<ID, JR> GGV;
@@ -393,12 +393,12 @@ class ETF {
         var1.setGraphic(var3);
     }
 
-    private class ETH<_T> extends ETG<_T, EVZ<JR, JR>> {
+    private class ETH<_T> extends ETG<_T, TwoValueBox<JR, JR>> {
         private ETH() {
             super();
         }
 
-        String getFirstValue(EVZ<JR, JR> var1) {
+        String getFirstValue(TwoValueBox<JR, JR> var1) {
             String var2 = "";
             if (var1 != null && var1.getFirstValue() != null && var1.getFirstValue().getValue() != null) {
                 var2 = EOC.HNN(var1.getFirstValue().getValue());
@@ -407,7 +407,7 @@ class ETF {
             return var2;
         }
 
-        String getSecondValue(EVZ<JR, JR> var1) {
+        String getSecondValue(TwoValueBox<JR, JR> var1) {
             String var2 = "";
             if (var1 != null && var1.getSecondValue() != null && var1.getSecondValue().getValue() != null) {
                 var2 = EOC.HNN(var1.getSecondValue().getValue());

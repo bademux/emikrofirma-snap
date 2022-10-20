@@ -3,7 +3,7 @@ package a.a.a.c.c.a.b;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.g.IY;
 import a.a.a.c.f.a.h.JF;
 import a.a.a.c.f.a.h.JG;
@@ -24,7 +24,7 @@ public abstract class QVI extends ELV {
 
     public SortedMap<String, SortedSet<KH>> getPossibleDates() throws FFK, FFO {
         IY var1 = new IY(JF.class, null, JH.VAT, null);
-        EVZ var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+        TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
         TreeMap var3 = new TreeMap();
         Iterator var6 = ((List) var2.getSecondValue()).iterator();
 
@@ -58,7 +58,7 @@ public abstract class QVI extends ELV {
         JG var7;
         JN var2 = new JN(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         IY var3 = new IY(JF.class, var2, JH.VAT, null);
-        EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -92,7 +92,7 @@ public abstract class QVI extends ELV {
 
         Iterator var4;
         IY var2 = new IY(JF.class, var1, JH.VAT, null);
-        EVZ var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+        TwoValueBox var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }

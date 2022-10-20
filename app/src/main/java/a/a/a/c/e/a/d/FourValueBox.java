@@ -1,13 +1,13 @@
 package a.a.a.c.e.a.d;
 
-public class EWA<_FIRST, _SECOND, _THIRD, _FOURTH> extends EWC<_FIRST, _SECOND, _THIRD> {
+public class FourValueBox<_FIRST, _SECOND, _THIRD, _FOURTH> extends ThreeValueBox<_FIRST, _SECOND, _THIRD> {
     protected _FOURTH GQD;
 
-    public EWA() {
+    public FourValueBox() {
         this(null, null, null, null);
     }
 
-    public EWA(_FIRST var1, _SECOND var2, _THIRD var3, _FOURTH var4) {
+    public FourValueBox(_FIRST var1, _SECOND var2, _THIRD var3, _FOURTH var4) {
         super(var1, var2, var3);
         this.GQD = var4;
     }
@@ -38,7 +38,7 @@ public class EWA<_FIRST, _SECOND, _THIRD, _FOURTH> extends EWC<_FIRST, _SECOND, 
         } else if (this.getClass() != var1.getClass()) {
             return false;
         } else {
-            EWA var2 = (EWA) var1;
+            FourValueBox var2 = (FourValueBox) var1;
             if (this.GQD == null) {
                 return var2.GQD == null;
             } else return this.GQD.equals(var2.GQD);

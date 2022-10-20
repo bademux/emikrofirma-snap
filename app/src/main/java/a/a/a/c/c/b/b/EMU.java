@@ -4,7 +4,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.ELZ;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.IK;
 import a.a.a.c.f.a.IL;
 import a.a.a.c.f.a.a.IJE;
@@ -36,7 +36,7 @@ public interface EMU {
 
     <A extends QSG<B>, B extends QSH> A ROG(ELZ var1, Class<A> var2) throws FFK, FFO;
 
-    <T extends IL, Q extends IW<T>, R extends EDF<T>, S extends List<R>> EVZ<Integer, S> HJY(ELZ var1, Q var2) throws FFK, FFO;
+    <T extends IL, Q extends IW<T>, R extends EDF<T>, S extends List<R>> TwoValueBox<Integer, S> HJY(ELZ var1, Q var2) throws FFK, FFO;
 
     <T extends IL> void HJZ(ELZ var1, T var2) throws FFK, FFO;
 
@@ -50,9 +50,9 @@ public interface EMU {
 
     <T extends IL> Integer getMaxDocumentIndex(ELZ var1, Class<T> var2, JN var3, Enum<?> var4, Enum<?> var5) throws FFK, FFO;
 
-    <T extends IK, I extends Enum<I>, L extends Enum<L>, Q extends EYD<T, I, L>, R extends EDF<T>, S extends List<R>> EVZ<Integer, S> HKD(ELZ var1, Q var2) throws FFK, FFO;
+    <T extends IK, I extends Enum<I>, L extends Enum<L>, Q extends EYD<T, I, L>, R extends EDF<T>, S extends List<R>> TwoValueBox<Integer, S> HKD(ELZ var1, Q var2) throws FFK, FFO;
 
-    <T extends IL, Q extends IW<T>, R extends EDF<T>, S extends List<R>> EVZ<Integer, S> HKE(ELZ var1, Q var2) throws FFK, FFO;
+    <T extends IL, Q extends IW<T>, R extends EDF<T>, S extends List<R>> TwoValueBox<Integer, S> HKE(ELZ var1, Q var2) throws FFK, FFO;
 
     <T extends IJE> void HKF(ELZ var1, T var2) throws FFK, FFO;
 

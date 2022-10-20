@@ -16,7 +16,7 @@ import a.a.a.c.c.e.a.a.c.ERP;
 import a.a.a.c.c.e.a.a.c.ERQ;
 import a.a.a.c.c.e.a.a.c.ERR;
 import com.github.bademux.emk.Application;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.a.EZQ;
 import a.a.a.c.f.a.a.EZR;
 import a.a.a.c.f.a.a.EZS;
@@ -356,32 +356,32 @@ public class ERS extends BaseFxController {
                     var12 = var4.indexOf(var9, var8);
                     if (var8 < var12) {
                         var13 = var4.substring(var8, var12);
-                        var5.add(new EVZ("A", var13));
+                        var5.add(new TwoValueBox("A", var13));
                     }
 
                     var8 = var12 + var9.length();
-                    var5.add(new EVZ("B", var9));
+                    var5.add(new TwoValueBox("B", var9));
                 } else if (var10 != null) {
                     String var11 = "#%" + var10 + "%#";
                     var12 = var4.indexOf(var11, var8);
                     if (var8 < var12) {
                         var13 = var4.substring(var8, var12);
-                        var5.add(new EVZ("A", var13));
+                        var5.add(new TwoValueBox("A", var13));
                     }
 
                     var8 = var12 + var11.length();
-                    var5.add(new EVZ("C", var10));
+                    var5.add(new TwoValueBox("C", var10));
                 }
             }
 
             if (var8 < var4.length()) {
-                var5.add(new EVZ("A", var4.substring(var8)));
+                var5.add(new TwoValueBox("A", var4.substring(var8)));
             }
 
             Iterator var16 = var5.iterator();
 
             while (var16.hasNext()) {
-                EVZ var17 = (EVZ) var16.next();
+                TwoValueBox var17 = (TwoValueBox) var16.next();
                 ERP var18 = null;
                 if ("A".equals(var17.getFirstValue())) {
                     var18 = ERP.text;

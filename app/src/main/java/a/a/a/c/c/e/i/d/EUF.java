@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.i.d;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -9,7 +9,7 @@ import a.a.a.c.c.a.b.ELW;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.i.b.EUD;
 import a.a.a.c.d.b.EQB;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.c.HI;
 import a.a.a.c.f.a.d.*;
 import a.a.a.c.f.a.g.AGYN;
@@ -82,8 +82,8 @@ public class EUF extends ELW {
 
         ArrayList var11;
         try {
-            IY var1 = new IY(AGWN.class, null, HM.JPK, null, FDL.DESC);
-            EVZ var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
+            IY var1 = new IY(AGWN.class, null, HM.JPK, null, OrderType.DESC);
+            TwoValueBox var2 = this.getModelManager().HJY(this.getParentDefinition(), var1);
             ArrayList var3 = new ArrayList();
             if (var2 != null) {
                 Iterator var4 = ((List) var2.getSecondValue()).iterator();
@@ -205,7 +205,7 @@ public class EUF extends ELW {
 
     public HI getContractorByNip(String var1) {
 
-        EVZ var3;
+        TwoValueBox var3;
         try {
             AGYN var2 = new AGYN(HI.class, var1);
             var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);

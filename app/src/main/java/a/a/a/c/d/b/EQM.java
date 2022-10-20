@@ -5,7 +5,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.b.f.a.FFM;
 import a.a.a.b.g.FFP;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.d.AGXA;
 import a.a.a.c.g.c.FCX;
 import a.a.a.c.g.c.FCZ;
@@ -151,7 +151,7 @@ public class EQM {
         }
     }
 
-    public EVZ<AGXA, String> HQO(File var1) throws FFO, FFK {
+    public TwoValueBox<AGXA, String> HQO(File var1) throws FFO, FFK {
 
         FileInputStream var2 = null;
 
@@ -213,7 +213,7 @@ public class EQM {
                     var10 = (AGXA) var9.next();
                 } while (!var10.getTns().equals(var6.getXmlValue_tnsJPK()) || !var10.getKodFormularza().equals(var6.getXmlValue_KodFormularza()) || !var10.getKodSystemowy().equals(var6.getXmlValue_kodSystemowy()) || !var10.getWersjaSchemy().equals(var6.getXmlValue_wersjaSchemy()) || !var10.getWariantFormularza().equals(var6.getXmlValue_wariantFormularza()));
 
-                EVZ var11 = new EVZ(var10, var6.getXmlValue_celZlozenia());
+                TwoValueBox var11 = new TwoValueBox(var10, var6.getXmlValue_celZlozenia());
                 return var11;
             }
         } catch (IOException | ParserConfigurationException | SAXException var22) {

@@ -1,8 +1,8 @@
 package a.a.a.c.f.a.c.a.c;
 
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
-import a.a.a.c.e.a.d.EWD;
+import a.a.a.c.e.a.d.TwoValueBox;
+import a.a.a.c.e.a.d.OneValueBox;
 import a.a.a.c.f.a.c.a.AHCF;
 import a.a.a.c.f.a.c.a.AHCI;
 import a.a.a.c.f.a.c.a.AHDI;
@@ -101,7 +101,7 @@ public class AHDU extends AHDI {
 
     }
 
-    public void AIDL(OutputStream var1, EWD<Integer> var2, String var3) {
+    public void AIDL(OutputStream var1, OneValueBox<Integer> var2, String var3) {
 
         try {
             HashMap var4 = new HashMap();
@@ -117,7 +117,7 @@ public class AHDU extends AHDI {
             while (var5.hasNext()) {
                 AHCF var14 = (AHCF) var5.next();
                 org.slf4j.LoggerFactory.getLogger(getClass()).debug("rule " + var14);
-                EVZ var7 = var14.AICY(var4);
+                TwoValueBox var7 = var14.AICY(var4);
                 switch ((AHCI) var7.getFirstValue()) {
                     case SUCCESS:
                         break;

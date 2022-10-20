@@ -1,6 +1,6 @@
 package a.a.a.b.a;
 
-import a.a.a.b.a.a.FDK;
+import a.a.a.b.a.a.Condition;
 import a.a.a.b.a.a.a.*;
 import a.a.a.b.a.a.b.FDJ;
 import a.a.a.b.a.a.c.FDN;
@@ -10,7 +10,7 @@ import a.a.a.b.a.a.e.FEE;
 import a.a.a.b.a.a.e.FEF;
 import a.a.a.b.a.a.e.FEH;
 import a.a.a.b.f.FFI;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -19,37 +19,31 @@ import java.util.Date;
 import java.util.*;
 
 @Slf4j
-public class FDB {
-    public static final String QHF = "_purg";
-    public static final FDR QHG;
-    public static final FDR QHH;
+public class DbUtils {
+    public static final String PURGE_PREFIX = "_purg";
 
-    public FDB() {
-    }
+    public static final CellTyped auditTsCell = new CellTyped("audit_ts", CellType.TIMESTAMP);
+    public static final CellTyped auditReasonCell = new CellTyped("audit_reason", CellType.TEXT);
 
-    public static Connection IIG(File var0, String var1) throws ClassNotFoundException, SQLException {
-
+    public static Connection getConnection(File baseDir, String dbName) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
-        if (!var0.isDirectory()) {
-            throw new RuntimeException("Path [" + var0 + "] is not a directory!");
-        }
-
-        return DriverManager.getConnection("jdbc:sqlite:" + var0.getAbsolutePath() + "/" + var1);
+        assert baseDir.isDirectory() : "Path [" + baseDir + "] is not a directory!";
+        return DriverManager.getConnection("jdbc:sqlite:%s/%s".formatted(baseDir.getAbsolutePath(), dbName));
     }
 
-    public static void IIH(Connection var0, FDD var1) throws SQLException {
+    public static void IIH(Connection var0, TableDef var1) throws SQLException {
 
         PreparedStatement var2 = null;
 
         try {
             StringBuilder var3 = new StringBuilder();
             var3.append("CREATE ");
-            if (var1.IJE()) {
+            if (var1.isTemporary()) {
                 var3.append("TEMPORARY ");
             }
 
             var3.append("TABLE ");
-            if (!var1.IJF()) {
+            if (!var1.isFailOnExisting()) {
                 var3.append("IF NOT EXISTS ");
             }
 
@@ -63,7 +57,7 @@ public class FDB {
             Iterator var5 = var1.getColumns().iterator();
 
             while (var5.hasNext()) {
-                FDW var6 = (FDW) var5.next();
+                CellDef var6 = (CellDef) var5.next();
                 if (var4) {
                     var4 = false;
                 } else {
@@ -74,15 +68,15 @@ public class FDB {
                 var3.append(" ");
                 var3.append(var6.getType().name());
                 var3.append(" ");
-                if (var6.IJX()) {
+                if (var6.isUnique()) {
                     var3.append("UNIQUE ");
                 }
 
-                if (!var6.IJW()) {
+                if (!var6.isNullable()) {
                     var3.append("NOT NULL ");
                 }
 
-                if (var6.IJY()) {
+                if (var6.hasDefault()) {
                     var3.append("DEFAULT ");
                     var3.append(var6.getDefault_());
                     var3.append(" ");
@@ -181,44 +175,43 @@ public class FDB {
         }
     }
 
-    public static void QIO(Connection var0, FDD var1) throws SQLException {
-
-        QIP(var0, var1, false);
+    public static void createTable(Connection var0, TableDef v) throws SQLException {
+        createTable(var0, v, false);
 
     }
 
-    public static void QIP(Connection var0, FDD var1, boolean var2) throws SQLException {
+    public static void createTable(Connection var0, TableDef tableDef, boolean shouldBackup) throws SQLException {
 
         PreparedStatement var3 = null;
 
         try {
-            FDD var4 = null;
-            if (!var2) {
-                var4 = var1.IJG(var1.getName() + QHF);
-                var4.getColumns().add(new FDW(QHG, true, false));
-                var4.getColumns().add(new FDW(QHH, true, false));
+            TableDef def = null;
+            if (shouldBackup) {
+                def = tableDef;
             } else {
-                var4 = var1;
+                def = tableDef.createFor(tableDef.getName() + PURGE_PREFIX);
+                def.getColumns().add(new CellDef(auditTsCell, true, false));
+                def.getColumns().add(new CellDef(auditReasonCell, true, false));
             }
 
             StringBuilder var5 = new StringBuilder();
             var5.append("CREATE ");
             var5.append("TABLE ");
-            if (!var4.IJF()) {
+            if (!def.isFailOnExisting()) {
                 var5.append("IF NOT EXISTS ");
             }
 
-            if (var4.getSchema() != null && var4.getSchema().length() > 0) {
-                var5.append(var4.getSchema()).append(".");
+            if (def.getSchema() != null && def.getSchema().length() > 0) {
+                var5.append(def.getSchema()).append(".");
             }
 
-            var5.append(var4.getName());
+            var5.append(def.getName());
             var5.append(" (");
             boolean var6 = true;
-            Iterator var7 = var4.getColumns().iterator();
+            Iterator var7 = def.getColumns().iterator();
 
             while (var7.hasNext()) {
-                FDW var8 = (FDW) var7.next();
+                CellDef var8 = (CellDef) var7.next();
                 if (var6) {
                     var6 = false;
                 } else {
@@ -244,155 +237,126 @@ public class FDB {
 
     }
 
-    public static boolean III(Connection var0, String var1, String var2) throws SQLException {
+    public static boolean isUnique(Connection connection, String tableName, String columnName) throws SQLException {
 
-        boolean var19;
-        Object var3 = null;
-        Object var4 = null;
-        DatabaseMetaData var5 = var0.getMetaData();
-        ResultSet var6 = var5.getIndexInfo((String) var3, (String) var4, var1, true, false);
-        HashMap var7 = new HashMap();
+        ResultSet var6 = connection.getMetaData().getIndexInfo(null, null, tableName, true, false);
+        var tables = new HashMap<String, Map<String, Map<Integer, String>>>();
 
         while (var6.next()) {
-            String var8 = var6.getString("TABLE_NAME");
-            String var9 = var6.getString("INDEX_NAME");
-            Integer var10 = var6.getInt("ORDINAL_POSITION");
-            String var11 = var6.getString("COLUMN_NAME");
-            if (!var7.containsKey(var8)) {
-                var7.put(var8, new HashMap());
+            String tName = var6.getString("TABLE_NAME");
+            String indexName = var6.getString("INDEX_NAME");
+            Integer ordinalPosition = var6.getInt("ORDINAL_POSITION");
+            String cName = var6.getString("COLUMN_NAME");
+            if (!tables.containsKey(tName)) {
+                tables.put(tName, new HashMap());
             }
 
-            Map var12 = (Map) var7.get(var8);
-            if (!var12.containsKey(var9)) {
-                var12.put(var9, new HashMap());
+            var indices = tables.get(tName);
+            if (!indices.containsKey(indexName)) {
+                indices.put(indexName, new HashMap());
             }
 
-            Map var13 = (Map) var12.get(var9);
-            var13.put(var10, var11);
+            var ordinals = indices.get(indexName);
+            ordinals.put(ordinalPosition, cName);
         }
 
-        Iterator var18 = var7.entrySet().iterator();
+        var it = tables.entrySet().iterator();
 
         label128:
-        while (var18.hasNext()) {
-            Map.Entry var20 = (Map.Entry) var18.next();
-            Iterator var21 = ((Map) var20.getValue()).entrySet().iterator();
-
+        while (it.hasNext()) {
+            var var21 = it.next().getValue().entrySet().iterator();
             while (true) {
-                Map.Entry var22;
+                Map.Entry<String, Map<Integer, String>> entry;
                 do {
                     if (!var21.hasNext()) {
                         continue label128;
                     }
 
-                    var22 = (Map.Entry) var21.next();
-                } while (((Map) var22.getValue()).entrySet().size() != 1);
+                    entry = var21.next();
+                } while (((Map) entry.getValue()).entrySet().size() != 1);
 
-                Iterator var23 = ((Map) var22.getValue()).entrySet().iterator();
+                var var23 = entry.getValue().entrySet().iterator();
 
                 while (var23.hasNext()) {
-                    Map.Entry var24 = (Map.Entry) var23.next();
-                    if (var24.getValue().equals(var2)) {
-                        boolean var14 = true;
-                        return var14;
+                    if (var23.next().getValue().equals(columnName)) {
+                        return true;
                     }
                 }
             }
         }
 
-        var19 = false;
-
-        return var19;
+        return false;
     }
 
-    public static void IIJ(Connection var0, FDD var1) throws SQLException {
+    public static void IIJ(Connection connection, TableDef tableDef) throws SQLException {
 
-        HashSet var2 = new HashSet();
-        HashMap var3 = new HashMap();
-        Iterator var4 = var1.getColumns().iterator();
+        var columnsToBeRemoved = new HashSet<CellTyped>();
+        var resut = prepareCellTypes(tableDef);
 
-        while (var4.hasNext()) {
-            FDW var5 = (FDW) var4.next();
-            var3.put(new FDR(var5), new EVZ(false, var5));
-        }
-
-        DatabaseMetaData var71 = var0.getMetaData();
-        ResultSet var72 = var71.getColumns(null, var1.getSchema(), var1.getName(), null);
+        ResultSet metaDataResult = connection.getMetaData().getColumns(null, tableDef.getSchema(), tableDef.getName(), null);
 
         while (true) {
-            String var7;
-            while (var72.next()) {
-                String var6 = var72.getString("COLUMN_NAME");
-                var7 = var72.getString("TYPE_NAME");
-                short var8 = var72.getShort("NULLABLE");
-                boolean var9 = true;
-                if (1 == var8) {
-                    var9 = true;
-                } else if (0 == var8) {
-                    var9 = false;
-                } else {
-                    log.warn("COLUMN NULLABLE UNKNOWN");
-                }
 
-                FDV var10 = FDV.valueOf(var7);
-                boolean var11 = III(var0, var1.getName(), var6);
-                FDR var12 = new FDR(var6, var10);
-                if (var3.containsKey(var12) && ((FDW) ((EVZ) var3.get(var12)).getSecondValue()).IJW() == var9 && ((FDW) ((EVZ) var3.get(var12)).getSecondValue()).IJX() == var11) {
-                    ((EVZ) var3.get(var12)).setFirstValue(true);
+            while (metaDataResult.next()) {
+                String columnName = metaDataResult.getString("COLUMN_NAME");
+                boolean isNullable = getNullable(metaDataResult);
+
+                CellType cellType = CellType.valueOf(metaDataResult.getString("TYPE_NAME"));
+                CellTyped cellTyped = new CellTyped(columnName, cellType);
+                boolean isUnique = isUnique(connection, tableDef.getName(), columnName);
+                var twoValueBox = resut.get(cellTyped);
+                if (twoValueBox != null && twoValueBox.getSecondValue().isNullable() == isNullable && twoValueBox.getSecondValue().isUnique() == isUnique) {
+                    twoValueBox.setFirstValue(true);
                 } else {
-                    var2.add(var12);
+                    columnsToBeRemoved.add(cellTyped);
                 }
             }
 
-            boolean var73 = var2.isEmpty();
-            Iterator var74 = var2.iterator();
+            logToBeRemoved(tableDef, columnsToBeRemoved);
 
-            while (var74.hasNext()) {
-                FDR var75 = (FDR) var74.next();
-                log.info("Table [" + var1.getName() + "] column [" + var75.getName() + "] will be removed.");
-            }
 
-            if (var73) {
-                var74 = var3.entrySet().iterator();
+            boolean hasColumns = columnsToBeRemoved.isEmpty();
+            if (hasColumns) {
+                Iterator var74 = resut.entrySet().iterator();
 
                 while (var74.hasNext()) {
                     Map.Entry var76 = (Map.Entry) var74.next();
-                    if (!(Boolean) ((EVZ) var76.getValue()).getFirstValue()) {
-                        var73 = false;
+                    if (!(Boolean) ((TwoValueBox) var76.getValue()).getFirstValue()) {
+                        hasColumns = false;
                         break;
                     }
                 }
             }
 
-            if (!var73) {
-                var7 = var1.getAlias();
+            if (!hasColumns) {
+                String columnType = tableDef.getAlias();
                 String var77 = "";
                 String var78 = "";
-                if (var7 != null && var7.length() > 0) {
-                    var77 = " " + var7;
-                    var78 = var7 + ".";
+                if (columnType != null && columnType.length() > 0) {
+                    var77 = " " + columnType;
+                    var78 = columnType + ".";
                 }
 
-                FDD var79 = var1.IJG(var1.getName() + "_" + System.nanoTime());
-                IIH(var0, var79);
+                TableDef tmpTableDef = tableDef.createFor(tableDef.getName() + "_" + System.nanoTime());
+                IIH(connection, tmpTableDef);
                 HashSet var80 = new HashSet();
                 HashSet var81 = new HashSet();
-                StringBuilder var13 = new StringBuilder();
-                var13.append("INSERT INTO ");
-                if (var79.getSchema() != null && var79.getSchema().length() > 0) {
-                    var13.append(var79.getSchema()).append(".");
+                StringBuilder insertInto = new StringBuilder();
+                insertInto.append("INSERT INTO ");
+                if (tmpTableDef.getSchema() != null && tmpTableDef.getSchema().length() > 0) {
+                    insertInto.append(tmpTableDef.getSchema()).append(".");
                 }
 
-                var13.append(var79.getName());
-                var13.append(" (");
+                insertInto.append(tmpTableDef.getName());
+                insertInto.append(" (");
                 StringBuilder var14 = new StringBuilder();
                 StringBuilder var15 = new StringBuilder();
                 boolean var16 = true;
-                Iterator var17 = var3.entrySet().iterator();
+                Iterator var17 = resut.entrySet().iterator();
 
                 while (var17.hasNext()) {
                     Map.Entry var18 = (Map.Entry) var17.next();
-                    if ((Boolean) ((EVZ) var18.getValue()).getFirstValue()) {
+                    if ((Boolean) ((TwoValueBox) var18.getValue()).getFirstValue()) {
                         if (var16) {
                             var16 = false;
                         } else {
@@ -401,11 +365,11 @@ public class FDB {
                         }
 
                         var14.append(var78);
-                        var14.append(((FDR) var18.getKey()).getName());
-                        var15.append(((FDR) var18.getKey()).getName());
+                        var14.append(((CellTyped) var18.getKey()).getName());
+                        var15.append(((CellTyped) var18.getKey()).getName());
                     } else {
-                        FDW var19 = (FDW) ((EVZ) var18.getValue()).getSecondValue();
-                        if (var19 instanceof FDS var20) {
+                        CellDef var19 = (CellDef) ((TwoValueBox) var18.getValue()).getSecondValue();
+                        if (var19 instanceof InitScriptCell var20) {
                             if (var20.getInitScript() != null && var20.getInitScript().length() > 0) {
                                 if (var16) {
                                     var16 = false;
@@ -417,40 +381,34 @@ public class FDB {
                                 var14.append("(");
                                 var14.append(var20.getInitScript());
                                 var14.append(")");
-                                var15.append(((FDR) var18.getKey()).getName());
+                                var15.append(((CellTyped) var18.getKey()).getName());
                             }
-                        } else if (var19 instanceof QJR var89) {
+                        } else if (var19 instanceof MigrationCell var89) {
                             var80.add(var89);
                             var81.addAll(var89.getContextColumns());
                         }
                     }
                 }
 
-                var13.append(var15);
-                var13.append(") SELECT ");
-                var13.append(var14);
-                var13.append(" FROM ");
-                var13.append(var1.getName());
-                var13.append(var77);
-                PreparedStatement var82 = null;
+                insertInto.append(var15);
+                insertInto.append(") SELECT ");
+                insertInto.append(var14);
+                insertInto.append(" FROM ");
+                insertInto.append(tableDef.getName());
+                insertInto.append(var77);
 
-                try {
-                    var82 = var0.prepareStatement(var13.toString());
-                    int var83 = var82.executeUpdate();
+                try (var pstm = connection.prepareStatement(insertInto.toString());) {
+
+                    int var83 = pstm.executeUpdate();
                     log.debug("result " + var83);
-                } finally {
-                    if (var82 != null) {
-                        var82.close();
-                    }
-
                 }
 
                 Iterator var21;
                 if (!var80.isEmpty()) {
-                    FDE var84 = new FDE(var79.getSchema(), var79.getName());
+                    TableValuesSelect var84 = new TableValuesSelect(tmpTableDef.getSchema(), tmpTableDef.getName());
                     ArrayList var86 = new ArrayList();
                     HashSet var90 = new HashSet();
-                    var21 = var79.getConstraints().iterator();
+                    var21 = tmpTableDef.getConstraints().iterator();
 
                     Iterator var24;
                     label1587:
@@ -467,24 +425,24 @@ public class FDB {
 
                                 String var25 = (String) var24.next();
                                 var90.add(var25);
-                                var86.add(new FDX(var25));
+                                var86.add(new CellQuery(var25));
                             }
                         }
                     }
 
                     if (var90.isEmpty()) {
-                        throw new FFI("Table [" + var79.getSchema() + "." + var79.getName() + "] has no PK!");
+                        throw new FFI("Table [" + tmpTableDef.getSchema() + "." + tmpTableDef.getName() + "] has no PK!");
                     }
 
                     var21 = var81.iterator();
 
                     while (var21.hasNext()) {
-                        FDY var94 = (FDY) var21.next();
-                        var86.add(new FDX(var94));
+                        CellNamed var94 = (CellNamed) var21.next();
+                        var86.add(new CellQuery(var94));
                     }
 
                     var84.IJI(var86);
-                    IIO(var0, var84);
+                    IIO(connection, var84);
                     var21 = var84.getResults().iterator();
 
                     while (var21.hasNext()) {
@@ -494,13 +452,13 @@ public class FDB {
 
                         while (true) {
                             while (var24.hasNext()) {
-                                FDU var98 = (FDU) var24.next();
+                                CellValue var98 = (CellValue) var24.next();
                                 Iterator var26 = var90.iterator();
 
                                 while (var26.hasNext()) {
                                     String var27 = (String) var26.next();
                                     if (var27.equals(var98.getName())) {
-                                        var97.add(new FDU(var98.getName(), var98.getType(), var98.getValue(), FDK.EQUALS));
+                                        var97.add(new CellValue(var98.getName(), var98.getType(), var98.getValue(), Condition.EQUALS));
                                         break;
                                     }
                                 }
@@ -509,16 +467,16 @@ public class FDB {
                             var24 = var80.iterator();
 
                             while (var24.hasNext()) {
-                                QJR var99 = (QJR) var24.next();
+                                MigrationCell var99 = (MigrationCell) var24.next();
                                 HashSet var100 = new HashSet();
                                 var100.addAll(var95.values());
-                                Object var101 = var99.getMigration().QNW(var100);
-                                FDG var28 = new FDG(var79.getSchema(), var79.getName());
-                                var28.IJQ(new FDU[]{new FDU(var99, var101)});
+                                Object var101 = var99.getMigration().action(var100);
+                                TableValuesUpdate var28 = new TableValuesUpdate(tmpTableDef.getSchema(), tmpTableDef.getName());
+                                var28.IJQ(new CellValue[]{new CellValue(var99, var101)});
                                 var28.IJC(var97);
-                                IIM(var0, var28);
-                                synchronized (var0) {
-                                    var0.commit();
+                                IIM(connection, var28);
+                                synchronized (connection) {
+                                    connection.commit();
                                 }
                             }
                             break;
@@ -526,52 +484,25 @@ public class FDB {
                     }
                 }
 
-                String var85 = "ALTER TABLE " + var1.getName() + " RENAME TO " + var1.getName() + "_old";
-
-                try {
-                    var82 = var0.prepareStatement(var85);
-                    int var87 = var82.executeUpdate();
-                    log.debug("result " + var87);
-                } finally {
-                    if (var82 != null) {
-                        var82.close();
-                    }
-
+                try (var pstm = connection.prepareStatement("ALTER TABLE " + tableDef.getName() + " RENAME TO " + tableDef.getName() + "_old")) {
+                    log.trace("result {}", pstm.executeUpdate());
                 }
 
-                String var88 = "ALTER TABLE " + var79.getName() + " RENAME TO " + var1.getName();
-
-                try {
-                    var82 = var0.prepareStatement(var88);
-                    int var91 = var82.executeUpdate();
-                    log.debug("result " + var91);
-                } finally {
-                    if (var82 != null) {
-                        var82.close();
-                    }
-
+                try (var pstm = connection.prepareStatement("ALTER TABLE " + tmpTableDef.getName() + " RENAME TO " + tableDef.getName())) {
+                    log.trace("result {}", pstm.executeUpdate());
                 }
 
-                String var92 = "DROP TABLE " + var1.getName() + "_old";
-
-                try {
-                    var82 = var0.prepareStatement(var92);
-                    int var93 = var82.executeUpdate();
-                    log.debug("result " + var93);
-                } finally {
-                    if (var82 != null) {
-                        var82.close();
-                    }
-
+                try (var pstm = connection.prepareStatement("DROP TABLE " + tableDef.getName() + "_old")) {
+                    log.trace("result {}", pstm.executeUpdate());
                 }
 
                 if (!var80.isEmpty()) {
                     var21 = var80.iterator();
 
                     while (var21.hasNext()) {
-                        QJR var96 = (QJR) var21.next();
+                        MigrationCell var96 = (MigrationCell) var21.next();
                         if (var96.getPostAction() != null) {
-                            var96.getPostAction().QNX();
+                            var96.getPostAction().run();
                         }
                     }
                 }
@@ -581,158 +512,139 @@ public class FDB {
 
     }
 
-    public static void QIQ(Connection var0, FDD var1) throws SQLException {
-
-        FDD var2 = var1.IJG(var1.getName() + QHF);
-        var2.getColumns().add(new FDW(QHG, true, false));
-        var2.getColumns().add(new FDW(QHH, true, false));
-        HashSet var3 = new HashSet();
-        HashMap var4 = new HashMap();
-        Iterator var5 = var2.getColumns().iterator();
-
-        while (var5.hasNext()) {
-            FDW var6 = (FDW) var5.next();
-            var4.put(new FDR(var6), new EVZ(false, var6));
+    private static boolean getNullable(ResultSet metaDataResult) throws SQLException {
+        short nullable = metaDataResult.getShort("NULLABLE");
+        boolean isNullable = true;
+        if (1 == nullable) {
+            isNullable = true;
+        } else if (0 == nullable) {
+            isNullable = false;
+        } else {
+            log.warn("COLUMN NULLABLE UNKNOWN");
         }
+        return isNullable;
+    }
 
-        DatabaseMetaData var53 = var0.getMetaData();
-        ResultSet var54 = var53.getColumns(null, var2.getSchema(), var2.getName(), null);
-
-        String var8;
-        while (var54.next()) {
-            String var7 = var54.getString("COLUMN_NAME");
-            var8 = var54.getString("TYPE_NAME");
-            FDV var9 = FDV.valueOf(var8);
-            FDR var10 = new FDR(var7, var9);
-            if (var4.containsKey(var10)) {
-                ((EVZ) var4.get(var10)).setFirstValue(true);
-            } else {
-                var3.add(var10);
-            }
+    private static void logToBeRemoved(TableDef tableDef, Set<CellTyped> var2) {
+        for (CellTyped cellTyped : var2) {
+            log.info("Table [{}] column [{}] will be removed.", tableDef.getName(), cellTyped.getName());
         }
+    }
 
-        boolean var55 = var3.isEmpty();
-        Iterator var56 = var3.iterator();
+    public static void QIQ(Connection connection, TableDef def) throws SQLException {
 
-        while (var56.hasNext()) {
-            FDR var57 = (FDR) var56.next();
-            log.info("Table [" + var2.getName() + "] column [" + var57.getName() + "] will be removed.");
-        }
+        TableDef tableDef = def.createFor(def.getName() + PURGE_PREFIX);
+        tableDef.getColumns().add(new CellDef(auditTsCell, true, false));
+        tableDef.getColumns().add(new CellDef(auditReasonCell, true, false));
 
-        if (var55) {
-            var56 = var4.entrySet().iterator();
+        var metaDataResult = connection.getMetaData().getColumns(null, tableDef.getSchema(), tableDef.getName(), null);
+        var result = prepareCellTypes(tableDef);
+        Set<CellTyped> columnsToBeRemoved = parseColumns(result, metaDataResult);
+        logToBeRemoved(tableDef, columnsToBeRemoved);
 
-            while (var56.hasNext()) {
-                Map.Entry var58 = (Map.Entry) var56.next();
-                if (!(Boolean) ((EVZ) var58.getValue()).getFirstValue()) {
-                    var55 = false;
+        boolean hasColumns = columnsToBeRemoved.isEmpty();
+
+        if (hasColumns) {
+            for (var entry : result.entrySet()) {
+                if (!(Boolean) entry.getValue().getFirstValue()) {
+                    hasColumns = false;
                     break;
                 }
             }
         }
 
-        if (!var55) {
-            var8 = var2.getAlias();
-            String var59 = "";
-            String var60 = "";
-            if (var8 != null && var8.length() > 0) {
-                var59 = " " + var8;
-                var60 = var8 + ".";
-            }
+        if (hasColumns) {
+            return;
+        }
+        String alias = tableDef.getAlias();
+        String prefixedAlias = "";
+        String dotedAlias = "";
+        if (alias != null && alias.length() > 0) {
+            prefixedAlias = " " + alias;
+            dotedAlias = alias + ".";
+        }
 
-            FDD var11 = var2.IJG(var2.getName() + "_" + System.nanoTime());
-            QIP(var0, var11, true);
-            StringBuilder var12 = new StringBuilder();
-            var12.append("INSERT INTO ");
-            if (var11.getSchema() != null && var11.getSchema().length() > 0) {
-                var12.append(var11.getSchema()).append(".");
-            }
+        TableDef defBackup = tableDef.createFor(tableDef.getName() + "_" + System.nanoTime());
+        createTable(connection, defBackup, true);
+        StringBuilder insertStmt = new StringBuilder();
+        insertStmt.append("INSERT INTO ");
+        if (defBackup.getSchema() != null && defBackup.getSchema().length() > 0) {
+            insertStmt.append(defBackup.getSchema()).append(".");
+        }
 
-            var12.append(var11.getName());
-            var12.append(" (");
-            StringBuilder var13 = new StringBuilder();
-            StringBuilder var14 = new StringBuilder();
-            boolean var15 = true;
-            Iterator var16 = var4.entrySet().iterator();
+        insertStmt.append(defBackup.getName());
+        insertStmt.append(" (");
+        StringBuilder var13 = new StringBuilder();
+        StringBuilder var14 = new StringBuilder();
+        boolean var15 = true;
+        Iterator var16 = result.entrySet().iterator();
 
-            while (var16.hasNext()) {
-                Map.Entry var17 = (Map.Entry) var16.next();
-                if ((Boolean) ((EVZ) var17.getValue()).getFirstValue()) {
-                    if (var15) {
-                        var15 = false;
-                    } else {
-                        var13.append(", ");
-                        var14.append(", ");
-                    }
-
-                    var13.append(var60);
-                    var13.append(((FDR) var17.getKey()).getName());
-                    var14.append(((FDR) var17.getKey()).getName());
-                }
-            }
-
-            var12.append(var14);
-            var12.append(") SELECT ");
-            var12.append(var13);
-            var12.append(" FROM ");
-            var12.append(var2.getName());
-            var12.append(var59);
-            PreparedStatement var61 = null;
-
-            try {
-                var61 = var0.prepareStatement(var12.toString());
-                int var62 = var61.executeUpdate();
-                log.debug("result " + var62);
-            } finally {
-                if (var61 != null) {
-                    var61.close();
+        while (var16.hasNext()) {
+            Map.Entry var17 = (Map.Entry) var16.next();
+            if ((Boolean) ((TwoValueBox) var17.getValue()).getFirstValue()) {
+                if (var15) {
+                    var15 = false;
+                } else {
+                    var13.append(", ");
+                    var14.append(", ");
                 }
 
+                var13.append(dotedAlias);
+                var13.append(((CellTyped) var17.getKey()).getName());
+                var14.append(((CellTyped) var17.getKey()).getName());
             }
+        }
 
-            String var63 = "ALTER TABLE " + var2.getName() + " RENAME TO " + var2.getName() + "_old";
+        insertStmt.append(var14);
+        insertStmt.append(") SELECT ");
+        insertStmt.append(var13);
+        insertStmt.append(" FROM ");
+        insertStmt.append(tableDef.getName());
+        insertStmt.append(prefixedAlias);
 
-            try {
-                var61 = var0.prepareStatement(var63);
-                int var18 = var61.executeUpdate();
-                log.debug("result " + var18);
-            } finally {
-                if (var61 != null) {
-                    var61.close();
-                }
+        try(var pstmt = connection.prepareStatement(insertStmt.toString());) {
+            log.trace("result {}", pstmt.executeUpdate());
+        }
 
-            }
+        try(var pstmt = connection.prepareStatement("ALTER TABLE " + tableDef.getName() + " RENAME TO " + tableDef.getName() + "_old")) {
+            log.trace("result {}", pstmt.executeUpdate());
+        }
 
-            String var64 = "ALTER TABLE " + var11.getName() + " RENAME TO " + var2.getName();
+        try(var pstmt = connection.prepareStatement("ALTER TABLE " + defBackup.getName() + " RENAME TO " + tableDef.getName())) {
+            log.trace("result {}", pstmt.executeUpdate());
+        }
 
-            try {
-                var61 = var0.prepareStatement(var64);
-                int var19 = var61.executeUpdate();
-                log.debug("result " + var19);
-            } finally {
-                if (var61 != null) {
-                    var61.close();
-                }
-
-            }
-
-            String var65 = "DROP TABLE " + var2.getName() + "_old";
-
-            try {
-                var61 = var0.prepareStatement(var65);
-                int var20 = var61.executeUpdate();
-                log.debug("result " + var20);
-            } finally {
-                if (var61 != null) {
-                    var61.close();
-                }
-
-            }
+        try(var pstmt = connection.prepareStatement("DROP TABLE " + tableDef.getName() + "_old")) {
+            log.debug("result {}", pstmt.executeUpdate());
         }
 
     }
 
-    public static void QIR(Connection var0, FDD var1, FDR var2, String var3, String var4) throws SQLException {
+    private static HashMap<CellTyped, TwoValueBox<Boolean, CellDef>> prepareCellTypes(TableDef tableDef) {
+        var result = new HashMap<CellTyped, TwoValueBox<Boolean, CellDef>>();
+        for (CellDef column : tableDef.getColumns()) {
+            result.put(new CellTyped(column), new TwoValueBox(false, column));
+        }
+        return result;
+    }
+
+    private static HashSet<CellTyped> parseColumns(HashMap<CellTyped, TwoValueBox<Boolean, CellDef>> result, ResultSet metaDataResult) throws SQLException {
+        var columns = new HashSet<CellTyped>();
+        try (metaDataResult) {
+            while (metaDataResult.next()) {
+                CellTyped cellTyped = new CellTyped(metaDataResult.getString("COLUMN_NAME"), CellType.valueOf(metaDataResult.getString("TYPE_NAME")));
+                var twoValueBox = result.get(cellTyped);
+                if (twoValueBox != null) {
+                    twoValueBox.setFirstValue(true);
+                    continue;
+                }
+                columns.add(cellTyped);
+            }
+        }
+        return columns;
+    }
+
+    public static void QIR(Connection var0, TableDef var1, CellTyped var2, String var3, String var4) throws SQLException {
 
         DatabaseMetaData var5 = var0.getMetaData();
         ResultSet var6 = var5.getColumns(null, var1.getSchema(), var1.getName(), null);
@@ -743,8 +655,8 @@ public class FDB {
         while (var6.next()) {
             var8 = var6.getString("COLUMN_NAME");
             var9 = var6.getString("TYPE_NAME");
-            FDV var10 = FDV.valueOf(var9);
-            FDR var11 = new FDR(var8, var10);
+            CellType var10 = CellType.valueOf(var9);
+            CellTyped var11 = new CellTyped(var8, var10);
             var7.add(var11);
         }
 
@@ -757,7 +669,7 @@ public class FDB {
             var33.append(var1.getSchema()).append(".");
         }
 
-        var33.append(var1.getName() + QHF);
+        var33.append(var1.getName() + PURGE_PREFIX);
         var33.append(" (");
         StringBuilder var12 = new StringBuilder();
         StringBuilder var13 = new StringBuilder();
@@ -765,7 +677,7 @@ public class FDB {
         Iterator var15 = var7.iterator();
 
         while (var15.hasNext()) {
-            FDR var16 = (FDR) var15.next();
+            CellTyped var16 = (CellTyped) var15.next();
             if (var14) {
                 var14 = false;
             } else {
@@ -784,9 +696,9 @@ public class FDB {
         }
 
         var12.append("?, ?");
-        var13.append(QHG.getName());
+        var13.append(auditTsCell.getName());
         var13.append(", ");
-        var13.append(QHH.getName());
+        var13.append(auditReasonCell.getName());
         var33.append(var13);
         var33.append(") SELECT ");
         var33.append(var12);
@@ -800,8 +712,8 @@ public class FDB {
 
         try {
             var34 = var0.prepareStatement(var33.toString());
-            var34.setObject(1, new Date(), QHG.getType().getSqlType());
-            var34.setObject(2, var4, QHH.getType().getSqlType());
+            var34.setObject(1, new Date(), auditTsCell.getType().getSqlType());
+            var34.setObject(2, var4, auditReasonCell.getType().getSqlType());
             var34.setObject(3, var3, var2.getType().getSqlType());
             int var35 = var34.executeUpdate();
             log.debug("result " + var35);
@@ -861,7 +773,7 @@ public class FDB {
                 Iterator var5 = var1.getColumns().iterator();
 
                 while (var5.hasNext()) {
-                    FDY var6 = (FDY) var5.next();
+                    CellNamed var6 = (CellNamed) var5.next();
                     if (var4) {
                         var4 = false;
                     } else {
@@ -889,7 +801,7 @@ public class FDB {
 
     }
 
-    public static void IIL(Connection var0, FDF var1) throws SQLException {
+    public static void IIL(Connection var0, TableValuesInsert var1) throws SQLException {
 
         String var2 = IIS(var1);
         Iterator var3 = var1.getValues().iterator();
@@ -913,13 +825,12 @@ public class FDB {
 
     }
 
-    public static void IIM(Connection var0, FDG var1) throws SQLException {
+    public static void IIM(Connection var0, TableValuesUpdate var1) throws SQLException {
 
         PreparedStatement var2 = null;
 
         try {
-            String var4 = IIQ(var1) +
-                    IIT(var1);
+            String var4 = IIQ(var1) + IIT(var1);
             var2 = var0.prepareStatement(var4);
             int var5 = IIX(var2, var1.getValues(), var1.getValues());
             IIY(var5, var2, var1);
@@ -934,13 +845,12 @@ public class FDB {
 
     }
 
-    public static void IIN(Connection var0, FDC var1) throws SQLException {
+    public static void IIN(Connection var0, TableValuesDelete var1) throws SQLException {
 
         PreparedStatement var2 = null;
 
         try {
-            String var4 = IIR(var1) +
-                    IIT(var1);
+            String var4 = IIR(var1) + IIT(var1);
             var2 = var0.prepareStatement(var4);
             IIY(0, var2, var1);
             int var5 = var2.executeUpdate();
@@ -954,22 +864,19 @@ public class FDB {
 
     }
 
-    public static void IIO(Connection var0, FDE... var1) throws SQLException {
+    public static void IIO(Connection var0, TableValuesSelect... var1) throws SQLException {
 
         IIO(var0, null, null, var1);
 
     }
 
-    public static void IIO(Connection var0, Integer var1, Integer var2, FDE... var3) throws SQLException {
+    public static void IIO(Connection var0, Integer var1, Integer var2, TableValuesSelect... var3) throws SQLException {
 
         PreparedStatement var4 = null;
         ResultSet var5 = null;
 
         try {
-            String var7 = IIP(var3) +
-                    IIT(var3) +
-                    IIU(var3) +
-                    IIV(var1, var2);
+            String var7 = IIP(var3) + IIT(var3) + IIU(var3) + IIV(var1, var2);
             var4 = var0.prepareStatement(var7);
             IIY(0, var4, var3);
             var5 = var4.executeQuery();
@@ -987,7 +894,7 @@ public class FDB {
 
     }
 
-    private static String IIP(FDE... var0) {
+    private static String IIP(TableValuesSelect... var0) {
 
         String var18;
         StringBuilder var1 = new StringBuilder();
@@ -996,11 +903,11 @@ public class FDB {
         var2.append(" FROM ");
         boolean var3 = true;
         boolean var4 = true;
-        FDE[] var5 = var0;
+        TableValuesSelect[] var5 = var0;
         int var6 = var0.length;
 
         for (int var7 = 0; var7 < var6; ++var7) {
-            FDE var8 = var5[var7];
+            TableValuesSelect var8 = var5[var7];
             String var9 = var8.getAlias();
             String var10 = "";
             String var11 = "";
@@ -1011,13 +918,13 @@ public class FDB {
 
             if (var0.length == 1 && var8.getParameters().isEmpty()) {
                 log.debug("Query for all columns.");
-                var8.IJH(new FDX("*"));
+                var8.IJH(new CellQuery("*"));
             }
 
             Iterator var12 = var8.getParameters().iterator();
 
             while (var12.hasNext()) {
-                FDX var13 = (FDX) var12.next();
+                CellQuery var13 = (CellQuery) var12.next();
                 if (var3) {
                     var3 = false;
                 } else {
@@ -1085,7 +992,7 @@ public class FDB {
         return var18;
     }
 
-    private static String IIQ(FDG var0) {
+    private static String IIQ(TableValuesUpdate var0) {
 
         String var1 = var0.getAlias();
         String var2 = "";
@@ -1108,7 +1015,7 @@ public class FDB {
         Iterator var6 = var0.getValues().iterator();
 
         while (var6.hasNext()) {
-            FDU var7 = (FDU) var6.next();
+            CellValue var7 = (CellValue) var6.next();
             if (var5) {
                 var5 = false;
             } else {
@@ -1126,7 +1033,7 @@ public class FDB {
         return var12;
     }
 
-    private static String IIR(FDC var0) {
+    private static String IIR(TableValuesDelete var0) {
 
         String var5;
         String var1 = var0.getAlias();
@@ -1150,7 +1057,7 @@ public class FDB {
         return var5;
     }
 
-    private static String IIS(FDF var0) {
+    private static String IIS(TableValuesInsert var0) {
 
         String var13;
         String var1 = var0.getAlias();
@@ -1174,7 +1081,7 @@ public class FDB {
         Iterator var6 = var0.getParameters().iterator();
 
         while (var6.hasNext()) {
-            FDY var7 = (FDY) var6.next();
+            CellNamed var7 = (CellNamed) var6.next();
             if (var5) {
                 var5 = false;
             } else {
@@ -1206,18 +1113,18 @@ public class FDB {
         return var13;
     }
 
-    private static String IIT(FDI... var0) {
+    private static String IIT(TableValuesQuery... var0) {
 
         String var17;
         StringBuilder var1 = new StringBuilder();
         var1.append(" WHERE ");
         var1.append("1=1");
-        FDI[] var2 = var0;
+        TableValuesQuery[] var2 = var0;
         int var3 = var0.length;
 
         label186:
         for (int var4 = 0; var4 < var3; ++var4) {
-            FDI var5 = var2[var4];
+            TableValuesQuery var5 = var2[var4];
             String var6 = var5.getAlias();
             String var7 = "";
             if (var6 != null && var6.length() > 0) {
@@ -1227,11 +1134,11 @@ public class FDB {
             Iterator var8 = var5.getKeys().iterator();
 
             while (var8.hasNext()) {
-                FDP var9 = (FDP) var8.next();
+                CellConditioned var9 = (CellConditioned) var8.next();
                 var1.append(" and ");
                 var1.append(var7);
                 var1.append(var9.getName());
-                if (var9 instanceof FDU var10) {
+                if (var9 instanceof CellValue var10) {
                     if (var10.getValue() != null) {
                         var1.append(var9.getCondition().getSqlRepresentation());
                         var1.append("?");
@@ -1239,7 +1146,7 @@ public class FDB {
                         var1.append(" is null");
                     }
                 } else {
-                    if (!(var9 instanceof FDT var19)) {
+                    if (!(var9 instanceof CellJoin var19)) {
                         throw new RuntimeException("Unexcpected type of cell [" + var9.getClass() + "]!");
                     }
 
@@ -1278,7 +1185,7 @@ public class FDB {
                 Iterator var21 = var18.getKeys().iterator();
 
                 while (var21.hasNext()) {
-                    FDU var22 = (FDU) var21.next();
+                    CellValue var22 = (CellValue) var21.next();
                     if (var20) {
                         var20 = false;
                     } else {
@@ -1308,17 +1215,17 @@ public class FDB {
         return var17;
     }
 
-    private static String IIU(FDE... var0) {
+    private static String IIU(TableValuesSelect... var0) {
 
         String var16;
         StringBuilder var1 = new StringBuilder();
         var1.append(" ORDER BY ");
         boolean var2 = true;
-        FDE[] var4 = var0;
+        TableValuesSelect[] var4 = var0;
         int var5 = var0.length;
 
         for (int var6 = 0; var6 < var5; ++var6) {
-            FDE var7 = var4[var6];
+            TableValuesSelect var7 = var4[var6];
             String var8 = var7.getAlias();
             String var9 = "";
             if (var8 != null && var8.length() > 0) {
@@ -1328,7 +1235,7 @@ public class FDB {
             Iterator var10 = var7.getOrder().iterator();
 
             while (var10.hasNext()) {
-                FEA var11 = (FEA) var10.next();
+                CellOrder var11 = (CellOrder) var10.next();
                 String var3;
                 if (var2) {
                     var2 = false;
@@ -1385,7 +1292,7 @@ public class FDB {
         return var4;
     }
 
-    private static String IIW(FDE var0) {
+    private static String IIW(TableValuesSelect var0) {
 
         StringBuilder var1 = new StringBuilder();
         var1.append(" ON ");
@@ -1399,7 +1306,7 @@ public class FDB {
         Iterator var4 = ((Set) var0.getJoins().getSecondValue()).iterator();
 
         while (var4.hasNext()) {
-            FDT var5 = (FDT) var4.next();
+            CellJoin var5 = (CellJoin) var4.next();
             var1.append(" and ");
             var1.append(var3);
             var1.append(var5.getName());
@@ -1424,13 +1331,13 @@ public class FDB {
         return var12;
     }
 
-    private static Integer IIX(PreparedStatement var0, List<? extends FDY> var1, List<FDU<?>> var2) throws SQLException {
+    private static Integer IIX(PreparedStatement var0, List<? extends CellNamed> var1, List<CellValue<?>> var2) throws SQLException {
 
         HashMap var3 = new HashMap();
         Iterator var4 = var2.iterator();
 
         while (var4.hasNext()) {
-            FDU var5 = (FDU) var4.next();
+            CellValue var5 = (CellValue) var4.next();
             var3.put(var5.getName(), var5);
         }
 
@@ -1438,17 +1345,17 @@ public class FDB {
         return var9;
     }
 
-    private static Integer IIX(PreparedStatement var0, List<? extends FDY> var1, Map<String, FDU<?>> var2) throws SQLException {
+    private static Integer IIX(PreparedStatement var0, List<? extends CellNamed> var1, Map<String, CellValue<?>> var2) throws SQLException {
 
         int var3 = 0;
         Iterator var4 = var1.iterator();
 
         while (var4.hasNext()) {
-            FDY var5 = (FDY) var4.next();
-            FDU var6 = var2.get(var5.getName());
+            CellNamed var5 = (CellNamed) var4.next();
+            CellValue var6 = var2.get(var5.getName());
             ++var3;
             Object var7 = var6.getValue();
-            FDV var8 = var6.getType();
+            CellType var8 = var6.getType();
             if (var7 != null) {
                 var0.setObject(var3, var7, var8.getSqlType());
             } else {
@@ -1460,32 +1367,32 @@ public class FDB {
         return var12;
     }
 
-    private static Integer IIY(int var0, PreparedStatement var1, FDI... var2) throws SQLException {
+    private static Integer IIY(int var0, PreparedStatement var1, TableValuesQuery... var2) throws SQLException {
 
         if (var0 < 0) {
             throw new RuntimeException("Start index cannot be less than 0!");
         } else {
             int var3 = var0;
-            FDI[] var4 = var2;
+            TableValuesQuery[] var4 = var2;
             int var5 = var2.length;
             int var6 = 0;
 
             label139:
             while (var6 < var5) {
-                FDI var7 = var4[var6];
+                TableValuesQuery var7 = var4[var6];
                 Iterator var8 = var7.getKeys().iterator();
 
                 while (var8.hasNext()) {
-                    FDR var9 = (FDR) var8.next();
-                    if (var9 instanceof FDU var10) {
+                    CellTyped var9 = (CellTyped) var8.next();
+                    if (var9 instanceof CellValue var10) {
                         Object var11 = var10.getValue();
-                        FDV var12 = var9.getType();
+                        CellType var12 = var9.getType();
                         if (var11 != null) {
                             ++var3;
                             var1.setObject(var3, var11, var12.getSqlType());
                         }
                     } else {
-                        if (!(var9 instanceof FDT)) {
+                        if (!(var9 instanceof CellJoin)) {
                             throw new RuntimeException("Unexcpected type of cell [" + var9.getClass() + "]!");
                         }
 
@@ -1511,9 +1418,9 @@ public class FDB {
                     Iterator var19 = var18.getKeys().iterator();
 
                     while (var19.hasNext()) {
-                        FDU var20 = (FDU) var19.next();
+                        CellValue var20 = (CellValue) var19.next();
                         Object var21 = var20.getValue();
-                        FDV var13 = var20.getType();
+                        CellType var13 = var20.getType();
                         if (var21 != null) {
                             ++var3;
                             var1.setObject(var3, var21, var13.getSqlType());
@@ -1527,19 +1434,19 @@ public class FDB {
         }
     }
 
-    private static void IIZ(ResultSet var0, FDE... var1) throws SQLException {
+    private static void IIZ(ResultSet var0, TableValuesSelect... var1) throws SQLException {
 
         while (var0.next()) {
-            FDE[] var2 = var1;
+            TableValuesSelect[] var2 = var1;
             int var3 = var1.length;
 
             for (int var4 = 0; var4 < var3; ++var4) {
-                FDE var5 = var2[var4];
+                TableValuesSelect var5 = var2[var4];
                 HashMap var6 = new HashMap();
 
                 for (int var7 = 1; var7 <= var0.getMetaData().getColumnCount(); ++var7) {
                     int var8 = var0.getMetaData().getColumnType(var7);
-                    FDV var9 = FDV.getCellDataTypeType(var8);
+                    CellType var9 = CellType.getCellDataTypeType(var8);
                     String var10 = var0.getMetaData().getColumnName(var7);
                     String var11 = var0.getMetaData().getColumnLabel(var7);
                     Object var12 = var0.getObject(var7);
@@ -1547,7 +1454,7 @@ public class FDB {
                         var12 = null;
                     }
 
-                    var6.put(var11, new FDU(var10, var9, var12));
+                    var6.put(var11, new CellValue(var10, var9, var12));
                 }
 
                 var5.getResults().add(var6);
@@ -1556,8 +1463,4 @@ public class FDB {
 
     }
 
-    static {
-        QHG = new FDR("audit_ts", FDV.TIMESTAMP);
-        QHH = new FDR("audit_reason", FDV.TEXT);
-    }
 }

@@ -1,7 +1,7 @@
 package a.a.a.b.a.a.e;
 
-import a.a.a.b.a.a.d.FDW;
-import a.a.a.b.a.a.d.FDY;
+import a.a.a.b.a.a.d.CellDef;
+import a.a.a.b.a.a.d.CellNamed;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,16 +17,16 @@ public class FED extends FEH {
         this.HEO = new ArrayList();
     }
 
-    public FED(String var1, FDY[] var2, FDY[] var3) {
+    public FED(String var1, CellNamed[] var2, CellNamed[] var3) {
         super(FEG.FOREIGN, var2);
         this.HEN = var1;
         this.HEO = new ArrayList();
-        FDY[] var4 = var3;
+        CellNamed[] var4 = var3;
         int var5 = var3.length;
 
         for (int var6 = 0; var6 < var5; ++var6) {
-            FDY var7 = var4[var6];
-            if (var7 instanceof FDW var8) {
+            CellNamed var7 = var4[var6];
+            if (var7 instanceof CellDef var8) {
                 String var9 = var7.getName() + " " + var8.getOrder().getKeyWord();
                 this.HEO.add(var9);
             } else {

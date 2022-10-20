@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.g.c;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -9,7 +9,7 @@ import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.b.ENP;
 import a.a.a.c.c.d.g.EPA;
 import a.a.a.c.c.e.g.b.ETR;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.e.HR;
 import a.a.a.c.f.a.e.IB;
 import a.a.a.c.f.a.g.IU;
@@ -60,7 +60,7 @@ public class ETS extends QVI {
         Iterator var5;
         JN var2 = new JN(Date.from(var1.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         IY var3 = new IY(JF.class, var2, JH.VAT, null);
-        EVZ var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
+        TwoValueBox var4 = this.getModelManager().HJY(this.getParentDefinition(), var3);
         if (((List) var4.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -79,7 +79,7 @@ public class ETS extends QVI {
 
         JG var6;
         IY var2 = new IY(JF.class, var1, JH.VAT, null);
-        EVZ var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
+        TwoValueBox var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
         if (((List) var3.getSecondValue()).size() > 1) {
             throw new FFO("More than one settlement per one period!");
         }
@@ -98,8 +98,8 @@ public class ETS extends QVI {
     public List<EPA<HR>> getInvoices(ENP var1, Integer var2, Integer var3, String var4, String var5) throws FFK, FFO {
 
         ArrayList var15;
-        IU var6 = new IU(HR.class, QSW.ACTIVE, new JN(var2, var3), IB.PURCHASE, null, null, var4, FDL.DESC);
-        EVZ var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
+        IU var6 = new IU(HR.class, QSW.ACTIVE, new JN(var2, var3), IB.PURCHASE, null, null, var4, OrderType.DESC);
+        TwoValueBox var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         ArrayList var8 = new ArrayList();
         if (var7 != null) {
             int var9 = 0;

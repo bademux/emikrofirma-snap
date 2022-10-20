@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.q.c;
 
-import a.a.a.b.a.a.FDL;
+import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
@@ -8,7 +8,7 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.n.QVB;
 import a.a.a.c.c.e.q.b.QUK;
-import a.a.a.c.e.a.d.EVZ;
+import a.a.a.c.e.a.d.TwoValueBox;
 import a.a.a.c.f.a.IL;
 import a.a.a.c.f.a.g.QSS;
 import a.a.a.c.f.a.n.QSN;
@@ -58,8 +58,8 @@ public class QUL extends QVI {
             var5 = new JN(var1, null);
         }
 
-        QSS var6 = new QSS(QSN.class, var4, var5, QSR.SELL, null, null, var3, FDL.DESC);
-        EVZ var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
+        QSS var6 = new QSS(QSN.class, var4, var5, QSR.SELL, null, null, var3, OrderType.DESC);
+        TwoValueBox var7 = this.getModelManager().HJY(this.getParentDefinition(), var6);
         ArrayList var8 = new ArrayList();
         if (var7 != null) {
             int var9 = 0;

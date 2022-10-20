@@ -1,7 +1,7 @@
 package a.a.a.b.a.a.e;
 
-import a.a.a.b.a.a.d.FDW;
-import a.a.a.b.a.a.d.FDY;
+import a.a.a.b.a.a.d.CellDef;
+import a.a.a.b.a.a.d.CellNamed;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,14 +20,14 @@ public abstract class FEH implements FEF {
 
     }
 
-    public FEH(FEG var1, FDY... var2) {
+    public FEH(FEG var1, CellNamed... var2) {
         this(var1);
-        FDY[] var3 = var2;
+        CellNamed[] var3 = var2;
         int var4 = var2.length;
 
         for (int var5 = 0; var5 < var4; ++var5) {
-            FDY var6 = var3[var5];
-            if (var6 instanceof FDW var7) {
+            CellNamed var6 = var3[var5];
+            if (var6 instanceof CellDef var7) {
                 String var8 = var6.getName() + " " + var7.getOrder().getKeyWord();
                 this.HER.add(var8);
             } else {

@@ -16,7 +16,7 @@ import a.a.a.c.c.e.a.a.b.ERM;
 import a.a.a.c.c.e.a.a.c.ERP;
 import a.a.a.c.c.e.a.a.c.ERQ;
 import a.a.a.c.c.e.a.a.c.ERR;
-import a.a.a.c.e.EXK;
+import com.github.bademux.emk.App;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.f.a.a.EZQ;
 import a.a.a.c.f.a.a.EZR;
@@ -535,7 +535,7 @@ public class ERS extends EMD {
             try {
                 DirectoryChooser var3 = new DirectoryChooser();
                 var3.setTitle("Tworzenie kopii zapasowej");
-                File var4 = new File(EXK.GPW);
+                File var4 = new File(App.GPW);
                 var3.setInitialDirectory(var4);
                 File var5 = var3.showDialog(this.FGW);
                 if (var5 == null) {
@@ -566,7 +566,7 @@ public class ERS extends EMD {
         if (var3.equals(FEN.Confirm)) {
             var2.setTitle("Wczytywanie kopii zapasowej");
             org.slf4j.LoggerFactory.getLogger(getClass()).info("loading backup ...");
-            File var4 = new File(EXK.GPW);
+            File var4 = new File(App.GPW);
             var2.setInitialDirectory(var4);
             File var5 = var2.showOpenDialog(this.FGW.getScene().getWindow());
             if (var5 == null) {
@@ -767,7 +767,7 @@ public class ERS extends EMD {
                     Desktop var2 = null;
                     if (Desktop.isDesktopSupported()) {
                         var2 = Desktop.getDesktop();
-                        var2.open(new File(EXK.GPW));
+                        var2.open(new File(App.GPW));
                     }
                 } catch (Exception var5) {
                     org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var5);

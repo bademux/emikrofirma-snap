@@ -1,6 +1,6 @@
 package com.github.bademux.emk.utils;
 
-import a.a.a.c.e.EXK;
+import com.github.bademux.emk.App;
 import a.a.a.c.e.a.e.EWF;
 import a.a.a.c.g.b.FCW;
 import lombok.experimental.UtilityClass;
@@ -106,13 +106,13 @@ public class ReportUtils {
     }
 
     public static File createReport() throws IOException {
-        File reportDir = new File(EXK.GPW + "/reports");
+        File reportDir = new File(App.GPW + "/reports");
         log.debug("reportsDir " + reportDir);
         boolean isCreated = reportDir.mkdirs();
         log.debug("mkdirs " + isCreated);
         File reportFile = new File(reportDir, "report_" + (new SimpleDateFormat("yyyyMMdd'T'HHmmssS")).format(new Date()) + ".zip");
         log.debug("reportFile " + reportFile);
-        EWF.writeToZip(reportFile, new File(EXK.GPW + "/reports/emk.log"));
+        EWF.writeToZip(reportFile, new File(App.GPW + "/reports/emk.log"));
         return reportFile;
     }
 

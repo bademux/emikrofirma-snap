@@ -6,7 +6,7 @@ import a.a.a.b.d.FEO;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.e.EXK;
+import com.github.bademux.emk.App;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWC;
 import a.a.a.c.e.a.d.MME;
@@ -390,7 +390,7 @@ public class EQB {
 
                 if (EQB.EQC.CAN_BE_RESTARTED.equals(this.FVR)) {
                     var39 = this.FVQ.getReferenceId() != null ? this.FVQ.getReferenceId() : this.FVQ.getDeclarationType().name() + "_" + this.FVQ.getDeclarationSubType().name() + "_" + this.FVQ.getId();
-                    File log = new File(EXK.GPW + "/reports/emk.log");
+                    File log = new File(App.GPW + "/reports/emk.log");
                     FCR.IGL(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL) + " " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), log, false);
                     FEN var49 = FCR.getConfirmDataDialog(FCW.getInstance().getMessageForKey("micro.dialog.message.title"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.retry.confirm"), FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.retry.cancel"), 300.0, 200.0, FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.retry.desc"));
                     if (var49 == FEN.Confirm) {
@@ -411,7 +411,7 @@ public class EQB {
                 case FAIL:
                 default:
                     if (this.FVS == EQD.INIT_FAILED_OTHER) {
-                        File log = new File(EXK.GPW + "/reports/emk.log");
+                        File log = new File(App.GPW + "/reports/emk.log");
                         FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL) + " " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), log, false);
                     } else {
                         FCR.IGI(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var39), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL), false);
@@ -787,7 +787,7 @@ public class EQB {
                         this.HPU(EQB.EQD.KD_SEND_FAILED, 0.85);
                         this.FVR = EQB.EQC.FAIL;
                         this.FVQ.setDeclarationStatus(HL.FAILURE);
-                        File log = new File(EXK.GPW + "/reports/emk.log");
+                        File log = new File(App.GPW + "/reports/emk.log");
                         String var20 = var17.get("Code") + " - " +
                                 var17.get("Message") + " - " +
                                 var17.get("Errors") + " - " +
@@ -813,7 +813,7 @@ public class EQB {
 
             if (var1) {
                 String var29 = this.FVQ.getReferenceId() != null ? this.FVQ.getReferenceId() : this.FVQ.getDeclarationType().name() + "_" + this.FVQ.getDeclarationSubType().name() + "_" + this.FVQ.getId();
-                var3 = new File(EXK.GPW + "/reports/emk.log");
+                var3 = new File(App.GPW + "/reports/emk.log");
                 FCR.IGJ(FCW.getInstance().getMessageForKey("micro.tableview.cell.initupload.status.message.header").replaceFirst("##REFERENCEID##", var29), this.FVS.getDescription().replaceFirst("##REASON##", this.MWL) + " " + FCW.getInstance().getMessageForKey("micro.sendout.main.step.init_checklogs"), var3, false);
             }
 

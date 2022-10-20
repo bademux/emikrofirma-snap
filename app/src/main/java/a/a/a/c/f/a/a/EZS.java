@@ -1,6 +1,6 @@
 package a.a.a.c.f.a.a;
 
-import a.a.a.c.e.EXK;
+import com.github.bademux.emk.App;
 import a.a.a.c.f.a.EYK;
 import a.a.a.c.f.c.a.RequiredGridPane;
 import a.a.a.c.f.c.c.PathFieldRequired;
@@ -36,7 +36,7 @@ public class EZS extends EYK<RequiredGridPane, PathFieldRequired> {
         org.slf4j.LoggerFactory.getLogger(getClass()).info("Button [select directory] clicked");
         DirectoryChooser var2 = new DirectoryChooser();
         var2.setTitle(this.resources.getString("micro.types.dir.directorychooser.title"));
-        File var3 = new File(EXK.GPW);
+        File var3 = new File(App.GPW);
         if (var3.exists() && var3.isDirectory()) {
             var2.setInitialDirectory(var3);
         }

@@ -16,7 +16,7 @@ import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.c.b.EDE;
 import a.a.a.c.b.EDF;
-import a.a.a.c.e.EXK;
+import com.github.bademux.emk.App;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.d.EWC;
 import a.a.a.c.e.a.d.EWD;
@@ -116,7 +116,7 @@ public class EMX implements ENC {
     private void HKO() throws FFK {
 
         try {
-            File var1 = new File(EXK.GPW);
+            File var1 = new File(App.GPW);
             this.FIS = FDB.IIG(var1, "profiles.db");
             this.FIS.setAutoCommit(false);
             this.QPO(this.FIS);
@@ -292,7 +292,7 @@ public class EMX implements ENC {
         try {
             this.FIW = false;
             if (var5 == null) {
-                var6 = Paths.get(EXK.GPW, var4 + ".db").toFile();
+                var6 = Paths.get(App.GPW, var4 + ".db").toFile();
             } else {
                 var7 = true;
                 var6 = Paths.get(var5.getAbsolutePath(), var4 + ".db").toFile();
@@ -443,7 +443,7 @@ public class EMX implements ENC {
     public String HKS(Connection var1, String var2, String var3) {
         try {
             this.FIW = true;
-            File var4 = new File(EXK.GPW);
+            File var4 = new File(App.GPW);
             String var5 = var4.getAbsolutePath() + "/" + var2 + ".db";
             String var6 = var4.getAbsolutePath() + "/" + var3 + ".db";
             this.FIT.close();
@@ -488,7 +488,7 @@ public class EMX implements ENC {
     }
 
     public boolean HKU(String var1, String var2, boolean var3) throws FFK {
-        File var4 = new File(EXK.GPW);
+        File var4 = new File(App.GPW);
         String var5 = var4.getAbsolutePath() + "/" + var2 + ".db";
         String var6 = var4.getAbsolutePath() + "/" + var1 + ".db";
         String var7 = var1 + "_OLD";
@@ -527,7 +527,7 @@ public class EMX implements ENC {
 
     public boolean HKV(String var1) {
         try {
-            File var2 = new File(EXK.GPW);
+            File var2 = new File(App.GPW);
             String var3 = var2.getAbsolutePath() + "/" + var1 + ".db";
             File var4 = new File(var3);
             if (var4.exists()) {
@@ -561,7 +561,7 @@ public class EMX implements ENC {
             }
 
             if (var3 == null) {
-                var3 = new File(EXK.GPW);
+                var3 = new File(App.GPW);
             }
 
             final Connection var4 = FDB.IIG(var3, var2 + ".db");
@@ -3141,7 +3141,7 @@ public class EMX implements ENC {
     }
 
     public String HMX(String var1) {
-        File var2 = new File(EXK.GPW);
+        File var2 = new File(App.GPW);
         String var3 = var1 + "_OLD";
         File var4 = new File(var2.getAbsolutePath() + "/" + var3 + ".db");
         return var4.exists() ? var4.getAbsolutePath() : null;

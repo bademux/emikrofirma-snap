@@ -25,7 +25,7 @@ dependencies {
 
 application {
     mainModule.set('emk')
-    mainClass.set('a.a.a.c.e.EXK')
+    mainClass.set('com.github.bademux.emk.App')
 }
 
 compileJava {

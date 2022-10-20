@@ -1,4 +1,4 @@
-package a.a.a.c.e;
+package com.github.bademux.emk;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
@@ -50,7 +50,7 @@ import java.util.stream.Stream;
 import static com.github.bademux.emk.utils.ReportUtils.createMemoryUsage;
 
 @Slf4j
-public class EXK extends Application implements EMC {
+public class App extends Application implements EMC {
     public static final String GPW = System.getProperty("user.home") + "/AKMF";
     private final ResourceBundle launcherMsgResourceBundle;
     private final ResourceBundle msgResourceBundle;
@@ -109,7 +109,7 @@ public class EXK extends Application implements EMC {
         launch();
     }
 
-    public EXK() {
+    public App() {
 
         this.msgResourceBundle = ResourceBundle.getBundle("messages/messages", LocaleUtils.LOCALE);
         this.launcherMsgResourceBundle = ResourceBundle.getBundle("messages/launcher_messages", LocaleUtils.LOCALE);
@@ -176,7 +176,7 @@ public class EXK extends Application implements EMC {
     private Map<String, EMH> getPages() {
         return Stream.<Map.Entry<String, String>>concat(
                         Stream.of("login.fxml", "register.fxml", "main.fxml").map(s -> new AbstractMap.SimpleImmutableEntry<>(s, null)),
-                        ENG.getInstance().HNI().stream().map(EXK::getDefinition)
+                        ENG.getInstance().HNI().stream().map(App::getDefinition)
                 )
                 .map(item -> loadFxmlAndGetController(item.getKey(), item.getValue()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
@@ -266,7 +266,7 @@ public class EXK extends Application implements EMC {
 
     private FXMLLoader loadFxml(String fxmlName, String title) throws IOException {
         log.info("Adding dynamic process " + fxmlName);
-        FXMLLoader loader = new FXMLLoader(EXK.class.getResource("/fxml/" + fxmlName));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/" + fxmlName));
         loader.setControllerFactory(new EMF(this, stage, this.FJC, title, fxmlName));
         loader.setResources(this.msgResourceBundle);
         loader.load();

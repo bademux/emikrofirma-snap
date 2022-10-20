@@ -9,7 +9,7 @@ import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
 import a.a.a.c.b.EDF;
 import a.a.a.c.d.EQQ;
-import a.a.a.c.e.EXK;
+import com.github.bademux.emk.App;
 import a.a.a.c.e.a.d.EVZ;
 import a.a.a.c.e.a.e.EWF;
 import a.a.a.c.f.a.a.IJE;
@@ -131,7 +131,7 @@ public class EMB {
         }
 
         if (var1.size() < 1) {
-            File var6 = new File(EXK.GPW);
+            File var6 = new File(App.GPW);
             throw new FFK("Database corruption! Delete files " + var6.getAbsolutePath() + "/*." + ".db");
         }
 
@@ -1071,7 +1071,7 @@ public class EMB {
                 var23 = true;
                 if (var1.exists() && var1.getName().endsWith(".zip")) {
                     String var3 = UUID.randomUUID().toString();
-                    var2 = Paths.get(EXK.GPW, var3).toFile();
+                    var2 = Paths.get(App.GPW, var3).toFile();
                     var4 = EWF.QOF(var1, var2);
                     if (var4 != null && var4.length == 2) {
                         File var5 = var4[0];

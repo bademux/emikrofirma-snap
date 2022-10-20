@@ -18,7 +18,7 @@ import a.a.a.c.b.EDF;
 import a.a.a.c.d.a.EPV;
 import a.a.a.c.d.a.a.EPP;
 import a.a.a.c.d.d.EQX;
-import a.a.a.c.e.EXK;
+import com.github.bademux.emk.App;
 import a.a.a.c.e.a.d.EWD;
 import a.a.a.c.e.a.g.EWW;
 import a.a.a.c.e.a.g.EWX;
@@ -999,7 +999,7 @@ public class EPW {
                     var51.zadaniePodpisu(var14, var15, var11, var12, var13);
                 } catch (Exception var42) {
                     log.error("Something bad happened", var42);
-                    File log = new File(EXK.GPW + "/reports/emk.log");
+                    File log = new File(App.GPW + "/reports/emk.log");
                     String var57 = var42.getLocalizedMessage();
                     if (var57 == null) {
                         var57 = "";
@@ -1058,7 +1058,7 @@ public class EPW {
                             var51.pobierzDokumenty((String) var12.value, var22, (Holder) var20, var21);
                         } catch (Exception var43) {
                             log.error("Something bad happened", var43);
-                            File log = new File(EXK.GPW + "/reports/emk.log");
+                            File log = new File(App.GPW + "/reports/emk.log");
                             String var63 = var43.getLocalizedMessage();
                             if (var63 == null) {
                                 var63 = "";

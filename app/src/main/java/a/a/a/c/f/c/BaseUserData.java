@@ -5,15 +5,15 @@ import a.a.a.c.f.b.c.JY;
 import jakarta.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
-public abstract class LW extends ModelBaseElementWithIdAndAuditTimestamp {
+public abstract class BaseUserData extends ModelBaseElementWithIdAndAuditTimestamp {
     protected JY AQJ;
 
-    public LW() {
+    public BaseUserData() {
         this(DAE());
 
     }
 
-    public LW(String var1) {
+    public BaseUserData(String var1) {
         super(var1);
 
     }

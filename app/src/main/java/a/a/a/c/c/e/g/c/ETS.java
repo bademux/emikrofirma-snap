@@ -4,7 +4,7 @@ import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.b.InvoiceFilteringType;
 import a.a.a.c.c.d.g.EPA;
@@ -67,7 +67,7 @@ public class ETS extends QVI {
 
         var5 = ((List) var4.getSecondValue()).iterator();
         if (var5.hasNext()) {
-            EDF var6 = (EDF) var5.next();
+            ParametrizedModel var6 = (ParametrizedModel) var5.next();
             SettlementStatus var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
             return var7;
         }
@@ -89,7 +89,7 @@ public class ETS extends QVI {
             return null;
         }
 
-        EDF var5 = (EDF) var4.next();
+        ParametrizedModel var5 = (ParametrizedModel) var4.next();
         var6 = ((Settlement) var5.getModelBaseElementWithIdObject()).getSettlementStatus();
 
         return var6;
@@ -106,7 +106,7 @@ public class ETS extends QVI {
             Iterator var10 = ((List) var7.getSecondValue()).iterator();
 
             while (var10.hasNext()) {
-                EDF var11 = (EDF) var10.next();
+                ParametrizedModel var11 = (ParametrizedModel) var10.next();
                 ++var9;
                 var8.add(new EPA(var11, var9));
             }

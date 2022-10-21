@@ -3,7 +3,7 @@ package a.a.a.c.c.e.h.a;
 import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.a.BaseProgressFxController;
 import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
@@ -229,7 +229,7 @@ public class ETT extends BaseProgressFxController<ETV> {
                 Iterator var4 = ((List) var3.getSecondValue()).iterator();
 
                 while (var4.hasNext()) {
-                    EDF var5 = (EDF) var4.next();
+                    ParametrizedModel var5 = (ParametrizedModel) var4.next();
                     this.GJB.add((ReceiptRecordVat) var5.getModelBaseElementWithIdObject());
                 }
             }

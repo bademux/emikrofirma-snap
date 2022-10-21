@@ -1,6 +1,6 @@
 package a.a.a.c.f.c.a;
 
-import a.a.a.c.f.c.LW;
+import a.a.a.c.f.c.BaseUserData;
 import a.a.a.c.g.ConfigurationProperty;
 import jakarta.xml.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import java.util.List;
         name = "configuration"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationProperties extends LW {
+public class ConfigurationProperties extends BaseUserData {
     @XmlElements({@XmlElement(
             name = "propertyBytes",
             type = PropertyBytes.class

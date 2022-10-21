@@ -4,7 +4,7 @@ import a.a.a.b.a.a.SqlOperation;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.b.EDH;
 import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.e.d.b.ESW;
@@ -95,7 +95,7 @@ public class ESX extends ELX implements EYL {
                 var4 = var1.AICD();
                 this.getModelManager().HJZ(this.getParentDefinition(), var4);
             } else {
-                var4 = (Contractor) ((EDF) var3.get(0)).getModelBaseElementWithIdObject();
+                var4 = (Contractor) ((ParametrizedModel) var3.get(0)).getModelBaseElementWithIdObject();
                 var4.setName(var1.DAI());
                 var4.setNip(var1.DAJ());
                 var4.setAccountNumber(var1.DAL());
@@ -164,7 +164,7 @@ public class ESX extends ELX implements EYL {
                             Iterator var11 = ((List) var6.getSecondValue()).iterator();
 
                             while (var11.hasNext()) {
-                                EDF var12 = (EDF) var11.next();
+                                ParametrizedModel var12 = (ParametrizedModel) var11.next();
                                 EDH var13 = new EDH(var12);
                                 if (var8.equals(var13.getPeriod()) && var9.equals(var13.getRefId()) && var10.equals(var13.getIssuerNumber())) {
                                     var7 = true;
@@ -200,7 +200,7 @@ public class ESX extends ELX implements EYL {
                 if (((List) var4.getSecondValue()).isEmpty()) {
                     var2 = true;
                 } else {
-                    EDF var5 = (EDF) ((List) var4.getSecondValue()).get(0);
+                    ParametrizedModel var5 = (ParametrizedModel) ((List) var4.getSecondValue()).get(0);
                     SettlementVat var6 = (SettlementVat) var5.getModelBaseElementWithIdObject();
                     if (var6 != null) {
                         var2 = !SettlementStatus.SETTLED.equals(var6.getSettlementStatus());
@@ -231,7 +231,7 @@ public class ESX extends ELX implements EYL {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
 
                 while (var5.hasNext()) {
-                    EDF var6 = (EDF) var5.next();
+                    ParametrizedModel var6 = (ParametrizedModel) var5.next();
                     if (var6 != null) {
                         var2.add(new TitledContractor(var6));
                     }

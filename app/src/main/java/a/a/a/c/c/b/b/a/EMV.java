@@ -5,7 +5,7 @@ import a.a.a.b.a.a.SqlOperation;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.ProcessDefinitionBase;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.b.b.EMU;
@@ -38,7 +38,7 @@ import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
 import a.a.a.c.f.b.c.a.InvoiceState;
 import a.a.a.c.f.c.UserModel;
-import a.a.a.c.f.c.LW;
+import a.a.a.c.f.c.BaseUserData;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.b.UserData;
 
@@ -94,7 +94,7 @@ public class EMV implements EMU {
         return var5;
     }
 
-    public <_T extends LW, _Q extends ModelTechnicalElementCriteria<_T>> _T HJT(ProcessDefinitionBase var1, _Q var2) throws FFK {
+    public <_T extends BaseUserData, _Q extends ModelTechnicalElementCriteria<_T>> _T HJT(ProcessDefinitionBase var1, _Q var2) throws FFK {
 
         this.HKM(var1, var2.getTypeClass());
         ModelElementCriteria var3 = ModelElementCriteria.getByType(var2.getClass());
@@ -194,7 +194,7 @@ public class EMV implements EMU {
         }
     }
 
-    public <_T extends ModelBusinessTopElement> void ROH(EDF<_T> var1, Class<_T> var2) throws FFK, FFO {
+    public <_T extends ModelBusinessTopElement> void ROH(ParametrizedModel<_T> var1, Class<_T> var2) throws FFK, FFO {
 
         EntityTypes var3 = EntityTypes.getByType(var2);
         switch (var3) {
@@ -237,7 +237,7 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends ModelBusinessTopElement, _Q extends ModelBusinessElementCriteria<_T>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HJY(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
+    public <_T extends ModelBusinessTopElement, _Q extends ModelBusinessElementCriteria<_T>, _R extends ParametrizedModel<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HJY(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getTypeClass());
         EntityTypes var3 = EntityTypes.getByType(var2.getTypeClass());
@@ -358,7 +358,7 @@ public class EMV implements EMU {
         }
     }
 
-    public <_T extends ModelBusinessPeriodElement, _I extends Enum<_I>, _L extends Enum<_L>, _Q extends PeriodModelCriteria<_T, _I, _L>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HKD(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
+    public <_T extends ModelBusinessPeriodElement, _I extends Enum<_I>, _L extends Enum<_L>, _Q extends PeriodModelCriteria<_T, _I, _L>, _R extends ParametrizedModel<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HKD(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
 
         this.HKM(var1, var2.getTypeClass());
         EntityTypes var3 = EntityTypes.getByType(var2.getTypeClass());
@@ -470,7 +470,7 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends LW> void HJU(ProcessDefinitionBase var1, _T var2) throws FFK {
+    public <_T extends BaseUserData> void HJU(ProcessDefinitionBase var1, _T var2) throws FFK {
 
         this.HKM(var1, var2.getClass());
         UserModel var3 = UserModel.getByType(var2.getClass());
@@ -540,7 +540,7 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends LW> void HJV(ProcessDefinitionBase var1, _T var2) throws FFK {
+    public <_T extends BaseUserData> void HJV(ProcessDefinitionBase var1, _T var2) throws FFK {
 
         this.HKM(var1, var2.getClass());
         UserModel var3 = UserModel.getByType(var2.getClass());
@@ -610,7 +610,7 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends LW> void HJW(ProcessDefinitionBase var1, _T var2) throws FFK {
+    public <_T extends BaseUserData> void HJW(ProcessDefinitionBase var1, _T var2) throws FFK {
 
         this.HKM(var1, var2.getClass());
         UserModel var3 = UserModel.getByType(var2.getClass());
@@ -726,7 +726,7 @@ public class EMV implements EMU {
 
     }
 
-    public <_T extends ModelBusinessTopElement, _Q extends ModelBusinessElementCriteria<_T>, _R extends EDF<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HKE(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
+    public <_T extends ModelBusinessTopElement, _Q extends ModelBusinessElementCriteria<_T>, _R extends ParametrizedModel<_T>, _S extends List<_R>> ValueContainer2<Integer, _S> HKE(ProcessDefinitionBase var1, _Q var2) throws FFK, FFO {
         return null;
     }
 }

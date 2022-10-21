@@ -9,7 +9,7 @@ import a.a.a.b.e.FFF;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.d.EQQ;
 import com.github.bademux.emk.Application;
 import a.a.a.c.e.a.d.ValueContainer2;
@@ -37,7 +37,7 @@ import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.b.c.a.LoginType;
 import a.a.a.c.f.b.c.a.InvoiceState;
-import a.a.a.c.f.c.LW;
+import a.a.a.c.f.c.BaseUserData;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.b.SimpleUserData;
 import a.a.a.c.f.c.b.UserData;
@@ -391,7 +391,7 @@ public class EMB {
 
     }
 
-    private void HHZ(SqlOperation var1, LW var2) throws FFK {
+    private void HHZ(SqlOperation var1, BaseUserData var2) throws FFK {
 
         this.FGN.HME(var1, this.FGO, this.FGQ, var2);
 
@@ -421,7 +421,7 @@ public class EMB {
 
     }
 
-    public void ROL(EDF<?> var1) throws FFK, FFO {
+    public void ROL(ParametrizedModel<?> var1) throws FFK, FFO {
 
         Invoice var2 = (Invoice) var1.getModelBaseElementWithIdObject();
         Period var3 = var2.getPeriod();
@@ -449,7 +449,7 @@ public class EMB {
                 throw new FFK("Settlement duplicate! [" + var1 + "] [SettlementType " + var2 + "]");
             }
 
-            var4 = (SettlementVat) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
+            var4 = (SettlementVat) ((ParametrizedModel) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
             SettlementStatus var5 = var4.getSettlementStatus();
             switch (var5) {
                 case NEW:
@@ -473,7 +473,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<Invoice<?>>>> ROM(InvoiceState var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceType var6, InvoiceSubtype var7, RefId var8, Nip var9, Nip var10, ValueContainer2<Date, Date> var11, ValueContainer2<Date, Date> var12, String var13) throws FFK, FFO {
+    public ValueContainer2<Integer, List<ParametrizedModel<Invoice<?>>>> ROM(InvoiceState var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceType var6, InvoiceSubtype var7, RefId var8, Nip var9, Nip var10, ValueContainer2<Date, Date> var11, ValueContainer2<Date, Date> var12, String var13) throws FFK, FFO {
 
         ValueContainer2 var14;
         var14 = this.FGN.ROB(this.FGO, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
@@ -505,7 +505,7 @@ public class EMB {
 
     }
 
-    public void ROP(EDF<?> var1) throws FFK, FFO {
+    public void ROP(ParametrizedModel<?> var1) throws FFK, FFO {
 
         InvoiceOther var2 = (InvoiceOther) var1.getModelBaseElementWithIdObject();
         Period var3 = var2.getPeriod();
@@ -524,7 +524,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<InvoiceOther<?>>>> ROQ(InvoiceState var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceOtherType var6, InvoiceOtherSubtype var7, RefId var8, Nip var9, Nip var10, ValueContainer2<Date, Date> var11, ValueContainer2<Date, Date> var12, String var13) throws FFK, FFO {
+    public ValueContainer2<Integer, List<ParametrizedModel<InvoiceOther<?>>>> ROQ(InvoiceState var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceOtherType var6, InvoiceOtherSubtype var7, RefId var8, Nip var9, Nip var10, ValueContainer2<Date, Date> var11, ValueContainer2<Date, Date> var12, String var13) throws FFK, FFO {
 
         ValueContainer2 var14;
         var14 = this.FGN.ROC(this.FGO, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
@@ -556,7 +556,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<ReceiptRecord>>> HIG(OrderType var1, Integer var2, Integer var3, Period var4, RecordType var5) throws FFK, FFO {
+    public ValueContainer2<Integer, List<ParametrizedModel<ReceiptRecord>>> HIG(OrderType var1, Integer var2, Integer var3, Period var4, RecordType var5) throws FFK, FFO {
 
         ValueContainer2 var6;
         var6 = this.FGN.HLP(this.FGO, var1, var2, var3, var4, var5);
@@ -604,7 +604,7 @@ public class EMB {
                 Iterator var9 = ((List) var8.getSecondValue()).iterator();
 
                 while (var9.hasNext()) {
-                    EDF var10 = (EDF) var9.next();
+                    ParametrizedModel var10 = (ParametrizedModel) var9.next();
                     this.HIS(SqlOperation.delete, (InvoiceRecord) var10.getModelBaseElementWithIdObject(), var2);
                 }
 
@@ -616,7 +616,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<Settlement>>> HIJ(OrderType var1, Integer var2, Integer var3, Period var4, SettlementType var5) throws FFK, FFO {
+    public ValueContainer2<Integer, List<ParametrizedModel<Settlement>>> HIJ(OrderType var1, Integer var2, Integer var3, Period var4, SettlementType var5) throws FFK, FFO {
 
         ValueContainer2 var6;
         var6 = this.FGN.HLQ(this.FGO, var1, var2, var3, var4, var5);
@@ -636,7 +636,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<Declaration>>> HIM(OrderType var1, Integer var2, Integer var3, Period var4, DeclarationType var5, DeclarationSubtype var6) throws FFK, FFO {
+    public ValueContainer2<Integer, List<ParametrizedModel<Declaration>>> HIM(OrderType var1, Integer var2, Integer var3, Period var4, DeclarationType var5, DeclarationSubtype var6) throws FFK, FFO {
 
         ValueContainer2 var7;
         var7 = this.FGN.HLR(this.FGO, var1, var2, var3, var4, var5, var6);
@@ -644,7 +644,7 @@ public class EMB {
         return var7;
     }
 
-    public ValueContainer2<Integer, List<EDF<Declaration>>> QQI(OrderType var1, Integer var2, Integer var3, Settlement var4, Period var5, DeclarationType var6, DeclarationSubtype var7) throws FFK, FFO {
+    public ValueContainer2<Integer, List<ParametrizedModel<Declaration>>> QQI(OrderType var1, Integer var2, Integer var3, Settlement var4, Period var5, DeclarationType var6, DeclarationSubtype var7) throws FFK, FFO {
 
         ValueContainer2 var8;
         var8 = this.FGN.QPW(this.FGO, var1, var2, var3, var4, var5, var6, var7);
@@ -672,7 +672,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<Contractor>>> QQJ(OrderType var1, Integer var2, String var3) throws FFK {
+    public ValueContainer2<Integer, List<ParametrizedModel<Contractor>>> QQJ(OrderType var1, Integer var2, String var3) throws FFK {
 
         ValueContainer2 var4;
         var4 = this.FGN.QPX(this.FGO, var1, var2, var3);
@@ -692,7 +692,7 @@ public class EMB {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<InvoiceRecord>>> HIT(OrderType var1, Integer var2, Integer var3, Period var4, InvoiceRecordType var5) throws FFK, FFO {
+    public ValueContainer2<Integer, List<ParametrizedModel<InvoiceRecord>>> HIT(OrderType var1, Integer var2, Integer var3, Period var4, InvoiceRecordType var5) throws FFK, FFO {
 
         ValueContainer2 var6;
         var6 = this.FGN.HLV(this.FGO, var1, var2, var3, var4, var5);
@@ -700,7 +700,7 @@ public class EMB {
         return var6;
     }
 
-    public ValueContainer2<Integer, List<EDF<InvoiceRecord>>> QQK(OrderType var1, Integer var2, Integer var3, Settlement var4, Period var5, InvoiceRecordType var6) throws FFK, FFO {
+    public ValueContainer2<Integer, List<ParametrizedModel<InvoiceRecord>>> QQK(OrderType var1, Integer var2, Integer var3, Settlement var4, Period var5, InvoiceRecordType var6) throws FFK, FFO {
 
         ValueContainer2 var7;
         var7 = this.FGN.QPY(this.FGO, var1, var2, var3, var4, var5, var6);

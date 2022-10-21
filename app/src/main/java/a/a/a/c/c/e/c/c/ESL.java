@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.c.c;
 
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.d.d.ENW;
 import a.a.a.c.f.a.d.DeclarationStatus;
 import a.a.a.c.f.a.h.Settlement;
@@ -26,7 +26,7 @@ public class ESL extends ESK implements ENW, Comparable<ESL> {
     private final BooleanProperty GDL;
     private final BooleanProperty GDM;
 
-    public ESL(EDF<Settlement> var1, ESJ var2, List<ESL> var3, boolean var4, boolean var5, boolean var6) {
+    public ESL(ParametrizedModel<Settlement> var1, ESJ var2, List<ESL> var3, boolean var4, boolean var5, boolean var6) {
         super(var2, var1);
         this.GDJ = var3;
         this.GDK = var4;

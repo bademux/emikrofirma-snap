@@ -4,7 +4,7 @@ import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.e.h.b.ETU;
 import a.a.a.c.e.a.d.ValueContainer2;
@@ -42,7 +42,7 @@ public class ETV extends QVI {
 
     }
 
-    public ValueContainer2<Integer, List<EDF<ReceiptRecordVat>>> getReceiptRecords(int var1, int var2, Period var3) {
+    public ValueContainer2<Integer, List<ParametrizedModel<ReceiptRecordVat>>> getReceiptRecords(int var1, int var2, Period var3) {
         try {
             ReceiptRecordCriteria var4 = new ReceiptRecordCriteria(ReceiptRecordVat.class, var3, RecordType.VAT, OrderType.DESC, var1, var2);
             ValueContainer2 var5 = this.getModelManager().HJY(this.getParentDefinition(), var4);
@@ -60,7 +60,7 @@ public class ETV extends QVI {
         Iterator var6 = ((List) var2.getSecondValue()).iterator();
 
         while (var6.hasNext()) {
-            EDF var7 = (EDF) var6.next();
+            ParametrizedModel var7 = (ParametrizedModel) var6.next();
             Period var8 = var7.getPeriod();
             if (!var8.equals(Period.AOE)) {
                 String var4 = String.valueOf(var8.getYear().getValue());
@@ -92,7 +92,7 @@ public class ETV extends QVI {
             return var11;
         }
 
-        EDF var6 = (EDF) var5.next();
+        ParametrizedModel var6 = (ParametrizedModel) var5.next();
         var7 = SettlementStatus.SETTLED.equals(((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus());
 
         return var7;

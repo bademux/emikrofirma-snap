@@ -2,7 +2,7 @@ package a.a.a.c.f.c.b;
 
 import a.a.a.c.f.b.a.Address;
 import a.a.a.c.f.b.c.*;
-import a.a.a.c.f.c.LW;
+import a.a.a.c.f.c.BaseUserData;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -11,7 +11,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
         name = "userData"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class UserData extends LW {
+public class UserData extends BaseUserData {
     private Nip AQP;
     private Regon AQQ;
     private Text AQR;

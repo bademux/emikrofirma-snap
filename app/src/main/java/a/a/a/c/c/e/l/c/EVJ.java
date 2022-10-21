@@ -4,7 +4,7 @@ import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.b.InvoiceFilteringType;
 import a.a.a.c.c.d.g.EPA;
@@ -114,7 +114,7 @@ public class EVJ extends QVI {
             Iterator var10 = ((List) var7.getSecondValue()).iterator();
 
             while (var10.hasNext()) {
-                EDF var11 = (EDF) var10.next();
+                ParametrizedModel var11 = (ParametrizedModel) var10.next();
                 ++var9;
                 var8.add(new EPA(var11, var9));
             }
@@ -125,7 +125,7 @@ public class EVJ extends QVI {
         return var15;
     }
 
-    public void RKY(EDF<BaseInvoiceSell> var1) throws FFK, FFO {
+    public void RKY(ParametrizedModel<BaseInvoiceSell> var1) throws FFK, FFO {
 
         if (this.RKI(var1.getPeriod())) {
             throw FCZ.getInstance().createMicroBusinessException_cant_cancel_settled_invoice();
@@ -198,7 +198,7 @@ public class EVJ extends QVI {
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
-                EDF var6 = (EDF) var5.next();
+                ParametrizedModel var6 = (ParametrizedModel) var5.next();
                 Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
                 if (var7.getSettlementStatus().equals(SettlementStatus.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);

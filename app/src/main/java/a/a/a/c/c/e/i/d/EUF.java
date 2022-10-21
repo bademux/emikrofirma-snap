@@ -4,7 +4,7 @@ import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.ELW;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.i.b.EUD;
@@ -88,7 +88,7 @@ public class EUF extends ELW {
                 Iterator var4 = ((List) var2.getSecondValue()).iterator();
 
                 while (var4.hasNext()) {
-                    EDF var5 = (EDF) var4.next();
+                    ParametrizedModel var5 = (ParametrizedModel) var4.next();
                     if (var5 != null) {
                         var3.add(var5.getModelBaseElementWithIdObject());
                     }
@@ -210,7 +210,7 @@ public class EUF extends ELW {
             var3 = this.getModelManager().HJY(this.getParentDefinition(), var2);
             Contractor var4;
             if (((List) var3.getSecondValue()).size() > 0) {
-                var4 = (Contractor) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
+                var4 = (Contractor) ((ParametrizedModel) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
                 if (var4.DAJ().getValue().equals(var1)) {
                     Contractor var5 = var4;
                     return var5;

@@ -4,7 +4,7 @@ import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
@@ -203,7 +203,7 @@ public class QTV extends QUV<QUD> {
                     var4 = var1.AICD();
                     var3.getModelManager().HJZ(var3.getParentDefinition(), var4);
                 } else {
-                    var4 = (Contractor) ((EDF) var2.get(0)).getModelBaseElementWithIdObject();
+                    var4 = (Contractor) ((ParametrizedModel) var2.get(0)).getModelBaseElementWithIdObject();
                     var4.setPrivtePerson(var1.AICE());
                     var4.setName(var1.DAI());
                     var4.setNip(var1.DAJ());
@@ -234,7 +234,7 @@ public class QTV extends QUV<QUD> {
 
     }
 
-    private List<EDF<Contractor>> RLY(Contractor var1) throws FFK, FFO {
+    private List<ParametrizedModel<Contractor>> RLY(Contractor var1) throws FFK, FFO {
 
         Object var8;
         Object var2 = new ArrayList();

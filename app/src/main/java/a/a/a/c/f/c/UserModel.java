@@ -6,13 +6,13 @@ public enum UserModel {
     UserData(a.a.a.c.f.c.b.UserData.class),
     ConfigurationProperties(a.a.a.c.f.c.a.ConfigurationProperties.class);
 
-    private final Class<? extends LW> AQI;
+    private final Class<? extends BaseUserData> AQI;
 
     UserModel(Class var3) {
         this.AQI = var3;
     }
 
-    public static UserModel getByType(Class<? extends LW> var0) {
+    public static UserModel getByType(Class<? extends BaseUserData> var0) {
         UserModel[] var1 = values();
         int var2 = var1.length;
 
@@ -26,7 +26,7 @@ public enum UserModel {
         throw new FFI("Type [" + var0 + "] not found!");
     }
 
-    public Class<? extends LW> getType() {
+    public Class<? extends BaseUserData> getType() {
         return this.AQI;
     }
 }

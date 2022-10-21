@@ -2,7 +2,7 @@ package a.a.a.c.c.a.b;
 
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.g.ModelBusinessPeriodElementTypedCriteria;
 import a.a.a.c.f.a.h.Settlement;
@@ -29,7 +29,7 @@ public abstract class QVI extends ELV {
         Iterator var6 = ((List) var2.getSecondValue()).iterator();
 
         while (var6.hasNext()) {
-            EDF var7 = (EDF) var6.next();
+            ParametrizedModel var7 = (ParametrizedModel) var6.next();
             Period var8 = var7.getPeriod();
             if (!var8.equals(Period.AOE)) {
                 String var4 = String.valueOf(var8.getYear().getValue());
@@ -68,7 +68,7 @@ public abstract class QVI extends ELV {
             return null;
         }
 
-        EDF var6 = (EDF) var5.next();
+        ParametrizedModel var6 = (ParametrizedModel) var5.next();
         var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
 
         return var7;
@@ -99,7 +99,7 @@ public abstract class QVI extends ELV {
 
         var4 = ((List) var3.getSecondValue()).iterator();
         if (var4.hasNext()) {
-            EDF var5 = (EDF) var4.next();
+            ParametrizedModel var5 = (ParametrizedModel) var4.next();
             SettlementStatus var6 = ((Settlement) var5.getModelBaseElementWithIdObject()).getSettlementStatus();
             return var6;
         }

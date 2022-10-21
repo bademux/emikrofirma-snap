@@ -4,7 +4,7 @@ import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.ELW;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.c.e.c.b.ESI;
@@ -105,14 +105,14 @@ public class ESJ extends ELW {
         Iterator var3 = var2.iterator();
 
         while (var3.hasNext()) {
-            EDF var4 = (EDF) var3.next();
+            ParametrizedModel var4 = (ParametrizedModel) var3.next();
             if (!Period.AOE.equals(var4.getPeriod())) {
-                EDF var5 = var4;
+                ParametrizedModel var5 = var4;
                 ArrayList var6 = new ArrayList();
 
                 ESL var7;
                 while (var5.getParentWrapperWithCanceledState() != null) {
-                    var5 = (EDF) var5.getParentWrapperWithCanceledState();
+                    var5 = (ParametrizedModel) var5.getParentWrapperWithCanceledState();
                     var7 = new ESL(var5, this, null, true, true, false);
                     var6.add(var7);
                 }
@@ -137,7 +137,7 @@ public class ESJ extends ELW {
                 return var4;
             }
 
-            var4 = (DeclarationJPK_VAT) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
+            var4 = (DeclarationJPK_VAT) ((ParametrizedModel) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
         } catch (FFO | FFK var8) {
             log.error("Something bad happened", var8);
             throw new FFI(var8);
@@ -157,7 +157,7 @@ public class ESJ extends ELW {
                 return var4;
             }
 
-            var4 = (DeclarationJPK_FA) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
+            var4 = (DeclarationJPK_FA) ((ParametrizedModel) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject();
         } catch (FFO | FFK var8) {
             log.error("Something bad happened", var8);
             throw new FFI(var8);
@@ -166,7 +166,7 @@ public class ESJ extends ELW {
         return var4;
     }
 
-    public List<EDF<Settlement>> getSettlements() {
+    public List<ParametrizedModel<Settlement>> getSettlements() {
 
         List var3;
         try {
@@ -281,14 +281,14 @@ public class ESJ extends ELW {
             return null;
         }
 
-        EDF var5 = (EDF) var4.next();
+        ParametrizedModel var5 = (ParametrizedModel) var4.next();
         var6 = ((Settlement) var5.getModelBaseElementWithIdObject()).getSettlementStatus();
 
 
         return var6;
     }
 
-    public List<EDF<InvoiceRecord>> HTO(Period var1) {
+    public List<ParametrizedModel<InvoiceRecord>> HTO(Period var1) {
 
         InvoiceRecordCriteria var2;
         try {
@@ -304,7 +304,7 @@ public class ESJ extends ELW {
         }
     }
 
-    public List<EDF<BaseInvoiceSell>> QPE(Period var1) {
+    public List<ParametrizedModel<BaseInvoiceSell>> QPE(Period var1) {
         try {
             InvoiceCriteria var2;
             if (var1 != null && var1.getMonth() != null && var1.getMonth().getValue() != null && var1.getYear() != null && var1.getYear().getValue() != null) {

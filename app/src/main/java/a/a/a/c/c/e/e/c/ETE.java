@@ -3,7 +3,7 @@ package a.a.a.c.c.e.e.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.e.a.Mode;
 import a.a.a.c.c.e.e.b.ETD;
@@ -96,7 +96,7 @@ public class ETE extends ELV {
                 Iterator var4 = ((List) var2.getSecondValue()).iterator();
 
                 while (var4.hasNext()) {
-                    EDF var5 = (EDF) var4.next();
+                    ParametrizedModel var5 = (ParametrizedModel) var4.next();
                     if (var5 != null) {
                         var3.add(var5.getModelBaseElementWithIdObject());
                     }

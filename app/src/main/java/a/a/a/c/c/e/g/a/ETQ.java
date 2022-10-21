@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.g.a;
 
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.f.a.e.InvoicePurchase;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -19,10 +19,10 @@ public class ETQ {
     private final ObjectProperty<BigDecimal> GIQ;
     private final ObjectProperty<BigDecimal> GIR;
     private final ObjectProperty<BigDecimal> GIS;
-    private final EDF<InvoicePurchase> GIT;
+    private final ParametrizedModel<InvoicePurchase> GIT;
     private final StringProperty GIU;
 
-    public ETQ(Integer var1, LocalDate var2, String var3, String var4, String var5, BigDecimal var6, BigDecimal var7, BigDecimal var8, EDF<InvoicePurchase> var9, String var10) {
+    public ETQ(Integer var1, LocalDate var2, String var3, String var4, String var5, BigDecimal var6, BigDecimal var7, BigDecimal var8, ParametrizedModel<InvoicePurchase> var9, String var10) {
         this.GIL = new SimpleObjectProperty(var1);
         this.QNG = new SimpleObjectProperty(var2);
         this.GIN = new SimpleStringProperty(var3);
@@ -67,7 +67,7 @@ public class ETQ {
         return this.GIS;
     }
 
-    public EDF<InvoicePurchase> getInvoice() {
+    public ParametrizedModel<InvoicePurchase> getInvoice() {
         return this.GIT;
     }
 

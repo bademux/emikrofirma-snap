@@ -2,11 +2,11 @@ package a.a.a.c.f.a.c;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.f.b.ObjectWithTitle;
 
 public class TitledContractor implements ObjectWithTitle {
-    private final EDF<Contractor> QLG;
+    private final ParametrizedModel<Contractor> QLG;
     private Contractor QLH;
     public static final int QWI = 1;
     public static final int QWJ = 2;
@@ -21,7 +21,7 @@ public class TitledContractor implements ObjectWithTitle {
         this.QWM = true;
     }
 
-    public TitledContractor(EDF<Contractor> var1) {
+    public TitledContractor(ParametrizedModel<Contractor> var1) {
         this.QLG = var1;
     }
 

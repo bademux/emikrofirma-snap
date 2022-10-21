@@ -3,7 +3,7 @@ package a.a.a.c.c.e.r.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.ELX;
 import a.a.a.c.c.d.g.Mode;
 import a.a.a.c.c.e.r.b.QUT;
@@ -90,7 +90,7 @@ public class QUU extends ELX implements EYL {
             return null;
         }
 
-        EDF var6 = (EDF) var5.next();
+        ParametrizedModel var6 = (ParametrizedModel) var5.next();
         var7 = ((Settlement) var6.getModelBaseElementWithIdObject()).getSettlementStatus();
 
         return var7;
@@ -167,7 +167,7 @@ public class QUU extends ELX implements EYL {
             Iterator var5 = ((List) var18.getSecondValue()).iterator();
 
             while (var5.hasNext()) {
-                EDF var6 = (EDF) var5.next();
+                ParametrizedModel var6 = (ParametrizedModel) var5.next();
                 Settlement var7 = (Settlement) var6.getModelBaseElementWithIdObject();
                 if (var7.getSettlementStatus().equals(SettlementStatus.SETTLED)) {
                     LocalDate var8 = LocalDate.of(var7.getPeriod().getYear().getValue(), var7.getPeriod().getMonth().getValue(), 1);
@@ -233,7 +233,7 @@ public class QUU extends ELX implements EYL {
                 Iterator var5 = ((List) var13.getSecondValue()).iterator();
 
                 while (var5.hasNext()) {
-                    EDF var6 = (EDF) var5.next();
+                    ParametrizedModel var6 = (ParametrizedModel) var5.next();
                     if (var6 != null) {
                         var2.add(new TitledContractor(var6));
                     }

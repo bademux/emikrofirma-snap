@@ -1,7 +1,7 @@
 package a.a.a.c.c.d.n;
 
 import a.a.a.b.f.FFK;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.f.a.n.InvoiceOther;
 import a.a.a.c.f.a.n.InvoiceOtherSubtype;
 import a.a.a.c.f.b.b.Period;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class QVB<_T extends InvoiceOther<?>> {
-    private final EDF<_T> RFJ;
+    private final ParametrizedModel<_T> RFJ;
     private _T RFK;
     private final int RFL;
     private BigDecimal RFM;
@@ -25,12 +25,12 @@ public class QVB<_T extends InvoiceOther<?>> {
     private InvoiceState RFU;
     private InvoiceOtherSubtype RFV;
 
-    public QVB(EDF<_T> var1, int var2) {
+    public QVB(ParametrizedModel<_T> var1, int var2) {
         this.RFJ = var1;
         this.RFL = var2;
     }
 
-    public EDF<_T> getInvoiceWrapper() {
+    public ParametrizedModel<_T> getInvoiceWrapper() {
         return this.RFJ;
     }
 
@@ -124,8 +124,8 @@ public class QVB<_T extends InvoiceOther<?>> {
 
     public String getParentRefId() {
         if (this.RFT == null) {
-            EDF var1;
-            for (var1 = this.RFJ; var1.getParentWrapperWithCanceledState() != null; var1 = (EDF) var1.getParentWrapperWithCanceledState()) {
+            ParametrizedModel var1;
+            for (var1 = this.RFJ; var1.getParentWrapperWithCanceledState() != null; var1 = (ParametrizedModel) var1.getParentWrapperWithCanceledState()) {
             }
 
             if (var1 != this.RFJ) {

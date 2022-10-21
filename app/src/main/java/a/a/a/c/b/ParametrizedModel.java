@@ -10,12 +10,12 @@ import lombok.SneakyThrows;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-public class EDF<_A extends ModelBaseElementWithId> extends ModelBaseElementWithId {
+public class ParametrizedModel<_A extends ModelBaseElementWithId> extends ModelBaseElementWithId {
     private _A FFS;
     private final Callable<_A> FFT;
     private final Map<String, Object> FFU;
 
-    public EDF(Callable<_A> var1, String var2, Map<String, Object> var3) {
+    public ParametrizedModel(Callable<_A> var1, String var2, Map<String, Object> var3) {
         super(var2);
 
         this.FFT = var1;

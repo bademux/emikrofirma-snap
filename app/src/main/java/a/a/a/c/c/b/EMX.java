@@ -15,7 +15,7 @@ import a.a.a.b.d.FEP;
 import a.a.a.b.e.FFF;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.f.a.n.BaseInvoiceSell;
 import a.a.a.c.f.b.c.a.TaxRate;
 import com.github.bademux.emk.Application;
@@ -46,7 +46,7 @@ import a.a.a.c.f.a.n.*;
 import a.a.a.c.f.b.b.Period;
 import a.a.a.c.f.b.c.*;
 import a.a.a.c.f.b.c.a.*;
-import a.a.a.c.f.c.LW;
+import a.a.a.c.f.c.BaseUserData;
 import a.a.a.c.f.c.a.ConfigurationProperties;
 import a.a.a.c.f.c.b.SimpleUserData;
 import a.a.a.c.f.c.b.UserData;
@@ -1112,7 +1112,7 @@ public class EMX implements EntityName {
         }
     }
 
-    public <_T extends LW> void HLI(SimpleUserData var1) throws FFK {
+    public <_T extends BaseUserData> void HLI(SimpleUserData var1) throws FFK {
 
         String var2 = EntityName.USERS;
         synchronized (EntityName.USERS) {
@@ -1121,7 +1121,7 @@ public class EMX implements EntityName {
 
     }
 
-    public <_T extends LW> void HLJ(SimpleUserData var1) throws FFK {
+    public <_T extends BaseUserData> void HLJ(SimpleUserData var1) throws FFK {
 
         String var2 = EntityName.USERS;
         synchronized (EntityName.USERS) {
@@ -1130,7 +1130,7 @@ public class EMX implements EntityName {
 
     }
 
-    public <_T extends LW> void HLK(SimpleUserData var1) throws FFK {
+    public <_T extends BaseUserData> void HLK(SimpleUserData var1) throws FFK {
 
         String var2 = EntityName.USERS;
         synchronized (EntityName.USERS) {
@@ -1139,7 +1139,7 @@ public class EMX implements EntityName {
 
     }
 
-    private <_T extends LW> void HLL(SqlOperation var1, SimpleUserData var2) throws FFK {
+    private <_T extends BaseUserData> void HLL(SqlOperation var1, SimpleUserData var2) throws FFK {
 
         if (var2 == null) {
             throw FCZ.getInstance().IHG();
@@ -1184,17 +1184,17 @@ public class EMX implements EntityName {
 
     }
 
-    public <_T extends LW> _T HLM(FFF var1, String var2, Class<_T> var3) throws FFK {
+    public <_T extends BaseUserData> _T HLM(FFF var1, String var2, Class<_T> var3) throws FFK {
 
-        LW var4;
+        BaseUserData var4;
         var4 = this.HLN(var1, var2, var3, null);
 
         return (_T) var4;
     }
 
-    public <_T extends LW> _T HLN(FFF var1, String var2, Class<_T> var3, Integer var4) throws FFK {
+    public <_T extends BaseUserData> _T HLN(FFF var1, String var2, Class<_T> var3, Integer var4) throws FFK {
 
-        LW var5;
+        BaseUserData var5;
         if (var4 == null) {
             var5 = this.HMA(var1, EntityName.PREFERENCES_LATEST_VERSION, var2, var3, null);
             return (_T) var5;
@@ -1205,7 +1205,7 @@ public class EMX implements EntityName {
         return (_T) var5;
     }
 
-    public <_T extends Invoice<?>> ValueContainer2<Integer, List<EDF<_T>>> ROB(FFF var1, InvoiceState var2, OrderType var3, Integer var4, Integer var5, Period var6, InvoiceType var7, InvoiceSubtype var8, RefId var9, Nip var10, Nip var11, ValueContainer2<Date, Date> var12, ValueContainer2<Date, Date> var13, String var14) throws FFK {
+    public <_T extends Invoice<?>> ValueContainer2<Integer, List<ParametrizedModel<_T>>> ROB(FFF var1, InvoiceState var2, OrderType var3, Integer var4, Integer var5, Period var6, InvoiceType var7, InvoiceSubtype var8, RefId var9, Nip var10, Nip var11, ValueContainer2<Date, Date> var12, ValueContainer2<Date, Date> var13, String var14) throws FFK {
 
         ValueContainer2 var25;
         ArrayList var15 = new ArrayList();
@@ -1267,7 +1267,7 @@ public class EMX implements EntityName {
         return var25;
     }
 
-    public <_T extends InvoiceOther<?>> ValueContainer2<Integer, List<EDF<_T>>> ROC(FFF var1, InvoiceState var2, OrderType var3, Integer var4, Integer var5, Period var6, InvoiceOtherType var7, InvoiceOtherSubtype var8, RefId var9, Nip var10, Nip var11, ValueContainer2<Date, Date> var12, ValueContainer2<Date, Date> var13, String var14) throws FFK {
+    public <_T extends InvoiceOther<?>> ValueContainer2<Integer, List<ParametrizedModel<_T>>> ROC(FFF var1, InvoiceState var2, OrderType var3, Integer var4, Integer var5, Period var6, InvoiceOtherType var7, InvoiceOtherSubtype var8, RefId var9, Nip var10, Nip var11, ValueContainer2<Date, Date> var12, ValueContainer2<Date, Date> var13, String var14) throws FFK {
 
         ValueContainer2 var25;
         ArrayList var15 = new ArrayList();
@@ -1323,7 +1323,7 @@ public class EMX implements EntityName {
         return var25;
     }
 
-    public <_T extends ReceiptRecord> ValueContainer2<Integer, List<EDF<_T>>> HLP(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, RecordType var6) throws FFK {
+    public <_T extends ReceiptRecord> ValueContainer2<Integer, List<ParametrizedModel<_T>>> HLP(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, RecordType var6) throws FFK {
 
         ValueContainer2 var7;
         var7 = this.HLX(var1, EntityName.RECEIPTRECORDS, EntityName.RECEIPTRECORDS_TREE_FULL, null, null, null, var2, var3, var4, var5, var6, null);
@@ -1331,7 +1331,7 @@ public class EMX implements EntityName {
         return var7;
     }
 
-    public <_T extends Settlement> ValueContainer2<Integer, List<EDF<_T>>> HLQ(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, SettlementType var6) throws FFK {
+    public <_T extends Settlement> ValueContainer2<Integer, List<ParametrizedModel<_T>>> HLQ(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, SettlementType var6) throws FFK {
 
         ValueContainer2 var7;
         var7 = this.HLX(var1, EntityName.SETTLEMENTS_LAST_CHILD_ID_FULL, EntityName.SETTLEMENTS_TREE_FULL, null, null, null, var2, var3, var4, var5, var6, null);
@@ -1339,7 +1339,7 @@ public class EMX implements EntityName {
         return var7;
     }
 
-    public <_T extends Declaration> ValueContainer2<Integer, List<EDF<_T>>> HLR(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, DeclarationType var6, DeclarationSubtype var7) throws FFK {
+    public <_T extends Declaration> ValueContainer2<Integer, List<ParametrizedModel<_T>>> HLR(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, DeclarationType var6, DeclarationSubtype var7) throws FFK {
 
         ValueContainer2 var8;
         var8 = this.HLX(var1, EntityName.DECLARATIONS, EntityName.DECLARATIONS_TREE_FULL, null, null, null, var2, var3, var4, var5, var6, var7);
@@ -1347,7 +1347,7 @@ public class EMX implements EntityName {
         return var8;
     }
 
-    public <_T extends Declaration> ValueContainer2<Integer, List<EDF<_T>>> QPW(FFF var1, OrderType var2, Integer var3, Integer var4, Settlement var5, Period var6, DeclarationType var7, DeclarationSubtype var8) throws FFK {
+    public <_T extends Declaration> ValueContainer2<Integer, List<ParametrizedModel<_T>>> QPW(FFF var1, OrderType var2, Integer var3, Integer var4, Settlement var5, Period var6, DeclarationType var7, DeclarationSubtype var8) throws FFK {
 
         ValueContainer2 var10;
         if (var5 == null) {
@@ -1361,7 +1361,7 @@ public class EMX implements EntityName {
         return var10;
     }
 
-    public <_T extends Contractor> ValueContainer2<Integer, List<EDF<_T>>> HLT(FFF var1, OrderType var2) throws FFK {
+    public <_T extends Contractor> ValueContainer2<Integer, List<ParametrizedModel<_T>>> HLT(FFF var1, OrderType var2) throws FFK {
 
         ValueContainer2 var4;
         ArrayList var3 = new ArrayList();
@@ -1372,7 +1372,7 @@ public class EMX implements EntityName {
         return var4;
     }
 
-    public <_T extends Contractor> ValueContainer2<Integer, List<EDF<_T>>> QPX(FFF var1, OrderType var2, Integer var3, String var4) throws FFK {
+    public <_T extends Contractor> ValueContainer2<Integer, List<ParametrizedModel<_T>>> QPX(FFF var1, OrderType var2, Integer var3, String var4) throws FFK {
 
         ValueContainer2 var12;
         ArrayList var5 = new ArrayList();
@@ -1396,7 +1396,7 @@ public class EMX implements EntityName {
         return var12;
     }
 
-    public <_T extends InvoiceRecord> ValueContainer2<Integer, List<EDF<_T>>> HLV(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceRecordType var6) throws FFK {
+    public <_T extends InvoiceRecord> ValueContainer2<Integer, List<ParametrizedModel<_T>>> HLV(FFF var1, OrderType var2, Integer var3, Integer var4, Period var5, InvoiceRecordType var6) throws FFK {
 
         ValueContainer2 var7;
         var7 = this.HLX(var1, EntityName.INVOICERECORDS_LATEST_TYPE_FOR_PERIOD, EntityName.INVOICERECORDS_TREE_FULL, null, null, null, var2, var3, var4, var5, var6, null);
@@ -1404,7 +1404,7 @@ public class EMX implements EntityName {
         return var7;
     }
 
-    public <_T extends InvoiceRecord> ValueContainer2<Integer, List<EDF<_T>>> QPY(FFF var1, OrderType var2, Integer var3, Integer var4, Settlement var5, Period var6, InvoiceRecordType var7) throws FFK {
+    public <_T extends InvoiceRecord> ValueContainer2<Integer, List<ParametrizedModel<_T>>> QPY(FFF var1, OrderType var2, Integer var3, Integer var4, Settlement var5, Period var6, InvoiceRecordType var7) throws FFK {
 
         ValueContainer2 var9;
         if (var5 == null) {
@@ -1418,7 +1418,7 @@ public class EMX implements EntityName {
         return var9;
     }
 
-    private <_T extends ModelBusinessPeriodElement> ValueContainer2<Integer, List<EDF<_T>>> HLX(FFF var1, String var2, String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, OrderType var7, Integer var8, Integer var9, Period var10, Enum<?> var11, Enum<?> var12) throws FFK {
+    private <_T extends ModelBusinessPeriodElement> ValueContainer2<Integer, List<ParametrizedModel<_T>>> HLX(FFF var1, String var2, String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, OrderType var7, Integer var8, Integer var9, Period var10, Enum<?> var11, Enum<?> var12) throws FFK {
 
         ValueContainer2 var17;
         if (var4 == null) {
@@ -1479,7 +1479,7 @@ public class EMX implements EntityName {
         return var17;
     }
 
-    private <_T extends ModelBaseElementWithId> ValueContainer2<Integer, List<EDF<_T>>> HLY(FFF var1, String var2, String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, OrderType var7, Integer var8, Integer var9, Period var10, Enum<?> var11, Enum<?> var12) throws FFK {
+    private <_T extends ModelBaseElementWithId> ValueContainer2<Integer, List<ParametrizedModel<_T>>> HLY(FFF var1, String var2, String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, OrderType var7, Integer var8, Integer var9, Period var10, Enum<?> var11, Enum<?> var12) throws FFK {
 
         ValueContainer2 var17;
         if (var4 == null) {
@@ -1537,7 +1537,7 @@ public class EMX implements EntityName {
         return var17;
     }
 
-    private <_T extends ModelBaseElementWithId> ValueContainer2<Integer, List<EDF<_T>>> HLZ(final FFF var1, String var2, final String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, List<CellOrder> var7, Integer var8, Integer var9) throws FFK {
+    private <_T extends ModelBaseElementWithId> ValueContainer2<Integer, List<ParametrizedModel<_T>>> HLZ(final FFF var1, String var2, final String var3, List<CellType> var4, List<CellValue<?>> var5, List<Expression> var6, List<CellOrder> var7, Integer var8, Integer var9) throws FFK {
 
         try {
             final Connection var10 = this.connection;
@@ -1570,10 +1570,10 @@ public class EMX implements EntityName {
                 log.debug("Query without any order.");
             }
 
-            ValueContainer2 var14 = this.HMC(var10, var2, var3, var4, var11, var23, var6, var24, var8, var9, new ENF<ValueContainer1<EDF<_T>>, EDF<_T>>() {
+            ValueContainer2 var14 = this.HMC(var10, var2, var3, var4, var11, var23, var6, var24, var8, var9, new ENF<ValueContainer1<ParametrizedModel<_T>>, ParametrizedModel<_T>>() {
                 private final String TCL = "topElementDef";
 
-                public ValueContainer1<EDF<_T>> HNG(List<CellType> var1x, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3x) throws Exception {
+                public ValueContainer1<ParametrizedModel<_T>> HNG(List<CellType> var1x, String var2, Map<String, Map<Integer, List<CellValue<?>>>> var3x) throws Exception {
 
                     HashMap var4 = new HashMap();
                     HashMap var5 = new HashMap();
@@ -1591,16 +1591,16 @@ public class EMX implements EntityName {
                         }
                     }
 
-                    EDF var14 = null;
+                    ParametrizedModel var14 = null;
                     String var15 = "topElementDef";
-                    EDF var16 = null;
+                    ParametrizedModel var16 = null;
 
                     do {
                         var15 = (String) var5.get(var15);
                         if (var16 == null) {
-                            var16 = (EDF) var4.get(var15);
+                            var16 = (ParametrizedModel) var4.get(var15);
                         } else if (var15 != null) {
-                            EDF var17 = (EDF) var4.get(var15);
+                            ParametrizedModel var17 = (ParametrizedModel) var4.get(var15);
                             var16.setChild(var17);
                             var17.setParent(var16);
                             var16 = var17;
@@ -1615,7 +1615,7 @@ public class EMX implements EntityName {
                     return var18;
                 }
 
-                private ValueContainer3<String, String, EDF<_T>> createWrapper(List<CellType> var1x, List<CellValue<?>> var2) {
+                private ValueContainer3<String, String, ParametrizedModel<_T>> createWrapper(List<CellType> var1x, List<CellValue<?>> var2) {
 
                     String var3x = null;
                     String var4 = null;
@@ -1689,7 +1689,7 @@ public class EMX implements EntityName {
 
                     String var16 = var4 == null ? "topElementDef" : var4;
                     String finalVar3x = var3x;
-                    ValueContainer3 var17 = new ValueContainer3(var3x, var16, new EDF(new Callable<_T>() {
+                    ValueContainer3 var17 = new ValueContainer3(var3x, var16, new ParametrizedModel(new Callable<_T>() {
                         public _T call() throws FFK {
                             ArrayList var1x = new ArrayList();
                             ArrayList var2 = new ArrayList();
@@ -1873,9 +1873,9 @@ public class EMX implements EntityName {
         return (_T) var5;
     }
 
-    private <_T extends LW> _T HMA(final FFF var1, final String var2, String var3, Class<_T> var4, Integer var5) throws FFK {
+    private <_T extends BaseUserData> _T HMA(final FFF var1, final String var2, String var3, Class<_T> var4, Integer var5) throws FFK {
 
-        LW var10;
+        BaseUserData var10;
         try {
             ArrayList var6 = new ArrayList();
             ArrayList var7 = new ArrayList();
@@ -1924,13 +1924,13 @@ public class EMX implements EntityName {
                         var12 = var7;
                     }
 
-                    LW var13 = (LW) EMX.this.QJQ(var12, var3, var2, var2x);
+                    BaseUserData var13 = (BaseUserData) EMX.this.QJQ(var12, var3, var2, var2x);
                     return new ValueContainer1(var13);
                 }
             });
             if ((Integer) var9.getFirstValue() != 0 || ((List) var9.getSecondValue()).size() != 0) {
                 if ((Integer) var9.getFirstValue() == 1 && ((List) var9.getSecondValue()).size() == 1) {
-                    var10 = (LW) ((ValueContainer1) ((List) var9.getSecondValue()).iterator().next()).getFirstValue();
+                    var10 = (BaseUserData) ((ValueContainer1) ((List) var9.getSecondValue()).iterator().next()).getFirstValue();
                     return (_T) var10;
                 }
 
@@ -2182,7 +2182,7 @@ public class EMX implements EntityName {
         }
     }
 
-    public <_T extends LW> void HME(SqlOperation var1, FFF var2, String var3, _T var4) throws FFK {
+    public <_T extends BaseUserData> void HME(SqlOperation var1, FFF var2, String var3, _T var4) throws FFK {
 
         this.HML(var1, var2, var3, EntityName.PREFERENCES, var4);
 
@@ -2198,7 +2198,7 @@ public class EMX implements EntityName {
         return var2;
     }
 
-    public void ROD(String var1, EDF<?> var2) throws FFK {
+    public void ROD(String var1, ParametrizedModel<?> var2) throws FFK {
 
         ArrayList var3 = new ArrayList();
         ArrayList var4 = new ArrayList();
@@ -2474,7 +2474,7 @@ public class EMX implements EntityName {
 
     }
 
-    private <_T extends LW> void HML(SqlOperation var1, FFF var2, String var3, String var4, _T var5) throws FFK {
+    private <_T extends BaseUserData> void HML(SqlOperation var1, FFF var2, String var3, String var4, _T var5) throws FFK {
 
         if (var5 == null) {
             throw FCZ.getInstance().IHG();

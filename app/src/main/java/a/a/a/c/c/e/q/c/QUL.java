@@ -4,7 +4,7 @@ import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.QVI;
 import a.a.a.c.c.d.n.QVB;
 import a.a.a.c.c.e.q.b.QUK;
@@ -66,7 +66,7 @@ public class QUL extends QVI {
             Iterator var10 = ((List) var7.getSecondValue()).iterator();
 
             while (var10.hasNext()) {
-                EDF var11 = (EDF) var10.next();
+                ParametrizedModel var11 = (ParametrizedModel) var10.next();
                 ++var9;
                 var8.add(new QVB(var11, var9));
             }
@@ -77,7 +77,7 @@ public class QUL extends QVI {
         return var15;
     }
 
-    public void RNF(EDF<InvoiceOtherSell> var1) throws FFK, FFO {
+    public void RNF(ParametrizedModel<InvoiceOtherSell> var1) throws FFK, FFO {
 
         if (this.RKI(var1.getPeriod())) {
             throw FCZ.getInstance().createMicroBusinessException_cant_delete_settled_invoice();

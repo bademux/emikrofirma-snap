@@ -4,7 +4,7 @@ import a.a.a.c.f.b.c.PrivtePerson;
 import a.a.a.c.f.b.c.Bytes;
 import a.a.a.c.f.b.c.JZ;
 import a.a.a.c.f.b.c.Text;
-import a.a.a.c.f.c.LW;
+import a.a.a.c.f.c.BaseUserData;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -13,7 +13,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
         name = "simpleUserData"
 )
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SimpleUserData extends LW {
+public class SimpleUserData extends BaseUserData {
     private Text AQK;
     private JZ AQL;
     private PrivtePerson AQM;

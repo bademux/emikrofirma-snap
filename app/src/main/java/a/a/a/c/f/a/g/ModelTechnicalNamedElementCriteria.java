@@ -1,8 +1,8 @@
 package a.a.a.c.f.a.g;
 
-import a.a.a.c.f.c.LW;
+import a.a.a.c.f.c.BaseUserData;
 
-public class ModelTechnicalNamedElementCriteria<_T extends LW> extends ModelTechnicalElementCriteria<_T> {
+public class ModelTechnicalNamedElementCriteria<_T extends BaseUserData> extends ModelTechnicalElementCriteria<_T> {
     private final String ANJ;
 
     public ModelTechnicalNamedElementCriteria(Class<_T> var1, String var2) {

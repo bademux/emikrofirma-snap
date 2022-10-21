@@ -4,7 +4,7 @@ import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
@@ -629,19 +629,19 @@ public class EVD extends ENO<EVJ> {
 
                     EVG var9 = new EVG(var6.getNr(), var8, var6.getRefId(), var6.getParentRefId(), var6.getContractorName(), var6.getContractorNip(), var6.getSumNet(), var6.getSumTax(), var6.getSumBrut(), var6.getInvoiceWrapper(), var7, false, false);
                     TreeItem var10 = new TreeItem(var9);
-                    EDF var11 = var6.getInvoiceWrapper();
+                    ParametrizedModel var11 = var6.getInvoiceWrapper();
                     ArrayList var12 = new ArrayList();
                     var12.add(var6.getInvoiceWrapper());
                     if (!this.GNW) {
                         var3.getChildren().add(var10);
                     } else {
-                        while ((var11 = (EDF) var11.getParentWrapperWithCanceledState()) != null) {
+                        while ((var11 = (ParametrizedModel) var11.getParentWrapperWithCanceledState()) != null) {
                             var12.add(0, var11);
                         }
 
                         var11 = var6.getInvoiceWrapper();
 
-                        while ((var11 = (EDF) var11.getChildWrapperWithCanceledState()) != null) {
+                        while ((var11 = (ParametrizedModel) var11.getChildWrapperWithCanceledState()) != null) {
                             var12.add(var11);
                         }
 
@@ -650,7 +650,7 @@ public class EVD extends ENO<EVJ> {
                             Iterator var14 = var12.iterator();
 
                             while (var14.hasNext()) {
-                                EDF var15 = (EDF) var14.next();
+                                ParametrizedModel var15 = (ParametrizedModel) var14.next();
                                 ++var13;
                                 Date var16 = (Date) var15.getValue("business_invoicingDate");
                                 LocalDate var17 = null;
@@ -670,8 +670,8 @@ public class EVD extends ENO<EVJ> {
                                     var7 = this.resources.getString("micro.process.common.invoices.InvoiceSell");
                                 }
 
-                                EDF var24;
-                                for (var24 = var15; var24.getParentWrapperWithCanceledState() != null; var24 = (EDF) var24.getParentWrapperWithCanceledState()) {
+                                ParametrizedModel var24;
+                                for (var24 = var15; var24.getParentWrapperWithCanceledState() != null; var24 = (ParametrizedModel) var24.getParentWrapperWithCanceledState()) {
                                 }
 
                                 String var25 = null;
@@ -1002,7 +1002,7 @@ public class EVD extends ENO<EVJ> {
     private void HYS() {
 
         if (this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedIndex() != -1) {
-            EDF var1 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice();
+            ParametrizedModel var1 = ((EVG) ((TreeItem) this.fxml_invoice_sale_list_table_tree.getSelectionModel().getSelectedItem()).getValue()).getInvoice();
             if (var1 == null) {
                 this.setAllDisabled();
                 return;
@@ -1058,7 +1058,7 @@ public class EVD extends ENO<EVJ> {
         this.setCancelDisable(true);
     }
 
-    private EVE HYT(EDF<BaseInvoiceSell> var1) {
+    private EVE HYT(ParametrizedModel<BaseInvoiceSell> var1) {
 
         EVE var3;
         if (var1.getState().equals(InvoiceState.CANCELED)) {
@@ -1092,7 +1092,7 @@ public class EVD extends ENO<EVJ> {
         return var3;
     }
 
-    private EVE RKX(EDF<BaseInvoiceSell> var1) {
+    private EVE RKX(ParametrizedModel<BaseInvoiceSell> var1) {
 
         EVE var3;
         boolean var2 = false;
@@ -1126,7 +1126,7 @@ public class EVD extends ENO<EVJ> {
         return var3;
     }
 
-    private EVE HYU(EDF<BaseInvoiceSell> var1) {
+    private EVE HYU(ParametrizedModel<BaseInvoiceSell> var1) {
 
         EVE var2;
         if (!var1.getState().equals(InvoiceState.CANCELED) || !EOZ.HOD(var1) || var1.getParentWrapperOnlyActiveState() != null) {
@@ -1139,7 +1139,7 @@ public class EVD extends ENO<EVJ> {
         return var2;
     }
 
-    private EVE HYV(EDF<BaseInvoiceSell> var1) {
+    private EVE HYV(ParametrizedModel<BaseInvoiceSell> var1) {
 
         EVE var2;
         if (!var1.getState().equals(InvoiceState.CANCELED)) {
@@ -1157,7 +1157,7 @@ public class EVD extends ENO<EVJ> {
         return var2;
     }
 
-    private EVE HYW(EDF<BaseInvoiceSell> var1) {
+    private EVE HYW(ParametrizedModel<BaseInvoiceSell> var1) {
 
         EVE var2;
         if (var1.getState().equals(InvoiceState.CANCELED)) {
@@ -1175,7 +1175,7 @@ public class EVD extends ENO<EVJ> {
         return var2;
     }
 
-    private EVE HYX(EDF<BaseInvoiceSell> var1) {
+    private EVE HYX(ParametrizedModel<BaseInvoiceSell> var1) {
 
         EVE var2;
         var2 = new EVE(true, null);
@@ -1183,7 +1183,7 @@ public class EVD extends ENO<EVJ> {
         return var2;
     }
 
-    public boolean HYY(EDF<BaseInvoiceSell> var1) throws FFK, FFO {
+    public boolean HYY(ParametrizedModel<BaseInvoiceSell> var1) throws FFK, FFO {
 
         boolean var3;
         boolean var2 = this.HYZ(var1.getPeriod());

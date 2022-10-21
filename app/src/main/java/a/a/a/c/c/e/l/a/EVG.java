@@ -1,6 +1,6 @@
 package a.a.a.c.c.e.l.a;
 
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.d.d.ENW;
 import a.a.a.c.f.a.e.BaseInvoiceSell;
 import a.a.a.c.f.b.c.a.InvoiceState;
@@ -23,12 +23,12 @@ public class EVG implements ENW {
     private final ObjectProperty<BigDecimal> GOT;
     private final ObjectProperty<BigDecimal> GOU;
     private final StringProperty RAS;
-    private final EDF<BaseInvoiceSell> GOV;
+    private final ParametrizedModel<BaseInvoiceSell> GOV;
     private final StringProperty GOW;
     private final BooleanProperty GOX;
     private final BooleanProperty GOY;
 
-    public EVG(Integer var1, LocalDate var2, String var3, String var4, String var5, String var6, BigDecimal var7, BigDecimal var8, BigDecimal var9, EDF<BaseInvoiceSell> var10, String var11, boolean var12, boolean var13) {
+    public EVG(Integer var1, LocalDate var2, String var3, String var4, String var5, String var6, BigDecimal var7, BigDecimal var8, BigDecimal var9, ParametrizedModel<BaseInvoiceSell> var10, String var11, boolean var12, boolean var13) {
         this.GOM = new SimpleObjectProperty(var1);
         this.GON = new SimpleObjectProperty(var2);
         this.GOO = new SimpleStringProperty(var3);
@@ -90,7 +90,7 @@ public class EVG implements ENW {
         return this.RAS;
     }
 
-    public EDF<BaseInvoiceSell> getInvoice() {
+    public ParametrizedModel<BaseInvoiceSell> getInvoice() {
         return this.GOV;
     }
 

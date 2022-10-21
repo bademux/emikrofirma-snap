@@ -15,7 +15,7 @@ import a.a.a.b.f.FFN;
 import a.a.a.b.f.FFO;
 import a.a.a.b.f.a.FFL;
 import a.a.a.b.f.a.FFM;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.d.a.EPV;
 import a.a.a.c.d.a.a.EPP;
 import a.a.a.c.d.d.EQX;
@@ -103,7 +103,7 @@ public class EPW {
     public EPW() {
     }
 
-    public static byte[] HOW(EWX var0, File var1, Period var2, Integer var3, UserData var4, List<EDF<InvoiceRecord>> var5) throws FFK {
+    public static byte[] HOW(EWX var0, File var1, Period var2, Integer var3, UserData var4, List<ParametrizedModel<InvoiceRecord>> var5) throws FFK {
 
         try {
             log.info("About to generate [JPK_VAT] declaration for " + var2 + ", reason [" + var3 + "] into file [" + var1 + "]");
@@ -116,7 +116,7 @@ public class EPW {
 
                 while (var8.hasNext()) {
                     Object var9 = var8.next();
-                    EDF var10 = (EDF) var9;
+                    ParametrizedModel var10 = (ParametrizedModel) var9;
                     InvoiceRecord var11 = (InvoiceRecord) var10.getModelBaseElementWithIdObject();
                     Class var12 = var11.getClass();
                     if (InvoiceRecordSell.class.isAssignableFrom(var12)) {

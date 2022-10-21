@@ -2,7 +2,7 @@ package a.a.a.c.c.e.c.c;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.f.a.d.DeclarationJPK_VAT;
 import a.a.a.c.f.a.h.Settlement;
 
@@ -10,10 +10,10 @@ public abstract class ESK {
     private Settlement GCZ;
     private DeclarationJPK_VAT QNE;
     protected final ESJ GDB;
-    private final EDF<Settlement> GDC;
+    private final ParametrizedModel<Settlement> GDC;
     private boolean QNF = false;
 
-    public ESK(ESJ var1, EDF<Settlement> var2) {
+    public ESK(ESJ var1, ParametrizedModel<Settlement> var2) {
         this.GDB = var1;
         this.GDC = var2;
     }

@@ -4,7 +4,7 @@ import a.a.a.b.c.DialogButton;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import java.util.function.Consumer;
 import a.a.a.c.c.b.a.b.a.EMP;
 import a.a.a.c.c.b.a.b.a.EMR;
@@ -725,7 +725,7 @@ public class ETN extends ENO<ETS> {
             return;
         }
 
-        EDF var1 = this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice();
+        ParametrizedModel var1 = this.fxml_invoice_purchase_list_table_tree.getSelectionModel().getSelectedItem().getInvoice();
         if (var1 != null) {
             ETO var2 = this.HVW(var1);
             if (var2.HVQ()) {
@@ -761,7 +761,7 @@ public class ETN extends ENO<ETS> {
         this.setDeleteDisable(true, null);
     }
 
-    private ETO HVW(EDF<InvoicePurchase> var1) {
+    private ETO HVW(ParametrizedModel<InvoicePurchase> var1) {
 
         ETO var3;
         boolean var2 = false;
@@ -785,7 +785,7 @@ public class ETN extends ENO<ETS> {
         return var3;
     }
 
-    private ETO QPG(EDF<InvoicePurchase> var1) {
+    private ETO QPG(ParametrizedModel<InvoicePurchase> var1) {
 
         ETO var2;
         var2 = this.HVW(var1);
@@ -793,7 +793,7 @@ public class ETN extends ENO<ETS> {
         return var2;
     }
 
-    private ETO HVX(EDF<InvoicePurchase> var1) {
+    private ETO HVX(ParametrizedModel<InvoicePurchase> var1) {
 
         ETO var2;
         var2 = new ETO(true, null);
@@ -801,7 +801,7 @@ public class ETN extends ENO<ETS> {
         return var2;
     }
 
-    public boolean HVY(EDF<InvoicePurchase> var1) throws FFK, FFO {
+    public boolean HVY(ParametrizedModel<InvoicePurchase> var1) throws FFK, FFO {
 
         boolean var3;
         boolean var2 = this.HVZ(var1.getPeriod());

@@ -2,7 +2,7 @@ package a.a.a.c.d;
 
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.d.f.*;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.f.a.EntityTypes;
@@ -31,7 +31,7 @@ public class EQQ {
     public EQQ() {
     }
 
-    public static Set<InvoiceRecord> RHZ(Period var0, UserData var1, List<EDF<Invoice<?>>> var2, List<EDF<ReceiptRecord>> var3, List<EDF<InvoiceOther<?>>> var4) throws FFK {
+    public static Set<InvoiceRecord> RHZ(Period var0, UserData var1, List<ParametrizedModel<Invoice<?>>> var2, List<ParametrizedModel<ReceiptRecord>> var3, List<ParametrizedModel<InvoiceOther<?>>> var4) throws FFK {
 
         HashSet var5 = new HashSet();
         Period var6 = var0.DDN();
@@ -45,9 +45,9 @@ public class EQQ {
         var5.add(var8);
         Iterator var9 = var2.iterator();
 
-        EDF var10;
+        ParametrizedModel var10;
         while (var9.hasNext()) {
-            var10 = (EDF) var9.next();
+            var10 = (ParametrizedModel) var9.next();
             Invoice var11 = (Invoice) var10.getModelBaseElementWithIdObject();
             HQY(var11, var7, var8);
         }
@@ -55,14 +55,14 @@ public class EQQ {
         var9 = var3.iterator();
 
         while (var9.hasNext()) {
-            var10 = (EDF) var9.next();
+            var10 = (ParametrizedModel) var9.next();
             HQZ(var7, HQX((ReceiptRecord) var10.getModelBaseElementWithIdObject()));
         }
 
         var9 = var4.iterator();
 
         while (var9.hasNext()) {
-            var10 = (EDF) var9.next();
+            var10 = (ParametrizedModel) var9.next();
             RIA((InvoiceOther) var10.getModelBaseElementWithIdObject(), var7, var8);
         }
 

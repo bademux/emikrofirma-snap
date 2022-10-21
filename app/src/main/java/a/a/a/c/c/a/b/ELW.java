@@ -4,7 +4,7 @@ import a.a.a.b.a.a.OrderType;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.b.EMB;
 import a.a.a.c.d.b.EQB;
 import a.a.a.c.e.a.d.ValueContainer2;
@@ -75,7 +75,7 @@ public abstract class ELW extends ELV {
         Iterator var8 = ((List) var7.getSecondValue()).iterator();
 
         while (var8.hasNext()) {
-            EDF var9 = (EDF) var8.next();
+            ParametrizedModel var9 = (ParametrizedModel) var8.next();
             var5.add(var9.getModelBaseElementWithIdObject());
         }
 

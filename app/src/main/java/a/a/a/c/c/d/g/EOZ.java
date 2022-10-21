@@ -1,7 +1,7 @@
 package a.a.a.c.c.d.g;
 
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.d.e.EQY;
 import a.a.a.c.e.a.d.ValueContainer2;
 import a.a.a.c.e.a.d.ValueContainer3;
@@ -18,7 +18,7 @@ public class EOZ {
     private EOZ() {
     }
 
-    public static boolean HOD(EDF<BaseInvoiceSell> var0) {
+    public static boolean HOD(ParametrizedModel<BaseInvoiceSell> var0) {
         return var0.getParentWrapperWithCanceledState() != null;
     }
 

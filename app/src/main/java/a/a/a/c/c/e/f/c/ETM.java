@@ -3,7 +3,7 @@ package a.a.a.c.c.e.f.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.e.f.b.ETL;
 import a.a.a.c.e.a.d.ValueContainer2;
@@ -83,7 +83,7 @@ public class ETM extends ELV {
                 Iterator var5 = ((List) var4.getSecondValue()).iterator();
 
                 while (var5.hasNext()) {
-                    EDF var6 = (EDF) var5.next();
+                    ParametrizedModel var6 = (ParametrizedModel) var5.next();
                     var2.add(var6.getModelBaseElementWithIdObject());
                 }
             }
@@ -106,7 +106,7 @@ public class ETM extends ELV {
                 Iterator var5 = ((List) var3.getSecondValue()).iterator();
 
                 while (var5.hasNext()) {
-                    EDF var6 = (EDF) var5.next();
+                    ParametrizedModel var6 = (ParametrizedModel) var5.next();
                     var4.add(var6.getModelBaseElementWithIdObject());
                 }
             }

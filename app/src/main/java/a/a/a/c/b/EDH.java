@@ -6,9 +6,9 @@ import a.a.a.c.f.b.c.Nip;
 import a.a.a.c.f.b.c.RefId;
 
 public class EDH<_T extends Invoice<?>> {
-    private final EDF<_T> FFY;
+    private final ParametrizedModel<_T> FFY;
 
-    public EDH(EDF<_T> var1) {
+    public EDH(ParametrizedModel<_T> var1) {
         this.FFY = var1;
     }
 

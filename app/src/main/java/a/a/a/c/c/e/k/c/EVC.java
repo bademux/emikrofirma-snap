@@ -3,7 +3,7 @@ package a.a.a.c.c.e.k.c;
 import a.a.a.b.f.FFI;
 import a.a.a.b.f.FFK;
 import a.a.a.b.f.FFO;
-import a.a.a.c.b.EDF;
+import a.a.a.c.b.ParametrizedModel;
 import a.a.a.c.c.a.b.ELV;
 import a.a.a.c.c.d.a.ENL;
 import a.a.a.c.c.e.k.b.EVB;
@@ -95,7 +95,7 @@ public class EVC extends ELV {
             if (((List) var3.getSecondValue()).size() > 1) {
                 throw new FFO("More than one ReceiptRecord per one period!");
             } else {
-                return ((List) var3.getSecondValue()).size() > 0 ? (ReceiptRecordVat) ((EDF) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject() : null;
+                return ((List) var3.getSecondValue()).size() > 0 ? (ReceiptRecordVat) ((ParametrizedModel) ((List) var3.getSecondValue()).get(0)).getModelBaseElementWithIdObject() : null;
             }
         } catch (FFO | FFK var4) {
             org.slf4j.LoggerFactory.getLogger(getClass()).error("Something bad happened", var4);
@@ -114,7 +114,7 @@ public class EVC extends ELV {
 
         Iterator var4 = ((List) var3.getSecondValue()).iterator();
         if (var4.hasNext()) {
-            EDF var5 = (EDF) var4.next();
+            ParametrizedModel var5 = (ParametrizedModel) var4.next();
             boolean var6 = SettlementStatus.SETTLED.equals(((Settlement) var5.getModelBaseElementWithIdObject()).getSettlementStatus());
             return var6;
         }
